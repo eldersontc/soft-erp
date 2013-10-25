@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true">
+  
+  <class name="Soft.Configuracion.Entidades.Panel, Soft.Configuracion.Entidades" table="Panel">
+    
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="Nombre" type="string"/>
+    <property name="NombreVista" type="string"/>
+    <property name="Activo" type="boolean"/>
+    
+    <many-to-one name="EntidadSF" class="Soft.Entities.EntidadSF" column="IDEntidadSF" lazy="false" not-null="false" unique="true" insert="true" update="true"/>
+    
+    <bag name="Columnas" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDPanel"/>
+      <one-to-many class="Soft.Configuracion.Entidades.ColumnaPanel"/>
+    </bag>
+    
+  </class>
+  
+</hibernate-mapping>

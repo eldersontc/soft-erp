@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+  
+  <class name="Soft.Configuracion.Entidades.ItemAccion,Soft.Configuracion.Entidades">
+    
+    <id name="ID" column ="ID" type="string" unsaved-value="0" />
+    <property name="Nombre" type="string"/>
+    <property name="Clase" type="string"/>
+    <property name="Parametro" type="string"/>
+    <property name="Exito" type="string"/>
+    <property name="Error" type="string"/>
+     
+    <many-to-one name="Ensamblado" class="Soft.Configuracion.Entidades.Ensamblado" column="IDEnsamblado" lazy="false" not-null="false" unique="true" insert="true" update="true"/>
+    
+  </class>
+  
+</hibernate-mapping>

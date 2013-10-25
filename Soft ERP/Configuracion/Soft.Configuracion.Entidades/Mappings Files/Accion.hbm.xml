@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+  
+  <class name="Soft.Configuracion.Entidades.Accion, Soft.Configuracion.Entidades">
+    
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="Nombre" type="string"/>
+    <property name="Descripcion" type="string"/>
+    <property name="Imagen" type="string"/>
+    <property name="Teclas" type="string"/>
+    <property name="FilaSeleccionada" type="boolean"/>
+    <property name="Activo" type="boolean"/>
+    
+    <bag name="Items" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDAccion"/>
+      <one-to-many class="Soft.Configuracion.Entidades.ItemAccion"/>
+    </bag>
+    
+  </class>
+  
+</hibernate-mapping>

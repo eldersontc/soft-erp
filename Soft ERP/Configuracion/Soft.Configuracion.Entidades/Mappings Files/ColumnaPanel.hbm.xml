@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true">
+
+  <class name="Soft.Configuracion.Entidades.ColumnaPanel, Soft.Configuracion.Entidades" table="ColumnaPanel">
+
+    <id name="ID" column ="ID" type="string" unsaved-value="0" />
+    <property name="Nombre" type="string"/>
+    <property name="CampoSQL" type="string"/>
+    <property name="Ancho" type="int"/>
+    <property name="Estilo" type="string"/>
+    <property name="Visible" type="boolean"/>
+    <property name="Propiedad" type="string"/>
+    <property name="Establecer" type="boolean"/>
+    
+  </class>
+
+</hibernate-mapping>

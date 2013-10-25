@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true">
+
+  <class name="Soft.Configuracion.Entidades.ItemContenedorAccion, Soft.Configuracion.Entidades" table="ItemContenedorAccion">
+
+    <id name="ID" column ="ID" type="string" unsaved-value="0" />
+
+    <many-to-one name="Accion" class="Soft.Configuracion.Entidades.Accion" column="IDAccion" insert="true" update="true" lazy="false"/>
+
+  </class>
+
+</hibernate-mapping>

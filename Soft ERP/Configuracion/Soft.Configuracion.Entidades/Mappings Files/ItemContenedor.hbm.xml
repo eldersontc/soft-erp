@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+  
+  <class name="Soft.Configuracion.Entidades.ItemContenedor, Soft.Configuracion.Entidades">
+    
+    <id name="ID" column ="ID" type="string" unsaved-value="0" />
+    <property name="EsContenedor" type="boolean"/>
+    <property name="EsPanel" type="boolean"/>
+    <property name="Nombre" type="string"/>
+    <property name="Imagen" type="string"/>
+    <property name="Crear" type="boolean"/>
+    <property name="Modificar" type="boolean"/>
+    <property name="Eliminar" type="boolean"/>
+    <property name="Copiar" type="boolean"/>
+    <property name="Auditar" type="boolean"/>
+    
+    <many-to-one name="Panel" class="Soft.Configuracion.Entidades.Panel" column="IDPanel" lazy="false" not-null="false" insert="true" update="true"/>
+    <many-to-one name="ItemPadre" class="Soft.Configuracion.Entidades.ItemContenedor" column="IDItemPadre" lazy="false" not-null="false" insert="true" update="true"/>
+
+    <bag name="Acciones" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDItemContenedor"/>
+      <one-to-many class="Soft.Configuracion.Entidades.ItemContenedorAccion"/>
+    </bag>
+
+  </class>
+  
+</hibernate-mapping>
