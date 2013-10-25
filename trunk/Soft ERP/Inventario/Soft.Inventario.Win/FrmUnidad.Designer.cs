@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUnidad));
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.CheckActivo = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.txtNombre = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.Nombre = new Infragistics.Win.Misc.UltraLabel();
@@ -337,6 +339,8 @@
             // 
             // Nombre
             // 
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            this.Nombre.Appearance = appearance1;
             this.Nombre.Location = new System.Drawing.Point(15, 45);
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(100, 23);
@@ -353,6 +357,8 @@
             // 
             // Codigo
             // 
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.Codigo.Appearance = appearance2;
             this.Codigo.Location = new System.Drawing.Point(15, 18);
             this.Codigo.Name = "Codigo";
             this.Codigo.Size = new System.Drawing.Size(100, 23);
