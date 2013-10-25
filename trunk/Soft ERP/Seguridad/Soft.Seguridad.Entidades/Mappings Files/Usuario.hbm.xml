@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Seguridad.Entidades.Usuario, Soft.Seguridad.Entidades" table="Usuario">
+
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="UserID" column="UserID" type="string"/>
+    <property name="Contrasena" column="Contrasena" type="string"/>
+    <property name="NombreUsuario" column="NombreUsuario" type="string"/>
+    <property name="Skyn" column="Skyn" type="string"/>
+    <property name="Imagen" column="Imagen" type="BinaryBlob"/>
+
+    <many-to-one name="Empresa" class="Soft.Seguridad.Entidades.Empresa" column="IDEmpresa" lazy="false" not-null="false" unique="true" insert="true" update="true"/>
+    <many-to-one name="Perfil" class="Soft.Seguridad.Entidades.Perfil" column="IDPerfil" lazy="false" not-null="false" unique="true" insert="true" update="true"/>
+    
+  </class>
+
+</hibernate-mapping>
