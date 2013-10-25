@@ -208,7 +208,7 @@ namespace Soft.Inventario.Win
         private void busClasificacion_Search(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmSeleccionarPanel = new FrmSelectedEntity();
-            this.Existencia.ClasificacionExistencia = (ClasificacionExistencia)FrmSeleccionarPanel.GetSelectedEntity(typeof(ClasificacionExistencia), "ClasificacionExistencia");
+            this.Existencia.ClasificacionExistencia = (ClasificacionExistencia)FrmSeleccionarPanel.GetSelectedEntity(typeof(ClasificacionExistencia), "Clasificación de Existencia");
             if (this.Existencia.ClasificacionExistencia != null) {
                 busClasificacion.Text = this.Existencia.ClasificacionExistencia.Nombre;
                 busItemClasificacion.Enabled = true;
