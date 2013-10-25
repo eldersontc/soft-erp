@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Inventario.Entidades", "Soft.Inventario.Entidades\Soft.Inventario.Entidades.csproj", "{377FAD7C-BA5B-41A4-9B02-B09D8B0A5C14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Inventario.Win", "Soft.Inventario.Win\Soft.Inventario.Win.csproj", "{A99765E1-D60A-48A0-836C-E49CF934E463}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{377FAD7C-BA5B-41A4-9B02-B09D8B0A5C14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{377FAD7C-BA5B-41A4-9B02-B09D8B0A5C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{377FAD7C-BA5B-41A4-9B02-B09D8B0A5C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{377FAD7C-BA5B-41A4-9B02-B09D8B0A5C14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A99765E1-D60A-48A0-836C-E49CF934E463}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A99765E1-D60A-48A0-836C-E49CF934E463}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A99765E1-D60A-48A0-836C-E49CF934E463}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A99765E1-D60A-48A0-836C-E49CF934E463}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal
