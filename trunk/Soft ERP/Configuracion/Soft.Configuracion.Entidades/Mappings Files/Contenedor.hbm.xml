@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Configuracion.Entidades.Contenedor, Soft.Configuracion.Entidades">
+    
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    
+    <bag name="Items" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDContenedor"/>
+      <one-to-many class="Soft.Configuracion.Entidades.ItemContenedor"/>
+    </bag>
+
+    <bag name="Perfiles" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDContenedor"/>
+      <one-to-many class="Soft.Configuracion.Entidades.ContenedorPerfil"/>
+    </bag>
+
+  </class>
+
+</hibernate-mapping>
