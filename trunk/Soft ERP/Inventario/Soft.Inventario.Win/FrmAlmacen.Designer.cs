@@ -384,6 +384,8 @@
             // 
             // CheckActivo
             // 
+            this.CheckActivo.BackColor = System.Drawing.Color.Transparent;
+            this.CheckActivo.BackColorInternal = System.Drawing.Color.Transparent;
             this.CheckActivo.Checked = true;
             this.CheckActivo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CheckActivo.Location = new System.Drawing.Point(274, 17);

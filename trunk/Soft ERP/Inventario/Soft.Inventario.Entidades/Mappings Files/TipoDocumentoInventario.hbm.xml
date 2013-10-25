@@ -18,8 +18,7 @@
     <property name="NumeracionActual" type="int"/>
     <property name="NumeracionLongitud" type="int"/>
 
-    <many-to-one name="Almacen" class="Soft.Inventario.Entidades.Almacen" column="IDAlmacen"
-insert="true" update="true" lazy="false"/>
+    <many-to-one name="Almacen" class="Soft.Inventario.Entidades.Almacen" column="IDAlmacen" insert="true" update="true" lazy="false"/>
     
 
   </class>

@@ -10,7 +10,7 @@ namespace Soft.Inventario.Entidades
     {
         public Almacen() { }
         public virtual String Codigo { get; set; }
-        public virtual String Nombre { get; set; }
+        //public virtual String Nombre { get; set; }
         public virtual String Descripcion { get; set; }
         
     }

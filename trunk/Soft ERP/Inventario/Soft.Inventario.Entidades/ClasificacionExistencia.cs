@@ -11,34 +11,27 @@ namespace Soft.Inventario.Entidades
     public class ClasificacionExistencia: Parent
     {
 
-        public ClasificacionExistencia(
-            )
+        public ClasificacionExistencia()
         {
             Items = new List<ItemClasificacionExistencia>();
         }
 
-
         public virtual String Codigo { get; set; }
-        public virtual String Nombre { get; set; }
-
+        //public virtual String Nombre { get; set; }
         public virtual IList<ItemClasificacionExistencia> Items { get; set; }
-
-
 
         public virtual ItemClasificacionExistencia AddItem()
         {
             ItemClasificacionExistencia Item = new ItemClasificacionExistencia();
-            this.Items.Add(Item);
+            Items.Add(Item);
             return Item;
         }
-
 
         public virtual ItemClasificacionExistencia ItemByName(String Nombre)
         {
             ItemClasificacionExistencia Item = this.Items.First(a => a.Nombre.Equals(Nombre));
             return Item;
         }
-
 
     }
 }
