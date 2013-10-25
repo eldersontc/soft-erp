@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmClasificacionExistencia));
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
@@ -356,7 +356,7 @@
             // ubEliminar
             // 
             this.ubEliminar.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Office2010Button;
-            this.ubEliminar.Location = new System.Drawing.Point(328, 187);
+            this.ubEliminar.Location = new System.Drawing.Point(340, 187);
             this.ubEliminar.Name = "ubEliminar";
             this.ubEliminar.Size = new System.Drawing.Size(75, 23);
             this.ubEliminar.TabIndex = 8;
@@ -366,7 +366,7 @@
             // ubNuevo
             // 
             this.ubNuevo.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Office2010Button;
-            this.ubNuevo.Location = new System.Drawing.Point(247, 187);
+            this.ubNuevo.Location = new System.Drawing.Point(259, 187);
             this.ubNuevo.Name = "ubNuevo";
             this.ubNuevo.Size = new System.Drawing.Size(75, 23);
             this.ubNuevo.TabIndex = 7;
@@ -375,6 +375,8 @@
             // 
             // CheckActivo
             // 
+            this.CheckActivo.BackColor = System.Drawing.Color.Transparent;
+            this.CheckActivo.BackColorInternal = System.Drawing.Color.Transparent;
             this.CheckActivo.Checked = true;
             this.CheckActivo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CheckActivo.Location = new System.Drawing.Point(369, 18);
@@ -394,8 +396,8 @@
             // 
             // Nombre
             // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.Nombre.Appearance = appearance3;
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            this.Nombre.Appearance = appearance5;
             this.Nombre.Location = new System.Drawing.Point(16, 49);
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(100, 23);
@@ -412,8 +414,8 @@
             // 
             // Codigo
             // 
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            this.Codigo.Appearance = appearance4;
+            appearance6.BackColor = System.Drawing.Color.Transparent;
+            this.Codigo.Appearance = appearance6;
             this.Codigo.Location = new System.Drawing.Point(17, 21);
             this.Codigo.Name = "Codigo";
             this.Codigo.Size = new System.Drawing.Size(100, 23);

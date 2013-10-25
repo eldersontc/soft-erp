@@ -13,8 +13,5 @@
       <one-to-many class="Soft.Inventario.Entidades.ItemClasificacionExistencia"/>
     </bag>
 
-
-
-
   </class>
 </hibernate-mapping>
