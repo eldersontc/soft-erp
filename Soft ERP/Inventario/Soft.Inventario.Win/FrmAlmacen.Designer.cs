@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAlmacen));
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.Codigo = new Infragistics.Win.Misc.UltraLabel();
             this.txtCodigo = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.txtNombre = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -325,6 +328,8 @@
             // 
             // Codigo
             // 
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.Codigo.Appearance = appearance3;
             this.Codigo.Location = new System.Drawing.Point(21, 20);
             this.Codigo.Name = "Codigo";
             this.Codigo.Size = new System.Drawing.Size(100, 23);
@@ -349,6 +354,8 @@
             // 
             // Nombre
             // 
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.Nombre.Appearance = appearance2;
             this.Nombre.Location = new System.Drawing.Point(21, 47);
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(100, 23);
@@ -357,6 +364,8 @@
             // 
             // ultraLabel2
             // 
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance1;
             this.ultraLabel2.Location = new System.Drawing.Point(21, 76);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(100, 23);

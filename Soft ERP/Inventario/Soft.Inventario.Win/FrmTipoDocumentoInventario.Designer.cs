@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTipoDocumentoInventario));
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
@@ -514,6 +521,8 @@
             // 
             // ultraLabel2
             // 
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance5;
             this.ultraLabel2.Location = new System.Drawing.Point(17, 74);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(100, 23);
@@ -530,6 +539,8 @@
             // 
             // Nombre
             // 
+            appearance6.BackColor = System.Drawing.Color.Transparent;
+            this.Nombre.Appearance = appearance6;
             this.Nombre.Location = new System.Drawing.Point(17, 45);
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(100, 23);
@@ -546,6 +557,8 @@
             // 
             // Codigo
             // 
+            appearance7.BackColor = System.Drawing.Color.Transparent;
+            this.Codigo.Appearance = appearance7;
             this.Codigo.Location = new System.Drawing.Point(17, 18);
             this.Codigo.Name = "Codigo";
             this.Codigo.Size = new System.Drawing.Size(100, 23);
@@ -565,6 +578,8 @@
             // 
             // ultraLabel1
             // 
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel1.Appearance = appearance4;
             this.ultraLabel1.Location = new System.Drawing.Point(17, 123);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(100, 23);
@@ -604,6 +619,8 @@
             // 
             // ultraLabel3
             // 
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel3.Appearance = appearance3;
             this.ultraLabel3.Location = new System.Drawing.Point(18, 150);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(100, 23);
@@ -612,6 +629,8 @@
             // 
             // ultraLabel4
             // 
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel4.Appearance = appearance2;
             this.ultraLabel4.Location = new System.Drawing.Point(18, 188);
             this.ultraLabel4.Name = "ultraLabel4";
             this.ultraLabel4.Size = new System.Drawing.Size(100, 23);
@@ -631,6 +650,8 @@
             // 
             // ultraLabel5
             // 
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel5.Appearance = appearance1;
             this.ultraLabel5.Location = new System.Drawing.Point(234, 191);
             this.ultraLabel5.Name = "ultraLabel5";
             this.ultraLabel5.Size = new System.Drawing.Size(104, 23);
