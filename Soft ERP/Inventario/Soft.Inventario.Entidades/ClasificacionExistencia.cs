@@ -17,7 +17,6 @@ namespace Soft.Inventario.Entidades
         }
 
         public virtual String Codigo { get; set; }
-        //public virtual String Nombre { get; set; }
         public virtual IList<ItemClasificacionExistencia> Items { get; set; }
 
         public virtual ItemClasificacionExistencia AddItem()
