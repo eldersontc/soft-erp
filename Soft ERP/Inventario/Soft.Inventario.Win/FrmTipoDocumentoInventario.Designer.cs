@@ -608,7 +608,7 @@
             this.CheckUnicoAlmacen.BackColorInternal = System.Drawing.Color.Transparent;
             this.CheckUnicoAlmacen.Checked = true;
             this.CheckUnicoAlmacen.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckUnicoAlmacen.Location = new System.Drawing.Point(324, 123);
+            this.CheckUnicoAlmacen.Location = new System.Drawing.Point(321, 117);
             this.CheckUnicoAlmacen.Name = "CheckUnicoAlmacen";
             this.CheckUnicoAlmacen.Size = new System.Drawing.Size(102, 20);
             this.CheckUnicoAlmacen.TabIndex = 20;
@@ -618,9 +618,9 @@
             // busAlmacen
             // 
             this.busAlmacen.BackColor = System.Drawing.Color.Transparent;
-            this.busAlmacen.Location = new System.Drawing.Point(123, 122);
+            this.busAlmacen.Location = new System.Drawing.Point(123, 117);
             this.busAlmacen.Name = "busAlmacen";
-            this.busAlmacen.Size = new System.Drawing.Size(182, 21);
+            this.busAlmacen.Size = new System.Drawing.Size(182, 36);
             this.busAlmacen.TabIndex = 25;
             this.busAlmacen.Search += new System.EventHandler(this.busAlmacen_Search);
             // 
@@ -630,7 +630,7 @@
             this.CheckRequiereCliente.BackColorInternal = System.Drawing.Color.Transparent;
             this.CheckRequiereCliente.Checked = true;
             this.CheckRequiereCliente.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckRequiereCliente.Location = new System.Drawing.Point(324, 150);
+            this.CheckRequiereCliente.Location = new System.Drawing.Point(321, 144);
             this.CheckRequiereCliente.Name = "CheckRequiereCliente";
             this.CheckRequiereCliente.Size = new System.Drawing.Size(114, 20);
             this.CheckRequiereCliente.TabIndex = 27;
@@ -651,7 +651,7 @@
             // 
             appearance8.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel4.Appearance = appearance8;
-            this.ultraLabel4.Location = new System.Drawing.Point(18, 183);
+            this.ultraLabel4.Location = new System.Drawing.Point(18, 181);
             this.ultraLabel4.Name = "ultraLabel4";
             this.ultraLabel4.Size = new System.Drawing.Size(100, 23);
             this.ultraLabel4.TabIndex = 29;
@@ -663,7 +663,7 @@
             this.checkTieneImpuesto.BackColorInternal = System.Drawing.Color.Transparent;
             this.checkTieneImpuesto.Checked = true;
             this.checkTieneImpuesto.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkTieneImpuesto.Location = new System.Drawing.Point(124, 183);
+            this.checkTieneImpuesto.Location = new System.Drawing.Point(124, 181);
             this.checkTieneImpuesto.Name = "checkTieneImpuesto";
             this.checkTieneImpuesto.Size = new System.Drawing.Size(69, 20);
             this.checkTieneImpuesto.TabIndex = 30;
@@ -674,7 +674,7 @@
             // 
             appearance7.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel5.Appearance = appearance7;
-            this.ultraLabel5.Location = new System.Drawing.Point(234, 186);
+            this.ultraLabel5.Location = new System.Drawing.Point(234, 181);
             this.ultraLabel5.Name = "ultraLabel5";
             this.ultraLabel5.Size = new System.Drawing.Size(104, 23);
             this.ultraLabel5.TabIndex = 32;
@@ -686,7 +686,7 @@
             this.CheckAceptaCostoCero.BackColorInternal = System.Drawing.Color.Transparent;
             this.CheckAceptaCostoCero.Checked = true;
             this.CheckAceptaCostoCero.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckAceptaCostoCero.Location = new System.Drawing.Point(124, 210);
+            this.CheckAceptaCostoCero.Location = new System.Drawing.Point(124, 208);
             this.CheckAceptaCostoCero.Name = "CheckAceptaCostoCero";
             this.CheckAceptaCostoCero.Size = new System.Drawing.Size(302, 20);
             this.CheckAceptaCostoCero.TabIndex = 33;
@@ -730,7 +730,7 @@
             valueListItem1,
             valueListItem2,
             valueListItem3});
-            this.comboOperacion.Location = new System.Drawing.Point(123, 150);
+            this.comboOperacion.Location = new System.Drawing.Point(123, 143);
             this.comboOperacion.Name = "comboOperacion";
             this.comboOperacion.Size = new System.Drawing.Size(154, 21);
             this.comboOperacion.TabIndex = 35;
@@ -739,9 +739,9 @@
             // txtProcentajeImpuesto
             // 
             this.txtProcentajeImpuesto.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Integer;
-            this.txtProcentajeImpuesto.Location = new System.Drawing.Point(326, 183);
+            this.txtProcentajeImpuesto.Location = new System.Drawing.Point(321, 178);
             this.txtProcentajeImpuesto.Name = "txtProcentajeImpuesto";
-            this.txtProcentajeImpuesto.Size = new System.Drawing.Size(83, 20);
+            this.txtProcentajeImpuesto.Size = new System.Drawing.Size(102, 20);
             this.txtProcentajeImpuesto.TabIndex = 36;
             this.txtProcentajeImpuesto.TextChanged += new System.EventHandler(this.txtProcentajeImpuesto_TextChanged);
             // 
