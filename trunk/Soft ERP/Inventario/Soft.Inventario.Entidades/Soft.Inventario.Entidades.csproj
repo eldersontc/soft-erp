@@ -83,7 +83,7 @@
     <EmbeddedResource Include="Mappings Files\TipoDocumentoInventario.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings Files\EntradaInventario.xml" />
+    <EmbeddedResource Include="Mappings Files\EntradaInventario.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings Files\ItemEntradaInventario.xml" />
