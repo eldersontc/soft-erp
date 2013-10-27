@@ -10,6 +10,9 @@ using Soft.Win;
 using Soft.Inventario.Entidades;
 using Infragistics.Win.UltraWinGrid;
 using Soft.Entities;
+using Microsoft.VisualBasic;
+using Soft.DataAccess;
+using Infragistics.Win;
 
 namespace Soft.Inventario.Win
 {
@@ -63,6 +66,10 @@ namespace Soft.Inventario.Win
             column.DataType = typeof(Decimal);
 
             ugProductos.DataSource = columns;
+            ugProductos.DisplayLayout.Bands[0].Columns[colUnidad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
+            ugProductos.DisplayLayout.Bands[0].Columns[colCantidad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
+            ugProductos.DisplayLayout.Bands[0].Columns[colPrecio].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
+            ugProductos.DisplayLayout.Bands[0].Columns[colTotal].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
         }
 
         public void Mostrar()
@@ -76,10 +83,14 @@ namespace Soft.Inventario.Win
             txtFactura.Text = EntradaInventario.Factura;
             udtFechaCreacion.Value = EntradaInventario.FechaCreacion;
             txtObservacion.Text = EntradaInventario.Observacion;
+            MostrarItems();
+            MostrarCostos();
+        }
+
+        public void MostrarCostos() {
             uneSubTotal.Value = EntradaInventario.SubTotal;
             uneImpuesto.Value = EntradaInventario.Impuesto;
             uneTotal.Value = EntradaInventario.Total;
-            MostrarItems();
         }
 
         public void MostrarItems()
@@ -95,10 +106,13 @@ namespace Soft.Inventario.Win
         public void MostrarItem(UltraGridRow Row)
         {
             ItemEntradaInventario Item = (ItemEntradaInventario)Row.Tag;
-            Row.Cells[colCodigo].Value = Item.Producto.Codigo;
-            Row.Cells[colDescripcion].Value = Item.Producto.Descripcion;
+            if (Item.Producto != null) {
+                Row.Cells[colCodigo].Value =Item.Producto.Codigo;
+                Row.Cells[colDescripcion].Value = Item.Producto.Descripcion;
+                AgregarUnidades(Row);
+            }
             Row.Cells[colObservacion].Value = Item.Observacion;
-            Row.Cells[colUnidad].Value = Item.Unidad.Nombre;
+            Row.Cells[colUnidad].Value = (Item.Unidad != null) ? Item.Unidad.Nombre : "";
             Row.Cells[colPrecio].Value = Item.Precio;
             Row.Cells[colCantidad].Value = Item.Cantidad;
             Row.Cells[colTotal].Value = Item.Total;
@@ -107,7 +121,8 @@ namespace Soft.Inventario.Win
         private void ssTipoDocumento_Search(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
-            EntradaInventario.TipoDocumento = (TipoDocumentoInventario)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoDocumentoInventario), "Tipo de Inventario");
+            TipoDocumentoInventario TipoDocumento = (TipoDocumentoInventario)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoDocumentoInventario), "Tipo de Inventario");
+            EntradaInventario.TipoDocumento = (TipoDocumentoInventario)HelperNHibernate.GetEntityByID("TipoDocumentoInventario", TipoDocumento.ID);
             ssTipoDocumento.Text = (EntradaInventario.TipoDocumento != null) ? EntradaInventario.TipoDocumento.Descripcion : "";
         }
 
@@ -144,17 +159,100 @@ namespace Soft.Inventario.Win
 
         private void ubNuevoProducto_Click(object sender, EventArgs e)
         {
-
+            UltraGridRow Row = ugProductos.DisplayLayout.Bands[0].AddNew();
+            Row.Tag = EntradaInventario.AddItem();
         }
 
         private void ubEliminarProducto_Click(object sender, EventArgs e)
         {
-
+            if (ugProductos.ActiveRow == null) { return; }
+            EntradaInventario.Items.Remove((ItemEntradaInventario)ugProductos.ActiveRow.Tag);
+            ugProductos.ActiveRow.Delete(false);
         }
 
         private void txtObservacion_TextChanged(object sender, EventArgs e)
         {
             EntradaInventario.Observacion = txtObservacion.Text;
+        }
+
+        public void AgregarProductos(String Codigo ,String Descripcion ,UltraGridRow Row) {
+            Collection Productos = new Collection();
+            FrmSelectedEntity FrmSeleccionarProducto = new FrmSelectedEntity();
+            ItemEntradaInventario Item = (ItemEntradaInventario)Row.Tag;
+            Productos = FrmSeleccionarProducto.GetSelectedsEntities(typeof(Existencia), "Existencia");
+            if (Productos.Count == 1) {
+                Existencia Producto = (Existencia)Productos[1];
+                Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
+                //Item.Producto = (Existencia)Productos[1];
+                //AgregarUnidades(Row);
+                Item.Cantidad = 1;
+            }
+            else if (Productos.Count > 1) {
+                Item.Producto = (Existencia)Productos[1];
+                Item.Cantidad = 1;
+                for (int i = 2; i <= Productos.Count; i++)
+                {
+                    UltraGridRow RowNuevo = ugProductos.DisplayLayout.Bands[0].AddNew();
+                    ItemEntradaInventario ItemNuevo = EntradaInventario.AddItem();
+                    Existencia Producto = (Existencia)Productos[1];
+                    Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
+                    //AgregarUnidades(RowNuevo);
+                    //Item.Producto = (Existencia)Productos[1];
+                    ItemNuevo.Cantidad = 1;
+                    RowNuevo.Tag = ItemNuevo;
+                    MostrarItem(RowNuevo);
+                }
+            }
+        }
+
+        public void AgregarUnidades(UltraGridRow Row)
+        {
+            ItemEntradaInventario Item = (ItemEntradaInventario)Row.Tag;
+            //Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Item.Producto.ID);
+            ValueList List = new ValueList();
+            foreach (ExistenciaUnidad Unidad in Item.Producto.Unidades)
+            {
+                if (Unidad.EsUnidadBase) { Item.Unidad = Unidad.Unidad; }
+                List.ValueListItems.Add(Unidad.Unidad, Unidad.Unidad.Nombre);
+            }
+            Row.Cells[colUnidad].ValueList = List;
+        }
+
+        private void ugProductos_CellChange(object sender, CellEventArgs e)
+        {
+            try 
+	        {	        
+		        ItemEntradaInventario Item = (ItemEntradaInventario)e.Cell.Row.Tag;
+                switch (e.Cell.Column.Key)
+                {
+                    case colCodigo:
+                        if (e.Cell.Text.Equals("")) { break; }
+                        AgregarProductos(e.Cell.Text,"",e.Cell.Row);
+                        break;
+                    case colDescripcion:
+                        if (e.Cell.Text.Equals("")) { break; }
+                        AgregarProductos("", e.Cell.Text, e.Cell.Row);
+                        break;
+                    case colUnidad:
+                        Item.Unidad = (Unidad)e.Cell.ValueList.GetValue(e.Cell.ValueList.SelectedItemIndex);
+                        break;
+                    case colPrecio:
+                        Item.Precio = Convert.ToDecimal(e.Cell.Text.Replace('_', ' '));
+                        MostrarCostos();
+                        break;
+                    case colCantidad:
+                        Item.Cantidad = Convert.ToDecimal(e.Cell.Text.Replace('_',' '));
+                        MostrarCostos();
+                        break;
+                    default:
+                        break;
+                }
+                MostrarItem(e.Cell.Row);
+	        }   
+	        catch (Exception)
+	        {
+                throw;
+	        }
         }
 
     }
