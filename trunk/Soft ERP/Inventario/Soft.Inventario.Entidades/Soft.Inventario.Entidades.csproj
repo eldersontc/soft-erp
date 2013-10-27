@@ -86,7 +86,7 @@
     <EmbeddedResource Include="Mappings Files\EntradaInventario.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings Files\ItemEntradaInventario.xml" />
+    <EmbeddedResource Include="Mappings Files\ItemEntradaInventario.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Inventario.Entidades",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Inventario.Win", "Soft.Inventario.Win\Soft.Inventario.Win.csproj", "{A99765E1-D60A-48A0-836C-E49CF934E463}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Inventario.Transaccional", "Soft.Inventario.Transaccional\Soft.Inventario.Transaccional.csproj", "{736FB9CF-F559-48E2-A792-316391909486}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{A99765E1-D60A-48A0-836C-E49CF934E463}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A99765E1-D60A-48A0-836C-E49CF934E463}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A99765E1-D60A-48A0-836C-E49CF934E463}.Release|Any CPU.Build.0 = Release|Any CPU
+		{736FB9CF-F559-48E2-A792-316391909486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{736FB9CF-F559-48E2-A792-316391909486}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{736FB9CF-F559-48E2-A792-316391909486}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{736FB9CF-F559-48E2-A792-316391909486}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,9 +13,15 @@ namespace Soft.Inventario.Entidades
         public virtual Existencia Producto { get; set; }
         public virtual String Observacion { get; set; }
         public virtual Unidad Unidad { get; set; }
-        public virtual Decimal Precio { get; set; }
-        public virtual Decimal Cantidad { get; set; }
-        public virtual Decimal Total { get; set; }
+
+        private Decimal mPrecio;
+        public virtual Decimal Precio { get { return mPrecio; } set { mPrecio = value; } }
+
+        private Decimal mCantidad;
+        public virtual Decimal Cantidad { get { return mCantidad; } set { mCantidad = value; } }
+
+        private Decimal mTotal;
+        public virtual Decimal Total { get { return Precio * Cantidad; } set { mTotal = value; } }
 
     }
 }
