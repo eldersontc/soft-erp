@@ -410,6 +410,7 @@
             // ugProductos
             // 
             this.ugProductos.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.ugProductos.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
             this.ugProductos.Dock = System.Windows.Forms.DockStyle.Top;
             this.ugProductos.Location = new System.Drawing.Point(0, 0);
             this.ugProductos.Name = "ugProductos";
