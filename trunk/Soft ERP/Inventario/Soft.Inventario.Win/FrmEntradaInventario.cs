@@ -32,7 +32,7 @@ namespace Soft.Inventario.Win
         }
 
         const String colCodigo = "Código";
-        const String colDescripcion = "Descripción";
+        const String colNombre = "Nombre";
         const String colObservacion = "Observación";
         const String colUnidad = "Unidad";
         const String colPrecio = "Precio";
@@ -47,7 +47,7 @@ namespace Soft.Inventario.Win
             column = columns.Columns.Add(colCodigo);
             column.DataType = typeof(String);
 
-            column = columns.Columns.Add(colDescripcion);
+            column = columns.Columns.Add(colNombre);
             column.DataType = typeof(String);
 
             column = columns.Columns.Add(colObservacion);
@@ -68,8 +68,11 @@ namespace Soft.Inventario.Win
             ugProductos.DataSource = columns;
             ugProductos.DisplayLayout.Bands[0].Columns[colUnidad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
             ugProductos.DisplayLayout.Bands[0].Columns[colCantidad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
+            ugProductos.DisplayLayout.Bands[0].Columns[colCantidad].CellAppearance.TextHAlign = HAlign.Right;
             ugProductos.DisplayLayout.Bands[0].Columns[colPrecio].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
+            ugProductos.DisplayLayout.Bands[0].Columns[colPrecio].CellAppearance.TextHAlign = HAlign.Right;
             ugProductos.DisplayLayout.Bands[0].Columns[colTotal].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
+            ugProductos.DisplayLayout.Bands[0].Columns[colTotal].CellAppearance.TextHAlign = HAlign.Right;
         }
 
         public void Mostrar()
@@ -108,7 +111,7 @@ namespace Soft.Inventario.Win
             ItemEntradaInventario Item = (ItemEntradaInventario)Row.Tag;
             if (Item.Producto != null) {
                 Row.Cells[colCodigo].Value =Item.Producto.Codigo;
-                Row.Cells[colDescripcion].Value = Item.Producto.Descripcion;
+                Row.Cells[colNombre].Value = Item.Producto.Nombre;
                 AgregarUnidades(Row);
             }
             Row.Cells[colObservacion].Value = Item.Observacion;
@@ -179,25 +182,22 @@ namespace Soft.Inventario.Win
             Collection Productos = new Collection();
             FrmSelectedEntity FrmSeleccionarProducto = new FrmSelectedEntity();
             ItemEntradaInventario Item = (ItemEntradaInventario)Row.Tag;
-            Productos = FrmSeleccionarProducto.GetSelectedsEntities(typeof(Existencia), "Existencia");
+            Productos = FrmSeleccionarProducto.GetSelectedsEntities(typeof(Existencia), "Seleción de Existencia", String.Format(" Codigo LIKE '{0}%' AND Nombre LIKE '{1}%' AND IDAlmacen = '{2}'", Codigo, Descripcion, EntradaInventario.Almacen.ID));
             if (Productos.Count == 1) {
                 Existencia Producto = (Existencia)Productos[1];
                 Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
-                //Item.Producto = (Existencia)Productos[1];
-                //AgregarUnidades(Row);
                 Item.Cantidad = 1;
             }
             else if (Productos.Count > 1) {
-                Item.Producto = (Existencia)Productos[1];
+                Existencia Producto = (Existencia)Productos[1];
+                Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
                 Item.Cantidad = 1;
                 for (int i = 2; i <= Productos.Count; i++)
                 {
                     UltraGridRow RowNuevo = ugProductos.DisplayLayout.Bands[0].AddNew();
                     ItemEntradaInventario ItemNuevo = EntradaInventario.AddItem();
-                    Existencia Producto = (Existencia)Productos[1];
-                    Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
-                    //AgregarUnidades(RowNuevo);
-                    //Item.Producto = (Existencia)Productos[1];
+                    Existencia ProductoNuevo = (Existencia)Productos[i];
+                    ItemNuevo.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", ProductoNuevo.ID);
                     ItemNuevo.Cantidad = 1;
                     RowNuevo.Tag = ItemNuevo;
                     MostrarItem(RowNuevo);
@@ -208,7 +208,6 @@ namespace Soft.Inventario.Win
         public void AgregarUnidades(UltraGridRow Row)
         {
             ItemEntradaInventario Item = (ItemEntradaInventario)Row.Tag;
-            //Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Item.Producto.ID);
             ValueList List = new ValueList();
             foreach (ExistenciaUnidad Unidad in Item.Producto.Unidades)
             {
@@ -229,7 +228,7 @@ namespace Soft.Inventario.Win
                         if (e.Cell.Text.Equals("")) { break; }
                         AgregarProductos(e.Cell.Text,"",e.Cell.Row);
                         break;
-                    case colDescripcion:
+                    case colNombre:
                         if (e.Cell.Text.Equals("")) { break; }
                         AgregarProductos("", e.Cell.Text, e.Cell.Row);
                         break;
@@ -249,9 +248,9 @@ namespace Soft.Inventario.Win
                 }
                 MostrarItem(e.Cell.Row);
 	        }   
-	        catch (Exception)
+	        catch (Exception ex)
 	        {
-                throw;
+                MessageBox.Show(ex.Message);
 	        }
         }
 
