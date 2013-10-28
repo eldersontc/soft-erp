@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPanel));
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl3 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ugColumnas = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.txtNombre = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -47,6 +47,8 @@
             this.ssVistaSQL = new Soft.Controls.SoftSearch();
             this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
             this.ssEntidadSF = new Soft.Controls.SoftSearch();
+            this.ugSubir = new Infragistics.Win.Misc.UltraButton();
+            this.ubBajar = new Infragistics.Win.Misc.UltraButton();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.ultraTabPageControl3.SuspendLayout();
@@ -58,6 +60,8 @@
             // 
             // ugbParent
             // 
+            this.ugbParent.Controls.Add(this.ubBajar);
+            this.ugbParent.Controls.Add(this.ugSubir);
             this.ugbParent.Controls.Add(this.ssEntidadSF);
             this.ugbParent.Controls.Add(this.ultraLabel3);
             this.ugbParent.Controls.Add(this.ssVistaSQL);
@@ -75,6 +79,8 @@
             this.ugbParent.Controls.SetChildIndex(this.ssVistaSQL, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel3, 0);
             this.ugbParent.Controls.SetChildIndex(this.ssEntidadSF, 0);
+            this.ugbParent.Controls.SetChildIndex(this.ugSubir, 0);
+            this.ugbParent.Controls.SetChildIndex(this.ubBajar, 0);
             // 
             // ubCancelar
             // 
@@ -176,8 +182,8 @@
             // 
             // ultraLabel1
             // 
-            appearance7.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel1.Appearance = appearance7;
+            appearance13.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel1.Appearance = appearance13;
             this.ultraLabel1.Location = new System.Drawing.Point(21, 21);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(100, 23);
@@ -186,8 +192,8 @@
             // 
             // ultraLabel2
             // 
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance6;
+            appearance12.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance12;
             this.ultraLabel2.Location = new System.Drawing.Point(21, 75);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(100, 23);
@@ -222,6 +228,7 @@
             // 
             // ssVistaSQL
             // 
+            this.ssVistaSQL.BackColor = System.Drawing.Color.Transparent;
             this.ssVistaSQL.Location = new System.Drawing.Point(128, 70);
             this.ssVistaSQL.Name = "ssVistaSQL";
             this.ssVistaSQL.Size = new System.Drawing.Size(267, 28);
@@ -230,8 +237,8 @@
             // 
             // ultraLabel3
             // 
-            appearance1.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel3.Appearance = appearance1;
+            appearance11.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel3.Appearance = appearance11;
             this.ultraLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.ultraLabel3.Location = new System.Drawing.Point(21, 47);
             this.ultraLabel3.Name = "ultraLabel3";
@@ -241,11 +248,30 @@
             // 
             // ssEntidadSF
             // 
+            this.ssEntidadSF.BackColor = System.Drawing.Color.Transparent;
             this.ssEntidadSF.Location = new System.Drawing.Point(127, 43);
             this.ssEntidadSF.Name = "ssEntidadSF";
             this.ssEntidadSF.Size = new System.Drawing.Size(267, 27);
             this.ssEntidadSF.TabIndex = 12;
             this.ssEntidadSF.Search += new System.EventHandler(this.ssEntidadSF_Search);
+            // 
+            // ugSubir
+            // 
+            this.ugSubir.Location = new System.Drawing.Point(22, 366);
+            this.ugSubir.Name = "ugSubir";
+            this.ugSubir.Size = new System.Drawing.Size(66, 23);
+            this.ugSubir.TabIndex = 13;
+            this.ugSubir.Text = "Subir";
+            this.ugSubir.Click += new System.EventHandler(this.ugSubir_Click);
+            // 
+            // ubBajar
+            // 
+            this.ubBajar.Location = new System.Drawing.Point(94, 366);
+            this.ubBajar.Name = "ubBajar";
+            this.ubBajar.Size = new System.Drawing.Size(70, 23);
+            this.ubBajar.TabIndex = 14;
+            this.ubBajar.Text = "Bajar";
+            this.ubBajar.Click += new System.EventHandler(this.ubBajar_Click);
             // 
             // FrmPanel
             // 
@@ -278,5 +304,7 @@
         private Controls.SoftSearch ssVistaSQL;
         private Infragistics.Win.Misc.UltraLabel ultraLabel3;
         private Controls.SoftSearch ssEntidadSF;
+        private Infragistics.Win.Misc.UltraButton ubBajar;
+        private Infragistics.Win.Misc.UltraButton ugSubir;
     }
 }

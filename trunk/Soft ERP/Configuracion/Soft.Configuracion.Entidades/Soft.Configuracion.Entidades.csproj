@@ -70,10 +70,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings Files\ColumnaPanel.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\ColumnaPanel.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings Files\Contenedor.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\Contenedor.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings Files\ItemContenedor.hbm.xml">
@@ -89,7 +93,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings Files\ContenedorPerfil.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\ContenedorPerfil.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings Files\ItemContenedorAccion.hbm.xml" />

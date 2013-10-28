@@ -11,7 +11,8 @@
     <property name="Visible" type="boolean"/>
     <property name="Propiedad" type="string"/>
     <property name="Establecer" type="boolean"/>
-    
+    <property name="Orden" type="int"/>
+
   </class>
 
 </hibernate-mapping>

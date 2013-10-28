@@ -14,6 +14,7 @@ using Infragistics.Win.SupportDialogs.FilterUIProvider;
 using Infragistics.Win.UltraWinGrid;
 using Microsoft.VisualBasic;
 using Soft.Entities;
+using Infragistics.Win;
 
 namespace Soft.Configuracion.Win
 {
@@ -34,7 +35,7 @@ namespace Soft.Configuracion.Win
         const String colPropiedad = "Propiedad";
         const String colEstablecer = "Establecer";
         const String colDescripcion = "Descripción";
-        const String colOrden = "Orden";
+        const String colOrden = "#";
 
         public Soft.Configuracion.Entidades.Panel Panel { get { return (Soft.Configuracion.Entidades.Panel)base.m_ObjectFlow; } }
 
@@ -50,9 +51,11 @@ namespace Soft.Configuracion.Win
             DataTable columns = new DataTable();
             DataColumn column = new DataColumn();
 
+            column = columns.Columns.Add(colOrden);
+            column.DataType = typeof(String);
+            
             column = columns.Columns.Add(colNombre);
             column.DataType = typeof(String);
-            column.ReadOnly = false;
 
             column = columns.Columns.Add(colCampo);
             column.DataType = typeof(String);
@@ -60,26 +63,33 @@ namespace Soft.Configuracion.Win
 
             column = columns.Columns.Add(colPropiedad);
             column.DataType = typeof(String);
-            column.ReadOnly = false;
 
             column = columns.Columns.Add(colEstablecer);
             column.DataType = typeof(Boolean);
-            column.ReadOnly = false;
-
-            column = columns.Columns.Add(colAncho);
-            column.DataType = typeof(String);
-            column.ReadOnly = false;
 
             column = columns.Columns.Add(colVisible);
             column.DataType = typeof(Boolean);
-            column.ReadOnly = false;
+
+            column = columns.Columns.Add(colAncho);
+            column.DataType = typeof(String);
 
             column = columns.Columns.Add(colEstilo);
             column.DataType = typeof(String);
-            column.ReadOnly = true;
 
             ugColumnas.DataSource = columns;
+            ugColumnas.DisplayLayout.Bands[0].Columns[colOrden].Width = 50;
+            ugColumnas.DisplayLayout.Bands[0].Columns[colAncho].Width = 50;
+            ugColumnas.DisplayLayout.Bands[0].Columns[colEstilo].Width = 80;
 
+            ValueList List = new ValueList();
+            List.ValueListItems.Add("Default");
+            List.ValueListItems.Add("String");
+            List.ValueListItems.Add("Int");
+            List.ValueListItems.Add("Decimal");
+            List.ValueListItems.Add("Boolean");
+
+            ugColumnas.DisplayLayout.Bands[0].Columns[colEstilo].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
+            ugColumnas.DisplayLayout.Bands[0].Columns[colEstilo].ValueList = List;
         }
 
         public void Mostrar() {
@@ -104,6 +114,7 @@ namespace Soft.Configuracion.Win
 
         public void MostrarColumna(UltraGridRow Row) {
             ColumnaPanel columna = (ColumnaPanel)Row.Tag;
+            columna.Orden = Row.Index + 1;
             Row.Cells[colNombre].Value = columna.Nombre;
             Row.Cells[colCampo].Value = columna.CampoSQL;
             Row.Cells[colAncho].Value = columna.Ancho;
@@ -111,6 +122,7 @@ namespace Soft.Configuracion.Win
             Row.Cells[colEstilo].Value = columna.Estilo;
             Row.Cells[colPropiedad].Value = columna.Propiedad;
             Row.Cells[colEstablecer].Value = columna.Establecer;
+            Row.Cells[colOrden].Value = columna.Orden;
         }
 
         public void ConstruirColumnas(XmlDocument XML) {
@@ -121,12 +133,13 @@ namespace Soft.Configuracion.Win
                 foreach (XmlNode NodoItem in XML.DocumentElement.ChildNodes)
                 {
                     ColumnaPanel columna = new ColumnaPanel();
-                    columna.Nombre = "";
-                    columna.CampoSQL = NodoItem.SelectSingleNode("@COLUMN_NAME").Value;
-                    columna.Estilo = NodoItem.SelectSingleNode("@DATA_TYPE").Value;
-                    columna.Visible = true;
-                    columna.Ancho = 20;
                     UltraGridRow Row = ugColumnas.DisplayLayout.Bands[0].AddNew();
+                    columna.Nombre = NodoItem.SelectSingleNode("@COLUMN_NAME").Value;
+                    columna.CampoSQL = NodoItem.SelectSingleNode("@COLUMN_NAME").Value;
+                    columna.Estilo = "Default";
+                    columna.Visible = true;
+                    columna.Ancho = 0;
+                    columna.Orden = Row.Index; 
                     Row.Tag = columna;
                     Panel.Columnas.Add(columna);
                     MostrarColumna(Row);
@@ -161,6 +174,12 @@ namespace Soft.Configuracion.Win
                 case colAncho:
                     columna.Ancho = Convert.ToInt32(e.Cell.Text);
                     break;
+                case colEstilo:
+                    columna.Estilo = e.Cell.Column.ValueList.GetValue(e.Cell.Column.ValueList.SelectedItemIndex).ToString();
+                    break;
+                case colOrden:
+                    columna.Orden = Convert.ToInt32(e.Cell.Text);
+                    break;
                 default:
                     break;
             }
@@ -178,6 +197,34 @@ namespace Soft.Configuracion.Win
             FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
             Panel.EntidadSF = (EntidadSF)FrmSeleccionar.GetSelectedEntity(typeof(EntidadSF), "EntidadSF");
             Mostrar();
+        }
+
+        private void ugSubir_Click(object sender, EventArgs e)
+        {
+            UltraGridRow Row = ugColumnas.ActiveRow;
+            if (Row != null && Row.Index > 0)
+            {
+                ColumnaPanel Columna = (ColumnaPanel)Row.Tag;
+                Int32 Indice = Row.Index - 1;
+                Panel.Columnas.RemoveAt(Indice + 1);
+                Panel.Columnas.Insert(Indice, Columna);
+                MostrarColumnas();
+                ugColumnas.Rows[Columna.Orden - 1].Activated = true;
+            }
+        }
+
+        private void ubBajar_Click(object sender, EventArgs e)
+        {
+            UltraGridRow Row = ugColumnas.ActiveRow;
+            if (Row != null && Row.Index < ugColumnas.Rows.Count - 1)
+            {
+                ColumnaPanel Columna = (ColumnaPanel)Row.Tag;
+                Int32 Indice = Row.Index + 1;
+                Panel.Columnas.RemoveAt(Indice - 1);
+                Panel.Columnas.Insert(Indice,Columna);
+                MostrarColumnas();
+                ugColumnas.Rows[Columna.Orden -1].Activated = true;
+            }
         }
 
     }
