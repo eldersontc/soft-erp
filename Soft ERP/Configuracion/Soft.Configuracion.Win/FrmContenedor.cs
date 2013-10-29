@@ -344,7 +344,7 @@ namespace Soft.Configuracion.Win
         {
             FrmSelectedEntity FrmSeleccionarAccion = new FrmSelectedEntity();
             ItemContenedor.AccionModificar = (Accion)FrmSeleccionarAccion.GetSelectedEntity(typeof(Accion), "Acción");
-            ssCreacion.Text = (ItemContenedor.AccionModificar != null) ? ItemContenedor.AccionModificar.Nombre : "";
+            ssModificacion.Text = (ItemContenedor.AccionModificar != null) ? ItemContenedor.AccionModificar.Nombre : "";
         }
 
         private void ssEliminar_Search(object sender, EventArgs e)
