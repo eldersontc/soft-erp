@@ -16,7 +16,11 @@
     
     <many-to-one name="Panel" class="Soft.Configuracion.Entidades.Panel" column="IDPanel" lazy="false" not-null="false" insert="true" update="true"/>
     <many-to-one name="ItemPadre" class="Soft.Configuracion.Entidades.ItemContenedor" column="IDItemPadre" lazy="false" not-null="false" insert="true" update="true"/>
-
+    <many-to-one name="AccionCrear" class="Soft.Configuracion.Entidades.Accion" column="IDAccionCrear" lazy="false" not-null="false" insert="true" update="true"/>
+    <many-to-one name="AccionModificar" class="Soft.Configuracion.Entidades.Accion" column="IDAccionModificar" lazy="false" not-null="false" insert="true" update="true"/>
+    <many-to-one name="AccionEliminar" class="Soft.Configuracion.Entidades.Accion" column="IDAccionEliminar" lazy="false" not-null="false" insert="true" update="true"/>
+    <many-to-one name="AccionCopiar" class="Soft.Configuracion.Entidades.Accion" column="IDAccionCopiar" lazy="false" not-null="false" insert="true" update="true"/>
+    
     <bag name="Acciones" cascade="all-delete-orphan" order-by="Orden" lazy="false">
       <key column="IDItemContenedor"/>
       <one-to-many class="Soft.Configuracion.Entidades.ItemContenedorAccion"/>

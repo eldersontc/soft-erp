@@ -67,7 +67,11 @@ namespace Soft.Configuracion.Win
 
         public void MostrarItemContenedor()
         {
-            ssPanel.Text = (ItemContenedor.Panel != null)?ItemContenedor.Panel.Nombre:""; 
+            ssPanel.Text = (ItemContenedor.Panel != null)?ItemContenedor.Panel.Nombre:"";
+            ssCreacion.Text = (ItemContenedor.AccionCrear != null) ? ItemContenedor.AccionCrear.Nombre : "";
+            ssModificacion.Text = (ItemContenedor.AccionModificar != null) ? ItemContenedor.AccionModificar.Nombre : "";
+            ssEliminar.Text = (ItemContenedor.AccionEliminar != null) ? ItemContenedor.AccionEliminar.Nombre : "";
+            ssDuplicacion.Text = (ItemContenedor.AccionCopiar != null) ? ItemContenedor.AccionCopiar.Nombre : ""; 
             txtContenedor.Text = (ItemContenedor.ItemPadre != null)?ItemContenedor.ItemPadre.Nombre: ""; 
             txtNombre.Text = ItemContenedor.Nombre;
             uceEsContenedor.Checked = ItemContenedor.EsContenedor;
@@ -285,21 +289,25 @@ namespace Soft.Configuracion.Win
         private void uceCreacion_CheckedChanged(object sender, EventArgs e)
         {
             ItemContenedor.Crear = uceCreacion.Checked;
+            ssCreacion.Enabled = !ItemContenedor.Crear;
         }
 
         private void uceModificacion_CheckedChanged(object sender, EventArgs e)
         {
             ItemContenedor.Modificar = uceModificacion.Checked;
+            ssModificacion.Enabled = !ItemContenedor.Modificar;
         }
 
         private void uceEliminacion_CheckedChanged(object sender, EventArgs e)
         {
             ItemContenedor.Eliminar = uceEliminacion.Checked;
+            ssEliminar.Enabled = ItemContenedor.Eliminar;
         }
 
         private void uceDuplicacion_CheckedChanged(object sender, EventArgs e)
         {
             ItemContenedor.Copiar = uceDuplicacion.Checked;
+            ssDuplicacion.Enabled = !ItemContenedor.Copiar;
         }
 
         private void uceAuditoria_CheckedChanged(object sender, EventArgs e)
@@ -310,7 +318,7 @@ namespace Soft.Configuracion.Win
         private void ubNuevaAccion_Click(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmAccion = new FrmSelectedEntity();
-            Collection Items = FrmAccion.GetSelectedsEntities(typeof(Accion), "Accion");
+            Collection Items = FrmAccion.GetSelectedsEntities(typeof(Accion), "Acción");
             foreach (Accion Item in Items)
             {
                 ItemContenedor.AddAccion(Item);
@@ -325,6 +333,33 @@ namespace Soft.Configuracion.Win
             ugAcciones.ActiveRow.Delete(false);
         }
 
-        
+        private void ssCreacion_Search(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionarAccion = new FrmSelectedEntity();
+            ItemContenedor.AccionCrear = (Accion)FrmSeleccionarAccion.GetSelectedEntity(typeof(Accion), "Acción");
+            ssCreacion.Text = (ItemContenedor.AccionCrear != null) ? ItemContenedor.AccionCrear.Nombre : "";
+        }
+
+        private void ssModificacion_Search(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionarAccion = new FrmSelectedEntity();
+            ItemContenedor.AccionModificar = (Accion)FrmSeleccionarAccion.GetSelectedEntity(typeof(Accion), "Acción");
+            ssCreacion.Text = (ItemContenedor.AccionModificar != null) ? ItemContenedor.AccionModificar.Nombre : "";
+        }
+
+        private void ssEliminar_Search(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionarAccion = new FrmSelectedEntity();
+            ItemContenedor.AccionEliminar = (Accion)FrmSeleccionarAccion.GetSelectedEntity(typeof(Accion), "Acción");
+            ssEliminar.Text = (ItemContenedor.AccionEliminar != null) ? ItemContenedor.AccionEliminar.Nombre : "";
+        }
+
+        private void ssDuplicacion_Search(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionarAccion = new FrmSelectedEntity();
+            ItemContenedor.AccionCopiar = (Accion)FrmSeleccionarAccion.GetSelectedEntity(typeof(Accion), "Acción");
+            ssDuplicacion.Text = (ItemContenedor.AccionCopiar != null) ? ItemContenedor.AccionCopiar.Nombre : "";
+        }
+
     }
 }
