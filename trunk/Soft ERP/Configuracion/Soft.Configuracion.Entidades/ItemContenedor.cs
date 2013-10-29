@@ -27,6 +27,10 @@ namespace Soft.Configuracion.Entidades
         public virtual Boolean Eliminar { get; set; }
         public virtual Boolean Copiar { get; set; }
         public virtual Boolean Auditar { get; set; }
+        public virtual Accion AccionCrear { get; set; }
+        public virtual Accion AccionModificar { get; set; }
+        public virtual Accion AccionEliminar { get; set; }
+        public virtual Accion AccionCopiar { get; set; }
         public virtual IList<ItemContenedorAccion> Acciones { get; set; }
         
         #endregion
