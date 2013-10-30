@@ -250,6 +250,9 @@ namespace Soft.Inventario.Win
                         Item.Cantidad = Convert.ToDecimal(e.Cell.Text.Replace('_',' '));
                         MostrarCostos();
                         break;
+                    case colObservacion:
+                        Item.Observacion = e.Cell.Text;
+                        break;
                     default:
                         break;
                 }
