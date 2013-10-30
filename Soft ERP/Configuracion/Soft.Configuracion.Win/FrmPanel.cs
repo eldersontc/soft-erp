@@ -90,6 +90,7 @@ namespace Soft.Configuracion.Win
 
             ugColumnas.DisplayLayout.Bands[0].Columns[colEstilo].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
             ugColumnas.DisplayLayout.Bands[0].Columns[colEstilo].ValueList = List;
+            MapKeys(ref ugColumnas);
         }
 
         public void Mostrar() {

@@ -67,7 +67,7 @@ namespace Soft.Configuracion.Win
             ugItemAccion.DisplayLayout.Bands[0].Columns[colEnsamblado].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.EditButton;
             ugItemAccion.DisplayLayout.Bands[0].Columns[colExito].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
             ugItemAccion.DisplayLayout.Bands[0].Columns[colError].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
-
+            MapKeys(ref ugItemAccion);
         }
 
         public void ActualizarCombos() {
