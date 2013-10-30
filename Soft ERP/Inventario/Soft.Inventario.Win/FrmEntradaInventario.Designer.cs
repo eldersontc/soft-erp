@@ -142,10 +142,12 @@
             // ubCancelar
             // 
             this.ubCancelar.Location = new System.Drawing.Point(605, 495);
+            this.ubCancelar.TabIndex = 11;
             // 
             // ubAceptar
             // 
             this.ubAceptar.Location = new System.Drawing.Point(524, 495);
+            this.ubAceptar.TabIndex = 10;
             // 
             // ilMain
             // 
@@ -411,6 +413,7 @@
             // 
             this.ugProductos.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
             this.ugProductos.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
+            this.ugProductos.DisplayLayout.TabNavigation = Infragistics.Win.UltraWinGrid.TabNavigation.NextControl;
             this.ugProductos.Dock = System.Windows.Forms.DockStyle.Top;
             this.ugProductos.Location = new System.Drawing.Point(0, 0);
             this.ugProductos.Name = "ugProductos";
@@ -485,7 +488,7 @@
             this.ssTipoDocumento.Location = new System.Drawing.Point(155, 14);
             this.ssTipoDocumento.Name = "ssTipoDocumento";
             this.ssTipoDocumento.Size = new System.Drawing.Size(250, 28);
-            this.ssTipoDocumento.TabIndex = 26;
+            this.ssTipoDocumento.TabIndex = 1;
             this.ssTipoDocumento.Search += new System.EventHandler(this.ssTipoDocumento_Search);
             // 
             // ssProveedor
@@ -494,7 +497,7 @@
             this.ssProveedor.Location = new System.Drawing.Point(155, 45);
             this.ssProveedor.Name = "ssProveedor";
             this.ssProveedor.Size = new System.Drawing.Size(250, 28);
-            this.ssProveedor.TabIndex = 27;
+            this.ssProveedor.TabIndex = 3;
             this.ssProveedor.Search += new System.EventHandler(this.ssProveedor_Search);
             // 
             // ssAlmacen
@@ -503,7 +506,7 @@
             this.ssAlmacen.Location = new System.Drawing.Point(155, 74);
             this.ssAlmacen.Name = "ssAlmacen";
             this.ssAlmacen.Size = new System.Drawing.Size(250, 28);
-            this.ssAlmacen.TabIndex = 28;
+            this.ssAlmacen.TabIndex = 4;
             this.ssAlmacen.Search += new System.EventHandler(this.ssAlmacen_Search);
             // 
             // ssResponsable
@@ -512,7 +515,7 @@
             this.ssResponsable.Location = new System.Drawing.Point(155, 103);
             this.ssResponsable.Name = "ssResponsable";
             this.ssResponsable.Size = new System.Drawing.Size(250, 28);
-            this.ssResponsable.TabIndex = 29;
+            this.ssResponsable.TabIndex = 5;
             this.ssResponsable.Search += new System.EventHandler(this.ssResponsable_Search);
             // 
             // utcSubClasificacion
@@ -527,7 +530,7 @@
             this.utcSubClasificacion.Size = new System.Drawing.Size(662, 239);
             appearance10.BackColor = System.Drawing.Color.Transparent;
             this.utcSubClasificacion.TabHeaderAreaAppearance = appearance10;
-            this.utcSubClasificacion.TabIndex = 43;
+            this.utcSubClasificacion.TabIndex = 6;
             ultraTab2.TabPage = this.tabItems;
             ultraTab2.Text = ":: Productos ::";
             this.utcSubClasificacion.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
@@ -585,7 +588,7 @@
             this.txtNumeracion.Location = new System.Drawing.Point(562, 14);
             this.txtNumeracion.Name = "txtNumeracion";
             this.txtNumeracion.Size = new System.Drawing.Size(119, 21);
-            this.txtNumeracion.TabIndex = 48;
+            this.txtNumeracion.TabIndex = 2;
             this.txtNumeracion.TextChanged += new System.EventHandler(this.txtNumeracion_TextChanged);
             // 
             // txtOrdenCompra
@@ -694,7 +697,7 @@
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.Size = new System.Drawing.Size(349, 49);
-            this.txtObservacion.TabIndex = 54;
+            this.txtObservacion.TabIndex = 9;
             this.txtObservacion.TextChanged += new System.EventHandler(this.txtObservacion_TextChanged);
             // 
             // FrmEntradaInventario
