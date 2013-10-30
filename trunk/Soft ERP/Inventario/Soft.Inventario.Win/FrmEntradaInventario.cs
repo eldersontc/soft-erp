@@ -73,6 +73,8 @@ namespace Soft.Inventario.Win
             ugProductos.DisplayLayout.Bands[0].Columns[colPrecio].CellAppearance.TextHAlign = HAlign.Right;
             ugProductos.DisplayLayout.Bands[0].Columns[colTotal].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
             ugProductos.DisplayLayout.Bands[0].Columns[colTotal].CellAppearance.TextHAlign = HAlign.Right;
+            ugProductos.DisplayLayout.Bands[0].Columns[colTotal].CellActivation = Activation.NoEdit;
+            MapKeys(ref ugProductos);
         }
 
         public void Mostrar()
@@ -110,6 +112,8 @@ namespace Soft.Inventario.Win
         {
             ItemEntradaInventario Item = (ItemEntradaInventario)Row.Tag;
             if (Item.Producto != null) {
+                Row.Cells[colCodigo].Activation = Activation.NoEdit;
+                Row.Cells[colNombre].Activation = Activation.NoEdit;
                 Row.Cells[colCodigo].Value =Item.Producto.Codigo;
                 Row.Cells[colNombre].Value = Item.Producto.Nombre;
                 AgregarUnidades(Row);
@@ -164,6 +168,8 @@ namespace Soft.Inventario.Win
         {
             UltraGridRow Row = ugProductos.DisplayLayout.Bands[0].AddNew();
             Row.Tag = EntradaInventario.AddItem();
+            Row.Cells[colCodigo].Activate();
+            ugProductos.PerformAction(Infragistics.Win.UltraWinGrid.UltraGridAction.EnterEditMode);
         }
 
         private void ubEliminarProducto_Click(object sender, EventArgs e)
@@ -171,6 +177,7 @@ namespace Soft.Inventario.Win
             if (ugProductos.ActiveRow == null) { return; }
             EntradaInventario.Items.Remove((ItemEntradaInventario)ugProductos.ActiveRow.Tag);
             ugProductos.ActiveRow.Delete(false);
+            MostrarCostos(); 
         }
 
         private void txtObservacion_TextChanged(object sender, EventArgs e)
