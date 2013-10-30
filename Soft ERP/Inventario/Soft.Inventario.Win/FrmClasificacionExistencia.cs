@@ -53,6 +53,7 @@ namespace Soft.Inventario.Win
             grillaTiposClasificacion.DisplayLayout.Bands[0].Columns[colCodigo].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
             grillaTiposClasificacion.DisplayLayout.Bands[0].Columns[colNombre].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
             grillaTiposClasificacion.DisplayLayout.Bands[0].Columns[colActivo].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
+            MapKeys(ref grillaTiposClasificacion);
         }
 
         public void Mostrar()
