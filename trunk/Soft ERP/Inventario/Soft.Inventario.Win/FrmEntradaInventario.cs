@@ -38,7 +38,9 @@ namespace Soft.Inventario.Win
         const String colPrecio = "Precio";
         const String colCantidad = "Cantidad";
         const String colTotal = "Total";
-        
+
+        private Boolean ActualizandoIU = false;
+
         public void InitGrids()
         {
             DataTable columns = new DataTable();
@@ -79,6 +81,7 @@ namespace Soft.Inventario.Win
 
         public void Mostrar()
         {
+            ActualizandoIU = true;
             ssTipoDocumento.Text = (EntradaInventario.TipoDocumento != null)?EntradaInventario.TipoDocumento.Descripcion:"";
             ssProveedor.Text = (EntradaInventario.Proveedor != null) ? EntradaInventario.Proveedor.Nombre : "";
             ssAlmacen.Text = (EntradaInventario.Almacen != null) ? EntradaInventario.Almacen.Descripcion : "";
@@ -90,6 +93,7 @@ namespace Soft.Inventario.Win
             txtObservacion.Text = EntradaInventario.Observacion;
             MostrarItems();
             MostrarCostos();
+            ActualizandoIU = false;
         }
 
         public void MostrarCostos() {
@@ -110,6 +114,7 @@ namespace Soft.Inventario.Win
 
         public void MostrarItem(UltraGridRow Row)
         {
+            //ugProductos.SuspendLayout();
             ItemEntradaInventario Item = (ItemEntradaInventario)Row.Tag;
             if (Item.Producto != null) {
                 Row.Cells[colCodigo].Activation = Activation.NoEdit;
@@ -123,6 +128,7 @@ namespace Soft.Inventario.Win
             Row.Cells[colPrecio].Value = Item.Precio;
             Row.Cells[colCantidad].Value = Item.Cantidad;
             Row.Cells[colTotal].Value = Item.Total;
+            //ugProductos.ResumeLayout();
         }
 
         private void ssTipoDocumento_Search(object sender, EventArgs e)
@@ -231,14 +237,6 @@ namespace Soft.Inventario.Win
 		        ItemEntradaInventario Item = (ItemEntradaInventario)e.Cell.Row.Tag;
                 switch (e.Cell.Column.Key)
                 {
-                    case colCodigo:
-                        if (e.Cell.Text.Equals("")) { break; }
-                        AgregarProductos(e.Cell.Text,"",e.Cell.Row);
-                        break;
-                    case colNombre:
-                        if (e.Cell.Text.Equals("")) { break; }
-                        AgregarProductos("", e.Cell.Text, e.Cell.Row);
-                        break;
                     case colUnidad:
                         Item.Unidad = (Unidad)e.Cell.ValueList.GetValue(e.Cell.ValueList.SelectedItemIndex);
                         break;
@@ -263,6 +261,34 @@ namespace Soft.Inventario.Win
                 MessageBox.Show(ex.Message);
 	        }
         }
+
+        private void ugProductos_AfterCellActivate(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ugProductos.ActiveCell == null) { return; }
+                UltraGridCell Cell = ugProductos.ActiveCell;
+                ItemEntradaInventario Item = (ItemEntradaInventario)Cell.Row.Tag;
+                switch (Cell.Column.Key)
+                {
+                    case colCodigo:
+                        if (Cell.Text.Equals("")) { break; }
+                        AgregarProductos(Cell.Text, "", Cell.Row);
+                        break;
+                    case colNombre:
+                        if (Cell.Text.Equals("")) { break; }
+                        AgregarProductos("", Cell.Text, Cell.Row);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show(ex.Message);
+            }
+        }
+
 
     }
 }
