@@ -81,6 +81,8 @@
             this.ucTeclas = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             this.utcSubAcciones = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
+            this.ubBajar = new Infragistics.Win.Misc.UltraButton();
+            this.ugSubir = new Infragistics.Win.Misc.UltraButton();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.ultraTabPageControl1.SuspendLayout();
@@ -385,6 +387,8 @@
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.Controls.Add(this.ubBajar);
+            this.ultraTabPageControl1.Controls.Add(this.ugSubir);
             this.ultraTabPageControl1.Controls.Add(this.ugItemAccion);
             this.ultraTabPageControl1.Controls.Add(this.ubEliminar);
             this.ultraTabPageControl1.Controls.Add(this.ubNuevo);
@@ -624,7 +628,7 @@
             this.utcSubAcciones.TabHeaderAreaAppearance = appearance2;
             this.utcSubAcciones.TabIndex = 41;
             ultraTab2.TabPage = this.ultraTabPageControl1;
-            ultraTab2.Text = ".:: Flujo ::.";
+            ultraTab2.Text = ":: Flujo ::";
             this.utcSubAcciones.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
             ultraTab2});
             // 
@@ -633,6 +637,24 @@
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
             this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(437, 219);
+            // 
+            // ubBajar
+            // 
+            this.ubBajar.Location = new System.Drawing.Point(80, 189);
+            this.ubBajar.Name = "ubBajar";
+            this.ubBajar.Size = new System.Drawing.Size(70, 23);
+            this.ubBajar.TabIndex = 16;
+            this.ubBajar.Text = "Bajar";
+            this.ubBajar.Click += new System.EventHandler(this.ubBajar_Click);
+            // 
+            // ugSubir
+            // 
+            this.ugSubir.Location = new System.Drawing.Point(8, 189);
+            this.ugSubir.Name = "ugSubir";
+            this.ugSubir.Size = new System.Drawing.Size(66, 23);
+            this.ugSubir.TabIndex = 15;
+            this.ugSubir.Text = "Subir";
+            this.ugSubir.Click += new System.EventHandler(this.ugSubir_Click);
             // 
             // FrmAccion
             // 
@@ -675,6 +697,8 @@
         private Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage ultraTabSharedControlsPage1;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl1;
         private Infragistics.Win.UltraWinGrid.UltraGrid ugItemAccion;
+        private Infragistics.Win.Misc.UltraButton ubBajar;
+        private Infragistics.Win.Misc.UltraButton ugSubir;
     }
 }
 
