@@ -103,8 +103,7 @@ namespace Soft.Configuracion.Win
 
         public void MostrarItems()
         {
-            ugItemAccion.Selected.Rows.AddRange((UltraGridRow[])ugItemAccion.Rows.All);
-            ugItemAccion.DeleteSelectedRows(false);
+            base.ClearAllRows(ref ugItemAccion);
             foreach (ItemAccion Item in this.Accion .Items)
             {
                 UltraGridRow Row = ugItemAccion.DisplayLayout.Bands[0].AddNew();

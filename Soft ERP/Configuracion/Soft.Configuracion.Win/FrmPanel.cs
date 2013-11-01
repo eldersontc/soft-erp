@@ -103,8 +103,7 @@ namespace Soft.Configuracion.Win
         }
 
         public void MostrarColumnas() {
-            ugColumnas.Selected.Rows.AddRange((UltraGridRow[])ugColumnas.Rows.All);
-            ugColumnas.DeleteSelectedRows(false);
+            base.ClearAllRows(ref ugColumnas);
             foreach (ColumnaPanel Item in Panel.Columnas)
             {
                 UltraGridRow Row = ugColumnas.DisplayLayout.Bands[0].AddNew();
