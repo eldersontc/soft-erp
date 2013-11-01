@@ -103,6 +103,7 @@ namespace Soft.Seguridad.Win
                 Parent ObjectFlow = (Parent)Factory.ToObject(XML, base.m_EntidadSF.EnsambladoClase.Ensamblado_);
                 ControllerApp FrmObjectFlow = (ControllerApp)Factory.InstanceObject(base.m_EntidadSF.EnsambladoFormulario.Ensamblado_, base.m_EntidadSF.NombreFormulario);
                 FrmObjectFlow.m_ObjectFlow = ObjectFlow;
+                FrmObjectFlow.m_EntidadSF = base.m_EntidadSF;
                 FrmObjectFlow.Start();
             }
             catch (Exception)
