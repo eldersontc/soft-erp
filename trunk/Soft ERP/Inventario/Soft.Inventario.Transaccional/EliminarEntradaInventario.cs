@@ -21,29 +21,26 @@ namespace Soft.Inventario.Transaccional
                 {
                     try
                     {
-                        if (MessageBox.Show("¿Está seguro de continuar?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        EntradaInventario EntradaInventario = (EntradaInventario)m_ObjectFlow;
+
+                        Sesion.Delete(EntradaInventario);
+
+                        foreach (ItemEntradaInventario Item in EntradaInventario.Items)
                         {
-                            EntradaInventario EntradaInventario = (EntradaInventario)m_ObjectFlow;
-
-                            Sesion.Delete(EntradaInventario);
-
-                            foreach (ItemEntradaInventario Item in EntradaInventario.Items)
-                            {
-                                SqlCommand SqlCmd = new SqlCommand();
-                                SqlCmd.Connection = (SqlConnection)Sesion.Connection;
-                                Trans.Enlist(SqlCmd);
-                                SqlCmd.CommandText = "pSF_ActualizarStocks";
-                                SqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
-                                SqlCmd.Parameters.AddWithValue("@IDAlmacen", EntradaInventario.Almacen.ID);
-                                SqlCmd.Parameters.AddWithValue("@IDProducto", Item.Producto.ID);
-                                SqlCmd.Parameters.AddWithValue("@Cantidad", Item.Cantidad);
-                                SqlCmd.Parameters.AddWithValue("@Operacion", "Decrementar");
-                                SqlCmd.ExecuteNonQuery();
-                            }
-
-                            Trans.Commit();
-                            m_ResultProcess = EnumResult.SUCESS;   
+                            SqlCommand SqlCmd = new SqlCommand();
+                            SqlCmd.Connection = (SqlConnection)Sesion.Connection;
+                            Trans.Enlist(SqlCmd);
+                            SqlCmd.CommandText = "pSF_ActualizarStocks";
+                            SqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                            SqlCmd.Parameters.AddWithValue("@IDAlmacen", EntradaInventario.Almacen.ID);
+                            SqlCmd.Parameters.AddWithValue("@IDProducto", Item.Producto.ID);
+                            SqlCmd.Parameters.AddWithValue("@Cantidad", Item.Cantidad);
+                            SqlCmd.Parameters.AddWithValue("@Operacion", "Decrementar");
+                            SqlCmd.ExecuteNonQuery();
                         }
+
+                        Trans.Commit();
+                        m_ResultProcess = EnumResult.SUCESS;   
                     }
                     catch (Exception ex)
                     {
