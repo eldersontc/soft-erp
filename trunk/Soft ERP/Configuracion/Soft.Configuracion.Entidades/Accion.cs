@@ -60,8 +60,15 @@ namespace Soft.Configuracion.Entidades
 
         public virtual ItemAccion ItemByName(String Nombre)
         {
-            ItemAccion Item = this.Items.First(a => a.Nombre.Equals(Nombre));
-            return Item;
+            try
+            {
+                ItemAccion Item = this.Items.First(a => a.Nombre.Equals(Nombre));
+                return Item;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         #endregion
