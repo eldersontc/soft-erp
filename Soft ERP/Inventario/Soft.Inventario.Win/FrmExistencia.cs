@@ -120,10 +120,9 @@ namespace Soft.Inventario.Win
 
         }
 
-
-
         public void MostrarUnidades()
         {
+            base.ClearAllRows(ref grillaUnidades);
             foreach (ExistenciaUnidad Item in this.Existencia.Unidades)
             {
                 UltraGridRow Row = grillaUnidades.DisplayLayout.Bands[0].AddNew();
@@ -131,7 +130,6 @@ namespace Soft.Inventario.Win
                 this.MostrarUnidad(Row);
             }
         }
-
 
         public void MostrarUnidad(UltraGridRow Row)
         {
@@ -141,11 +139,9 @@ namespace Soft.Inventario.Win
             Row.Cells[colFactor].Value = unidad.FactorConversion;
         }
 
-
-
-
         public void MostrarAlmacenes()
         {
+            base.ClearAllRows(ref grillaAlmacenes);
             foreach (ExistenciaAlmacen Item in this.Existencia.Almacenes)
             {
                 UltraGridRow Row = grillaAlmacenes.DisplayLayout.Bands[0].AddNew();
@@ -154,7 +150,6 @@ namespace Soft.Inventario.Win
             }
         }
 
-
         public void MostrarAlmacen(UltraGridRow Row)
         {
             ExistenciaAlmacen item = (ExistenciaAlmacen)Row.Tag;
@@ -162,8 +157,6 @@ namespace Soft.Inventario.Win
             Row.Cells[colStockFisico].Value = item.StockFisico;
             Row.Cells[colStockComprometido].Value = item.StockComprometido;
         }
-
-
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)
         {

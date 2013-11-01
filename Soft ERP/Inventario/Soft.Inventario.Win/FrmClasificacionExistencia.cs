@@ -67,6 +67,7 @@ namespace Soft.Inventario.Win
 
         public void MostrarItems()
         {
+            base.ClearAllRows(ref grillaTiposClasificacion);
             foreach (ItemClasificacionExistencia Item in this.ClasificacionExistencia.Items)
             {
                 UltraGridRow Row = grillaTiposClasificacion.DisplayLayout.Bands[0].AddNew();
