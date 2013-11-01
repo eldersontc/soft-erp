@@ -104,6 +104,7 @@ namespace Soft.Inventario.Win
 
         public void MostrarItems()
         {
+            base.ClearAllRows(ref ugProductos);
             foreach (ItemEntradaInventario Item in EntradaInventario.Items)
             {
                 UltraGridRow Row = ugProductos.DisplayLayout.Bands[0].AddNew();
