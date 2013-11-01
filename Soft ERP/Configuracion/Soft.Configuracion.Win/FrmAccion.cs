@@ -27,6 +27,7 @@ namespace Soft.Configuracion.Win
         const String colParametro = "Parámetro(s)";
         const String colExito = "Éxito";
         const String colError = "Error";
+        const String colOrden = "#";
 
         public Accion Accion { get { return (Accion)base.m_ObjectFlow; } }
 
@@ -44,6 +45,9 @@ namespace Soft.Configuracion.Win
 
             DataTable columns = new DataTable();
             DataColumn column = new DataColumn();
+
+            column = columns.Columns.Add(colOrden);
+            column.DataType = typeof(String);
 
             column = columns.Columns.Add(colNombre);
             column.DataType = typeof(String);
@@ -67,6 +71,7 @@ namespace Soft.Configuracion.Win
             ugItemAccion.DisplayLayout.Bands[0].Columns[colEnsamblado].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.EditButton;
             ugItemAccion.DisplayLayout.Bands[0].Columns[colExito].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
             ugItemAccion.DisplayLayout.Bands[0].Columns[colError].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
+            ugItemAccion.DisplayLayout.Bands[0].Columns[colOrden].CellActivation = Activation.NoEdit;
             MapKeys(ref ugItemAccion);
         }
 
@@ -98,6 +103,8 @@ namespace Soft.Configuracion.Win
 
         public void MostrarItems()
         {
+            ugItemAccion.Selected.Rows.AddRange((UltraGridRow[])ugItemAccion.Rows.All);
+            ugItemAccion.DeleteSelectedRows(false);
             foreach (ItemAccion Item in this.Accion .Items)
             {
                 UltraGridRow Row = ugItemAccion.DisplayLayout.Bands[0].AddNew();
@@ -109,12 +116,14 @@ namespace Soft.Configuracion.Win
         public void MostrarItem(UltraGridRow Row)
         {
             ItemAccion Item = (ItemAccion)Row.Tag;
+            Item.Orden = Row.Index + 1;
             if (Item.Ensamblado != null) { Row.Cells[colEnsamblado].Value = Item.Ensamblado.Nombre; }
             Row.Cells[colNombre].Value = Item.Nombre;
             Row.Cells[colClase].Value = Item.Clase;
             Row.Cells[colParametro].Value = Item.Parametro;
             Row.Cells[colExito].Value = Item.Exito;
             Row.Cells[colError].Value = Item.Error;
+            Row.Cells[colOrden].Value = Item.Orden;
         }
 
         #endregion
@@ -205,6 +214,36 @@ namespace Soft.Configuracion.Win
                     break;
             }
             this.MostrarItem(e.Cell.Row);
+        }
+
+        private void ugSubir_Click(object sender, EventArgs e)
+        {
+            UltraGridRow Row = ugItemAccion.ActiveRow;
+            if (Row != null && Row.Index > 0)
+            {
+                ItemAccion Item = (ItemAccion)Row.Tag;
+                Int32 Indice = Row.Index - 1;
+                Accion.Items.RemoveAt(Indice + 1);
+                Accion.Items.Insert(Indice, Item);
+                MostrarItems();
+                ugItemAccion.Rows[Item.Orden - 1].Activated = true;
+            }
+            ActualizarCombos();
+        }
+
+        private void ubBajar_Click(object sender, EventArgs e)
+        {
+            UltraGridRow Row = ugItemAccion.ActiveRow;
+            if (Row != null && Row.Index < ugItemAccion.Rows.Count - 1)
+            {
+                ItemAccion Item = (ItemAccion)Row.Tag;
+                Int32 Indice = Row.Index + 1;
+                Accion.Items.RemoveAt(Indice - 1);
+                Accion.Items.Insert(Indice, Item);
+                MostrarItems();
+                ugItemAccion.Rows[Item.Orden - 1].Activated = true;
+            }
+            ActualizarCombos();
         }
 
     }

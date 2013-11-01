@@ -9,7 +9,8 @@
     <property name="Parametro" type="string"/>
     <property name="Exito" type="string"/>
     <property name="Error" type="string"/>
-     
+    <property name="Orden" type="int"/> 
+    
     <many-to-one name="Ensamblado" class="Soft.Configuracion.Entidades.Ensamblado" column="IDEnsamblado" lazy="false" not-null="false" unique="true" insert="true" update="true"/>
     
   </class>

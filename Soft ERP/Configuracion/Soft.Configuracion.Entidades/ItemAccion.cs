@@ -16,5 +16,6 @@ namespace Soft.Configuracion.Entidades
         public virtual String Parametro { get; set; }
         public virtual String Exito { get; set; }
         public virtual String Error { get; set; }
+        public virtual Int32 Orden { get; set; }
     }
 }
