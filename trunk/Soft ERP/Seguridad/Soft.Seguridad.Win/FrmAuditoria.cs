@@ -90,7 +90,7 @@ namespace Soft.Seguridad.Win
             switch (e.Cell.Column.Key)
             {
                 case colMostrar:
-                    this.MostrarFormulario(Auditoria.XML);
+                    MostrarFormulario(Auditoria.XML);
                     break;
                 default:
                     break;
@@ -98,11 +98,17 @@ namespace Soft.Seguridad.Win
         }
 
         public void MostrarFormulario(String XML) {
-            String[] Parametros = Convert.ToString(this.m_Parameter).Split('|');
-            Parent ObjectFlow = (Parent)Factory.ToObject(XML, Parametros[0]);
-            ControllerApp FrmObjectFlow = (ControllerApp)Factory.InstanceObject(Parametros[1], Parametros[2]);
-            FrmObjectFlow.m_ObjectFlow = ObjectFlow;
-            FrmObjectFlow.Start();
+            try
+            {
+                Parent ObjectFlow = (Parent)Factory.ToObject(XML, base.m_EntidadSF.EnsambladoClase.Ensamblado_);
+                ControllerApp FrmObjectFlow = (ControllerApp)Factory.InstanceObject(base.m_EntidadSF.EnsambladoFormulario.Ensamblado_, base.m_EntidadSF.NombreFormulario);
+                FrmObjectFlow.m_ObjectFlow = ObjectFlow;
+                FrmObjectFlow.Start();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
     }
