@@ -9,9 +9,7 @@ namespace Soft.Inventario.Entidades
     public class Unidad : Parent 
     {
 
-        public Unidad() { 
-        }
-
+        public Unidad() { }
         public virtual String Codigo { get; set; }
     }
 }
