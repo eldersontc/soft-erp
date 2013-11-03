@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Soft.Win;
 using Soft.Inventario.Entidades;
+using Soft.Reporte.Entidades;
 
 namespace Soft.Inventario.Win
 {
@@ -29,30 +30,21 @@ namespace Soft.Inventario.Win
 
         public void Mostrar()
         {
+            busAlmacen.Text = (TipoDocumentoInventario.Almacen != null) ? TipoDocumentoInventario.Almacen.Nombre : "";
+            ssReporte.Text = (TipoDocumentoInventario.Reporte != null) ? TipoDocumentoInventario.Reporte.Nombre : "";
             txtCodigo.Text = TipoDocumentoInventario.Codigo;
             txtNombre.Text = TipoDocumentoInventario.Nombre;
             txtDescripcion.Text = TipoDocumentoInventario.Descripcion;
             CheckUnicoAlmacen.Checked = TipoDocumentoInventario.UnicoAlmacen;
-
             comboOperacion.Text = TipoDocumentoInventario.Operacion;
-
-            if (TipoDocumentoInventario.Almacen != null)
-            {
-                busAlmacen.Text = TipoDocumentoInventario.Almacen.Nombre;
-            }
             CheckRequiereCliente.Checked = TipoDocumentoInventario.RequiereSocioNegocio;
-
             checkTieneImpuesto.Checked = TipoDocumentoInventario.TieneImpuesto;
             txtProcentajeImpuesto.Value = TipoDocumentoInventario.PorcentajeImpuesto;
-
             CheckAceptaCostoCero.Checked = TipoDocumentoInventario.AceptaCostoCero;
-
             txtSerieCodigo.Text = TipoDocumentoInventario.CodigoSerie;
             txtSerieLongitud.Value = TipoDocumentoInventario.LongitudSerie;
-
             txtNumeracionActual.Value = TipoDocumentoInventario.NumeracionActual;
             txtNumeracionLongitud.Value = TipoDocumentoInventario.NumeracionLongitud;
-
         }
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)
@@ -137,5 +129,13 @@ namespace Soft.Inventario.Win
         {
             TipoDocumentoInventario.PorcentajeImpuesto = Convert.ToInt32(txtProcentajeImpuesto.Text);
         }
+
+        private void ssReporte_Search(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionarReporte = new FrmSelectedEntity();
+            TipoDocumentoInventario.Reporte = (Soft.Reporte.Entidades.Reporte)FrmSeleccionarReporte.GetSelectedEntity(typeof(Soft.Reporte.Entidades.Reporte), "Reporte");
+            ssReporte.Text = (TipoDocumentoInventario.Reporte != null) ? TipoDocumentoInventario.Reporte.Nombre : "";
+        }
+
     }
 }
