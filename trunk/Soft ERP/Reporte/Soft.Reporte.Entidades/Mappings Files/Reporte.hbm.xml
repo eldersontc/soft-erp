@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Reporte.Entidades.Reporte, Soft.Reporte.Entidades" table="Reporte">
+
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="Codigo" column="Codigo" type="string"/>
+    <property name="Nombre" column="Nombre" type="string"/>
+    <property name="Ubicacion" column="Ubicacion" type="string"/>
+    <property name="SQL" column="SQL" type="string"/>
+    <property name="Especifico" column="Especifico" type="boolean"/>
+    <property name="Activo" column="Activo" type="boolean"/>
+
+    <many-to-one name="EntidadSF" class="Soft.Entities.EntidadSF" column="IDEntidadSF" insert="true" update="true" lazy="false"/>
+
+    <bag name="Parametros" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDReporte"/>
+      <one-to-many class="Soft.Reporte.Entidades.ParametroReporte"/>
+    </bag>
+    
+  </class>
+
+</hibernate-mapping>
