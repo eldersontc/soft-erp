@@ -201,11 +201,13 @@ namespace Soft.Inventario.Win
                 Existencia Producto = (Existencia)Productos[1];
                 Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
                 Item.Cantidad = 1;
+                MostrarItem(Row);
             }
             else if (Productos.Count > 1) {
                 Existencia Producto = (Existencia)Productos[1];
                 Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
                 Item.Cantidad = 1;
+                MostrarItem(Row);
                 for (int i = 2; i <= Productos.Count; i++)
                 {
                     UltraGridRow RowNuevo = ugProductos.DisplayLayout.Bands[0].AddNew();
