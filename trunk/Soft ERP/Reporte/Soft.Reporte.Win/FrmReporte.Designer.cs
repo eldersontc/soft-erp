@@ -502,6 +502,7 @@
             // ugParametros
             // 
             this.ugParametros.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.ugParametros.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortSingle;
             this.ugParametros.Dock = System.Windows.Forms.DockStyle.Top;
             this.ugParametros.Location = new System.Drawing.Point(0, 0);
             this.ugParametros.Name = "ugParametros";
