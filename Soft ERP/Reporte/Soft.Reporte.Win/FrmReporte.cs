@@ -55,17 +55,16 @@ namespace Soft.Reporte.Win
             ugParametros.DataSource = columns;
 
             ValueList List = new ValueList();
-            List.ValueListItems.Add("Propiedad");
-            List.ValueListItems.Add("String");
-            List.ValueListItems.Add("Int");
-            List.ValueListItems.Add("Decimal");
-            List.ValueListItems.Add("Boolean");
-            List.ValueListItems.Add("DateTime");
+            List.ValueListItems.Add("SQL/Propiedad");
+            List.ValueListItems.Add("Crystal/String");
+            List.ValueListItems.Add("Crystal/Int");
+            List.ValueListItems.Add("Crystal/Decimal");
+            List.ValueListItems.Add("Crystal/Boolean");
+            List.ValueListItems.Add("Crystal/DateTime");
 
             ugParametros.DisplayLayout.Bands[0].Columns[colTipo].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
             ugParametros.DisplayLayout.Bands[0].Columns[colTipo].ValueList = List;
             ugParametros.DisplayLayout.Bands[0].Columns[colPropiedad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.EditButton;
-            ugParametros.DisplayLayout.Bands[0].Columns[colPropiedad].ButtonDisplayStyle = Infragistics.Win.UltraWinGrid.ButtonDisplayStyle.Always;
             MapKeys(ref ugParametros);
         }
 
@@ -96,7 +95,7 @@ namespace Soft.Reporte.Win
         public void MostrarParametro(UltraGridRow Row)
         {
             ParametroReporte Item = (ParametroReporte)Row.Tag;
-            Row.Cells[colPropiedad].Activation = (Item.Tipo.Equals("Propiedad")) ? Activation.AllowEdit: Activation.NoEdit;
+            Row.Cells[colPropiedad].Activation = (Item.Tipo.Equals("SQL/Propiedad")) ? Activation.AllowEdit : Activation.NoEdit;
             Row.Cells[colNombre].Value = Item.Nombre;
             Row.Cells[colTipo].Value = Item.Tipo;
             Row.Cells[colPropiedad].Value = Item.Propiedad;

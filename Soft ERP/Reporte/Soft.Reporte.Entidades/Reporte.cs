@@ -26,12 +26,12 @@ namespace Soft.Reporte.Entidades
 
         public virtual IList<ParametroReporte> ParametrosSQL 
         {
-            get { return (IList<ParametroReporte>)Parametros.Select(p => p.Tipo.Equals("Propiedad")); }
+            get { return Parametros.Where(p => p.Tipo.Equals("SQL/Propiedad")).ToList(); }
         }
 
         public virtual IList<ParametroReporte> ParametrosCrystal
         {
-            get { return (IList<ParametroReporte>)Parametros.Select(p => !p.Tipo.Equals("Propiedad")); }
+            get { return Parametros.Where(p => !p.Tipo.Equals("SQL/Propiedad")).ToList(); }
         }
 
     }
