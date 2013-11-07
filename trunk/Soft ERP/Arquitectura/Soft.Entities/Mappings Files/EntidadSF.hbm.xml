@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true">
+
+  <class name="Soft.Entities.EntidadSF, Soft.Entities" table="EntidadSF">
+
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="NombreClase" column="NombreClase" type="string"/>
+    <property name="NombreFormulario" column="NombreFormulario" type="string"/>
+    <property name="Tabla" column="Tabla" type="string"/>
+    
+    <many-to-one name="EnsambladoClase" class="Soft.Configuracion.Entidades.Ensamblado" column="IDEnsambladoClase" lazy="false" not-null="true" unique="true" insert="true" update="true"/>
+    <many-to-one name="EnsambladoFormulario" class="Soft.Configuracion.Entidades.Ensamblado" column="IDEnsambladoFormulario" lazy="false" not-null="true" unique="true" insert="true" update="true"/>
+
+    <bag name="Atributos" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDEntidadSF"/>
+      <one-to-many class="Soft.Entities.AtributoSF"/>
+    </bag>
+    
+  </class>
+
+</hibernate-mapping>

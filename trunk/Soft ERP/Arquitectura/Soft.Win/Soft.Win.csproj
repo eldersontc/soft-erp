@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3489B041-985E-4572-917B-F3067AD3A866}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Soft.Win</RootNamespace>
+    <AssemblyName>Soft.Win</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Compilacion\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Soft.Win.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>SoftSmart_35x35.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics4.Shared.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.Misc.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.SupportDialogs.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinDataSource.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinDock.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinEditors.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.UltraWinExplorerBar.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinGrid.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinListView.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinSchedule.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinStatusBar.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.UltraWinTabbedMdi.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinTabControl.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.UltraWinToolbars.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinTree.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Microsoft.ExceptionMessageBox, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Microsoft.ExceptionMessageBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Soft.Configuracion.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Soft.Configuracion.Entidades.dll</HintPath>
+    </Reference>
+    <Reference Include="Soft.Reporte.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Soft.Reporte.Entidades.dll</HintPath>
+    </Reference>
+    <Reference Include="Soft.Seguridad.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Soft.Seguridad.Entidades.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ExportXML.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetails.Designer.cs">
+      <DependentUpon>FrmDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEntitySF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEntitySF.Designer.cs">
+      <DependentUpon>FrmEntitySF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMessageBox.Designer.cs">
+      <DependentUpon>FrmMessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMoneda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMoneda.Designer.cs">
+      <DependentUpon>FrmMoneda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmParent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmParent.Designer.cs">
+      <DependentUpon>FrmParent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReportView.Designer.cs">
+      <DependentUpon>FrmReportView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSelectedEntity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectedEntity.Designer.cs">
+      <DependentUpon>FrmSelectedEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSelectedImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectedImage.Designer.cs">
+      <DependentUpon>FrmSelectedImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSelectedProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectedProperty.Designer.cs">
+      <DependentUpon>FrmSelectedProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSocioNegocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSocioNegocio.Designer.cs">
+      <DependentUpon>FrmSocioNegocio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTipoCambio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTipoCambio.Designer.cs">
+      <DependentUpon>FrmTipoCambio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTipoSocioNegocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTipoSocioNegocio.Designer.cs">
+      <DependentUpon>FrmTipoSocioNegocio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportXML.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RefreshView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="FrmDetails.resx">
+      <DependentUpon>FrmDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEntitySF.resx">
+      <DependentUpon>FrmEntitySF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMessageBox.resx">
+      <DependentUpon>FrmMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMoneda.resx">
+      <DependentUpon>FrmMoneda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmParent.resx">
+      <DependentUpon>FrmParent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReportView.resx">
+      <DependentUpon>FrmReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelectedEntity.resx">
+      <DependentUpon>FrmSelectedEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelectedImage.resx">
+      <DependentUpon>FrmSelectedImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelectedProperty.resx">
+      <DependentUpon>FrmSelectedProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSocioNegocio.resx">
+      <DependentUpon>FrmSocioNegocio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTipoCambio.resx">
+      <DependentUpon>FrmTipoCambio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTipoSocioNegocio.resx">
+      <DependentUpon>FrmTipoSocioNegocio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="SOFTSMART_BLACK.isl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SOFTSMART_BLACK_2010.isl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SOFTSMART_BLUE.isl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SOFTSMART_BLUE_2010.isl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SOFTSMART_IG.isl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SOFTSMART_MARIN.isl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SOFTSMART_SILVER.isl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SOFTSMART_SILVER_2010.isl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Soft.Controls\Soft.Controls.csproj">
+      <Project>{38E76A55-AF32-42E7-829E-C2CEA4EDB977}</Project>
+      <Name>Soft.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Soft.DataAccess\Soft.DataAccess.csproj">
+      <Project>{66D9CEA6-6AF9-42B4-AF5B-97CB7AE0DFCD}</Project>
+      <Name>Soft.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Soft.Entities\Soft.Entities.csproj">
+      <Project>{3AB390C5-A3EE-4AFB-A862-2E6CEAB832CE}</Project>
+      <Name>Soft.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SoftSmart_Logo.png" />
+    <None Include="Resources\SoftSmart_30x30.png" />
+    <Content Include="SoftSmart_35x35.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
