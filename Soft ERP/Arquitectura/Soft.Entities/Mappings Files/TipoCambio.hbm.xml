@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true">
+
+  <class name="Soft.Entities.TipoCambio, Soft.Entities" table="TipoCambio">
+
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="TipoCambioCompra" column="TipoCambioCompra" type="decimal"/>
+    <property name="TipoCambioVenta" column="TipoCambioVenta" type="decimal"/>
+    <property name="Fecha" column="Fecha" type="DateTime"/>
+
+    <many-to-one name="Moneda" class="Soft.Entities.Moneda" column="IDMoneda" lazy="false" not-null="true" unique="true" insert="true" update="true"/>
+    
+  </class>
+
+</hibernate-mapping>
