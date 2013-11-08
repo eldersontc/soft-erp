@@ -76,6 +76,8 @@ namespace Soft.Inventario.Win
             ugProductos.DisplayLayout.Bands[0].Columns[colTotal].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
             ugProductos.DisplayLayout.Bands[0].Columns[colTotal].CellAppearance.TextHAlign = HAlign.Right;
             ugProductos.DisplayLayout.Bands[0].Columns[colTotal].CellActivation = Activation.NoEdit;
+            ugProductos.DisplayLayout.Bands[0].Columns[colCodigo].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.EditButton;
+            ugProductos.DisplayLayout.Bands[0].Columns[colNombre].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.EditButton;
             MapKeys(ref ugProductos);
         }
 
@@ -265,7 +267,7 @@ namespace Soft.Inventario.Win
 	        }
         }
 
-        private void ugProductos_AfterCellActivate(object sender, EventArgs e)
+        private void ugProductos_ClickCellButton(object sender, CellEventArgs e)
         {
             try
             {
