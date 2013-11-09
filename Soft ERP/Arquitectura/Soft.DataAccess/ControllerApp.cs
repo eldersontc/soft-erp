@@ -40,7 +40,7 @@ namespace Soft.DataAccess
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
