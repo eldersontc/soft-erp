@@ -127,6 +127,21 @@ namespace Soft.Win
                     Grid.PerformAction(UltraGridAction.EnterEditMode, false, false);
                     break;
                 case Keys.Enter:
+                    //if (Grid.ActiveCell.Column.Style == Infragistics.Win.UltraWinGrid.ColumnStyle.EditButton) {
+                    //    Type typeInfo = Grid.GetType();
+                    //    EventInfo eventInfo = typeInfo.GetEvent("ClickCellButton");
+                    //    MethodInfo method = eventInfo.GetRaiseMethod();
+
+                    //    MethodInfo[] methods = typeInfo.GetMethods();
+
+
+                    //    var eventRaiseMethod = eventInfo.GetRaiseMethod();
+                    //    Object[] args = new Object[1];
+                    //    args[0] = Grid.ActiveCell;
+                    //    eventRaiseMethod.Invoke(Grid, args);
+                    //    //var my_event_invoke = typeInfo.GetMethod(Grid.Name+"_ClickCellButton");
+                    //    //my_event_invoke.Invoke(Grid, new object[] { this, new EventArgs() });
+                    //}
                     Grid.PerformAction(UltraGridAction.ExitEditMode, false, false);
                     Grid.PerformAction(UltraGridAction.NextCell, false, false);
                     e.Handled = true;
