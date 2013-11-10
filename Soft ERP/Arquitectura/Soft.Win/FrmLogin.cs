@@ -50,11 +50,11 @@ namespace Soft.Win
         {
             if (Skyn.Equals(""))
             {
-                Infragistics.Win.AppStyling.StyleManager.Load("SOFTSMART_SILVER.isl");
+                Infragistics.Win.AppStyling.StyleManager.Load("Styles/SOFTSMART_SILVER.isl");
             }
             else
             {
-                Infragistics.Win.AppStyling.StyleManager.Load(String.Format("{0}.isl", Skyn));
+                Infragistics.Win.AppStyling.StyleManager.Load(String.Format("Styles/{0}.isl", Skyn));
             }
         }
 
@@ -70,7 +70,7 @@ namespace Soft.Win
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-            Infragistics.Win.AppStyling.StyleManager.Load("SOFTSMART_SILVER.isl");
+            Infragistics.Win.AppStyling.StyleManager.Load("Styles/SOFTSMART_SILVER.isl");
         }
 
         private void txtContraseña_KeyDown(object sender, KeyEventArgs e)
