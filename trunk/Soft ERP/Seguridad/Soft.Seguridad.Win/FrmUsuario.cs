@@ -79,7 +79,7 @@ namespace Soft.Seguridad.Win
         {
             if (UIActualizando) { return; }
             Usuario.Skyn = uceSkyn.Text;
-            Infragistics.Win.AppStyling.StyleManager.Load(String.Format("{0}.isl", Usuario.Skyn));
+            Infragistics.Win.AppStyling.StyleManager.Load(String.Format("Styles/{0}.isl", Usuario.Skyn));
         }
 
         public byte[] ToBytes(string sPath)
