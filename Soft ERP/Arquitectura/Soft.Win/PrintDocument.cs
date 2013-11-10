@@ -6,6 +6,7 @@ using Soft.DataAccess;
 using Soft.Entities;
 using Soft.Reporte.Entidades;
 using CrystalDecisions.CrystalReports.Engine;
+using System.Windows.Forms;
 
 namespace Soft.Win
 {
@@ -41,7 +42,7 @@ namespace Soft.Win
             }
             catch (Exception ex)
             {
-                throw;
+                MessageBox.Show(ex.Message);
             }
             base.Start();
         }
