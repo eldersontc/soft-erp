@@ -59,26 +59,5 @@ namespace Soft.Win.Properties {
                 resourceCulture = value;
             }
         }
-        
-        internal static System.Drawing.Bitmap SoftSmart_30x30 {
-            get {
-                object obj = ResourceManager.GetObject("SoftSmart_30x30", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap SoftSmart_30x301 {
-            get {
-                object obj = ResourceManager.GetObject("SoftSmart_30x301", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap SoftSmart_Logo {
-            get {
-                object obj = ResourceManager.GetObject("SoftSmart_Logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }
