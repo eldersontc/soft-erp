@@ -36,7 +36,6 @@
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this._FrmMain_Toolbars_Dock_Area_Left = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
-            this.utbmMain = new Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(this.components);
             this._FrmMain_Toolbars_Dock_Area_Right = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._FrmMain_Toolbars_Dock_Area_Top = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._FrmMain_Toolbars_Dock_Area_Bottom = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
@@ -44,10 +43,11 @@
             this.uebMain = new Infragistics.Win.UltraWinExplorerBar.UltraExplorerBar();
             this.usbMain = new Infragistics.Win.UltraWinStatusBar.UltraStatusBar();
             this.ilMain = new System.Windows.Forms.ImageList(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.utbmMain)).BeginInit();
+            this.utbmMain = new Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.utmmMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uebMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usbMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.utbmMain)).BeginInit();
             this.SuspendLayout();
             // 
             // _FrmMain_Toolbars_Dock_Area_Left
@@ -61,23 +61,6 @@
             this._FrmMain_Toolbars_Dock_Area_Left.Name = "_FrmMain_Toolbars_Dock_Area_Left";
             this._FrmMain_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(8, 351);
             this._FrmMain_Toolbars_Dock_Area_Left.ToolbarsManager = this.utbmMain;
-            // 
-            // utbmMain
-            // 
-            this.utbmMain.DesignerFlags = 1;
-            this.utbmMain.DockWithinContainer = this;
-            this.utbmMain.DockWithinContainerBaseType = typeof(System.Windows.Forms.Form);
-            this.utbmMain.FormDisplayStyle = Infragistics.Win.UltraWinToolbars.FormDisplayStyle.RoundedFixed;
-            this.utbmMain.Ribbon.ApplicationMenu2010.DisableQAT = false;
-            this.utbmMain.Ribbon.ApplicationMenu2010.ShowDefaultContextMenu = true;
-            this.utbmMain.Ribbon.ApplicationMenuButtonImage = ((System.Drawing.Image)(resources.GetObject("utbmMain.Ribbon.ApplicationMenuButtonImage")));
-            this.utbmMain.Ribbon.FileMenuButtonCaption = "Inicio";
-            this.utbmMain.Ribbon.FileMenuStyle = Infragistics.Win.UltraWinToolbars.FileMenuStyle.ApplicationMenu2010;
-            this.utbmMain.Ribbon.Visible = true;
-            this.utbmMain.SettingsKey = "FrmMain.utbmMain";
-            this.utbmMain.ShowShortcutsInToolTips = true;
-            this.utbmMain.BeforeToolbarListDropdown += new Infragistics.Win.UltraWinToolbars.BeforeToolbarListDropdownEventHandler(this.utbmMain_BeforeToolbarListDropdown);
-            this.utbmMain.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.utbmMain_ToolClick);
             // 
             // _FrmMain_Toolbars_Dock_Area_Right
             // 
@@ -404,6 +387,23 @@
             this.ilMain.Images.SetKeyName(245, "zoom_in.png");
             this.ilMain.Images.SetKeyName(246, "zoom_out.png");
             // 
+            // utbmMain
+            // 
+            this.utbmMain.DesignerFlags = 1;
+            this.utbmMain.DockWithinContainer = this;
+            this.utbmMain.DockWithinContainerBaseType = typeof(System.Windows.Forms.Form);
+            this.utbmMain.FormDisplayStyle = Infragistics.Win.UltraWinToolbars.FormDisplayStyle.RoundedFixed;
+            this.utbmMain.Ribbon.ApplicationMenu2010.DisableQAT = false;
+            this.utbmMain.Ribbon.ApplicationMenu2010.ShowDefaultContextMenu = true;
+            this.utbmMain.Ribbon.ApplicationMenuButtonImage = ((System.Drawing.Image)(resources.GetObject("utbmMain.Ribbon.ApplicationMenuButtonImage")));
+            this.utbmMain.Ribbon.FileMenuButtonCaption = "Inicio";
+            this.utbmMain.Ribbon.FileMenuStyle = Infragistics.Win.UltraWinToolbars.FileMenuStyle.ApplicationMenu2010;
+            this.utbmMain.Ribbon.Visible = true;
+            this.utbmMain.SettingsKey = "FrmMain.utbmMain";
+            this.utbmMain.ShowShortcutsInToolTips = true;
+            this.utbmMain.BeforeToolbarListDropdown += new Infragistics.Win.UltraWinToolbars.BeforeToolbarListDropdownEventHandler(this.utbmMain_BeforeToolbarListDropdown);
+            this.utbmMain.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.utbmMain_ToolClick);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,10 +421,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.utbmMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.utmmMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uebMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usbMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.utbmMain)).EndInit();
             this.ResumeLayout(false);
 
         }

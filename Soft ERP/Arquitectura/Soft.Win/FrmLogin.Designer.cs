@@ -29,16 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.ufmLogin = new Infragistics.Win.UltraWinForm.UltraFormManager(this.components);
             this.FrmLogin_Fill_Panel = new Infragistics.Win.Misc.UltraPanel();
-            this._FrmLogin_UltraFormManager_Dock_Area_Left = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
-            this._FrmLogin_UltraFormManager_Dock_Area_Right = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
-            this._FrmLogin_UltraFormManager_Dock_Area_Top = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
-            this._FrmLogin_UltraFormManager_Dock_Area_Bottom = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
             this.ugbLogin = new Infragistics.Win.Misc.UltraGroupBox();
             this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
             this.ultraPictureBox1 = new Infragistics.Win.UltraWinEditors.UltraPictureBox();
@@ -49,6 +46,10 @@
             this.txtUsuario = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
+            this._FrmLogin_UltraFormManager_Dock_Area_Left = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
+            this._FrmLogin_UltraFormManager_Dock_Area_Right = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
+            this._FrmLogin_UltraFormManager_Dock_Area_Top = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
+            this._FrmLogin_UltraFormManager_Dock_Area_Bottom = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
             ((System.ComponentModel.ISupportInitialize)(this.ufmLogin)).BeginInit();
             this.FrmLogin_Fill_Panel.ClientArea.SuspendLayout();
             this.FrmLogin_Fill_Panel.SuspendLayout();
@@ -63,6 +64,9 @@
             // ufmLogin
             // 
             this.ufmLogin.Form = this;
+            appearance4.FontData.BoldAsString = "True";
+            appearance4.TextHAlignAsString = "Left";
+            this.ufmLogin.FormStyleSettings.CaptionAreaAppearance = appearance4;
             // 
             // FrmLogin_Fill_Panel
             // 
@@ -76,53 +80,6 @@
             this.FrmLogin_Fill_Panel.Name = "FrmLogin_Fill_Panel";
             this.FrmLogin_Fill_Panel.Size = new System.Drawing.Size(399, 184);
             this.FrmLogin_Fill_Panel.TabIndex = 0;
-            // 
-            // _FrmLogin_UltraFormManager_Dock_Area_Left
-            // 
-            this._FrmLogin_UltraFormManager_Dock_Area_Left.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this._FrmLogin_UltraFormManager_Dock_Area_Left.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(255)))));
-            this._FrmLogin_UltraFormManager_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinForm.DockedPosition.Left;
-            this._FrmLogin_UltraFormManager_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
-            this._FrmLogin_UltraFormManager_Dock_Area_Left.FormManager = this.ufmLogin;
-            this._FrmLogin_UltraFormManager_Dock_Area_Left.InitialResizeAreaExtent = 8;
-            this._FrmLogin_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 31);
-            this._FrmLogin_UltraFormManager_Dock_Area_Left.Name = "_FrmLogin_UltraFormManager_Dock_Area_Left";
-            this._FrmLogin_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(8, 184);
-            // 
-            // _FrmLogin_UltraFormManager_Dock_Area_Right
-            // 
-            this._FrmLogin_UltraFormManager_Dock_Area_Right.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this._FrmLogin_UltraFormManager_Dock_Area_Right.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(255)))));
-            this._FrmLogin_UltraFormManager_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinForm.DockedPosition.Right;
-            this._FrmLogin_UltraFormManager_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
-            this._FrmLogin_UltraFormManager_Dock_Area_Right.FormManager = this.ufmLogin;
-            this._FrmLogin_UltraFormManager_Dock_Area_Right.InitialResizeAreaExtent = 8;
-            this._FrmLogin_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(407, 31);
-            this._FrmLogin_UltraFormManager_Dock_Area_Right.Name = "_FrmLogin_UltraFormManager_Dock_Area_Right";
-            this._FrmLogin_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(8, 184);
-            // 
-            // _FrmLogin_UltraFormManager_Dock_Area_Top
-            // 
-            this._FrmLogin_UltraFormManager_Dock_Area_Top.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this._FrmLogin_UltraFormManager_Dock_Area_Top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(255)))));
-            this._FrmLogin_UltraFormManager_Dock_Area_Top.DockedPosition = Infragistics.Win.UltraWinForm.DockedPosition.Top;
-            this._FrmLogin_UltraFormManager_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText;
-            this._FrmLogin_UltraFormManager_Dock_Area_Top.FormManager = this.ufmLogin;
-            this._FrmLogin_UltraFormManager_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
-            this._FrmLogin_UltraFormManager_Dock_Area_Top.Name = "_FrmLogin_UltraFormManager_Dock_Area_Top";
-            this._FrmLogin_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(415, 31);
-            // 
-            // _FrmLogin_UltraFormManager_Dock_Area_Bottom
-            // 
-            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(255)))));
-            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.DockedPosition = Infragistics.Win.UltraWinForm.DockedPosition.Bottom;
-            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.ForeColor = System.Drawing.SystemColors.ControlText;
-            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.FormManager = this.ufmLogin;
-            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.InitialResizeAreaExtent = 8;
-            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 215);
-            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.Name = "_FrmLogin_UltraFormManager_Dock_Area_Bottom";
-            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.Size = new System.Drawing.Size(415, 8);
             // 
             // ugbLogin
             // 
@@ -142,8 +99,8 @@
             // 
             // ultraGroupBox1
             // 
-            appearance16.BackColor = System.Drawing.Color.White;
-            this.ultraGroupBox1.Appearance = appearance16;
+            appearance1.BackColor = System.Drawing.Color.White;
+            this.ultraGroupBox1.Appearance = appearance1;
             this.ultraGroupBox1.Controls.Add(this.ultraPictureBox1);
             this.ultraGroupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultraGroupBox1.Location = new System.Drawing.Point(3, 3);
@@ -211,8 +168,8 @@
             // 
             // ultraLabel2
             // 
-            appearance17.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance17;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance2;
             this.ultraLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraLabel2.Location = new System.Drawing.Point(146, 116);
             this.ultraLabel2.Name = "ultraLabel2";
@@ -222,14 +179,61 @@
             // 
             // ultraLabel1
             // 
-            appearance18.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel1.Appearance = appearance18;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel1.Appearance = appearance3;
             this.ultraLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraLabel1.Location = new System.Drawing.Point(146, 87);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(100, 23);
             this.ultraLabel1.TabIndex = 26;
             this.ultraLabel1.Text = "Usuario";
+            // 
+            // _FrmLogin_UltraFormManager_Dock_Area_Left
+            // 
+            this._FrmLogin_UltraFormManager_Dock_Area_Left.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this._FrmLogin_UltraFormManager_Dock_Area_Left.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(255)))));
+            this._FrmLogin_UltraFormManager_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinForm.DockedPosition.Left;
+            this._FrmLogin_UltraFormManager_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
+            this._FrmLogin_UltraFormManager_Dock_Area_Left.FormManager = this.ufmLogin;
+            this._FrmLogin_UltraFormManager_Dock_Area_Left.InitialResizeAreaExtent = 8;
+            this._FrmLogin_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 31);
+            this._FrmLogin_UltraFormManager_Dock_Area_Left.Name = "_FrmLogin_UltraFormManager_Dock_Area_Left";
+            this._FrmLogin_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(8, 184);
+            // 
+            // _FrmLogin_UltraFormManager_Dock_Area_Right
+            // 
+            this._FrmLogin_UltraFormManager_Dock_Area_Right.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this._FrmLogin_UltraFormManager_Dock_Area_Right.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(255)))));
+            this._FrmLogin_UltraFormManager_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinForm.DockedPosition.Right;
+            this._FrmLogin_UltraFormManager_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
+            this._FrmLogin_UltraFormManager_Dock_Area_Right.FormManager = this.ufmLogin;
+            this._FrmLogin_UltraFormManager_Dock_Area_Right.InitialResizeAreaExtent = 8;
+            this._FrmLogin_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(407, 31);
+            this._FrmLogin_UltraFormManager_Dock_Area_Right.Name = "_FrmLogin_UltraFormManager_Dock_Area_Right";
+            this._FrmLogin_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(8, 184);
+            // 
+            // _FrmLogin_UltraFormManager_Dock_Area_Top
+            // 
+            this._FrmLogin_UltraFormManager_Dock_Area_Top.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this._FrmLogin_UltraFormManager_Dock_Area_Top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(255)))));
+            this._FrmLogin_UltraFormManager_Dock_Area_Top.DockedPosition = Infragistics.Win.UltraWinForm.DockedPosition.Top;
+            this._FrmLogin_UltraFormManager_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText;
+            this._FrmLogin_UltraFormManager_Dock_Area_Top.FormManager = this.ufmLogin;
+            this._FrmLogin_UltraFormManager_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
+            this._FrmLogin_UltraFormManager_Dock_Area_Top.Name = "_FrmLogin_UltraFormManager_Dock_Area_Top";
+            this._FrmLogin_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(415, 31);
+            // 
+            // _FrmLogin_UltraFormManager_Dock_Area_Bottom
+            // 
+            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(255)))));
+            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.DockedPosition = Infragistics.Win.UltraWinForm.DockedPosition.Bottom;
+            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.ForeColor = System.Drawing.SystemColors.ControlText;
+            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.FormManager = this.ufmLogin;
+            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.InitialResizeAreaExtent = 8;
+            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 215);
+            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.Name = "_FrmLogin_UltraFormManager_Dock_Area_Bottom";
+            this._FrmLogin_UltraFormManager_Dock_Area_Bottom.Size = new System.Drawing.Size(415, 8);
             // 
             // FrmLogin
             // 
@@ -241,10 +245,10 @@
             this.Controls.Add(this._FrmLogin_UltraFormManager_Dock_Area_Right);
             this.Controls.Add(this._FrmLogin_UltraFormManager_Dock_Area_Top);
             this.Controls.Add(this._FrmLogin_UltraFormManager_Dock_Area_Bottom);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmLogin";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = ":: Ingreso al Sistema ::";
+            this.Text = "Ingreso al Sistema ";
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ufmLogin)).EndInit();
             this.FrmLogin_Fill_Panel.ClientArea.ResumeLayout(false);
