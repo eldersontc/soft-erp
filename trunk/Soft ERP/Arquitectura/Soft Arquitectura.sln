@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Entities", "Soft.Entit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Win", "Soft.Win\Soft.Win.csproj", "{3489B041-985E-4572-917B-F3067AD3A866}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Soft.Setup", "Soft.Setup\Soft.Setup.vdproj", "{77A89D07-69E3-46D4-911B-0B0A3D64860D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,14 @@ Global
 		{3489B041-985E-4572-917B-F3067AD3A866}.Release|x64.ActiveCfg = Release|x86
 		{3489B041-985E-4572-917B-F3067AD3A866}.Release|x86.ActiveCfg = Release|x86
 		{3489B041-985E-4572-917B-F3067AD3A866}.Release|x86.Build.0 = Release|x86
+		{77A89D07-69E3-46D4-911B-0B0A3D64860D}.Debug|Any CPU.ActiveCfg = Debug
+		{77A89D07-69E3-46D4-911B-0B0A3D64860D}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{77A89D07-69E3-46D4-911B-0B0A3D64860D}.Debug|x64.ActiveCfg = Debug
+		{77A89D07-69E3-46D4-911B-0B0A3D64860D}.Debug|x86.ActiveCfg = Debug
+		{77A89D07-69E3-46D4-911B-0B0A3D64860D}.Release|Any CPU.ActiveCfg = Release
+		{77A89D07-69E3-46D4-911B-0B0A3D64860D}.Release|Mixed Platforms.ActiveCfg = Release
+		{77A89D07-69E3-46D4-911B-0B0A3D64860D}.Release|x64.ActiveCfg = Release
+		{77A89D07-69E3-46D4-911B-0B0A3D64860D}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
