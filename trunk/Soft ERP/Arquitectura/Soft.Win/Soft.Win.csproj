@@ -263,28 +263,28 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="SOFTSMART_BLACK.isl">
+    <None Include="Styles\SOFTSMART_BLACK.isl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SOFTSMART_BLACK_2010.isl">
+    <None Include="Styles\SOFTSMART_BLACK_2010.isl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SOFTSMART_BLUE.isl">
+    <None Include="Styles\SOFTSMART_BLUE.isl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SOFTSMART_BLUE_2010.isl">
+    <None Include="Styles\SOFTSMART_BLUE_2010.isl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SOFTSMART_IG.isl">
+    <None Include="Styles\SOFTSMART_IG.isl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SOFTSMART_MARIN.isl">
+    <None Include="Styles\SOFTSMART_MARIN.isl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SOFTSMART_SILVER.isl">
+    <None Include="Styles\SOFTSMART_SILVER.isl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SOFTSMART_SILVER_2010.isl">
+    <None Include="Styles\SOFTSMART_SILVER_2010.isl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
