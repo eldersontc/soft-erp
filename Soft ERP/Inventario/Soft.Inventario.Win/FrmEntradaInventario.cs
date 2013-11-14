@@ -135,7 +135,8 @@ namespace Soft.Inventario.Win
         private void ssTipoDocumento_Search(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
-            TipoDocumentoInventario TipoDocumento = (TipoDocumentoInventario)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoDocumentoInventario), "Tipo de Inventario");
+            String Filtro = "Operacion='Entrada'";
+            TipoDocumentoInventario TipoDocumento = (TipoDocumentoInventario)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoDocumentoInventario), "Tipo de Inventario", Filtro);
             EntradaInventario.TipoDocumento = (TipoDocumentoInventario)HelperNHibernate.GetEntityByID("TipoDocumentoInventario", TipoDocumento.ID);
             ssTipoDocumento.Text = (EntradaInventario.TipoDocumento != null) ? EntradaInventario.TipoDocumento.Descripcion : "";
         }

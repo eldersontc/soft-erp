@@ -404,7 +404,6 @@
             this.ugProductos.Size = new System.Drawing.Size(658, 183);
             this.ugProductos.TabIndex = 9;
             this.ugProductos.Text = "ultraGrid1";
-            this.ugProductos.AfterCellActivate += new System.EventHandler(this.ugProductos_AfterCellActivate);
             this.ugProductos.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ugProductos_CellChange);
             // 
             // ubEliminarProducto
