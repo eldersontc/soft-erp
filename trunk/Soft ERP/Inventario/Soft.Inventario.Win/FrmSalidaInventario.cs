@@ -133,12 +133,10 @@ namespace Soft.Inventario.Win
         private void ssTipoDocumento_Search(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
-            String filtro = "Operacion='Salida'";
-            TipoDocumentoInventario TipoDocumento = (TipoDocumentoInventario)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoDocumentoInventario), "Tipo de Inventario",filtro);
+            String Filtro = "Operacion='Salida'";
+            TipoDocumentoInventario TipoDocumento = (TipoDocumentoInventario)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoDocumentoInventario), "Tipo de Inventario",Filtro);
             SalidaInventario.TipoDocumento = (TipoDocumentoInventario)HelperNHibernate.GetEntityByID("TipoDocumentoInventario", TipoDocumento.ID);
             ssTipoDocumento.Text = (SalidaInventario.TipoDocumento != null) ? SalidaInventario.TipoDocumento.Descripcion : "";
-
-            
         }
 
         private void ssProveedor_Search(object sender, EventArgs e)
@@ -153,9 +151,6 @@ namespace Soft.Inventario.Win
             FrmSelectedEntity FrmSeleccionarAlmancen = new FrmSelectedEntity();
             SalidaInventario.Almacen = (Almacen)FrmSeleccionarAlmancen.GetSelectedEntity(typeof(Almacen), "Almacen");
             ssAlmacen.Text = (SalidaInventario.Almacen != null) ? SalidaInventario.Almacen.Descripcion : "";
-
-            
-
         }
 
         private void ssResponsable_Search(object sender, EventArgs e)
@@ -269,33 +264,31 @@ namespace Soft.Inventario.Win
 	        }
         }
 
-        private void ugProductos_AfterCellActivate(object sender, EventArgs e)
+        public void ugProductos_CellKeyEnter(UltraGridCell Cell)
         {
             try
             {
-                if (ugProductos.ActiveCell == null) { return; }
-                UltraGridCell Cell = ugProductos.ActiveCell;
+                if (Cell == null) { return; }
                 ItemSalidaInventario Item = (ItemSalidaInventario)Cell.Row.Tag;
                 switch (Cell.Column.Key)
                 {
                     case colCodigo:
                         if (Cell.Text.Equals("")) { break; }
-                        AgregarProductos(Cell.Text, "", Cell.Row);
+                        AgregarProductos(Cell.Text, "%", Cell.Row);
                         break;
                     case colNombre:
                         if (Cell.Text.Equals("")) { break; }
-                        AgregarProductos("", Cell.Text, Cell.Row);
+                        AgregarProductos("%", Cell.Text, Cell.Row);
                         break;
                     default:
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 //MessageBox.Show(ex.Message);
             }
         }
-
 
     }
 }
