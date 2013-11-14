@@ -76,8 +76,6 @@ namespace Soft.Inventario.Win
             ugProductos.DisplayLayout.Bands[0].Columns[colTotal].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
             ugProductos.DisplayLayout.Bands[0].Columns[colTotal].CellAppearance.TextHAlign = HAlign.Right;
             ugProductos.DisplayLayout.Bands[0].Columns[colTotal].CellActivation = Activation.NoEdit;
-            ugProductos.DisplayLayout.Bands[0].Columns[colCodigo].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.EditButton;
-            ugProductos.DisplayLayout.Bands[0].Columns[colNombre].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.EditButton;
             MapKeys(ref ugProductos);
         }
 
@@ -267,22 +265,21 @@ namespace Soft.Inventario.Win
 	        }
         }
 
-        private void ugProductos_ClickCellButton(object sender, CellEventArgs e)
+        public void ugProductos_CellKeyEnter(UltraGridCell Cell)
         {
             try
             {
-                if (ugProductos.ActiveCell == null) { return; }
-                UltraGridCell Cell = ugProductos.ActiveCell;
+                if (Cell == null) { return; }
                 ItemEntradaInventario Item = (ItemEntradaInventario)Cell.Row.Tag;
                 switch (Cell.Column.Key)
                 {
                     case colCodigo:
                         if (Cell.Text.Equals("")) { break; }
-                        AgregarProductos(Cell.Text, "", Cell.Row);
+                        AgregarProductos(Cell.Text, "%", Cell.Row);
                         break;
                     case colNombre:
                         if (Cell.Text.Equals("")) { break; }
-                        AgregarProductos("", Cell.Text, Cell.Row);
+                        AgregarProductos("%", Cell.Text, Cell.Row);
                         break;
                     default:
                         break;
