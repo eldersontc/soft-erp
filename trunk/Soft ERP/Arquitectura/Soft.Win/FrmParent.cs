@@ -129,12 +129,10 @@ namespace Soft.Win
                     Grid.PerformAction(UltraGridAction.EnterEditMode, false, false);
                     break;
                 case Keys.Enter:
-                    if (Grid.ActiveCell.Column.Style == Infragistics.Win.UltraWinGrid.ColumnStyle.EditButton) {
-                        Type TypeInfo = this.GetType();
-                        Object[] Args = { Grid.ActiveCell};
-                        MethodInfo MethodInfo = TypeInfo.GetMethod(String.Format("{0}_CellKeyEnter", Grid.Name));
-                        if (MethodInfo != null) { MethodInfo.Invoke(this, Args); }
-                    }
+                    Type TypeInfo = this.GetType();
+                    Object[] Args = { Grid.ActiveCell};
+                    MethodInfo MethodInfo = TypeInfo.GetMethod(String.Format("{0}_CellKeyEnter", Grid.Name));
+                    if (MethodInfo != null) { MethodInfo.Invoke(this, Args); }
                     Grid.PerformAction(UltraGridAction.ExitEditMode, false, false);
                     Grid.PerformAction(UltraGridAction.NextCell, false, false);
                     e.Handled = true;
