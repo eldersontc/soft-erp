@@ -46,7 +46,7 @@ namespace Soft.Inventario.Transaccional
                     {
                         Trans.Rollback();
                         m_ResultProcess = EnumResult.ERROR;
-                        MessageBox.Show(ex.StackTrace);
+                        MessageBox.Show(ex.Message);
                     }
                 }
             }

@@ -53,7 +53,13 @@
     <Compile Include="CrearEntradaInventario.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CrearSalidaInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="EliminarEntradaInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EliminarSalidaInventario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

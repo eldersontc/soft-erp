@@ -421,7 +421,6 @@
             this.ugProductos.TabIndex = 9;
             this.ugProductos.Text = "ultraGrid1";
             this.ugProductos.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ugProductos_CellChange);
-            this.ugProductos.ClickCellButton += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ugProductos_ClickCellButton);
             // 
             // ubEliminarProducto
             // 

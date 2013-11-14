@@ -104,6 +104,12 @@
     <Compile Include="FrmExistencia.Designer.cs">
       <DependentUpon>FrmExistencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSalidaInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSalidaInventario.designer.cs">
+      <DependentUpon>FrmSalidaInventario.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTipoDocumentoInventario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmExistencia.resx">
       <DependentUpon>FrmExistencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSalidaInventario.resx">
+      <DependentUpon>FrmSalidaInventario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTipoDocumentoInventario.resx">
       <DependentUpon>FrmTipoDocumentoInventario.cs</DependentUpon>
