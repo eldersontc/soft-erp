@@ -11,5 +11,6 @@
     <mapping assembly="Soft.Configuracion.Entidades" />
     <mapping assembly="Soft.Inventario.Entidades" />
     <mapping assembly="Soft.Reporte.Entidades" />
+    <mapping assembly="Soft.Ventas.Entidades" />
   </session-factory>
 </hibernate-configuration>
