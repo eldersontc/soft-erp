@@ -201,12 +201,14 @@ namespace Soft.Inventario.Win
                 Existencia Producto = (Existencia)Productos[1];
                 Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
                 Item.Cantidad = 1;
+                Item.Precio = Item.Producto.CostoUltimaCompra;
                 MostrarItem(Row);
             }
             else if (Productos.Count > 1) {
                 Existencia Producto = (Existencia)Productos[1];
                 Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
                 Item.Cantidad = 1;
+                Item.Precio = Item.Producto.CostoUltimaCompra;
                 MostrarItem(Row);
                 for (int i = 2; i <= Productos.Count; i++)
                 {
@@ -215,6 +217,7 @@ namespace Soft.Inventario.Win
                     Existencia ProductoNuevo = (Existencia)Productos[i];
                     ItemNuevo.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", ProductoNuevo.ID);
                     ItemNuevo.Cantidad = 1;
+                    Item.Precio = Item.Producto.CostoUltimaCompra;
                     RowNuevo.Tag = ItemNuevo;
                     MostrarItem(RowNuevo);
                 }

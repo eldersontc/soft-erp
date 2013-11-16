@@ -11,6 +11,7 @@
     <property name="EsVenta" type="boolean"/>
     <property name="EsServicio" type="boolean"/>
     <property name="EsInventariable" type="boolean"/>
+    <property name="CostoUltimaCompra" type="decimal" insert="true" update="false"/>
     <property name="Activo" type="boolean"/>
 
     <many-to-one name="ClasificacionExistencia" class="Soft.Inventario.Entidades.ClasificacionExistencia" column="IDClasificacionExistencia" insert="true" update="true" lazy="false"/>

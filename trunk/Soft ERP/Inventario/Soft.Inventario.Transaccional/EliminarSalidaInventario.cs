@@ -35,6 +35,7 @@ namespace Soft.Inventario.Transaccional
                             SqlCmd.Parameters.AddWithValue("@IDAlmacen", SalidaInventario.Almacen.ID);
                             SqlCmd.Parameters.AddWithValue("@IDProducto", Item.Producto.ID);
                             SqlCmd.Parameters.AddWithValue("@Cantidad", Item.Cantidad);
+                            SqlCmd.Parameters.AddWithValue("@Precio", 0);
                             SqlCmd.Parameters.AddWithValue("@Operacion", "Incrementar");
                             SqlCmd.ExecuteNonQuery();
                         }

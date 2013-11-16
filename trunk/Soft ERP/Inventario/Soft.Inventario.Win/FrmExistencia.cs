@@ -105,6 +105,7 @@ namespace Soft.Inventario.Win
             checkEsVenta.Checked = this.Existencia.EsVenta;
             checkesServicio.Checked = this.Existencia.EsServicio;
             checkEsInventariable.Checked = this.Existencia.EsInventariable;
+            uneCostoUltimaCompra.Value = this.Existencia.CostoUltimaCompra;
 
             busClasificacion.Text = (this.Existencia.ClasificacionExistencia != null) ? this.Existencia.ClasificacionExistencia.Nombre : "";
             busItemClasificacion.Text = (this.Existencia.ItemClasificacionExistencia != null) ? this.Existencia.ItemClasificacionExistencia.Nombre : "";
