@@ -104,6 +104,12 @@
     <Compile Include="FrmExistencia.Designer.cs">
       <DependentUpon>FrmExistencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMarca.Designer.cs">
+      <DependentUpon>FrmMarca.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSalidaInventario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmExistencia.resx">
       <DependentUpon>FrmExistencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMarca.resx">
+      <DependentUpon>FrmMarca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSalidaInventario.resx">
       <DependentUpon>FrmSalidaInventario.cs</DependentUpon>
