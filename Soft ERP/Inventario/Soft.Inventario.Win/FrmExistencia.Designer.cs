@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmExistencia));
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ubEliminar = new Infragistics.Win.Misc.UltraButton();
             this.ubNuevo = new Infragistics.Win.Misc.UltraButton();
@@ -480,8 +480,8 @@
             // 
             // ultraLabel2
             // 
-            appearance8.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance8;
+            appearance12.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance12;
             this.ultraLabel2.Location = new System.Drawing.Point(16, 73);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(74, 22);
@@ -498,8 +498,8 @@
             // 
             // Nombre
             // 
-            appearance9.BackColor = System.Drawing.Color.Transparent;
-            this.Nombre.Appearance = appearance9;
+            appearance13.BackColor = System.Drawing.Color.Transparent;
+            this.Nombre.Appearance = appearance13;
             this.Nombre.Location = new System.Drawing.Point(16, 45);
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(60, 23);
@@ -516,8 +516,8 @@
             // 
             // Codigo
             // 
-            appearance10.BackColor = System.Drawing.Color.Transparent;
-            this.Codigo.Appearance = appearance10;
+            appearance14.BackColor = System.Drawing.Color.Transparent;
+            this.Codigo.Appearance = appearance14;
             this.Codigo.Location = new System.Drawing.Point(16, 18);
             this.Codigo.Name = "Codigo";
             this.Codigo.Size = new System.Drawing.Size(60, 23);
@@ -647,8 +647,8 @@
             // 
             // lblMarca
             // 
-            appearance7.BackColor = System.Drawing.Color.Transparent;
-            this.lblMarca.Appearance = appearance7;
+            appearance11.BackColor = System.Drawing.Color.Transparent;
+            this.lblMarca.Appearance = appearance11;
             this.lblMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblMarca.Location = new System.Drawing.Point(16, 112);
             this.lblMarca.Name = "lblMarca";
@@ -659,7 +659,6 @@
             // busMarca
             // 
             this.busMarca.BackColor = System.Drawing.Color.Transparent;
-            this.busMarca.Enabled = false;
             this.busMarca.Location = new System.Drawing.Point(96, 109);
             this.busMarca.Name = "busMarca";
             this.busMarca.Size = new System.Drawing.Size(312, 28);
