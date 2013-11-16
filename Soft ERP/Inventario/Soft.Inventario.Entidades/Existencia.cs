@@ -23,7 +23,7 @@ namespace Soft.Inventario.Entidades
 
         public virtual ClasificacionExistencia ClasificacionExistencia { get; set; }
         public virtual ItemClasificacionExistencia ItemClasificacionExistencia { get; set; }
-
+        public virtual Marca Marca { get; set; }
 
         public virtual IList<ExistenciaUnidad>Unidades{ get; set; }
         public virtual IList<ExistenciaAlmacen>Almacenes{ get; set; }
