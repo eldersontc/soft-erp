@@ -20,6 +20,7 @@ namespace Soft.Inventario.Entidades
         public virtual Boolean EsVenta { get; set; }
         public virtual Boolean EsServicio { get; set; }
         public virtual Boolean EsInventariable { get; set; }
+        public virtual Decimal CostoUltimaCompra { get; set; }
 
         public virtual ClasificacionExistencia ClasificacionExistencia { get; set; }
         public virtual ItemClasificacionExistencia ItemClasificacionExistencia { get; set; }
