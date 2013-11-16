@@ -5,6 +5,7 @@
 
     <id name="ID" column ="ID" type="string" unsaved-value="0"/>
     <property name="Numeracion" type="string"/>
+    <property name="OrdenProduccion" type="string"/>
     <property name="Observacion" type="string"/>
     <property name="FechaCreacion" type="DateTime"/>
     <property name="SubTotal" type="decimal"/>
