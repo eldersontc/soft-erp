@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Ventas.Entidades.ModalidadCredito, Soft.Ventas.Entidades" table="ModalidadCredito">
+
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="Codigo" column="Codigo" type="string"/>
+    <property name="Descripcion" column="Descripcion" type="string"/>
+    <property name="Dias" column="Dias" type="int"/>
+    <property name="Activo" column="Activo" type="boolean"/>
+
+  </class>
+
+</hibernate-mapping>

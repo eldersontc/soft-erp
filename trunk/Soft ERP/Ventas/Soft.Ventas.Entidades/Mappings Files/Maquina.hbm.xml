@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Ventas.Entidades.Maquina, Soft.Ventas.Entidades" table="Maquina">
+
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="Codigo" column="Codigo" type="string"/>
+    <property name="Nombre" column="Nombre" type="string"/>
+    
+    <property name="CantidadCuerpos" column="CantidadCuerpos" type="int"/>
+    <property name="MaximoGramaje" column="MaximoGramaje" type="decimal"/>
+    <property name="MinimoGramaje" column="MinimoGramaje" type="decimal"/>
+    
+    <property name="PliegoAnchoMimino" column="PliegoAnchoMimino" type="int"/>
+    <property name="PliegoAnchoMaximo" column="PliegoAnchoMaximo" type="int"/>
+    <property name="PliegoAltoMinimo" column="PliegoAltoMinimo" type="int"/>
+    <property name="PliegoAltoMaximo" column="PliegoAltoMaximo" type="int"/>
+
+    <property name="MargenPinza" column="MargenPinza" type="int"/>
+    <property name="MargenSalida" column="MargenSalida" type="int"/>
+    <property name="MargenEscuadra" column="MargenEscuadra" type="int"/>
+    <property name="MargenContraEscuadra" column="MargenContraEscuadra" type="int"/>
+    <property name="MargenCalle" column="MargenCalle" type="int"/>
+    
+    <property name="Activo" column="Activo" type="boolean"/>
+
+    <many-to-one name="TipoMaquina" class="Soft.Ventas.Entidades.TipoMaquina" column="IDTipoMaquina" insert="true" update="true" lazy="false"/>
+    <many-to-one name="Marca" class="Soft.Inventario.Entidades.Marca" column="IDMarca" insert="true" update="true" lazy="false"/>
+    <many-to-one name="Proveedor" class="Soft.Entities.SocioNegocio" column="IDProveedor" insert="true" update="true" lazy="false"/>
+    
+  </class>
+
+</hibernate-mapping>
