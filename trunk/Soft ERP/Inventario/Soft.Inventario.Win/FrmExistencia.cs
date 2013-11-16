@@ -106,14 +106,9 @@ namespace Soft.Inventario.Win
             checkesServicio.Checked = this.Existencia.EsServicio;
             checkEsInventariable.Checked = this.Existencia.EsInventariable;
 
-            if (this.Existencia.ClasificacionExistencia != null) {
-                busClasificacion.Text = this.Existencia.ClasificacionExistencia.Nombre;
-            }
-
-            if (this.Existencia.ItemClasificacionExistencia != null)
-            {
-                busItemClasificacion.Text = this.Existencia.ItemClasificacionExistencia.Nombre;
-            }
+            busClasificacion.Text = (this.Existencia.ClasificacionExistencia != null) ? this.Existencia.ClasificacionExistencia.Nombre : "";
+            busItemClasificacion.Text = (this.Existencia.ItemClasificacionExistencia != null) ? this.Existencia.ItemClasificacionExistencia.Nombre : "";
+            busMarca.Text = (this.Existencia.Marca != null) ? this.Existencia.Marca.Nombre : "";
 
             this.MostrarUnidades();
             this.MostrarAlmacenes();
@@ -267,9 +262,6 @@ namespace Soft.Inventario.Win
             this.grillaUnidades.ActiveRow.Delete(false);
         }
 
-
-
-
         private void grillaUnidades_CellChange(object sender, CellEventArgs e)
         {
            ExistenciaUnidad Item = (ExistenciaUnidad)e.Cell.Row.Tag;
@@ -345,10 +337,15 @@ namespace Soft.Inventario.Win
             this.grillaAlmacenes.ActiveRow.Delete(false);
         }
 
-
-
-
-
+        private void busMarca_Search(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionarPanel = new FrmSelectedEntity();
+            this.Existencia.Marca = (Marca)FrmSeleccionarPanel.GetSelectedEntity(typeof(Marca), "Marca");
+            if (this.Existencia.Marca != null)
+            {
+                busMarca.Text = this.Existencia.Marca.Nombre;
+            }
+        }
 
     }
 }
