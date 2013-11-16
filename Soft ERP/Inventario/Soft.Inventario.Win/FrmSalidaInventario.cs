@@ -89,6 +89,7 @@ namespace Soft.Inventario.Win
             txtNumeracion.Text = SalidaInventario.Numeracion;
             udtFechaCreacion.Value = SalidaInventario.FechaCreacion;
             txtObservacion.Text = SalidaInventario.Observacion;
+            txtOrdenProduccion.Text = SalidaInventario.OrdenProduccion;
             MostrarItems();
             MostrarCostos();
             ActualizandoIU = false;
@@ -288,6 +289,11 @@ namespace Soft.Inventario.Win
             {
                 //MessageBox.Show(ex.Message);
             }
+        }
+
+        private void txtOrdenProduccion_TextChanged(object sender, EventArgs e)
+        {
+            SalidaInventario.OrdenProduccion = txtOrdenProduccion.Text;
         }
 
     }
