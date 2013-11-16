@@ -53,6 +53,7 @@
     <Compile Include="ItemClasificacionExistencia.cs" />
     <Compile Include="ItemEntradaInventario.cs" />
     <Compile Include="ItemSalidaInventario.cs" />
+    <Compile Include="Marca.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SalidaInventario.cs" />
     <Compile Include="TipoDocumentoInventario.cs" />
@@ -93,6 +94,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Mappings Files\ItemSalidaInventario.hbm.xml" />
     <EmbeddedResource Include="Mappings Files\SalidaInventario.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings Files\Marca.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
