@@ -26,8 +26,8 @@ namespace Soft.Exceptions
 
         private void ugbDetails_ExpandedStateChanging(object sender, CancelEventArgs e)
         {
-            if (ugbDetails.Expanded)
-            {
+            if (!ugbDetails.Expanded)
+            { 
                 Height = 250;
             }
             else { Height = 128; }
