@@ -30,7 +30,7 @@ namespace Soft.Exceptions
             { 
                 Height = 250;
             }
-            else { Height = 128; }
+            else { Height = 112; }
         }
 
     }
