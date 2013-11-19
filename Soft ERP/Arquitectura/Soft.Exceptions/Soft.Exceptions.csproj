@@ -50,7 +50,7 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exception.cs" />
+    <Compile Include="SoftException.cs" />
     <Compile Include="FrmMessageError.cs">
       <SubType>Form</SubType>
     </Compile>
