@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.ufmError = new Infragistics.Win.UltraWinForm.UltraFormManager(this.components);
             this.FrmMessageError_Fill_Panel = new Infragistics.Win.Misc.UltraPanel();
             this.ugbError = new Infragistics.Win.Misc.UltraGroupBox();
@@ -87,9 +88,12 @@
             this.upbIcon.Name = "upbIcon";
             this.upbIcon.Size = new System.Drawing.Size(48, 33);
             this.upbIcon.TabIndex = 2;
+            this.upbIcon.UseAppStyling = false;
             // 
             // lblMessage
             // 
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.lblMessage.Appearance = appearance3;
             this.lblMessage.Location = new System.Drawing.Point(97, 17);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(301, 23);
@@ -184,6 +188,7 @@
             this.Controls.Add(this._FrmMessageError_UltraFormManager_Dock_Area_Bottom);
             this.Name = "FrmMessageError";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.ufmError)).EndInit();
             this.FrmMessageError_Fill_Panel.ClientArea.ResumeLayout(false);
             this.FrmMessageError_Fill_Panel.ResumeLayout(false);
