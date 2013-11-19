@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.ufmError = new Infragistics.Win.UltraWinForm.UltraFormManager(this.components);
             this.FrmMessageError_Fill_Panel = new Infragistics.Win.Misc.UltraPanel();
             this.ugbError = new Infragistics.Win.Misc.UltraGroupBox();
@@ -94,10 +94,10 @@
             // 
             // lblMessage
             // 
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            appearance5.TextHAlignAsString = "Center";
-            appearance5.TextVAlignAsString = "Middle";
-            this.lblMessage.Appearance = appearance5;
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            appearance1.TextHAlignAsString = "Center";
+            appearance1.TextVAlignAsString = "Middle";
+            this.lblMessage.Appearance = appearance1;
             this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMessage.Location = new System.Drawing.Point(61, 15);
             this.lblMessage.Name = "lblMessage";
@@ -106,8 +106,8 @@
             // 
             // ugbDetails
             // 
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            this.ugbDetails.Appearance = appearance6;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.ugbDetails.Appearance = appearance2;
             this.ugbDetails.Controls.Add(this.ultraExpandableGroupBoxPanel1);
             this.ugbDetails.Expanded = false;
             this.ugbDetails.ExpandedSize = new System.Drawing.Size(300, 155);
@@ -134,6 +134,7 @@
             this.txtDetails.Location = new System.Drawing.Point(0, 0);
             this.txtDetails.Multiline = true;
             this.txtDetails.Name = "txtDetails";
+            this.txtDetails.ReadOnly = true;
             this.txtDetails.Size = new System.Drawing.Size(200, 100);
             this.txtDetails.TabIndex = 0;
             // 
