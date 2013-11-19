@@ -24,5 +24,14 @@ namespace Soft.Exceptions
             ShowDialog();
         }
 
+        private void ugbDetails_ExpandedStateChanging(object sender, CancelEventArgs e)
+        {
+            if (ugbDetails.Expanded)
+            {
+                Height = 250;
+            }
+            else { Height = 128; }
+        }
+
     }
 }
