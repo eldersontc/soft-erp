@@ -301,6 +301,10 @@
       <Project>{3AB390C5-A3EE-4AFB-A862-2E6CEAB832CE}</Project>
       <Name>Soft.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Soft.Exceptions\Soft.Exceptions.csproj">
+      <Project>{ADA817E4-8041-445F-BF37-361B2E0DE7EF}</Project>
+      <Name>Soft.Exceptions</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

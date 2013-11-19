@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Xml;
 using Soft.DataAccess;
 using Soft.Seguridad.Entidades;
+using Soft.Exceptions;
 
 namespace Soft.Win
 {
@@ -37,12 +38,13 @@ namespace Soft.Win
                 }
                 else
                 {
-                    MessageBox.Show("Usuario o Clave Incorrectos ...", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Usuario o Clave Incorrectos ...", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    throw new Exception("Usuario o Clave Incorrectos ...");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                SoftException.Control(ex, MessageBoxIcon.Information);
             }
         }
 
