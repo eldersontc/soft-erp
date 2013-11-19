@@ -9,10 +9,10 @@ namespace Soft.Exceptions
 {
     public class SoftException
     {
-        public static void Control(Exception ex, MessageBoxIcon Icon)
+        public static void Control(Exception Ex, MessageBoxIcon Icon)
         {
             FrmMessageError FrmError = new FrmMessageError();
-            FrmError.ShowError(ex.ToString(), "", SystemIcons.Error.ToBitmap());
+            FrmError.ShowError(Ex.Message.ToString(), "", SystemIcons.Error.ToBitmap());
         }
     }
 }
