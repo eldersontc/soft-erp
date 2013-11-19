@@ -15,5 +15,14 @@ namespace Soft.Exceptions
         {
             InitializeComponent();
         }
+
+        public void ShowError(String Ex, String Details, Bitmap Icon)
+        {
+            lblMessage.Text = Ex;
+            txtDetails.Text = Details;
+            upbIcon.Image = Icon;
+            ShowDialog();
+        }
+
     }
 }
