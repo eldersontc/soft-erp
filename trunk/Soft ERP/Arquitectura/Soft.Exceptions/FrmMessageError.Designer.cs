@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             this.ufmError = new Infragistics.Win.UltraWinForm.UltraFormManager(this.components);
             this.FrmMessageError_Fill_Panel = new Infragistics.Win.Misc.UltraPanel();
             this.ugbError = new Infragistics.Win.Misc.UltraGroupBox();
@@ -65,9 +66,9 @@
             this.FrmMessageError_Fill_Panel.ClientArea.Controls.Add(this.ugbError);
             this.FrmMessageError_Fill_Panel.Cursor = System.Windows.Forms.Cursors.Default;
             this.FrmMessageError_Fill_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FrmMessageError_Fill_Panel.Location = new System.Drawing.Point(8, 30);
+            this.FrmMessageError_Fill_Panel.Location = new System.Drawing.Point(8, 31);
             this.FrmMessageError_Fill_Panel.Name = "FrmMessageError_Fill_Panel";
-            this.FrmMessageError_Fill_Panel.Size = new System.Drawing.Size(419, 87);
+            this.FrmMessageError_Fill_Panel.Size = new System.Drawing.Size(329, 89);
             this.FrmMessageError_Fill_Panel.TabIndex = 0;
             // 
             // ugbError
@@ -78,37 +79,44 @@
             this.ugbError.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ugbError.Location = new System.Drawing.Point(0, 0);
             this.ugbError.Name = "ugbError";
-            this.ugbError.Size = new System.Drawing.Size(419, 87);
+            this.ugbError.Size = new System.Drawing.Size(329, 89);
             this.ugbError.TabIndex = 0;
             // 
             // upbIcon
             // 
+            this.upbIcon.BackColor = System.Drawing.Color.Transparent;
             this.upbIcon.BorderShadowColor = System.Drawing.Color.Empty;
-            this.upbIcon.Location = new System.Drawing.Point(25, 10);
+            this.upbIcon.Location = new System.Drawing.Point(15, 9);
             this.upbIcon.Name = "upbIcon";
-            this.upbIcon.Size = new System.Drawing.Size(48, 33);
+            this.upbIcon.Size = new System.Drawing.Size(36, 37);
             this.upbIcon.TabIndex = 2;
             this.upbIcon.UseAppStyling = false;
             // 
             // lblMessage
             // 
             appearance3.BackColor = System.Drawing.Color.Transparent;
+            appearance3.TextHAlignAsString = "Center";
+            appearance3.TextVAlignAsString = "Middle";
             this.lblMessage.Appearance = appearance3;
-            this.lblMessage.Location = new System.Drawing.Point(97, 17);
+            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.Location = new System.Drawing.Point(61, 15);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(301, 23);
+            this.lblMessage.Size = new System.Drawing.Size(249, 23);
             this.lblMessage.TabIndex = 1;
             // 
             // ugbDetails
             // 
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.ugbDetails.Appearance = appearance4;
             this.ugbDetails.Controls.Add(this.ultraExpandableGroupBoxPanel1);
             this.ugbDetails.Expanded = false;
-            this.ugbDetails.ExpandedSize = new System.Drawing.Size(383, 76);
-            this.ugbDetails.Location = new System.Drawing.Point(15, 46);
+            this.ugbDetails.ExpandedSize = new System.Drawing.Size(308, 76);
+            this.ugbDetails.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
+            this.ugbDetails.Location = new System.Drawing.Point(15, 41);
             this.ugbDetails.Name = "ugbDetails";
-            this.ugbDetails.Size = new System.Drawing.Size(383, 21);
+            this.ugbDetails.Size = new System.Drawing.Size(308, 21);
             this.ugbDetails.TabIndex = 0;
-            this.ugbDetails.Text = "Detalle";
+            this.ugbDetails.UseAppStyling = false;
             // 
             // ultraExpandableGroupBoxPanel1
             // 
@@ -136,9 +144,9 @@
             this._FrmMessageError_UltraFormManager_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
             this._FrmMessageError_UltraFormManager_Dock_Area_Left.FormManager = this.ufmError;
             this._FrmMessageError_UltraFormManager_Dock_Area_Left.InitialResizeAreaExtent = 8;
-            this._FrmMessageError_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 30);
+            this._FrmMessageError_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 31);
             this._FrmMessageError_UltraFormManager_Dock_Area_Left.Name = "_FrmMessageError_UltraFormManager_Dock_Area_Left";
-            this._FrmMessageError_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(8, 87);
+            this._FrmMessageError_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(8, 89);
             // 
             // _FrmMessageError_UltraFormManager_Dock_Area_Right
             // 
@@ -148,9 +156,9 @@
             this._FrmMessageError_UltraFormManager_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
             this._FrmMessageError_UltraFormManager_Dock_Area_Right.FormManager = this.ufmError;
             this._FrmMessageError_UltraFormManager_Dock_Area_Right.InitialResizeAreaExtent = 8;
-            this._FrmMessageError_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(427, 30);
+            this._FrmMessageError_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(337, 31);
             this._FrmMessageError_UltraFormManager_Dock_Area_Right.Name = "_FrmMessageError_UltraFormManager_Dock_Area_Right";
-            this._FrmMessageError_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(8, 87);
+            this._FrmMessageError_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(8, 89);
             // 
             // _FrmMessageError_UltraFormManager_Dock_Area_Top
             // 
@@ -161,7 +169,7 @@
             this._FrmMessageError_UltraFormManager_Dock_Area_Top.FormManager = this.ufmError;
             this._FrmMessageError_UltraFormManager_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._FrmMessageError_UltraFormManager_Dock_Area_Top.Name = "_FrmMessageError_UltraFormManager_Dock_Area_Top";
-            this._FrmMessageError_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(435, 30);
+            this._FrmMessageError_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(345, 31);
             // 
             // _FrmMessageError_UltraFormManager_Dock_Area_Bottom
             // 
@@ -171,21 +179,22 @@
             this._FrmMessageError_UltraFormManager_Dock_Area_Bottom.ForeColor = System.Drawing.SystemColors.ControlText;
             this._FrmMessageError_UltraFormManager_Dock_Area_Bottom.FormManager = this.ufmError;
             this._FrmMessageError_UltraFormManager_Dock_Area_Bottom.InitialResizeAreaExtent = 8;
-            this._FrmMessageError_UltraFormManager_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 117);
+            this._FrmMessageError_UltraFormManager_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 120);
             this._FrmMessageError_UltraFormManager_Dock_Area_Bottom.Name = "_FrmMessageError_UltraFormManager_Dock_Area_Bottom";
-            this._FrmMessageError_UltraFormManager_Dock_Area_Bottom.Size = new System.Drawing.Size(435, 8);
+            this._FrmMessageError_UltraFormManager_Dock_Area_Bottom.Size = new System.Drawing.Size(345, 8);
             // 
             // FrmMessageError
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 125);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(345, 128);
             this.Controls.Add(this.FrmMessageError_Fill_Panel);
             this.Controls.Add(this._FrmMessageError_UltraFormManager_Dock_Area_Left);
             this.Controls.Add(this._FrmMessageError_UltraFormManager_Dock_Area_Right);
             this.Controls.Add(this._FrmMessageError_UltraFormManager_Dock_Area_Top);
             this.Controls.Add(this._FrmMessageError_UltraFormManager_Dock_Area_Bottom);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmMessageError";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
