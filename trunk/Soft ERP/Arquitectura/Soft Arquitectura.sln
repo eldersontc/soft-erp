@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Entities", "Soft.Entit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Win", "Soft.Win\Soft.Win.csproj", "{3489B041-985E-4572-917B-F3067AD3A866}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Exceptions", "Soft.Exceptions\Soft.Exceptions.csproj", "{ADA817E4-8041-445F-BF37-361B2E0DE7EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,18 @@ Global
 		{3489B041-985E-4572-917B-F3067AD3A866}.Release|x64.ActiveCfg = Release|x86
 		{3489B041-985E-4572-917B-F3067AD3A866}.Release|x86.ActiveCfg = Release|x86
 		{3489B041-985E-4572-917B-F3067AD3A866}.Release|x86.Build.0 = Release|x86
+		{ADA817E4-8041-445F-BF37-361B2E0DE7EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADA817E4-8041-445F-BF37-361B2E0DE7EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADA817E4-8041-445F-BF37-361B2E0DE7EF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{ADA817E4-8041-445F-BF37-361B2E0DE7EF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{ADA817E4-8041-445F-BF37-361B2E0DE7EF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ADA817E4-8041-445F-BF37-361B2E0DE7EF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ADA817E4-8041-445F-BF37-361B2E0DE7EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADA817E4-8041-445F-BF37-361B2E0DE7EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADA817E4-8041-445F-BF37-361B2E0DE7EF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{ADA817E4-8041-445F-BF37-361B2E0DE7EF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{ADA817E4-8041-445F-BF37-361B2E0DE7EF}.Release|x64.ActiveCfg = Release|Any CPU
+		{ADA817E4-8041-445F-BF37-361B2E0DE7EF}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
