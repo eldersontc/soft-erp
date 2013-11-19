@@ -110,13 +110,14 @@
             this.ugbDetails.Appearance = appearance4;
             this.ugbDetails.Controls.Add(this.ultraExpandableGroupBoxPanel1);
             this.ugbDetails.Expanded = false;
-            this.ugbDetails.ExpandedSize = new System.Drawing.Size(308, 76);
+            this.ugbDetails.ExpandedSize = new System.Drawing.Size(300, 155);
             this.ugbDetails.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ugbDetails.Location = new System.Drawing.Point(15, 41);
             this.ugbDetails.Name = "ugbDetails";
-            this.ugbDetails.Size = new System.Drawing.Size(308, 21);
+            this.ugbDetails.Size = new System.Drawing.Size(300, 19);
             this.ugbDetails.TabIndex = 0;
             this.ugbDetails.UseAppStyling = false;
+            this.ugbDetails.ExpandedStateChanging += new System.ComponentModel.CancelEventHandler(this.ugbDetails_ExpandedStateChanging);
             // 
             // ultraExpandableGroupBoxPanel1
             // 
