@@ -48,8 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ItemPlantilla.cs" />
     <Compile Include="Maquina.cs" />
     <Compile Include="ModalidadCredito.cs" />
+    <Compile Include="Pantilla.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoMaquina.cs" />
   </ItemGroup>
@@ -59,6 +61,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings Files\ModalidadCredito.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings Files\ItemPlantilla.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\Plantilla.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
