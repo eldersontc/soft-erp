@@ -104,7 +104,7 @@
     <EmbeddedResource Include="Mappings Files\Marca.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Mappings Files\ExistenciaMaquina.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\ExistenciaMaquina.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
