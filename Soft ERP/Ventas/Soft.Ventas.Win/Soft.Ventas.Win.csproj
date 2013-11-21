@@ -34,6 +34,8 @@
     <Reference Include="Infragistics4.Shared.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Infragistics4.Win.Misc.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinEditors.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinGrid.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinTabControl.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Soft.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -83,6 +85,12 @@
     <Compile Include="FrmModalidadCredito.Designer.cs">
       <DependentUpon>FrmModalidadCredito.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPlantilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPlantilla.Designer.cs">
+      <DependentUpon>FrmPlantilla.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FrmTipoMaquina.cs">
       <SubType>Form</SubType>
@@ -97,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmModalidadCredito.resx">
       <DependentUpon>FrmModalidadCredito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPlantilla.resx">
+      <DependentUpon>FrmPlantilla.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="FrmTipoMaquina.resx">

@@ -51,7 +51,7 @@
     <Compile Include="ItemPlantilla.cs" />
     <Compile Include="Maquina.cs" />
     <Compile Include="ModalidadCredito.cs" />
-    <Compile Include="Pantilla.cs" />
+    <Compile Include="Plantilla.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoMaquina.cs" />
   </ItemGroup>
