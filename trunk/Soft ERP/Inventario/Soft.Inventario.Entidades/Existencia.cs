@@ -12,6 +12,7 @@ namespace Soft.Inventario.Entidades
         public Existencia(){
             Unidades = new List<ExistenciaUnidad>();
             Almacenes = new List<ExistenciaAlmacen>();
+            Maquinas = new List<ExistenciaMaquina>();
         }
 
         public virtual String Codigo { get; set; }
@@ -28,8 +29,7 @@ namespace Soft.Inventario.Entidades
 
         public virtual IList<ExistenciaUnidad>Unidades{ get; set; }
         public virtual IList<ExistenciaAlmacen>Almacenes{ get; set; }
-
-
+        public virtual IList<ExistenciaMaquina> Maquinas { get; set; }
 
         public virtual ExistenciaUnidad AddItem()
         {
@@ -42,6 +42,14 @@ namespace Soft.Inventario.Entidades
         {
             ExistenciaAlmacen Item = new ExistenciaAlmacen();
             this.Almacenes.Add(Item);
+            return Item;
+        }
+
+
+        public virtual ExistenciaMaquina AddItemMaquina()
+        {
+            ExistenciaMaquina Item = new ExistenciaMaquina();
+            this.Maquinas.Add(Item);
             return Item;
         }
 
