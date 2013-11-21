@@ -35,6 +35,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Compilacion\Soft.Entities.dll</HintPath>
     </Reference>
+    <Reference Include="Soft.Ventas.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Soft.Ventas.Entidades.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,6 +53,7 @@
     <Compile Include="EntradaInventario.cs" />
     <Compile Include="Existencia.cs" />
     <Compile Include="ExistenciaAlmacen.cs" />
+    <Compile Include="ExistenciaMaquina.cs" />
     <Compile Include="ExistenciaUnidad.cs" />
     <Compile Include="ItemClasificacionExistencia.cs" />
     <Compile Include="ItemEntradaInventario.cs" />
@@ -97,6 +102,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings Files\Marca.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mappings Files\ExistenciaMaquina.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
