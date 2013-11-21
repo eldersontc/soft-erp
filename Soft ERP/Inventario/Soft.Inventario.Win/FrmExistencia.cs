@@ -12,6 +12,7 @@ using Soft.Configuracion.Entidades;
 using Soft.DataAccess;
 using Infragistics.Win;
 using Infragistics.Win.UltraWinGrid;
+using Soft.Ventas.Entidades;
 
 namespace Soft.Inventario.Win
 {
@@ -35,6 +36,13 @@ namespace Soft.Inventario.Win
         const String colStockFisico = "Stock";
         const String colStockComprometido = "Comprometido";
 
+        //Constantes Maquinas
+        const String colCodigoMaquina = "Codigo";
+        const String colNombreMaquina = "Nombre";
+        const String colMaquinaDefecto = "Por Defecto";
+
+        
+
 
         public Existencia Existencia { get { return (Existencia)base.m_ObjectFlow; } }
 
@@ -46,6 +54,7 @@ namespace Soft.Inventario.Win
         {
             this.InitGridUnidad();
             this.InitGridAlmancen();
+            this.InitGridMaquina();
             this.Mostrar();
         }
 
@@ -95,6 +104,34 @@ namespace Soft.Inventario.Win
         }
 
 
+
+        public void InitGridMaquina()
+        {
+            DataTable columns = new DataTable();
+            DataColumn column = new DataColumn();
+
+            column = columns.Columns.Add(colCodigoMaquina);
+            column.DataType = typeof(String);
+            column.ReadOnly = true;
+
+            column = columns.Columns.Add(colNombreMaquina);
+            column.DataType = typeof(String);
+            column.ReadOnly = true;
+
+
+            column = columns.Columns.Add(colMaquinaDefecto);
+            column.DataType = typeof(Boolean);
+            column.ReadOnly = false;
+
+
+            grillaMaquinas.DataSource = columns;
+            grillaMaquinas.DisplayLayout.Bands[0].Columns[colCodigoMaquina].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.FormattedText;
+            grillaMaquinas.DisplayLayout.Bands[0].Columns[colNombreMaquina].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.FormattedText;
+            grillaMaquinas.DisplayLayout.Bands[0].Columns[colMaquinaDefecto].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox;
+        
+        }
+
+
         public void Mostrar()
         {
             txtCodigo.Text = this.Existencia.Codigo;
@@ -105,7 +142,6 @@ namespace Soft.Inventario.Win
             checkEsVenta.Checked = this.Existencia.EsVenta;
             checkesServicio.Checked = this.Existencia.EsServicio;
             checkEsInventariable.Checked = this.Existencia.EsInventariable;
-            uneCostoUltimaCompra.Value = this.Existencia.CostoUltimaCompra;
 
             busClasificacion.Text = (this.Existencia.ClasificacionExistencia != null) ? this.Existencia.ClasificacionExistencia.Nombre : "";
             busItemClasificacion.Text = (this.Existencia.ItemClasificacionExistencia != null) ? this.Existencia.ItemClasificacionExistencia.Nombre : "";
@@ -113,6 +149,7 @@ namespace Soft.Inventario.Win
 
             this.MostrarUnidades();
             this.MostrarAlmacenes();
+            this.MostrarMaquinas();
 
         }
 
@@ -152,6 +189,27 @@ namespace Soft.Inventario.Win
             Row.Cells[colAlmacen].Value = item.Almacen.Nombre;
             Row.Cells[colStockFisico].Value = item.StockFisico;
             Row.Cells[colStockComprometido].Value = item.StockComprometido;
+        }
+
+
+
+        public void MostrarMaquinas()
+        {
+            base.ClearAllRows(ref grillaMaquinas);
+            foreach (ExistenciaMaquina Item in this.Existencia.Maquinas)
+            {
+                UltraGridRow Row = grillaMaquinas.DisplayLayout.Bands[0].AddNew();
+                Row.Tag = Item;
+                this.MostrarMaquina(Row);
+            }
+        }
+
+        public void MostrarMaquina(UltraGridRow Row)
+        {
+            ExistenciaMaquina item = (ExistenciaMaquina)Row.Tag;
+            Row.Cells[colCodigoMaquina].Value = item.Maquina.Codigo;
+            Row.Cells[colNombreMaquina].Value = item.Maquina.Nombre;
+            Row.Cells[colMaquinaDefecto].Value = item.PorDefecto;
         }
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)
@@ -346,6 +404,47 @@ namespace Soft.Inventario.Win
             {
                 busMarca.Text = this.Existencia.Marca.Nombre;
             }
+        }
+
+        private void btnNuevaMaquina_Click(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionarPanel = new FrmSelectedEntity();
+            String filtro = "id not in (";
+            String ids = "";
+
+            foreach (ExistenciaMaquina Item in Existencia.Maquinas)
+            {
+                ids = ids + "'" + Item.Maquina.ID + "',";
+
+            }
+
+            if (ids.Length > 0)
+            {
+                filtro = filtro + ids.Substring(0, ids.Length - 1) + ")";
+            }
+            else
+            {
+                filtro = "";
+            }
+
+
+            Maquina maquina = (Maquina)FrmSeleccionarPanel.GetSelectedEntity(typeof(Maquina), "Máquina", filtro);
+
+            if (maquina != null)
+            {
+                UltraGridRow Row = grillaMaquinas.DisplayLayout.Bands[0].AddNew();
+                Row.Tag = this.Existencia.AddItemMaquina();
+                ExistenciaMaquina item = (ExistenciaMaquina)Row.Tag;
+                item.Maquina = maquina;
+                MostrarMaquina(Row);
+            }
+        }
+
+        private void btnEliminarMaquina_Click(object sender, EventArgs e)
+        {
+            if (grillaMaquinas.ActiveRow == null) { return; }
+            this.Existencia.Maquinas.Remove((ExistenciaMaquina)this.grillaMaquinas.ActiveRow.Tag);
+            this.grillaMaquinas.ActiveRow.Delete(false);
         }
 
     }
