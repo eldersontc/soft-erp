@@ -22,20 +22,15 @@
       <one-to-many class="Soft.Inventario.Entidades.ExistenciaUnidad"/>
     </bag>
 
-
     <bag name="Almacenes" cascade="all-delete-orphan" order-by="Orden" lazy="false">
       <key column="IDExistencia"/>
       <one-to-many class="Soft.Inventario.Entidades.ExistenciaAlmacen"/>
     </bag>
 
-
-
-
     <bag name="Maquinas" cascade="all-delete-orphan" order-by="Orden" lazy="false">
       <key column="IDExistencia"/>
       <one-to-many class="Soft.Inventario.Entidades.ExistenciaMaquina"/>
     </bag>
-
 
   </class>
 

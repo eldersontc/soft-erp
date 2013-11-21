@@ -45,12 +45,19 @@ namespace Soft.Inventario.Entidades
             return Item;
         }
 
-
         public virtual ExistenciaMaquina AddItemMaquina()
         {
             ExistenciaMaquina Item = new ExistenciaMaquina();
             this.Maquinas.Add(Item);
             return Item;
+        }
+
+        public virtual Unidad UnidadBase() {
+            foreach (ExistenciaUnidad ItemUnidad in Unidades)
+            {
+                if (ItemUnidad.EsUnidadBase) { return ItemUnidad.Unidad; }
+            }
+            return null;
         }
 
     }

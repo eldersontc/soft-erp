@@ -23,13 +23,10 @@ namespace Soft.Inventario.Win
             InitializeComponent();
         }
 
-
-
         //Constantes
         const String colUnidad = "Unidad";
         const String colEsBase = "Es Base";
         const String colFactor = "Factor de Conversion";
-
 
         //Constantes
         const String colAlmacen = "Almacen";
@@ -41,14 +38,7 @@ namespace Soft.Inventario.Win
         const String colNombreMaquina = "Nombre";
         const String colMaquinaDefecto = "Por Defecto";
 
-        
-
-
         public Existencia Existencia { get { return (Existencia)base.m_ObjectFlow; } }
-
-        private ExistenciaUnidad ExistenciaUnidad;
-
-
 
         public override void Init()
         {
