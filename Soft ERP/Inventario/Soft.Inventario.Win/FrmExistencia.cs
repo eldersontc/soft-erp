@@ -320,7 +320,7 @@ namespace Soft.Inventario.Win
                     Item.EsUnidadBase = Convert.ToBoolean(e.Cell.Text);
                     break;
                 case colFactor:
-                    Item.FactorConversion = Convert.ToInt32(e.Cell.Text);
+                    Item.FactorConversion = Convert.ToInt32(e.Cell.Text.Replace("-",""));
                     break;
                 default:
                     break;
