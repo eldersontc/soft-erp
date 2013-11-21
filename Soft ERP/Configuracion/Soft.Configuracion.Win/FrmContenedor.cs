@@ -301,7 +301,7 @@ namespace Soft.Configuracion.Win
         private void uceEliminacion_CheckedChanged(object sender, EventArgs e)
         {
             ItemContenedor.Eliminar = uceEliminacion.Checked;
-            ssEliminar.Enabled = ItemContenedor.Eliminar;
+            ssEliminar.Enabled = !ItemContenedor.Eliminar;
         }
 
         private void uceDuplicacion_CheckedChanged(object sender, EventArgs e)
