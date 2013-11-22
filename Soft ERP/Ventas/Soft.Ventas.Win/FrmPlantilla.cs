@@ -50,6 +50,7 @@ namespace Soft.Ventas.Win
             column.DataType = typeof(int);
 
             ugExistencias.DataSource = columns;
+            MapKeys(ref ugExistencias);
         }
 
         public void Mostrar()
