@@ -21,6 +21,7 @@ namespace Soft.Ventas.Entidades
             Item.Existencia = Existencia;
             Item.Unidad = Existencia.UnidadBase();
             Item.Cantidad = 1;
+            Items.Add(Item);
             return Item;
         }
     }

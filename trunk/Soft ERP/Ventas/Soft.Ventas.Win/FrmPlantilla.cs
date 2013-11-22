@@ -88,7 +88,7 @@ namespace Soft.Ventas.Win
             ValueList List = new ValueList();
             foreach (ExistenciaUnidad Unidad in Item.Existencia.Unidades)
             {
-                if (Unidad.EsUnidadBase) { Item.Unidad = Unidad.Unidad; }
+                if (Item.Unidad == null & Unidad.EsUnidadBase) { Item.Unidad = Unidad.Unidad; }
                 List.ValueListItems.Add(Unidad.Unidad, Unidad.Unidad.Nombre);
             }
             Row.Cells[colUnidad].ValueList = List;
@@ -122,7 +122,7 @@ namespace Soft.Ventas.Win
             Existencia Existencia = (Existencia)FrmSeleccionar.GetSelectedEntity(typeof(Existencia), "Existencia", Filtro);
             if (Existencia != null)
             {
-                Existencia ExistenciaCompleta = (Existencia)HelperNHibernate.GetEntityByID("Exitencia",Existencia.ID);
+                Existencia ExistenciaCompleta = (Existencia)HelperNHibernate.GetEntityByID("Existencia",Existencia.ID);
                 UltraGridRow Row = ugExistencias.DisplayLayout.Bands[0].AddNew();
                 Row.Tag = Plantilla.CrearItem(ExistenciaCompleta);
                 MostrarItem(Row);
