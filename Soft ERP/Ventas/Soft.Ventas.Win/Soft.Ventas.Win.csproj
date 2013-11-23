@@ -54,6 +54,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Compilacion\Soft.Inventario.Entidades.dll</HintPath>
     </Reference>
+    <Reference Include="Soft.Reporte.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Soft.Reporte.Entidades.dll</HintPath>
+    </Reference>
     <Reference Include="Soft.Win, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <ExecutableExtension>.exe</ExecutableExtension>
@@ -91,6 +95,21 @@
     <Compile Include="FrmPlantilla.Designer.cs">
       <DependentUpon>FrmPlantilla.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSolicitudCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSolicitudCotizacion.Designer.cs">
+      <DependentUpon>FrmSolicitudCotizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTipoSolicitudCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTipoSolicitudCotizacion.Designer.cs">
+      <DependentUpon>FrmTipoSolicitudCotizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenerarSolicitudDesdePlantilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FrmTipoMaquina.cs">
       <SubType>Form</SubType>
@@ -108,6 +127,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPlantilla.resx">
       <DependentUpon>FrmPlantilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSolicitudCotizacion.resx">
+      <DependentUpon>FrmSolicitudCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTipoSolicitudCotizacion.resx">
+      <DependentUpon>FrmTipoSolicitudCotizacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="FrmTipoMaquina.resx">
