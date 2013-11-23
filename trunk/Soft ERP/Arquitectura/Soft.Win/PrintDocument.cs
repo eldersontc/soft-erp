@@ -42,7 +42,8 @@ namespace Soft.Win
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Source);
+                MessageBox.Show(ex.InnerException.Message);
             }
             base.Start();
         }
