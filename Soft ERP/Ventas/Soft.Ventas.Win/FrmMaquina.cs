@@ -49,6 +49,7 @@ namespace Soft.Ventas.Win
             uneContraEscuadra.Value = Maquina.MargenContraEscuadra;
             uneCalle.Value = Maquina.MargenCalle;
             uceActivo.Checked = Maquina.Activo;
+            txtAnchoDpi.Value = Maquina.AnchoDpi;
         }
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)
@@ -146,6 +147,13 @@ namespace Soft.Ventas.Win
         {
             Maquina.MargenCalle = Convert.ToInt32(uneCalle.Value);
         }
+
+        private void txtAnchoDpi_ValueChanged(object sender, EventArgs e)
+        {
+            Maquina.AnchoDpi = Convert.ToInt32(txtAnchoDpi.Value);
+        }
+
+     
 
     }
 }
