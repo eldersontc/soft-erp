@@ -4,11 +4,18 @@
   <class name="Soft.Ventas.Entidades.ItemPlantilla, Soft.Ventas.Entidades">
 
     <id name="ID" column ="ID" type="string" unsaved-value="0"/>
-    <property name="Cantidad" type="Decimal"/>
+    <property name="Nombre" column="Nombre" type="string"/>
     
-    <many-to-one name="Existencia" class="Soft.Inventario.Entidades.Existencia" column="IDExistencia" insert="true" update="true" lazy="false"/>
-    <many-to-one name="Unidad" class="Soft.Inventario.Entidades.Unidad" column="IDUnidad" insert="true" update="true" lazy="false"/>
-
+    <many-to-one name="Material" class="Soft.Inventario.Entidades.Existencia" column="IDMaterial" insert="true" update="true" lazy="false"/>
+    <many-to-one name="Operacion" class="Soft.Inventario.Entidades.Existencia" column="IDOperacion" insert="true" update="true" lazy="false"/>
+    <many-to-one name="TipoUnidad" class="Soft.Ventas.Entidades.TipoUnidad" column="IDTipoUnidad" insert="true" update="true" lazy="false"/>
+    <many-to-one name="RelacionMedidas" class="Soft.Ventas.Entidades.RelacionMedidas" column="IDRelacionMedidas" insert="true" update="true" lazy="false"/>
+    
+    <bag name="Servicios" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDItemPlantilla"/>
+      <one-to-many class="Soft.Ventas.Entidades.ItemPlantillaServicio"/>
+    </bag>
+    
   </class>
 
 </hibernate-mapping>

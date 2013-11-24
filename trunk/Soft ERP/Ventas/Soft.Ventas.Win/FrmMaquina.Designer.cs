@@ -429,7 +429,7 @@
             // 
             this.ultraTabPageControl1.Controls.Add(this.ugbPliego);
             this.ultraTabPageControl1.Controls.Add(this.ugbMargen);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(479, 199);
             // 
@@ -661,7 +661,7 @@
             this.ultraTabPageControl2.Controls.Add(this.ultraLabel1);
             this.ultraTabPageControl2.Controls.Add(this.txtAnchoDpi);
             this.ultraTabPageControl2.Controls.Add(this.ultraLabel2);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(479, 199);
             // 
@@ -670,7 +670,7 @@
             appearance10.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel1.Appearance = appearance10;
             this.ultraLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel1.Location = new System.Drawing.Point(143, 19);
+            this.ultraLabel1.Location = new System.Drawing.Point(145, 16);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(49, 23);
             this.ultraLabel1.TabIndex = 30;
@@ -678,7 +678,7 @@
             // 
             // txtAnchoDpi
             // 
-            this.txtAnchoDpi.Location = new System.Drawing.Point(66, 19);
+            this.txtAnchoDpi.Location = new System.Drawing.Point(59, 12);
             this.txtAnchoDpi.Name = "txtAnchoDpi";
             this.txtAnchoDpi.Size = new System.Drawing.Size(80, 21);
             this.txtAnchoDpi.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
@@ -691,7 +691,7 @@
             appearance11.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel2.Appearance = appearance11;
             this.ultraLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel2.Location = new System.Drawing.Point(11, 19);
+            this.ultraLabel2.Location = new System.Drawing.Point(15, 16);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(49, 23);
             this.ultraLabel2.TabIndex = 29;

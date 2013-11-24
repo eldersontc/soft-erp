@@ -15,5 +15,7 @@ namespace Soft.Ventas.Entidades
         public virtual Existencia Existencia { get; set; }
         public virtual String Observacion { get; set; }
         public virtual Unidad Unidad { get; set; }
+        public virtual Decimal CantidadInicial { get; set; }
+        public virtual Decimal CantidadFinal { get; set; }
     }
 }

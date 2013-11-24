@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Soft.DataAccess;
 using Soft.Ventas.Entidades;
+using Soft.Entities;
 
 namespace Soft.Ventas.Win
 {
@@ -21,12 +22,14 @@ namespace Soft.Ventas.Win
                 Solicitud.Observacion = String.Format("Generado desde la Plantilla - {0}", Plantilla.Codigo);
                 foreach (ItemPlantilla Item in Plantilla.Items)
                 {
-                    ItemSolicitudCotizacion ItemSolicitud = new ItemSolicitudCotizacion();
-                    ItemSolicitud.Existencia = Item.Existencia;
-                    ItemSolicitud.Unidad = Item.Unidad;
-                    ItemSolicitud.Cantidad = Item.Cantidad;
+                    //ItemSolicitudCotizacion ItemSolicitud = Solicitud.AddItem();
+                    //ItemSolicitud.Existencia = Item.se;
+                    //ItemSolicitud.Unidad = Item.Unidad;
+                    //ItemSolicitud.CantidadInicial = Item.Cantidad;
+                    //ItemSolicitud.CantidadFinal = Item.Cantidad;
                 }
                 base.m_ObjectFlow = Solicitud;
+                base.m_EntidadSF = (EntidadSF)HelperNHibernate.GetEntityByID("EntidadSF", "1DEDB5BA-376B-41CE-9923-29B6CF61B9E6");
                 base.m_ResultProcess = EnumResult.SUCESS;
 	        }
 	        catch (Exception)

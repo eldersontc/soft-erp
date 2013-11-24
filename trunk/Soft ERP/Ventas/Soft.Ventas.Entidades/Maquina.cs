@@ -10,7 +10,6 @@ namespace Soft.Ventas.Entidades
     [Serializable]
     public class Maquina : Parent {
     
-        //prueba
         public Maquina() { }
         public virtual String Codigo { get; set; }
         public virtual TipoMaquina TipoMaquina { get; set; }

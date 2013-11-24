@@ -35,6 +35,7 @@ namespace Soft.Ventas.Win
         const String colNombre = "Nombre";
         const String colObservacion = "Observación";
         const String colUnidad = "Unidad";
+        const String colCantidad = "Cantidad";
 
         private Boolean ActualizandoIU = false;
 
@@ -55,7 +56,12 @@ namespace Soft.Ventas.Win
             column = columns.Columns.Add(colUnidad);
             column.DataType = typeof(String);
 
+            column = columns.Columns.Add(colCantidad);
+            column.DataType = typeof(Int32);
+            column.ReadOnly = true;
+            
             ugProductos.DataSource = columns;
+            ugProductos.DisplayLayout.Bands[0].Columns[colNombre].Width = 250;
             MapKeys(ref ugProductos);
         }
 
@@ -65,9 +71,13 @@ namespace Soft.Ventas.Win
             ssTipoDocumento.Text = (SolicitudCotizacion.TipoDocumento != null) ? SolicitudCotizacion.TipoDocumento.Descripcion : "";
             ssCliente.Text = (SolicitudCotizacion.Cliente != null) ? SolicitudCotizacion.Cliente.Nombre : "";
             ssResponsable.Text = (SolicitudCotizacion.Responsable != null) ? SolicitudCotizacion.Responsable.Nombre : "";
+            ssFormaPago.Text = (SolicitudCotizacion.ModalidadCredito != null) ? SolicitudCotizacion.ModalidadCredito.Descripcion : "";
             txtNumeracion.Text = SolicitudCotizacion.Numeracion;
             udtFechaCreacion.Value = SolicitudCotizacion.FechaCreacion;
             txtObservacion.Text = SolicitudCotizacion.Observacion;
+            txtDescripcion.Text = SolicitudCotizacion.Descripcion;
+            uneCantidad.Value = SolicitudCotizacion.Cantidad;
+            txtTotal.Value = SolicitudCotizacion.Total;
             MostrarItems();
             ActualizandoIU = false;
         }
@@ -94,6 +104,7 @@ namespace Soft.Ventas.Win
                 Row.Cells[colCodigo].Value = Item.Existencia.Codigo;
                 Row.Cells[colNombre].Value = Item.Existencia.Nombre;
                 Row.Cells[colUnidad].Value = Item.Unidad.Nombre;
+                Row.Cells[colCantidad].Value = Item.CantidadFinal;
             }
             Row.Cells[colObservacion].Value = Item.Observacion;
         }
@@ -101,8 +112,8 @@ namespace Soft.Ventas.Win
         private void ssTipoDocumento_Search(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
-            SolicitudCotizacion.TipoDocumento = (TipoSolicitudCotizacion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoSolicitudCotizacion), "Tipo Solicitud Cotización");
-            ssTipoDocumento.Text = (SolicitudCotizacion.TipoDocumento != null) ? SolicitudCotizacion.TipoDocumento.Descripcion : "";
+            SolicitudCotizacion.TipoDocumento = (TipoSolicitudCotizacion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoSolicitudCotizacion), "Tipo Solicitud de Cotización");
+            ssTipoDocumento.Text = (SolicitudCotizacion.TipoDocumento != null) ? SolicitudCotizacion.TipoDocumento.Nombre : "";
         }
 
         private void txtNumeracion_TextChanged(object sender, EventArgs e)
@@ -244,6 +255,27 @@ namespace Soft.Ventas.Win
             {
                 //MessageBox.Show(ex.Message);
             }
+        }
+
+        private void txtTotal_ValueChanged(object sender, EventArgs e)
+        {
+            SolicitudCotizacion.Total = Convert.ToDecimal(txtTotal.Value);
+        }
+
+        private void ubRecalcular_Click(object sender, EventArgs e)
+        {
+            foreach (ItemSolicitudCotizacion Item in SolicitudCotizacion.Items)
+            {
+                Item.CantidadFinal = Item.CantidadInicial * SolicitudCotizacion.Cantidad;
+            }
+            MostrarItems();
+        }
+
+        private void ssFormaPago_Search(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+            SolicitudCotizacion.ModalidadCredito = (ModalidadCredito)FrmSeleccionar.GetSelectedEntity(typeof(ModalidadCredito), "Modalidad de Crédito");
+            ssFormaPago.Text = (SolicitudCotizacion.ModalidadCredito != null) ? SolicitudCotizacion.ModalidadCredito.Descripcion : "";
         }
 
     }
