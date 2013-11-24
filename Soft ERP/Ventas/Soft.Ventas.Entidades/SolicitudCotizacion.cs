@@ -12,6 +12,7 @@ namespace Soft.Ventas.Entidades
         public SolicitudCotizacion() { FechaCreacion = DateTime.Now; }
         
         public virtual SocioNegocio Cliente { get; set; }
+        public virtual ModalidadCredito ModalidadCredito { get; set; }
         public override Decimal Total { get; set; }
         public virtual Decimal Cantidad { get; set; }
         public virtual String Descripcion { get; set; }

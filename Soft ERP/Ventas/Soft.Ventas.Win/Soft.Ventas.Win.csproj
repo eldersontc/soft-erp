@@ -36,6 +36,7 @@
     <Reference Include="Infragistics4.Win.UltraWinEditors.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinGrid.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinTabControl.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinTree.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Soft.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -95,6 +96,12 @@
     <Compile Include="FrmPlantilla.Designer.cs">
       <DependentUpon>FrmPlantilla.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmRelacionMedidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRelacionMedidas.Designer.cs">
+      <DependentUpon>FrmRelacionMedidas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSolicitudCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +114,12 @@
     <Compile Include="FrmTipoSolicitudCotizacion.Designer.cs">
       <DependentUpon>FrmTipoSolicitudCotizacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmTipoUnidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTipoUnidad.Designer.cs">
+      <DependentUpon>FrmTipoUnidad.cs</DependentUpon>
+    </Compile>
     <Compile Include="GenerarSolicitudDesdePlantilla.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +129,11 @@
     </Compile>
     <Compile Include="FrmTipoMaquina.Designer.cs">
       <DependentUpon>FrmTipoMaquina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -128,15 +146,25 @@
     <EmbeddedResource Include="FrmPlantilla.resx">
       <DependentUpon>FrmPlantilla.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmRelacionMedidas.resx">
+      <DependentUpon>FrmRelacionMedidas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmSolicitudCotizacion.resx">
       <DependentUpon>FrmSolicitudCotizacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTipoSolicitudCotizacion.resx">
       <DependentUpon>FrmTipoSolicitudCotizacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmTipoUnidad.resx">
+      <DependentUpon>FrmTipoUnidad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="FrmTipoMaquina.resx">
       <DependentUpon>FrmTipoMaquina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +172,9 @@
       <Project>{7711A220-5A8B-47B1-AB38-142B9EC22F02}</Project>
       <Name>Soft.Ventas.Entidades</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\green_button.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

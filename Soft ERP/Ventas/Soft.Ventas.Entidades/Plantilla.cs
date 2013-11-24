@@ -16,11 +16,8 @@ namespace Soft.Ventas.Entidades
         public virtual String Codigo { get; set; }
         public virtual IList<ItemPlantilla> Items { get; set; }
 
-        public virtual ItemPlantilla CrearItem(Existencia Existencia) {
+        public virtual ItemPlantilla CrearItem() {
             ItemPlantilla Item = new ItemPlantilla();
-            Item.Existencia = Existencia;
-            Item.Unidad = Existencia.UnidadBase();
-            Item.Cantidad = 1;
             Items.Add(Item);
             return Item;
         }
