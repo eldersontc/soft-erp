@@ -8,7 +8,7 @@ using Soft.Inventario.Entidades;
 namespace Soft.Ventas.Entidades
 {
     [Serializable]
-    public class Maquina : Parent
+    public class Maquina : Parent {
     
         //prueba
         public Maquina() { }
