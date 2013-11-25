@@ -56,7 +56,7 @@
             this.ugbParent.Controls.Add(this.CheckActivo);
             this.ugbParent.Controls.Add(this.lblNombre);
             this.ugbParent.Controls.Add(this.txtNombre);
-            this.ugbParent.Size = new System.Drawing.Size(380, 207);
+            this.ugbParent.Size = new System.Drawing.Size(380, 173);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.txtNombre, 0);
@@ -66,11 +66,11 @@
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(295, 176);
+            this.ubCancelar.Location = new System.Drawing.Point(288, 135);
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(205, 176);
+            this.ubAceptar.Location = new System.Drawing.Point(198, 135);
             // 
             // ilMain
             // 
@@ -327,7 +327,7 @@
             // 
             this.CheckActivo.BackColor = System.Drawing.Color.Transparent;
             this.CheckActivo.BackColorInternal = System.Drawing.Color.Transparent;
-            this.CheckActivo.Location = new System.Drawing.Point(316, 25);
+            this.CheckActivo.Location = new System.Drawing.Point(300, 17);
             this.CheckActivo.Name = "CheckActivo";
             this.CheckActivo.Size = new System.Drawing.Size(54, 20);
             this.CheckActivo.TabIndex = 11;
@@ -339,15 +339,15 @@
             appearance3.BackColor = System.Drawing.Color.Transparent;
             this.lblNombre.Appearance = appearance3;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblNombre.Location = new System.Drawing.Point(23, 24);
+            this.lblNombre.Location = new System.Drawing.Point(16, 20);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(69, 23);
+            this.lblNombre.Size = new System.Drawing.Size(58, 23);
             this.lblNombre.TabIndex = 9;
             this.lblNombre.Text = "Nombre";
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(98, 24);
+            this.txtNombre.Location = new System.Drawing.Point(76, 16);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(212, 21);
             this.txtNombre.TabIndex = 10;
@@ -359,7 +359,7 @@
             this.ugbPliego.Controls.Add(this.txtAbierto);
             this.ugbPliego.Controls.Add(this.ultraLabel1);
             this.ugbPliego.Controls.Add(this.lblMaximoPliego);
-            this.ugbPliego.Location = new System.Drawing.Point(23, 67);
+            this.ugbPliego.Location = new System.Drawing.Point(16, 49);
             this.ugbPliego.Name = "ugbPliego";
             this.ugbPliego.Size = new System.Drawing.Size(347, 80);
             this.ugbPliego.TabIndex = 33;
@@ -367,7 +367,7 @@
             // 
             // txtCerrado
             // 
-            this.txtCerrado.Location = new System.Drawing.Point(237, 31);
+            this.txtCerrado.Location = new System.Drawing.Point(234, 31);
             this.txtCerrado.Name = "txtCerrado";
             this.txtCerrado.Size = new System.Drawing.Size(104, 21);
             this.txtCerrado.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
@@ -377,7 +377,7 @@
             // 
             // txtAbierto
             // 
-            this.txtAbierto.Location = new System.Drawing.Point(64, 31);
+            this.txtAbierto.Location = new System.Drawing.Point(60, 31);
             this.txtAbierto.Name = "txtAbierto";
             this.txtAbierto.Size = new System.Drawing.Size(112, 21);
             this.txtAbierto.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
@@ -401,7 +401,7 @@
             appearance2.BackColor = System.Drawing.Color.Transparent;
             this.lblMaximoPliego.Appearance = appearance2;
             this.lblMaximoPliego.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblMaximoPliego.Location = new System.Drawing.Point(182, 31);
+            this.lblMaximoPliego.Location = new System.Drawing.Point(179, 35);
             this.lblMaximoPliego.Name = "lblMaximoPliego";
             this.lblMaximoPliego.Size = new System.Drawing.Size(57, 23);
             this.lblMaximoPliego.TabIndex = 28;
@@ -411,9 +411,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 245);
+            this.ClientSize = new System.Drawing.Size(396, 211);
             this.Name = "FrmRelacionMedidas";
-            this.Text = "FrmRelacionMedidas";
+            this.Text = "Relación de Medidas";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
             this.ugbParent.ResumeLayout(false);
             this.ugbParent.PerformLayout();
