@@ -137,5 +137,10 @@ namespace Soft.Inventario.Win
             ssReporte.Text = (TipoDocumentoInventario.Reporte != null) ? TipoDocumentoInventario.Reporte.Nombre : "";
         }
 
+        private void CheckGeneraNumeracionalFinal_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

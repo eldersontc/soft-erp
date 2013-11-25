@@ -29,11 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmExistencia));
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
@@ -47,9 +50,12 @@
             this.btnNuevoAlmacen = new Infragistics.Win.Misc.UltraButton();
             this.grillaAlmacenes = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.ultraTabPageControl3 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.utMaquimas = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
+            this.ultraTabSharedControlsPage2 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
+            this.ultraTabPageControl4 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.grillaMaquinas = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.btnEliminarMaquina = new Infragistics.Win.Misc.UltraButton();
             this.btnNuevaMaquina = new Infragistics.Win.Misc.UltraButton();
-            this.grillaMaquinas = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.CheckActivo = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.txtDescripcion = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
@@ -76,6 +82,9 @@
             this.ultraTabPageControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaAlmacenes)).BeginInit();
             this.ultraTabPageControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.utMaquimas)).BeginInit();
+            this.utMaquimas.SuspendLayout();
+            this.ultraTabPageControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaMaquinas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckActivo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion)).BeginInit();
@@ -464,16 +473,57 @@
             // 
             // ultraTabPageControl3
             // 
-            this.ultraTabPageControl3.Controls.Add(this.btnEliminarMaquina);
-            this.ultraTabPageControl3.Controls.Add(this.btnNuevaMaquina);
-            this.ultraTabPageControl3.Controls.Add(this.grillaMaquinas);
+            this.ultraTabPageControl3.Controls.Add(this.utMaquimas);
             this.ultraTabPageControl3.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl3.Name = "ultraTabPageControl3";
             this.ultraTabPageControl3.Size = new System.Drawing.Size(535, 218);
             // 
+            // utMaquimas
+            // 
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.utMaquimas.Appearance = appearance3;
+            this.utMaquimas.Controls.Add(this.ultraTabSharedControlsPage2);
+            this.utMaquimas.Controls.Add(this.ultraTabPageControl4);
+            this.utMaquimas.Location = new System.Drawing.Point(3, 3);
+            this.utMaquimas.Name = "utMaquimas";
+            this.utMaquimas.SharedControlsPage = this.ultraTabSharedControlsPage2;
+            this.utMaquimas.Size = new System.Drawing.Size(499, 209);
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.utMaquimas.TabHeaderAreaAppearance = appearance4;
+            this.utMaquimas.TabIndex = 17;
+            ultraTab4.TabPage = this.ultraTabPageControl4;
+            ultraTab4.Text = ":: Máquinas ::";
+            this.utMaquimas.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
+            ultraTab4});
+            // 
+            // ultraTabSharedControlsPage2
+            // 
+            this.ultraTabSharedControlsPage2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
+            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(495, 183);
+            // 
+            // ultraTabPageControl4
+            // 
+            this.ultraTabPageControl4.Controls.Add(this.grillaMaquinas);
+            this.ultraTabPageControl4.Controls.Add(this.btnEliminarMaquina);
+            this.ultraTabPageControl4.Controls.Add(this.btnNuevaMaquina);
+            this.ultraTabPageControl4.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl4.Name = "ultraTabPageControl4";
+            this.ultraTabPageControl4.Size = new System.Drawing.Size(495, 183);
+            // 
+            // grillaMaquinas
+            // 
+            this.grillaMaquinas.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.grillaMaquinas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grillaMaquinas.Location = new System.Drawing.Point(0, 0);
+            this.grillaMaquinas.Name = "grillaMaquinas";
+            this.grillaMaquinas.Size = new System.Drawing.Size(495, 151);
+            this.grillaMaquinas.TabIndex = 12;
+            this.grillaMaquinas.Text = "Máquinas";
+            // 
             // btnEliminarMaquina
             // 
-            this.btnEliminarMaquina.Location = new System.Drawing.Point(422, 189);
+            this.btnEliminarMaquina.Location = new System.Drawing.Point(376, 155);
             this.btnEliminarMaquina.Name = "btnEliminarMaquina";
             this.btnEliminarMaquina.Size = new System.Drawing.Size(110, 23);
             this.btnEliminarMaquina.TabIndex = 16;
@@ -483,23 +533,13 @@
             // 
             // btnNuevaMaquina
             // 
-            this.btnNuevaMaquina.Location = new System.Drawing.Point(320, 189);
+            this.btnNuevaMaquina.Location = new System.Drawing.Point(274, 155);
             this.btnNuevaMaquina.Name = "btnNuevaMaquina";
             this.btnNuevaMaquina.Size = new System.Drawing.Size(96, 23);
             this.btnNuevaMaquina.TabIndex = 15;
             this.btnNuevaMaquina.Text = "Nuevo Maquina";
             this.btnNuevaMaquina.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnNuevaMaquina.Click += new System.EventHandler(this.btnNuevaMaquina_Click);
-            // 
-            // grillaMaquinas
-            // 
-            this.grillaMaquinas.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            this.grillaMaquinas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grillaMaquinas.Location = new System.Drawing.Point(0, 0);
-            this.grillaMaquinas.Name = "grillaMaquinas";
-            this.grillaMaquinas.Size = new System.Drawing.Size(535, 183);
-            this.grillaMaquinas.TabIndex = 12;
-            this.grillaMaquinas.Text = "ultraGrid1";
             // 
             // CheckActivo
             // 
@@ -526,8 +566,8 @@
             // 
             // ultraLabel2
             // 
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance4;
+            appearance6.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance6;
             this.ultraLabel2.Location = new System.Drawing.Point(16, 73);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(74, 22);
@@ -544,8 +584,8 @@
             // 
             // Nombre
             // 
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            this.Nombre.Appearance = appearance5;
+            appearance7.BackColor = System.Drawing.Color.Transparent;
+            this.Nombre.Appearance = appearance7;
             this.Nombre.Location = new System.Drawing.Point(16, 45);
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(60, 23);
@@ -562,8 +602,8 @@
             // 
             // Codigo
             // 
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            this.Codigo.Appearance = appearance6;
+            appearance8.BackColor = System.Drawing.Color.Transparent;
+            this.Codigo.Appearance = appearance8;
             this.Codigo.Location = new System.Drawing.Point(16, 18);
             this.Codigo.Name = "Codigo";
             this.Codigo.Size = new System.Drawing.Size(60, 23);
@@ -646,20 +686,19 @@
             this.ultraTabControl1.Name = "ultraTabControl1";
             this.ultraTabControl1.SharedControlsPage = this.ultraTabSharedControlsPage1;
             this.ultraTabControl1.Size = new System.Drawing.Size(539, 244);
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.ultraTabControl1.TabHeaderAreaAppearance = appearance3;
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            this.ultraTabControl1.TabHeaderAreaAppearance = appearance5;
             this.ultraTabControl1.TabIndex = 21;
             ultraTab1.TabPage = this.ultraTabPageControl1;
-            ultraTab1.Text = ".:: Unidades ::.";
+            ultraTab1.Text = ":: Unidades ::";
             ultraTab2.TabPage = this.ultraTabPageControl2;
-            ultraTab2.Text = ".:: Almacenes ::.";
+            ultraTab2.Text = ":: Almacenes ::";
             ultraTab3.TabPage = this.ultraTabPageControl3;
-            ultraTab3.Text = ".:: Maquinas  ::.";
+            ultraTab3.Text = ":: Impresión ::";
             this.ultraTabControl1.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
             ultraTab1,
             ultraTab2,
             ultraTab3});
-            //this.ultraTabControl1.SelectedTabChanged += new Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventHandler(this.ultraTabControl1_SelectedTabChanged);
             // 
             // ultraTabSharedControlsPage1
             // 
@@ -731,6 +770,9 @@
             this.ultraTabPageControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grillaAlmacenes)).EndInit();
             this.ultraTabPageControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.utMaquimas)).EndInit();
+            this.utMaquimas.ResumeLayout(false);
+            this.ultraTabPageControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grillaMaquinas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckActivo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion)).EndInit();
@@ -783,6 +825,9 @@
         private Infragistics.Win.Misc.UltraButton btnEliminarMaquina;
         private Infragistics.Win.Misc.UltraButton btnNuevaMaquina;
         private Infragistics.Win.UltraWinGrid.UltraGrid grillaMaquinas;
+        private Infragistics.Win.UltraWinTabControl.UltraTabControl utMaquimas;
+        private Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage ultraTabSharedControlsPage2;
+        private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl4;
 
     }
 }

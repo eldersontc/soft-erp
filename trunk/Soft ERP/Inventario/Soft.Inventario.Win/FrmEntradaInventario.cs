@@ -68,6 +68,7 @@ namespace Soft.Inventario.Win
             column.DataType = typeof(Decimal);
 
             ugProductos.DataSource = columns;
+            ugProductos.DisplayLayout.Bands[0].Columns[colNombre].Width = 250;
             ugProductos.DisplayLayout.Bands[0].Columns[colUnidad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
             ugProductos.DisplayLayout.Bands[0].Columns[colCantidad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
             ugProductos.DisplayLayout.Bands[0].Columns[colCantidad].CellAppearance.TextHAlign = HAlign.Right;
