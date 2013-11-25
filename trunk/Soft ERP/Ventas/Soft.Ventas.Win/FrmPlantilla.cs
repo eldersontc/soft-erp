@@ -153,7 +153,7 @@ namespace Soft.Ventas.Win
             {
                 IDs = IDs + "'" + Item.Servicio.ID + "',";
             }
-            Filtro = (IDs.Length > 0) ? Filtro + IDs.Substring(0, IDs.Length - 1) + ") AND EsInventariable = 1" : " EsInventariable = 1";
+            Filtro = (IDs.Length > 0) ? Filtro + IDs.Substring(0, IDs.Length - 1) + ") AND EsServicio = 1" : " EsServicio = 1";
 
             Existencia Existencia = (Existencia)FrmSeleccionar.GetSelectedEntity(typeof(Existencia), "Existencia", Filtro);
             if (Existencia != null)

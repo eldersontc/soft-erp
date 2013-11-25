@@ -44,7 +44,7 @@
             this.ugbParent.Controls.Add(this.CheckActivo);
             this.ugbParent.Controls.Add(this.lblNombre);
             this.ugbParent.Controls.Add(this.txtNombre);
-            this.ugbParent.Size = new System.Drawing.Size(366, 121);
+            this.ugbParent.Size = new System.Drawing.Size(357, 94);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.txtNombre, 0);
@@ -53,11 +53,11 @@
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(274, 92);
+            this.ubCancelar.Location = new System.Drawing.Point(265, 53);
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(193, 92);
+            this.ubAceptar.Location = new System.Drawing.Point(184, 53);
             // 
             // ilMain
             // 
@@ -314,7 +314,7 @@
             // 
             this.CheckActivo.BackColor = System.Drawing.Color.Transparent;
             this.CheckActivo.BackColorInternal = System.Drawing.Color.Transparent;
-            this.CheckActivo.Location = new System.Drawing.Point(295, 22);
+            this.CheckActivo.Location = new System.Drawing.Point(286, 16);
             this.CheckActivo.Name = "CheckActivo";
             this.CheckActivo.Size = new System.Drawing.Size(54, 20);
             this.CheckActivo.TabIndex = 14;
@@ -326,15 +326,15 @@
             appearance1.BackColor = System.Drawing.Color.Transparent;
             this.lblNombre.Appearance = appearance1;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblNombre.Location = new System.Drawing.Point(7, 25);
+            this.lblNombre.Location = new System.Drawing.Point(16, 19);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(77, 23);
+            this.lblNombre.Size = new System.Drawing.Size(47, 23);
             this.lblNombre.TabIndex = 12;
             this.lblNombre.Text = "Nombre";
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(90, 25);
+            this.txtNombre.Location = new System.Drawing.Point(69, 15);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(199, 21);
             this.txtNombre.TabIndex = 13;
@@ -344,9 +344,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 159);
+            this.ClientSize = new System.Drawing.Size(373, 132);
             this.Name = "FrmTipoUnidad";
-            this.Text = "FrmTipoUnidad";
+            this.Text = "Tipo de Unidad";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
             this.ugbParent.ResumeLayout(false);
             this.ugbParent.PerformLayout();
