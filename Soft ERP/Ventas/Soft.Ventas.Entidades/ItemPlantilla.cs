@@ -29,5 +29,31 @@ namespace Soft.Ventas.Entidades
             Servicios.Add(Item);
             return Item;
         }
+
+
+        public virtual String ObtenerFiltroMaquinas()
+        {
+            String Filtro = "";
+            foreach (ExistenciaMaquina Item in Operacion.Maquinas)
+            {
+                if (Filtro.Length > 0) { Filtro += ","; }
+                Filtro += "'"+ Item.Maquina.ID + "'";
+            }
+            if (Filtro.Length > 0) { Filtro = String.Format(" ID IN ({0})",Filtro); }
+            return Filtro;
+        }
+
+        public virtual String ObtenerFiltroServicios()
+        {
+            String Filtro = "";
+            foreach (ItemPlantillaServicio Item in Servicios)
+            {
+                if (Filtro.Length > 0) { Filtro += ","; }
+                Filtro += "'" + Item.Servicio.ID + "'";
+            }
+            if (Filtro.Length > 0) { Filtro = String.Format(" ID IN ({0})", Filtro); }
+            return Filtro;
+        }
+
     }
 }
