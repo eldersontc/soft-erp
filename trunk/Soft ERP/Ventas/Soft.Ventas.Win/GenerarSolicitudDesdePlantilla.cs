@@ -22,11 +22,20 @@ namespace Soft.Ventas.Win
                 Solicitud.Observacion = String.Format("Generado desde la Plantilla - {0}", Plantilla.Codigo);
                 foreach (ItemPlantilla Item in Plantilla.Items)
                 {
-                    //ItemSolicitudCotizacion ItemSolicitud = Solicitud.AddItem();
-                    //ItemSolicitud.Existencia = Item.se;
-                    //ItemSolicitud.Unidad = Item.Unidad;
-                    //ItemSolicitud.CantidadInicial = Item.Cantidad;
-                    //ItemSolicitud.CantidadFinal = Item.Cantidad;
+                    ItemSolicitudCotizacion ItemSolicitud = Solicitud.AddItem();
+                    ItemSolicitud.Nombre = Item.Nombre;
+                    ItemSolicitud.TipoUnidad = Item.TipoUnidad.Nombre;
+                    ItemSolicitud.Material = Item.Material;
+                    ItemSolicitud.m_FiltroMaquina = Item.ObtenerFiltroMaquinas();
+                    ItemSolicitud.m_FiltroServicios = Item.ObtenerFiltroServicios();
+                    foreach (ItemPlantillaServicio ItemServicio in Item.Servicios)
+                    {
+                        ItemSolicitudCotizacionServicio ItemSolicitudSerivcio = ItemSolicitud.AddServicio();
+                        ItemSolicitudSerivcio.Servicio = ItemServicio.Servicio;
+                        ItemSolicitudSerivcio.Unidad = ItemServicio.Unidad;
+                        ItemSolicitudSerivcio.CantidadInicial = ItemServicio.Cantidad;
+                        ItemSolicitudSerivcio.CantidadFinal = ItemServicio.Cantidad;
+                    }
                 }
                 base.m_ObjectFlow = Solicitud;
                 base.m_EntidadSF = (EntidadSF)HelperNHibernate.GetEntityByID("EntidadSF", "1DEDB5BA-376B-41CE-9923-29B6CF61B9E6");

@@ -10,12 +10,29 @@ namespace Soft.Ventas.Entidades
     [Serializable]
     public class ItemSolicitudCotizacion  : ItemDocumento  
     {
-        public ItemSolicitudCotizacion() { }
+        public ItemSolicitudCotizacion() {
+            Servicios = new List<ItemSolicitudCotizacionServicio>();
+        }
 
-        public virtual Existencia Existencia { get; set; }
+        public virtual IList<ItemSolicitudCotizacionServicio> Servicios { get; set; }
+        public virtual Decimal MedidaAbierta { get; set; }
+        public virtual Decimal MedidaCerrada { get; set; }
+        public virtual Int32 ImpresoTiraColor { get; set; }
+        public virtual Int32 ImpresoRetiraColor { get; set; }
+        public virtual Int32 Cantidad { get; set; }
         public virtual String Observacion { get; set; }
-        public virtual Unidad Unidad { get; set; }
-        public virtual Decimal CantidadInicial { get; set; }
-        public virtual Decimal CantidadFinal { get; set; }
+        public virtual Maquina Maquina { get; set; }
+        public virtual Existencia Material { get; set; }
+        public virtual String TipoUnidad { get; set; }
+        public virtual String m_FiltroMaquina { get; set; }
+        public virtual String m_FiltroServicios { get; set; }
+
+        public virtual ItemSolicitudCotizacionServicio AddServicio()
+        {
+            ItemSolicitudCotizacionServicio Item = new ItemSolicitudCotizacionServicio();
+            Servicios.Add(Item);
+            return Item;
+        }
+
     }
 }

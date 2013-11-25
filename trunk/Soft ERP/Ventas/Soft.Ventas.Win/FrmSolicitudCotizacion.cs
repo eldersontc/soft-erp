@@ -13,6 +13,7 @@ using Soft.DataAccess;
 using Soft.Entities;
 using Microsoft.VisualBasic;
 using Soft.Inventario.Entidades;
+using Infragistics.Win.UltraWinTree;
 
 namespace Soft.Ventas.Win
 {
@@ -23,7 +24,8 @@ namespace Soft.Ventas.Win
             InitializeComponent();
         }
 
-        public SolicitudCotizacion SolicitudCotizacion { get { return (SolicitudCotizacion)base.m_ObjectFlow; } }
+        public  SolicitudCotizacion SolicitudCotizacion { get { return (SolicitudCotizacion)base.m_ObjectFlow; } }
+        private ItemSolicitudCotizacion ItemSolicitudCotizacion = null;
 
         public override void Init()
         {
@@ -31,12 +33,8 @@ namespace Soft.Ventas.Win
             Mostrar();
         }
 
-        const String colCodigo = "Código";
         const String colNombre = "Nombre";
-        const String colObservacion = "Observación";
-        const String colUnidad = "Unidad";
-        const String colCantidad = "Cantidad";
-
+        
         private Boolean ActualizandoIU = false;
 
         public void InitGrids()
@@ -44,25 +42,12 @@ namespace Soft.Ventas.Win
             DataTable columns = new DataTable();
             DataColumn column = new DataColumn();
 
-            column = columns.Columns.Add(colCodigo);
-            column.DataType = typeof(String);
-
             column = columns.Columns.Add(colNombre);
             column.DataType = typeof(String);
 
-            column = columns.Columns.Add(colObservacion);
-            column.DataType = typeof(String);
-
-            column = columns.Columns.Add(colUnidad);
-            column.DataType = typeof(String);
-
-            column = columns.Columns.Add(colCantidad);
-            column.DataType = typeof(Int32);
-            column.ReadOnly = true;
-            
-            ugProductos.DataSource = columns;
-            ugProductos.DisplayLayout.Bands[0].Columns[colNombre].Width = 250;
-            MapKeys(ref ugProductos);
+            ugServicios.DataSource = columns;
+            ugServicios.DisplayLayout.Bands[0].Columns[colNombre].Width = 250;
+            MapKeys(ref ugServicios);
         }
 
         public void Mostrar()
@@ -84,29 +69,56 @@ namespace Soft.Ventas.Win
 
         public void MostrarItems()
         {
-            base.ClearAllRows(ref ugProductos);
             foreach (ItemSolicitudCotizacion Item in SolicitudCotizacion.Items)
             {
-                UltraGridRow Row = ugProductos.DisplayLayout.Bands[0].AddNew();
+                UltraTreeNode Node = new UltraTreeNode();
+                Node.Tag = Item;
+                Node.Text = Item.Nombre;
+                utSolicitudCotizacion.Nodes.Add(Node);
+                MostrarItem(Node);
+            }
+            if (utSolicitudCotizacion.Nodes.Count > 0)
+            {
+                utSolicitudCotizacion.ActiveNode = utSolicitudCotizacion.Nodes[0];
+                utSolicitudCotizacion.Nodes[0].Selected = true;
+            }
+            utSolicitudCotizacion.ExpandAll();
+        }
+
+        public void MostrarItem(UltraTreeNode Node)
+        {
+            ItemSolicitudCotizacion Item = (ItemSolicitudCotizacion)Node.Tag;
+            ssMaquina.Text = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
+            ssMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
+            lblTipoUnidad.Text = Item.TipoUnidad;
+            txtObservacionItem.Text = Item.Observacion;
+            txtCantidadItem.Value = Item.Cantidad;
+            txtMedidaAbierto.Value = Item.MedidaAbierta;
+            txtMedidaCerrado.Value = Item.MedidaCerrada;
+            txtImpresoTiraColor.Value = Item.ImpresoTiraColor;
+            txtImpresoRetiraColor.Value = Item.ImpresoRetiraColor;
+            MostrarServicios(Item);
+        }
+
+        public void MostrarServicios(ItemSolicitudCotizacion ItemSolicitud)
+        {
+            base.ClearAllRows(ref ugServicios);
+            foreach (ItemSolicitudCotizacionServicio Item in ItemSolicitud.Servicios)
+            {
+                UltraGridRow Row = ugServicios.DisplayLayout.Bands[0].AddNew();
                 Row.Tag = Item;
-                MostrarItem(Row);
+                MostrarServicio(Row);
             }
         }
 
-        public void MostrarItem(UltraGridRow Row)
+        public void MostrarServicio(UltraGridRow Row)
         {
-            ItemSolicitudCotizacion Item = (ItemSolicitudCotizacion)Row.Tag;
-            if (Item.Existencia != null)
+            ItemSolicitudCotizacionServicio Item = (ItemSolicitudCotizacionServicio)Row.Tag;
+            if (Item.Servicio != null)
             {
-                Row.Cells[colCodigo].Activation = Activation.NoEdit;
                 Row.Cells[colNombre].Activation = Activation.NoEdit;
-                Row.Cells[colUnidad].Activation = Activation.NoEdit;
-                Row.Cells[colCodigo].Value = Item.Existencia.Codigo;
-                Row.Cells[colNombre].Value = Item.Existencia.Nombre;
-                Row.Cells[colUnidad].Value = Item.Unidad.Nombre;
-                Row.Cells[colCantidad].Value = Item.CantidadFinal;
+                Row.Cells[colNombre].Value = Item.Servicio.Nombre;
             }
-            Row.Cells[colObservacion].Value = Item.Observacion;
         }
 
         private void ssTipoDocumento_Search(object sender, EventArgs e)
@@ -143,11 +155,6 @@ namespace Soft.Ventas.Win
             SolicitudCotizacion.Cantidad = Convert.ToInt32(uneCantidad.Value);
         }
 
-        private void ssLineaTrabajo_Search(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtObservacion_TextChanged(object sender, EventArgs e)
         {
             SolicitudCotizacion.Observacion = txtObservacion.Text;
@@ -155,17 +162,18 @@ namespace Soft.Ventas.Win
 
         private void ubNuevaExistencia_Click(object sender, EventArgs e)
         {
-            UltraGridRow Row = ugProductos.DisplayLayout.Bands[0].AddNew();
-            Row.Tag = SolicitudCotizacion.AddItem();
-            Row.Cells[colCodigo].Activate();
-            ugProductos.PerformAction(Infragistics.Win.UltraWinGrid.UltraGridAction.EnterEditMode);
+            if (ItemSolicitudCotizacion == null) { return; }
+            UltraGridRow Row = ugServicios.DisplayLayout.Bands[0].AddNew();
+            Row.Tag = ItemSolicitudCotizacion.AddServicio();
+            Row.Cells[colNombre].Activate();
+            ugServicios.PerformAction(Infragistics.Win.UltraWinGrid.UltraGridAction.EnterEditMode);
         }
 
         private void ubEliminarExistencia_Click(object sender, EventArgs e)
         {
-            if (ugProductos.ActiveRow == null) { return; }
-            SolicitudCotizacion.Items.Remove((ItemSolicitudCotizacion)ugProductos.ActiveRow.Tag);
-            ugProductos.ActiveRow.Delete(false);
+            if (ugServicios.ActiveRow == null) { return; }
+            ItemSolicitudCotizacion.Servicios.Remove((ItemSolicitudCotizacionServicio)ugServicios.ActiveRow.Tag);
+            ugServicios.ActiveRow.Delete(false);
         }
 
         private void ssResponsable_Search(object sender, EventArgs e)
@@ -175,77 +183,51 @@ namespace Soft.Ventas.Win
             ssResponsable.Text = (SolicitudCotizacion.Responsable != null) ? SolicitudCotizacion.Responsable.Nombre : "";
         }
 
-        public void AgregarProductosServicios(String Codigo, String Descripcion, UltraGridRow Row)
+        public void AgregarServicios(String Codigo, String Descripcion, UltraGridRow Row)
         {
             Collection Productos = new Collection();
             FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-            ItemSolicitudCotizacion Item = (ItemSolicitudCotizacion)Row.Tag;
-            Productos = FrmSeleccionar.GetSelectedsEntities(typeof(Existencia), "Seleción de Existencia", String.Format(" Codigo LIKE '{0}%' AND Nombre LIKE '{1}%'", Codigo, Descripcion));
+            ItemSolicitudCotizacionServicio Item = (ItemSolicitudCotizacionServicio)Row.Tag;
+            String Filtro = String.Format(" Codigo LIKE '{0}%' AND Nombre LIKE '{1}%'", Codigo, Descripcion);
+            if (ItemSolicitudCotizacion.m_FiltroServicios.Length > 0) { Filtro += String.Format(" AND {0}",ItemSolicitudCotizacion.m_FiltroServicios); }
+            Productos = FrmSeleccionar.GetSelectedsEntities(typeof(Existencia), "Selección de Servicios", Filtro);
             if (Productos.Count == 1)
             {
-                Existencia Producto = (Existencia)Productos[1];
-                Item.Existencia = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
-                Item.Cantidad = 1;
-                MostrarItem(Row);
+                Existencia Servicio = (Existencia)Productos[1];
+                Item.Servicio = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Servicio.ID);
+                Item.CantidadFinal = 1;
+                MostrarServicio(Row);
             }
             else if (Productos.Count > 1)
             {
                 Existencia Producto = (Existencia)Productos[1];
-                Item.Existencia = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
-                Item.Cantidad = 1;
-                MostrarItem(Row);
+                Item.Servicio = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
+                Item.CantidadFinal = 1;
+                MostrarServicio(Row);
                 for (int i = 2; i <= Productos.Count; i++)
                 {
-                    UltraGridRow RowNuevo = ugProductos.DisplayLayout.Bands[0].AddNew();
-                    ItemSolicitudCotizacion ItemNuevo = SolicitudCotizacion.AddItem();
+                    UltraGridRow RowNuevo = ugServicios.DisplayLayout.Bands[0].AddNew();
+                    ItemSolicitudCotizacionServicio ItemNuevo = ItemSolicitudCotizacion.AddServicio();
                     Existencia ProductoNuevo = (Existencia)Productos[i];
-                    ItemNuevo.Existencia = (Existencia)HelperNHibernate.GetEntityByID("Existencia", ProductoNuevo.ID);
-                    ItemNuevo.Cantidad = 1;
+                    ItemNuevo.Servicio = (Existencia)HelperNHibernate.GetEntityByID("Existencia", ProductoNuevo.ID);
+                    ItemNuevo.CantidadFinal = 1;
                     RowNuevo.Tag = ItemNuevo;
-                    MostrarItem(RowNuevo);
+                    MostrarServicio(RowNuevo);
                 }
             }
         }
 
-        private void ugProductos_CellChange(object sender, CellEventArgs e)
+        public void ugServicios_CellKeyEnter(UltraGridCell Cell)
         {
             try
             {
-                ItemSolicitudCotizacion Item = (ItemSolicitudCotizacion)e.Cell.Row.Tag;
-                switch (e.Cell.Column.Key)
-                {
-                    //case colUnidad:
-                    //    Item.Unidad = (Unidad)e.Cell.ValueList.GetValue(e.Cell.ValueList.SelectedItemIndex);
-                    //    break;
-                    case colObservacion:
-                        Item.Observacion = e.Cell.Text;
-                        break;
-                    default:
-                        break;
-                }
-                MostrarItem(e.Cell.Row);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        public void ugProductos_CellKeyEnter(UltraGridCell Cell)
-        {
-            try
-            {
-                if (Cell == null) { return; }
-                ItemSolicitudCotizacion Item = (ItemSolicitudCotizacion)Cell.Row.Tag;
+                if (Cell == null || ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacionServicio Item = (ItemSolicitudCotizacionServicio)Cell.Row.Tag;
                 switch (Cell.Column.Key)
                 {
-                    case colCodigo:
-                        if (Cell.Text.Equals("")) { break; }
-                        AgregarProductosServicios(Cell.Text, "%", Cell.Row);
-                        break;
                     case colNombre:
                         if (Cell.Text.Equals("")) { break; }
-                        AgregarProductosServicios("%", Cell.Text, Cell.Row);
+                        AgregarServicios("%", Cell.Text, Cell.Row);
                         break;
                     default:
                         break;
@@ -264,11 +246,11 @@ namespace Soft.Ventas.Win
 
         private void ubRecalcular_Click(object sender, EventArgs e)
         {
-            foreach (ItemSolicitudCotizacion Item in SolicitudCotizacion.Items)
-            {
-                Item.CantidadFinal = Item.CantidadInicial * SolicitudCotizacion.Cantidad;
-            }
-            MostrarItems();
+            //foreach (ItemSolicitudCotizacion Item in SolicitudCotizacion.Items)
+            //{
+            //    Item.CantidadFinal = Item.CantidadInicial * SolicitudCotizacion.Cantidad;
+            //}
+            //MostrarItems();
         }
 
         private void ssFormaPago_Search(object sender, EventArgs e)
@@ -276,6 +258,82 @@ namespace Soft.Ventas.Win
             FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
             SolicitudCotizacion.ModalidadCredito = (ModalidadCredito)FrmSeleccionar.GetSelectedEntity(typeof(ModalidadCredito), "Modalidad de Crédito");
             ssFormaPago.Text = (SolicitudCotizacion.ModalidadCredito != null) ? SolicitudCotizacion.ModalidadCredito.Descripcion : "";
+        }
+
+        private void utSolicitudCotizacion_AfterSelect(object sender, Infragistics.Win.UltraWinTree.SelectEventArgs e)
+        {
+            UltraTreeNode Node = utSolicitudCotizacion.ActiveNode;
+            if (Node !=null ){
+                ItemSolicitudCotizacion = (ItemSolicitudCotizacion)Node.Tag;
+                utcItemSolicitid.Tabs[0].Text = Node.Text;
+                MostrarItem(Node);
+            }
+        }
+
+        public void DeshabilitarControles()
+        {
+            txtMedidaAbierto.Value = 0;
+            txtMedidaCerrado.Value = 0;
+            txtImpresoTiraColor.Value = 0;
+            txtImpresoRetiraColor.Value = 0;
+            txtCantidadItem.Value = 0;
+            ssMaquina.Text = "";
+            ssMaterial.Text = "";
+            txtObservacionItem.Text = "";
+            ClearAllRows(ref ugServicios);
+            utcItemSolicitid.Enabled = false;
+        }
+
+        private void txtMedidaAbierto_ValueChanged(object sender, EventArgs e)
+        {
+            if (ItemSolicitudCotizacion == null) { return; }
+            ItemSolicitudCotizacion.MedidaAbierta = Convert.ToDecimal(txtMedidaAbierto.Value);
+        }
+
+        private void txtMedidaCerrado_ValueChanged(object sender, EventArgs e)
+        {
+            if (ItemSolicitudCotizacion == null) { return; }
+            ItemSolicitudCotizacion.MedidaCerrada= Convert.ToDecimal(txtMedidaCerrado.Value);
+        }
+
+        private void txtImpresoTiraColor_ValueChanged(object sender, EventArgs e)
+        {
+            if (ItemSolicitudCotizacion == null) { return; }
+            ItemSolicitudCotizacion.ImpresoTiraColor = Convert.ToInt32(txtImpresoTiraColor.Value);
+        }
+
+        private void txtImpresoRetiraColor_ValueChanged(object sender, EventArgs e)
+        {
+            if (ItemSolicitudCotizacion == null) { return; }
+            ItemSolicitudCotizacion.ImpresoRetiraColor= Convert.ToInt32(txtImpresoRetiraColor.Value);
+        }
+
+        private void ssMaquina_Search(object sender, EventArgs e)
+        {
+            if (ItemSolicitudCotizacion == null) { return; }
+            FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+            ItemSolicitudCotizacion.Maquina = (Maquina)FrmSeleccionar.GetSelectedEntity(typeof(Maquina), "Máquina",ItemSolicitudCotizacion.m_FiltroMaquina);
+            ssMaquina.Text = (ItemSolicitudCotizacion.Maquina != null) ? ItemSolicitudCotizacion.Maquina.Nombre : "";
+        }
+
+        private void ssMaterial_Search(object sender, EventArgs e)
+        {
+            if (ItemSolicitudCotizacion == null) { return; }
+            FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+            ItemSolicitudCotizacion.Material = (Existencia)FrmSeleccionar.GetSelectedEntity(typeof(Existencia), "Existencia", " EsInventariable = 1");
+            ssMaterial.Text = (ItemSolicitudCotizacion.Material != null) ? ItemSolicitudCotizacion.Material.Nombre : "";
+        }
+
+        private void txtCantidadItem_ValueChanged(object sender, EventArgs e)
+        {
+            if (ItemSolicitudCotizacion == null) { return; }
+            ItemSolicitudCotizacion.Cantidad = Convert.ToInt32(txtCantidadItem.Value);
+        }
+
+        private void txtObservacionItem_TextChanged(object sender, EventArgs e)
+        {
+            if (ItemSolicitudCotizacion == null) { return; }
+            ItemSolicitudCotizacion.Observacion = txtObservacionItem.Text;
         }
 
     }
