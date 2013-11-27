@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTree.UltraTreeNode ultraTreeNode1 = new Infragistics.Win.UltraWinTree.UltraTreeNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPlantilla));
@@ -433,9 +434,13 @@
             // 
             // ugbServicios
             // 
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.ugbServicios.Appearance = appearance3;
             this.ugbServicios.Controls.Add(this.ugServicios);
             this.ugbServicios.Controls.Add(this.ubNuevo);
             this.ugbServicios.Controls.Add(this.ubEliminar);
+            this.ugbServicios.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
+            this.ugbServicios.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
             this.ugbServicios.Location = new System.Drawing.Point(15, 158);
             this.ugbServicios.Name = "ugbServicios";
             this.ugbServicios.Size = new System.Drawing.Size(482, 218);
@@ -517,8 +522,8 @@
             // 
             // lblCodigo
             // 
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            this.lblCodigo.Appearance = appearance5;
+            appearance6.BackColor = System.Drawing.Color.Transparent;
+            this.lblCodigo.Appearance = appearance6;
             this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblCodigo.Location = new System.Drawing.Point(17, 19);
             this.lblCodigo.Name = "lblCodigo";
@@ -536,8 +541,8 @@
             // 
             // lblNombre
             // 
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            this.lblNombre.Appearance = appearance4;
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            this.lblNombre.Appearance = appearance5;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblNombre.Location = new System.Drawing.Point(235, 19);
             this.lblNombre.Name = "lblNombre";
@@ -563,8 +568,8 @@
             this.utcDetalle.Name = "utcDetalle";
             this.utcDetalle.SharedControlsPage = this.ultraTabSharedControlsPage1;
             this.utcDetalle.Size = new System.Drawing.Size(520, 418);
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.utcDetalle.TabHeaderAreaAppearance = appearance3;
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.utcDetalle.TabHeaderAreaAppearance = appearance4;
             this.utcDetalle.TabIndex = 14;
             ultraTab1.TabPage = this.ultraTabPageControl1;
             ultraTab1.Text = ":: Información Adicional ::";
