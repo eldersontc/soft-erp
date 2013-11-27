@@ -39,7 +39,7 @@ namespace Soft.Inventario.Win
             comboOperacion.Text = TipoDocumentoInventario.Operacion;
             CheckRequiereCliente.Checked = TipoDocumentoInventario.RequiereSocioNegocio;
             checkTieneImpuesto.Checked = TipoDocumentoInventario.TieneImpuesto;
-            txtProcentajeImpuesto.Value = TipoDocumentoInventario.PorcentajeImpuesto;
+            txtPorcentajeImpuesto.Value = TipoDocumentoInventario.PorcentajeImpuesto;
             CheckAceptaCostoCero.Checked = TipoDocumentoInventario.AceptaCostoCero;
             txtSerieCodigo.Text = TipoDocumentoInventario.CodigoSerie;
             txtSerieLongitud.Value = TipoDocumentoInventario.LongitudSerie;
@@ -125,11 +125,6 @@ namespace Soft.Inventario.Win
             TipoDocumentoInventario.NumeracionLongitud = Convert.ToInt32(txtNumeracionLongitud.Text);
         }
 
-        private void txtProcentajeImpuesto_TextChanged(object sender, EventArgs e)
-        {
-            TipoDocumentoInventario.PorcentajeImpuesto = Convert.ToInt32(txtProcentajeImpuesto.Text);
-        }
-
         private void ssReporte_Search(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmSeleccionarReporte = new FrmSelectedEntity();
@@ -140,6 +135,11 @@ namespace Soft.Inventario.Win
         private void CheckGeneraNumeracionalFinal_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtPorcentajeImpuesto_ValueChanged(object sender, EventArgs e)
+        {
+            TipoDocumentoInventario.PorcentajeImpuesto = Convert.ToInt32(txtPorcentajeImpuesto.Value);
         }
 
     }
