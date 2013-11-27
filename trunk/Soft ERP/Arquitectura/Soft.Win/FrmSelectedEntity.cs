@@ -94,7 +94,14 @@ namespace Soft.Win
                 if (NodoItem.SelectSingleNode("@Establecer").Value == "1")
                 {
                     PropertyInfo pInfo = Type.GetProperty(NodoItem.SelectSingleNode("@Propiedad").Value);
-                    pInfo.SetValue(Entity, Row.Cells[NodoItem.SelectSingleNode("@CampoSQL").Value].Value, null);
+                    if (pInfo != null)
+                    {
+                        pInfo.SetValue(Entity, Row.Cells[NodoItem.SelectSingleNode("@CampoSQL").Value].Value, null);
+                    }
+                    else
+                    {
+                        throw new Exception(String.Format("Propiedad no encontrada : {0}", NodoItem.SelectSingleNode("@Propiedad").Value));
+                    }
                 }
             }
             return Entity;
