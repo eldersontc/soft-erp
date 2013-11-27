@@ -103,12 +103,12 @@
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(670, 473);
+            this.ubCancelar.Location = new System.Drawing.Point(665, 472);
             this.ubCancelar.TabIndex = 14;
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(589, 473);
+            this.ubAceptar.Location = new System.Drawing.Point(584, 472);
             this.ubAceptar.TabIndex = 13;
             // 
             // ilMain
