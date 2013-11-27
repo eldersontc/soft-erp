@@ -29,18 +29,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmExistencia));
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl4 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.grillaMaquinas = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.btnEliminarMaquina = new Infragistics.Win.Misc.UltraButton();
@@ -68,7 +70,7 @@
             this.checkesServicio = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.checkEsVenta = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.checkEsCompra = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
-            this.ultraTabControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
+            this.utExistencia = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
             this.busItemClasificacion = new Soft.Controls.SoftSearch();
@@ -96,8 +98,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkesServicio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEsVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEsCompra)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).BeginInit();
-            this.ultraTabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.utExistencia)).BeginInit();
+            this.utExistencia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
             this.ultraGroupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -107,7 +109,7 @@
             this.ugbParent.Controls.Add(this.busMarca);
             this.ugbParent.Controls.Add(this.ultraGroupBox1);
             this.ugbParent.Controls.Add(this.lblMarca);
-            this.ugbParent.Controls.Add(this.ultraTabControl1);
+            this.ugbParent.Controls.Add(this.utExistencia);
             this.ugbParent.Controls.Add(this.boxGeneralidades);
             this.ugbParent.Controls.Add(this.CheckActivo);
             this.ugbParent.Controls.Add(this.txtDescripcion);
@@ -116,7 +118,7 @@
             this.ugbParent.Controls.Add(this.Nombre);
             this.ugbParent.Controls.Add(this.txtCodigo);
             this.ugbParent.Controls.Add(this.Codigo);
-            this.ugbParent.Size = new System.Drawing.Size(570, 478);
+            this.ugbParent.Size = new System.Drawing.Size(570, 487);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.Codigo, 0);
@@ -127,18 +129,18 @@
             this.ugbParent.Controls.SetChildIndex(this.txtDescripcion, 0);
             this.ugbParent.Controls.SetChildIndex(this.CheckActivo, 0);
             this.ugbParent.Controls.SetChildIndex(this.boxGeneralidades, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ultraTabControl1, 0);
+            this.ugbParent.Controls.SetChildIndex(this.utExistencia, 0);
             this.ugbParent.Controls.SetChildIndex(this.lblMarca, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraGroupBox1, 0);
             this.ugbParent.Controls.SetChildIndex(this.busMarca, 0);
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(480, 440);
+            this.ubCancelar.Location = new System.Drawing.Point(479, 452);
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(399, 440);
+            this.ubAceptar.Location = new System.Drawing.Point(398, 452);
             // 
             // ilMain
             // 
@@ -435,7 +437,7 @@
             this.ultraTabPageControl1.Controls.Add(this.ubEliminar);
             this.ultraTabPageControl1.Controls.Add(this.ubNuevo);
             this.ultraTabPageControl1.Controls.Add(this.grillaUnidades);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(535, 218);
             // 
@@ -513,22 +515,22 @@
             // ultraTabPageControl3
             // 
             this.ultraTabPageControl3.Controls.Add(this.utMaquimas);
-            this.ultraTabPageControl3.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl3.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl3.Name = "ultraTabPageControl3";
             this.ultraTabPageControl3.Size = new System.Drawing.Size(535, 218);
             // 
             // utMaquimas
             // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.utMaquimas.Appearance = appearance3;
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.utMaquimas.Appearance = appearance4;
             this.utMaquimas.Controls.Add(this.ultraTabSharedControlsPage2);
             this.utMaquimas.Controls.Add(this.ultraTabPageControl4);
             this.utMaquimas.Location = new System.Drawing.Point(4, 3);
             this.utMaquimas.Name = "utMaquimas";
             this.utMaquimas.SharedControlsPage = this.ultraTabSharedControlsPage2;
             this.utMaquimas.Size = new System.Drawing.Size(529, 212);
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            this.utMaquimas.TabHeaderAreaAppearance = appearance4;
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            this.utMaquimas.TabHeaderAreaAppearance = appearance5;
             this.utMaquimas.TabIndex = 17;
             ultraTab4.TabPage = this.ultraTabPageControl4;
             ultraTab4.Text = ":: Máquinas ::";
@@ -560,17 +562,17 @@
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.ShowOverflowIndicator = true;
-            this.txtDescripcion.Size = new System.Drawing.Size(312, 31);
+            this.txtDescripcion.Size = new System.Drawing.Size(312, 26);
             this.txtDescripcion.TabIndex = 18;
             this.txtDescripcion.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
             // 
             // ultraLabel2
             // 
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance6;
+            appearance8.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance8;
             this.ultraLabel2.Location = new System.Drawing.Point(16, 104);
             this.ultraLabel2.Name = "ultraLabel2";
-            this.ultraLabel2.Size = new System.Drawing.Size(74, 22);
+            this.ultraLabel2.Size = new System.Drawing.Size(74, 23);
             this.ultraLabel2.TabIndex = 17;
             this.ultraLabel2.Text = "Descripción";
             // 
@@ -584,8 +586,8 @@
             // 
             // Nombre
             // 
-            appearance7.BackColor = System.Drawing.Color.Transparent;
-            this.Nombre.Appearance = appearance7;
+            appearance9.BackColor = System.Drawing.Color.Transparent;
+            this.Nombre.Appearance = appearance9;
             this.Nombre.Location = new System.Drawing.Point(16, 45);
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(60, 23);
@@ -602,8 +604,8 @@
             // 
             // Codigo
             // 
-            appearance8.BackColor = System.Drawing.Color.Transparent;
-            this.Codigo.Appearance = appearance8;
+            appearance10.BackColor = System.Drawing.Color.Transparent;
+            this.Codigo.Appearance = appearance10;
             this.Codigo.Location = new System.Drawing.Point(16, 18);
             this.Codigo.Name = "Codigo";
             this.Codigo.Size = new System.Drawing.Size(60, 23);
@@ -612,13 +614,17 @@
             // 
             // boxGeneralidades
             // 
+            appearance7.BackColor = System.Drawing.Color.Transparent;
+            this.boxGeneralidades.Appearance = appearance7;
             this.boxGeneralidades.Controls.Add(this.checkEsInventariable);
             this.boxGeneralidades.Controls.Add(this.checkesServicio);
             this.boxGeneralidades.Controls.Add(this.checkEsVenta);
             this.boxGeneralidades.Controls.Add(this.checkEsCompra);
-            this.boxGeneralidades.Location = new System.Drawing.Point(414, 25);
+            this.boxGeneralidades.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
+            this.boxGeneralidades.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
+            this.boxGeneralidades.Location = new System.Drawing.Point(414, 18);
             this.boxGeneralidades.Name = "boxGeneralidades";
-            this.boxGeneralidades.Size = new System.Drawing.Size(141, 161);
+            this.boxGeneralidades.Size = new System.Drawing.Size(141, 178);
             this.boxGeneralidades.TabIndex = 20;
             this.boxGeneralidades.Text = "Generalidades";
             // 
@@ -628,7 +634,7 @@
             this.checkEsInventariable.BackColorInternal = System.Drawing.Color.Transparent;
             this.checkEsInventariable.Checked = true;
             this.checkEsInventariable.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkEsInventariable.Location = new System.Drawing.Point(21, 115);
+            this.checkEsInventariable.Location = new System.Drawing.Point(21, 126);
             this.checkEsInventariable.Name = "checkEsInventariable";
             this.checkEsInventariable.Size = new System.Drawing.Size(125, 20);
             this.checkEsInventariable.TabIndex = 24;
@@ -641,7 +647,7 @@
             this.checkesServicio.BackColorInternal = System.Drawing.Color.Transparent;
             this.checkesServicio.Checked = true;
             this.checkesServicio.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkesServicio.Location = new System.Drawing.Point(21, 89);
+            this.checkesServicio.Location = new System.Drawing.Point(21, 100);
             this.checkesServicio.Name = "checkesServicio";
             this.checkesServicio.Size = new System.Drawing.Size(110, 20);
             this.checkesServicio.TabIndex = 23;
@@ -654,7 +660,7 @@
             this.checkEsVenta.BackColorInternal = System.Drawing.Color.Transparent;
             this.checkEsVenta.Checked = true;
             this.checkEsVenta.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkEsVenta.Location = new System.Drawing.Point(21, 63);
+            this.checkEsVenta.Location = new System.Drawing.Point(21, 74);
             this.checkEsVenta.Name = "checkEsVenta";
             this.checkEsVenta.Size = new System.Drawing.Size(70, 20);
             this.checkEsVenta.TabIndex = 22;
@@ -667,35 +673,35 @@
             this.checkEsCompra.BackColorInternal = System.Drawing.Color.Transparent;
             this.checkEsCompra.Checked = true;
             this.checkEsCompra.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkEsCompra.Location = new System.Drawing.Point(21, 37);
+            this.checkEsCompra.Location = new System.Drawing.Point(21, 48);
             this.checkEsCompra.Name = "checkEsCompra";
             this.checkEsCompra.Size = new System.Drawing.Size(110, 20);
             this.checkEsCompra.TabIndex = 21;
             this.checkEsCompra.Text = "Es Compra";
             this.checkEsCompra.CheckedChanged += new System.EventHandler(this.checkEsCompra_CheckedChanged);
             // 
-            // ultraTabControl1
+            // utExistencia
             // 
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.ultraTabControl1.Appearance = appearance2;
-            this.ultraTabControl1.Controls.Add(this.ultraTabSharedControlsPage1);
-            this.ultraTabControl1.Controls.Add(this.ultraTabPageControl1);
-            this.ultraTabControl1.Controls.Add(this.ultraTabPageControl2);
-            this.ultraTabControl1.Controls.Add(this.ultraTabPageControl3);
-            this.ultraTabControl1.Location = new System.Drawing.Point(16, 190);
-            this.ultraTabControl1.Name = "ultraTabControl1";
-            this.ultraTabControl1.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.ultraTabControl1.Size = new System.Drawing.Size(539, 244);
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            this.ultraTabControl1.TabHeaderAreaAppearance = appearance5;
-            this.ultraTabControl1.TabIndex = 21;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.utExistencia.Appearance = appearance3;
+            this.utExistencia.Controls.Add(this.ultraTabSharedControlsPage1);
+            this.utExistencia.Controls.Add(this.ultraTabPageControl1);
+            this.utExistencia.Controls.Add(this.ultraTabPageControl2);
+            this.utExistencia.Controls.Add(this.ultraTabPageControl3);
+            this.utExistencia.Location = new System.Drawing.Point(16, 201);
+            this.utExistencia.Name = "utExistencia";
+            this.utExistencia.SharedControlsPage = this.ultraTabSharedControlsPage1;
+            this.utExistencia.Size = new System.Drawing.Size(539, 244);
+            appearance6.BackColor = System.Drawing.Color.Transparent;
+            this.utExistencia.TabHeaderAreaAppearance = appearance6;
+            this.utExistencia.TabIndex = 21;
             ultraTab1.TabPage = this.ultraTabPageControl1;
             ultraTab1.Text = ":: Unidades ::";
             ultraTab2.TabPage = this.ultraTabPageControl2;
             ultraTab2.Text = ":: Almacenes ::";
             ultraTab3.TabPage = this.ultraTabPageControl3;
             ultraTab3.Text = ":: Impresión ::";
-            this.ultraTabControl1.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
+            this.utExistencia.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
             ultraTab1,
             ultraTab2,
             ultraTab3});
@@ -708,19 +714,23 @@
             // 
             // ultraGroupBox1
             // 
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            this.ultraGroupBox1.Appearance = appearance1;
             this.ultraGroupBox1.Controls.Add(this.busItemClasificacion);
             this.ultraGroupBox1.Controls.Add(this.busClasificacion);
-            this.ultraGroupBox1.Location = new System.Drawing.Point(16, 133);
+            this.ultraGroupBox1.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
+            this.ultraGroupBox1.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
+            this.ultraGroupBox1.Location = new System.Drawing.Point(16, 134);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
-            this.ultraGroupBox1.Size = new System.Drawing.Size(392, 53);
+            this.ultraGroupBox1.Size = new System.Drawing.Size(392, 62);
             this.ultraGroupBox1.TabIndex = 23;
-            this.ultraGroupBox1.Text = "Clasificacion";
+            this.ultraGroupBox1.Text = "Clasificación";
             // 
             // busItemClasificacion
             // 
             this.busItemClasificacion.BackColor = System.Drawing.Color.Transparent;
             this.busItemClasificacion.Enabled = false;
-            this.busItemClasificacion.Location = new System.Drawing.Point(207, 20);
+            this.busItemClasificacion.Location = new System.Drawing.Point(207, 31);
             this.busItemClasificacion.Name = "busItemClasificacion";
             this.busItemClasificacion.Size = new System.Drawing.Size(170, 28);
             this.busItemClasificacion.TabIndex = 25;
@@ -729,7 +739,7 @@
             // busClasificacion
             // 
             this.busClasificacion.BackColor = System.Drawing.Color.Transparent;
-            this.busClasificacion.Location = new System.Drawing.Point(15, 20);
+            this.busClasificacion.Location = new System.Drawing.Point(15, 31);
             this.busClasificacion.Name = "busClasificacion";
             this.busClasificacion.Size = new System.Drawing.Size(182, 28);
             this.busClasificacion.TabIndex = 24;
@@ -737,8 +747,8 @@
             // 
             // lblMarca
             // 
-            appearance1.BackColor = System.Drawing.Color.Transparent;
-            this.lblMarca.Appearance = appearance1;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.lblMarca.Appearance = appearance2;
             this.lblMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblMarca.Location = new System.Drawing.Point(17, 74);
             this.lblMarca.Name = "lblMarca";
@@ -759,7 +769,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(586, 516);
+            this.ClientSize = new System.Drawing.Size(586, 525);
             this.Name = "FrmExistencia";
             this.Text = "Existencia";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
@@ -784,8 +794,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkesServicio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEsVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEsCompra)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).EndInit();
-            this.ultraTabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.utExistencia)).EndInit();
+            this.utExistencia.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).EndInit();
             this.ultraGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -806,7 +816,7 @@
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor checkesServicio;
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor checkEsVenta;
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor checkEsCompra;
-        private Infragistics.Win.UltraWinTabControl.UltraTabControl ultraTabControl1;
+        private Infragistics.Win.UltraWinTabControl.UltraTabControl utExistencia;
         private Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage ultraTabSharedControlsPage1;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl1;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl2;
