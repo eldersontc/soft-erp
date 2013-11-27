@@ -410,7 +410,7 @@
             this.ultraTabPageControl1.Controls.Add(this.CheckGeneraNumeracionalFinal);
             this.ultraTabPageControl1.Controls.Add(this.ultraGroupBox2);
             this.ultraTabPageControl1.Controls.Add(this.ultraGroupBox1);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(404, 182);
             // 
@@ -541,7 +541,7 @@
             this.ultraTabPageControl3.Controls.Add(this.CheckAceptaCostoCero);
             this.ultraTabPageControl3.Controls.Add(this.ultraLabel4);
             this.ultraTabPageControl3.Controls.Add(this.ultraLabel5);
-            this.ultraTabPageControl3.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl3.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl3.Name = "ultraTabPageControl3";
             this.ultraTabPageControl3.Size = new System.Drawing.Size(404, 182);
             // 
@@ -788,11 +788,11 @@
             // 
             this.comboOperacion.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             valueListItem1.DataValue = "ValueListItem0";
-            valueListItem1.DisplayText = "Entrada";
+            valueListItem1.DisplayText = "ENTRADA";
             valueListItem2.DataValue = "ValueListItem1";
-            valueListItem2.DisplayText = "Salida";
+            valueListItem2.DisplayText = "SALIDA";
             valueListItem3.DataValue = "ValueListItem2";
-            valueListItem3.DisplayText = "Transferencia";
+            valueListItem3.DisplayText = "TRANSFERENCIA";
             this.comboOperacion.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem1,
             valueListItem2,
