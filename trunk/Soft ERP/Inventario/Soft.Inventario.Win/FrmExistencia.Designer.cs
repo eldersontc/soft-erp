@@ -568,7 +568,7 @@
             // 
             appearance6.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel2.Appearance = appearance6;
-            this.ultraLabel2.Location = new System.Drawing.Point(16, 101);
+            this.ultraLabel2.Location = new System.Drawing.Point(16, 104);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(74, 22);
             this.ultraLabel2.TabIndex = 17;
