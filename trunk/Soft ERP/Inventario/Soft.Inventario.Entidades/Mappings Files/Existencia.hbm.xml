@@ -12,6 +12,9 @@
     <property name="EsServicio" type="boolean"/>
     <property name="EsInventariable" type="boolean"/>
     <property name="Activo" type="boolean"/>
+    <property name="Alto" type="decimal"/>
+    <property name="Largo" type="decimal"/>
+    <property name="Gramaje" type="integer"/>
 
     <many-to-one name="ClasificacionExistencia" class="Soft.Inventario.Entidades.ClasificacionExistencia" column="IDClasificacionExistencia" insert="true" update="true" lazy="false"/>
     <many-to-one name="ItemClasificacionExistencia" class="Soft.Inventario.Entidades.ItemClasificacionExistencia" column="IDItemClasificacionExistencia" insert="true" update="true" lazy="false"/>
@@ -22,15 +25,20 @@
       <one-to-many class="Soft.Inventario.Entidades.ExistenciaUnidad"/>
     </bag>
 
+
     <bag name="Almacenes" cascade="all-delete-orphan" order-by="Orden" lazy="false">
       <key column="IDExistencia"/>
       <one-to-many class="Soft.Inventario.Entidades.ExistenciaAlmacen"/>
     </bag>
 
+
+
+
     <bag name="Maquinas" cascade="all-delete-orphan" order-by="Orden" lazy="false">
       <key column="IDExistencia"/>
       <one-to-many class="Soft.Inventario.Entidades.ExistenciaMaquina"/>
     </bag>
+
 
   </class>
 
