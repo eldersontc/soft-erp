@@ -45,6 +45,9 @@ namespace Soft.Inventario.Win
             txtSerieLongitud.Value = TipoDocumentoInventario.LongitudSerie;
             txtNumeracionActual.Value = TipoDocumentoInventario.NumeracionActual;
             txtNumeracionLongitud.Value = TipoDocumentoInventario.NumeracionLongitud;
+            comboSocioNegocio.Text = TipoDocumentoInventario.TipoSocioDeNegocio;
+            CheckGeneraNumeracionalFinal.Checked = TipoDocumentoInventario.GeneraNumeracionAlFinal;
+            CheckNumeracionAutomatica.Checked = TipoDocumentoInventario.NumeracionAutomatica;
         }
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)
@@ -134,12 +137,22 @@ namespace Soft.Inventario.Win
 
         private void CheckGeneraNumeracionalFinal_CheckedChanged(object sender, EventArgs e)
         {
-
+            TipoDocumentoInventario.GeneraNumeracionAlFinal = CheckGeneraNumeracionalFinal.Checked;
         }
 
         private void txtPorcentajeImpuesto_ValueChanged(object sender, EventArgs e)
         {
             TipoDocumentoInventario.PorcentajeImpuesto = Convert.ToInt32(txtPorcentajeImpuesto.Value);
+        }
+
+        private void comboSocioNegocio_ValueChanged(object sender, EventArgs e)
+        {
+            TipoDocumentoInventario.TipoSocioDeNegocio = comboSocioNegocio.Text;
+        }
+
+        private void CheckNumeracionAutomatica_CheckedChanged(object sender, EventArgs e)
+        {
+            TipoDocumentoInventario.NumeracionAutomatica = CheckNumeracionAutomatica.Checked;
         }
 
     }
