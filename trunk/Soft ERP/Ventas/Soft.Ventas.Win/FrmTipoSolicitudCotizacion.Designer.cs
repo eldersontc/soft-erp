@@ -67,6 +67,7 @@
             this.Codigo = new Infragistics.Win.Misc.UltraLabel();
             this.utNumeracion = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
+            this.CheckNumeracionAutomatica = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.ultraTabPageControl1.SuspendLayout();
@@ -86,6 +87,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.utNumeracion)).BeginInit();
             this.utNumeracion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CheckNumeracionAutomatica)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
@@ -371,10 +373,11 @@
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.Controls.Add(this.CheckNumeracionAutomatica);
             this.ultraTabPageControl1.Controls.Add(this.CheckGeneraNumeracionalFinal);
             this.ultraTabPageControl1.Controls.Add(this.ultraGroupBox2);
             this.ultraTabPageControl1.Controls.Add(this.ultraGroupBox1);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(404, 182);
             // 
@@ -384,11 +387,12 @@
             this.CheckGeneraNumeracionalFinal.BackColorInternal = System.Drawing.Color.Transparent;
             this.CheckGeneraNumeracionalFinal.Checked = true;
             this.CheckGeneraNumeracionalFinal.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckGeneraNumeracionalFinal.Location = new System.Drawing.Point(18, 150);
+            this.CheckGeneraNumeracionalFinal.Location = new System.Drawing.Point(218, 150);
             this.CheckGeneraNumeracionalFinal.Name = "CheckGeneraNumeracionalFinal";
-            this.CheckGeneraNumeracionalFinal.Size = new System.Drawing.Size(302, 20);
+            this.CheckGeneraNumeracionalFinal.Size = new System.Drawing.Size(172, 20);
             this.CheckGeneraNumeracionalFinal.TabIndex = 34;
-            this.CheckGeneraNumeracionalFinal.Text = "Genera Numeracion al final";
+            this.CheckGeneraNumeracionalFinal.Text = "Genera Numeración al Final";
+            this.CheckGeneraNumeracionalFinal.CheckedChanged += new System.EventHandler(this.CheckGeneraNumeracionalFinal_CheckedChanged);
             // 
             // ultraGroupBox2
             // 
@@ -498,7 +502,7 @@
             // 
             this.ultraTabPageControl2.Controls.Add(this.ssReporte);
             this.ultraTabPageControl2.Controls.Add(this.lblReporte);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(404, 182);
             // 
@@ -619,6 +623,19 @@
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
             this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(404, 182);
             // 
+            // CheckNumeracionAutomatica
+            // 
+            this.CheckNumeracionAutomatica.BackColor = System.Drawing.Color.Transparent;
+            this.CheckNumeracionAutomatica.BackColorInternal = System.Drawing.Color.Transparent;
+            this.CheckNumeracionAutomatica.Checked = true;
+            this.CheckNumeracionAutomatica.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckNumeracionAutomatica.Location = new System.Drawing.Point(30, 150);
+            this.CheckNumeracionAutomatica.Name = "CheckNumeracionAutomatica";
+            this.CheckNumeracionAutomatica.Size = new System.Drawing.Size(172, 20);
+            this.CheckNumeracionAutomatica.TabIndex = 35;
+            this.CheckNumeracionAutomatica.Text = "Numeración Automática";
+            this.CheckNumeracionAutomatica.CheckedChanged += new System.EventHandler(this.CheckNumeracionAutomatica_CheckedChanged);
+            // 
             // FrmTipoSolicitudCotizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -648,6 +665,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.utNumeracion)).EndInit();
             this.utNumeracion.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CheckNumeracionAutomatica)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -678,5 +696,6 @@
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl2;
         private Controls.SoftSearch ssReporte;
         private Infragistics.Win.Misc.UltraLabel lblReporte;
+        private Infragistics.Win.UltraWinEditors.UltraCheckEditor CheckNumeracionAutomatica;
     }
 }
