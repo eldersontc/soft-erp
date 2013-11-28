@@ -27,9 +27,11 @@ namespace Soft.Inventario.Win
             base.Init();
             this.Mostrar();
         }
+        private Boolean ActualizandoIU = false;
 
         public void Mostrar()
         {
+            ActualizandoIU = true;
             busAlmacen.Text = (TipoDocumentoInventario.Almacen != null) ? TipoDocumentoInventario.Almacen.Nombre : "";
             ssReporte.Text = (TipoDocumentoInventario.Reporte != null) ? TipoDocumentoInventario.Reporte.Nombre : "";
             txtCodigo.Text = TipoDocumentoInventario.Codigo;
@@ -39,15 +41,16 @@ namespace Soft.Inventario.Win
             comboOperacion.Text = TipoDocumentoInventario.Operacion;
             CheckRequiereCliente.Checked = TipoDocumentoInventario.RequiereSocioNegocio;
             checkTieneImpuesto.Checked = TipoDocumentoInventario.TieneImpuesto;
-            txtPorcentajeImpuesto.Value = TipoDocumentoInventario.PorcentajeImpuesto;
+            txtProcentajeImpuesto.Value = TipoDocumentoInventario.PorcentajeImpuesto;
             CheckAceptaCostoCero.Checked = TipoDocumentoInventario.AceptaCostoCero;
             txtSerieCodigo.Text = TipoDocumentoInventario.CodigoSerie;
             txtSerieLongitud.Value = TipoDocumentoInventario.LongitudSerie;
             txtNumeracionActual.Value = TipoDocumentoInventario.NumeracionActual;
             txtNumeracionLongitud.Value = TipoDocumentoInventario.NumeracionLongitud;
-            comboSocioNegocio.Text = TipoDocumentoInventario.TipoSocioDeNegocio;
+            checkNumeracionAutomatica.Checked = TipoDocumentoInventario.NumeracionAutomatica;
             CheckGeneraNumeracionalFinal.Checked = TipoDocumentoInventario.GeneraNumeracionAlFinal;
-            CheckNumeracionAutomatica.Checked = TipoDocumentoInventario.NumeracionAutomatica;
+            ComboTipoSocioNegocio.Text = TipoDocumentoInventario.TipoSocioDeNegocio;
+            ActualizandoIU = false;
         }
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)
@@ -128,6 +131,11 @@ namespace Soft.Inventario.Win
             TipoDocumentoInventario.NumeracionLongitud = Convert.ToInt32(txtNumeracionLongitud.Text);
         }
 
+        private void txtProcentajeImpuesto_TextChanged(object sender, EventArgs e)
+        {
+            TipoDocumentoInventario.PorcentajeImpuesto = Convert.ToInt32(txtProcentajeImpuesto.Text);
+        }
+
         private void ssReporte_Search(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmSeleccionarReporte = new FrmSelectedEntity();
@@ -135,25 +143,32 @@ namespace Soft.Inventario.Win
             ssReporte.Text = (TipoDocumentoInventario.Reporte != null) ? TipoDocumentoInventario.Reporte.Nombre : "";
         }
 
+        private void checkNumeracionAutomatica_CheckedChanged(object sender, EventArgs e)
+        {
+            TipoDocumentoInventario.NumeracionAutomatica = checkNumeracionAutomatica.Checked;
+            if (TipoDocumentoInventario.NumeracionAutomatica == false)
+            {
+                GrupoNumeracion.Enabled = false;
+                GrupoSerie.Enabled = false;
+            }
+            else {
+                GrupoNumeracion.Enabled = true;
+                GrupoSerie.Enabled = true;
+    
+            }
+        }
+
         private void CheckGeneraNumeracionalFinal_CheckedChanged(object sender, EventArgs e)
         {
             TipoDocumentoInventario.GeneraNumeracionAlFinal = CheckGeneraNumeracionalFinal.Checked;
         }
 
-        private void txtPorcentajeImpuesto_ValueChanged(object sender, EventArgs e)
+        private void ComboTipoSocioNegocio_ValueChanged(object sender, EventArgs e)
         {
-            TipoDocumentoInventario.PorcentajeImpuesto = Convert.ToInt32(txtPorcentajeImpuesto.Value);
+            TipoDocumentoInventario.TipoSocioDeNegocio = ComboTipoSocioNegocio.Text;
         }
 
-        private void comboSocioNegocio_ValueChanged(object sender, EventArgs e)
-        {
-            TipoDocumentoInventario.TipoSocioDeNegocio = comboSocioNegocio.Text;
-        }
-
-        private void CheckNumeracionAutomatica_CheckedChanged(object sender, EventArgs e)
-        {
-            TipoDocumentoInventario.NumeracionAutomatica = CheckNumeracionAutomatica.Checked;
-        }
+   
 
     }
 }
