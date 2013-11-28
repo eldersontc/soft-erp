@@ -39,6 +39,8 @@ namespace Soft.Ventas.Win
             txtNumeracionActual.Value = TipoSolicitudCotizacion.NumeracionActual;
             txtNumeracionLongitud.Value = TipoSolicitudCotizacion.NumeracionLongitud;
             CheckActivo.Checked = TipoSolicitudCotizacion.Activo;
+            CheckNumeracionAutomatica.Checked = TipoSolicitudCotizacion.NumeracionAutomatica;
+            CheckGeneraNumeracionalFinal.Checked = TipoSolicitudCotizacion.GeneraNumeracionAlFinal;
         }
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)
@@ -91,6 +93,16 @@ namespace Soft.Ventas.Win
         private void txtSerieCodigo_TextChanged_1(object sender, EventArgs e)
         {
             TipoSolicitudCotizacion.CodigoSerie = txtSerieCodigo.Text;
+        }
+
+        private void CheckNumeracionAutomatica_CheckedChanged(object sender, EventArgs e)
+        {
+            TipoSolicitudCotizacion.NumeracionAutomatica = CheckNumeracionAutomatica.Checked;
+        }
+
+        private void CheckGeneraNumeracionalFinal_CheckedChanged(object sender, EventArgs e)
+        {
+            TipoSolicitudCotizacion.GeneraNumeracionAlFinal = CheckGeneraNumeracionalFinal.Checked;
         }
 
     }
