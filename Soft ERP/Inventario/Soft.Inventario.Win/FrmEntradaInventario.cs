@@ -68,7 +68,6 @@ namespace Soft.Inventario.Win
             column.DataType = typeof(Decimal);
 
             ugProductos.DataSource = columns;
-            ugProductos.DisplayLayout.Bands[0].Columns[colNombre].Width = 250;
             ugProductos.DisplayLayout.Bands[0].Columns[colUnidad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
             ugProductos.DisplayLayout.Bands[0].Columns[colCantidad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
             ugProductos.DisplayLayout.Bands[0].Columns[colCantidad].CellAppearance.TextHAlign = HAlign.Right;
@@ -84,7 +83,7 @@ namespace Soft.Inventario.Win
         {
             ActualizandoIU = true;
             ssTipoDocumento.Text = (EntradaInventario.TipoDocumento != null)?EntradaInventario.TipoDocumento.Descripcion:"";
-            ssSocioNegocio.Text = (EntradaInventario.Proveedor != null) ? EntradaInventario.Proveedor.Nombre : "";
+            ssProveedor.Text = (EntradaInventario.Proveedor != null) ? EntradaInventario.Proveedor.Nombre : "";
             ssAlmacen.Text = (EntradaInventario.Almacen != null) ? EntradaInventario.Almacen.Descripcion : "";
             ssResponsable.Text = (EntradaInventario.Responsable != null) ? EntradaInventario.Responsable.Nombre : "";
             txtNumeracion.Text = EntradaInventario.Numeracion;
@@ -136,25 +135,29 @@ namespace Soft.Inventario.Win
         private void ssTipoDocumento_Search(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
-            String Filtro = "Operacion = 'Entrada'";
+            String Filtro = "Operacion='Entrada'";
             TipoDocumentoInventario TipoDocumento = (TipoDocumentoInventario)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoDocumentoInventario), "Tipo de Inventario", Filtro);
             EntradaInventario.TipoDocumento = (TipoDocumentoInventario)HelperNHibernate.GetEntityByID("TipoDocumentoInventario", TipoDocumento.ID);
             ssTipoDocumento.Text = (EntradaInventario.TipoDocumento != null) ? EntradaInventario.TipoDocumento.Descripcion : "";
             EntradaInventario.GenerarNumCp();
-            lblSocioNegocio.Text = EntradaInventario.TipoDocumento.TipoSocioDeNegocio;
-            txtNumeracion.Text = EntradaInventario.Numeracion;
+            LabelSocioNegocio.Text = EntradaInventario.TipoDocumento.TipoSocioDeNegocio;
+
+          
+            Mostrar();
         }
 
-        private void ssSocioNegocio_Search(object sender, EventArgs e)
+        private void ssProveedor_Search(object sender, EventArgs e)
         {
-            String Filtro = "";
-            if (!lblSocioNegocio.Text.Equals("Socio de Negocio"))
+            String filtro = "";
+            if (! LabelSocioNegocio.Text.Equals("Socio de Negocio"))
             {
-                Filtro = String.Format(" {0} = 1", lblSocioNegocio.Text);
+                filtro = " "+LabelSocioNegocio + "=1";
                 FrmSelectedEntity FrmSeleccionarProveedor = new FrmSelectedEntity();
-                EntradaInventario.Proveedor = (SocioNegocio)FrmSeleccionarProveedor.GetSelectedEntity(typeof(SocioNegocio), "Socio de Negocio", Filtro);
-                ssSocioNegocio.Text = (EntradaInventario.Proveedor != null) ? EntradaInventario.Proveedor.Nombre : "";
+                EntradaInventario.Proveedor = (SocioNegocio)FrmSeleccionarProveedor.GetSelectedEntity(typeof(SocioNegocio), "Socio de Negocio"," Proveedor = 1");
+                ssProveedor.Text = (EntradaInventario.Proveedor != null) ? EntradaInventario.Proveedor.Nombre : "";
             }
+            Mostrar();
+
         }
 
         private void ssAlmacen_Search(object sender, EventArgs e)
@@ -300,6 +303,7 @@ namespace Soft.Inventario.Win
                 //MessageBox.Show(ex.Message);
             }
         }
+
 
     }
 }
