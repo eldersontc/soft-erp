@@ -31,12 +31,9 @@ namespace Soft.Inventario.Entidades
         public virtual ItemClasificacionExistencia ItemClasificacionExistencia { get; set; }
         public virtual Marca Marca { get; set; }
 
-
         public virtual Int32 Gramaje { get; set; }
         public virtual Decimal Largo { get; set; }
         public virtual Decimal Alto { get; set; }
-
-
 
         public virtual IList<ExistenciaUnidad> Unidades { get; set; }
         public virtual IList<ExistenciaAlmacen> Almacenes { get; set; }
