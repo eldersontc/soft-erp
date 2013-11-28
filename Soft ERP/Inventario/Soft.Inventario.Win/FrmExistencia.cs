@@ -23,22 +23,32 @@ namespace Soft.Inventario.Win
             InitializeComponent();
         }
 
+
+
         //Constantes
         const String colUnidad = "Unidad";
         const String colEsBase = "Es Base";
-        const String colFactor = "Factor";
+        const String colFactor = "Factor de Conversion";
+
 
         //Constantes
-        const String colAlmacen = "Almacén";
+        const String colAlmacen = "Almacen";
         const String colStockFisico = "Stock";
         const String colStockComprometido = "Comprometido";
 
         //Constantes Maquinas
-        const String colCodigoMaquina = "Código";
+        const String colCodigoMaquina = "Codigo";
         const String colNombreMaquina = "Nombre";
         const String colMaquinaDefecto = "Por Defecto";
 
+        
+
+
         public Existencia Existencia { get { return (Existencia)base.m_ObjectFlow; } }
+
+        private ExistenciaUnidad ExistenciaUnidad;
+
+
 
         public override void Init()
         {
@@ -68,8 +78,6 @@ namespace Soft.Inventario.Win
             grillaUnidades.DisplayLayout.Bands[0].Columns[colUnidad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.FormattedText;
             grillaUnidades.DisplayLayout.Bands[0].Columns[colEsBase].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox;
             grillaUnidades.DisplayLayout.Bands[0].Columns[colFactor].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Integer;
-            grillaUnidades.DisplayLayout.Bands[0].Columns[colFactor].CellAppearance.TextHAlign = HAlign.Right;
-            MapKeys(ref grillaUnidades);
         }
 
         public void InitGridAlmancen()
@@ -90,14 +98,12 @@ namespace Soft.Inventario.Win
             column.ReadOnly = true;
             
             grillaAlmacenes.DataSource = columns;
-            grillaAlmacenes.DisplayLayout.Bands[0].Columns[colAlmacen].CellActivation = Activation.NoEdit;
+            grillaAlmacenes.DisplayLayout.Bands[0].Columns[colAlmacen].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.FormattedText;
             grillaAlmacenes.DisplayLayout.Bands[0].Columns[colStockFisico].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Double;
-            grillaAlmacenes.DisplayLayout.Bands[0].Columns[colStockFisico].CellActivation = Activation.NoEdit;
-            grillaAlmacenes.DisplayLayout.Bands[0].Columns[colStockFisico].CellAppearance.TextHAlign = HAlign.Right;
             grillaAlmacenes.DisplayLayout.Bands[0].Columns[colStockComprometido].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Double;
-            grillaAlmacenes.DisplayLayout.Bands[0].Columns[colStockComprometido].CellActivation = Activation.NoEdit;
-            grillaAlmacenes.DisplayLayout.Bands[0].Columns[colStockComprometido].CellAppearance.TextHAlign = HAlign.Right;
         }
+
+
 
         public void InitGridMaquina()
         {
@@ -117,15 +123,20 @@ namespace Soft.Inventario.Win
             column.DataType = typeof(Boolean);
             column.ReadOnly = false;
 
+
             grillaMaquinas.DataSource = columns;
             grillaMaquinas.DisplayLayout.Bands[0].Columns[colCodigoMaquina].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.FormattedText;
             grillaMaquinas.DisplayLayout.Bands[0].Columns[colNombreMaquina].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.FormattedText;
             grillaMaquinas.DisplayLayout.Bands[0].Columns[colMaquinaDefecto].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox;
+        
         }
+
 
         public void Mostrar()
         {
             txtCodigo.Text = this.Existencia.Codigo;
+
+            
             txtNombre.Text = this.Existencia.Nombre;
             txtDescripcion.Text = this.Existencia.Descripcion;
             CheckActivo.Checked = this.Existencia.Activo;
@@ -133,9 +144,10 @@ namespace Soft.Inventario.Win
             checkEsVenta.Checked = this.Existencia.EsVenta;
             checkesServicio.Checked = this.Existencia.EsServicio;
             checkEsInventariable.Checked = this.Existencia.EsInventariable;
-            txtGramaje.Value = this.Existencia.Gramaje;
-            txtAlto.Value = this.Existencia.Alto;
+
             txtLargo.Value = this.Existencia.Largo;
+            txtAlto.Value = this.Existencia.Alto;
+            txtGramaje.Value = this.Existencia.Gramaje;
 
             busClasificacion.Text = (this.Existencia.ClasificacionExistencia != null) ? this.Existencia.ClasificacionExistencia.Nombre : "";
             busItemClasificacion.Text = (this.Existencia.ItemClasificacionExistencia != null) ? this.Existencia.ItemClasificacionExistencia.Nombre : "";
@@ -239,6 +251,11 @@ namespace Soft.Inventario.Win
         private void checkesServicio_CheckedChanged(object sender, EventArgs e)
         {
             Existencia.EsServicio = checkesServicio.Checked;
+
+            if (Existencia.EsServicio == true) {
+                Existencia.EsInventariable = false;
+            }
+            Mostrar();
         }
 
         private void checkEsInventariable_CheckedChanged(object sender, EventArgs e)
@@ -324,7 +341,7 @@ namespace Soft.Inventario.Win
                     Item.EsUnidadBase = Convert.ToBoolean(e.Cell.Text);
                     break;
                 case colFactor:
-                    Item.FactorConversion = Convert.ToInt32(e.Cell.Text.Replace("_",""));
+                    Item.FactorConversion = Convert.ToInt32(e.Cell.Text.Replace('_', ' '));
                     break;
                 default:
                     break;
@@ -441,19 +458,20 @@ namespace Soft.Inventario.Win
             this.grillaMaquinas.ActiveRow.Delete(false);
         }
 
+        
         private void txtGramaje_ValueChanged(object sender, EventArgs e)
         {
             Existencia.Gramaje = Convert.ToInt32(txtGramaje.Value);
         }
 
-        private void txtAlto_ValueChanged(object sender, EventArgs e)
-        {
-            Existencia.Alto = Convert.ToInt32(txtAlto.Value);
-        }
-
         private void txtLargo_ValueChanged(object sender, EventArgs e)
         {
-            Existencia.Largo = Convert.ToInt32(txtLargo.Value);
+            Existencia.Largo = Convert.ToDecimal(txtLargo.Value);
+        }
+
+        private void txtAlto_ValueChanged(object sender, EventArgs e)
+        {
+            Existencia.Alto = Convert.ToDecimal(txtAlto.Value);
         }
 
     }
