@@ -15,7 +15,8 @@
     <property name="Alto" type="decimal"/>
     <property name="Largo" type="decimal"/>
     <property name="Gramaje" type="integer"/>
-
+    <property name="CostoUltimaCompra" type="decimal" insert="true" update="false"/>
+    
     <many-to-one name="ClasificacionExistencia" class="Soft.Inventario.Entidades.ClasificacionExistencia" column="IDClasificacionExistencia" insert="true" update="true" lazy="false"/>
     <many-to-one name="ItemClasificacionExistencia" class="Soft.Inventario.Entidades.ItemClasificacionExistencia" column="IDItemClasificacionExistencia" insert="true" update="true" lazy="false"/>
     <many-to-one name="Marca" class="Soft.Inventario.Entidades.Marca" column="IDMarca" insert="true" update="true" lazy="false"/>

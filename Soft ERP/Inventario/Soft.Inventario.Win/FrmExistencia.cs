@@ -132,6 +132,9 @@ namespace Soft.Inventario.Win
             checkEsVenta.Checked = this.Existencia.EsVenta;
             checkesServicio.Checked = this.Existencia.EsServicio;
             checkEsInventariable.Checked = this.Existencia.EsInventariable;
+            txtGramaje.Value = this.Existencia.Gramaje;
+            txtAlto.Value = this.Existencia.Alto;
+            txtLargo.Value = this.Existencia.Largo;
 
             busClasificacion.Text = (this.Existencia.ClasificacionExistencia != null) ? this.Existencia.ClasificacionExistencia.Nombre : "";
             busItemClasificacion.Text = (this.Existencia.ItemClasificacionExistencia != null) ? this.Existencia.ItemClasificacionExistencia.Nombre : "";
@@ -435,6 +438,21 @@ namespace Soft.Inventario.Win
             if (grillaMaquinas.ActiveRow == null) { return; }
             this.Existencia.Maquinas.Remove((ExistenciaMaquina)this.grillaMaquinas.ActiveRow.Tag);
             this.grillaMaquinas.ActiveRow.Delete(false);
+        }
+
+        private void txtGramaje_ValueChanged(object sender, EventArgs e)
+        {
+            Existencia.Gramaje = Convert.ToInt32(txtGramaje.Value);
+        }
+
+        private void txtAlto_ValueChanged(object sender, EventArgs e)
+        {
+            Existencia.Alto = Convert.ToInt32(txtAlto.Value);
+        }
+
+        private void txtLargo_ValueChanged(object sender, EventArgs e)
+        {
+            Existencia.Largo = Convert.ToInt32(txtLargo.Value);
         }
 
     }
