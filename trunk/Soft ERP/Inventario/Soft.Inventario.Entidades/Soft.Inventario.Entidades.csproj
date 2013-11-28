@@ -79,7 +79,9 @@
     <EmbeddedResource Include="Mappings Files\ItemClasificacionExistencia.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings Files\Existencia.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\Existencia.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings Files\ExistenciaUnidad.hbm.xml" />
