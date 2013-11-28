@@ -12,6 +12,8 @@
     <property name="LongitudSerie" type="int"/>
     <property name="NumeracionActual" type="int"/>
     <property name="NumeracionLongitud" type="int"/>
+    <property name="GeneraNumeracionAlFinal" type="boolean"/>
+    <property name="NumeracionAutomatica" type="boolean"/>
 
     <many-to-one name="Reporte" class="Soft.Reporte.Entidades.Reporte" column="IDReporte" insert="true" update="true" lazy="false"/>
 
