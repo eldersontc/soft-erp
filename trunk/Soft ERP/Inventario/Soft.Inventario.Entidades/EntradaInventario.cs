@@ -25,19 +25,16 @@ namespace Soft.Inventario.Entidades
             return Item;
         }
 
-
         public virtual void GenerarNumCp(){
-            String resultado="";
+            String Result="";
             if (NewInstance) {
-                resultado = TipoDocumento.GenerarNumerodeDocumento();
-                Numeracion = resultado;
+                Result = TipoDocumento.GenerarNumerodeDocumento();
+                Numeracion = Result;
             }
-
-            if(! resultado.Equals("")){
-                String sql = "update TipoDocumentoInventario set NumeracionActual=" + (TipoDocumento.NumeracionActual + 1) + " where id='" + TipoDocumento.ID + "'";
-                HelperNHibernate.GetDataSet(sql);
+            if(!Result.Equals("")){
+                String SQL = "UPDATE TipoDocumentoInventario SET NumeracionActual = " + (TipoDocumento.NumeracionActual + 1) + " WHERE ID='" + TipoDocumento.ID + "'";
+                HelperNHibernate.GetDataSet(SQL);
             }
-
         }
 
     }
