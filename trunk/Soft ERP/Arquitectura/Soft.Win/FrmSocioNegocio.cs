@@ -43,7 +43,7 @@ namespace Soft.Win
         private void ssTipoSocio_Search(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-            SocioNegocio.TipoSocioNegocio = (TipoSocioNegocio)FrmSeleccionar.GetSelectedEntity(typeof(TipoSocioNegocio), "TipoSocioNegocio");
+            SocioNegocio.TipoSocioNegocio = (TipoSocioNegocio)FrmSeleccionar.GetSelectedEntity(typeof(TipoSocioNegocio), "Tipo de Socio");
             Mostrar();
         }
 
