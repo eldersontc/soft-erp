@@ -142,6 +142,7 @@ namespace Soft.Inventario.Win
             ssTipoDocumento.Text = (EntradaInventario.TipoDocumento != null) ? EntradaInventario.TipoDocumento.Descripcion : "";
             EntradaInventario.GenerarNumCp();
             lblSocioNegocio.Text = EntradaInventario.TipoDocumento.TipoSocioDeNegocio;
+            txtNumeracion.Text = EntradaInventario.Numeracion;
         }
 
         private void ssSocioNegocio_Search(object sender, EventArgs e)
@@ -149,7 +150,7 @@ namespace Soft.Inventario.Win
             String Filtro = "";
             if (!lblSocioNegocio.Text.Equals("Socio de Negocio"))
             {
-                Filtro = String.Format(" {0} = 1", lblSocioNegocio);
+                Filtro = String.Format(" {0} = 1", lblSocioNegocio.Text);
                 FrmSelectedEntity FrmSeleccionarProveedor = new FrmSelectedEntity();
                 EntradaInventario.Proveedor = (SocioNegocio)FrmSeleccionarProveedor.GetSelectedEntity(typeof(SocioNegocio), "Socio de Negocio", Filtro);
                 ssSocioNegocio.Text = (EntradaInventario.Proveedor != null) ? EntradaInventario.Proveedor.Nombre : "";
