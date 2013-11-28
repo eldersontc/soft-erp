@@ -62,7 +62,8 @@ namespace Soft.Ventas.Win
             txtObservacion.Text = SolicitudCotizacion.Observacion;
             txtDescripcion.Text = SolicitudCotizacion.Descripcion;
             uneCantidad.Value = SolicitudCotizacion.Cantidad;
-            txtTotal.Value = SolicitudCotizacion.Total;
+            txtNumeracion.Text = SolicitudCotizacion.Numeracion;
+
             MostrarItems();
             ActualizandoIU = false;
         }
@@ -93,8 +94,10 @@ namespace Soft.Ventas.Win
             lblTipoUnidad.Text = Item.TipoUnidad;
             txtObservacionItem.Text = Item.Observacion;
             txtCantidadItem.Value = Item.Cantidad;
-            txtMedidaAbierto.Value = Item.MedidaAbierta;
-            txtMedidaCerrado.Value = Item.MedidaCerrada;
+            txtMedidaAbiertoLargo.Value = Item.MedidaAbiertaLargo;
+            txtMedidaAbiertoAlto.Value = Item.MedidaAbiertaAlto;
+            txtMedidaCerradaLargo.Value = Item.MedidaCerradaLargo;
+            txtMedidaCerradaAlto.Value = Item.MedidaCerradaAlto;
             txtImpresoTiraColor.Value = Item.ImpresoTiraColor;
             txtImpresoRetiraColor.Value = Item.ImpresoRetiraColor;
             MostrarServicios(Item);
@@ -124,8 +127,18 @@ namespace Soft.Ventas.Win
         private void ssTipoDocumento_Search(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
-            SolicitudCotizacion.TipoDocumento = (TipoSolicitudCotizacion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoSolicitudCotizacion), "Tipo Solicitud de Cotización");
+            //SolicitudCotizacion.TipoDocumento = (TipoSolicitudCotizacion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoSolicitudCotizacion), "Tipo Solicitud de Cotización");
+
+
+            TipoSolicitudCotizacion TipoDocumento = (TipoSolicitudCotizacion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoSolicitudCotizacion), "Tipo Solicitud de Cotización");
+            SolicitudCotizacion.TipoDocumento = (TipoSolicitudCotizacion)HelperNHibernate.GetEntityByID("TipoSolicitudCotizacion", TipoDocumento.ID);
+      
+            
             ssTipoDocumento.Text = (SolicitudCotizacion.TipoDocumento != null) ? SolicitudCotizacion.TipoDocumento.Nombre : "";
+            SolicitudCotizacion.GenerarNumCp();
+            txtNumeracion.Text = SolicitudCotizacion.Numeracion;
+            //Mostrar();
+        
         }
 
         private void txtNumeracion_TextChanged(object sender, EventArgs e)
@@ -239,10 +252,6 @@ namespace Soft.Ventas.Win
             }
         }
 
-        private void txtTotal_ValueChanged(object sender, EventArgs e)
-        {
-            SolicitudCotizacion.Total = Convert.ToDecimal(txtTotal.Value);
-        }
 
         private void ubRecalcular_Click(object sender, EventArgs e)
         {
@@ -272,8 +281,13 @@ namespace Soft.Ventas.Win
 
         public void DeshabilitarControles()
         {
-            txtMedidaAbierto.Value = 0;
-            txtMedidaCerrado.Value = 0;
+            txtMedidaAbiertoLargo.Value = 0;
+            txtMedidaAbiertoAlto.Value = 0;
+
+            txtMedidaCerradaLargo.Value = 0;
+            txtMedidaCerradaAlto.Value = 0;
+
+
             txtImpresoTiraColor.Value = 0;
             txtImpresoRetiraColor.Value = 0;
             txtCantidadItem.Value = 0;
@@ -284,17 +298,7 @@ namespace Soft.Ventas.Win
             utcItemSolicitid.Enabled = false;
         }
 
-        private void txtMedidaAbierto_ValueChanged(object sender, EventArgs e)
-        {
-            if (ItemSolicitudCotizacion == null) { return; }
-            ItemSolicitudCotizacion.MedidaAbierta = Convert.ToDecimal(txtMedidaAbierto.Value);
-        }
 
-        private void txtMedidaCerrado_ValueChanged(object sender, EventArgs e)
-        {
-            if (ItemSolicitudCotizacion == null) { return; }
-            ItemSolicitudCotizacion.MedidaCerrada= Convert.ToDecimal(txtMedidaCerrado.Value);
-        }
 
         private void txtImpresoTiraColor_ValueChanged(object sender, EventArgs e)
         {
@@ -334,6 +338,46 @@ namespace Soft.Ventas.Win
         {
             if (ItemSolicitudCotizacion == null) { return; }
             ItemSolicitudCotizacion.Observacion = txtObservacionItem.Text;
+        }
+
+  
+        private void txtMedidaAbiertoLargo_ValueChanged(object sender, EventArgs e)
+        {
+            if (ItemSolicitudCotizacion == null) { return; }
+            ItemSolicitudCotizacion.MedidaAbiertaLargo = Convert.ToInt32(txtMedidaAbiertoLargo.Value);
+        }
+
+        private void txtMedidaAbiertoAlto_ValueChanged(object sender, EventArgs e)
+        {
+            if (ItemSolicitudCotizacion == null) { return; }
+            ItemSolicitudCotizacion.MedidaAbiertaAlto = Convert.ToInt32(txtMedidaAbiertoAlto.Value);
+        }
+
+        private void txtMedidaCerradaLargo_ValueChanged(object sender, EventArgs e)
+        {
+            if (ItemSolicitudCotizacion == null) { return; }
+            ItemSolicitudCotizacion.MedidaCerradaLargo = Convert.ToInt32(txtMedidaCerradaLargo.Value);
+        }
+
+        private void txtMedidaCerradaAlto_ValueChanged(object sender, EventArgs e)
+        {
+            if (ItemSolicitudCotizacion == null) { return; }
+            ItemSolicitudCotizacion.MedidaCerradaAlto = Convert.ToInt32(txtMedidaCerradaAlto.Value);
+        }
+
+        private void lblFechaCreacion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNumeracion_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblNumeracion_Click(object sender, EventArgs e)
+        {
+
         }
 
     }
