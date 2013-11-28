@@ -15,6 +15,7 @@ namespace Soft.Inventario.Entidades
         public virtual Boolean UnicoAlmacen { get; set; }
         public virtual Boolean RequiereSocioNegocio { get; set; }
         public virtual Boolean AceptaCostoCero { get; set; }
+
         
     }
 }
