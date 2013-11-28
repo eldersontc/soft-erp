@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Soft.Entities;
+using Soft.DataAccess;
 
 namespace Soft.Ventas.Entidades
 {
@@ -22,6 +23,21 @@ namespace Soft.Ventas.Entidades
             ItemSolicitudCotizacion Item = new ItemSolicitudCotizacion();
             Items.Add(Item);
             return Item;
+        }
+
+        public virtual void GenerarNumCp()
+        {
+            String Result = "";
+            if (NewInstance)
+            {
+                Result = TipoDocumento.GenerarNumerodeDocumento();
+                Numeracion = Result;
+            }
+            if (!Result.Equals(""))
+            {
+                String SQL = "UPDATE TipoSolicitudCotizacion SET NumeracionActual = " + (TipoDocumento.NumeracionActual + 1) + " WHERE ID ='" + TipoDocumento.ID + "'";
+                HelperNHibernate.GetDataSet(SQL);
+            }
         }
 
     }
