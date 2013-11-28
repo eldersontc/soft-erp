@@ -26,15 +26,15 @@ namespace Soft.Inventario.Win
         //Constantes
         const String colUnidad = "Unidad";
         const String colEsBase = "Es Base";
-        const String colFactor = "Factor de Conversion";
+        const String colFactor = "Factor";
 
         //Constantes
-        const String colAlmacen = "Almacen";
+        const String colAlmacen = "Almacén";
         const String colStockFisico = "Stock";
         const String colStockComprometido = "Comprometido";
 
         //Constantes Maquinas
-        const String colCodigoMaquina = "Codigo";
+        const String colCodigoMaquina = "Código";
         const String colNombreMaquina = "Nombre";
         const String colMaquinaDefecto = "Por Defecto";
 
@@ -68,6 +68,8 @@ namespace Soft.Inventario.Win
             grillaUnidades.DisplayLayout.Bands[0].Columns[colUnidad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.FormattedText;
             grillaUnidades.DisplayLayout.Bands[0].Columns[colEsBase].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox;
             grillaUnidades.DisplayLayout.Bands[0].Columns[colFactor].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Integer;
+            grillaUnidades.DisplayLayout.Bands[0].Columns[colFactor].CellAppearance.TextHAlign = HAlign.Right;
+            MapKeys(ref grillaUnidades);
         }
 
         public void InitGridAlmancen()
@@ -88,12 +90,14 @@ namespace Soft.Inventario.Win
             column.ReadOnly = true;
             
             grillaAlmacenes.DataSource = columns;
-            grillaAlmacenes.DisplayLayout.Bands[0].Columns[colAlmacen].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.FormattedText;
+            grillaAlmacenes.DisplayLayout.Bands[0].Columns[colAlmacen].CellActivation = Activation.NoEdit;
             grillaAlmacenes.DisplayLayout.Bands[0].Columns[colStockFisico].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Double;
+            grillaAlmacenes.DisplayLayout.Bands[0].Columns[colStockFisico].CellActivation = Activation.NoEdit;
+            grillaAlmacenes.DisplayLayout.Bands[0].Columns[colStockFisico].CellAppearance.TextHAlign = HAlign.Right;
             grillaAlmacenes.DisplayLayout.Bands[0].Columns[colStockComprometido].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Double;
+            grillaAlmacenes.DisplayLayout.Bands[0].Columns[colStockComprometido].CellActivation = Activation.NoEdit;
+            grillaAlmacenes.DisplayLayout.Bands[0].Columns[colStockComprometido].CellAppearance.TextHAlign = HAlign.Right;
         }
-
-
 
         public void InitGridMaquina()
         {
@@ -113,14 +117,11 @@ namespace Soft.Inventario.Win
             column.DataType = typeof(Boolean);
             column.ReadOnly = false;
 
-
             grillaMaquinas.DataSource = columns;
             grillaMaquinas.DisplayLayout.Bands[0].Columns[colCodigoMaquina].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.FormattedText;
             grillaMaquinas.DisplayLayout.Bands[0].Columns[colNombreMaquina].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.FormattedText;
             grillaMaquinas.DisplayLayout.Bands[0].Columns[colMaquinaDefecto].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox;
-        
         }
-
 
         public void Mostrar()
         {
