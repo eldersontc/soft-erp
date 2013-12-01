@@ -19,6 +19,7 @@ namespace Soft.Ventas.Entidades
         public virtual Decimal MedidaCerrada { get; set; }
         public virtual Int32 ImpresoTiraColor { get; set; }
         public virtual Int32 ImpresoRetiraColor { get; set; }
+        public virtual Int32 Cantidad { get; set; }
         public virtual String Observacion { get; set; }
         public virtual Maquina Maquina { get; set; }
         public virtual Existencia Material { get; set; }
