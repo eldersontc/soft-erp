@@ -78,6 +78,12 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmListaCostosMaquina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListaCostosMaquina.Designer.cs">
+      <DependentUpon>FrmListaCostosMaquina.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMaquina.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmListaCostosMaquina.resx">
+      <DependentUpon>FrmListaCostosMaquina.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMaquina.resx">
       <DependentUpon>FrmMaquina.cs</DependentUpon>
     </EmbeddedResource>
