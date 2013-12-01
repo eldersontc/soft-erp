@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Ventas.Entidades.ItemListaCostosMaquina, Soft.Ventas.Entidades">
+
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="CostoPreparacion" type="decimal"/>
+    <property name="CostoProduccion" type="decimal"/>
+
+    <many-to-one name="Maquina" class="Soft.Ventas.Entidades.Maquina" column="IDMaquina" insert="true" update="true" lazy="false"/>
+    
+    <bag name="Unidades" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDItemListaCostosMaquina"/>
+      <one-to-many class="Soft.Ventas.Entidades.UnidadListaCostosMaquina"/>
+    </bag>
+
+  </class>
+
+</hibernate-mapping>

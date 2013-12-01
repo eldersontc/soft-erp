@@ -53,10 +53,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EscalaListaCostosMaquina.cs" />
+    <Compile Include="ItemListaCostosMaquina.cs" />
     <Compile Include="ItemPlantilla.cs" />
     <Compile Include="ItemPlantillaServicio.cs" />
     <Compile Include="ItemSolicitudCotizacion.cs" />
     <Compile Include="ItemSolicitudCotizacionServicio.cs" />
+    <Compile Include="ListaCostosMaquina.cs" />
     <Compile Include="Maquina.cs" />
     <Compile Include="ModalidadCredito.cs" />
     <Compile Include="Plantilla.cs" />
@@ -66,6 +69,7 @@
     <Compile Include="TipoMaquina.cs" />
     <Compile Include="TipoSolicitudCotizacion.cs" />
     <Compile Include="TipoUnidad.cs" />
+    <Compile Include="UnidadListaCostosMaquina.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings Files\Maquina.hbm.xml" />
@@ -94,6 +98,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings Files\ItemSolicitudCotizacionServicio.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings Files\EscalaListaCostosMaquina.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\ItemListaCostosMaquina.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\ListaCostosMaquina.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\UnidadListaCostosMaquina.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
