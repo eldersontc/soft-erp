@@ -12,7 +12,7 @@ namespace Soft.Exceptions
         public static void Control(Exception Ex, MessageBoxIcon Icon)
         {
             FrmMessageError FrmError = new FrmMessageError();
-            FrmError.ShowError(Ex.Message.ToString(), "", SystemIcons.Error.ToBitmap());
+            FrmError.ShowError(Ex.Message.ToString(), Ex.InnerException + Ex.Source + Ex.StackTrace , SystemIcons.Error.ToBitmap());
         }
     }
 }
