@@ -54,12 +54,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EscalaListaCostosMaquina.cs" />
+    <Compile Include="EscalaListaPreciosTransporte.cs" />
     <Compile Include="ItemListaCostosMaquina.cs" />
+    <Compile Include="ItemListaPreciosTransporte.cs" />
     <Compile Include="ItemPlantilla.cs" />
     <Compile Include="ItemPlantillaServicio.cs" />
     <Compile Include="ItemSolicitudCotizacion.cs" />
     <Compile Include="ItemSolicitudCotizacionServicio.cs" />
     <Compile Include="ListaCostosMaquina.cs" />
+    <Compile Include="ListaPreciosTransporte.cs" />
     <Compile Include="Maquina.cs" />
     <Compile Include="ModalidadCredito.cs" />
     <Compile Include="Plantilla.cs" />
@@ -104,6 +107,11 @@
     <EmbeddedResource Include="Mappings Files\ItemListaCostosMaquina.hbm.xml" />
     <EmbeddedResource Include="Mappings Files\ListaCostosMaquina.hbm.xml" />
     <EmbeddedResource Include="Mappings Files\UnidadListaCostosMaquina.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings Files\EscalaListaPreciosTransporte.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\ItemListaPreciosTransporte.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\ListaPreciosTransporte.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
