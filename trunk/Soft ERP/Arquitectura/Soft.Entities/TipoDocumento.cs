@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using Soft.Reporte.Entidades;
 
-
 namespace Soft.Entities
 {
     [Serializable]
-    public class TipoDocumento : Parent 
+    public class TipoDocumento : Parent
     {
         public TipoDocumento() { }
         public virtual String Codigo { get; set; }
@@ -22,19 +21,19 @@ namespace Soft.Entities
         public virtual Boolean GeneraNumeracionAlFinal { get; set; }
         public virtual Boolean NumeracionAutomatica { get; set; }
         public virtual String TipoSocioDeNegocio { get; set; }
-        
         public virtual Soft.Reporte.Entidades.Reporte Reporte { get; set; }
 
-
-        public virtual string GenerarNumerodeDocumento() {
-            String resultado ="";
-            if (NumeracionAutomatica==true){
-                if (GeneraNumeracionAlFinal==false){
+        public virtual string GenerarNumerodeDocumento()
+        {
+            String resultado = "";
+            if (NumeracionAutomatica == true)
+            {
+                if (GeneraNumeracionAlFinal == false)
+                {
                     String numeroactual = Convert.ToString(NumeracionActual + 1);
-                    String serie = CodigoSerie.PadLeft(LongitudSerie,'0');
-                    String numeracion = numeroactual.PadLeft(NumeracionLongitud,'0');
+                    String serie = CodigoSerie.PadLeft(LongitudSerie, '0');
+                    String numeracion = numeroactual.PadLeft(NumeracionLongitud, '0');
                     resultado = serie + "-" + numeracion;
-                    
                 }
             }
             return resultado;
