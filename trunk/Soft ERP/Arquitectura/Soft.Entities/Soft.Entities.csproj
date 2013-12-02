@@ -49,12 +49,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AtributoSF.cs" />
+    <Compile Include="Departamento.cs" />
+    <Compile Include="Distrito.cs" />
     <Compile Include="Documento.cs" />
     <Compile Include="EntidadSF.cs" />
     <Compile Include="ItemDocumento.cs" />
     <Compile Include="Moneda.cs" />
     <Compile Include="Parent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provincia.cs" />
     <Compile Include="SocioNegocio.cs" />
     <Compile Include="TipoCambio.cs" />
     <Compile Include="TipoDocumento.cs" />
@@ -89,6 +92,11 @@
     <EmbeddedResource Include="Mappings Files\TipoCambio.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings Files\Departamento.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\Distrito.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\Provincia.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
