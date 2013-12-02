@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Ventas.Entidades.EscalaListaPreciosTransporte, Soft.Ventas.Entidades">
+
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="Descripcion" type="string"/>
+    <property name="Desde" type="int"/>
+    <property name="Hasta" type="int"/>
+    <property name="Precio" type="decimal"/>
+
+  </class>
+
+</hibernate-mapping>
