@@ -53,8 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cotizacion.cs" />
     <Compile Include="EscalaListaCostosMaquina.cs" />
     <Compile Include="EscalaListaPreciosTransporte.cs" />
+    <Compile Include="ItemCotizacion.cs" />
+    <Compile Include="ItemCotizacionServicio.cs" />
     <Compile Include="ItemListaCostosMaquina.cs" />
     <Compile Include="ItemListaPreciosTransporte.cs" />
     <Compile Include="ItemPlantilla.cs" />
@@ -69,6 +72,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RelacionMedidas.cs" />
     <Compile Include="SolicitudCotizacion.cs" />
+    <Compile Include="TipoCotizacion.cs" />
     <Compile Include="TipoMaquina.cs" />
     <Compile Include="TipoSolicitudCotizacion.cs" />
     <Compile Include="TipoUnidad.cs" />
@@ -112,6 +116,18 @@
     <EmbeddedResource Include="Mappings Files\EscalaListaPreciosTransporte.hbm.xml" />
     <EmbeddedResource Include="Mappings Files\ItemListaPreciosTransporte.hbm.xml" />
     <EmbeddedResource Include="Mappings Files\ListaPreciosTransporte.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings Files\Cotizacion.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings Files\TipoCotizacion.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings Files\ItemCotizacion.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings Files\ItemCotizacionServicio.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

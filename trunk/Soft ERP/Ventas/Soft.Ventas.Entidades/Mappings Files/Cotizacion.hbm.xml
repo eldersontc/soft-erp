@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Ventas.Entidades.Cotizacion, Soft.Ventas.Entidades">
+
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="Numeracion" type="string"/>
+    <property name="Observacion" type="string"/>
+    <property name="FechaCreacion" type="DateTime"/>
+    <property name="Total" type="decimal"/>
+    <property name="Cantidad" type="decimal"/>
+    <property name="Descripcion" type="string"/>
+    <property name="PorcentajeUtilidad" type="decimal"/>
+    
+    <many-to-one name="TipoDocumento" class="Soft.Ventas.Entidades.TipoCotizacion" column="IDTipoDocumento" insert="true" update="true" lazy="false"/>
+    <many-to-one name="Cliente" class="Soft.Entities.SocioNegocio" column="IDCliente" insert="true" update="true" lazy="false"/>
+    <many-to-one name="Responsable" class="Soft.Entities.SocioNegocio" column="IDCotizador" insert="true" update="true" lazy="false"/>
+    <many-to-one name="Vendedor" class="Soft.Entities.SocioNegocio" column="IDVendedor" insert="true" update="true" lazy="false"/>
+    <many-to-one name="ModalidadCredito" class="Soft.Ventas.Entidades.ModalidadCredito" column="IDModalidadCredito" insert="true" update="true" lazy="false"/>
+
+    <bag name="Items" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDCotizacion"/>
+      <one-to-many class="Soft.Ventas.Entidades.ItemCotizacion"/>
+    </bag>
+
+  </class>
+</hibernate-mapping>

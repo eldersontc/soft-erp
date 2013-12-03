@@ -78,6 +78,12 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCotizacion.Designer.cs">
+      <DependentUpon>FrmCotizacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmListaCostosMaquina.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,12 @@
     <Compile Include="FrmSolicitudCotizacion.Designer.cs">
       <DependentUpon>FrmSolicitudCotizacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmTipoCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTipoCotizacion.Designer.cs">
+      <DependentUpon>FrmTipoCotizacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTipoSolicitudCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +161,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmCotizacion.resx">
+      <DependentUpon>FrmCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmListaCostosMaquina.resx">
       <DependentUpon>FrmListaCostosMaquina.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSolicitudCotizacion.resx">
       <DependentUpon>FrmSolicitudCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTipoCotizacion.resx">
+      <DependentUpon>FrmTipoCotizacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTipoSolicitudCotizacion.resx">
       <DependentUpon>FrmTipoSolicitudCotizacion.cs</DependentUpon>
