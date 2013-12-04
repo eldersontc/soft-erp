@@ -27,8 +27,8 @@ namespace Soft.Win
         }
 
         public String GetSelectedImage() {
-            this.MostrarImagenes();
-            this.ShowDialog();
+            MostrarImagenes();
+            ShowDialog();
             return ulvImagenes.ActiveItem.Key;
         }
 
@@ -42,6 +42,27 @@ namespace Soft.Win
         {
             base.m_ResultProcess = EnumResult.SUCESS;
             Close();
+        }
+
+        private void ulvImagenes_DoubleClick(object sender, EventArgs e)
+        {
+            base.m_ResultProcess = EnumResult.SUCESS;
+            Close();
+        }
+
+        private void ulvImagenes_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    base.m_ResultProcess = EnumResult.SUCESS;
+                    Close();
+                    break;
+                case Keys.Escape:
+                    base.m_ResultProcess = EnumResult.SUCESS;
+                    Close();
+                    break;
+            }
         }
     }
 }
