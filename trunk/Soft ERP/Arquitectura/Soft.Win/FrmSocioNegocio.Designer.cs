@@ -29,28 +29,57 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSocioNegocio));
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab5 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab6 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.checkActivoClliente = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
+            this.ultraLabel12 = new Infragistics.Win.Misc.UltraLabel();
+            this.busVendedor = new Soft.Controls.SoftSearch();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraTabPageControl3 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.checkActivoEmpleado = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
+            this.ultraLabel11 = new Infragistics.Win.Misc.UltraLabel();
+            this.busArea = new Soft.Controls.SoftSearch();
+            this.ultraTabPageControl4 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.btnModificarDireccion = new Infragistics.Win.Misc.UltraButton();
+            this.GrillaDirecciones = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.btnEliminar = new Infragistics.Win.Misc.UltraButton();
+            this.btnAgregarDireccion = new Infragistics.Win.Misc.UltraButton();
+            this.ultraTabPageControl5 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.btnEliminarContacto = new Infragistics.Win.Misc.UltraButton();
+            this.btnAgregarContacto = new Infragistics.Win.Misc.UltraButton();
+            this.GrillaContactos = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.ultraTabPageControl6 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.btnEliminarBancos = new Infragistics.Win.Misc.UltraButton();
+            this.btnAgregarBancos = new Infragistics.Win.Misc.UltraButton();
+            this.GrillaBancos = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraLabel4 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel5 = new Infragistics.Win.Misc.UltraLabel();
             this.ssTipoSocio = new Soft.Controls.SoftSearch();
             this.txtCodigo = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.txtNombre = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.txtDescripcion = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.udtAniversario = new Infragistics.Win.UltraWinEditors.UltraDateTimeEditor();
             this.uceActivo = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.utSocioNegocio = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
@@ -59,11 +88,35 @@
             this.uceEmpleado = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.uceProveedor = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.uceCliente = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
+            this.ultraLabel6 = new Infragistics.Win.Misc.UltraLabel();
+            this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
+            this.txtNombre2 = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel9 = new Infragistics.Win.Misc.UltraLabel();
+            this.txtNombre1 = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel8 = new Infragistics.Win.Misc.UltraLabel();
+            this.txtApellidoMaterno = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel7 = new Infragistics.Win.Misc.UltraLabel();
+            this.txtApellidoPaterno = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraTabControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
+            this.ultraTabSharedControlsPage2 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
+            this.ultraLabel4 = new Infragistics.Win.Misc.UltraLabel();
+            this.ultraLabel10 = new Infragistics.Win.Misc.UltraLabel();
+            this.txtCorreo = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.txtPaginaWeb = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
+            this.ultraTabPageControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkActivoClliente)).BeginInit();
+            this.ultraTabPageControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkActivoEmpleado)).BeginInit();
+            this.ultraTabPageControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GrillaDirecciones)).BeginInit();
+            this.ultraTabPageControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GrillaContactos)).BeginInit();
+            this.ultraTabPageControl6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GrillaBancos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udtAniversario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceActivo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.utSocioNegocio)).BeginInit();
@@ -73,47 +126,65 @@
             ((System.ComponentModel.ISupportInitialize)(this.uceEmpleado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceProveedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceCliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
+            this.ultraGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNombre2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNombre1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtApellidoMaterno)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtApellidoPaterno)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).BeginInit();
+            this.ultraTabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCorreo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPaginaWeb)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
             // 
+            this.ugbParent.Controls.Add(this.txtPaginaWeb);
+            this.ugbParent.Controls.Add(this.txtCorreo);
+            this.ugbParent.Controls.Add(this.ultraLabel10);
+            this.ugbParent.Controls.Add(this.ultraLabel4);
+            this.ugbParent.Controls.Add(this.ultraTabControl1);
+            this.ugbParent.Controls.Add(this.ultraGroupBox1);
             this.ugbParent.Controls.Add(this.ugbComportamiento);
             this.ugbParent.Controls.Add(this.utSocioNegocio);
             this.ugbParent.Controls.Add(this.uceActivo);
             this.ugbParent.Controls.Add(this.udtAniversario);
-            this.ugbParent.Controls.Add(this.txtDescripcion);
             this.ugbParent.Controls.Add(this.txtNombre);
             this.ugbParent.Controls.Add(this.txtCodigo);
             this.ugbParent.Controls.Add(this.ssTipoSocio);
             this.ugbParent.Controls.Add(this.ultraLabel5);
-            this.ugbParent.Controls.Add(this.ultraLabel4);
             this.ugbParent.Controls.Add(this.ultraLabel3);
             this.ugbParent.Controls.Add(this.ultraLabel1);
             this.ugbParent.Controls.Add(this.ultraLabel2);
-            this.ugbParent.Size = new System.Drawing.Size(436, 428);
+            this.ugbParent.Size = new System.Drawing.Size(832, 545);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel2, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel1, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel3, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ultraLabel4, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel5, 0);
             this.ugbParent.Controls.SetChildIndex(this.ssTipoSocio, 0);
             this.ugbParent.Controls.SetChildIndex(this.txtCodigo, 0);
             this.ugbParent.Controls.SetChildIndex(this.txtNombre, 0);
-            this.ugbParent.Controls.SetChildIndex(this.txtDescripcion, 0);
             this.ugbParent.Controls.SetChildIndex(this.udtAniversario, 0);
             this.ugbParent.Controls.SetChildIndex(this.uceActivo, 0);
             this.ugbParent.Controls.SetChildIndex(this.utSocioNegocio, 0);
             this.ugbParent.Controls.SetChildIndex(this.ugbComportamiento, 0);
+            this.ugbParent.Controls.SetChildIndex(this.ultraGroupBox1, 0);
+            this.ugbParent.Controls.SetChildIndex(this.ultraTabControl1, 0);
+            this.ugbParent.Controls.SetChildIndex(this.ultraLabel4, 0);
+            this.ugbParent.Controls.SetChildIndex(this.ultraLabel10, 0);
+            this.ugbParent.Controls.SetChildIndex(this.txtCorreo, 0);
+            this.ugbParent.Controls.SetChildIndex(this.txtPaginaWeb, 0);
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(340, 388);
+            this.ubCancelar.Location = new System.Drawing.Point(736, 513);
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(259, 388);
+            this.ubAceptar.Location = new System.Drawing.Point(655, 513);
             // 
             // ilMain
             // 
@@ -368,26 +439,224 @@
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.Controls.Add(this.checkActivoClliente);
+            this.ultraTabPageControl1.Controls.Add(this.ultraLabel12);
+            this.ultraTabPageControl1.Controls.Add(this.busVendedor);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(392, 132);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(336, 198);
+            // 
+            // checkActivoClliente
+            // 
+            this.checkActivoClliente.BackColor = System.Drawing.Color.Transparent;
+            this.checkActivoClliente.BackColorInternal = System.Drawing.Color.Transparent;
+            this.checkActivoClliente.Location = new System.Drawing.Point(70, 46);
+            this.checkActivoClliente.Name = "checkActivoClliente";
+            this.checkActivoClliente.Size = new System.Drawing.Size(65, 20);
+            this.checkActivoClliente.TabIndex = 41;
+            this.checkActivoClliente.Text = "Activo";
+            this.checkActivoClliente.CheckedChanged += new System.EventHandler(this.checkActivoClliente_CheckedChanged);
+            // 
+            // ultraLabel12
+            // 
+            appearance10.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel12.Appearance = appearance10;
+            this.ultraLabel12.Location = new System.Drawing.Point(3, 17);
+            this.ultraLabel12.Name = "ultraLabel12";
+            this.ultraLabel12.Size = new System.Drawing.Size(65, 23);
+            this.ultraLabel12.TabIndex = 40;
+            this.ultraLabel12.Text = "Vendedor";
+            // 
+            // busVendedor
+            // 
+            this.busVendedor.BackColor = System.Drawing.Color.Transparent;
+            this.busVendedor.Location = new System.Drawing.Point(70, 17);
+            this.busVendedor.Name = "busVendedor";
+            this.busVendedor.Size = new System.Drawing.Size(246, 26);
+            this.busVendedor.TabIndex = 39;
+            this.busVendedor.Search += new System.EventHandler(this.busVendedor_Search);
             // 
             // ultraTabPageControl2
             // 
             this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(392, 132);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(336, 198);
             // 
             // ultraTabPageControl3
             // 
+            this.ultraTabPageControl3.Controls.Add(this.checkActivoEmpleado);
+            this.ultraTabPageControl3.Controls.Add(this.ultraLabel11);
+            this.ultraTabPageControl3.Controls.Add(this.busArea);
             this.ultraTabPageControl3.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl3.Name = "ultraTabPageControl3";
-            this.ultraTabPageControl3.Size = new System.Drawing.Size(392, 132);
+            this.ultraTabPageControl3.Size = new System.Drawing.Size(336, 198);
+            // 
+            // checkActivoEmpleado
+            // 
+            this.checkActivoEmpleado.BackColor = System.Drawing.Color.Transparent;
+            this.checkActivoEmpleado.BackColorInternal = System.Drawing.Color.Transparent;
+            this.checkActivoEmpleado.Location = new System.Drawing.Point(76, 51);
+            this.checkActivoEmpleado.Name = "checkActivoEmpleado";
+            this.checkActivoEmpleado.Size = new System.Drawing.Size(65, 20);
+            this.checkActivoEmpleado.TabIndex = 38;
+            this.checkActivoEmpleado.Text = "Activo";
+            this.checkActivoEmpleado.CheckedChanged += new System.EventHandler(this.checkActivoEmpleado_CheckedChanged);
+            // 
+            // ultraLabel11
+            // 
+            appearance11.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel11.Appearance = appearance11;
+            this.ultraLabel11.Location = new System.Drawing.Point(9, 19);
+            this.ultraLabel11.Name = "ultraLabel11";
+            this.ultraLabel11.Size = new System.Drawing.Size(65, 23);
+            this.ultraLabel11.TabIndex = 37;
+            this.ultraLabel11.Text = "Area";
+            // 
+            // busArea
+            // 
+            this.busArea.BackColor = System.Drawing.Color.Transparent;
+            this.busArea.Location = new System.Drawing.Point(76, 19);
+            this.busArea.Name = "busArea";
+            this.busArea.Size = new System.Drawing.Size(246, 26);
+            this.busArea.TabIndex = 24;
+            this.busArea.Search += new System.EventHandler(this.busArea_Search);
+            // 
+            // ultraTabPageControl4
+            // 
+            this.ultraTabPageControl4.Controls.Add(this.btnModificarDireccion);
+            this.ultraTabPageControl4.Controls.Add(this.GrillaDirecciones);
+            this.ultraTabPageControl4.Controls.Add(this.btnEliminar);
+            this.ultraTabPageControl4.Controls.Add(this.btnAgregarDireccion);
+            this.ultraTabPageControl4.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl4.Name = "ultraTabPageControl4";
+            this.ultraTabPageControl4.Size = new System.Drawing.Size(449, 236);
+            // 
+            // btnModificarDireccion
+            // 
+            this.btnModificarDireccion.Location = new System.Drawing.Point(3, 210);
+            this.btnModificarDireccion.Name = "btnModificarDireccion";
+            this.btnModificarDireccion.Size = new System.Drawing.Size(75, 23);
+            this.btnModificarDireccion.TabIndex = 11;
+            this.btnModificarDireccion.Text = "Modificar";
+            this.btnModificarDireccion.Click += new System.EventHandler(this.btnModificarDireccion_Click);
+            // 
+            // GrillaDirecciones
+            // 
+            this.GrillaDirecciones.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.GrillaDirecciones.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
+            this.GrillaDirecciones.DisplayLayout.TabNavigation = Infragistics.Win.UltraWinGrid.TabNavigation.NextControl;
+            this.GrillaDirecciones.Dock = System.Windows.Forms.DockStyle.Top;
+            this.GrillaDirecciones.Location = new System.Drawing.Point(0, 0);
+            this.GrillaDirecciones.Name = "GrillaDirecciones";
+            this.GrillaDirecciones.Size = new System.Drawing.Size(449, 204);
+            this.GrillaDirecciones.TabIndex = 10;
+            this.GrillaDirecciones.Text = "ultraGrid1";
+            this.GrillaDirecciones.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.GrillaDirecciones_CellChange);
+            this.GrillaDirecciones.DoubleClickCell += new Infragistics.Win.UltraWinGrid.DoubleClickCellEventHandler(this.GrillaDirecciones_DoubleClickCell);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(309, 210);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 2;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnAgregarDireccion
+            // 
+            this.btnAgregarDireccion.Location = new System.Drawing.Point(228, 210);
+            this.btnAgregarDireccion.Name = "btnAgregarDireccion";
+            this.btnAgregarDireccion.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregarDireccion.TabIndex = 0;
+            this.btnAgregarDireccion.Text = "Agregar";
+            this.btnAgregarDireccion.Click += new System.EventHandler(this.btnAgregarDireccion_Click);
+            // 
+            // ultraTabPageControl5
+            // 
+            this.ultraTabPageControl5.Controls.Add(this.btnEliminarContacto);
+            this.ultraTabPageControl5.Controls.Add(this.btnAgregarContacto);
+            this.ultraTabPageControl5.Controls.Add(this.GrillaContactos);
+            this.ultraTabPageControl5.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl5.Name = "ultraTabPageControl5";
+            this.ultraTabPageControl5.Size = new System.Drawing.Size(449, 236);
+            // 
+            // btnEliminarContacto
+            // 
+            this.btnEliminarContacto.Location = new System.Drawing.Point(307, 209);
+            this.btnEliminarContacto.Name = "btnEliminarContacto";
+            this.btnEliminarContacto.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarContacto.TabIndex = 17;
+            this.btnEliminarContacto.Text = "Eliminar";
+            this.btnEliminarContacto.Click += new System.EventHandler(this.btnEliminarContacto_Click);
+            // 
+            // btnAgregarContacto
+            // 
+            this.btnAgregarContacto.Location = new System.Drawing.Point(226, 209);
+            this.btnAgregarContacto.Name = "btnAgregarContacto";
+            this.btnAgregarContacto.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregarContacto.TabIndex = 16;
+            this.btnAgregarContacto.Text = "Agregar";
+            this.btnAgregarContacto.Click += new System.EventHandler(this.btnAgregarContacto_Click);
+            // 
+            // GrillaContactos
+            // 
+            this.GrillaContactos.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.GrillaContactos.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
+            this.GrillaContactos.DisplayLayout.TabNavigation = Infragistics.Win.UltraWinGrid.TabNavigation.NextControl;
+            this.GrillaContactos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.GrillaContactos.Location = new System.Drawing.Point(0, 0);
+            this.GrillaContactos.Name = "GrillaContactos";
+            this.GrillaContactos.Size = new System.Drawing.Size(449, 204);
+            this.GrillaContactos.TabIndex = 15;
+            this.GrillaContactos.Text = "ultraGrid1";
+            this.GrillaContactos.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.GrillaContactos_CellChange);
+            // 
+            // ultraTabPageControl6
+            // 
+            this.ultraTabPageControl6.Controls.Add(this.btnEliminarBancos);
+            this.ultraTabPageControl6.Controls.Add(this.btnAgregarBancos);
+            this.ultraTabPageControl6.Controls.Add(this.GrillaBancos);
+            this.ultraTabPageControl6.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl6.Name = "ultraTabPageControl6";
+            this.ultraTabPageControl6.Size = new System.Drawing.Size(449, 236);
+            // 
+            // btnEliminarBancos
+            // 
+            this.btnEliminarBancos.Location = new System.Drawing.Point(307, 210);
+            this.btnEliminarBancos.Name = "btnEliminarBancos";
+            this.btnEliminarBancos.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarBancos.TabIndex = 20;
+            this.btnEliminarBancos.Text = "Eliminar";
+            this.btnEliminarBancos.Click += new System.EventHandler(this.btnEliminarBancos_Click);
+            // 
+            // btnAgregarBancos
+            // 
+            this.btnAgregarBancos.Location = new System.Drawing.Point(226, 210);
+            this.btnAgregarBancos.Name = "btnAgregarBancos";
+            this.btnAgregarBancos.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregarBancos.TabIndex = 19;
+            this.btnAgregarBancos.Text = "Agregar";
+            this.btnAgregarBancos.Click += new System.EventHandler(this.btnAgregarBancos_Click);
+            // 
+            // GrillaBancos
+            // 
+            this.GrillaBancos.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.GrillaBancos.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
+            this.GrillaBancos.DisplayLayout.TabNavigation = Infragistics.Win.UltraWinGrid.TabNavigation.NextControl;
+            this.GrillaBancos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.GrillaBancos.Location = new System.Drawing.Point(0, 0);
+            this.GrillaBancos.Name = "GrillaBancos";
+            this.GrillaBancos.Size = new System.Drawing.Size(449, 204);
+            this.GrillaBancos.TabIndex = 18;
+            this.GrillaBancos.Text = "ultraGrid1";
+            this.GrillaBancos.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.GrillaBancos_CellChange);
+            this.GrillaBancos.ClickCellButton += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.GrillaBancos_ClickCellButton);
             // 
             // ultraLabel2
             // 
-            appearance7.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance7;
+            appearance16.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance16;
             this.ultraLabel2.Location = new System.Drawing.Point(19, 22);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(100, 23);
@@ -396,8 +665,8 @@
             // 
             // ultraLabel1
             // 
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel1.Appearance = appearance6;
+            appearance15.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel1.Appearance = appearance15;
             this.ultraLabel1.Location = new System.Drawing.Point(19, 51);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(100, 23);
@@ -406,29 +675,19 @@
             // 
             // ultraLabel3
             // 
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel3.Appearance = appearance5;
+            appearance14.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel3.Appearance = appearance14;
             this.ultraLabel3.Location = new System.Drawing.Point(19, 80);
             this.ultraLabel3.Name = "ultraLabel3";
-            this.ultraLabel3.Size = new System.Drawing.Size(100, 23);
+            this.ultraLabel3.Size = new System.Drawing.Size(137, 23);
             this.ultraLabel3.TabIndex = 20;
-            this.ultraLabel3.Text = "Nombre";
-            // 
-            // ultraLabel4
-            // 
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel4.Appearance = appearance4;
-            this.ultraLabel4.Location = new System.Drawing.Point(19, 109);
-            this.ultraLabel4.Name = "ultraLabel4";
-            this.ultraLabel4.Size = new System.Drawing.Size(100, 23);
-            this.ultraLabel4.TabIndex = 21;
-            this.ultraLabel4.Text = "Descripción";
+            this.ultraLabel3.Text = "Nombre o Razon Social";
             // 
             // ultraLabel5
             // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel5.Appearance = appearance3;
-            this.ultraLabel5.Location = new System.Drawing.Point(19, 154);
+            appearance13.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel5.Appearance = appearance13;
+            this.ultraLabel5.Location = new System.Drawing.Point(25, 197);
             this.ultraLabel5.Name = "ultraLabel5";
             this.ultraLabel5.Size = new System.Drawing.Size(100, 23);
             this.ultraLabel5.TabIndex = 22;
@@ -437,42 +696,33 @@
             // ssTipoSocio
             // 
             this.ssTipoSocio.BackColor = System.Drawing.Color.Transparent;
-            this.ssTipoSocio.Location = new System.Drawing.Point(124, 19);
+            this.ssTipoSocio.Location = new System.Drawing.Point(149, 19);
             this.ssTipoSocio.Name = "ssTipoSocio";
-            this.ssTipoSocio.Size = new System.Drawing.Size(200, 26);
+            this.ssTipoSocio.Size = new System.Drawing.Size(248, 26);
             this.ssTipoSocio.TabIndex = 23;
             this.ssTipoSocio.Search += new System.EventHandler(this.ssTipoSocio_Search);
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(124, 47);
+            this.txtCodigo.Location = new System.Drawing.Point(149, 47);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(141, 21);
+            this.txtCodigo.Size = new System.Drawing.Size(147, 21);
             this.txtCodigo.TabIndex = 24;
             this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(124, 76);
+            this.txtNombre.Location = new System.Drawing.Point(149, 76);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(200, 21);
+            this.txtNombre.Size = new System.Drawing.Size(595, 21);
             this.txtNombre.TabIndex = 25;
             this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
-            // txtDescripcion
-            // 
-            this.txtDescripcion.Location = new System.Drawing.Point(124, 105);
-            this.txtDescripcion.Multiline = true;
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(291, 38);
-            this.txtDescripcion.TabIndex = 26;
-            this.txtDescripcion.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
-            // 
             // udtAniversario
             // 
-            this.udtAniversario.Location = new System.Drawing.Point(124, 150);
+            this.udtAniversario.Location = new System.Drawing.Point(95, 197);
             this.udtAniversario.Name = "udtAniversario";
-            this.udtAniversario.Size = new System.Drawing.Size(141, 21);
+            this.udtAniversario.Size = new System.Drawing.Size(91, 21);
             this.udtAniversario.TabIndex = 28;
             this.udtAniversario.ValueChanged += new System.EventHandler(this.udtAniversario_ValueChanged);
             // 
@@ -480,7 +730,7 @@
             // 
             this.uceActivo.BackColor = System.Drawing.Color.Transparent;
             this.uceActivo.BackColorInternal = System.Drawing.Color.Transparent;
-            this.uceActivo.Location = new System.Drawing.Point(362, 19);
+            this.uceActivo.Location = new System.Drawing.Point(749, 19);
             this.uceActivo.Name = "uceActivo";
             this.uceActivo.Size = new System.Drawing.Size(65, 20);
             this.uceActivo.TabIndex = 29;
@@ -489,47 +739,47 @@
             // 
             // utSocioNegocio
             // 
-            appearance1.BackColor = System.Drawing.Color.Transparent;
-            this.utSocioNegocio.Appearance = appearance1;
+            appearance9.BackColor = System.Drawing.Color.Transparent;
+            this.utSocioNegocio.Appearance = appearance9;
             this.utSocioNegocio.Controls.Add(this.ultraTabSharedControlsPage1);
             this.utSocioNegocio.Controls.Add(this.ultraTabPageControl1);
             this.utSocioNegocio.Controls.Add(this.ultraTabPageControl2);
             this.utSocioNegocio.Controls.Add(this.ultraTabPageControl3);
-            this.utSocioNegocio.Location = new System.Drawing.Point(19, 224);
+            this.utSocioNegocio.Location = new System.Drawing.Point(474, 283);
             this.utSocioNegocio.Name = "utSocioNegocio";
             this.utSocioNegocio.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.utSocioNegocio.Size = new System.Drawing.Size(396, 158);
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.utSocioNegocio.TabHeaderAreaAppearance = appearance2;
+            this.utSocioNegocio.Size = new System.Drawing.Size(340, 224);
+            appearance12.BackColor = System.Drawing.Color.Transparent;
+            this.utSocioNegocio.TabHeaderAreaAppearance = appearance12;
             this.utSocioNegocio.TabIndex = 30;
-            ultraTab1.Key = "Cliente";
-            ultraTab1.TabPage = this.ultraTabPageControl1;
-            ultraTab1.Text = ":: Cliente ::";
-            ultraTab2.Key = "Proveedor";
-            ultraTab2.TabPage = this.ultraTabPageControl2;
-            ultraTab2.Text = ":: Proveedor ::";
-            ultraTab3.Key = "Empleado";
-            ultraTab3.TabPage = this.ultraTabPageControl3;
-            ultraTab3.Text = ":: Empleado ::";
+            ultraTab4.Key = "Cliente";
+            ultraTab4.TabPage = this.ultraTabPageControl1;
+            ultraTab4.Text = ":: Cliente ::";
+            ultraTab5.Key = "Proveedor";
+            ultraTab5.TabPage = this.ultraTabPageControl2;
+            ultraTab5.Text = ":: Proveedor ::";
+            ultraTab6.Key = "Empleado";
+            ultraTab6.TabPage = this.ultraTabPageControl3;
+            ultraTab6.Text = ":: Empleado ::";
             this.utSocioNegocio.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
-            ultraTab1,
-            ultraTab2,
-            ultraTab3});
+            ultraTab4,
+            ultraTab5,
+            ultraTab6});
             // 
             // ultraTabSharedControlsPage1
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(392, 132);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(336, 198);
             // 
             // ugbComportamiento
             // 
             this.ugbComportamiento.Controls.Add(this.uceEmpleado);
             this.ugbComportamiento.Controls.Add(this.uceProveedor);
             this.ugbComportamiento.Controls.Add(this.uceCliente);
-            this.ugbComportamiento.Location = new System.Drawing.Point(19, 177);
+            this.ugbComportamiento.Location = new System.Drawing.Point(474, 236);
             this.ugbComportamiento.Name = "ugbComportamiento";
-            this.ugbComportamiento.Size = new System.Drawing.Size(396, 41);
+            this.ugbComportamiento.Size = new System.Drawing.Size(340, 41);
             this.ugbComportamiento.TabIndex = 31;
             this.ugbComportamiento.Text = "Comportamiento";
             // 
@@ -537,7 +787,7 @@
             // 
             this.uceEmpleado.BackColor = System.Drawing.Color.Transparent;
             this.uceEmpleado.BackColorInternal = System.Drawing.Color.Transparent;
-            this.uceEmpleado.Location = new System.Drawing.Point(284, 14);
+            this.uceEmpleado.Location = new System.Drawing.Point(231, 14);
             this.uceEmpleado.Name = "uceEmpleado";
             this.uceEmpleado.Size = new System.Drawing.Size(106, 20);
             this.uceEmpleado.TabIndex = 34;
@@ -548,9 +798,9 @@
             // 
             this.uceProveedor.BackColor = System.Drawing.Color.Transparent;
             this.uceProveedor.BackColorInternal = System.Drawing.Color.Transparent;
-            this.uceProveedor.Location = new System.Drawing.Point(160, 14);
+            this.uceProveedor.Location = new System.Drawing.Point(114, 15);
             this.uceProveedor.Name = "uceProveedor";
-            this.uceProveedor.Size = new System.Drawing.Size(106, 20);
+            this.uceProveedor.Size = new System.Drawing.Size(85, 20);
             this.uceProveedor.TabIndex = 33;
             this.uceProveedor.Text = "Proveedor";
             this.uceProveedor.CheckedChanged += new System.EventHandler(this.uceProveedor_CheckedChanged);
@@ -559,26 +809,193 @@
             // 
             this.uceCliente.BackColor = System.Drawing.Color.Transparent;
             this.uceCliente.BackColorInternal = System.Drawing.Color.Transparent;
-            this.uceCliente.Location = new System.Drawing.Point(47, 14);
+            this.uceCliente.Location = new System.Drawing.Point(16, 15);
             this.uceCliente.Name = "uceCliente";
             this.uceCliente.Size = new System.Drawing.Size(65, 20);
             this.uceCliente.TabIndex = 32;
             this.uceCliente.Text = "Cliente";
             this.uceCliente.CheckedChanged += new System.EventHandler(this.uceCliente_CheckedChanged);
             // 
+            // ultraLabel6
+            // 
+            appearance8.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel6.Appearance = appearance8;
+            this.ultraLabel6.Location = new System.Drawing.Point(6, 19);
+            this.ultraLabel6.Name = "ultraLabel6";
+            this.ultraLabel6.Size = new System.Drawing.Size(92, 23);
+            this.ultraLabel6.TabIndex = 32;
+            this.ultraLabel6.Text = "Apellido Paterno";
+            // 
+            // ultraGroupBox1
+            // 
+            this.ultraGroupBox1.Controls.Add(this.txtNombre2);
+            this.ultraGroupBox1.Controls.Add(this.ultraLabel9);
+            this.ultraGroupBox1.Controls.Add(this.txtNombre1);
+            this.ultraGroupBox1.Controls.Add(this.ultraLabel8);
+            this.ultraGroupBox1.Controls.Add(this.txtApellidoMaterno);
+            this.ultraGroupBox1.Controls.Add(this.ultraLabel7);
+            this.ultraGroupBox1.Controls.Add(this.txtApellidoPaterno);
+            this.ultraGroupBox1.Controls.Add(this.ultraLabel6);
+            this.ultraGroupBox1.Location = new System.Drawing.Point(149, 103);
+            this.ultraGroupBox1.Name = "ultraGroupBox1";
+            this.ultraGroupBox1.Size = new System.Drawing.Size(537, 76);
+            this.ultraGroupBox1.TabIndex = 33;
+            this.ultraGroupBox1.Text = "Nombres y Apellidos";
+            // 
+            // txtNombre2
+            // 
+            this.txtNombre2.Location = new System.Drawing.Point(392, 44);
+            this.txtNombre2.Name = "txtNombre2";
+            this.txtNombre2.Size = new System.Drawing.Size(130, 21);
+            this.txtNombre2.TabIndex = 40;
+            this.txtNombre2.ValueChanged += new System.EventHandler(this.txtNombre2_ValueChanged);
+            // 
+            // ultraLabel9
+            // 
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel9.Appearance = appearance5;
+            this.ultraLabel9.Location = new System.Drawing.Point(284, 45);
+            this.ultraLabel9.Name = "ultraLabel9";
+            this.ultraLabel9.Size = new System.Drawing.Size(92, 23);
+            this.ultraLabel9.TabIndex = 39;
+            this.ultraLabel9.Text = "Nombre 2";
+            // 
+            // txtNombre1
+            // 
+            this.txtNombre1.Location = new System.Drawing.Point(128, 47);
+            this.txtNombre1.Name = "txtNombre1";
+            this.txtNombre1.Size = new System.Drawing.Size(138, 21);
+            this.txtNombre1.TabIndex = 38;
+            this.txtNombre1.ValueChanged += new System.EventHandler(this.txtNombre1_ValueChanged);
+            // 
+            // ultraLabel8
+            // 
+            appearance6.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel8.Appearance = appearance6;
+            this.ultraLabel8.Location = new System.Drawing.Point(6, 47);
+            this.ultraLabel8.Name = "ultraLabel8";
+            this.ultraLabel8.Size = new System.Drawing.Size(92, 23);
+            this.ultraLabel8.TabIndex = 37;
+            this.ultraLabel8.Text = "Nombre 1";
+            // 
+            // txtApellidoMaterno
+            // 
+            this.txtApellidoMaterno.Location = new System.Drawing.Point(392, 13);
+            this.txtApellidoMaterno.Name = "txtApellidoMaterno";
+            this.txtApellidoMaterno.Size = new System.Drawing.Size(130, 21);
+            this.txtApellidoMaterno.TabIndex = 36;
+            this.txtApellidoMaterno.ValueChanged += new System.EventHandler(this.txtApellidoMaterno_ValueChanged);
+            // 
+            // ultraLabel7
+            // 
+            appearance7.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel7.Appearance = appearance7;
+            this.ultraLabel7.Location = new System.Drawing.Point(284, 16);
+            this.ultraLabel7.Name = "ultraLabel7";
+            this.ultraLabel7.Size = new System.Drawing.Size(92, 23);
+            this.ultraLabel7.TabIndex = 35;
+            this.ultraLabel7.Text = "Apellido Materno";
+            // 
+            // txtApellidoPaterno
+            // 
+            this.txtApellidoPaterno.Location = new System.Drawing.Point(128, 16);
+            this.txtApellidoPaterno.Name = "txtApellidoPaterno";
+            this.txtApellidoPaterno.Size = new System.Drawing.Size(138, 21);
+            this.txtApellidoPaterno.TabIndex = 34;
+            this.txtApellidoPaterno.ValueChanged += new System.EventHandler(this.txtApellidoPaterno_ValueChanged);
+            // 
+            // ultraTabControl1
+            // 
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.ultraTabControl1.Appearance = appearance3;
+            this.ultraTabControl1.Controls.Add(this.ultraTabSharedControlsPage2);
+            this.ultraTabControl1.Controls.Add(this.ultraTabPageControl4);
+            this.ultraTabControl1.Controls.Add(this.ultraTabPageControl5);
+            this.ultraTabControl1.Controls.Add(this.ultraTabPageControl6);
+            this.ultraTabControl1.Location = new System.Drawing.Point(6, 245);
+            this.ultraTabControl1.Name = "ultraTabControl1";
+            this.ultraTabControl1.SharedControlsPage = this.ultraTabSharedControlsPage2;
+            this.ultraTabControl1.Size = new System.Drawing.Size(453, 262);
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.ultraTabControl1.TabHeaderAreaAppearance = appearance4;
+            this.ultraTabControl1.TabIndex = 34;
+            ultraTab1.Key = "Cliente";
+            ultraTab1.TabPage = this.ultraTabPageControl4;
+            ultraTab1.Text = ":: Direcciones ::";
+            ultraTab2.Key = "Proveedor";
+            ultraTab2.TabPage = this.ultraTabPageControl5;
+            ultraTab2.Text = ":: Contactos ::";
+            ultraTab3.TabPage = this.ultraTabPageControl6;
+            ultraTab3.Text = ":: Cuentas Bancarias ::";
+            this.ultraTabControl1.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
+            ultraTab1,
+            ultraTab2,
+            ultraTab3});
+            // 
+            // ultraTabSharedControlsPage2
+            // 
+            this.ultraTabSharedControlsPage2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
+            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(449, 236);
+            // 
+            // ultraLabel4
+            // 
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel4.Appearance = appearance2;
+            this.ultraLabel4.Location = new System.Drawing.Point(211, 197);
+            this.ultraLabel4.Name = "ultraLabel4";
+            this.ultraLabel4.Size = new System.Drawing.Size(60, 23);
+            this.ultraLabel4.TabIndex = 35;
+            this.ultraLabel4.Text = "Correo";
+            // 
+            // ultraLabel10
+            // 
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel10.Appearance = appearance1;
+            this.ultraLabel10.Location = new System.Drawing.Point(445, 197);
+            this.ultraLabel10.Name = "ultraLabel10";
+            this.ultraLabel10.Size = new System.Drawing.Size(100, 23);
+            this.ultraLabel10.TabIndex = 36;
+            this.ultraLabel10.Text = "Pagina Web";
+            // 
+            // txtCorreo
+            // 
+            this.txtCorreo.Location = new System.Drawing.Point(256, 197);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(171, 21);
+            this.txtCorreo.TabIndex = 39;
+            this.txtCorreo.ValueChanged += new System.EventHandler(this.txtCorreo_ValueChanged);
+            // 
+            // txtPaginaWeb
+            // 
+            this.txtPaginaWeb.Location = new System.Drawing.Point(527, 197);
+            this.txtPaginaWeb.Name = "txtPaginaWeb";
+            this.txtPaginaWeb.Size = new System.Drawing.Size(217, 21);
+            this.txtPaginaWeb.TabIndex = 40;
+            this.txtPaginaWeb.ValueChanged += new System.EventHandler(this.txtPaginaWeb_ValueChanged);
+            // 
             // FrmSocioNegocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(452, 466);
+            this.ClientSize = new System.Drawing.Size(848, 583);
             this.Name = "FrmSocioNegocio";
             this.Text = "Socio de Negocio";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
             this.ugbParent.ResumeLayout(false);
             this.ugbParent.PerformLayout();
+            this.ultraTabPageControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.checkActivoClliente)).EndInit();
+            this.ultraTabPageControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.checkActivoEmpleado)).EndInit();
+            this.ultraTabPageControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GrillaDirecciones)).EndInit();
+            this.ultraTabPageControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GrillaContactos)).EndInit();
+            this.ultraTabPageControl6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GrillaBancos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udtAniversario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceActivo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.utSocioNegocio)).EndInit();
@@ -588,6 +1005,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.uceEmpleado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceProveedor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceCliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).EndInit();
+            this.ultraGroupBox1.ResumeLayout(false);
+            this.ultraGroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNombre2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNombre1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtApellidoMaterno)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtApellidoPaterno)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).EndInit();
+            this.ultraTabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtCorreo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPaginaWeb)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -595,7 +1023,6 @@
         #endregion
 
         private Infragistics.Win.Misc.UltraLabel ultraLabel5;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel4;
         private Infragistics.Win.Misc.UltraLabel ultraLabel3;
         private Infragistics.Win.Misc.UltraLabel ultraLabel1;
         private Infragistics.Win.Misc.UltraLabel ultraLabel2;
@@ -603,7 +1030,6 @@
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtCodigo;
         private Controls.SoftSearch ssTipoSocio;
         private Infragistics.Win.UltraWinEditors.UltraDateTimeEditor udtAniversario;
-        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtDescripcion;
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor uceActivo;
         private Infragistics.Win.UltraWinTabControl.UltraTabControl utSocioNegocio;
         private Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage ultraTabSharedControlsPage1;
@@ -614,5 +1040,39 @@
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor uceEmpleado;
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor uceProveedor;
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor uceCliente;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel6;
+        private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox1;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtNombre2;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel9;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtNombre1;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel8;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtApellidoMaterno;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel7;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtApellidoPaterno;
+        private Infragistics.Win.UltraWinTabControl.UltraTabControl ultraTabControl1;
+        private Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage ultraTabSharedControlsPage2;
+        private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl4;
+        private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl5;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtPaginaWeb;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtCorreo;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel10;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel4;
+        private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl6;
+        private Infragistics.Win.Misc.UltraButton btnAgregarDireccion;
+        private Infragistics.Win.Misc.UltraButton btnEliminar;
+        private Infragistics.Win.UltraWinGrid.UltraGrid GrillaDirecciones;
+        private Infragistics.Win.Misc.UltraButton btnModificarDireccion;
+        private Infragistics.Win.Misc.UltraButton btnEliminarContacto;
+        private Infragistics.Win.Misc.UltraButton btnAgregarContacto;
+        private Infragistics.Win.UltraWinGrid.UltraGrid GrillaContactos;
+        private Infragistics.Win.Misc.UltraButton btnEliminarBancos;
+        private Infragistics.Win.Misc.UltraButton btnAgregarBancos;
+        private Infragistics.Win.UltraWinGrid.UltraGrid GrillaBancos;
+        private Infragistics.Win.UltraWinEditors.UltraCheckEditor checkActivoEmpleado;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel11;
+        private Controls.SoftSearch busArea;
+        private Infragistics.Win.UltraWinEditors.UltraCheckEditor checkActivoClliente;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel12;
+        private Controls.SoftSearch busVendedor;
     }
 }
