@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true">
+  <class name="Soft.Entities.ItemSocioNegocioContacto, Soft.Entities" table="ItemSocioNegocioContacto">
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="Nombre" column="Nombre" type="string"/>
+    <property name="Cargo" column="Cargo" type="string"/>
+    <property name="Telefono" column="Telefono" type="string"/>
+    <property name="Correo" column="Correo" type="string"/>   
+  </class>
+
+</hibernate-mapping>
