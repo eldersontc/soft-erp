@@ -16,8 +16,8 @@ namespace Soft.Win
             try
             {
                 SaveFileDialog sfile = new SaveFileDialog();
-                sfile.InitialDirectory = @"C:\";
-                sfile.Filter = "[XML]|*.xml";
+                //sfile.InitialDirectory = @"C:\";
+                sfile.Filter = "xml|*.xml";
                 if (sfile.ShowDialog() == DialogResult.OK)
                 {
                     String StrXML = Factory.ToXML(base.m_ObjectFlow);

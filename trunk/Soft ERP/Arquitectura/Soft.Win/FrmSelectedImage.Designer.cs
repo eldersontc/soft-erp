@@ -319,6 +319,8 @@
             this.ulvImagenes.Name = "ulvImagenes";
             this.ulvImagenes.Size = new System.Drawing.Size(428, 251);
             this.ulvImagenes.TabIndex = 2;
+            this.ulvImagenes.DoubleClick += new System.EventHandler(this.ulvImagenes_DoubleClick);
+            this.ulvImagenes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ulvImagenes_KeyDown);
             // 
             // ubSeleccionar
             // 

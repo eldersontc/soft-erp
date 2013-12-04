@@ -20,8 +20,8 @@ namespace Soft.Win
                 {
                     String Operacion = "";
                     OpenFileDialog fop = new OpenFileDialog();
-                    fop.InitialDirectory = @"C:\";
-                    fop.Filter = "[XML]|*.xml";
+                    //fop.InitialDirectory = @"C:\";
+                    fop.Filter = "xml|*.xml";
                     if (fop.ShowDialog() == DialogResult.OK)
                     {
                         XmlDocument XML = new XmlDocument();
