@@ -27,6 +27,7 @@ namespace Soft.Ventas.Entidades
         public virtual Int32 MargenEscuadra { get; set; }
         public virtual Int32 MargenContraEscuadra { get; set; }
         public virtual Int32 MargenCalle { get; set; }
-        public virtual Int32 AnchoDpi { get; set; }
+        public virtual Int32 ResolucionMinimo { get; set; }
+        public virtual Int32 ResolucionMaximo { get; set; }
     }
 }
