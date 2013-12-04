@@ -42,16 +42,18 @@
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
@@ -75,10 +77,19 @@
             this.lblSalida = new Infragistics.Win.Misc.UltraLabel();
             this.lblEscuadra = new Infragistics.Win.Misc.UltraLabel();
             this.lblPinza = new Infragistics.Win.Misc.UltraLabel();
+            this.uneGramajeMaximo = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.uneCantidadCuerpos = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.lblGramajeMaximo = new Infragistics.Win.Misc.UltraLabel();
+            this.lblCuerpos = new Infragistics.Win.Misc.UltraLabel();
+            this.uneGramajeMinimo = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.GramajeMinimo = new Infragistics.Win.Misc.UltraLabel();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
-            this.txtAnchoDpi = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
+            this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
+            this.txtResolucionMaximo = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.txtResolucionMinimo = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
+            this.ultraLabel4 = new Infragistics.Win.Misc.UltraLabel();
+            this.ultraLabel5 = new Infragistics.Win.Misc.UltraLabel();
             this.uceActivo = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.lblNombre = new Infragistics.Win.Misc.UltraLabel();
             this.txtNombre = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -90,12 +101,6 @@
             this.ssMarca = new Soft.Controls.SoftSearch();
             this.lblProveedor = new Infragistics.Win.Misc.UltraLabel();
             this.ssProveedor = new Soft.Controls.SoftSearch();
-            this.lblCuerpos = new Infragistics.Win.Misc.UltraLabel();
-            this.uneCantidadCuerpos = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.GramajeMinimo = new Infragistics.Win.Misc.UltraLabel();
-            this.uneGramajeMinimo = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.lblGramajeMaximo = new Infragistics.Win.Misc.UltraLabel();
-            this.uneGramajeMaximo = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraTabControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
@@ -114,14 +119,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.uneEscuadra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneSalida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unePinza)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uneGramajeMaximo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uneCantidadCuerpos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uneGramajeMinimo)).BeginInit();
             this.ultraTabPageControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAnchoDpi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
+            this.ultraGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtResolucionMaximo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtResolucionMinimo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceActivo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uneCantidadCuerpos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uneGramajeMinimo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uneGramajeMaximo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).BeginInit();
             this.ultraTabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -129,12 +137,6 @@
             // ugbParent
             // 
             this.ugbParent.Controls.Add(this.ultraTabControl1);
-            this.ugbParent.Controls.Add(this.uneGramajeMaximo);
-            this.ugbParent.Controls.Add(this.lblGramajeMaximo);
-            this.ugbParent.Controls.Add(this.uneGramajeMinimo);
-            this.ugbParent.Controls.Add(this.GramajeMinimo);
-            this.ugbParent.Controls.Add(this.uneCantidadCuerpos);
-            this.ugbParent.Controls.Add(this.lblCuerpos);
             this.ugbParent.Controls.Add(this.ssProveedor);
             this.ugbParent.Controls.Add(this.lblProveedor);
             this.ugbParent.Controls.Add(this.ssMarca);
@@ -146,7 +148,7 @@
             this.ugbParent.Controls.Add(this.uceActivo);
             this.ugbParent.Controls.Add(this.lblNombre);
             this.ugbParent.Controls.Add(this.txtNombre);
-            this.ugbParent.Size = new System.Drawing.Size(512, 488);
+            this.ugbParent.Size = new System.Drawing.Size(512, 501);
             this.ugbParent.Controls.SetChildIndex(this.txtNombre, 0);
             this.ugbParent.Controls.SetChildIndex(this.lblNombre, 0);
             this.ugbParent.Controls.SetChildIndex(this.uceActivo, 0);
@@ -158,24 +160,18 @@
             this.ugbParent.Controls.SetChildIndex(this.ssMarca, 0);
             this.ugbParent.Controls.SetChildIndex(this.lblProveedor, 0);
             this.ugbParent.Controls.SetChildIndex(this.ssProveedor, 0);
-            this.ugbParent.Controls.SetChildIndex(this.lblCuerpos, 0);
-            this.ugbParent.Controls.SetChildIndex(this.uneCantidadCuerpos, 0);
-            this.ugbParent.Controls.SetChildIndex(this.GramajeMinimo, 0);
-            this.ugbParent.Controls.SetChildIndex(this.uneGramajeMinimo, 0);
-            this.ugbParent.Controls.SetChildIndex(this.lblGramajeMaximo, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
-            this.ugbParent.Controls.SetChildIndex(this.uneGramajeMaximo, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraTabControl1, 0);
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(423, 453);
+            this.ubCancelar.Location = new System.Drawing.Point(421, 462);
             this.ubCancelar.TabIndex = 20;
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(342, 453);
+            this.ubAceptar.Location = new System.Drawing.Point(340, 462);
             this.ubAceptar.TabIndex = 19;
             // 
             // ilMain
@@ -433,9 +429,15 @@
             // 
             this.ultraTabPageControl1.Controls.Add(this.ugbPliego);
             this.ultraTabPageControl1.Controls.Add(this.ugbMargen);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Controls.Add(this.uneGramajeMaximo);
+            this.ultraTabPageControl1.Controls.Add(this.uneCantidadCuerpos);
+            this.ultraTabPageControl1.Controls.Add(this.lblGramajeMaximo);
+            this.ultraTabPageControl1.Controls.Add(this.lblCuerpos);
+            this.ultraTabPageControl1.Controls.Add(this.uneGramajeMinimo);
+            this.ultraTabPageControl1.Controls.Add(this.GramajeMinimo);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(479, 199);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(479, 266);
             // 
             // ugbPliego
             // 
@@ -451,11 +453,11 @@
             this.ugbPliego.Controls.Add(this.lblMinimoPliego);
             this.ugbPliego.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.ugbPliego.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
-            this.ugbPliego.Location = new System.Drawing.Point(13, 17);
+            this.ugbPliego.Location = new System.Drawing.Point(19, 92);
             this.ugbPliego.Name = "ugbPliego";
             this.ugbPliego.Size = new System.Drawing.Size(228, 113);
             this.ugbPliego.TabIndex = 32;
-            this.ugbPliego.Text = "Dimensiones de Pliego";
+            this.ugbPliego.Text = "Dimensiones de Formato";
             // 
             // uneAltoMaximo
             // 
@@ -557,7 +559,7 @@
             this.ugbMargen.Controls.Add(this.lblPinza);
             this.ugbMargen.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.ugbMargen.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
-            this.ugbMargen.Location = new System.Drawing.Point(261, 17);
+            this.ugbMargen.Location = new System.Drawing.Point(255, 92);
             this.ugbMargen.Name = "ugbMargen";
             this.ugbMargen.Size = new System.Drawing.Size(203, 167);
             this.ugbMargen.TabIndex = 33;
@@ -668,46 +670,145 @@
             this.lblPinza.TabIndex = 30;
             this.lblPinza.Text = "Pinza";
             // 
-            // ultraTabPageControl2
+            // uneGramajeMaximo
             // 
-            this.ultraTabPageControl2.Controls.Add(this.ultraLabel1);
-            this.ultraTabPageControl2.Controls.Add(this.txtAnchoDpi);
-            this.ultraTabPageControl2.Controls.Add(this.ultraLabel2);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
-            this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(479, 199);
+            this.uneGramajeMaximo.Location = new System.Drawing.Point(255, 47);
+            this.uneGramajeMaximo.Name = "uneGramajeMaximo";
+            this.uneGramajeMaximo.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
+            this.uneGramajeMaximo.Size = new System.Drawing.Size(84, 21);
+            this.uneGramajeMaximo.TabIndex = 9;
+            this.uneGramajeMaximo.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
+            this.uneGramajeMaximo.ValueChanged += new System.EventHandler(this.uneGramajeMaximo_ValueChanged);
             // 
-            // ultraLabel1
+            // uneCantidadCuerpos
+            // 
+            this.uneCantidadCuerpos.Location = new System.Drawing.Point(110, 10);
+            this.uneCantidadCuerpos.Name = "uneCantidadCuerpos";
+            this.uneCantidadCuerpos.Size = new System.Drawing.Size(84, 21);
+            this.uneCantidadCuerpos.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
+            this.uneCantidadCuerpos.TabIndex = 7;
+            this.uneCantidadCuerpos.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
+            this.uneCantidadCuerpos.ValueChanged += new System.EventHandler(this.uneCantidadCuerpos_ValueChanged);
+            // 
+            // lblGramajeMaximo
             // 
             appearance13.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel1.Appearance = appearance13;
-            this.ultraLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel1.Location = new System.Drawing.Point(145, 16);
-            this.ultraLabel1.Name = "ultraLabel1";
-            this.ultraLabel1.Size = new System.Drawing.Size(49, 23);
-            this.ultraLabel1.TabIndex = 30;
-            this.ultraLabel1.Text = "dpi";
+            this.lblGramajeMaximo.Appearance = appearance13;
+            this.lblGramajeMaximo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblGramajeMaximo.Location = new System.Drawing.Point(207, 47);
+            this.lblGramajeMaximo.Name = "lblGramajeMaximo";
+            this.lblGramajeMaximo.Size = new System.Drawing.Size(42, 23);
+            this.lblGramajeMaximo.TabIndex = 30;
+            this.lblGramajeMaximo.Text = "(Max.)";
             // 
-            // txtAnchoDpi
-            // 
-            this.txtAnchoDpi.Location = new System.Drawing.Point(59, 12);
-            this.txtAnchoDpi.Name = "txtAnchoDpi";
-            this.txtAnchoDpi.Size = new System.Drawing.Size(80, 21);
-            this.txtAnchoDpi.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
-            this.txtAnchoDpi.TabIndex = 10;
-            this.txtAnchoDpi.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
-            this.txtAnchoDpi.ValueChanged += new System.EventHandler(this.txtAnchoDpi_ValueChanged);
-            // 
-            // ultraLabel2
+            // lblCuerpos
             // 
             appearance14.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance14;
-            this.ultraLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel2.Location = new System.Drawing.Point(15, 16);
-            this.ultraLabel2.Name = "ultraLabel2";
-            this.ultraLabel2.Size = new System.Drawing.Size(49, 23);
-            this.ultraLabel2.TabIndex = 29;
-            this.ultraLabel2.Text = "Ancho";
+            this.lblCuerpos.Appearance = appearance14;
+            this.lblCuerpos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblCuerpos.Location = new System.Drawing.Point(19, 10);
+            this.lblCuerpos.Name = "lblCuerpos";
+            this.lblCuerpos.Size = new System.Drawing.Size(85, 23);
+            this.lblCuerpos.TabIndex = 26;
+            this.lblCuerpos.Text = "# Cuerpos";
+            // 
+            // uneGramajeMinimo
+            // 
+            this.uneGramajeMinimo.Location = new System.Drawing.Point(112, 47);
+            this.uneGramajeMinimo.Name = "uneGramajeMinimo";
+            this.uneGramajeMinimo.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
+            this.uneGramajeMinimo.Size = new System.Drawing.Size(84, 21);
+            this.uneGramajeMinimo.TabIndex = 8;
+            this.uneGramajeMinimo.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
+            this.uneGramajeMinimo.ValueChanged += new System.EventHandler(this.uneGramajeMinimo_ValueChanged);
+            // 
+            // GramajeMinimo
+            // 
+            appearance15.BackColor = System.Drawing.Color.Transparent;
+            this.GramajeMinimo.Appearance = appearance15;
+            this.GramajeMinimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.GramajeMinimo.Location = new System.Drawing.Point(21, 47);
+            this.GramajeMinimo.Name = "GramajeMinimo";
+            this.GramajeMinimo.Size = new System.Drawing.Size(106, 23);
+            this.GramajeMinimo.TabIndex = 28;
+            this.GramajeMinimo.Text = "# Gramaje (Min.)";
+            // 
+            // ultraTabPageControl2
+            // 
+            this.ultraTabPageControl2.Controls.Add(this.ultraGroupBox1);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl2.Name = "ultraTabPageControl2";
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(479, 266);
+            // 
+            // ultraGroupBox1
+            // 
+            appearance16.BackColor = System.Drawing.Color.Transparent;
+            this.ultraGroupBox1.Appearance = appearance16;
+            this.ultraGroupBox1.Controls.Add(this.txtResolucionMaximo);
+            this.ultraGroupBox1.Controls.Add(this.txtResolucionMinimo);
+            this.ultraGroupBox1.Controls.Add(this.ultraLabel3);
+            this.ultraGroupBox1.Controls.Add(this.ultraLabel4);
+            this.ultraGroupBox1.Controls.Add(this.ultraLabel5);
+            this.ultraGroupBox1.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
+            this.ultraGroupBox1.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
+            this.ultraGroupBox1.Location = new System.Drawing.Point(13, 19);
+            this.ultraGroupBox1.Name = "ultraGroupBox1";
+            this.ultraGroupBox1.Size = new System.Drawing.Size(228, 113);
+            this.ultraGroupBox1.TabIndex = 33;
+            this.ultraGroupBox1.Text = "Resolucion";
+            // 
+            // txtResolucionMaximo
+            // 
+            this.txtResolucionMaximo.Location = new System.Drawing.Point(136, 53);
+            this.txtResolucionMaximo.Name = "txtResolucionMaximo";
+            this.txtResolucionMaximo.Size = new System.Drawing.Size(80, 21);
+            this.txtResolucionMaximo.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
+            this.txtResolucionMaximo.TabIndex = 11;
+            this.txtResolucionMaximo.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
+            this.txtResolucionMaximo.ValueChanged += new System.EventHandler(this.txtResolucionMaximo_ValueChanged);
+            // 
+            // txtResolucionMinimo
+            // 
+            this.txtResolucionMinimo.Location = new System.Drawing.Point(50, 53);
+            this.txtResolucionMinimo.Name = "txtResolucionMinimo";
+            this.txtResolucionMinimo.Size = new System.Drawing.Size(80, 21);
+            this.txtResolucionMinimo.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
+            this.txtResolucionMinimo.TabIndex = 10;
+            this.txtResolucionMinimo.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
+            this.txtResolucionMinimo.ValueChanged += new System.EventHandler(this.txtResolucionMinimo_ValueChanged);
+            // 
+            // ultraLabel3
+            // 
+            appearance17.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel3.Appearance = appearance17;
+            this.ultraLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ultraLabel3.Location = new System.Drawing.Point(9, 57);
+            this.ultraLabel3.Name = "ultraLabel3";
+            this.ultraLabel3.Size = new System.Drawing.Size(49, 23);
+            this.ultraLabel3.TabIndex = 29;
+            this.ultraLabel3.Text = "Dpi";
+            // 
+            // ultraLabel4
+            // 
+            appearance18.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel4.Appearance = appearance18;
+            this.ultraLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ultraLabel4.Location = new System.Drawing.Point(136, 37);
+            this.ultraLabel4.Name = "ultraLabel4";
+            this.ultraLabel4.Size = new System.Drawing.Size(57, 23);
+            this.ultraLabel4.TabIndex = 28;
+            this.ultraLabel4.Text = "Máximo";
+            // 
+            // ultraLabel5
+            // 
+            appearance19.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel5.Appearance = appearance19;
+            this.ultraLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ultraLabel5.Location = new System.Drawing.Point(50, 37);
+            this.ultraLabel5.Name = "ultraLabel5";
+            this.ultraLabel5.Size = new System.Drawing.Size(85, 23);
+            this.ultraLabel5.TabIndex = 27;
+            this.ultraLabel5.Text = "Minimo";
             // 
             // uceActivo
             // 
@@ -722,8 +823,8 @@
             // 
             // lblNombre
             // 
-            appearance23.BackColor = System.Drawing.Color.Transparent;
-            this.lblNombre.Appearance = appearance23;
+            appearance25.BackColor = System.Drawing.Color.Transparent;
+            this.lblNombre.Appearance = appearance25;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblNombre.Location = new System.Drawing.Point(16, 49);
             this.lblNombre.Name = "lblNombre";
@@ -741,8 +842,8 @@
             // 
             // lblCodigo
             // 
-            appearance21.BackColor = System.Drawing.Color.Transparent;
-            this.lblCodigo.Appearance = appearance21;
+            appearance23.BackColor = System.Drawing.Color.Transparent;
+            this.lblCodigo.Appearance = appearance23;
             this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblCodigo.Location = new System.Drawing.Point(16, 20);
             this.lblCodigo.Name = "lblCodigo";
@@ -760,8 +861,8 @@
             // 
             // lblTipoMaquina
             // 
-            appearance22.BackColor = System.Drawing.Color.Transparent;
-            this.lblTipoMaquina.Appearance = appearance22;
+            appearance24.BackColor = System.Drawing.Color.Transparent;
+            this.lblTipoMaquina.Appearance = appearance24;
             this.lblTipoMaquina.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblTipoMaquina.Location = new System.Drawing.Point(16, 75);
             this.lblTipoMaquina.Name = "lblTipoMaquina";
@@ -780,8 +881,8 @@
             // 
             // lblMarca
             // 
-            appearance20.BackColor = System.Drawing.Color.Transparent;
-            this.lblMarca.Appearance = appearance20;
+            appearance22.BackColor = System.Drawing.Color.Transparent;
+            this.lblMarca.Appearance = appearance22;
             this.lblMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblMarca.Location = new System.Drawing.Point(16, 106);
             this.lblMarca.Name = "lblMarca";
@@ -800,8 +901,8 @@
             // 
             // lblProveedor
             // 
-            appearance19.BackColor = System.Drawing.Color.Transparent;
-            this.lblProveedor.Appearance = appearance19;
+            appearance21.BackColor = System.Drawing.Color.Transparent;
+            this.lblProveedor.Appearance = appearance21;
             this.lblProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblProveedor.Location = new System.Drawing.Point(16, 135);
             this.lblProveedor.Name = "lblProveedor";
@@ -818,69 +919,6 @@
             this.ssProveedor.TabIndex = 6;
             this.ssProveedor.Search += new System.EventHandler(this.ssProveedor_Search);
             // 
-            // lblCuerpos
-            // 
-            appearance18.BackColor = System.Drawing.Color.Transparent;
-            this.lblCuerpos.Appearance = appearance18;
-            this.lblCuerpos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblCuerpos.Location = new System.Drawing.Point(16, 164);
-            this.lblCuerpos.Name = "lblCuerpos";
-            this.lblCuerpos.Size = new System.Drawing.Size(85, 23);
-            this.lblCuerpos.TabIndex = 26;
-            this.lblCuerpos.Text = "# Cuerpos";
-            // 
-            // uneCantidadCuerpos
-            // 
-            this.uneCantidadCuerpos.Location = new System.Drawing.Point(107, 160);
-            this.uneCantidadCuerpos.Name = "uneCantidadCuerpos";
-            this.uneCantidadCuerpos.Size = new System.Drawing.Size(84, 21);
-            this.uneCantidadCuerpos.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
-            this.uneCantidadCuerpos.TabIndex = 7;
-            this.uneCantidadCuerpos.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
-            this.uneCantidadCuerpos.ValueChanged += new System.EventHandler(this.uneCantidadCuerpos_ValueChanged);
-            // 
-            // GramajeMinimo
-            // 
-            appearance17.BackColor = System.Drawing.Color.Transparent;
-            this.GramajeMinimo.Appearance = appearance17;
-            this.GramajeMinimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.GramajeMinimo.Location = new System.Drawing.Point(16, 193);
-            this.GramajeMinimo.Name = "GramajeMinimo";
-            this.GramajeMinimo.Size = new System.Drawing.Size(106, 23);
-            this.GramajeMinimo.TabIndex = 28;
-            this.GramajeMinimo.Text = "# Gramaje (Min.)";
-            // 
-            // uneGramajeMinimo
-            // 
-            this.uneGramajeMinimo.Location = new System.Drawing.Point(107, 189);
-            this.uneGramajeMinimo.Name = "uneGramajeMinimo";
-            this.uneGramajeMinimo.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
-            this.uneGramajeMinimo.Size = new System.Drawing.Size(84, 21);
-            this.uneGramajeMinimo.TabIndex = 8;
-            this.uneGramajeMinimo.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
-            this.uneGramajeMinimo.ValueChanged += new System.EventHandler(this.uneGramajeMinimo_ValueChanged);
-            // 
-            // lblGramajeMaximo
-            // 
-            appearance16.BackColor = System.Drawing.Color.Transparent;
-            this.lblGramajeMaximo.Appearance = appearance16;
-            this.lblGramajeMaximo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblGramajeMaximo.Location = new System.Drawing.Point(202, 193);
-            this.lblGramajeMaximo.Name = "lblGramajeMaximo";
-            this.lblGramajeMaximo.Size = new System.Drawing.Size(42, 23);
-            this.lblGramajeMaximo.TabIndex = 30;
-            this.lblGramajeMaximo.Text = "(Max.)";
-            // 
-            // uneGramajeMaximo
-            // 
-            this.uneGramajeMaximo.Location = new System.Drawing.Point(250, 187);
-            this.uneGramajeMaximo.Name = "uneGramajeMaximo";
-            this.uneGramajeMaximo.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
-            this.uneGramajeMaximo.Size = new System.Drawing.Size(84, 21);
-            this.uneGramajeMaximo.TabIndex = 9;
-            this.uneGramajeMaximo.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
-            this.uneGramajeMaximo.ValueChanged += new System.EventHandler(this.uneGramajeMaximo_ValueChanged);
-            // 
             // ultraTabControl1
             // 
             appearance1.BackColor = System.Drawing.Color.Transparent;
@@ -888,12 +926,12 @@
             this.ultraTabControl1.Controls.Add(this.ultraTabSharedControlsPage1);
             this.ultraTabControl1.Controls.Add(this.ultraTabPageControl1);
             this.ultraTabControl1.Controls.Add(this.ultraTabPageControl2);
-            this.ultraTabControl1.Location = new System.Drawing.Point(16, 222);
+            this.ultraTabControl1.Location = new System.Drawing.Point(16, 164);
             this.ultraTabControl1.Name = "ultraTabControl1";
             this.ultraTabControl1.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.ultraTabControl1.Size = new System.Drawing.Size(483, 225);
-            appearance15.BackColor = System.Drawing.Color.Transparent;
-            this.ultraTabControl1.TabHeaderAreaAppearance = appearance15;
+            this.ultraTabControl1.Size = new System.Drawing.Size(483, 292);
+            appearance20.BackColor = System.Drawing.Color.Transparent;
+            this.ultraTabControl1.TabHeaderAreaAppearance = appearance20;
             this.ultraTabControl1.TabIndex = 34;
             ultraTab1.TabPage = this.ultraTabPageControl1;
             ultraTab1.Text = ":: Impresoras ::";
@@ -907,19 +945,20 @@
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(479, 199);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(479, 266);
             // 
             // FrmMaquina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(528, 526);
+            this.ClientSize = new System.Drawing.Size(528, 539);
             this.Name = "FrmMaquina";
             this.Text = "Máquina";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
             this.ugbParent.ResumeLayout(false);
             this.ugbParent.PerformLayout();
             this.ultraTabPageControl1.ResumeLayout(false);
+            this.ultraTabPageControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ugbPliego)).EndInit();
             this.ugbPliego.ResumeLayout(false);
             this.ugbPliego.PerformLayout();
@@ -935,15 +974,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.uneEscuadra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneSalida)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unePinza)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uneGramajeMaximo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uneCantidadCuerpos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uneGramajeMinimo)).EndInit();
             this.ultraTabPageControl2.ResumeLayout(false);
-            this.ultraTabPageControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAnchoDpi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).EndInit();
+            this.ultraGroupBox1.ResumeLayout(false);
+            this.ultraGroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtResolucionMaximo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtResolucionMinimo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceActivo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uneCantidadCuerpos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uneGramajeMinimo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uneGramajeMaximo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).EndInit();
             this.ultraTabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -993,8 +1035,11 @@
         private Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage ultraTabSharedControlsPage1;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl1;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl2;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel1;
-        private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtAnchoDpi;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel2;
+        private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtResolucionMinimo;
+        private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox1;
+        private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtResolucionMaximo;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel3;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel4;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel5;
     }
 }
