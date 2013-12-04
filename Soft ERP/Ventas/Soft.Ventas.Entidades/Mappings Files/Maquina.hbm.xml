@@ -21,12 +21,9 @@
     <property name="MargenEscuadra" column="MargenEscuadra" type="int"/>
     <property name="MargenContraEscuadra" column="MargenContraEscuadra" type="int"/>
     <property name="MargenCalle" column="MargenCalle" type="int"/>
-    
     <property name="Activo" column="Activo" type="boolean"/>
-
-    <property name="AnchoDpi" column="AnchoDpi" type="int"/>
-
-
+    <property name="ResolucionMinimo" column="ResolucionMinimo" type="int"/>
+    <property name="ResolucionMaximo" column="ResolucionMaximo" type="int"/>
     <many-to-one name="TipoMaquina" class="Soft.Ventas.Entidades.TipoMaquina" column="IDTipoMaquina" insert="true" update="true" lazy="false"/>
     <many-to-one name="Marca" class="Soft.Inventario.Entidades.Marca" column="IDMarca" insert="true" update="true" lazy="false"/>
     <many-to-one name="Proveedor" class="Soft.Entities.SocioNegocio" column="IDProveedor" insert="true" update="true" lazy="false"/>
