@@ -11,10 +11,54 @@
     <property name="Cliente" column="Cliente" type="boolean"/>
     <property name="Proveedor" column="Proveedor" type="boolean"/>
     <property name="Empleado" column="Empleado" type="boolean"/>
+
+    <property name="ApellidoPaterno" column="ApellidoPaterno" type="string"/>
+    <property name="ApellidoMaterno" column="ApellidoMaterno" type="string"/>
+    <property name="Nombre1" column="Nombre1" type="string"/>
+    <property name="Nombre2" column="Nombre2" type="string"/>
+    <property name="Correo" column="Correo" type="string"/>
+    <property name="PaginaWeb" column="PaginaWeb" type="string"/>
+
+
+
+
     <property name="Activo" column="Activo" type="boolean"/>
 
     <many-to-one name="TipoSocioNegocio" class="Soft.Entities.TipoSocioNegocio" column="IDTipoSocioNegocio" lazy="false" not-null="true" unique="true" insert="true" update="true"/>
-    
+
+    <bag name="Direcciones" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDSocioNegocio"/>
+      <one-to-many class="Soft.Entities.ItemSocioNegocioDireccion"/>
+    </bag>
+
+
+    <bag name="Contactos" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDSocioNegocio"/>
+      <one-to-many class="Soft.Entities.ItemSocioNegocioContacto"/>
+    </bag>
+
+
+    <bag name="Bancos" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDSocioNegocio"/>
+      <one-to-many class="Soft.Entities.ItemSocioNegocioBanco"/>
+    </bag>
+
+
+
+
+
+    <bag name="Empleados" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDSocioNegocio"/>
+      <one-to-many class="Soft.Entities.SocioNegocioEmpleado"/>
+    </bag>
+
+
+    <bag name="Clientes" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDSocioNegocio"/>
+      <one-to-many class="Soft.Entities.SocioNegocioCliente"/>
+    </bag>
+
+
   </class>
 
 </hibernate-mapping>
