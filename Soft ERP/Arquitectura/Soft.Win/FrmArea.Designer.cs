@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmArea));
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             this.uceActivo = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
             this.txtNombre = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -61,11 +61,11 @@
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(243, 88);
+            this.ubCancelar.Location = new System.Drawing.Point(240, 83);
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(162, 88);
+            this.ubAceptar.Location = new System.Drawing.Point(159, 83);
             // 
             // ilMain
             // 
@@ -322,19 +322,19 @@
             // 
             this.uceActivo.BackColor = System.Drawing.Color.Transparent;
             this.uceActivo.BackColorInternal = System.Drawing.Color.Transparent;
-            this.uceActivo.Location = new System.Drawing.Point(253, 15);
+            this.uceActivo.Location = new System.Drawing.Point(259, 16);
             this.uceActivo.Name = "uceActivo";
-            this.uceActivo.Size = new System.Drawing.Size(65, 20);
+            this.uceActivo.Size = new System.Drawing.Size(56, 20);
             this.uceActivo.TabIndex = 35;
             this.uceActivo.Text = "Activo";
             this.uceActivo.CheckedChanged += new System.EventHandler(this.uceActivo_CheckedChanged);
             // 
             // ultraLabel2
             // 
-            appearance1.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance1;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance3;
             this.ultraLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel2.Location = new System.Drawing.Point(17, 55);
+            this.ultraLabel2.Location = new System.Drawing.Point(14, 51);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(74, 23);
             this.ultraLabel2.TabIndex = 33;
@@ -342,7 +342,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(97, 51);
+            this.txtNombre.Location = new System.Drawing.Point(94, 47);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(221, 21);
             this.txtNombre.TabIndex = 34;
@@ -350,10 +350,10 @@
             // 
             // ultraLabel1
             // 
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel1.Appearance = appearance2;
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel1.Appearance = appearance4;
             this.ultraLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel1.Location = new System.Drawing.Point(17, 19);
+            this.ultraLabel1.Location = new System.Drawing.Point(14, 19);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(74, 23);
             this.ultraLabel1.TabIndex = 31;
@@ -361,7 +361,7 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(97, 15);
+            this.txtCodigo.Location = new System.Drawing.Point(94, 15);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(127, 21);
             this.txtCodigo.TabIndex = 32;

@@ -348,45 +348,21 @@ namespace Soft.Win
             }
         }
 
-
-
         private void btnAgregarDireccion_Click(object sender, EventArgs e)
         {
-            HelperSelecciondeDireccion f = new HelperSelecciondeDireccion();
-            f.ShowDialog(this);
-
-            if (f.correcto == true)
-            {
+            FrmSeleccionarDireccion SeleccionarDireccion = new FrmSeleccionarDireccion();
+            ItemSocioNegocioDireccion ItemDireccion = SeleccionarDireccion.ObtenerDireccion();
+            if (ItemDireccion != null) {
+                SocioNegocio.Direcciones.Add(ItemDireccion);
                 UltraGridRow Row = GrillaDirecciones.DisplayLayout.Bands[0].AddNew();
-                Row.Tag = this.SocioNegocio.AddItemDireccion();
-                ItemSocioNegocioDireccion item = (ItemSocioNegocioDireccion)Row.Tag;
-                item.Provincia = f.provincia;
-                item.Departamento = f.departamento;
-                item.Distrito = f.distrito;
-                item.Direccion = f.direccion;
-
+                Row.Tag = ItemDireccion;
                 MostrarDireccion(Row);
-
             }
         }
 
         private void GrillaDirecciones_DoubleClickCell(object sender, DoubleClickCellEventArgs e)
         {
-            HelperSelecciondeDireccion f = new HelperSelecciondeDireccion();
-            ItemSocioNegocioDireccion item = (ItemSocioNegocioDireccion)e.Cell.Row.Tag;
-            f.departamento = item.Departamento;
-            f.provincia= item.Provincia;
-            f.distrito = item.Distrito;
-            f.direccion = item.Direccion;
-            f.Mostrar();
-            f.ShowDialog(this);
-
-            if (f.correcto == true) {
-                item.Provincia = f.provincia;
-                item.Departamento = f.departamento;
-                item.Distrito = f.distrito;
-                item.Direccion = f.direccion;
-            }
+            ModificarDireccion(e.Cell.Row);
         }
 
         private void GrillaDirecciones_CellChange(object sender, CellEventArgs e)
@@ -410,32 +386,18 @@ namespace Soft.Win
         }
 
 
-        private void Modificar() {
-            ItemSocioNegocioDireccion item = (ItemSocioNegocioDireccion)GrillaDirecciones.ActiveRow.Tag;
-            if (item!=null){
-                HelperSelecciondeDireccion f = new HelperSelecciondeDireccion();
-                f.departamento = item.Departamento;
-                f.provincia = item.Provincia;
-                f.distrito = item.Distrito;
-                f.direccion = item.Direccion;
-                f.Mostrar();
-                f.ShowDialog(this);
-
-                if (f.correcto == true)
-                {
-                    item.Provincia = f.provincia;
-                    item.Departamento = f.departamento;
-                    item.Distrito = f.distrito;
-                    item.Direccion = f.direccion;
-                }
-                GrillaDirecciones.ActiveRow.Tag = item;
-                this.MostrarDireccion(GrillaDirecciones.ActiveRow);
-            }
+        private void ModificarDireccion(UltraGridRow Row) {
+            ItemSocioNegocioDireccion ItemDireccion = (ItemSocioNegocioDireccion)Row.Tag;
+            FrmSeleccionarDireccion SeleccionarDireccion = new FrmSeleccionarDireccion();
+            ItemDireccion = SeleccionarDireccion.ModificarDireccion(ItemDireccion);
+            MostrarDireccion(Row);
         }
 
         private void btnModificarDireccion_Click(object sender, EventArgs e)
         {
-            Modificar();
+            if (GrillaDirecciones.ActiveRow != null) {
+                ModificarDireccion(GrillaDirecciones.ActiveRow);    
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -676,6 +638,7 @@ namespace Soft.Win
             SocioNegocioCliente cliente = SocioNegocio.Clientes.First();
             cliente.Activo = checkActivoClliente.Checked;
         }
+
 
     }
 }

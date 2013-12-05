@@ -105,6 +105,18 @@
     <Compile Include="ExportXML.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmArea.Designer.cs">
+      <DependentUpon>FrmArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBanco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBanco.Designer.cs">
+      <DependentUpon>FrmBanco.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +165,12 @@
     <Compile Include="FrmReportView.Designer.cs">
       <DependentUpon>FrmReportView.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSeleccionarDireccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSeleccionarDireccion.Designer.cs">
+      <DependentUpon>FrmSeleccionarDireccion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSelectedEntity.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +218,12 @@
     <Compile Include="RefreshView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="FrmArea.resx">
+      <DependentUpon>FrmArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBanco.resx">
+      <DependentUpon>FrmBanco.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDetails.resx">
       <DependentUpon>FrmDetails.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmReportView.resx">
       <DependentUpon>FrmReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSeleccionarDireccion.resx">
+      <DependentUpon>FrmSeleccionarDireccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSelectedEntity.resx">
       <DependentUpon>FrmSelectedEntity.cs</DependentUpon>

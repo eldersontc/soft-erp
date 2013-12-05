@@ -46,7 +46,7 @@ namespace Soft.Win
             Aceptar();   
         }
 
-        public void Aceptar() {
+        public virtual void Aceptar() {
             base.m_ResultProcess = EnumResult.SUCESS;
             if (!EsValido()) { return; }
             this.Close();

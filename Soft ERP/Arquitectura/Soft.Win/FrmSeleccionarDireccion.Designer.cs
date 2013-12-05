@@ -1,6 +1,6 @@
 ﻿namespace Soft.Win
 {
-    partial class FrmBanco
+    partial class FrmSeleccionarDireccion
     {
         /// <summary>
         /// Required designer variable.
@@ -28,44 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBanco));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSeleccionarDireccion));
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            this.uceActivo = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
+            this.txtDireccion = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
-            this.txtNombre = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
-            this.txtCodigo = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.lblRelacion = new Infragistics.Win.Misc.UltraLabel();
+            this.busDistrito = new Soft.Controls.SoftSearch();
+            this.busProvincia = new Soft.Controls.SoftSearch();
+            this.busDepartamento = new Soft.Controls.SoftSearch();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uceActivo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNombre)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDireccion)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
             // 
-            this.ugbParent.Controls.Add(this.uceActivo);
+            this.ugbParent.Controls.Add(this.txtDireccion);
+            this.ugbParent.Controls.Add(this.ultraLabel3);
             this.ugbParent.Controls.Add(this.ultraLabel2);
-            this.ugbParent.Controls.Add(this.txtNombre);
             this.ugbParent.Controls.Add(this.ultraLabel1);
-            this.ugbParent.Controls.Add(this.txtCodigo);
-            this.ugbParent.Size = new System.Drawing.Size(338, 121);
+            this.ugbParent.Controls.Add(this.lblRelacion);
+            this.ugbParent.Controls.Add(this.busDistrito);
+            this.ugbParent.Controls.Add(this.busProvincia);
+            this.ugbParent.Controls.Add(this.busDepartamento);
+            this.ugbParent.Size = new System.Drawing.Size(376, 188);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
-            this.ugbParent.Controls.SetChildIndex(this.txtCodigo, 0);
+            this.ugbParent.Controls.SetChildIndex(this.busDepartamento, 0);
+            this.ugbParent.Controls.SetChildIndex(this.busProvincia, 0);
+            this.ugbParent.Controls.SetChildIndex(this.busDistrito, 0);
+            this.ugbParent.Controls.SetChildIndex(this.lblRelacion, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel1, 0);
-            this.ugbParent.Controls.SetChildIndex(this.txtNombre, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel2, 0);
-            this.ugbParent.Controls.SetChildIndex(this.uceActivo, 0);
+            this.ugbParent.Controls.SetChildIndex(this.ultraLabel3, 0);
+            this.ugbParent.Controls.SetChildIndex(this.txtDireccion, 0);
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(243, 81);
+            this.ubCancelar.Location = new System.Drawing.Point(280, 148);
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(162, 81);
+            this.ubAceptar.Location = new System.Drawing.Point(199, 148);
             // 
             // ilMain
             // 
@@ -318,78 +327,107 @@
             this.ilMain.Images.SetKeyName(245, "zoom_in.png");
             this.ilMain.Images.SetKeyName(246, "zoom_out.png");
             // 
-            // uceActivo
+            // txtDireccion
             // 
-            this.uceActivo.BackColor = System.Drawing.Color.Transparent;
-            this.uceActivo.BackColorInternal = System.Drawing.Color.Transparent;
-            this.uceActivo.Location = new System.Drawing.Point(262, 15);
-            this.uceActivo.Name = "uceActivo";
-            this.uceActivo.Size = new System.Drawing.Size(56, 20);
-            this.uceActivo.TabIndex = 35;
-            this.uceActivo.Text = "Activo";
-            this.uceActivo.CheckedChanged += new System.EventHandler(this.uceActivo_CheckedChanged);
+            this.txtDireccion.Location = new System.Drawing.Point(108, 101);
+            this.txtDireccion.Multiline = true;
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Scrollbars = System.Windows.Forms.ScrollBars.Both;
+            this.txtDireccion.Size = new System.Drawing.Size(247, 41);
+            this.txtDireccion.TabIndex = 23;
+            this.txtDireccion.TextChanged += new System.EventHandler(this.txtDireccion_TextChanged);
+            // 
+            // ultraLabel3
+            // 
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel3.Appearance = appearance1;
+            this.ultraLabel3.Location = new System.Drawing.Point(17, 104);
+            this.ultraLabel3.Name = "ultraLabel3";
+            this.ultraLabel3.Size = new System.Drawing.Size(85, 21);
+            this.ultraLabel3.TabIndex = 22;
+            this.ultraLabel3.Text = "Direccion";
             // 
             // ultraLabel2
             // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance3;
-            this.ultraLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel2.Location = new System.Drawing.Point(17, 50);
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance2;
+            this.ultraLabel2.Location = new System.Drawing.Point(17, 77);
             this.ultraLabel2.Name = "ultraLabel2";
-            this.ultraLabel2.Size = new System.Drawing.Size(74, 23);
-            this.ultraLabel2.TabIndex = 33;
-            this.ultraLabel2.Text = "Nombre";
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.Location = new System.Drawing.Point(97, 46);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(221, 21);
-            this.txtNombre.TabIndex = 34;
-            this.txtNombre.ValueChanged += new System.EventHandler(this.txtNombre_ValueChanged);
+            this.ultraLabel2.Size = new System.Drawing.Size(85, 21);
+            this.ultraLabel2.TabIndex = 21;
+            this.ultraLabel2.Text = "Distrito";
             // 
             // ultraLabel1
             // 
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel1.Appearance = appearance4;
-            this.ultraLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel1.Location = new System.Drawing.Point(17, 19);
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel1.Appearance = appearance3;
+            this.ultraLabel1.Location = new System.Drawing.Point(17, 47);
             this.ultraLabel1.Name = "ultraLabel1";
-            this.ultraLabel1.Size = new System.Drawing.Size(74, 23);
-            this.ultraLabel1.TabIndex = 31;
-            this.ultraLabel1.Text = "Código";
+            this.ultraLabel1.Size = new System.Drawing.Size(85, 21);
+            this.ultraLabel1.TabIndex = 20;
+            this.ultraLabel1.Text = "Provincia";
             // 
-            // txtCodigo
+            // lblRelacion
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(97, 15);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(127, 21);
-            this.txtCodigo.TabIndex = 32;
-            this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.lblRelacion.Appearance = appearance4;
+            this.lblRelacion.Location = new System.Drawing.Point(17, 19);
+            this.lblRelacion.Name = "lblRelacion";
+            this.lblRelacion.Size = new System.Drawing.Size(85, 21);
+            this.lblRelacion.TabIndex = 19;
+            this.lblRelacion.Text = "Departamento";
             // 
-            // FrmBanco
+            // busDistrito
+            // 
+            this.busDistrito.BackColor = System.Drawing.Color.Transparent;
+            this.busDistrito.Location = new System.Drawing.Point(108, 73);
+            this.busDistrito.Name = "busDistrito";
+            this.busDistrito.Size = new System.Drawing.Size(247, 27);
+            this.busDistrito.TabIndex = 18;
+            this.busDistrito.Search += new System.EventHandler(this.busDistrito_Search);
+            // 
+            // busProvincia
+            // 
+            this.busProvincia.BackColor = System.Drawing.Color.Transparent;
+            this.busProvincia.Location = new System.Drawing.Point(108, 45);
+            this.busProvincia.Name = "busProvincia";
+            this.busProvincia.Size = new System.Drawing.Size(247, 30);
+            this.busProvincia.TabIndex = 17;
+            this.busProvincia.Search += new System.EventHandler(this.busProvincia_Search);
+            // 
+            // busDepartamento
+            // 
+            this.busDepartamento.BackColor = System.Drawing.Color.Transparent;
+            this.busDepartamento.Location = new System.Drawing.Point(108, 16);
+            this.busDepartamento.Name = "busDepartamento";
+            this.busDepartamento.Size = new System.Drawing.Size(247, 30);
+            this.busDepartamento.TabIndex = 16;
+            this.busDepartamento.Search += new System.EventHandler(this.busDepartamento_Search);
+            // 
+            // FrmSeleccionarDireccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 159);
-            this.Name = "FrmBanco";
-            this.Text = "Banco";
+            this.ClientSize = new System.Drawing.Size(392, 226);
+            this.Name = "FrmSeleccionarDireccion";
+            this.Text = "Dirección";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
             this.ugbParent.ResumeLayout(false);
             this.ugbParent.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uceActivo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNombre)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDireccion)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Infragistics.Win.UltraWinEditors.UltraCheckEditor uceActivo;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtDireccion;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel3;
         private Infragistics.Win.Misc.UltraLabel ultraLabel2;
-        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtNombre;
         private Infragistics.Win.Misc.UltraLabel ultraLabel1;
-        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtCodigo;
+        private Infragistics.Win.Misc.UltraLabel lblRelacion;
+        private Controls.SoftSearch busDistrito;
+        private Controls.SoftSearch busProvincia;
+        private Controls.SoftSearch busDepartamento;
     }
 }
