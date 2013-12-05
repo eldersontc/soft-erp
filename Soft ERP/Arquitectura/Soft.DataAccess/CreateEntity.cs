@@ -9,6 +9,9 @@ using System.Data;
 using Soft.DataAccess;
 using System.Windows.Forms;
 using Soft.Seguridad.Entidades;
+using Soft.Exceptions;
+using System.Data.SqlClient;
+using NHibernate.Exceptions;
 
 namespace Soft.DataAccess
 {
@@ -29,9 +32,12 @@ namespace Soft.DataAccess
                     }
                     catch (Exception ex)
                     {
+                        //NHibernate.Exceptions.GenericADOException
                         Trans.Rollback();
                         m_ResultProcess = EnumResult.ERROR;
-                        MessageBox.Show(ex.InnerException.ToString());
+
+                        int code = ex.GetHashCode(); 
+                        SoftException.Control(ex, MessageBoxIcon.Error);
                     }
                 }
             }
