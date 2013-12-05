@@ -99,7 +99,7 @@
             appearance1.TextVAlignAsString = "Middle";
             this.lblMessage.Appearance = appearance1;
             this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.Location = new System.Drawing.Point(61, 15);
+            this.lblMessage.Location = new System.Drawing.Point(56, 15);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(249, 23);
             this.lblMessage.TabIndex = 1;
@@ -135,6 +135,7 @@
             this.txtDetails.Multiline = true;
             this.txtDetails.Name = "txtDetails";
             this.txtDetails.ReadOnly = true;
+            this.txtDetails.Scrollbars = System.Windows.Forms.ScrollBars.Both;
             this.txtDetails.Size = new System.Drawing.Size(200, 100);
             this.txtDetails.TabIndex = 0;
             // 
