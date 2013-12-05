@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using System.Data;
 using Soft.DataAccess;
+using Soft.Exceptions;
+using System.Data.SqlClient;
 
 namespace Soft.DataAccess
 {
@@ -28,7 +30,8 @@ namespace Soft.DataAccess
                     {
                         Trans.Rollback();
                         base.m_ResultProcess = EnumResult.ERROR;
-                        MessageBox.Show(ex.InnerException.ToString());
+                        //int code = ex.ErrorCode;
+                        SoftException.Control(ex, MessageBoxIcon.Error);
                     }
                 }   
             }
