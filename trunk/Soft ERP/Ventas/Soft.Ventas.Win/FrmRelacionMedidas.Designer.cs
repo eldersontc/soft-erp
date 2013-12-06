@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRelacionMedidas));
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.CheckActivo = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.lblNombre = new Infragistics.Win.Misc.UltraLabel();
             this.txtNombre = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -336,8 +337,8 @@
             // 
             // lblNombre
             // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.lblNombre.Appearance = appearance3;
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.lblNombre.Appearance = appearance4;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblNombre.Location = new System.Drawing.Point(16, 20);
             this.lblNombre.Name = "lblNombre";
@@ -355,10 +356,14 @@
             // 
             // ugbPliego
             // 
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            this.ugbPliego.Appearance = appearance1;
             this.ugbPliego.Controls.Add(this.txtCerrado);
             this.ugbPliego.Controls.Add(this.txtAbierto);
             this.ugbPliego.Controls.Add(this.ultraLabel1);
             this.ugbPliego.Controls.Add(this.lblMaximoPliego);
+            this.ugbPliego.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
+            this.ugbPliego.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
             this.ugbPliego.Location = new System.Drawing.Point(16, 49);
             this.ugbPliego.Name = "ugbPliego";
             this.ugbPliego.Size = new System.Drawing.Size(347, 80);
@@ -367,7 +372,7 @@
             // 
             // txtCerrado
             // 
-            this.txtCerrado.Location = new System.Drawing.Point(234, 31);
+            this.txtCerrado.Location = new System.Drawing.Point(234, 38);
             this.txtCerrado.Name = "txtCerrado";
             this.txtCerrado.Size = new System.Drawing.Size(104, 21);
             this.txtCerrado.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
@@ -377,7 +382,7 @@
             // 
             // txtAbierto
             // 
-            this.txtAbierto.Location = new System.Drawing.Point(60, 31);
+            this.txtAbierto.Location = new System.Drawing.Point(60, 38);
             this.txtAbierto.Name = "txtAbierto";
             this.txtAbierto.Size = new System.Drawing.Size(112, 21);
             this.txtAbierto.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
@@ -387,10 +392,10 @@
             // 
             // ultraLabel1
             // 
-            appearance1.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel1.Appearance = appearance1;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel1.Appearance = appearance2;
             this.ultraLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel1.Location = new System.Drawing.Point(9, 35);
+            this.ultraLabel1.Location = new System.Drawing.Point(9, 42);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(49, 23);
             this.ultraLabel1.TabIndex = 29;
@@ -398,10 +403,10 @@
             // 
             // lblMaximoPliego
             // 
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.lblMaximoPliego.Appearance = appearance2;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.lblMaximoPliego.Appearance = appearance3;
             this.lblMaximoPliego.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblMaximoPliego.Location = new System.Drawing.Point(179, 35);
+            this.lblMaximoPliego.Location = new System.Drawing.Point(179, 42);
             this.lblMaximoPliego.Name = "lblMaximoPliego";
             this.lblMaximoPliego.Size = new System.Drawing.Size(57, 23);
             this.lblMaximoPliego.TabIndex = 28;
