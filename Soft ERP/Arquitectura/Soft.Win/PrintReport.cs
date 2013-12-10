@@ -29,7 +29,7 @@ namespace Soft.Win
                 }
                 else
                 {
-                    throw new Exception("No se ha seleccionado ningún Documento ...");
+                    throw new Exception("No se ha seleccionado ningún Reporte ...");
                 }
                 base.m_ResultProcess = EnumResult.SUCESS;
             }
