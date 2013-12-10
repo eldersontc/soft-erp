@@ -14,6 +14,7 @@ using Soft.DataAccess;
 using Soft.Entities;
 using Soft.Inventario.Entidades;
 using Microsoft.VisualBasic;
+using Soft.Reporte.Entidades;
 
 namespace Soft.Ventas.Win
 {
@@ -364,10 +365,106 @@ namespace Soft.Ventas.Win
 
         private void ubRecalcular_Click(object sender, EventArgs e)
         {
-            ItemCotizacion item = new ItemCotizacion();
-            item.Nombre = "prueba";
-            Cotizacion.Items.Add(item);
-            MostrarItems();
+            GenerarGraficosNormal();
+        }
+
+        public void GenerarGraficosNormal() {
+            if (ItemCotizacion.Material == null) { return; }
+            GenerarGraficoPrecorteNormal();
+            GenerarGraficoImpresionNormal();
+        }
+
+        public void GenerarGraficosRotado() {
+            if (ItemCotizacion.Material == null) { return; }
+            GenerarGraficoPrecorteRotado();
+            GenerarGraficoImpresionRotado();
+        }
+
+        public void GenerarGraficoPrecorteNormal() {
+            upbPrecorte.Width = Convert.ToInt32(ItemCotizacion.Material.Largo);
+            upbPrecorte.Height = Convert.ToInt32(ItemCotizacion.Material.Alto);
+            Bitmap b;
+            b = new Bitmap(upbPrecorte.Width, upbPrecorte.Height);
+            upbPrecorte.Image = (Image)b;
+            Graphics g = Graphics.FromImage(b);
+            g.Clear(Color.White);
+            Pen MyPen = new Pen(System.Drawing.Color.Black, 1);
+            g.DrawRectangle(MyPen, new Rectangle(0, 0, Convert.ToInt32(ItemCotizacion.Material.Largo - 1), Convert.ToInt32(ItemCotizacion.Material.Alto - 1)));
+            int CantidadPiezas = 0;
+            for (int x = ItemCotizacion.Maquina.PliegoAnchoMaximo; x <= upbPrecorte.Width; x += ItemCotizacion.Maquina.PliegoAnchoMaximo)
+            {
+                for (int y = ItemCotizacion.Maquina.PliegoAltoMaximo; y <= upbPrecorte.Height; y += ItemCotizacion.Maquina.PliegoAltoMaximo)
+                {
+                    g.DrawRectangle(MyPen, new Rectangle(x - ItemCotizacion.Maquina.PliegoAnchoMaximo, y - ItemCotizacion.Maquina.PliegoAltoMaximo, ItemCotizacion.Maquina.PliegoAnchoMaximo, ItemCotizacion.Maquina.PliegoAltoMaximo));
+                    CantidadPiezas += 1;
+                }
+            }
+            txtObservacion.Text = String.Format("Cantidad Total de Piezas : {0}", CantidadPiezas);
+        }
+
+        public void GenerarGraficoImpresionNormal()
+        {
+            upbImpresion.Width = Convert.ToInt32(ItemCotizacion.Maquina.PliegoAnchoMaximo);
+            upbImpresion.Height = Convert.ToInt32(ItemCotizacion.Maquina.PliegoAltoMaximo);
+            Bitmap b;
+            b = new Bitmap(upbImpresion.Width, upbImpresion.Height);
+            upbImpresion.Image = (Image)b;
+            Graphics g = Graphics.FromImage(b);
+            g.Clear(Color.White);
+            Pen MyPen = new Pen(System.Drawing.Color.Black, 1);
+            g.DrawRectangle(MyPen, new Rectangle(0, 0, Convert.ToInt32(ItemCotizacion.Maquina.PliegoAnchoMaximo - 1), Convert.ToInt32(ItemCotizacion.Maquina.PliegoAltoMaximo - 1)));
+
+            for (int x = Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo); x <= upbImpresion.Width; x += Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo))
+            {
+                for (int y = Convert.ToInt32(ItemCotizacion.MedidaAbiertaAlto); y <= upbImpresion.Height; y += Convert.ToInt32(ItemCotizacion.MedidaAbiertaAlto))
+                {
+                    g.DrawRectangle(MyPen, new Rectangle(x - Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo), y - Convert.ToInt32(ItemCotizacion.MedidaAbiertaAlto), Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo), Convert.ToInt32(ItemCotizacion.MedidaAbiertaAlto)));
+                }
+            }
+        }
+
+        public void GenerarGraficoImpresionRotado()
+        {
+            upbImpresion.Width = Convert.ToInt32(ItemCotizacion.Maquina.PliegoAnchoMaximo);
+            upbImpresion.Height = Convert.ToInt32(ItemCotizacion.Maquina.PliegoAltoMaximo);
+            Bitmap b;
+            b = new Bitmap(upbImpresion.Width, upbImpresion.Height);
+            upbImpresion.Image = (Image)b;
+            Graphics g = Graphics.FromImage(b);
+            g.Clear(Color.White);
+            Pen MyPen = new Pen(System.Drawing.Color.Black, 1);
+            g.DrawRectangle(MyPen, new Rectangle(0, 0, Convert.ToInt32(ItemCotizacion.Maquina.PliegoAnchoMaximo - 1), Convert.ToInt32(ItemCotizacion.Maquina.PliegoAltoMaximo - 1)));
+
+            for (int x = Convert.ToInt32(ItemCotizacion.MedidaAbiertaAlto); x <= upbImpresion.Width; x += Convert.ToInt32(ItemCotizacion.MedidaAbiertaAlto))
+            {
+                for (int y = Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo); y <= upbImpresion.Height; y += Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo))
+                {
+                    g.DrawRectangle(MyPen, new Rectangle(x - Convert.ToInt32(ItemCotizacion.MedidaAbiertaAlto), y - Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo), Convert.ToInt32(ItemCotizacion.MedidaAbiertaAlto), Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo)));
+                }
+            }
+        }
+
+        public void GenerarGraficoPrecorteRotado() {
+            upbPrecorte.Width = Convert.ToInt32(ItemCotizacion.Material.Largo);
+            upbPrecorte.Height = Convert.ToInt32(ItemCotizacion.Material.Alto);
+            Bitmap b;
+            b = new Bitmap(upbPrecorte.Width, upbPrecorte.Height);
+            upbPrecorte.Image = (Image)b;
+            Graphics g = Graphics.FromImage(b);
+            g.Clear(Color.White);
+            Pen myPen = new Pen(System.Drawing.Color.Black, 1);
+            g.DrawRectangle(myPen, new Rectangle(0, 0, Convert.ToInt32(ItemCotizacion.Material.Largo - 1), Convert.ToInt32(ItemCotizacion.Material.Alto - 1)));
+            int CantidadPiezas = 0;
+            for (int x = ItemCotizacion.Maquina.PliegoAltoMaximo; x <= upbPrecorte.Width; x += ItemCotizacion.Maquina.PliegoAltoMaximo)
+            {
+                for (int y = ItemCotizacion.Maquina.PliegoAnchoMaximo; y <= upbPrecorte.Height; y += ItemCotizacion.Maquina.PliegoAnchoMaximo)
+                {
+                    g.DrawRectangle(myPen, new Rectangle(x - ItemCotizacion.Maquina.PliegoAltoMaximo, y - ItemCotizacion.Maquina.PliegoAnchoMaximo, ItemCotizacion.Maquina.PliegoAltoMaximo, ItemCotizacion.Maquina.PliegoAnchoMaximo));
+
+                    CantidadPiezas += 1;
+                }
+            }
+            txtObservacion.Text = String.Format("Cantidad Total de Piezas : {0}", CantidadPiezas);
         }
 
         private void uneCosto_ValueChanged(object sender, EventArgs e)
@@ -385,6 +482,41 @@ namespace Soft.Ventas.Win
         private void udtFechaCreacion_ValueChanged(object sender, EventArgs e)
         {
             Cotizacion.FechaCreacion = Convert.ToDateTime(udtFechaCreacion.Value);
+        }
+
+        private void ubCambiarPosicion_Click(object sender, EventArgs e)
+        {
+            GenerarGraficosRotado();
+        }
+
+        private void ubImprimirGraficos_Click(object sender, EventArgs e)
+        {
+            Bitmap b = new Bitmap((Image)upbPrecorte.Image, new Size(390, 405));
+            String PathImagenCorte = String.Format("E:\\Proyectos SVN\\Soft ERP\\Recursos\\Gráficos\\Grafico-{0}.png", ItemCotizacion.ID);
+            b.Save(PathImagenCorte);
+            Soft.Reporte.Entidades.Reporte Reporte = (Soft.Reporte.Entidades.Reporte)HelperNHibernate.GetEntityByID("Reporte", "01F1035F-77F6-4188-B75F-7B9436FAB7DD");
+            foreach (ParametroReporte Parametro in Reporte.ParametrosCrystal)
+            {
+                if (Parametro.Nombre.Equals("PathImagenPrecorte"))
+                {
+                    Parametro.Valor = PathImagenCorte;
+                }
+                else if (Parametro.Nombre.Equals("PathImagenImpresion"))
+                {
+                    Parametro.Valor = "";
+                }
+                else if (Parametro.Nombre.Equals("DimensionesPapelPrecorte"))
+                {
+                    Parametro.Valor = String.Format("{0} x {1} cm", ItemCotizacion.Material.Largo, ItemCotizacion.Material.Alto);
+                }
+                else if (Parametro.Nombre.Equals("DimensionesImpresoraPrecorte"))
+                {
+                    Parametro.Valor = String.Format("{0} x {1} cm", ItemCotizacion.Maquina.PliegoAnchoMaximo, ItemCotizacion.Maquina.PliegoAltoMaximo);
+                }
+            }
+            PrintReport ControladorImpresion = new PrintReport();
+            ControladorImpresion.m_ObjectFlow = Reporte;
+            ControladorImpresion.Start();
         }
 
     }
