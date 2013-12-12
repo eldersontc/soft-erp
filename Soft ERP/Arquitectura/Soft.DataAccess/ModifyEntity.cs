@@ -8,6 +8,7 @@ using NHibernate;
 using Soft.DataAccess;
 using Soft.Seguridad.Entidades;
 using System.Windows.Forms;
+using Soft.Exceptions;
 
 namespace Soft.DataAccess
 {
@@ -30,7 +31,7 @@ namespace Soft.DataAccess
                     {
                         Trans.Rollback();
                         base.m_ResultProcess = EnumResult.ERROR;
-                        MessageBox.Show(ex.InnerException.ToString());
+                        SoftException.Control(ex.InnerException);
                     }
                 }
             }
