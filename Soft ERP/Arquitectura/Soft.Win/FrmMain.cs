@@ -69,7 +69,6 @@ namespace Soft.Win
             rc.SetCustomizedString("MenuItemMoveToNextGroup", "Mover al grupo de fichas siguiente");
             rc.SetCustomizedString("MenuItemMoveToPreviousGroup", "Mover al grupo de fichas anterior");
 
-            //utbmMain.Ribbon.ApplicationMenuButtonImage = m_Usuario.ObtenerImagen;
             Text = String.Format(":: {0} ::",m_Usuario.Empresa.RazonSocial);
             usbMain.Panels[0].Text = String.Format("USUARIO ACTUAL : {0}", m_Usuario.NombreUsuario);
         }
