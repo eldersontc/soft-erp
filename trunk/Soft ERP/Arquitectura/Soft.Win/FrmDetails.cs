@@ -41,7 +41,7 @@ namespace Soft.Win
             String Query = String.Empty;
             String NameView = String.Empty;
             Text = String.Format(":: {0} ::", ItemContenedor.Nombre);
-            //ugDetails.DisplayLayout.Appearance.ImageBackground = FrmMain.Usuario.ObtenerImagen;
+            ugDetails.DisplayLayout.Appearance.ImageBackground = FrmMain.Usuario.ObtenerImagen;
             ugDetails.DataSource = null;
             m_XMLCofiguration = HelperNHibernate.ExecuteView("vSF_ColumnasxPanel", String.Format(" NombrePanel = '{0}' ORDER BY Orden", ItemContenedor.Panel.Nombre));
             foreach (XmlNode NodoItem in m_XMLCofiguration.DocumentElement.ChildNodes)

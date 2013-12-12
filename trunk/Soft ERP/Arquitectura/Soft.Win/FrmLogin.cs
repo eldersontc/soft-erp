@@ -30,7 +30,7 @@ namespace Soft.Win
                     foreach (XmlNode NodoItem in XML.DocumentElement.ChildNodes)
                     {
                         Usuario User = (Usuario)HelperNHibernate.GetEntityByID("Usuario", NodoItem.SelectSingleNode("@ID").Value);
-                        //CargarSyn(User.Skyn);
+                        CargarSyn(User.Skyn);
                         FrmMain FrmMain = new FrmMain();
                         FrmMain.IniciarAplicacion(User);
                         Hide();
@@ -38,7 +38,6 @@ namespace Soft.Win
                 }
                 else
                 {
-                    //MessageBox.Show("Usuario o Clave Incorrectos ...", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     throw new Exception("Usuario o Clave Incorrectos ...");
                 }
             }
