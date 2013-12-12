@@ -32,12 +32,9 @@ namespace Soft.DataAccess
                     }
                     catch (Exception ex)
                     {
-                        //NHibernate.Exceptions.GenericADOException
                         Trans.Rollback();
                         m_ResultProcess = EnumResult.ERROR;
-
-                        int code = ex.GetHashCode(); 
-                        SoftException.Control(ex, MessageBoxIcon.Error);
+                        SoftException.Control(ex.InnerException);
                     }
                 }
             }

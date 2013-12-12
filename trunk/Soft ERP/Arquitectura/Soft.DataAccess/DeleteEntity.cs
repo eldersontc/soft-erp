@@ -30,8 +30,7 @@ namespace Soft.DataAccess
                     {
                         Trans.Rollback();
                         base.m_ResultProcess = EnumResult.ERROR;
-                        //int code = ex.ErrorCode;
-                        SoftException.Control(ex, MessageBoxIcon.Error);
+                        SoftException.Control(ex.InnerException);
                     }
                 }   
             }

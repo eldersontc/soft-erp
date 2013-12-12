@@ -13,6 +13,8 @@ using System.Data.SqlClient;
 using Microsoft.VisualBasic;
 using System.Windows.Forms;
 using Soft.Configuracion.Entidades;
+using Soft.Exceptions;
+using System.Drawing;
 
 namespace Soft.DataAccess
 {
@@ -40,7 +42,8 @@ namespace Soft.DataAccess
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                SoftException.Control(ex, SystemIcons.Warning.ToBitmap());
+                Application.Exit();
             }
         }
 
