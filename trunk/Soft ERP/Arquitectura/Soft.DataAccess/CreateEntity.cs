@@ -19,12 +19,13 @@ namespace Soft.DataAccess
     {
         public override void Start()
         {
-            using (ISession Sesion = m_SessionFactory.OpenSession()) {
+            using (ISession Sesion = m_SessionFactory.OpenSession())
+            {
                 using (ITransaction Trans = Sesion.BeginTransaction())
                 {
                     try
                     {
-                        Auditoria Auditoria = Auditoria.ConstruirAuditoria(base.m_ObjectFlow,"Creación");
+                        Auditoria Auditoria = Auditoria.ConstruirAuditoria(base.m_ObjectFlow, "Creación");
                         Sesion.Save(base.m_ObjectFlow);
                         Sesion.Save(Auditoria);
                         Trans.Commit();
