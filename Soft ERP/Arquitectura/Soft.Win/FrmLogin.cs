@@ -43,7 +43,7 @@ namespace Soft.Win
             }
             catch (Exception ex)
             {
-                SoftException.Control(ex, MessageBoxIcon.Information);
+                SoftException.Control(ex, SystemIcons.Warning.ToBitmap());
             }
         }
 
