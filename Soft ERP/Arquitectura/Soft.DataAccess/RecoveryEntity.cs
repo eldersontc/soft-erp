@@ -17,12 +17,14 @@ namespace Soft.DataAccess
         {
             try
             {
-                if (base.m_ItemsSelecteds.Count > 0) {
-                    using (ISession Sesion = m_SessionFactory.OpenSession()) {
+                if (base.m_ItemsSelecteds.Count > 0)
+                {
+                    using (ISession Sesion = m_SessionFactory.OpenSession())
+                    {
                         String ID = base.m_ItemsSelecteds[0];
                         base.m_ObjectFlow = Sesion.Get(base.m_EntidadSF.NombreClase, ID);
                         ((Parent)base.m_ObjectFlow).NewInstance = false;
-                        base.m_ResultProcess = EnumResult.SUCESS;   
+                        base.m_ResultProcess = EnumResult.SUCESS;
                     }
                 }
             }
