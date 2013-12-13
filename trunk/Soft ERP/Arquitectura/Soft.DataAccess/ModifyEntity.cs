@@ -16,7 +16,8 @@ namespace Soft.DataAccess
     {
         public override void Start()
         {
-            using (ISession Sesion = m_SessionFactory.OpenSession()) {
+            using (ISession Sesion = m_SessionFactory.OpenSession())
+            {
                 using (ITransaction Trans = Sesion.BeginTransaction())
                 {
                     try
