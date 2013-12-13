@@ -93,7 +93,9 @@
     <EmbeddedResource Include="Mappings Files\TipoSolicitudCotizacion.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings Files\ItemSolicitudCotizacion.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\ItemSolicitudCotizacion.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings Files\SolicitudCotizacion.hbm.xml" />
   </ItemGroup>
   <ItemGroup>

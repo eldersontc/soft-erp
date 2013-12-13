@@ -18,6 +18,7 @@ namespace Soft.Ventas.Entidades
         public virtual String Descripcion { get; set; }
         public virtual SocioNegocio Vendedor { get; set; }
         public virtual Decimal PorcentajeUtilidad { get; set; }
+        public virtual String EstadoAprobacion { get; set; }
 
         public virtual void GenerarNumCp()
         {

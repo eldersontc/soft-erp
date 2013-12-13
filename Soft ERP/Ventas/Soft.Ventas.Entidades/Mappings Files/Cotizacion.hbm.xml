@@ -11,6 +11,7 @@
     <property name="Cantidad" type="decimal"/>
     <property name="Descripcion" type="string"/>
     <property name="PorcentajeUtilidad" type="decimal"/>
+    <property name="EstadoAprobacion" type="string"/>
     
     <many-to-one name="TipoDocumento" class="Soft.Ventas.Entidades.TipoCotizacion" column="IDTipoDocumento" insert="true" update="true" lazy="false"/>
     <many-to-one name="Cliente" class="Soft.Entities.SocioNegocio" column="IDCliente" insert="true" update="true" lazy="false"/>
