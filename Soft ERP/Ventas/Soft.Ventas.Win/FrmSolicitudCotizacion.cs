@@ -376,20 +376,6 @@ namespace Soft.Ventas.Win
             ItemSolicitudCotizacion.MedidaCerradaAlto = Convert.ToInt32(txtMedidaCerradaAlto.Value);
         }
 
-        private void lblFechaCreacion_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNumeracion_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblNumeracion_Click(object sender, EventArgs e)
-        {
-
-        }
 
     }
 }
