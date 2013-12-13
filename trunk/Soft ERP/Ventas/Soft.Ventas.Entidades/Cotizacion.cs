@@ -35,5 +35,12 @@ namespace Soft.Ventas.Entidades
             }
         }
 
+        public virtual ItemCotizacion AddItem()
+        {
+            ItemCotizacion Item = new ItemCotizacion();
+            Items.Add(Item);
+            return Item;
+        }
+
     }
 }
