@@ -13,11 +13,12 @@ using System.Data.SqlClient;
 
 namespace Soft.DataAccess
 {
-    public class DeleteEntity : ControllerApp 
+    public class DeleteEntity : ControllerApp
     {
         public override void Start()
         {
-            using (ISession Sesion = m_SessionFactory.OpenSession()) {
+            using (ISession Sesion = m_SessionFactory.OpenSession())
+            {
                 using (ITransaction Trans = Sesion.BeginTransaction())
                 {
                     try
@@ -32,7 +33,7 @@ namespace Soft.DataAccess
                         base.m_ResultProcess = EnumResult.ERROR;
                         SoftException.Control(ex.InnerException);
                     }
-                }   
+                }
             }
             base.Start();
         }
