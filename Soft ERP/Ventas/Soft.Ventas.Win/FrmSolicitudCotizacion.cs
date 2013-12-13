@@ -14,17 +14,18 @@ using Soft.Entities;
 using Microsoft.VisualBasic;
 using Soft.Inventario.Entidades;
 using Infragistics.Win.UltraWinTree;
+using Soft.Seguridad.Entidades;
 
 namespace Soft.Ventas.Win
 {
-    public partial class FrmSolicitudCotizacion : FrmParent 
+    public partial class FrmSolicitudCotizacion : FrmParent
     {
         public FrmSolicitudCotizacion()
         {
             InitializeComponent();
         }
 
-        public  SolicitudCotizacion SolicitudCotizacion { get { return (SolicitudCotizacion)base.m_ObjectFlow; } }
+        public SolicitudCotizacion SolicitudCotizacion { get { return (SolicitudCotizacion)base.m_ObjectFlow; } }
         private ItemSolicitudCotizacion ItemSolicitudCotizacion = null;
 
         public override void Init()
@@ -34,7 +35,7 @@ namespace Soft.Ventas.Win
         }
 
         const String colNombre = "Nombre";
-        
+
         private Boolean ActualizandoIU = false;
 
         public void InitGrids()
@@ -132,13 +133,13 @@ namespace Soft.Ventas.Win
 
             TipoSolicitudCotizacion TipoDocumento = (TipoSolicitudCotizacion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoSolicitudCotizacion), "Tipo Solicitud de Cotización");
             SolicitudCotizacion.TipoDocumento = (TipoSolicitudCotizacion)HelperNHibernate.GetEntityByID("TipoSolicitudCotizacion", TipoDocumento.ID);
-      
-            
+
+
             ssTipoDocumento.Text = (SolicitudCotizacion.TipoDocumento != null) ? SolicitudCotizacion.TipoDocumento.Nombre : "";
             SolicitudCotizacion.GenerarNumCp();
             txtNumeracion.Text = SolicitudCotizacion.Numeracion;
             //Mostrar();
-        
+
         }
 
         private void txtNumeracion_TextChanged(object sender, EventArgs e)
@@ -148,9 +149,18 @@ namespace Soft.Ventas.Win
 
         private void ssCliente_Search(object sender, EventArgs e)
         {
+            String filtro = "UserID='" + FrmMain.Usuario.UserID + "'";
+
+            if (ssCliente.Text.Length > 0)
+            {
+                filtro = filtro + " and Nombre like '" + ssCliente.Text + "%'";
+            }
+
             FrmSelectedEntity FrmSeleccionarProveedor = new FrmSelectedEntity();
-            SolicitudCotizacion.Cliente = (SocioNegocio)FrmSeleccionarProveedor.GetSelectedEntity(typeof(SocioNegocio), "Socio de Negocio", " Cliente = 1");
+            SolicitudCotizacion.Cliente = (SocioNegocio)FrmSeleccionarProveedor.GetSelectedEntity(typeof(SocioNegocio), "Cliente", filtro);
             ssCliente.Text = (SolicitudCotizacion.Cliente != null) ? SolicitudCotizacion.Cliente.Nombre : "";
+
+
         }
 
         private void udtFechaCreacion_ValueChanged(object sender, EventArgs e)
@@ -202,7 +212,7 @@ namespace Soft.Ventas.Win
             FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
             ItemSolicitudCotizacionServicio Item = (ItemSolicitudCotizacionServicio)Row.Tag;
             String Filtro = String.Format(" Codigo LIKE '{0}%' AND Nombre LIKE '{1}%'", Codigo, Descripcion);
-            if (ItemSolicitudCotizacion.m_FiltroServicios.Length > 0) { Filtro += String.Format(" AND {0}",ItemSolicitudCotizacion.m_FiltroServicios); }
+            if (ItemSolicitudCotizacion.m_FiltroServicios.Length > 0) { Filtro += String.Format(" AND {0}", ItemSolicitudCotizacion.m_FiltroServicios); }
             Productos = FrmSeleccionar.GetSelectedsEntities(typeof(Existencia), "Selección de Servicios", Filtro);
             if (Productos.Count == 1)
             {
@@ -272,7 +282,8 @@ namespace Soft.Ventas.Win
         private void utSolicitudCotizacion_AfterSelect(object sender, Infragistics.Win.UltraWinTree.SelectEventArgs e)
         {
             UltraTreeNode Node = utSolicitudCotizacion.ActiveNode;
-            if (Node !=null ){
+            if (Node != null)
+            {
                 ItemSolicitudCotizacion = (ItemSolicitudCotizacion)Node.Tag;
                 utcItemSolicitid.Tabs[0].Text = Node.Text;
                 MostrarItem(Node);
@@ -309,14 +320,14 @@ namespace Soft.Ventas.Win
         private void txtImpresoRetiraColor_ValueChanged(object sender, EventArgs e)
         {
             if (ItemSolicitudCotizacion == null) { return; }
-            ItemSolicitudCotizacion.ImpresoRetiraColor= Convert.ToInt32(txtImpresoRetiraColor.Value);
+            ItemSolicitudCotizacion.ImpresoRetiraColor = Convert.ToInt32(txtImpresoRetiraColor.Value);
         }
 
         private void ssMaquina_Search(object sender, EventArgs e)
         {
             if (ItemSolicitudCotizacion == null) { return; }
             FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-            ItemSolicitudCotizacion.Maquina = (Maquina)FrmSeleccionar.GetSelectedEntity(typeof(Maquina), "Máquina",ItemSolicitudCotizacion.m_FiltroMaquina);
+            ItemSolicitudCotizacion.Maquina = (Maquina)FrmSeleccionar.GetSelectedEntity(typeof(Maquina), "Máquina", ItemSolicitudCotizacion.m_FiltroMaquina);
             ssMaquina.Text = (ItemSolicitudCotizacion.Maquina != null) ? ItemSolicitudCotizacion.Maquina.Nombre : "";
         }
 
@@ -340,7 +351,7 @@ namespace Soft.Ventas.Win
             ItemSolicitudCotizacion.Observacion = txtObservacionItem.Text;
         }
 
-  
+
         private void txtMedidaAbiertoLargo_ValueChanged(object sender, EventArgs e)
         {
             if (ItemSolicitudCotizacion == null) { return; }
