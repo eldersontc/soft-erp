@@ -825,7 +825,6 @@
             this.txtNumeracion.Name = "txtNumeracion";
             this.txtNumeracion.Size = new System.Drawing.Size(119, 21);
             this.txtNumeracion.TabIndex = 46;
-            this.txtNumeracion.ValueChanged += new System.EventHandler(this.txtNumeracion_ValueChanged);
             this.txtNumeracion.TextChanged += new System.EventHandler(this.txtNumeracion_TextChanged);
             // 
             // lblNumeracion
@@ -837,7 +836,6 @@
             this.lblNumeracion.Size = new System.Drawing.Size(80, 23);
             this.lblNumeracion.TabIndex = 50;
             this.lblNumeracion.Text = "Numeración";
-            this.lblNumeracion.Click += new System.EventHandler(this.lblNumeracion_Click);
             // 
             // ssCliente
             // 
@@ -897,7 +895,7 @@
             this.lblFechaCreacion.Size = new System.Drawing.Size(117, 23);
             this.lblFechaCreacion.TabIndex = 52;
             this.lblFechaCreacion.Text = "Fecha de Creación";
-            this.lblFechaCreacion.Click += new System.EventHandler(this.lblFechaCreacion_Click);
+     
             // 
             // llbDescripcion
             // 
