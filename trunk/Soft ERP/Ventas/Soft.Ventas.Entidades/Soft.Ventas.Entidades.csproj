@@ -118,7 +118,9 @@
     <EmbeddedResource Include="Mappings Files\ListaPreciosTransporte.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings Files\Cotizacion.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\Cotizacion.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings Files\TipoCotizacion.hbm.xml" />
