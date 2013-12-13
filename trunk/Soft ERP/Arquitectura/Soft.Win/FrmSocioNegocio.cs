@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Soft.Entities;
 using Infragistics.Win.UltraWinGrid;
 using Infragistics.Win;
+using Soft.Seguridad.Entidades;
 
 namespace Soft.Win
 {
@@ -581,6 +582,19 @@ namespace Soft.Win
                 else {
                     busArea.Text = null;
                 }
+
+
+                if (empleado.Usuario != null)
+                {
+                    busNombreUsuario.Text = empleado.Usuario.NombreUsuario;
+                    busCodigoUsuario.Text = empleado.Usuario.UserID;
+                }
+                else
+                {
+                    busNombreUsuario.Text = null;
+                    busCodigoUsuario.Text = null;
+                }
+
                 
                 checkActivoEmpleado.Checked = empleado.Activo;
                 }
@@ -638,6 +652,34 @@ namespace Soft.Win
             SocioNegocioCliente cliente = SocioNegocio.Clientes.First();
             cliente.Activo = checkActivoClliente.Checked;
         }
+
+        private void busNombreUsuario_Search(object sender, EventArgs e)
+        {
+            String filtro = "";
+            if (busNombreUsuario.Text.Length > 0) {
+                filtro = "NombreUsuario like '" + busNombreUsuario.Text + "%'";
+            }
+
+            FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+            SocioNegocioEmpleado empleado = SocioNegocio.Empleados.First();
+            empleado.Usuario = (Usuario)FrmSeleccionar.GetSelectedEntity(typeof(Usuario), "Usuario", filtro);
+            MostrarEmpleado();
+        }
+
+        private void busCodigoUsuario_Search(object sender, EventArgs e)
+        {
+            String filtro = "";
+            if (busCodigoUsuario.Text.Length > 0)
+            {
+                filtro = "UserID like '" + busCodigoUsuario.Text + "%'";
+            }
+            FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+            SocioNegocioEmpleado empleado = SocioNegocio.Empleados.First();
+            empleado.Usuario = (Usuario)FrmSeleccionar.GetSelectedEntity(typeof(Usuario), "Usuario",filtro);
+            MostrarEmpleado();
+        }
+
+        
 
 
     }
