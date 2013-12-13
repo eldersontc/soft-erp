@@ -31,10 +31,11 @@ namespace Soft.DataAccess
 
         protected static Configuration m_Configuration = new Configuration();
         protected static ISessionFactory m_SessionFactory;
-        
+
         public ControllerApp() { }
 
-        public static void LoadConfiguration(){
+        public static void LoadConfiguration()
+        {
             try
             {
                 m_Configuration.Configure("hibernate.cfg.xml");
@@ -47,23 +48,26 @@ namespace Soft.DataAccess
             }
         }
 
-        public virtual void Start(){
+        public virtual void Start()
+        {
             // All code here.
             if (m_ItemAccionAcual == null) { return; }
-            if (m_ResultProcess == EnumResult.SUCESS) {
+            if (m_ResultProcess == EnumResult.SUCESS)
+            {
                 this.ContinuarFlujo(m_ItemAccionAcual.Exito);
             }
             else if (m_ResultProcess == EnumResult.ERROR)
             {
                 this.ContinuarFlujo(m_ItemAccionAcual.Error);
             }
-            else 
+            else
             {
                 return;
             }
         }
 
-        public void ContinuarFlujo(String Siguiente) {
+        public void ContinuarFlujo(String Siguiente)
+        {
             if (Siguiente.Equals("Salir")) { return; }
             ItemAccion m_Item = m_AccionActual.ItemByName(Siguiente.Trim());
             ControllerApp Controlador = (ControllerApp)Factory.InstanceObject(m_Item.Ensamblado.Ensamblado_, m_Item.Clase);
