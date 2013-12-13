@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Soft.Seguridad.Entidades;
 
 namespace Soft.Entities
 {
@@ -10,5 +11,7 @@ namespace Soft.Entities
     {
         public SocioNegocioEmpleado() { }
         public virtual Area Area { get; set; }
+        public virtual Usuario Usuario { get; set; }
+
     }
 }
