@@ -17,7 +17,7 @@ namespace Soft.DataAccess
         public override void Start()
         {
             try
-            {
+            { 
                 if (base.m_ItemsSelecteds.Count > 0)
                 {
                     using (ISession Sesion = m_SessionFactory.OpenSession())
