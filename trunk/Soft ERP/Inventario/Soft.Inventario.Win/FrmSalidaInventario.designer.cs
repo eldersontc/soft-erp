@@ -49,7 +49,7 @@
             this.ubEliminarProducto = new Infragistics.Win.Misc.UltraButton();
             this.ubNuevoProducto = new Infragistics.Win.Misc.UltraButton();
             this.Codigo = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
+            this.LabelSocioNegocio = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
             this.ssTipoDocumento = new Soft.Controls.SoftSearch();
@@ -108,13 +108,13 @@
             this.ugbParent.Controls.Add(this.ssTipoDocumento);
             this.ugbParent.Controls.Add(this.ultraLabel3);
             this.ugbParent.Controls.Add(this.ultraLabel2);
-            this.ugbParent.Controls.Add(this.ultraLabel1);
+            this.ugbParent.Controls.Add(this.LabelSocioNegocio);
             this.ugbParent.Controls.Add(this.Codigo);
             this.ugbParent.Size = new System.Drawing.Size(700, 531);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.Codigo, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ultraLabel1, 0);
+            this.ugbParent.Controls.SetChildIndex(this.LabelSocioNegocio, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel2, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel3, 0);
             this.ugbParent.Controls.SetChildIndex(this.ssTipoDocumento, 0);
@@ -445,15 +445,15 @@
             this.Codigo.TabIndex = 14;
             this.Codigo.Text = "Tipo de Documento";
             // 
-            // ultraLabel1
+            // LabelSocioNegocio
             // 
             appearance13.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel1.Appearance = appearance13;
-            this.ultraLabel1.Location = new System.Drawing.Point(19, 47);
-            this.ultraLabel1.Name = "ultraLabel1";
-            this.ultraLabel1.Size = new System.Drawing.Size(130, 23);
-            this.ultraLabel1.TabIndex = 15;
-            this.ultraLabel1.Text = "Proveedor";
+            this.LabelSocioNegocio.Appearance = appearance13;
+            this.LabelSocioNegocio.Location = new System.Drawing.Point(19, 47);
+            this.LabelSocioNegocio.Name = "LabelSocioNegocio";
+            this.LabelSocioNegocio.Size = new System.Drawing.Size(130, 23);
+            this.LabelSocioNegocio.TabIndex = 15;
+            this.LabelSocioNegocio.Text = "Proveedor";
             // 
             // ultraLabel2
             // 
@@ -714,7 +714,7 @@
 
         private Infragistics.Win.Misc.UltraLabel ultraLabel3;
         private Infragistics.Win.Misc.UltraLabel ultraLabel2;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel1;
+        private Infragistics.Win.Misc.UltraLabel LabelSocioNegocio;
         private Infragistics.Win.Misc.UltraLabel Codigo;
         private Controls.SoftSearch ssResponsable;
         private Controls.SoftSearch ssAlmacen;
