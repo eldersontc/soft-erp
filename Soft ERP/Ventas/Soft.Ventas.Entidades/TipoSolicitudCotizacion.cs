@@ -9,7 +9,12 @@ namespace Soft.Ventas.Entidades
     [Serializable]
     public class TipoSolicitudCotizacion : TipoDocumento  
     {
-        public TipoSolicitudCotizacion (){}
+        public TipoSolicitudCotizacion (){
+            if (NewInstance)
+            {
+                Activo = true;
+            }
+        }
 
     }
 }
