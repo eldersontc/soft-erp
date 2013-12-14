@@ -128,17 +128,13 @@ namespace Soft.Ventas.Win
         private void ssTipoDocumento_Search(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
-            //SolicitudCotizacion.TipoDocumento = (TipoSolicitudCotizacion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoSolicitudCotizacion), "Tipo Solicitud de Cotización");
-
-
             TipoSolicitudCotizacion TipoDocumento = (TipoSolicitudCotizacion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoSolicitudCotizacion), "Tipo Solicitud de Cotización");
-            SolicitudCotizacion.TipoDocumento = (TipoSolicitudCotizacion)HelperNHibernate.GetEntityByID("TipoSolicitudCotizacion", TipoDocumento.ID);
-
-
-            ssTipoDocumento.Text = (SolicitudCotizacion.TipoDocumento != null) ? SolicitudCotizacion.TipoDocumento.Nombre : "";
-            SolicitudCotizacion.GenerarNumCp();
-            txtNumeracion.Text = SolicitudCotizacion.Numeracion;
-            //Mostrar();
+            if ((SolicitudCotizacion.TipoDocumento == null) || (SolicitudCotizacion.TipoDocumento.Codigo != TipoDocumento.Codigo))
+            {
+                SolicitudCotizacion.TipoDocumento = (TipoSolicitudCotizacion)HelperNHibernate.GetEntityByID("TipoSolicitudCotizacion", TipoDocumento.ID);
+                SolicitudCotizacion.GenerarNumCp();
+            }
+            Mostrar();
 
         }
 
