@@ -9,7 +9,12 @@ namespace Soft.Ventas.Entidades
     [Serializable]
     public class TipoMaquina : Parent 
     {
-        public TipoMaquina() {}
+        public TipoMaquina() {
+            if (NewInstance)
+            {
+                Activo = true;
+            }
+        }
         public virtual String Descripcion { get; set; }
     }
 }
