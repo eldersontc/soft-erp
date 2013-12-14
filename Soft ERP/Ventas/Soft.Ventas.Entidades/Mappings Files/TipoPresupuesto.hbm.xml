@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Ventas.Entidades.TipoPresupuesto, Soft.Ventas.Entidades">
+
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="Codigo" type="string"/>
+    <property name="Nombre" type="string"/>
+    <property name="Descripcion" type="string"/>
+    <property name="Activo" type="boolean"/>
+    <property name="CodigoSerie" type="string"/>
+    <property name="LongitudSerie" type="int"/>
+    <property name="NumeracionActual" type="int"/>
+    <property name="NumeracionLongitud" type="int"/>
+    <property name="GeneraNumeracionAlFinal" type="boolean"/>
+    <property name="NumeracionAutomatica" type="boolean"/>
+
+    <many-to-one name="Reporte" class="Soft.Reporte.Entidades.Reporte" column="IDReporte" insert="true" update="true" lazy="false"/>
+
+  </class>
+
+</hibernate-mapping>
