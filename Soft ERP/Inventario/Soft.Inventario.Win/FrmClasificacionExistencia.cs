@@ -133,6 +133,11 @@ namespace Soft.Inventario.Win
             this.MostrarItem(e.Cell.Row);
         }
 
+        private void tabItems_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
 
 
     }

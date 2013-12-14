@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmClasificacionExistencia));
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
@@ -341,6 +341,7 @@
             this.tabItems.Location = new System.Drawing.Point(1, 23);
             this.tabItems.Name = "tabItems";
             this.tabItems.Size = new System.Drawing.Size(421, 213);
+            this.tabItems.Paint += new System.Windows.Forms.PaintEventHandler(this.tabItems_Paint);
             // 
             // grillaTiposClasificacion
             // 
@@ -396,8 +397,8 @@
             // 
             // Nombre
             // 
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            this.Nombre.Appearance = appearance5;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.Nombre.Appearance = appearance3;
             this.Nombre.Location = new System.Drawing.Point(16, 49);
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(100, 23);
@@ -414,8 +415,8 @@
             // 
             // Codigo
             // 
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            this.Codigo.Appearance = appearance6;
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.Codigo.Appearance = appearance4;
             this.Codigo.Location = new System.Drawing.Point(17, 21);
             this.Codigo.Name = "Codigo";
             this.Codigo.Size = new System.Drawing.Size(100, 23);
