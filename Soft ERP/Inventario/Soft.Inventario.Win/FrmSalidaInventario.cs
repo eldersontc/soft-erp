@@ -136,16 +136,30 @@ namespace Soft.Inventario.Win
         {
             FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
             String Filtro = "Operacion='Salida'";
-            TipoDocumentoInventario TipoDocumento = (TipoDocumentoInventario)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoDocumentoInventario), "Tipo de Inventario",Filtro);
-            SalidaInventario.TipoDocumento = (TipoDocumentoInventario)HelperNHibernate.GetEntityByID("TipoDocumentoInventario", TipoDocumento.ID);
-            ssTipoDocumento.Text = (SalidaInventario.TipoDocumento != null) ? SalidaInventario.TipoDocumento.Descripcion : "";
+
+
+            TipoDocumentoInventario TipoDocumento = (TipoDocumentoInventario)        FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoDocumentoInventario), "Tipo de Inventario",Filtro);
+
+
+            if ((SalidaInventario.TipoDocumento == null) || (SalidaInventario.TipoDocumento.Codigo != TipoDocumento.Codigo))
+            {
+                SalidaInventario.TipoDocumento = (TipoDocumentoInventario)HelperNHibernate.GetEntityByID("TipoDocumentoInventario", TipoDocumento.ID);
+                SalidaInventario.GenerarNumCp();
+                LabelSocioNegocio.Text = SalidaInventario.TipoDocumento.TipoSocioDeNegocio;
+            }
+            
+            Mostrar();
         }
 
         private void ssProveedor_Search(object sender, EventArgs e)
         {
-            FrmSelectedEntity FrmSeleccionarProveedor = new FrmSelectedEntity();
-            SalidaInventario.Proveedor = (SocioNegocio)FrmSeleccionarProveedor.GetSelectedEntity(typeof(SocioNegocio), "Socio de Negocio", " Proveedor = 1");
-            ssProveedor.Text = (SalidaInventario.Proveedor != null) ? SalidaInventario.Proveedor.Nombre : "";
+            if ((LabelSocioNegocio.Text!="Ninguno")&&(SalidaInventario.TipoDocumento!=null)){
+                
+                FrmSelectedEntity FrmSeleccionarProveedor = new FrmSelectedEntity();
+                SalidaInventario.Proveedor = (SocioNegocio)FrmSeleccionarProveedor.GetSelectedEntity(typeof(SocioNegocio), "Socio de Negocio", LabelSocioNegocio.Text + "= 1");
+
+            }
+            Mostrar();
         }
 
         private void ssAlmacen_Search(object sender, EventArgs e)
