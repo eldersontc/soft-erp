@@ -25,7 +25,7 @@ namespace Soft.Win
         }
 
         public void Next() {
-            upbProgress.Value += upbProgress.Value + (100 / m_Lenght); 
+            upbProgress.Value += (100 / m_Lenght); 
         }
 
     }
