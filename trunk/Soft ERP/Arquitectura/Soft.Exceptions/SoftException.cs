@@ -19,8 +19,14 @@ namespace Soft.Exceptions
                     ShowSqlException((SqlException)ex);
                     break;
                 default:
+                    ShowException(ex);
                     break;
             }
+        }
+
+        public static void ShowException(Exception ex) {
+            FrmMessageError FrmError = new FrmMessageError();
+            FrmError.ShowError(ex.Message, "", SystemIcons.Warning.ToBitmap());
         }
 
         public static void ShowSqlException(SqlException ex) {
