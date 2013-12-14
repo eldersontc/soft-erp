@@ -137,12 +137,13 @@ namespace Soft.Inventario.Win
             FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
             String Filtro = "Operacion='Entrada'";
             TipoDocumentoInventario TipoDocumento = (TipoDocumentoInventario)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoDocumentoInventario), "Tipo de Inventario", Filtro);
-            EntradaInventario.TipoDocumento = (TipoDocumentoInventario)HelperNHibernate.GetEntityByID("TipoDocumentoInventario", TipoDocumento.ID);
-            ssTipoDocumento.Text = (EntradaInventario.TipoDocumento != null) ? EntradaInventario.TipoDocumento.Descripcion : "";
-            EntradaInventario.GenerarNumCp();
-            LabelSocioNegocio.Text = EntradaInventario.TipoDocumento.TipoSocioDeNegocio;
 
-          
+            if ((EntradaInventario.TipoDocumento == null)||(EntradaInventario.TipoDocumento.Codigo != TipoDocumento.Codigo)){
+                EntradaInventario.TipoDocumento = (TipoDocumentoInventario)HelperNHibernate.GetEntityByID("TipoDocumentoInventario", TipoDocumento.ID);
+                EntradaInventario.GenerarNumCp();
+                LabelSocioNegocio.Text = EntradaInventario.TipoDocumento.TipoSocioDeNegocio;
+            }
+
             Mostrar();
         }
 
