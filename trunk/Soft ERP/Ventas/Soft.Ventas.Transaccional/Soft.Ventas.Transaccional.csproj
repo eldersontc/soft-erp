@@ -47,6 +47,11 @@
     <Reference Include="Soft.Exceptions">
       <HintPath>..\..\Compilacion\Soft.Exceptions.dll</HintPath>
     </Reference>
+    <Reference Include="Soft.Win, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <ExecutableExtension>.exe</ExecutableExtension>
+      <HintPath>..\..\Compilacion\Soft.Win.exe</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />

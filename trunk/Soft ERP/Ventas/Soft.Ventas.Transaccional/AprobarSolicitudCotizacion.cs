@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using Soft.Entities;
 using Soft.Exceptions;
+using Soft.Win;
 
 namespace Soft.Ventas.Transaccional
 {
@@ -22,9 +23,11 @@ namespace Soft.Ventas.Transaccional
             {
                 using (ITransaction Trans = Sesion.BeginTransaction())
                 {
+                    FrmProgress Progreso = new FrmProgress();
                     try
                     {
                         Collection Solicitudes = (Collection)m_ObjectFlow;
+                        Progreso.Start(Solicitudes.Count, "Aprobando Solicitudes ...");
                         foreach (SolicitudCotizacion Solicitud in Solicitudes)
                         {
                             if (Solicitud.EstadoAprobacion.Equals("APROBADO")){
@@ -38,15 +41,18 @@ namespace Soft.Ventas.Transaccional
                             SqlCmd.Parameters.AddWithValue("@ID", Solicitud.ID);
                             SqlCmd.Parameters.AddWithValue("@EstadoAprobacion", "APROBADO");
                             SqlCmd.ExecuteNonQuery();
+                            Progreso.Next();
                         }
                         Trans.Commit();
+                        Progreso.Close();
                         m_ResultProcess = EnumResult.SUCESS;
                     }
                     catch (Exception ex)
                     {
                         Trans.Rollback();
+                        Progreso.Close();
                         m_ResultProcess = EnumResult.ERROR;
-                        SoftException.Control(ex.InnerException);
+                        SoftException.Control((ex.InnerException != null)?ex.InnerException:ex);
                     }
                 }
             }
