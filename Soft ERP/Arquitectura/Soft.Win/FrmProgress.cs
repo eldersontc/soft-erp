@@ -21,6 +21,7 @@ namespace Soft.Win
         public void Start(Int32 Lenght, String Title) {
             m_Lenght = Lenght;
             Text = Title;
+            Show();
         }
 
         public void Next() {
