@@ -265,24 +265,42 @@ namespace Soft.Inventario.Win
 
         private void busClasificacion_Search(object sender, EventArgs e)
         {
-            FrmSelectedEntity FrmSeleccionarPanel = new FrmSelectedEntity();
-            this.Existencia.ClasificacionExistencia = (ClasificacionExistencia)FrmSeleccionarPanel.GetSelectedEntity(typeof(ClasificacionExistencia), "Clasificación de Existencia");
-            if (this.Existencia.ClasificacionExistencia != null) {
-                busClasificacion.Text = this.Existencia.ClasificacionExistencia.Nombre;
-                busItemClasificacion.Enabled = true;
+            String filtro = "";
+
+            if (busClasificacion.Text.Length > 0) {
+                filtro = "Nombre like '" + busClasificacion.Text + "%'";
             }
+            FrmSelectedEntity FrmSeleccionarPanel = new FrmSelectedEntity();
+            ClasificacionExistencia clasificacion = null;
+
+            clasificacion = (ClasificacionExistencia)FrmSeleccionarPanel.GetSelectedEntity(typeof(ClasificacionExistencia), "Clasificación de Existencia", filtro);
+            if ((clasificacion != null) && (clasificacion.Codigo!=Existencia.ClasificacionExistencia.Codigo))
+            {
+                this.Existencia.ClasificacionExistencia = clasificacion;
+                Existencia.ItemClasificacionExistencia = null;
+            }
+            Mostrar();
         }
 
         private void busItemClasificacion_Search(object sender, EventArgs e)
         {
+
+            if (Existencia.ClasificacionExistencia == null)
+            {
+                MessageBox.Show("Debe elegir una clasificacion", "Error",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+            }
+
+            else { 
             String filtro = "IDClasificacionExistencia='" + this.Existencia.ClasificacionExistencia.ID + "'";
+            if (busItemClasificacion.Text.Length > 0) {
+                filtro = filtro + " and Nombre like '" + busItemClasificacion.Text + "%'";
+            }
             FrmSelectedEntity FrmSeleccionarPanel = new FrmSelectedEntity();
             this.Existencia.ItemClasificacionExistencia = (ItemClasificacionExistencia)FrmSeleccionarPanel.GetSelectedEntity(typeof(ItemClasificacionExistencia), "ItemClasificacionExistencia", filtro);
-            if (this.Existencia.ItemClasificacionExistencia != null)
-            {
-                busItemClasificacion.Text = this.Existencia.ItemClasificacionExistencia.Nombre;
-                busItemClasificacion.Enabled = true;
             }
+            Mostrar();
+            
         }
 
         private void ubNuevo_Click(object sender, EventArgs e)

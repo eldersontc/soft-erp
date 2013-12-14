@@ -705,7 +705,6 @@
             // busItemClasificacion
             // 
             this.busItemClasificacion.BackColor = System.Drawing.Color.Transparent;
-            this.busItemClasificacion.Enabled = false;
             this.busItemClasificacion.Location = new System.Drawing.Point(207, 20);
             this.busItemClasificacion.Name = "busItemClasificacion";
             this.busItemClasificacion.Size = new System.Drawing.Size(204, 28);
