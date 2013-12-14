@@ -137,6 +137,7 @@
             this.Controls.Add(this._FrmProgress_UltraFormManager_Dock_Area_Bottom);
             this.Name = "FrmProgress";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Información de Progreso";
             ((System.ComponentModel.ISupportInitialize)(this.ufmProgress)).EndInit();
             this.FrmProgress_Fill_Panel.ClientArea.ResumeLayout(false);
