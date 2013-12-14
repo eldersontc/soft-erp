@@ -191,10 +191,14 @@ namespace Soft.Ventas.Win
         {
             FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
             TipoCotizacion TipoDocumento = (TipoCotizacion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoCotizacion), "Tipo de Cotización");
-            Cotizacion.TipoDocumento = (TipoCotizacion)HelperNHibernate.GetEntityByID("TipoCotizacion", TipoDocumento.ID);
-            ssTipoDocumento.Text = (Cotizacion.TipoDocumento != null) ? Cotizacion.TipoDocumento.Nombre : "";
-            Cotizacion.GenerarNumCp();
-            txtNumeracion.Text = Cotizacion.Numeracion;
+
+            if ((Cotizacion.TipoDocumento == null) || (Cotizacion.TipoDocumento.Codigo != TipoDocumento.Codigo))
+            {
+                Cotizacion.TipoDocumento = (TipoCotizacion)HelperNHibernate.GetEntityByID("TipoCotizacion", TipoDocumento.ID);
+                Cotizacion.GenerarNumCp();
+            }
+            Mostrar();
+
         }
 
         private void txtNumeracion_TextChanged(object sender, EventArgs e)
