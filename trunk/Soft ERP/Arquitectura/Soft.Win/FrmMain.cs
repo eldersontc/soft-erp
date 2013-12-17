@@ -21,6 +21,7 @@ using System.Xml;
 using System.IO;
 using CrystalDecisions.CrystalReports.Engine;
 using Soft.Exceptions;
+using System.Configuration;
 
 namespace Soft.Win
 {
@@ -102,7 +103,6 @@ namespace Soft.Win
                         Tree.NodeConnectorStyle = NodeConnectorStyle.None;
                         Tree.ViewStyle = Infragistics.Win.UltraWinTree.ViewStyle.Standard;
                         Tree.DisplayStyle = UltraTreeDisplayStyle.WindowsVista;
-                        //Tree.Override.ActiveNodeAppearance.BackColor = System.Drawing.Color.DodgerBlue;
                         Tree.Override.ActiveNodeAppearance.FontData.Bold = DefaultableBoolean.True;
                         Tree.AfterSelect += Tree_AfterSelect;
                         Container.Controls.Add(Tree);
@@ -124,7 +124,6 @@ namespace Soft.Win
         {
             try
             {
-                //m_ActiveForm = MdiChildren.First(a => a.Tag.Equals(m_ItemContenedor));
                 m_ActiveForm = MdiChildren.First(a => a.Text.Equals(String.Format(":: {0} ::", m_ItemContenedor.Nombre)));
                 m_ActiveForm.Activate();
             }
@@ -413,7 +412,6 @@ namespace Soft.Win
             if (m_ItemContenedor.Crear)
             {
                 m_AccionActual = (Accion)HelperNHibernate.GetEntityByID("Accion", "7E35D25A-E84A-4689-8297-9E392D0EC187");
-                //m_AccionActual.AsignarParametro(String.Format("{0}|{1}", m_ItemContenedor.Panel.EntidadSF.EnsambladoClase.Ensamblado_, m_ItemContenedor.Panel.EntidadSF.NombreClase), "Nuevo");
                 m_AccionActual.AsignarEnsamblado(m_ItemContenedor.Panel.EntidadSF, "Formulario");
             }
             else {
@@ -425,7 +423,6 @@ namespace Soft.Win
         public static void ModificarEntidad() {
             if (m_ItemContenedor.Modificar) {
                 m_AccionActual = (Accion)HelperNHibernate.GetEntityByID("Accion", "93C47EBE-51D9-4509-9CCE-76D2540B15FB");
-                //m_AccionActual.AsignarParametro(m_ItemContenedor.Panel.EntidadSF.NombreClase, "Recuperar");
                 m_AccionActual.AsignarEnsamblado(m_ItemContenedor.Panel.EntidadSF, "Formulario");
             }
             else {
@@ -438,7 +435,6 @@ namespace Soft.Win
             if (m_ItemContenedor.Modificar)
             {
                 m_AccionActual = (Accion)HelperNHibernate.GetEntityByID("Accion", "D820B486-63F5-40AA-8D41-0AD1E95080EF");
-                //m_AccionActual.AsignarParametro(m_ItemContenedor.Panel.EntidadSF.NombreClase, "Recuperar");
             }
             else {
                 m_AccionActual = m_ItemContenedor.AccionEliminar;
@@ -450,7 +446,6 @@ namespace Soft.Win
             if (m_ItemContenedor.Copiar)
             {
                 m_AccionActual = (Accion)HelperNHibernate.GetEntityByID("Accion", "D8DCF2FE-D69F-4008-803B-64169D326887");
-                //m_AccionActual.AsignarParametro(m_ItemContenedor.Panel.EntidadSF.NombreClase, "Recuperar");
                 m_AccionActual.AsignarEnsamblado(m_ItemContenedor.Panel.EntidadSF, "Formulario");
             }
             else {
@@ -461,8 +456,6 @@ namespace Soft.Win
 
         public void AuditarEntidad() {
             m_AccionActual = (Accion)HelperNHibernate.GetEntityByID("Accion", "F2AA7339-35D6-44B0-AB96-04A97BF30F01");
-            //m_AccionActual.AsignarParametro(m_ItemContenedor.Panel.EntidadSF.NombreClase, "Recuperar");
-            //m_AccionActual.AsignarParametro(String.Format("{0}|{1}|{2}", m_ItemContenedor.Panel.EntidadSF.EnsambladoClase.Ensamblado_, m_ItemContenedor.Panel.EntidadSF.EnsambladoFormulario.Ensamblado_, m_ItemContenedor.Panel.EntidadSF.NombreFormulario), "Formulario");
             IniciarFlujo();
         }
 
@@ -567,6 +560,10 @@ namespace Soft.Win
             return Abreviacion;
         }
 
+        public static String CarpetaReportes { get { return ConfigurationManager.AppSettings["CarpetaReportes"]; } }
+
+        public static String CarpetaRecursos { get { return ConfigurationManager.AppSettings["CarpetaRecursos"]; } }
+
         public void Tree_AfterSelect(Object sender, Infragistics.Win.UltraWinTree.SelectEventArgs e)
         {
             try
@@ -579,12 +576,7 @@ namespace Soft.Win
                         m_ItemContenedor = Item;
                         m_Acciones = Item.Acciones;
                         MostrarPanel();
-                        //HabilitarOpciones();
                     }
-                    //else
-                    //{
-                    //    DeshabilitarOpciones();
-                    //}
                 }
             }
             catch (Exception ex)
