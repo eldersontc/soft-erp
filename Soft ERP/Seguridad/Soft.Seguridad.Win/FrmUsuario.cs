@@ -37,7 +37,7 @@ namespace Soft.Seguridad.Win
             txtIDUsuario.Text = Usuario.UserID;
             txtContrasena.Text = Usuario.Contrasena;
             uceSkyn.Text = Usuario.Skyn;
-            upbImagen.Image = (Usuario.Imagen != null) ? Usuario.ObtenerImagen : null;
+            //upbImagen.Image = (Usuario.Imagen != null) ? Usuario.ObtenerImagen : null;
             UIActualizando = false;
         }
 
@@ -105,13 +105,13 @@ namespace Soft.Seguridad.Win
 
         private void ubBuscarImage_Click(object sender, EventArgs e)
         {
-            OpenFileDialog fop = new OpenFileDialog();
-            fop.InitialDirectory = @"C:\";
-            fop.Filter = "[JPG,JPEG]|*.jpg|[PNG]|*.png";
-            if (fop.ShowDialog() == DialogResult.OK)
+            OpenFileDialog OpenFile = new OpenFileDialog();
+            OpenFile.InitialDirectory = FrmMain.CarpetaImagenes;
+            OpenFile.Filter = "[JPG,JPEG]|*.jpg|[PNG]|*.png";
+            if (OpenFile.ShowDialog() == DialogResult.OK)
             {
-                upbImagen.Image = Image.FromFile(fop.FileName);
-                Usuario.Imagen = ToBytes(fop.FileName);
+                Usuario.Imagen = OpenFile.FileName.Replace(FrmMain.CarpetaImagenes, "");
+                upbImagen.Image = Image.FromFile(OpenFile.FileName);
             }
         }
 

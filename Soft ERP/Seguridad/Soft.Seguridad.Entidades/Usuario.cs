@@ -19,30 +19,7 @@ namespace Soft.Seguridad.Entidades
         public virtual Empresa Empresa { get; set; }
         public virtual Perfil Perfil { get; set; }
         public virtual String Skyn { get; set; }
-        public virtual Byte[] Imagen { get; set; }
-
-        public virtual Image ObtenerImagen
-        {
-            get
-            {
-                if (m_Imagen == null)
-                {
-                    m_Imagen = ToImage(Imagen);
-                }
-                return m_Imagen;
-            }
-        }
-
-        public virtual Image ToImage(Byte[] Bytes)
-        {
-            Image Image;
-            using (MemoryStream ms = new MemoryStream(Bytes, 0, Bytes.Length))
-            {
-                ms.Write(Bytes, 0, Bytes.Length);
-                Image = Image.FromStream(ms, true);
-            }
-            return Image;
-        }
+        public virtual String Imagen { get; set; }
 
     }
 }
