@@ -8,7 +8,7 @@
     <property name="Contrasena" column="Contrasena" type="string"/>
     <property name="NombreUsuario" column="NombreUsuario" type="string"/>
     <property name="Skyn" column="Skyn" type="string"/>
-    <property name="Imagen" column="Imagen" type="BinaryBlob"/>
+    <property name="Imagen" column="Imagen" type="string"/>
 
     <many-to-one name="Empresa" class="Soft.Seguridad.Entidades.Empresa" column="IDEmpresa" lazy="false" not-null="false" unique="true" insert="true" update="true"/>
     <many-to-one name="Perfil" class="Soft.Seguridad.Entidades.Perfil" column="IDPerfil" lazy="false" not-null="false" unique="true" insert="true" update="true"/>
