@@ -115,11 +115,11 @@ namespace Soft.Reporte.Win
         private void ssUbicacion_Search(object sender, EventArgs e)
         {
             OpenFileDialog fop = new OpenFileDialog();
-            fop.InitialDirectory = @"C:\";
+            fop.InitialDirectory = FrmMain.CarpetaReportes;
             fop.Filter = "[Rpt]|*.rpt";
             if (fop.ShowDialog() == DialogResult.OK)
             {
-                Reporte.Ubicacion = fop.FileName;
+                Reporte.Ubicacion = fop.FileName.Replace(FrmMain.CarpetaReportes, "");
                 ssUbicacion.Text = Reporte.Ubicacion;
             }
         }
