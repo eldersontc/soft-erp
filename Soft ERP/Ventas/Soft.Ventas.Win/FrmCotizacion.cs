@@ -496,7 +496,7 @@ namespace Soft.Ventas.Win
         private void ubImprimirGraficos_Click(object sender, EventArgs e)
         {
             Bitmap b = new Bitmap((Image)upbPrecorte.Image, new Size(390, 405));
-            String PathImagenCorte = String.Format("Recursos\\Gráficos\\Grafico-{0}.png", ItemCotizacion.ID);
+            String PathImagenCorte = String.Format("{0}Gráficos\\Grafico-{1}.png", FrmMain.CarpetaRecursos, ItemCotizacion.ID);
             b.Save(PathImagenCorte);
             Soft.Reporte.Entidades.Reporte Reporte = (Soft.Reporte.Entidades.Reporte)HelperNHibernate.GetEntityByID("Reporte", "01F1035F-77F6-4188-B75F-7B9436FAB7DD");
             foreach (ParametroReporte Parametro in Reporte.ParametrosCrystal)
