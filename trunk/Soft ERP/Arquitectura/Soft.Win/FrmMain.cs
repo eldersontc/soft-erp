@@ -20,6 +20,7 @@ using Soft.Seguridad.Entidades;
 using System.Xml;
 using System.IO;
 using CrystalDecisions.CrystalReports.Engine;
+using Soft.Exceptions;
 
 namespace Soft.Win
 {
@@ -222,9 +223,8 @@ namespace Soft.Win
             if (m_Acciones.Count > 0)
             {
                 RibbonGroup Group = null;
-                if (Tab.Groups.Exists("Personalizadas")) { Group = Tab.Groups["Personalizadas"]; }
-                else { Group = new RibbonGroup("Personalizadas", "Opciones Personalizadas"); }
-                Group.Tools.Clear();
+                if (Tab.Groups.Exists("Personalizadas")) { Tab.Groups.Remove("Personalizadas"); }
+                Group = new RibbonGroup("Personalizadas", "Opciones Personalizadas"); 
                 foreach (ItemContenedorAccion Item in m_Acciones)
                 {
                     ButtonTool Tool = new ButtonTool(Item.ID);
@@ -233,7 +233,7 @@ namespace Soft.Win
                     Tool.SharedProps.AppearancesLarge.Appearance.Image = ilMain.Images[Item.Accion.Imagen];
                     Group.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] { Tool });
                 }
-                if (!Tab.Groups.Exists("Personalizadas")) { Tab.Groups.Add(Group); }
+                Tab.Groups.Add(Group);
             }
             else { if (Tab.Groups.Exists("Personalizadas")) { Tab.Groups.Remove("Personalizadas"); } }
         }
@@ -569,19 +569,27 @@ namespace Soft.Win
 
         public void Tree_AfterSelect(Object sender, Infragistics.Win.UltraWinTree.SelectEventArgs e)
         {
-            ItemContenedor Item = (ItemContenedor)((UltraTree)sender).ActiveNode.Tag;
-            if (Item != null)
+            try
             {
-                if (Item.EsPanel)
+                ItemContenedor Item = (ItemContenedor)((UltraTree)sender).ActiveNode.Tag;
+                if (Item != null)
                 {
-                    m_ItemContenedor = Item;
-                    m_Acciones = Item.Acciones;
-                    MostrarPanel();
-                    HabilitarOpciones();
+                    if (Item.EsPanel)
+                    {
+                        m_ItemContenedor = Item;
+                        m_Acciones = Item.Acciones;
+                        MostrarPanel();
+                        //HabilitarOpciones();
+                    }
+                    //else
+                    //{
+                    //    DeshabilitarOpciones();
+                    //}
                 }
-                else {
-                    DeshabilitarOpciones();
-                }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex, SystemIcons.Warning.ToBitmap());  
             }
         }
 
@@ -599,51 +607,45 @@ namespace Soft.Win
 
         private void utbmMain_ToolClick(object sender, ToolClickEventArgs e)
         {
-            switch (e.Tool.Key)
+            try
             {
-                case "Nuevo":
-                    CrearEntidad();
-                    break;
-                case "Modificar":
-                    ModificarEntidad();
-                    break;
-                case "Eliminar":
-                    EliminarEntidad();
-                    break;
-                case "Copiar":
-                    CopiarEntidad();
-                    break;
-                case "Auditar":
-                    AuditarEntidad();
-                    break;
-                case "Actualizar":
-                    RefreshView();
-                    break;
-                case "ImportarXML":
-                    ImportarXML();
-                    break;
-                case "ExportarXML":
-                    ExportarXML();
-                    break;
-                default:
-                    m_AccionActual = ((ItemContenedorAccion)m_Acciones.First(a => a.ID == e.Tool.Key)).Accion;
-                    IniciarFlujo();
-                    break;
+                switch (e.Tool.Key)
+                {
+                    case "Nuevo":
+                        CrearEntidad();
+                        break;
+                    case "Modificar":
+                        ModificarEntidad();
+                        break;
+                    case "Eliminar":
+                        EliminarEntidad();
+                        break;
+                    case "Copiar":
+                        CopiarEntidad();
+                        break;
+                    case "Auditar":
+                        AuditarEntidad();
+                        break;
+                    case "Actualizar":
+                        RefreshView();
+                        break;
+                    case "ImportarXML":
+                        ImportarXML();
+                        break;
+                    case "ExportarXML":
+                        ExportarXML();
+                        break;
+                    default:
+                        m_AccionActual = ((ItemContenedorAccion)m_Acciones.First(a => a.ID == e.Tool.Key)).Accion;
+                        IniciarFlujo();
+                        break;
+                }
             }
-        }
-
-        private void utmmMain_TabActivated(object sender, Infragistics.Win.UltraWinTabbedMdi.MdiTabEventArgs e)
-        {
-            m_ItemContenedor = (ItemContenedor)e.Tab.Form.Tag;
-            m_ActiveForm = (Form)e.Tab.Form;
-            if (m_ItemContenedor != null)
+            catch (Exception ex)
             {
-                m_Acciones = m_ItemContenedor.Acciones;
-                HabilitarOpciones();
+                SoftException.Control(ex, SystemIcons.Warning.ToBitmap());   
             }
-            else {
-                DeshabilitarOpciones();
-            }
+            
         }
 
         public void MostrarToolBar() {
@@ -657,17 +659,46 @@ namespace Soft.Win
 
         private void utmmMain_TabClosed(object sender, Infragistics.Win.UltraWinTabbedMdi.MdiTabEventArgs e)
         {
-            if (MdiChildren.Length == 0)
+            try
             {
-                RibbonTab Tab = utbmMain.Ribbon.Tabs["Inicio"];
-                if (Tab.Groups.Exists("Personalizadas")) { Tab.Groups.Remove("Personalizadas"); }
-                DeshabilitarOpcionesEstandar();
+                if (MdiChildren.Length == 0)
+                {
+                    RibbonTab Tab = utbmMain.Ribbon.Tabs["Inicio"];
+                    if (Tab.Groups.Exists("Personalizadas")) { Tab.Groups.Remove("Personalizadas"); }
+                    DeshabilitarOpcionesEstandar();
+                }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex, SystemIcons.Warning.ToBitmap());
             }
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void utmmMain_TabActivated(object sender, Infragistics.Win.UltraWinTabbedMdi.MdiTabEventArgs e)
+        {
+            try
+            {
+                m_ItemContenedor = (ItemContenedor)e.Tab.Form.Tag;
+                m_ActiveForm = (Form)e.Tab.Form;
+                if (m_ItemContenedor != null)
+                {
+                    m_Acciones = m_ItemContenedor.Acciones;
+                    HabilitarOpciones();
+                }
+                else
+                {
+                    DeshabilitarOpciones();
+                }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex, SystemIcons.Warning.ToBitmap());
+            }
         }
 
     }
