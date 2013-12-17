@@ -562,7 +562,7 @@ namespace Soft.Win
 
         public static String CarpetaReportes { get { return ConfigurationManager.AppSettings["CarpetaReportes"]; } }
 
-        public static String CarpetaRecursos { get { return ConfigurationManager.AppSettings["CarpetaRecursos"]; } }
+        public static String CarpetaImagenes { get { return ConfigurationManager.AppSettings["CarpetaImagenes"]; } }
 
         public void Tree_AfterSelect(Object sender, Infragistics.Win.UltraWinTree.SelectEventArgs e)
         {
