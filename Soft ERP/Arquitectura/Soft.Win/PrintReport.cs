@@ -20,7 +20,7 @@ namespace Soft.Win
                 {
                     Soft.Reporte.Entidades.Reporte Reporte = (Soft.Reporte.Entidades.Reporte)base.m_ObjectFlow;
                     ReportDocument ReportDocument = new ReportDocument();
-                    ReportDocument.Load(Reporte.Ubicacion);
+                    ReportDocument.Load(String.Format("{0}{1}", FrmMain.CarpetaReportes, Reporte.Ubicacion));
                     foreach (ParametroReporte Parametro in Reporte.ParametrosCrystal)
                     {
                         ReportDocument.SetParameterValue(Parametro.Nombre, Parametro.Valor);

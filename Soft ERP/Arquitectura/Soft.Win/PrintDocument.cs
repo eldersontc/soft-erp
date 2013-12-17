@@ -26,7 +26,7 @@ namespace Soft.Win
                         SQL = SQL.Replace(Parametro.Nombre, Documento.ValueByProperty(Parametro.Propiedad).ToString());
                     }
                     ReportDocument Document = new ReportDocument();
-                    Document.Load(Reporte.Ubicacion);
+                    Document.Load(String.Format("{0}{1}", FrmMain.CarpetaReportes, Reporte.Ubicacion));
                     Document.SetDataSource(HelperNHibernate.GetDataSet(SQL));
                     foreach (ParametroReporte Parametro in Reporte.ParametrosCrystal)
                     {
