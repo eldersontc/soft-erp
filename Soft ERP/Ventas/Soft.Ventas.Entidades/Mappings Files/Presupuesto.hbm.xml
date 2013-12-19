@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Ventas.Entidades.Presupuesto, Soft.Ventas.Entidades">
+
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="Numeracion" type="string"/>
+    <property name="FechaCreacion" type="DateTime"/>
+    <property name="Total" type="decimal"/>
+
+    <many-to-one name="TipoDocumento" class="Soft.Ventas.Entidades.TipoPresupuesto" column="IDTipoDocumento" insert="true" update="true" lazy="false"/>
+    <many-to-one name="Cliente" class="Soft.Entities.SocioNegocio" column="IDCliente" insert="true" update="true" lazy="false"/>
+    
+    <bag name="Items" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDPresupuesto"/>
+      <one-to-many class="Soft.Ventas.Entidades.ItemPresupuesto"/>
+    </bag>
+
+  </class>
+</hibernate-mapping>
