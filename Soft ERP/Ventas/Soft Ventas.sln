@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Ventas.Entidades", "So
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Ventas.Win", "Soft.Ventas.Win\Soft.Ventas.Win.csproj", "{783C9B96-29CE-4915-90A1-7FCF12F2B9E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Ventas.Transaccional", "Soft.Ventas.Transaccional\Soft.Ventas.Transaccional.csproj", "{0204BDCE-0760-463B-92D5-366DB59564BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{783C9B96-29CE-4915-90A1-7FCF12F2B9E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{783C9B96-29CE-4915-90A1-7FCF12F2B9E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{783C9B96-29CE-4915-90A1-7FCF12F2B9E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0204BDCE-0760-463B-92D5-366DB59564BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0204BDCE-0760-463B-92D5-366DB59564BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0204BDCE-0760-463B-92D5-366DB59564BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0204BDCE-0760-463B-92D5-366DB59564BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
