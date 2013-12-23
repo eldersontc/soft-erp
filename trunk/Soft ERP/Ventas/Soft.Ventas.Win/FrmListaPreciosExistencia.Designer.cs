@@ -40,6 +40,18 @@
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ubEliminarExistencia = new Infragistics.Win.Misc.UltraButton();
+            this.ubNuevaExistencia = new Infragistics.Win.Misc.UltraButton();
+            this.grillaExistencias = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ubElimiarUnidad = new Infragistics.Win.Misc.UltraButton();
+            this.ubNuevaUnidad = new Infragistics.Win.Misc.UltraButton();
+            this.ugUnidades = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.ultraTabPageControl3 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ubElminarEscala = new Infragistics.Win.Misc.UltraButton();
+            this.ubNuevaEscala = new Infragistics.Win.Misc.UltraButton();
+            this.ugEscalas = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.uceActivo = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.txtNombre = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.txtCodigo = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -47,39 +59,27 @@
             this.lblCodigo = new Infragistics.Win.Misc.UltraLabel();
             this.utcExistencias = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
-            this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.ubEliminarExistencia = new Infragistics.Win.Misc.UltraButton();
-            this.ubNuevaExistencia = new Infragistics.Win.Misc.UltraButton();
-            this.grillaExistencias = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.utcUnidades = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage2 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
-            this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.ubElimiarUnidad = new Infragistics.Win.Misc.UltraButton();
-            this.ubNuevaUnidad = new Infragistics.Win.Misc.UltraButton();
-            this.ugUnidades = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.utcEscalas = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage3 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
-            this.ultraTabPageControl3 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.ubElminarEscala = new Infragistics.Win.Misc.UltraButton();
-            this.ubNuevaEscala = new Infragistics.Win.Misc.UltraButton();
-            this.ugEscalas = new Infragistics.Win.UltraWinGrid.UltraGrid();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
+            this.ultraTabPageControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaExistencias)).BeginInit();
+            this.ultraTabPageControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ugUnidades)).BeginInit();
+            this.ultraTabPageControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ugEscalas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceActivo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcExistencias)).BeginInit();
             this.utcExistencias.SuspendLayout();
-            this.ultraTabPageControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grillaExistencias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcUnidades)).BeginInit();
             this.utcUnidades.SuspendLayout();
-            this.ultraTabPageControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ugUnidades)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcEscalas)).BeginInit();
             this.utcEscalas.SuspendLayout();
-            this.ultraTabPageControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ugEscalas)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
@@ -363,6 +363,120 @@
             this.ilMain.Images.SetKeyName(245, "zoom_in.png");
             this.ilMain.Images.SetKeyName(246, "zoom_out.png");
             // 
+            // ultraTabPageControl1
+            // 
+            this.ultraTabPageControl1.Controls.Add(this.ubEliminarExistencia);
+            this.ultraTabPageControl1.Controls.Add(this.ubNuevaExistencia);
+            this.ultraTabPageControl1.Controls.Add(this.grillaExistencias);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Name = "ultraTabPageControl1";
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(274, 315);
+            // 
+            // ubEliminarExistencia
+            // 
+            this.ubEliminarExistencia.Location = new System.Drawing.Point(120, 288);
+            this.ubEliminarExistencia.Name = "ubEliminarExistencia";
+            this.ubEliminarExistencia.Size = new System.Drawing.Size(113, 23);
+            this.ubEliminarExistencia.TabIndex = 2;
+            this.ubEliminarExistencia.Text = "Eliminar";
+            this.ubEliminarExistencia.Click += new System.EventHandler(this.ubEliminarExistencia_Click);
+            // 
+            // ubNuevaExistencia
+            // 
+            this.ubNuevaExistencia.Location = new System.Drawing.Point(3, 288);
+            this.ubNuevaExistencia.Name = "ubNuevaExistencia";
+            this.ubNuevaExistencia.Size = new System.Drawing.Size(111, 23);
+            this.ubNuevaExistencia.TabIndex = 1;
+            this.ubNuevaExistencia.Text = "Nuevo";
+            this.ubNuevaExistencia.Click += new System.EventHandler(this.ubNuevaExistencia_Click);
+            // 
+            // grillaExistencias
+            // 
+            this.grillaExistencias.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.grillaExistencias.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grillaExistencias.Location = new System.Drawing.Point(0, 0);
+            this.grillaExistencias.Name = "grillaExistencias";
+            this.grillaExistencias.Size = new System.Drawing.Size(274, 283);
+            this.grillaExistencias.TabIndex = 0;
+            this.grillaExistencias.Text = "ultraGrid1";
+            this.grillaExistencias.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grillaExistencias_AfterSelectChange);
+            // 
+            // ultraTabPageControl2
+            // 
+            this.ultraTabPageControl2.Controls.Add(this.ubElimiarUnidad);
+            this.ultraTabPageControl2.Controls.Add(this.ubNuevaUnidad);
+            this.ultraTabPageControl2.Controls.Add(this.ugUnidades);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl2.Name = "ultraTabPageControl2";
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(318, 131);
+            // 
+            // ubElimiarUnidad
+            // 
+            this.ubElimiarUnidad.Location = new System.Drawing.Point(201, 104);
+            this.ubElimiarUnidad.Name = "ubElimiarUnidad";
+            this.ubElimiarUnidad.Size = new System.Drawing.Size(113, 23);
+            this.ubElimiarUnidad.TabIndex = 2;
+            this.ubElimiarUnidad.Text = "Eliminar Unidad";
+            this.ubElimiarUnidad.Click += new System.EventHandler(this.ubElimiarUnidad_Click);
+            // 
+            // ubNuevaUnidad
+            // 
+            this.ubNuevaUnidad.Location = new System.Drawing.Point(84, 104);
+            this.ubNuevaUnidad.Name = "ubNuevaUnidad";
+            this.ubNuevaUnidad.Size = new System.Drawing.Size(111, 23);
+            this.ubNuevaUnidad.TabIndex = 1;
+            this.ubNuevaUnidad.Text = "Nueva Unidad";
+            this.ubNuevaUnidad.Click += new System.EventHandler(this.ubNuevaUnidad_Click);
+            // 
+            // ugUnidades
+            // 
+            this.ugUnidades.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.ugUnidades.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ugUnidades.Location = new System.Drawing.Point(0, 0);
+            this.ugUnidades.Name = "ugUnidades";
+            this.ugUnidades.Size = new System.Drawing.Size(318, 99);
+            this.ugUnidades.TabIndex = 0;
+            this.ugUnidades.Text = "ultraGrid1";
+            this.ugUnidades.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.ugUnidades_AfterSelectChange);
+            // 
+            // ultraTabPageControl3
+            // 
+            this.ultraTabPageControl3.Controls.Add(this.ubElminarEscala);
+            this.ultraTabPageControl3.Controls.Add(this.ubNuevaEscala);
+            this.ultraTabPageControl3.Controls.Add(this.ugEscalas);
+            this.ultraTabPageControl3.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl3.Name = "ultraTabPageControl3";
+            this.ultraTabPageControl3.Size = new System.Drawing.Size(318, 152);
+            // 
+            // ubElminarEscala
+            // 
+            this.ubElminarEscala.Location = new System.Drawing.Point(200, 125);
+            this.ubElminarEscala.Name = "ubElminarEscala";
+            this.ubElminarEscala.Size = new System.Drawing.Size(113, 23);
+            this.ubElminarEscala.TabIndex = 2;
+            this.ubElminarEscala.Text = "Eliminar Escala";
+            this.ubElminarEscala.Click += new System.EventHandler(this.ubElminarEscala_Click);
+            // 
+            // ubNuevaEscala
+            // 
+            this.ubNuevaEscala.Location = new System.Drawing.Point(83, 125);
+            this.ubNuevaEscala.Name = "ubNuevaEscala";
+            this.ubNuevaEscala.Size = new System.Drawing.Size(111, 23);
+            this.ubNuevaEscala.TabIndex = 1;
+            this.ubNuevaEscala.Text = "Nueva Escala";
+            this.ubNuevaEscala.Click += new System.EventHandler(this.ubNuevaEscala_Click);
+            // 
+            // ugEscalas
+            // 
+            this.ugEscalas.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.ugEscalas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ugEscalas.Location = new System.Drawing.Point(0, 0);
+            this.ugEscalas.Name = "ugEscalas";
+            this.ugEscalas.Size = new System.Drawing.Size(318, 120);
+            this.ugEscalas.TabIndex = 0;
+            this.ugEscalas.Text = "ultraGrid1";
+            this.ugEscalas.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ugEscalas_CellChange);
+            // 
             // uceActivo
             // 
             this.uceActivo.BackColor = System.Drawing.Color.Transparent;
@@ -436,44 +550,6 @@
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
             this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(274, 315);
             // 
-            // ultraTabPageControl1
-            // 
-            this.ultraTabPageControl1.Controls.Add(this.ubEliminarExistencia);
-            this.ultraTabPageControl1.Controls.Add(this.ubNuevaExistencia);
-            this.ultraTabPageControl1.Controls.Add(this.grillaExistencias);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
-            this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(274, 315);
-            // 
-            // ubEliminarExistencia
-            // 
-            this.ubEliminarExistencia.Location = new System.Drawing.Point(120, 288);
-            this.ubEliminarExistencia.Name = "ubEliminarExistencia";
-            this.ubEliminarExistencia.Size = new System.Drawing.Size(113, 23);
-            this.ubEliminarExistencia.TabIndex = 2;
-            this.ubEliminarExistencia.Text = "Eliminar";
-            this.ubEliminarExistencia.Click += new System.EventHandler(this.ubEliminarExistencia_Click);
-            // 
-            // ubNuevaExistencia
-            // 
-            this.ubNuevaExistencia.Location = new System.Drawing.Point(3, 288);
-            this.ubNuevaExistencia.Name = "ubNuevaExistencia";
-            this.ubNuevaExistencia.Size = new System.Drawing.Size(111, 23);
-            this.ubNuevaExistencia.TabIndex = 1;
-            this.ubNuevaExistencia.Text = "Nuevo";
-            this.ubNuevaExistencia.Click += new System.EventHandler(this.ubNuevaExistencia_Click);
-            // 
-            // grillaExistencias
-            // 
-            this.grillaExistencias.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            this.grillaExistencias.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grillaExistencias.Location = new System.Drawing.Point(0, 0);
-            this.grillaExistencias.Name = "grillaExistencias";
-            this.grillaExistencias.Size = new System.Drawing.Size(274, 283);
-            this.grillaExistencias.TabIndex = 0;
-            this.grillaExistencias.Text = "ultraGrid1";
-            this.grillaExistencias.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grillaExistencias_AfterSelectChange);
-            // 
             // utcUnidades
             // 
             appearance3.BackColor = System.Drawing.Color.Transparent;
@@ -497,44 +573,6 @@
             this.ultraTabSharedControlsPage2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
             this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(318, 131);
-            // 
-            // ultraTabPageControl2
-            // 
-            this.ultraTabPageControl2.Controls.Add(this.ubElimiarUnidad);
-            this.ultraTabPageControl2.Controls.Add(this.ubNuevaUnidad);
-            this.ultraTabPageControl2.Controls.Add(this.ugUnidades);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
-            this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(318, 131);
-            // 
-            // ubElimiarUnidad
-            // 
-            this.ubElimiarUnidad.Location = new System.Drawing.Point(201, 104);
-            this.ubElimiarUnidad.Name = "ubElimiarUnidad";
-            this.ubElimiarUnidad.Size = new System.Drawing.Size(113, 23);
-            this.ubElimiarUnidad.TabIndex = 2;
-            this.ubElimiarUnidad.Text = "Eliminar Unidad";
-            this.ubElimiarUnidad.Click += new System.EventHandler(this.ubElimiarUnidad_Click);
-            // 
-            // ubNuevaUnidad
-            // 
-            this.ubNuevaUnidad.Location = new System.Drawing.Point(84, 104);
-            this.ubNuevaUnidad.Name = "ubNuevaUnidad";
-            this.ubNuevaUnidad.Size = new System.Drawing.Size(111, 23);
-            this.ubNuevaUnidad.TabIndex = 1;
-            this.ubNuevaUnidad.Text = "Nueva Unidad";
-            this.ubNuevaUnidad.Click += new System.EventHandler(this.ubNuevaUnidad_Click);
-            // 
-            // ugUnidades
-            // 
-            this.ugUnidades.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            this.ugUnidades.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ugUnidades.Location = new System.Drawing.Point(0, 0);
-            this.ugUnidades.Name = "ugUnidades";
-            this.ugUnidades.Size = new System.Drawing.Size(318, 99);
-            this.ugUnidades.TabIndex = 0;
-            this.ugUnidades.Text = "ultraGrid1";
-            this.ugUnidades.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.ugUnidades_AfterSelectChange);
             // 
             // utcEscalas
             // 
@@ -560,69 +598,31 @@
             this.ultraTabSharedControlsPage3.Name = "ultraTabSharedControlsPage3";
             this.ultraTabSharedControlsPage3.Size = new System.Drawing.Size(318, 152);
             // 
-            // ultraTabPageControl3
-            // 
-            this.ultraTabPageControl3.Controls.Add(this.ubElminarEscala);
-            this.ultraTabPageControl3.Controls.Add(this.ubNuevaEscala);
-            this.ultraTabPageControl3.Controls.Add(this.ugEscalas);
-            this.ultraTabPageControl3.Location = new System.Drawing.Point(1, 23);
-            this.ultraTabPageControl3.Name = "ultraTabPageControl3";
-            this.ultraTabPageControl3.Size = new System.Drawing.Size(318, 152);
-            // 
-            // ubElminarEscala
-            // 
-            this.ubElminarEscala.Location = new System.Drawing.Point(200, 125);
-            this.ubElminarEscala.Name = "ubElminarEscala";
-            this.ubElminarEscala.Size = new System.Drawing.Size(113, 23);
-            this.ubElminarEscala.TabIndex = 2;
-            this.ubElminarEscala.Text = "Eliminar Escala";
-            this.ubElminarEscala.Click += new System.EventHandler(this.ubElminarEscala_Click);
-            // 
-            // ubNuevaEscala
-            // 
-            this.ubNuevaEscala.Location = new System.Drawing.Point(83, 125);
-            this.ubNuevaEscala.Name = "ubNuevaEscala";
-            this.ubNuevaEscala.Size = new System.Drawing.Size(111, 23);
-            this.ubNuevaEscala.TabIndex = 1;
-            this.ubNuevaEscala.Text = "Nueva Escala";
-            this.ubNuevaEscala.Click += new System.EventHandler(this.ubNuevaEscala_Click);
-            // 
-            // ugEscalas
-            // 
-            this.ugEscalas.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            this.ugEscalas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ugEscalas.Location = new System.Drawing.Point(0, 0);
-            this.ugEscalas.Name = "ugEscalas";
-            this.ugEscalas.Size = new System.Drawing.Size(318, 120);
-            this.ugEscalas.TabIndex = 0;
-            this.ugEscalas.Text = "ultraGrid1";
-            this.ugEscalas.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ugEscalas_CellChange);
-            // 
             // FrmListaPreciosExistencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(651, 504);
             this.Name = "FrmListaPreciosExistencia";
-            this.Text = "FrmListaPreciosExistencia";
+            this.Text = "Lista de  Precios de Existencias";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
             this.ugbParent.ResumeLayout(false);
             this.ugbParent.PerformLayout();
+            this.ultraTabPageControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grillaExistencias)).EndInit();
+            this.ultraTabPageControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ugUnidades)).EndInit();
+            this.ultraTabPageControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ugEscalas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceActivo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcExistencias)).EndInit();
             this.utcExistencias.ResumeLayout(false);
-            this.ultraTabPageControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grillaExistencias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcUnidades)).EndInit();
             this.utcUnidades.ResumeLayout(false);
-            this.ultraTabPageControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ugUnidades)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcEscalas)).EndInit();
             this.utcEscalas.ResumeLayout(false);
-            this.ultraTabPageControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ugEscalas)).EndInit();
             this.ResumeLayout(false);
 
         }
