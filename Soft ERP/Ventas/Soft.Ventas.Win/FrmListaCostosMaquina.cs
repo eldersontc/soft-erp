@@ -60,6 +60,8 @@ namespace Soft.Ventas.Win
             ugMaquinas.DataSource = columns;
             ugMaquinas.DisplayLayout.Bands[0].Columns[colMaquina].Width = 200;
             ugMaquinas.DisplayLayout.Bands[0].Columns[colMaquina].CellActivation = Activation.NoEdit;
+            ugMaquinas.DisplayLayout.Bands[0].Columns[colCostoPreparacion].DefaultCellValue = 0;
+            ugMaquinas.DisplayLayout.Bands[0].Columns[colCostoProduccion].DefaultCellValue = 0;
             MapKeys(ref ugMaquinas);
 
             //Unidades
@@ -87,6 +89,9 @@ namespace Soft.Ventas.Win
             column.DataType = typeof(Decimal);
 
             ugEscalas.DataSource = columns;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colDesde].DefaultCellValue = 0;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colHasta].DefaultCellValue = 0;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colCosto].DefaultCellValue = 0;
             MapKeys(ref ugEscalas);
 
         }
@@ -179,6 +184,7 @@ namespace Soft.Ventas.Win
             {
                 UltraGridRow Row = ugMaquinas.DisplayLayout.Bands[0].AddNew();
                 Row.Tag = ListaCostosMaquina.AddItem(Maquina);
+                ItemListaCostosMaquina = (ItemListaCostosMaquina)Row.Tag;
                 MostrarItem(Row);
             }
         }
@@ -199,6 +205,7 @@ namespace Soft.Ventas.Win
             {
                 UltraGridRow Row = ugUnidades.DisplayLayout.Bands[0].AddNew();
                 Row.Tag = ItemListaCostosMaquina.AddUnidad(Unidad);
+                UnidadListaCostosMaquina = (UnidadListaCostosMaquina)Row.Tag;
                 MostrarUnidad(Row);
             }
         }
@@ -241,13 +248,14 @@ namespace Soft.Ventas.Win
         private void ugMaquinas_CellChange(object sender, CellEventArgs e)
         {
             ItemListaCostosMaquina Item = (ItemListaCostosMaquina)e.Cell.Row.Tag;
+            ugMaquinas.UpdateData();
             switch (e.Cell.Column.Key)
             {
                 case colCostoPreparacion:
-                    Item.CostoPreparacion = Convert.ToDecimal(e.Cell.Text);
+                    Item.CostoPreparacion = Convert.ToDecimal((e.Cell.Value == DBNull.Value) ? 0 : e.Cell.Value);
                     break;
                 case colCostoProduccion:
-                    Item.CostoProduccion = Convert.ToDecimal(e.Cell.Text);
+                    Item.CostoProduccion = Convert.ToDecimal((e.Cell.Value == DBNull.Value) ? 0 : e.Cell.Value);
                     break;
                 default:
                     break;
@@ -258,19 +266,20 @@ namespace Soft.Ventas.Win
         private void ugEscalas_CellChange(object sender, CellEventArgs e)
         {
             EscalaListaCostosMaquina Escala = (EscalaListaCostosMaquina)e.Cell.Row.Tag;
+            ugEscalas.UpdateData();
             switch (e.Cell.Column.Key)
             {
                 case colDesde:
-                    Escala.Desde = Convert.ToInt32(e.Cell.Text);
+                    Escala.Desde = Convert.ToInt32((e.Cell.Value == DBNull.Value) ? 0 : e.Cell.Value);
                     break;
                 case colHasta:
-                    Escala.Hasta = Convert.ToInt32(e.Cell.Text);
+                    Escala.Hasta = Convert.ToInt32((e.Cell.Value == DBNull.Value) ? 0 : e.Cell.Value);
                     break;
                 case colVelocidad:
-                    Escala.Velocidad = Convert.ToDecimal(e.Cell.Text);
+                    Escala.Velocidad = Convert.ToDecimal((e.Cell.Value == DBNull.Value) ? 0 : e.Cell.Value);
                     break;
                 case colCosto:
-                    Escala.Costo= Convert.ToDecimal(e.Cell.Text);
+                    Escala.Costo = Convert.ToDecimal((e.Cell.Value == DBNull.Value) ? 0 : e.Cell.Value);
                     break;
                 default:
                     break;
