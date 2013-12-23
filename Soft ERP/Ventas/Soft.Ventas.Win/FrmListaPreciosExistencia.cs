@@ -25,7 +25,6 @@ namespace Soft.Ventas.Win
         public ItemListaPreciosExistencia ItemListaPreciosExistencia;
         public UnidadListaPreciosExistencia UnidadListaPreciosExistencia;
 
-
         //Constantes
         const String colExistenciaCodigo = "Codigo";
         const String colExistenciaNombre = "Nombre";
@@ -36,14 +35,11 @@ namespace Soft.Ventas.Win
         const String colHasta = "Hasta";
         const String colCosto = "Costo";
 
-
-
         public override void Init()
         {
             InitGrid();
             Mostrar();
         }
-
 
         public void InitGrid()
         {
@@ -56,7 +52,6 @@ namespace Soft.Ventas.Win
 
             column = columns.Columns.Add(colExistenciaNombre);
             column.DataType = typeof(String);
-
 
             grillaExistencias.DataSource = columns;
             grillaExistencias.DisplayLayout.Bands[0].Columns[colExistenciaCodigo].Width = 100;
@@ -85,18 +80,18 @@ namespace Soft.Ventas.Win
             column = columns.Columns.Add(colHasta);
             column.DataType = typeof(Int32);
 
-
             column = columns.Columns.Add(colCosto);
             column.DataType = typeof(Decimal);
 
             ugEscalas.DataSource = columns;
             ugEscalas.DisplayLayout.Bands[0].Columns[colDesde].DefaultCellValue = 0;
             ugEscalas.DisplayLayout.Bands[0].Columns[colHasta].DefaultCellValue = 0;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colCosto].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
             ugEscalas.DisplayLayout.Bands[0].Columns[colCosto].DefaultCellValue = 0;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colCosto].CellAppearance.TextHAlign = Infragistics.Win.HAlign.Right;
             MapKeys(ref ugEscalas);
 
         }
-
 
         public void Mostrar()
         {
@@ -106,9 +101,9 @@ namespace Soft.Ventas.Win
             MostrarItems();
         }
 
-
         public void MostrarItems()
         {
+            base.ClearAllRows(ref grillaExistencias);
             foreach (ItemListaPreciosExistencia Item in ListaPreciosExistencia.Items)
             {
                 UltraGridRow Row = grillaExistencias.DisplayLayout.Bands[0].AddNew();
@@ -117,15 +112,13 @@ namespace Soft.Ventas.Win
             }
         }
 
-
         public void MostrarItem(UltraGridRow Row)
         {
             ItemListaPreciosExistencia Item = (ItemListaPreciosExistencia)Row.Tag;
             Row.Cells[colExistenciaCodigo].Value = (Item.Existencia!= null) ? Item.Existencia.Codigo : "";
             Row.Cells[colExistenciaNombre].Value = (Item.Existencia != null) ? Item.Existencia.Nombre: "";
+            MostrarUnidades(Item);
         }
-
-
 
         public void MostrarUnidades(ItemListaPreciosExistencia ItemListaPreciosExistencia)
         {
@@ -142,8 +135,8 @@ namespace Soft.Ventas.Win
         {
             UnidadListaPreciosExistencia Item = (UnidadListaPreciosExistencia)Row.Tag;
             Row.Cells[colUnidad].Value = (Item.Unidad != null) ? Item.Unidad.Nombre : "";
+            MostrarEscalas(Item);
         }
-
 
         public void MostrarEscalas(UnidadListaPreciosExistencia UnidadListaPreciosExistencia)
         {
@@ -256,6 +249,7 @@ namespace Soft.Ventas.Win
         private void ugEscalas_CellChange(object sender, CellEventArgs e)
         {
             EscalaListaPreciosExistencia Escala = (EscalaListaPreciosExistencia)e.Cell.Row.Tag;
+            ugEscalas.UpdateData();
             switch (e.Cell.Column.Key)
             {
                 case colDesde:
