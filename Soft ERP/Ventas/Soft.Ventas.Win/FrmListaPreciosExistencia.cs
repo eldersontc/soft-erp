@@ -90,6 +90,9 @@ namespace Soft.Ventas.Win
             column.DataType = typeof(Decimal);
 
             ugEscalas.DataSource = columns;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colDesde].DefaultCellValue = 0;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colHasta].DefaultCellValue = 0;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colCosto].DefaultCellValue = 0;
             MapKeys(ref ugEscalas);
 
         }
@@ -184,6 +187,7 @@ namespace Soft.Ventas.Win
             {
                 UltraGridRow Row = grillaExistencias.DisplayLayout.Bands[0].AddNew();
                 Row.Tag = ListaPreciosExistencia.AddItem(Existencia);
+                ItemListaPreciosExistencia = (ItemListaPreciosExistencia)Row.Tag;
                 MostrarItem(Row);
             }
         }
@@ -209,6 +213,7 @@ namespace Soft.Ventas.Win
             {
                 UltraGridRow Row = ugUnidades.DisplayLayout.Bands[0].AddNew();
                 Row.Tag = ItemListaPreciosExistencia.AddUnidad(Unidad);
+                UnidadListaPreciosExistencia = (UnidadListaPreciosExistencia)Row.Tag;
                 MostrarUnidad(Row);
             }
         }
@@ -254,13 +259,13 @@ namespace Soft.Ventas.Win
             switch (e.Cell.Column.Key)
             {
                 case colDesde:
-                    Escala.Desde = Convert.ToInt32(e.Cell.Text);
+                    Escala.Desde = Convert.ToInt32((e.Cell.Value == DBNull.Value) ? 0 : e.Cell.Value);
                     break;
                 case colHasta:
-                    Escala.Hasta = Convert.ToInt32(e.Cell.Text);
+                    Escala.Hasta = Convert.ToInt32((e.Cell.Value == DBNull.Value) ? 0 : e.Cell.Value);
                     break;
                 case colCosto:
-                    Escala.Costo = Convert.ToDecimal(e.Cell.Text);
+                    Escala.Costo = Convert.ToDecimal((e.Cell.Value == DBNull.Value) ? 0 : e.Cell.Value);
                     break;
                 default:
                     break;
