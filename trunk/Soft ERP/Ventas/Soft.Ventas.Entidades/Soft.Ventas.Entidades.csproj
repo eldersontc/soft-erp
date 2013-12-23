@@ -55,28 +55,35 @@
   <ItemGroup>
     <Compile Include="Cotizacion.cs" />
     <Compile Include="EscalaListaCostosMaquina.cs" />
+    <Compile Include="EscalaListaPreciosExistencia.cs" />
     <Compile Include="EscalaListaPreciosTransporte.cs" />
     <Compile Include="ItemCotizacion.cs" />
     <Compile Include="ItemCotizacionServicio.cs" />
     <Compile Include="ItemListaCostosMaquina.cs" />
+    <Compile Include="ItemListaPreciosExistencia.cs" />
     <Compile Include="ItemListaPreciosTransporte.cs" />
     <Compile Include="ItemPlantilla.cs" />
     <Compile Include="ItemPlantillaServicio.cs" />
+    <Compile Include="ItemPresupuesto.cs" />
     <Compile Include="ItemSolicitudCotizacion.cs" />
     <Compile Include="ItemSolicitudCotizacionServicio.cs" />
     <Compile Include="ListaCostosMaquina.cs" />
+    <Compile Include="ListaPreciosExistencia.cs" />
     <Compile Include="ListaPreciosTransporte.cs" />
     <Compile Include="Maquina.cs" />
     <Compile Include="ModalidadCredito.cs" />
     <Compile Include="Plantilla.cs" />
+    <Compile Include="Presupuesto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RelacionMedidas.cs" />
     <Compile Include="SolicitudCotizacion.cs" />
     <Compile Include="TipoCotizacion.cs" />
     <Compile Include="TipoMaquina.cs" />
+    <Compile Include="TipoPresupuesto.cs" />
     <Compile Include="TipoSolicitudCotizacion.cs" />
     <Compile Include="TipoUnidad.cs" />
     <Compile Include="UnidadListaCostosMaquina.cs" />
+    <Compile Include="UnidadListaPreciosExistencia.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings Files\Maquina.hbm.xml" />
@@ -132,6 +139,23 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings Files\ItemCotizacionServicio.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings Files\EscalaListaPreciosExistencia.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\ItemListaPreciosExistencia.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\ListaPreciosExistencia.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\UnidadListaPreciosExistencia.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings Files\TipoPresupuesto.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings Files\Presupuesto.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings Files\ItemPresupuesto.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

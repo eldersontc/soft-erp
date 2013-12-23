@@ -51,6 +51,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Compilacion\Soft.Entities.dll</HintPath>
     </Reference>
+    <Reference Include="Soft.Exceptions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Soft.Exceptions.dll</HintPath>
+    </Reference>
     <Reference Include="Soft.Inventario.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Compilacion\Soft.Inventario.Entidades.dll</HintPath>
@@ -58,6 +62,10 @@
     <Reference Include="Soft.Reporte.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Compilacion\Soft.Reporte.Entidades.dll</HintPath>
+    </Reference>
+    <Reference Include="Soft.Seguridad.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Soft.Seguridad.Entidades.dll</HintPath>
     </Reference>
     <Reference Include="Soft.Win, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -90,6 +98,12 @@
     <Compile Include="FrmListaCostosMaquina.Designer.cs">
       <DependentUpon>FrmListaCostosMaquina.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmListaPreciosExistencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListaPreciosExistencia.Designer.cs">
+      <DependentUpon>FrmListaPreciosExistencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmListaPreciosTransporte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +128,12 @@
     <Compile Include="FrmPlantilla.Designer.cs">
       <DependentUpon>FrmPlantilla.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPresupuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPresupuesto.Designer.cs">
+      <DependentUpon>FrmPresupuesto.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmRelacionMedidas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +152,12 @@
     <Compile Include="FrmTipoCotizacion.Designer.cs">
       <DependentUpon>FrmTipoCotizacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmTipoPresupuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTipoPresupuesto.Designer.cs">
+      <DependentUpon>FrmTipoPresupuesto.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTipoSolicitudCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +169,9 @@
     </Compile>
     <Compile Include="FrmTipoUnidad.Designer.cs">
       <DependentUpon>FrmTipoUnidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenerarCotizacionDesdeSolicitud.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="GenerarSolicitudDesdePlantilla.cs">
       <SubType>Form</SubType>
@@ -167,6 +196,9 @@
     <EmbeddedResource Include="FrmListaCostosMaquina.resx">
       <DependentUpon>FrmListaCostosMaquina.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmListaPreciosExistencia.resx">
+      <DependentUpon>FrmListaPreciosExistencia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmListaPreciosTransporte.resx">
       <DependentUpon>FrmListaPreciosTransporte.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +211,9 @@
     <EmbeddedResource Include="FrmPlantilla.resx">
       <DependentUpon>FrmPlantilla.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPresupuesto.resx">
+      <DependentUpon>FrmPresupuesto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmRelacionMedidas.resx">
       <DependentUpon>FrmRelacionMedidas.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTipoCotizacion.resx">
       <DependentUpon>FrmTipoCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTipoPresupuesto.resx">
+      <DependentUpon>FrmTipoPresupuesto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTipoSolicitudCotizacion.resx">
       <DependentUpon>FrmTipoSolicitudCotizacion.cs</DependentUpon>
