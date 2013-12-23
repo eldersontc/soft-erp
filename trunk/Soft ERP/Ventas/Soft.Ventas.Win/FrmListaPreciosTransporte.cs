@@ -78,6 +78,11 @@ namespace Soft.Ventas.Win
             column.DataType = typeof(Decimal);
 
             ugEscalas.DataSource = columns;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colDesde].DefaultCellValue = 0;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colHasta].DefaultCellValue = 0;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colPrecio].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colPrecio].DefaultCellValue = 0;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colPrecio].CellAppearance.TextHAlign = Infragistics.Win.HAlign.Right;
             MapKeys(ref ugEscalas);
 
         }
@@ -150,6 +155,7 @@ namespace Soft.Ventas.Win
         {
             UltraGridRow Row = ugDistritos.DisplayLayout.Bands[0].AddNew();
             Row.Tag = ListaPreciosTransporte.AddItem();
+            ItemListaPreciosTransporte = (ItemListaPreciosTransporte)Row.Tag;
         }
 
         private void ubEliminar_Click(object sender, EventArgs e)
@@ -176,19 +182,20 @@ namespace Soft.Ventas.Win
         private void ugEscalas_CellChange(object sender, CellEventArgs e)
         {
             EscalaListaPreciosTransporte Escala = (EscalaListaPreciosTransporte)e.Cell.Row.Tag;
+            ugEscalas.UpdateData();
             switch (e.Cell.Column.Key)
             {
                 case colDesde:
-                    Escala.Desde = Convert.ToInt32(e.Cell.Text);
+                    Escala.Desde = Convert.ToInt32((e.Cell.Value == DBNull.Value) ? 0 : e.Cell.Value);
                     break;
                 case colHasta:
-                    Escala.Hasta = Convert.ToInt32(e.Cell.Text);
+                    Escala.Hasta = Convert.ToInt32((e.Cell.Value == DBNull.Value) ? 0 : e.Cell.Value);
                     break;
                 case colDescripcion:
                     Escala.Descripcion = Convert.ToString(e.Cell.Text);
                     break;
                 case colPrecio:
-                    Escala.Precio= Convert.ToDecimal(e.Cell.Text);
+                    Escala.Precio= Convert.ToDecimal((e.Cell.Value == DBNull.Value)?0:e.Cell.Value);
                     break;
                 default:
                     break;
@@ -225,5 +232,6 @@ namespace Soft.Ventas.Win
             ItemListaPreciosTransporte = (ItemListaPreciosTransporte)ugDistritos.ActiveRow.Tag;
             MostrarEscalas(ItemListaPreciosTransporte);
         }
+
     }
 }
