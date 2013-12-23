@@ -91,7 +91,12 @@ namespace Soft.Ventas.Win
             ugEscalas.DataSource = columns;
             ugEscalas.DisplayLayout.Bands[0].Columns[colDesde].DefaultCellValue = 0;
             ugEscalas.DisplayLayout.Bands[0].Columns[colHasta].DefaultCellValue = 0;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colVelocidad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colVelocidad].DefaultCellValue = 0;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colVelocidad].CellAppearance.TextHAlign = Infragistics.Win.HAlign.Right;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colCosto].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
             ugEscalas.DisplayLayout.Bands[0].Columns[colCosto].DefaultCellValue = 0;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colCosto].CellAppearance.TextHAlign = Infragistics.Win.HAlign.Right;
             MapKeys(ref ugEscalas);
 
         }
@@ -106,6 +111,7 @@ namespace Soft.Ventas.Win
 
         public void MostrarItems()
         {
+            base.ClearAllRows(ref ugMaquinas);
             foreach (ItemListaCostosMaquina Item in ListaCostosMaquina.Items)
             {
                 UltraGridRow Row = ugMaquinas.DisplayLayout.Bands[0].AddNew();
@@ -120,6 +126,7 @@ namespace Soft.Ventas.Win
             Row.Cells[colMaquina].Value = (Item.Maquina != null)?Item.Maquina.Nombre:"";
             Row.Cells[colCostoPreparacion].Value = Item.CostoPreparacion;
             Row.Cells[colCostoProduccion].Value = Item.CostoProduccion;
+            MostrarUnidades(Item);
         }
 
         public void MostrarUnidades(ItemListaCostosMaquina ItemListaCostosMaquina)
@@ -137,6 +144,7 @@ namespace Soft.Ventas.Win
         {
             UnidadListaCostosMaquina Item = (UnidadListaCostosMaquina)Row.Tag;
             Row.Cells[colUnidad].Value = (Item.Unidad != null) ? Item.Unidad.Nombre : "";
+            MostrarEscalas(Item);
         }
 
         public void MostrarEscalas(UnidadListaCostosMaquina UnidadListaCostosMaquina)
