@@ -97,6 +97,7 @@ namespace Soft.Ventas.Win
 
         public void MostrarItems()
         {
+            base.ClearAllRows(ref ugDistritos);
             foreach (ItemListaPreciosTransporte Item in ListaPreciosTransporte.Items)
             {
                 UltraGridRow Row = ugDistritos.DisplayLayout.Bands[0].AddNew();
