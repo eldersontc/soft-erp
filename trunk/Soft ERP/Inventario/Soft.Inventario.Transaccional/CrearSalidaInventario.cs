@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Soft.Inventario.Entidades;
 using System.Data.SqlClient;
 using Soft.Entities;
+using Soft.Exceptions;
 
 namespace Soft.Inventario.Transaccional
 {
@@ -47,7 +48,7 @@ namespace Soft.Inventario.Transaccional
                     {
                         Trans.Rollback();
                         m_ResultProcess = EnumResult.ERROR;
-                        MessageBox.Show(ex.Message);
+                        SoftException.Control(ex);
                     }
                 }
             }
