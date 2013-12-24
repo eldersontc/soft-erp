@@ -13,6 +13,7 @@ using Soft.DataAccess;
 using Infragistics.Win;
 using Infragistics.Win.UltraWinGrid;
 using Soft.Ventas.Entidades;
+using Soft.Exceptions;
 
 namespace Soft.Inventario.Win
 {
@@ -266,7 +267,6 @@ namespace Soft.Inventario.Win
 
         private void busClasificacion_Search(object sender, EventArgs e)
         {
-            
             try
             {
                 String filtro = "";
@@ -291,11 +291,8 @@ namespace Soft.Inventario.Win
             }
             catch (Exception ex)
             {
-                
-                Soft.Exceptions.SoftException.Control(ex);
-
+                SoftException.Control(ex);
             }
-
         }
 
         private void busItemClasificacion_Search(object sender, EventArgs e)
