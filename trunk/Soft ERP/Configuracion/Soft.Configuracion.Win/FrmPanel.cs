@@ -15,6 +15,7 @@ using Infragistics.Win.UltraWinGrid;
 using Microsoft.VisualBasic;
 using Soft.Entities;
 using Infragistics.Win;
+using Soft.Exceptions;
 
 namespace Soft.Configuracion.Win
 {
@@ -224,6 +225,40 @@ namespace Soft.Configuracion.Win
                 Panel.Columnas.Insert(Indice,Columna);
                 MostrarColumnas();
                 ugColumnas.Rows[Columna.Orden -1].Activated = true;
+            }
+        }
+
+        private void ubNuevaColumna_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ColumnaPanel Columna = new ColumnaPanel();
+                UltraGridRow Row = ugColumnas.DisplayLayout.Bands[0].AddNew();
+                Columna.Estilo = "Default";
+                Columna.Visible = true;
+                Columna.Ancho = 0;
+                Columna.Orden = Row.Index;
+                Row.Tag = Columna;
+                Panel.Columnas.Add(Columna);
+                MostrarColumna(Row);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ubEliminarColumna_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ugColumnas.ActiveRow == null) { return; }
+                Panel.Columnas.Remove((ColumnaPanel)ugColumnas.ActiveRow.Tag);
+                ugColumnas.ActiveRow.Delete(false);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
             }
         }
 
