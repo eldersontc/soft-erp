@@ -163,6 +163,9 @@ namespace Soft.Configuracion.Win
                 case colNombre :
                     columna.Nombre = Convert.ToString(e.Cell.Text);
                     break;
+                case colCampo:
+                    columna.CampoSQL = Convert.ToString(e.Cell.Text);
+                    break;
                 case colVisible:
                     columna.Visible = Convert.ToBoolean(e.Cell.Text);
                     break;
