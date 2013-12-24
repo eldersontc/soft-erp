@@ -58,6 +58,7 @@
             // 
             // ubCancelar
             // 
+            this.ubCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.ubCancelar.Location = new System.Drawing.Point(230, 203);
             this.ubCancelar.Name = "ubCancelar";
             this.ubCancelar.Size = new System.Drawing.Size(75, 23);
@@ -390,6 +391,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.ubCancelar;
             this.ClientSize = new System.Drawing.Size(327, 270);
             this.Controls.Add(this.ugbParent);
             this.Controls.Add(this._FrmParent_UltraFormManager_Dock_Area_Left);
