@@ -148,6 +148,7 @@ namespace Soft.Inventario.Win
             txtLargo.Value = this.Existencia.Largo;
             txtAlto.Value = this.Existencia.Alto;
             txtGramaje.Value = this.Existencia.Gramaje;
+            uneCostoUltimaCompra.Value = this.Existencia.CostoUltimaCompra;
 
             busClasificacion.Text = (this.Existencia.ClasificacionExistencia != null) ? this.Existencia.ClasificacionExistencia.Nombre : "";
             busItemClasificacion.Text = (this.Existencia.ItemClasificacionExistencia != null) ? this.Existencia.ItemClasificacionExistencia.Nombre : "";
