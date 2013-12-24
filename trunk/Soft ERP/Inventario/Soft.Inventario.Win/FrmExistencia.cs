@@ -265,21 +265,36 @@ namespace Soft.Inventario.Win
 
         private void busClasificacion_Search(object sender, EventArgs e)
         {
-            String filtro = "";
-
-            if (busClasificacion.Text.Length > 0) {
-                filtro = "Nombre like '" + busClasificacion.Text + "%'";
-            }
-            FrmSelectedEntity FrmSeleccionarPanel = new FrmSelectedEntity();
-            ClasificacionExistencia clasificacion = null;
-
-            clasificacion = (ClasificacionExistencia)FrmSeleccionarPanel.GetSelectedEntity(typeof(ClasificacionExistencia), "Clasificación de Existencia", filtro);
-            if ((clasificacion != null) && (clasificacion.Codigo!=Existencia.ClasificacionExistencia.Codigo))
+            
+            try
             {
-                this.Existencia.ClasificacionExistencia = clasificacion;
-                Existencia.ItemClasificacionExistencia = null;
+                String filtro = "";
+
+                if (busClasificacion.Text.Length > 0)
+                {
+                    filtro = "Nombre like '" + busClasificacion.Text + "%'";
+                }
+                FrmSelectedEntity FrmSeleccionarPanel = new FrmSelectedEntity();
+                ClasificacionExistencia clasificacion = null;
+
+                clasificacion = (ClasificacionExistencia)FrmSeleccionarPanel.GetSelectedEntity(typeof(ClasificacionExistencia), "Clasificación de Existencia", filtro);
+
+
+                if ((clasificacion != null))
+                {
+                    this.Existencia.ClasificacionExistencia = clasificacion;
+                    Existencia.ItemClasificacionExistencia = null;
+                }
+
+                Mostrar();
             }
-            Mostrar();
+            catch (Exception ex)
+            {
+                
+                Soft.Exceptions.SoftException.Control(ex);
+
+            }
+
         }
 
         private void busItemClasificacion_Search(object sender, EventArgs e)
