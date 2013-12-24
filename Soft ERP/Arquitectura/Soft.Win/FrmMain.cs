@@ -105,6 +105,7 @@ namespace Soft.Win
                         Tree.DisplayStyle = UltraTreeDisplayStyle.WindowsVista;
                         Tree.Override.ActiveNodeAppearance.FontData.Bold = DefaultableBoolean.True;
                         Tree.AfterSelect += Tree_AfterSelect;
+                        Tree.Click += Tree_Click;
                         Container.Controls.Add(Tree);
                         Group.Text = Item.Nombre;
                         Group.Settings.NavigationPaneCollapsedGroupAreaText = Item.Nombre;
@@ -563,6 +564,27 @@ namespace Soft.Win
         public static String CarpetaReportes { get { return ConfigurationManager.AppSettings["CarpetaReportes"]; } }
 
         public static String CarpetaImagenes { get { return ConfigurationManager.AppSettings["CarpetaImagenes"]; } }
+        
+        public void Tree_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ItemContenedor Item = (ItemContenedor)((UltraTree)sender).ActiveNode.Tag;
+                if (Item != null)
+                {
+                    if (Item.EsPanel)
+                    {
+                        m_ItemContenedor = Item;
+                        m_Acciones = Item.Acciones;
+                        MostrarPanel();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex, SystemIcons.Warning.ToBitmap());
+            }
+        }
 
         public void Tree_AfterSelect(Object sender, Infragistics.Win.UltraWinTree.SelectEventArgs e)
         {
