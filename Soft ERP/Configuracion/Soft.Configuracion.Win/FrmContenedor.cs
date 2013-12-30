@@ -361,5 +361,10 @@ namespace Soft.Configuracion.Win
             ssDuplicacion.Text = (ItemContenedor.AccionCopiar != null) ? ItemContenedor.AccionCopiar.Nombre : "";
         }
 
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            ItemContenedor.Filtro = txtFiltro.Text;
+        }
+
     }
 }
