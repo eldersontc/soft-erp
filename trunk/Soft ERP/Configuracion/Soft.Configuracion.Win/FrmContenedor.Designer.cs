@@ -31,16 +31,20 @@
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmContenedor));
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmContenedor));
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.txtFiltro = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.lblFiltro = new Infragistics.Win.Misc.UltraLabel();
             this.ssDuplicacion = new Soft.Controls.SoftSearch();
             this.ssEliminar = new Soft.Controls.SoftSearch();
             this.ssCreacion = new Soft.Controls.SoftSearch();
@@ -77,6 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.ultraTabPageControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFiltro)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceAuditoria)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceDuplicacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceEliminacion)).BeginInit();
@@ -366,6 +371,8 @@
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.Controls.Add(this.txtFiltro);
+            this.ultraTabPageControl1.Controls.Add(this.lblFiltro);
             this.ultraTabPageControl1.Controls.Add(this.ssDuplicacion);
             this.ultraTabPageControl1.Controls.Add(this.ssEliminar);
             this.ultraTabPageControl1.Controls.Add(this.ssCreacion);
@@ -392,10 +399,32 @@
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(325, 374);
             // 
+            // txtFiltro
+            // 
+            appearance2.BackColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtFiltro.Appearance = appearance2;
+            this.txtFiltro.Enabled = false;
+            this.txtFiltro.Location = new System.Drawing.Point(118, 147);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(182, 21);
+            this.txtFiltro.TabIndex = 63;
+            this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
+            // 
+            // lblFiltro
+            // 
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.lblFiltro.Appearance = appearance3;
+            this.lblFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblFiltro.Location = new System.Drawing.Point(20, 150);
+            this.lblFiltro.Name = "lblFiltro";
+            this.lblFiltro.Size = new System.Drawing.Size(72, 23);
+            this.lblFiltro.TabIndex = 62;
+            this.lblFiltro.Text = "Filtro";
+            // 
             // ssDuplicacion
             // 
             this.ssDuplicacion.BackColor = System.Drawing.Color.Transparent;
-            this.ssDuplicacion.Location = new System.Drawing.Point(118, 229);
+            this.ssDuplicacion.Location = new System.Drawing.Point(118, 254);
             this.ssDuplicacion.Name = "ssDuplicacion";
             this.ssDuplicacion.Size = new System.Drawing.Size(182, 28);
             this.ssDuplicacion.TabIndex = 61;
@@ -404,7 +433,7 @@
             // ssEliminar
             // 
             this.ssEliminar.BackColor = System.Drawing.Color.Transparent;
-            this.ssEliminar.Location = new System.Drawing.Point(118, 203);
+            this.ssEliminar.Location = new System.Drawing.Point(118, 228);
             this.ssEliminar.Name = "ssEliminar";
             this.ssEliminar.Size = new System.Drawing.Size(182, 28);
             this.ssEliminar.TabIndex = 60;
@@ -413,7 +442,7 @@
             // ssCreacion
             // 
             this.ssCreacion.BackColor = System.Drawing.Color.Transparent;
-            this.ssCreacion.Location = new System.Drawing.Point(118, 149);
+            this.ssCreacion.Location = new System.Drawing.Point(118, 174);
             this.ssCreacion.Name = "ssCreacion";
             this.ssCreacion.Size = new System.Drawing.Size(182, 28);
             this.ssCreacion.TabIndex = 59;
@@ -422,7 +451,7 @@
             // ssModificacion
             // 
             this.ssModificacion.BackColor = System.Drawing.Color.Transparent;
-            this.ssModificacion.Location = new System.Drawing.Point(118, 177);
+            this.ssModificacion.Location = new System.Drawing.Point(118, 202);
             this.ssModificacion.Name = "ssModificacion";
             this.ssModificacion.Size = new System.Drawing.Size(182, 28);
             this.ssModificacion.TabIndex = 58;
@@ -431,7 +460,7 @@
             // uceAuditoria
             // 
             this.uceAuditoria.Enabled = false;
-            this.uceAuditoria.Location = new System.Drawing.Point(22, 255);
+            this.uceAuditoria.Location = new System.Drawing.Point(22, 280);
             this.uceAuditoria.Name = "uceAuditoria";
             this.uceAuditoria.Size = new System.Drawing.Size(81, 20);
             this.uceAuditoria.TabIndex = 57;
@@ -441,7 +470,7 @@
             // uceDuplicacion
             // 
             this.uceDuplicacion.Enabled = false;
-            this.uceDuplicacion.Location = new System.Drawing.Point(22, 229);
+            this.uceDuplicacion.Location = new System.Drawing.Point(22, 254);
             this.uceDuplicacion.Name = "uceDuplicacion";
             this.uceDuplicacion.Size = new System.Drawing.Size(81, 20);
             this.uceDuplicacion.TabIndex = 56;
@@ -451,7 +480,7 @@
             // uceEliminacion
             // 
             this.uceEliminacion.Enabled = false;
-            this.uceEliminacion.Location = new System.Drawing.Point(22, 203);
+            this.uceEliminacion.Location = new System.Drawing.Point(22, 228);
             this.uceEliminacion.Name = "uceEliminacion";
             this.uceEliminacion.Size = new System.Drawing.Size(81, 20);
             this.uceEliminacion.TabIndex = 55;
@@ -461,7 +490,7 @@
             // uceModificacion
             // 
             this.uceModificacion.Enabled = false;
-            this.uceModificacion.Location = new System.Drawing.Point(22, 177);
+            this.uceModificacion.Location = new System.Drawing.Point(22, 202);
             this.uceModificacion.Name = "uceModificacion";
             this.uceModificacion.Size = new System.Drawing.Size(106, 20);
             this.uceModificacion.TabIndex = 54;
@@ -471,7 +500,7 @@
             // uceCreacion
             // 
             this.uceCreacion.Enabled = false;
-            this.uceCreacion.Location = new System.Drawing.Point(22, 150);
+            this.uceCreacion.Location = new System.Drawing.Point(22, 175);
             this.uceCreacion.Name = "uceCreacion";
             this.uceCreacion.Size = new System.Drawing.Size(98, 20);
             this.uceCreacion.TabIndex = 53;
@@ -480,7 +509,7 @@
             // 
             // ubNuevo
             // 
-            this.ubNuevo.Location = new System.Drawing.Point(22, 289);
+            this.ubNuevo.Location = new System.Drawing.Point(22, 314);
             this.ubNuevo.Name = "ubNuevo";
             this.ubNuevo.Size = new System.Drawing.Size(90, 23);
             this.ubNuevo.TabIndex = 52;
@@ -499,7 +528,7 @@
             // 
             // ubEliminar
             // 
-            this.ubEliminar.Location = new System.Drawing.Point(210, 289);
+            this.ubEliminar.Location = new System.Drawing.Point(210, 314);
             this.ubEliminar.Name = "ubEliminar";
             this.ubEliminar.Size = new System.Drawing.Size(90, 23);
             this.ubEliminar.TabIndex = 50;
@@ -508,7 +537,7 @@
             // 
             // ubAñadirModificar
             // 
-            this.ubAñadirModificar.Location = new System.Drawing.Point(118, 289);
+            this.ubAñadirModificar.Location = new System.Drawing.Point(118, 314);
             this.ubAñadirModificar.Name = "ubAñadirModificar";
             this.ubAñadirModificar.Size = new System.Drawing.Size(86, 23);
             this.ubAñadirModificar.TabIndex = 49;
@@ -517,8 +546,8 @@
             // 
             // txtContenedor
             // 
-            appearance2.BackColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtContenedor.Appearance = appearance2;
+            appearance4.BackColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtContenedor.Appearance = appearance4;
             this.txtContenedor.Enabled = false;
             this.txtContenedor.Location = new System.Drawing.Point(118, 64);
             this.txtContenedor.Name = "txtContenedor";
@@ -528,8 +557,8 @@
             // 
             // ultraLabel2
             // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance3;
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance5;
             this.ultraLabel2.Location = new System.Drawing.Point(20, 68);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(100, 23);
@@ -538,10 +567,10 @@
             // 
             // ubBuscarImage
             // 
-            appearance4.Image = ((object)(resources.GetObject("appearance4.Image")));
-            appearance4.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance4.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.ubBuscarImage.Appearance = appearance4;
+            appearance6.Image = ((object)(resources.GetObject("appearance6.Image")));
+            appearance6.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance6.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.ubBuscarImage.Appearance = appearance6;
             this.ubBuscarImage.Location = new System.Drawing.Point(248, 13);
             this.ubBuscarImage.Name = "ubBuscarImage";
             this.ubBuscarImage.Size = new System.Drawing.Size(25, 25);
@@ -561,8 +590,8 @@
             // 
             // ultraLabel4
             // 
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel4.Appearance = appearance5;
+            appearance7.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel4.Appearance = appearance7;
             this.ultraLabel4.Location = new System.Drawing.Point(20, 126);
             this.ultraLabel4.Name = "ultraLabel4";
             this.ultraLabel4.Size = new System.Drawing.Size(72, 23);
@@ -571,8 +600,8 @@
             // 
             // txtNombre
             // 
-            appearance6.BackColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtNombre.Appearance = appearance6;
+            appearance8.BackColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtNombre.Appearance = appearance8;
             this.txtNombre.Enabled = false;
             this.txtNombre.Location = new System.Drawing.Point(118, 93);
             this.txtNombre.Name = "txtNombre";
@@ -582,8 +611,8 @@
             // 
             // ultraLabel5
             // 
-            appearance7.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel5.Appearance = appearance7;
+            appearance9.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel5.Appearance = appearance9;
             this.ultraLabel5.Location = new System.Drawing.Point(20, 97);
             this.ultraLabel5.Name = "ultraLabel5";
             this.ultraLabel5.Size = new System.Drawing.Size(72, 23);
@@ -712,8 +741,8 @@
             this.utcDetalle.Name = "utcDetalle";
             this.utcDetalle.SharedControlsPage = this.ultraTabSharedControlsPage1;
             this.utcDetalle.Size = new System.Drawing.Size(329, 400);
-            appearance8.BackColor = System.Drawing.Color.Transparent;
-            this.utcDetalle.TabHeaderAreaAppearance = appearance8;
+            appearance10.BackColor = System.Drawing.Color.Transparent;
+            this.utcDetalle.TabHeaderAreaAppearance = appearance10;
             this.utcDetalle.TabIndex = 6;
             ultraTab1.Key = "Detalle";
             ultraTab1.TabPage = this.ultraTabPageControl1;
@@ -746,6 +775,7 @@
             this.ugbParent.ResumeLayout(false);
             this.ultraTabPageControl1.ResumeLayout(false);
             this.ultraTabPageControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFiltro)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceAuditoria)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceDuplicacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceEliminacion)).EndInit();
@@ -802,5 +832,7 @@
         private Controls.SoftSearch ssCreacion;
         private Controls.SoftSearch ssDuplicacion;
         private Controls.SoftSearch ssEliminar;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtFiltro;
+        private Infragistics.Win.Misc.UltraLabel lblFiltro;
     }
 }
