@@ -39,6 +39,7 @@
             Infragistics.Win.UltraWinTree.Override _override1 = new Infragistics.Win.UltraWinTree.Override();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.btnBorrarMaterial = new Infragistics.Win.Misc.UltraButton();
             this.txtNombreItem = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.lblNombreItem = new Infragistics.Win.Misc.UltraLabel();
             this.ssMaterial = new Soft.Controls.SoftSearch();
@@ -63,6 +64,7 @@
             this.utPlantilla = new Infragistics.Win.UltraWinTree.UltraTree();
             this.ubNuevoItem = new Infragistics.Win.Misc.UltraButton();
             this.ubEliminarItem = new Infragistics.Win.Misc.UltraButton();
+            this.btnBorrarOperacion = new Infragistics.Win.Misc.UltraButton();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.ultraTabPageControl1.SuspendLayout();
@@ -80,6 +82,7 @@
             // 
             // ugbParent
             // 
+            this.ugbParent.Controls.Add(this.btnBorrarOperacion);
             this.ugbParent.Controls.Add(this.utPlantilla);
             this.ugbParent.Controls.Add(this.utcDetalle);
             this.ugbParent.Controls.Add(this.ubEliminarItem);
@@ -101,6 +104,7 @@
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.utPlantilla, 0);
+            this.ugbParent.Controls.SetChildIndex(this.btnBorrarOperacion, 0);
             // 
             // ubCancelar
             // 
@@ -365,6 +369,7 @@
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.Controls.Add(this.btnBorrarMaterial);
             this.ultraTabPageControl1.Controls.Add(this.txtNombreItem);
             this.ultraTabPageControl1.Controls.Add(this.lblNombreItem);
             this.ultraTabPageControl1.Controls.Add(this.ssMaterial);
@@ -379,6 +384,15 @@
             this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(516, 392);
+            // 
+            // btnBorrarMaterial
+            // 
+            this.btnBorrarMaterial.Location = new System.Drawing.Point(455, 128);
+            this.btnBorrarMaterial.Name = "btnBorrarMaterial";
+            this.btnBorrarMaterial.Size = new System.Drawing.Size(53, 23);
+            this.btnBorrarMaterial.TabIndex = 17;
+            this.btnBorrarMaterial.Text = "Borrar";
+            this.btnBorrarMaterial.Click += new System.EventHandler(this.btnBorrarMaterial_Click);
             // 
             // txtNombreItem
             // 
@@ -402,7 +416,7 @@
             this.ssMaterial.BackColor = System.Drawing.Color.Transparent;
             this.ssMaterial.Location = new System.Drawing.Point(151, 127);
             this.ssMaterial.Name = "ssMaterial";
-            this.ssMaterial.Size = new System.Drawing.Size(346, 30);
+            this.ssMaterial.Size = new System.Drawing.Size(303, 30);
             this.ssMaterial.TabIndex = 10;
             this.ssMaterial.Search += new System.EventHandler(this.ssMaterial_Search);
             // 
@@ -411,7 +425,7 @@
             this.ssOperacion.BackColor = System.Drawing.Color.Transparent;
             this.ssOperacion.Location = new System.Drawing.Point(151, 99);
             this.ssOperacion.Name = "ssOperacion";
-            this.ssOperacion.Size = new System.Drawing.Size(346, 30);
+            this.ssOperacion.Size = new System.Drawing.Size(303, 30);
             this.ssOperacion.TabIndex = 9;
             this.ssOperacion.Search += new System.EventHandler(this.ssOperacion_Search);
             // 
@@ -618,6 +632,15 @@
             this.ubEliminarItem.Text = "Eliminar";
             this.ubEliminarItem.Click += new System.EventHandler(this.ubEliminarItem_Click);
             // 
+            // btnBorrarOperacion
+            // 
+            this.btnBorrarOperacion.Location = new System.Drawing.Point(677, 172);
+            this.btnBorrarOperacion.Name = "btnBorrarOperacion";
+            this.btnBorrarOperacion.Size = new System.Drawing.Size(53, 23);
+            this.btnBorrarOperacion.TabIndex = 16;
+            this.btnBorrarOperacion.Text = "Borrar";
+            this.btnBorrarOperacion.Click += new System.EventHandler(this.btnBorrarOperacion_Click);
+            // 
             // FrmPlantilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -671,5 +694,7 @@
         private Infragistics.Win.Misc.UltraLabel lblTipoUnidad;
         private Infragistics.Win.Misc.UltraLabel lblNombreItem;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtNombreItem;
+        private Infragistics.Win.Misc.UltraButton btnBorrarOperacion;
+        private Infragistics.Win.Misc.UltraButton btnBorrarMaterial;
     }
 }
