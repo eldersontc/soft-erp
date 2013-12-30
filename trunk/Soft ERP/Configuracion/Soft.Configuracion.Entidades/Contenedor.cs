@@ -37,5 +37,13 @@ namespace Soft.Configuracion.Entidades
             return ItemsResult;
         }
 
+        public virtual void DeleteItem(ItemContenedor Item){
+            Items.Remove(Item);
+            foreach (ItemContenedor It in GetItemsByItemParent(Item.ID))
+            {
+                DeleteItem(It);
+            }
+        }
+
     }
 }
