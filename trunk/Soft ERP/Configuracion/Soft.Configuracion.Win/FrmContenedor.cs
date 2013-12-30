@@ -74,6 +74,7 @@ namespace Soft.Configuracion.Win
             ssDuplicacion.Text = (ItemContenedor.AccionCopiar != null) ? ItemContenedor.AccionCopiar.Nombre : ""; 
             txtContenedor.Text = (ItemContenedor.ItemPadre != null)?ItemContenedor.ItemPadre.Nombre: ""; 
             txtNombre.Text = ItemContenedor.Nombre;
+            txtFiltro.Text = ItemContenedor.Filtro;
             uceEsContenedor.Checked = ItemContenedor.EsContenedor;
             uceEsPanel.Checked = ItemContenedor.EsPanel;
             upbImagen.Image = base.GetImage(ItemContenedor.Imagen);
