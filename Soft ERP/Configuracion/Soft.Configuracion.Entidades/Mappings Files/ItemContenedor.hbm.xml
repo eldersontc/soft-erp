@@ -13,7 +13,8 @@
     <property name="Eliminar" type="boolean"/>
     <property name="Copiar" type="boolean"/>
     <property name="Auditar" type="boolean"/>
-    
+    <property name="Filtro" type="string"/>
+
     <many-to-one name="Panel" class="Soft.Configuracion.Entidades.Panel" column="IDPanel" lazy="false" not-null="false" insert="true" update="true"/>
     <many-to-one name="ItemPadre" class="Soft.Configuracion.Entidades.ItemContenedor" column="IDItemPadre" lazy="false" not-null="false" insert="true" update="true"/>
     <many-to-one name="AccionCrear" class="Soft.Configuracion.Entidades.Accion" column="IDAccionCrear" lazy="false" not-null="false" insert="true" update="true"/>
