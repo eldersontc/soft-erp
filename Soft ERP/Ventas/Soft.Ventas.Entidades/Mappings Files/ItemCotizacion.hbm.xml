@@ -17,6 +17,11 @@
     <property name="Precio" type="decimal"/>
     <property name="Costo" type="decimal"/>
 
+    <property name="CostoMaquina" type="decimal"/>
+    <property name="CostoMaterial" type="decimal"/>
+    <property name="CostoTransporte" type="decimal"/>
+
+
     <many-to-one name="Maquina" class="Soft.Ventas.Entidades.Maquina" column="IDMaquina" insert="true" update="true" lazy="false"/>
     <many-to-one name="Material" class="Soft.Inventario.Entidades.Existencia" column="IDMaterial" insert="true" update="true" lazy="false"/>
 
