@@ -142,6 +142,8 @@ namespace Soft.Inventario.Win
                 EntradaInventario.TipoDocumento = (TipoDocumentoInventario)HelperNHibernate.GetEntityByID("TipoDocumentoInventario", TipoDocumento.ID);
                 EntradaInventario.GenerarNumCp();
                 LabelSocioNegocio.Text = EntradaInventario.TipoDocumento.TipoSocioDeNegocio;
+                LabelSocioNegocio.Visible = (EntradaInventario.TipoDocumento.TipoSocioDeNegocio.Equals("Ninguno")) ? false : true;
+                ssProveedor.Visible = (EntradaInventario.TipoDocumento.TipoSocioDeNegocio.Equals("Ninguno")) ? false : true;
             }
 
             Mostrar();
