@@ -71,6 +71,7 @@ namespace Soft.Ventas.Win
 
         public void MostrarItems()
         {
+            utSolicitudCotizacion.Nodes.Clear();
             foreach (ItemSolicitudCotizacion Item in SolicitudCotizacion.Items)
             {
                 UltraTreeNode Node = new UltraTreeNode();
@@ -132,6 +133,11 @@ namespace Soft.Ventas.Win
             if ((SolicitudCotizacion.TipoDocumento == null) || (SolicitudCotizacion.TipoDocumento.Codigo != TipoDocumento.Codigo))
             {
                 SolicitudCotizacion.TipoDocumento = (TipoSolicitudCotizacion)HelperNHibernate.GetEntityByID("TipoSolicitudCotizacion", TipoDocumento.ID);
+
+                FrmSelectedEntity FrmSeleccionarEmpleado = new FrmSelectedEntity();
+                String filtro = "IDUsuario='"+FrmMain.Usuario.ID+"'";
+                SolicitudCotizacion.Responsable = (SocioNegocio)FrmSeleccionarEmpleado.GetSelectedEntity(typeof(SocioNegocio), "Empleado", filtro);
+
                 SolicitudCotizacion.GenerarNumCp();
             }
             Mostrar();
