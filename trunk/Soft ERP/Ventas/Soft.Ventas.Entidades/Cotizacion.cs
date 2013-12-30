@@ -20,6 +20,12 @@ namespace Soft.Ventas.Entidades
         public virtual Decimal PorcentajeUtilidad { get; set; }
         public virtual String EstadoAprobacion { get; set; }
 
+
+        public virtual ListaCostosMaquina ListaCostosMaquina { get; set; }
+        public virtual ListaPreciosExistencia ListaPreciosExistencia { get; set; }
+        public virtual ListaPreciosTransporte ListaPreciosTransporte { get; set; }
+        
+
         public virtual void GenerarNumCp()
         {
             String Result = "";
