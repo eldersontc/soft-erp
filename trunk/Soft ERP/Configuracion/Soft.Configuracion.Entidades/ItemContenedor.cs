@@ -21,6 +21,7 @@ namespace Soft.Configuracion.Entidades
         public virtual Boolean EsPanel { get; set; }
         public virtual String Imagen { get; set; }
         public virtual Panel Panel { get; set; }
+        public virtual String Filtro { get; set; }
         public virtual ItemContenedor ItemPadre { get; set; }
         public virtual Boolean Crear { get; set; }
         public virtual Boolean Modificar { get; set; }
