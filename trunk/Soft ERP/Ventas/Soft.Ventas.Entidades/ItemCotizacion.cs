@@ -29,6 +29,11 @@ namespace Soft.Ventas.Entidades
         public virtual Decimal Costo { get; set; }
         public virtual Decimal Precio { get; set; }
 
+        public virtual Decimal CostoMaquina { get; set; }
+        public virtual Decimal CostoMaterial { get; set; }
+        public virtual Decimal CostoTransporte { get; set; }
+        
+
         public virtual ItemCotizacionServicio AddServicio()
         {
             ItemCotizacionServicio Item = new ItemCotizacionServicio();
