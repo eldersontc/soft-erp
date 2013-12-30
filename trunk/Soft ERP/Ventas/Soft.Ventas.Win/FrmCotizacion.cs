@@ -74,6 +74,15 @@ namespace Soft.Ventas.Win
             uneCantidad.Value = Cotizacion.Cantidad;
             txtNumeracion.Text = Cotizacion.Numeracion;
             unePorcentajeUtilidad.Value = Cotizacion.PorcentajeUtilidad;
+            uneSubTotal.Value = Cotizacion.SubTotal;
+            uneImpuesto.Value = Cotizacion.Impuesto;
+            uneTotal.Value = Cotizacion.Total;
+
+
+            busListaCostoMaquina.Text = (Cotizacion.ListaCostosMaquina != null) ? Cotizacion.ListaCostosMaquina.Nombre : "";
+            busListaPrecioMaterial.Text = (Cotizacion.ListaPreciosExistencia != null) ? Cotizacion.ListaPreciosExistencia.Nombre : "";
+            busListaPreciosTransporte.Text = (Cotizacion.ListaPreciosTransporte != null) ? Cotizacion.ListaPreciosTransporte.Nombre : "";
+            
 
             MostrarItems();
             ActualizandoIU = false;
@@ -81,6 +90,8 @@ namespace Soft.Ventas.Win
 
         public void MostrarItems()
         {
+            utCotizacion.Nodes.Clear();
+
             foreach (ItemCotizacion Item in Cotizacion.Items)
             {
                 UltraTreeNode Node = new UltraTreeNode();
@@ -111,6 +122,8 @@ namespace Soft.Ventas.Win
             txtMedidaCerradaAlto.Value = Item.MedidaCerradaAlto;
             txtImpresoTiraColor.Value = Item.ImpresoTiraColor;
             txtImpresoRetiraColor.Value = Item.ImpresoRetiraColor;
+            uneCostoMaquina.Value = Item.CostoMaquina;
+            uneCostoMaterial.Value = Item.CostoMaterial;
             uneCosto.Value = Item.Costo;
             unePrecio.Value = Item.Precio;
             MostrarServicios(Item);
@@ -258,25 +271,25 @@ namespace Soft.Ventas.Win
         private void txtMedidaAbiertoLargo_ValueChanged(object sender, EventArgs e)
         {
             if (ItemCotizacion == null) { return; }
-            ItemCotizacion.MedidaAbiertaLargo = Convert.ToInt32(txtMedidaAbiertoLargo.Value);
+            ItemCotizacion.MedidaAbiertaLargo = Convert.ToDecimal(txtMedidaAbiertoLargo.Value);
         }
 
         private void txtMedidaAbiertoAlto_ValueChanged(object sender, EventArgs e)
         {
             if (ItemCotizacion == null) { return; }
-            ItemCotizacion.MedidaAbiertaAlto = Convert.ToInt32(txtMedidaAbiertoAlto.Value);
+            ItemCotizacion.MedidaAbiertaAlto = Convert.ToDecimal(txtMedidaAbiertoAlto.Value);
         }
 
         private void txtMedidaCerradaLargo_ValueChanged(object sender, EventArgs e)
         {
             if (ItemCotizacion == null) { return; }
-            ItemCotizacion.MedidaCerradaLargo = Convert.ToInt32(txtMedidaCerradaLargo.Value);
+            ItemCotizacion.MedidaCerradaLargo = Convert.ToDecimal(txtMedidaCerradaLargo.Value);
         }
 
         private void txtMedidaCerradaAlto_ValueChanged(object sender, EventArgs e)
         {
             if (ItemCotizacion == null) { return; }
-            ItemCotizacion.MedidaCerradaAlto = Convert.ToInt32(txtMedidaCerradaAlto.Value);
+            ItemCotizacion.MedidaCerradaAlto = Convert.ToDecimal(txtMedidaCerradaAlto.Value);
         }
 
         private void txtImpresoTiraColor_ValueChanged(object sender, EventArgs e)
@@ -367,9 +380,108 @@ namespace Soft.Ventas.Win
             Cotizacion.PorcentajeUtilidad = Convert.ToDecimal(unePorcentajeUtilidad.Value);
         }
 
+        ListaCostosMaquina lcm = null;
+        ListaPreciosExistencia lpe = null;
+        ListaPreciosTransporte lpt = null;
+        private void Costeo()
+        {
+            lcm = (ListaCostosMaquina)HelperNHibernate.GetEntityByID("ListaCostosMaquina", Cotizacion.ListaCostosMaquina.ID);
+            lpe = (ListaPreciosExistencia)HelperNHibernate.GetEntityByID("ListaPreciosExistencia", Cotizacion.ListaPreciosExistencia.ID);
+            lpt = (ListaPreciosTransporte)HelperNHibernate.GetEntityByID("ListaPreciosTransporte", Cotizacion.ListaPreciosTransporte.ID);
+
+            foreach (ItemCotizacion itemcotizacion in Cotizacion.Items) {
+                CosteoElemento(itemcotizacion);
+                
+            }
+            Cotizacion.SubTotal = Cotizacion.SubTotal;
+        }
+
+        private void CosteoElemento(ItemCotizacion itemCotizacion) {
+            ItemCotizacion.CostoMaquina = obtenerItemListaCostosMaquina(itemCotizacion);
+            ItemCotizacion.CostoMaterial = obtenerItemListaCostosMaterial(itemCotizacion);
+            ItemCotizacion.Costo = ItemCotizacion.CostoMaquina + ItemCotizacion.CostoMaterial;
+            ItemCotizacion.Precio = ItemCotizacion.Costo;
+            
+        }
+
+        private Decimal obtenerItemListaCostosMaterial(ItemCotizacion itemCotizacion)
+        {
+            Decimal resultado = 0;
+            resultado =  itemCotizacion.Material.CostoUltimaCompra * itemCotizacion.Cantidad* itemCotizacion.Material.Largo*itemCotizacion.MedidaAbiertaLargo ;
+            return resultado;
+        }
+
+
+
+        private Decimal obtenerItemListaCostosMaquina(ItemCotizacion itemCotizacion)
+        {
+            Decimal resultado = 0;
+            ItemListaCostosMaquina ilcm = obtenerItemListaCostosMaquina(itemCotizacion.Maquina);
+            UnidadListaCostosMaquina Uilcm = obtenerUnidadLCM(ilcm);
+            EscalaListaCostosMaquina Elcm = obtenerEscalaLCM(Uilcm, itemCotizacion);
+            resultado = Elcm.Costo*((itemCotizacion.MedidaAbiertaAlto * itemCotizacion.MedidaAbiertaLargo) * ItemCotizacion.Cantidad);
+            return resultado;
+        }
+        private ItemListaCostosMaquina obtenerItemListaCostosMaquina(Maquina maquina)
+        {
+            ItemListaCostosMaquina resultado = null;
+            foreach (ItemListaCostosMaquina item in lcm.Items)
+            {
+                if (item.Maquina.ID == maquina.ID)
+                {
+                    resultado = item;
+                    break;
+                }
+            }
+            return resultado;
+        }
+        private UnidadListaCostosMaquina obtenerUnidadLCM(ItemListaCostosMaquina ilcm) {
+            UnidadListaCostosMaquina Uilcm = null;
+            foreach (UnidadListaCostosMaquina unidad in ilcm.Unidades)
+            {
+                if (unidad.Unidad.Codigo == "M2")
+                {
+                    Uilcm = unidad;
+                    break;
+                }
+            }
+            return Uilcm;
+        }
+        private EscalaListaCostosMaquina obtenerEscalaLCM(UnidadListaCostosMaquina Uilcm, ItemCotizacion itemcotizacion)
+        {
+            EscalaListaCostosMaquina eUilcm = null;
+            Decimal metroscuadrado = itemcotizacion.MedidaAbiertaAlto * itemcotizacion.MedidaAbiertaLargo * itemcotizacion.Cantidad;
+
+            foreach (EscalaListaCostosMaquina escala in Uilcm.Escalas)
+            {
+                if ((escala.Desde == 0) && (escala.Hasta == 0))
+                {
+                    eUilcm = escala;
+                    break;
+                }
+                else if ((escala.Desde <= metroscuadrado) && (escala.Hasta >= metroscuadrado))
+                {
+                    eUilcm = escala;
+                    break;
+                }
+
+                else if ((escala.Hasta == 0))
+                {
+                    eUilcm = escala;
+                    break;
+                }
+
+            }
+            return eUilcm;
+        
+        }
+        
+
         private void ubRecalcular_Click(object sender, EventArgs e)
         {
+            Costeo();
             GenerarGraficosNormal();
+            Mostrar();
         }
 
         public void GenerarGraficosNormal() {
@@ -387,6 +499,8 @@ namespace Soft.Ventas.Win
         public void GenerarGraficoPrecorteNormal() {
             upbPrecorte.Width = Convert.ToInt32(ItemCotizacion.Material.Largo);
             upbPrecorte.Height = Convert.ToInt32(ItemCotizacion.Material.Alto);
+            
+
             Bitmap b;
             b = new Bitmap(upbPrecorte.Width, upbPrecorte.Height);
             upbPrecorte.Image = (Image)b;
@@ -523,6 +637,31 @@ namespace Soft.Ventas.Win
             ControladorImpresion.Start();
             
         }
+
+        private void busListaPrecioMaterial_Search(object sender, EventArgs e)
+        {
+
+            FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+            Cotizacion.ListaPreciosExistencia = (ListaPreciosExistencia)FrmSeleccionar.GetSelectedEntity(typeof(ListaPreciosExistencia), "Lista Precios Producto Servicio", " Activo = 1");
+            busListaPrecioMaterial.Text = (Cotizacion.ListaPreciosExistencia != null) ? Cotizacion.ListaPreciosExistencia.Nombre : "";
+
+        }
+
+        private void busListaCostoMaquina_Search(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+            Cotizacion.ListaCostosMaquina = (ListaCostosMaquina)FrmSeleccionar.GetSelectedEntity(typeof(ListaCostosMaquina), "Lista de Costos Máquina", " Activo = 1");
+            busListaCostoMaquina.Text = (Cotizacion.ListaCostosMaquina != null) ? Cotizacion.ListaCostosMaquina.Nombre : "";
+        }
+
+        private void busListaPreciosTransporte_Search(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+            Cotizacion.ListaPreciosTransporte = (ListaPreciosTransporte)FrmSeleccionar.GetSelectedEntity(typeof(ListaPreciosTransporte), "Lista Precios Transporte", " Activo = 1");
+            busListaPreciosTransporte.Text = (Cotizacion.ListaPreciosTransporte != null) ? Cotizacion.ListaPreciosTransporte.Nombre : "";
+        }
+
+    
 
     }
 }
