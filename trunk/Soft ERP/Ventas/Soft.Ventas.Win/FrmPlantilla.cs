@@ -280,5 +280,26 @@ namespace Soft.Ventas.Win
             ActualizandoIU = false;
         }
 
+        private void btnBorrarOperacion_Click(object sender, EventArgs e)
+        {
+            if (ItemPlantilla != null) { 
+                ItemPlantilla.Operacion = null;
+                ssOperacion.Text = null;
+            }
+
+
+        }
+
+        private void btnBorrarMaterial_Click(object sender, EventArgs e)
+        {
+            if (ItemPlantilla != null)
+            {
+                ItemPlantilla.Material = null;
+                ssMaterial.Text = null;
+            }
+        }
+
+    
+
     }
 }
