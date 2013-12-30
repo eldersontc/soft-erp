@@ -99,7 +99,7 @@
             // 
             this.ugbParent.Controls.Add(this.utcDetalle);
             this.ugbParent.Controls.Add(this.uebContenedor);
-            this.ugbParent.Size = new System.Drawing.Size(617, 452);
+            this.ugbParent.Size = new System.Drawing.Size(617, 518);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.uebContenedor, 0);
@@ -107,11 +107,11 @@
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(529, 418);
+            this.ubCancelar.Location = new System.Drawing.Point(528, 478);
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(448, 418);
+            this.ubAceptar.Location = new System.Drawing.Point(447, 478);
             // 
             // ilMain
             // 
@@ -694,7 +694,7 @@
             this.uebContenedor.GroupSettings.Style = Infragistics.Win.UltraWinExplorerBar.GroupStyle.ControlContainer;
             this.uebContenedor.Location = new System.Drawing.Point(12, 12);
             this.uebContenedor.Name = "uebContenedor";
-            this.uebContenedor.Size = new System.Drawing.Size(260, 400);
+            this.uebContenedor.Size = new System.Drawing.Size(260, 489);
             this.uebContenedor.Style = Infragistics.Win.UltraWinExplorerBar.UltraExplorerBarStyle.OutlookNavigationPane;
             this.uebContenedor.TabIndex = 2;
             this.uebContenedor.ViewStyle = Infragistics.Win.UltraWinExplorerBar.UltraExplorerBarViewStyle.Office2007;
@@ -739,7 +739,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 490);
+            this.ClientSize = new System.Drawing.Size(633, 556);
             this.Name = "FrmContenedor";
             this.Text = "Contenedor";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();

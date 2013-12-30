@@ -183,7 +183,7 @@ namespace Soft.Configuracion.Win
 
         private void ubEliminar_Click(object sender, EventArgs e)
         {
-            if (ItemContenedor != null){ Contenedor.Items.Remove(ItemContenedor); }
+            if (ItemContenedor != null){ Contenedor.DeleteItem(ItemContenedor); }
             MostrarItems();
         }
 
