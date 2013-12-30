@@ -403,7 +403,6 @@
             // 
             appearance2.BackColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtFiltro.Appearance = appearance2;
-            this.txtFiltro.Enabled = false;
             this.txtFiltro.Location = new System.Drawing.Point(118, 147);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(182, 21);
