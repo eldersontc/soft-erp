@@ -55,7 +55,7 @@ namespace Soft.Win
                 Column.Key = NodoItem.SelectSingleNode("@CampoSQL").Value;
                 Query += NodoItem.SelectSingleNode("@CampoSQL").Value;    
             }
-            Query = String.Format("SELECT {0} FROM {1} ", Query, NameView);
+            Query = String.Format("SELECT {0} FROM {1} {2}", Query, NameView,ItemContenedor.Filtro);
             ugDetails.DataSource = HelperNHibernate.GetDataSet(Query);
             if (ugDetails.Rows.Count > 0) { ugDetails.Rows[0].Selected = true; }
         }
