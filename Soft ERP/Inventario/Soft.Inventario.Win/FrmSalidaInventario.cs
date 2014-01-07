@@ -87,6 +87,7 @@ namespace Soft.Inventario.Win
             ssProveedor.Text = (SalidaInventario.Proveedor != null) ? SalidaInventario.Proveedor.Nombre : "";
             ssAlmacen.Text = (SalidaInventario.Almacen != null) ? SalidaInventario.Almacen.Descripcion : "";
             ssResponsable.Text = (SalidaInventario.Responsable != null) ? SalidaInventario.Responsable.Nombre : "";
+            ssMoneda.Text = (SalidaInventario.Moneda != null) ? SalidaInventario.Moneda.Simbolo : "";
             txtNumeracion.Text = SalidaInventario.Numeracion;
             udtFechaCreacion.Value = SalidaInventario.FechaCreacion;
             txtObservacion.Text = SalidaInventario.Observacion;
@@ -312,6 +313,13 @@ namespace Soft.Inventario.Win
         private void txtOrdenProduccion_TextChanged(object sender, EventArgs e)
         {
             SalidaInventario.OrdenProduccion = txtOrdenProduccion.Text;
+        }
+
+        private void ssMoneda_Search(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionarMoneda = new FrmSelectedEntity();
+            SalidaInventario.Moneda = (Moneda)FrmSeleccionarMoneda.GetSelectedEntity(typeof(Moneda), "Moneda");
+            ssMoneda.Text = (SalidaInventario.Moneda != null) ? SalidaInventario.Moneda.Simbolo : "";
         }
 
     }
