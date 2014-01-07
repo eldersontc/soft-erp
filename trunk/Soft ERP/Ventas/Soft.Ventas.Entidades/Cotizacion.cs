@@ -19,7 +19,7 @@ namespace Soft.Ventas.Entidades
         public virtual SocioNegocio Vendedor { get; set; }
         public virtual Decimal PorcentajeUtilidad { get; set; }
         public virtual String EstadoAprobacion { get; set; }
-
+        public virtual Moneda Moneda { get; set; }
 
         public virtual ListaCostosMaquina ListaCostosMaquina { get; set; }
         public virtual ListaPreciosExistencia ListaPreciosExistencia { get; set; }
