@@ -17,6 +17,7 @@ namespace Soft.Inventario.Entidades
         public virtual String Factura { get; set; }
         public virtual SocioNegocio Proveedor { get; set; }
         public virtual Almacen Almacen { get; set; }
+        public virtual Moneda Moneda { get; set; }
 
         public virtual ItemEntradaInventario AddItem()
         {
