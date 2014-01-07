@@ -20,6 +20,7 @@ namespace Soft.Seguridad.Entidades
         public virtual Perfil Perfil { get; set; }
         public virtual String Skyn { get; set; }
         public virtual String Imagen { get; set; }
+        public virtual Boolean SuperAdministrador { get; set; }
 
     }
 }
