@@ -67,6 +67,7 @@ namespace Soft.Ventas.Win
             ssResponsable.Text = (Cotizacion.Responsable != null) ? Cotizacion.Responsable.Nombre : "";
             ssVendedor.Text = (Cotizacion.Vendedor != null) ? Cotizacion.Vendedor.Nombre : "";
             ssFormaPago.Text = (Cotizacion.ModalidadCredito != null) ? Cotizacion.ModalidadCredito.Descripcion : "";
+            ssMoneda.Text = (Cotizacion.Moneda != null) ? Cotizacion.Moneda.Simbolo : "";
             txtNumeracion.Text = Cotizacion.Numeracion;
             udtFechaCreacion.Value = Cotizacion.FechaCreacion;
             txtObservacion.Text = Cotizacion.Observacion;
@@ -659,6 +660,13 @@ namespace Soft.Ventas.Win
             FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
             Cotizacion.ListaPreciosTransporte = (ListaPreciosTransporte)FrmSeleccionar.GetSelectedEntity(typeof(ListaPreciosTransporte), "Lista Precios Transporte", " Activo = 1");
             busListaPreciosTransporte.Text = (Cotizacion.ListaPreciosTransporte != null) ? Cotizacion.ListaPreciosTransporte.Nombre : "";
+        }
+
+        private void ssMoneda_Search(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionarMoneda = new FrmSelectedEntity();
+            Cotizacion.Moneda = (Moneda)FrmSeleccionarMoneda.GetSelectedEntity(typeof(Moneda), "Moneda");
+            ssMoneda.Text = (Cotizacion.Moneda != null) ? Cotizacion.Moneda.Simbolo : "";
         }
 
     
