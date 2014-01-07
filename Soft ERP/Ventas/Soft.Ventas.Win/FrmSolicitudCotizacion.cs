@@ -58,6 +58,7 @@ namespace Soft.Ventas.Win
             ssCliente.Text = (SolicitudCotizacion.Cliente != null) ? SolicitudCotizacion.Cliente.Nombre : "";
             ssResponsable.Text = (SolicitudCotizacion.Responsable != null) ? SolicitudCotizacion.Responsable.Nombre : "";
             ssFormaPago.Text = (SolicitudCotizacion.ModalidadCredito != null) ? SolicitudCotizacion.ModalidadCredito.Descripcion : "";
+            ssMoneda.Text = (SolicitudCotizacion.Moneda != null) ? SolicitudCotizacion.Moneda.Simbolo : "";
             txtNumeracion.Text = SolicitudCotizacion.Numeracion;
             udtFechaCreacion.Value = SolicitudCotizacion.FechaCreacion;
             txtObservacion.Text = SolicitudCotizacion.Observacion;
@@ -376,6 +377,13 @@ namespace Soft.Ventas.Win
         {
             if (ItemSolicitudCotizacion == null) { return; }
             ItemSolicitudCotizacion.MedidaCerradaAlto = Convert.ToInt32(txtMedidaCerradaAlto.Value);
+        }
+
+        private void ssMoneda_Search(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionarMoneda = new FrmSelectedEntity();
+            SolicitudCotizacion.Moneda = (Moneda)FrmSeleccionarMoneda.GetSelectedEntity(typeof(Moneda), "Moneda");
+            ssMoneda.Text = (SolicitudCotizacion.Moneda != null) ? SolicitudCotizacion.Moneda.Simbolo : "";
         }
 
 
