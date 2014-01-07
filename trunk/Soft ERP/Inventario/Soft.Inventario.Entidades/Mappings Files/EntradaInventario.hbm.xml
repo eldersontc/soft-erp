@@ -17,6 +17,7 @@
     <many-to-one name="Proveedor" class="Soft.Entities.SocioNegocio" column="IDProveedor" insert="true" update="true" lazy="false"/>
     <many-to-one name="Responsable" class="Soft.Entities.SocioNegocio" column="IDResponsable" insert="true" update="true" lazy="false"/>
     <many-to-one name="Almacen" class="Soft.Inventario.Entidades.Almacen" column="IDAlmacen" insert="true" update="true" lazy="false"/>
+    <many-to-one name="Moneda" class="Soft.Entities.Moneda" column="IDMoneda" insert="true" update="true" lazy="false"/>
     
     <bag name="Items" cascade="all-delete-orphan" order-by="Orden" lazy="false">
       <key column="IDEntradaInventario"/>
