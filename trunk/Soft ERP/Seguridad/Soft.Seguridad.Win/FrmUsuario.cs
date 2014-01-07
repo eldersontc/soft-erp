@@ -33,6 +33,7 @@ namespace Soft.Seguridad.Win
             UIActualizando = true;
             ssEmpresa.Text = (Usuario.Empresa!=null)?Usuario.Empresa.RazonSocial:"";
             ssPerfil.Text = (Usuario.Perfil != null) ? Usuario.Perfil.Nombre : "";
+            chkSuperAdministrador.Checked = Usuario.SuperAdministrador;
             txtNombreUsuario.Text = Usuario.NombreUsuario;
             txtIDUsuario.Text = Usuario.UserID;
             txtContrasena.Text = Usuario.Contrasena;
@@ -113,6 +114,12 @@ namespace Soft.Seguridad.Win
                 Usuario.Imagen = OpenFile.FileName.Replace(FrmMain.CarpetaImagenes, "");
                 upbImagen.Image = Image.FromFile(OpenFile.FileName);
             }
+        }
+
+        private void chkSuperAdministrador_CheckedChanged(object sender, EventArgs e)
+        {
+            if (UIActualizando) { return; }
+            Usuario.SuperAdministrador = chkSuperAdministrador.Checked;
         }
 
     }
