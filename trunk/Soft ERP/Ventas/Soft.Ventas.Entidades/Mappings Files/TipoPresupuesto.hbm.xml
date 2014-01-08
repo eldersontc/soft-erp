@@ -14,6 +14,9 @@
     <property name="NumeracionLongitud" type="int"/>
     <property name="GeneraNumeracionAlFinal" type="boolean"/>
     <property name="NumeracionAutomatica" type="boolean"/>
+    <property name="Entidad" type="string"/>
+    <property name="EntidadTipoDocumento" type="string"/>
+
 
     <many-to-one name="Reporte" class="Soft.Reporte.Entidades.Reporte" column="IDReporte" insert="true" update="true" lazy="false"/>
 
