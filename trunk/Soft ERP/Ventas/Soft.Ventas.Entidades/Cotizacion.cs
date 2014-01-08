@@ -10,7 +10,14 @@ namespace Soft.Ventas.Entidades
     [Serializable]
     public class Cotizacion : Documento 
     {
-        public Cotizacion() { FechaCreacion = DateTime.Now; }
+        public Cotizacion()
+        {
+            if (NewInstance)
+            {
+                FechaCreacion = DateTime.Now;
+                EstadoAprobacion = "Pendiente";
+            }
+        }
 
         public virtual SocioNegocio Cliente { get; set; }
         public virtual ModalidadCredito ModalidadCredito { get; set; }
