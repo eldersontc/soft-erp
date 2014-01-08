@@ -386,6 +386,7 @@
             this.ugDistritos.Text = "ultraGrid1";
             this.ugDistritos.ClickCellButton += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ugDistritos_ClickCellButton);
             this.ugDistritos.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.ugDistritos_AfterSelectChange);
+            this.ugDistritos.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.ugDistritos_ClickCell);
             // 
             // ultraTabPageControl3
             // 
