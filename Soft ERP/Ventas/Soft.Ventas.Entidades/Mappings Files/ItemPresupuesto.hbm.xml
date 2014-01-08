@@ -5,6 +5,9 @@
 
     <id name="ID" column ="ID" type="string" unsaved-value="0"/>
     <property name="IDCotizacion" type="string"/>
+    <property name="Total" type="decimal"/>
+    <property name="TotalFinal" type="decimal"/>
+    <property name="Recargo" type="decimal"/>
     
   </class>
 
