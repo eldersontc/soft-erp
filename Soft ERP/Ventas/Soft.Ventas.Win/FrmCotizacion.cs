@@ -68,6 +68,9 @@ namespace Soft.Ventas.Win
             ssVendedor.Text = (Cotizacion.Vendedor != null) ? Cotizacion.Vendedor.Nombre : "";
             ssFormaPago.Text = (Cotizacion.ModalidadCredito != null) ? Cotizacion.ModalidadCredito.Descripcion : "";
             ssMoneda.Text = (Cotizacion.Moneda != null) ? Cotizacion.Moneda.Simbolo : "";
+            ssContacto.Text = (Cotizacion.Contacto != null) ? Cotizacion.Contacto.Nombre : "";
+            ssDireccionEntrega.Text = Cotizacion.DireccionEntrega;
+            ssDireccionFactura.Text = Cotizacion.DireccionFacturacion;
             txtNumeracion.Text = Cotizacion.Numeracion;
             udtFechaCreacion.Value = Cotizacion.FechaCreacion;
             txtObservacion.Text = Cotizacion.Observacion;
@@ -669,7 +672,33 @@ namespace Soft.Ventas.Win
             ssMoneda.Text = (Cotizacion.Moneda != null) ? Cotizacion.Moneda.Simbolo : "";
         }
 
-    
+        private void ssContacto_Search(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionarContacto = new FrmSelectedEntity();
+            Cotizacion.Contacto = (ItemSocioNegocioContacto)FrmSeleccionarContacto.GetSelectedEntity(typeof(ItemSocioNegocioContacto), "Contacto", String.Format("IDSocioNegocio = '{0}'", Cotizacion.Cliente.ID));
+            ssContacto.Text = (Cotizacion.Contacto != null) ? Cotizacion.Contacto.Nombre : "";
+        }
 
+        private void ssDireccionEntrega_Search(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionarDireccion = new FrmSelectedEntity();
+            ItemSocioNegocioDireccion Direccion = (ItemSocioNegocioDireccion)FrmSeleccionarDireccion.GetSelectedEntity(typeof(ItemSocioNegocioDireccion), "Dirección", String.Format("IDSocioNegocio = '{0}' AND EsDireccionEntrega = 1", Cotizacion.Cliente.ID));
+            if(Direccion != null){
+                Cotizacion.DireccionEntrega = Direccion.Direccion;
+                ssDireccionEntrega.Text = Direccion.Direccion;
+            }
+        }
+
+        private void ssDireccionFactura_Search(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionarDireccion = new FrmSelectedEntity();
+            ItemSocioNegocioDireccion Direccion = (ItemSocioNegocioDireccion)FrmSeleccionarDireccion.GetSelectedEntity(typeof(ItemSocioNegocioDireccion), "Dirección", String.Format("IDSocioNegocio = '{0}' AND EsDireccionFacturacion = 1", Cotizacion.Cliente.ID));
+            if (Direccion != null)
+            {
+                Cotizacion.DireccionFacturacion = Direccion.Direccion;
+                ssDireccionFactura.Text = Direccion.Direccion;
+            }
+        }
+        
     }
 }
