@@ -53,6 +53,9 @@
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
@@ -76,9 +79,6 @@
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             this.tabItems = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ugServicios = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.ubEliminarServicio = new Infragistics.Win.Misc.UltraButton();
@@ -130,6 +130,13 @@
             this.ultraLabel5 = new Infragistics.Win.Misc.UltraLabel();
             this.busListaPrecioMaterial = new Soft.Controls.SoftSearch();
             this.ultraLabel4 = new Infragistics.Win.Misc.UltraLabel();
+            this.ultraTabPageControl4 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ssDireccionFactura = new Soft.Controls.SoftSearch();
+            this.lblDireccionFactura = new Infragistics.Win.Misc.UltraLabel();
+            this.ssDireccionEntrega = new Soft.Controls.SoftSearch();
+            this.lblDireccionEntrega = new Infragistics.Win.Misc.UltraLabel();
+            this.ssContacto = new Soft.Controls.SoftSearch();
+            this.lblContacto = new Infragistics.Win.Misc.UltraLabel();
             this.utcItemCotizacion = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage2 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.utCotizacion = new Infragistics.Win.UltraWinTree.UltraTree();
@@ -164,13 +171,6 @@
             this.ubRecalcular = new Infragistics.Win.Misc.UltraButton();
             this.ssMoneda = new Soft.Controls.SoftSearch();
             this.lblMoneda = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraTabPageControl4 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.ssContacto = new Soft.Controls.SoftSearch();
-            this.lblContacto = new Infragistics.Win.Misc.UltraLabel();
-            this.ssDireccionEntrega = new Soft.Controls.SoftSearch();
-            this.lblDireccionEntrega = new Infragistics.Win.Misc.UltraLabel();
-            this.ssDireccionFactura = new Soft.Controls.SoftSearch();
-            this.lblDireccionFactura = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.tabItems.SuspendLayout();
@@ -200,6 +200,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ugbPrecorte)).BeginInit();
             this.ugbPrecorte.SuspendLayout();
             this.ultraTabPageControl3.SuspendLayout();
+            this.ultraTabPageControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.utcItemCotizacion)).BeginInit();
             this.utcItemCotizacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.utCotizacion)).BeginInit();
@@ -212,7 +213,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.uneTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneImpuesto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneSubTotal)).BeginInit();
-            this.ultraTabPageControl4.SuspendLayout();
             this.SuspendLayout();
             // 
             // ugbParent
@@ -614,7 +614,7 @@
             this.ultraTabPageControl1.Controls.Add(this.txtObservacionItem);
             this.ultraTabPageControl1.Controls.Add(this.lblObservacionItem);
             this.ultraTabPageControl1.Controls.Add(this.utcAcabadosyServicios);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(673, 329);
             // 
@@ -1209,6 +1209,78 @@
             this.ultraLabel4.TabIndex = 89;
             this.ultraLabel4.Text = "Lista de Precios Material";
             // 
+            // ultraTabPageControl4
+            // 
+            this.ultraTabPageControl4.Controls.Add(this.ssDireccionFactura);
+            this.ultraTabPageControl4.Controls.Add(this.lblDireccionFactura);
+            this.ultraTabPageControl4.Controls.Add(this.ssDireccionEntrega);
+            this.ultraTabPageControl4.Controls.Add(this.lblDireccionEntrega);
+            this.ultraTabPageControl4.Controls.Add(this.ssContacto);
+            this.ultraTabPageControl4.Controls.Add(this.lblContacto);
+            this.ultraTabPageControl4.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl4.Name = "ultraTabPageControl4";
+            this.ultraTabPageControl4.Size = new System.Drawing.Size(673, 329);
+            // 
+            // ssDireccionFactura
+            // 
+            this.ssDireccionFactura.BackColor = System.Drawing.Color.Transparent;
+            this.ssDireccionFactura.Location = new System.Drawing.Point(154, 66);
+            this.ssDireccionFactura.Name = "ssDireccionFactura";
+            this.ssDireccionFactura.Size = new System.Drawing.Size(250, 28);
+            this.ssDireccionFactura.TabIndex = 103;
+            this.ssDireccionFactura.Search += new System.EventHandler(this.ssDireccionFactura_Search);
+            // 
+            // lblDireccionFactura
+            // 
+            appearance31.BackColor = System.Drawing.Color.Transparent;
+            this.lblDireccionFactura.Appearance = appearance31;
+            this.lblDireccionFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblDireccionFactura.Location = new System.Drawing.Point(20, 71);
+            this.lblDireccionFactura.Name = "lblDireccionFactura";
+            this.lblDireccionFactura.Size = new System.Drawing.Size(128, 23);
+            this.lblDireccionFactura.TabIndex = 102;
+            this.lblDireccionFactura.Text = "Dirección de Factura";
+            // 
+            // ssDireccionEntrega
+            // 
+            this.ssDireccionEntrega.BackColor = System.Drawing.Color.Transparent;
+            this.ssDireccionEntrega.Location = new System.Drawing.Point(154, 41);
+            this.ssDireccionEntrega.Name = "ssDireccionEntrega";
+            this.ssDireccionEntrega.Size = new System.Drawing.Size(250, 28);
+            this.ssDireccionEntrega.TabIndex = 101;
+            this.ssDireccionEntrega.Search += new System.EventHandler(this.ssDireccionEntrega_Search);
+            // 
+            // lblDireccionEntrega
+            // 
+            appearance32.BackColor = System.Drawing.Color.Transparent;
+            this.lblDireccionEntrega.Appearance = appearance32;
+            this.lblDireccionEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblDireccionEntrega.Location = new System.Drawing.Point(20, 46);
+            this.lblDireccionEntrega.Name = "lblDireccionEntrega";
+            this.lblDireccionEntrega.Size = new System.Drawing.Size(128, 23);
+            this.lblDireccionEntrega.TabIndex = 100;
+            this.lblDireccionEntrega.Text = "Dirección de Entrega";
+            // 
+            // ssContacto
+            // 
+            this.ssContacto.BackColor = System.Drawing.Color.Transparent;
+            this.ssContacto.Location = new System.Drawing.Point(154, 16);
+            this.ssContacto.Name = "ssContacto";
+            this.ssContacto.Size = new System.Drawing.Size(250, 28);
+            this.ssContacto.TabIndex = 99;
+            this.ssContacto.Search += new System.EventHandler(this.ssContacto_Search);
+            // 
+            // lblContacto
+            // 
+            appearance33.BackColor = System.Drawing.Color.Transparent;
+            this.lblContacto.Appearance = appearance33;
+            this.lblContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblContacto.Location = new System.Drawing.Point(20, 21);
+            this.lblContacto.Name = "lblContacto";
+            this.lblContacto.Size = new System.Drawing.Size(79, 23);
+            this.lblContacto.TabIndex = 98;
+            this.lblContacto.Text = "Contacto";
+            // 
             // utcItemCotizacion
             // 
             appearance7.BackColor = System.Drawing.Color.Transparent;
@@ -1571,78 +1643,6 @@
             this.lblMoneda.TabIndex = 74;
             this.lblMoneda.Text = "Moneda";
             // 
-            // ultraTabPageControl4
-            // 
-            this.ultraTabPageControl4.Controls.Add(this.ssDireccionFactura);
-            this.ultraTabPageControl4.Controls.Add(this.lblDireccionFactura);
-            this.ultraTabPageControl4.Controls.Add(this.ssDireccionEntrega);
-            this.ultraTabPageControl4.Controls.Add(this.lblDireccionEntrega);
-            this.ultraTabPageControl4.Controls.Add(this.ssContacto);
-            this.ultraTabPageControl4.Controls.Add(this.lblContacto);
-            this.ultraTabPageControl4.Location = new System.Drawing.Point(1, 23);
-            this.ultraTabPageControl4.Name = "ultraTabPageControl4";
-            this.ultraTabPageControl4.Size = new System.Drawing.Size(673, 329);
-            // 
-            // ssContacto
-            // 
-            this.ssContacto.BackColor = System.Drawing.Color.Transparent;
-            this.ssContacto.Location = new System.Drawing.Point(154, 16);
-            this.ssContacto.Name = "ssContacto";
-            this.ssContacto.Size = new System.Drawing.Size(250, 28);
-            this.ssContacto.TabIndex = 99;
-            this.ssContacto.Search += new System.EventHandler(this.ssContacto_Search);
-            // 
-            // lblContacto
-            // 
-            appearance33.BackColor = System.Drawing.Color.Transparent;
-            this.lblContacto.Appearance = appearance33;
-            this.lblContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblContacto.Location = new System.Drawing.Point(20, 21);
-            this.lblContacto.Name = "lblContacto";
-            this.lblContacto.Size = new System.Drawing.Size(79, 23);
-            this.lblContacto.TabIndex = 98;
-            this.lblContacto.Text = "Contacto";
-            // 
-            // ssDireccionEntrega
-            // 
-            this.ssDireccionEntrega.BackColor = System.Drawing.Color.Transparent;
-            this.ssDireccionEntrega.Location = new System.Drawing.Point(154, 41);
-            this.ssDireccionEntrega.Name = "ssDireccionEntrega";
-            this.ssDireccionEntrega.Size = new System.Drawing.Size(250, 28);
-            this.ssDireccionEntrega.TabIndex = 101;
-            this.ssDireccionEntrega.Search += new System.EventHandler(this.ssDireccionEntrega_Search);
-            // 
-            // lblDireccionEntrega
-            // 
-            appearance32.BackColor = System.Drawing.Color.Transparent;
-            this.lblDireccionEntrega.Appearance = appearance32;
-            this.lblDireccionEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblDireccionEntrega.Location = new System.Drawing.Point(20, 46);
-            this.lblDireccionEntrega.Name = "lblDireccionEntrega";
-            this.lblDireccionEntrega.Size = new System.Drawing.Size(128, 23);
-            this.lblDireccionEntrega.TabIndex = 100;
-            this.lblDireccionEntrega.Text = "Dirección de Entrega";
-            // 
-            // ssDireccionFactura
-            // 
-            this.ssDireccionFactura.BackColor = System.Drawing.Color.Transparent;
-            this.ssDireccionFactura.Location = new System.Drawing.Point(154, 66);
-            this.ssDireccionFactura.Name = "ssDireccionFactura";
-            this.ssDireccionFactura.Size = new System.Drawing.Size(250, 28);
-            this.ssDireccionFactura.TabIndex = 103;
-            this.ssDireccionFactura.Search += new System.EventHandler(this.ssDireccionFactura_Search);
-            // 
-            // lblDireccionFactura
-            // 
-            appearance31.BackColor = System.Drawing.Color.Transparent;
-            this.lblDireccionFactura.Appearance = appearance31;
-            this.lblDireccionFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblDireccionFactura.Location = new System.Drawing.Point(20, 71);
-            this.lblDireccionFactura.Name = "lblDireccionFactura";
-            this.lblDireccionFactura.Size = new System.Drawing.Size(128, 23);
-            this.lblDireccionFactura.TabIndex = 102;
-            this.lblDireccionFactura.Text = "Dirección de Factura";
-            // 
             // FrmCotizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1683,6 +1683,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ugbPrecorte)).EndInit();
             this.ugbPrecorte.ResumeLayout(false);
             this.ultraTabPageControl3.ResumeLayout(false);
+            this.ultraTabPageControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.utcItemCotizacion)).EndInit();
             this.utcItemCotizacion.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.utCotizacion)).EndInit();
@@ -1695,7 +1696,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.uneTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneImpuesto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneSubTotal)).EndInit();
-            this.ultraTabPageControl4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

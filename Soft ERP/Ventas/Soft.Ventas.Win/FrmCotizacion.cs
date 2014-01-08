@@ -415,8 +415,25 @@ namespace Soft.Ventas.Win
         }
 
         private void CosteoElemento(ItemCotizacion itemCotizacion) {
-            ItemCotizacion.CostoMaquina = obtenerItemListaCostosMaquina(itemCotizacion);
-            ItemCotizacion.CostoMaterial = obtenerItemListaCostosMaterial(itemCotizacion);
+            if (ItemCotizacion.Maquina != null)
+            {
+                ItemCotizacion.CostoMaquina = obtenerItemListaCostosMaquina(itemCotizacion);
+            }
+            else {
+                ItemCotizacion.CostoMaquina = 0;
+            }
+
+
+            if (ItemCotizacion.Material != null)
+            {
+                ItemCotizacion.CostoMaterial = obtenerItemListaCostosMaterial(itemCotizacion);
+            }
+            else
+            {
+                ItemCotizacion.CostoMaterial = 0;
+            }
+
+           
             ItemCotizacion.Costo = ItemCotizacion.CostoMaquina + ItemCotizacion.CostoMaterial;
             ItemCotizacion.Precio = ItemCotizacion.Costo;
             
@@ -681,9 +698,35 @@ namespace Soft.Ventas.Win
 
         private void ssMoneda_Search(object sender, EventArgs e)
         {
-            FrmSelectedEntity FrmSeleccionarMoneda = new FrmSelectedEntity();
-            Cotizacion.Moneda = (Moneda)FrmSeleccionarMoneda.GetSelectedEntity(typeof(Moneda), "Moneda");
-            ssMoneda.Text = (Cotizacion.Moneda != null) ? Cotizacion.Moneda.Simbolo : "";
+            try
+            {
+                FrmSelectedEntity FrmSeleccionarMoneda = new FrmSelectedEntity();
+                Cotizacion.Moneda = (Moneda)FrmSeleccionarMoneda.GetSelectedEntity(typeof(Moneda), "Moneda");
+                
+                String filtro = "";
+                if (Cotizacion.Moneda != null)
+                { 
+                    if (Cotizacion.Moneda.Simbolo.Equals("US $"))
+                    {
+                        filtro = "IDMoneda='" + Cotizacion.Moneda.ID + "' and Fecha='" + Cotizacion.FechaCreacion.Date + "'";
+                        FrmSelectedEntity FrmSelectedMoneda = new FrmSelectedEntity();
+                        TipoCambio tc = (TipoCambio)FrmSelectedMoneda.GetSelectedEntity(typeof(TipoCambio), "Tipo de Cambio", filtro);
+                        Cotizacion.TipoCambioFecha = tc.TipoCambioVenta;
+                    }
+                    else {
+                        Cotizacion.TipoCambioFecha = 1;
+                    }
+                }
+
+                Mostrar();
+            }
+            catch (Exception ex)
+            {
+
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
+
+            
         }
 
         private void ssContacto_Search(object sender, EventArgs e)
