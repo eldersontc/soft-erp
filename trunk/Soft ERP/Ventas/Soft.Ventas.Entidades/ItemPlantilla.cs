@@ -34,12 +34,15 @@ namespace Soft.Ventas.Entidades
         public virtual String ObtenerFiltroMaquinas()
         {
             String Filtro = "";
-            foreach (ExistenciaMaquina Item in Operacion.Maquinas)
-            {
-                if (Filtro.Length > 0) { Filtro += ","; }
-                Filtro += "'"+ Item.Maquina.ID + "'";
+            if (Operacion != null) { 
+
+                foreach (ExistenciaMaquina Item in Operacion.Maquinas)
+                {
+                    if (Filtro.Length > 0) { Filtro += ","; }
+                    Filtro += "'"+ Item.Maquina.ID + "'";
+                }
+                if (Filtro.Length > 0) { Filtro = String.Format(" ID IN ({0})",Filtro); }
             }
-            if (Filtro.Length > 0) { Filtro = String.Format(" ID IN ({0})",Filtro); }
             return Filtro;
         }
 
