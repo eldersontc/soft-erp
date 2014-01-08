@@ -31,6 +31,23 @@ namespace Soft.Ventas.Entidades
             return Filtro;
         }
 
+        public virtual ItemPresupuesto ObtenerItem(String IDItem) {
+            return (ItemPresupuesto)Items.First(Item => ((ItemPresupuesto)Item).IDCotizacion.Equals(IDItem));
+        }
+
+        public override Decimal Total
+        {
+            get
+            {
+                Decimal ValorRetorno = 0;
+                foreach (ItemPresupuesto Item in Items)
+                {
+                    ValorRetorno += Item.TotalFinal;
+                }
+                return ValorRetorno;
+            }
+        }
+
         public virtual void GenerarNumCp()
         {
             String Result = "";
