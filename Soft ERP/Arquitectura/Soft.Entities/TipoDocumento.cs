@@ -21,6 +21,8 @@ namespace Soft.Entities
         public virtual Boolean GeneraNumeracionAlFinal { get; set; }
         public virtual Boolean NumeracionAutomatica { get; set; }
         public virtual String TipoSocioDeNegocio { get; set; }
+        public virtual String Entidad { get; set; }
+        public virtual String EntidadTipoDocumento { get; set; }
         public virtual Soft.Reporte.Entidades.Reporte Reporte { get; set; }
 
         public virtual string GenerarNumerodeDocumento()
@@ -29,6 +31,22 @@ namespace Soft.Entities
             if (NumeracionAutomatica == true)
             {
                 if (GeneraNumeracionAlFinal == false)
+                {
+                    String numeroactual = Convert.ToString(NumeracionActual + 1);
+                    String serie = CodigoSerie.PadLeft(LongitudSerie, '0');
+                    String numeracion = numeroactual.PadLeft(NumeracionLongitud, '0');
+                    resultado = serie + "-" + numeracion;
+                }
+            }
+            return resultado;
+        }
+
+        public virtual string ObtenerNumeroActual()
+        {
+            String resultado = "";
+            if (NumeracionAutomatica == true)
+            {
+                if (GeneraNumeracionAlFinal == true)
                 {
                     String numeroactual = Convert.ToString(NumeracionActual + 1);
                     String serie = CodigoSerie.PadLeft(LongitudSerie, '0');
