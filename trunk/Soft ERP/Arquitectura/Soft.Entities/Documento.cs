@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Soft.DataAccess;
 
 namespace Soft.Entities
 {
@@ -17,8 +18,12 @@ namespace Soft.Entities
         public virtual String Observacion { get; set; }
         public virtual DateTime FechaCreacion { get; set; }
         public virtual SocioNegocio Responsable { get; set; }
+        public virtual Moneda Moneda { get; set; }
         public virtual TipoDocumento TipoDocumento { get; set; }
         public virtual IList<ItemDocumento> Items { get; set; }
+        public virtual Decimal TipoCambio { get; set; }
+        
+
 
         private Decimal mSubTotal;
         public virtual Decimal SubTotal
@@ -60,6 +65,16 @@ namespace Soft.Entities
                 return Total;
             }
             set { mTotal = value; }
+        }
+
+        public virtual void GenerarNumCpAlFinal()
+        {
+            String SQL2 = "UPDATE " + TipoDocumento.Entidad + " SET Numeracion ='" + TipoDocumento.ObtenerNumeroActual() + "' WHERE ID ='" + ID + "'";
+
+                String SQL = "UPDATE " + TipoDocumento.EntidadTipoDocumento + " SET NumeracionActual = " + (TipoDocumento.NumeracionActual + 1) + " WHERE ID ='" + TipoDocumento.ID + "'";
+
+                HelperNHibernate.GetDataSet(SQL);
+                HelperNHibernate.GetDataSet(SQL2); 
         }
 
     }
