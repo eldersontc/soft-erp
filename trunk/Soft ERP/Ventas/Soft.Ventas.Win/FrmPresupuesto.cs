@@ -36,6 +36,8 @@ namespace Soft.Ventas.Win
         const String colCliente = "Cliente";
         const String colFecha = "Fecha";
         const String colTotal = "Total";
+        const String colRecargo = "Recargo";
+        const String colTotalFinal = "Total Final";
 
         public void InitGrids()
         {
@@ -54,6 +56,12 @@ namespace Soft.Ventas.Win
             column = columns.Columns.Add(colTotal);
             column.DataType = typeof(Decimal);
 
+            column = columns.Columns.Add(colRecargo);
+            column.DataType = typeof(Decimal);
+
+            column = columns.Columns.Add(colTotalFinal);
+            column.DataType = typeof(Decimal);
+
             ugCotizaciones.DataSource = columns;
             MapKeys(ref ugCotizaciones);
         }
@@ -64,10 +72,10 @@ namespace Soft.Ventas.Win
             ssCliente.Text = (Presupuesto.Cliente != null) ? Presupuesto.Cliente.Nombre : "";
             txtNumeracion.Text = Presupuesto.Numeracion;
             udtFechaCreacion.Value = Presupuesto.FechaCreacion;
-            MostrarItems();
+            MostrarItems(false);
         }
 
-        public void MostrarItems() {
+        public void MostrarItems(Boolean Nuevo) {
             if (Presupuesto.Items.Count == 0) {
                 Presupuesto.Total = 0;
                 uneTotal.Value = 0;
@@ -78,19 +86,22 @@ namespace Soft.Ventas.Win
             XmlDocument XML = HelperNHibernate.ExecuteView("vSF_ItemPresupuestoxPresupuesto", Filtro);
             if (XML.HasChildNodes)
             {
-                Decimal mTotal = 0;
                 foreach (XmlNode NodoItem in XML.DocumentElement.ChildNodes)
                 {
+                    ItemPresupuesto Item = Presupuesto.ObtenerItem(NodoItem.SelectSingleNode("@IDCotizacion").Value);
+                    Item.Total = Convert.ToDecimal(NodoItem.SelectSingleNode("@Total").Value);
                     UltraGridRow Row = ugCotizaciones.DisplayLayout.Bands[0].AddNew();
-                    Row.Tag = NodoItem.SelectSingleNode("@ID").Value;
+                    Row.Tag = Item;
                     Row.Cells[colNumero].Value = NodoItem.SelectSingleNode("@Numeracion").Value;
                     Row.Cells[colCliente].Value = NodoItem.SelectSingleNode("@Cliente").Value;
                     Row.Cells[colFecha].Value = NodoItem.SelectSingleNode("@Fecha").Value;
                     Row.Cells[colTotal].Value = NodoItem.SelectSingleNode("@Total").Value;
-                    mTotal += Convert.ToDecimal(Row.Cells[colTotal].Value);
+                    Row.Cells[colRecargo].Value = Item.Recargo;
+                    if (Nuevo) { Item.TotalFinal = Item.Total; }
+                    Row.Cells[colTotalFinal].Value = Item.TotalFinal;
                 }
-                uneTotal.Value = mTotal; ;
             }
+            uneTotal.Value = Presupuesto.Total;
         }
 
         private void ssCliente_Search(object sender, EventArgs e)
@@ -121,15 +132,15 @@ namespace Soft.Ventas.Win
             {
                 Presupuesto.AddItem(Item);
             }
-            MostrarItems();
+            MostrarItems(true);
         }
 
         private void ubEliminar_Click(object sender, EventArgs e)
         {
             if (ugCotizaciones.ActiveRow == null) { return; }
-            Presupuesto.Items.Remove((ItemPresupuesto)Presupuesto.Items.First(i=> ((ItemPresupuesto)i).IDCotizacion.Equals(Convert.ToString(ugCotizaciones.ActiveRow.Tag))));
+            Presupuesto.Items.Remove((ItemPresupuesto)ugCotizaciones.ActiveRow.Tag);
             ugCotizaciones.ActiveRow.Delete(false);
-            MostrarItems();
+            MostrarItems(false);
         }
 
         private void ssTipoPresupuesto_Search(object sender, EventArgs e)
@@ -145,6 +156,27 @@ namespace Soft.Ventas.Win
                     Presupuesto.GenerarNumCp();
                     txtNumeracion.Text = Presupuesto.Numeracion;
                 }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        public void ugCotizaciones_CellKeyEnter(UltraGridCell Cell)
+        {
+            try
+            {
+                ItemPresupuesto Item = (ItemPresupuesto)Cell.Row.Tag;
+                switch (Cell.Column.Key)
+                {
+                    case colTotalFinal:
+                        Item.TotalFinal = Convert.ToDecimal(Cell.Text);
+                        break;
+                    default:
+                        break;
+                }
+                MostrarItems(false);
             }
             catch (Exception ex)
             {
