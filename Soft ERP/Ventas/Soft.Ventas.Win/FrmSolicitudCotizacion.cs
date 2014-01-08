@@ -132,19 +132,36 @@ namespace Soft.Ventas.Win
 
         private void ssTipoDocumento_Search(object sender, EventArgs e)
         {
-            FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
-            TipoSolicitudCotizacion TipoDocumento = (TipoSolicitudCotizacion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoSolicitudCotizacion), "Tipo Solicitud de Cotización");
-            if ((SolicitudCotizacion.TipoDocumento == null) || (SolicitudCotizacion.TipoDocumento.Codigo != TipoDocumento.Codigo))
+
+            try
             {
-                SolicitudCotizacion.TipoDocumento = (TipoSolicitudCotizacion)HelperNHibernate.GetEntityByID("TipoSolicitudCotizacion", TipoDocumento.ID);
+                FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
+                TipoSolicitudCotizacion TipoDocumento = (TipoSolicitudCotizacion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoSolicitudCotizacion), "Tipo Solicitud de Cotización");
+                if ((SolicitudCotizacion.TipoDocumento == null) || (SolicitudCotizacion.TipoDocumento.Codigo != TipoDocumento.Codigo))
+                {
+                    SolicitudCotizacion.TipoDocumento = (TipoSolicitudCotizacion)HelperNHibernate.GetEntityByID("TipoSolicitudCotizacion", TipoDocumento.ID);
+                    SolicitudCotizacion.GenerarNumCp();
+                    try
+                    {
+                        FrmSelectedEntity FrmSeleccionarEmpleado = new FrmSelectedEntity();
+                        String filtro = "IDUsuario='" + FrmMain.Usuario.ID + "'";
+                        SocioNegocio sn = (SocioNegocio)FrmSeleccionarEmpleado.GetSelectedEntity(typeof(SocioNegocio), "Empleado", filtro);
 
-                FrmSelectedEntity FrmSeleccionarEmpleado = new FrmSelectedEntity();
-                String filtro = "IDUsuario='"+FrmMain.Usuario.ID+"'";
-                SolicitudCotizacion.Responsable = (SocioNegocio)FrmSeleccionarEmpleado.GetSelectedEntity(typeof(SocioNegocio), "Empleado", filtro);
+                        SolicitudCotizacion.Responsable = (SocioNegocio)HelperNHibernate.GetEntityByID("SocioNegocio", sn.ID);
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
+                Mostrar();
 
-                SolicitudCotizacion.GenerarNumCp();
             }
-            Mostrar();
+            catch (Exception ex)
+            {
+
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
+
 
         }
 
