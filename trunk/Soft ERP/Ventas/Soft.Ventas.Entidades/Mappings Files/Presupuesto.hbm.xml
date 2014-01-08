@@ -7,7 +7,9 @@
     <property name="Numeracion" type="string"/>
     <property name="FechaCreacion" type="DateTime"/>
     <property name="Total" type="decimal"/>
-
+    <property name="TipoCambioFecha" type="decimal"/>
+    <property name="TotalSoles" type="decimal"/>
+    
     <many-to-one name="TipoDocumento" class="Soft.Ventas.Entidades.TipoPresupuesto" column="IDTipoDocumento" insert="true" update="true" lazy="false"/>
     <many-to-one name="Cliente" class="Soft.Entities.SocioNegocio" column="IDCliente" insert="true" update="true" lazy="false"/>
     
