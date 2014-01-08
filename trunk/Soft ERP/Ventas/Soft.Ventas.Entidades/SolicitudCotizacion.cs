@@ -22,6 +22,9 @@ namespace Soft.Ventas.Entidades
         public virtual String Descripcion { get; set; }
         public virtual String EstadoAprobacion { get; set; }
         public virtual Moneda Moneda { get; set; }
+        public virtual ItemSocioNegocioContacto Contacto { get; set; }
+        public virtual String DireccionEntrega { get; set; }
+        public virtual String DireccionFacturacion { get; set; }
 
         public virtual ItemSolicitudCotizacion AddItem()
         {
