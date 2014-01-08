@@ -21,8 +21,8 @@ namespace Soft.Entities
         public virtual Moneda Moneda { get; set; }
         public virtual TipoDocumento TipoDocumento { get; set; }
         public virtual IList<ItemDocumento> Items { get; set; }
-        public virtual Decimal TipoCambio { get; set; }
-        
+        public virtual Decimal TipoCambioFecha { get; set; }
+        public virtual Decimal TotalSoles { get; set; }
 
 
         private Decimal mSubTotal;
@@ -61,7 +61,10 @@ namespace Soft.Entities
             get
             {
                 Decimal Total = 0;
-                if (SubTotal > 0) { Total = SubTotal + Impuesto; }
+                if (SubTotal > 0) { 
+                    Total = SubTotal + Impuesto;
+                    TotalSoles = Total / TipoCambioFecha;
+                }
                 return Total;
             }
             set { mTotal = value; }
