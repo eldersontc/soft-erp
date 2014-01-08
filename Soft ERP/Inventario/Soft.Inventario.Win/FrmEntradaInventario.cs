@@ -13,6 +13,7 @@ using Soft.Entities;
 using Microsoft.VisualBasic;
 using Soft.DataAccess;
 using Infragistics.Win;
+using Soft.Seguridad.Entidades;
 
 namespace Soft.Inventario.Win
 {
@@ -98,6 +99,11 @@ namespace Soft.Inventario.Win
         }
 
         public void MostrarCostos() {
+            if (EntradaInventario.Moneda != null) {
+                LabelSubtotal.Text = "Sub Total " + EntradaInventario.Moneda.Simbolo;
+                LabelImpuesto.Text = "Impuesto " + Convert.ToInt16(EntradaInventario.TipoDocumento.PorcentajeImpuesto)+"%";
+                LabelTotal.Text = "Total " + EntradaInventario.Moneda.Simbolo;
+            }
             uneSubTotal.Value = EntradaInventario.SubTotal;
             uneImpuesto.Value = EntradaInventario.Impuesto;
             uneTotal.Value = EntradaInventario.Total;
@@ -135,17 +141,43 @@ namespace Soft.Inventario.Win
 
         private void ssTipoDocumento_Search(object sender, EventArgs e)
         {
-            FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
-            String Filtro = "Operacion='Entrada'";
-            TipoDocumentoInventario TipoDocumento = (TipoDocumentoInventario)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoDocumentoInventario), "Tipo de Inventario", Filtro);
+            try
+            {
 
-            if ((EntradaInventario.TipoDocumento == null)||(EntradaInventario.TipoDocumento.Codigo != TipoDocumento.Codigo)){
-                EntradaInventario.TipoDocumento = (TipoDocumentoInventario)HelperNHibernate.GetEntityByID("TipoDocumentoInventario", TipoDocumento.ID);
-                EntradaInventario.GenerarNumCp();
-                LabelSocioNegocio.Text = EntradaInventario.TipoDocumento.TipoSocioDeNegocio;
-                LabelSocioNegocio.Visible = (EntradaInventario.TipoDocumento.TipoSocioDeNegocio.Equals("Ninguno")) ? false : true;
-                ssProveedor.Visible = (EntradaInventario.TipoDocumento.TipoSocioDeNegocio.Equals("Ninguno")) ? false : true;
+                FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
+                String Filtro = "Operacion='Entrada'";
+                TipoDocumentoInventario TipoDocumento = (TipoDocumentoInventario)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoDocumentoInventario), "Tipo de Inventario", Filtro);
+
+                if ((EntradaInventario.TipoDocumento == null) || (EntradaInventario.TipoDocumento.Codigo != TipoDocumento.Codigo))
+                {
+                    EntradaInventario.TipoDocumento = (TipoDocumentoInventario)HelperNHibernate.GetEntityByID("TipoDocumentoInventario", TipoDocumento.ID);
+                    EntradaInventario.GenerarNumCp();
+                    LabelSocioNegocio.Text = EntradaInventario.TipoDocumento.TipoSocioDeNegocio;
+                    LabelSocioNegocio.Visible = (EntradaInventario.TipoDocumento.TipoSocioDeNegocio.Equals("Ninguno")) ? false : true;
+                    ssProveedor.Visible = (EntradaInventario.TipoDocumento.TipoSocioDeNegocio.Equals("Ninguno")) ? false : true;
+                    ssProveedor.Enabled = (EntradaInventario.TipoDocumento.TipoSocioDeNegocio.Equals("Ninguno")) ? false : true;
+
+                }
+
+                try
+                {
+                    FrmSelectedEntity FrmSeleccionarEmpleado = new FrmSelectedEntity();
+                    String filtro = "IDUsuario='" + FrmMain.Usuario.ID + "'";
+                    SocioNegocio sn = (SocioNegocio)FrmSeleccionarEmpleado.GetSelectedEntity(typeof(SocioNegocio), "Empleado", filtro);
+
+                    EntradaInventario.Responsable = (SocioNegocio)HelperNHibernate.GetEntityByID("SocioNegocio", sn.ID);
+                }
+                catch (Exception)
+                {
+                }
             }
+            catch (Exception ex)
+            {
+
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
+
+            
 
             Mostrar();
         }
@@ -310,9 +342,36 @@ namespace Soft.Inventario.Win
 
         private void ssMoneda_Search(object sender, EventArgs e)
         {
-            FrmSelectedEntity FrmSeleccionarMoneda = new FrmSelectedEntity();
-            EntradaInventario.Moneda = (Moneda)FrmSeleccionarMoneda.GetSelectedEntity(typeof(Moneda), "Moneda");
-            ssMoneda.Text = (EntradaInventario.Moneda != null) ? EntradaInventario.Moneda.Simbolo : "";
+            try
+            {
+                FrmSelectedEntity FrmSeleccionarMoneda = new FrmSelectedEntity();
+                EntradaInventario.Moneda = (Moneda)FrmSeleccionarMoneda.GetSelectedEntity(typeof(Moneda), "Moneda");
+                String filtro = "";
+                if (EntradaInventario.Moneda != null)
+                {
+                    if (EntradaInventario.Moneda.Simbolo.Equals("US $"))
+                    {
+                        filtro = "IDMoneda='" + EntradaInventario.Moneda.ID + "' and Fecha='" + EntradaInventario.FechaCreacion.Date + "'";
+                        FrmSelectedEntity FrmSelectedMoneda = new FrmSelectedEntity();
+                        TipoCambio tc = (TipoCambio)FrmSelectedMoneda.GetSelectedEntity(typeof(TipoCambio), "Tipo de Cambio", filtro);
+                        EntradaInventario.TipoCambioFecha = tc.TipoCambioVenta;
+                    }
+                    else
+                    {
+                        EntradaInventario.TipoCambioFecha = 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
+            Mostrar();
+        }
+
+        private void uneSubTotal_ValueChanged(object sender, EventArgs e)
+        {
+
         }
 
 
