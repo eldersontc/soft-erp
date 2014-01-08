@@ -12,14 +12,16 @@
     <property name="Descripcion" type="string"/>
     <property name="PorcentajeUtilidad" type="decimal"/>
     <property name="EstadoAprobacion" type="string"/>
-    
+    <property name="DireccionEntrega" type="string"/>
+    <property name="DireccionFacturacion" type="string"/>
+
     <many-to-one name="TipoDocumento" class="Soft.Ventas.Entidades.TipoCotizacion" column="IDTipoDocumento" insert="true" update="true" lazy="false"/>
     <many-to-one name="Cliente" class="Soft.Entities.SocioNegocio" column="IDCliente" insert="true" update="true" lazy="false"/>
     <many-to-one name="Responsable" class="Soft.Entities.SocioNegocio" column="IDCotizador" insert="true" update="true" lazy="false"/>
     <many-to-one name="Vendedor" class="Soft.Entities.SocioNegocio" column="IDVendedor" insert="true" update="true" lazy="false"/>
     <many-to-one name="ModalidadCredito" class="Soft.Ventas.Entidades.ModalidadCredito" column="IDModalidadCredito" insert="true" update="true" lazy="false"/>
     <many-to-one name="Moneda" class="Soft.Entities.Moneda" column="IDMoneda" insert="true" update="true" lazy="false"/>
-
+    <many-to-one name="Contacto" class="Soft.Entities.ItemSocioNegocioContacto" column="IDContacto" insert="true" update="true" lazy="false"/>
     <many-to-one name="ListaCostosMaquina" class="Soft.Ventas.Entidades.ListaCostosMaquina" column="IDListaCostosMaquina" insert="true" update="true" lazy="false"/>
     <many-to-one name="ListaPreciosExistencia" class="Soft.Ventas.Entidades.ListaPreciosExistencia" column="IDListaPreciosExistencia" insert="true" update="true" lazy="false"/>
     <many-to-one name="ListaPreciosTransporte" class="Soft.Ventas.Entidades.ListaPreciosTransporte" column="IDListaPreciosTransporte" insert="true" update="true" lazy="false"/>
