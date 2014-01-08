@@ -13,6 +13,8 @@ namespace Soft.Ventas.Entidades
             if (NewInstance)
             {
                 Activo = true;
+                Entidad = "SolicitudCotizacion";
+                EntidadTipoDocumento = "TipoSolicitudCotizacion";
             }
         }
 

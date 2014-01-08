@@ -9,10 +9,12 @@ namespace Soft.Ventas.Entidades
     public class TipoPresupuesto : TipoDocumento 
     {
         public TipoPresupuesto() {
-                if (NewInstance)
-                {
-                    Activo = true;
-                }
+            if (NewInstance)
+            {
+                Activo = true;
+                Entidad = "Presupuesto";
+                EntidadTipoDocumento = "TipoPresupuesto";
+            }
         }
 
     }

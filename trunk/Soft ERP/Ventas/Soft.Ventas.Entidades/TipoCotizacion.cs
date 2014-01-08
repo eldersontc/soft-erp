@@ -8,7 +8,15 @@ namespace Soft.Ventas.Entidades
 {
     public class TipoCotizacion : TipoDocumento 
     {
-        public TipoCotizacion() { }
+        public TipoCotizacion() {
+
+            if (NewInstance)
+            {
+                Activo = true;
+                Entidad = "Cotizacion";
+                EntidadTipoDocumento = "TipoCotizacion";
+            }
+        }
 
     }
 }
