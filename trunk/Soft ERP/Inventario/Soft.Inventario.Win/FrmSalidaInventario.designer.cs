@@ -67,9 +67,9 @@
             this.uneTotal = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.uneImpuesto = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.uneSubTotal = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.ultraLabel10 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraLabel9 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraLabel8 = new Infragistics.Win.Misc.UltraLabel();
+            this.LabelTotal = new Infragistics.Win.Misc.UltraLabel();
+            this.LabelImpuesto = new Infragistics.Win.Misc.UltraLabel();
+            this.LabelSubTotal = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel11 = new Infragistics.Win.Misc.UltraLabel();
             this.txtObservacion = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.txtOrdenProduccion = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -586,20 +586,20 @@
             this.ugbCosto.Controls.Add(this.uneTotal);
             this.ugbCosto.Controls.Add(this.uneImpuesto);
             this.ugbCosto.Controls.Add(this.uneSubTotal);
-            this.ugbCosto.Controls.Add(this.ultraLabel10);
-            this.ugbCosto.Controls.Add(this.ultraLabel9);
-            this.ugbCosto.Controls.Add(this.ultraLabel8);
+            this.ugbCosto.Controls.Add(this.LabelTotal);
+            this.ugbCosto.Controls.Add(this.LabelImpuesto);
+            this.ugbCosto.Controls.Add(this.LabelSubTotal);
             this.ugbCosto.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.ugbCosto.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
-            this.ugbCosto.Location = new System.Drawing.Point(481, 410);
+            this.ugbCosto.Location = new System.Drawing.Point(452, 410);
             this.ugbCosto.Name = "ugbCosto";
-            this.ugbCosto.Size = new System.Drawing.Size(200, 110);
+            this.ugbCosto.Size = new System.Drawing.Size(229, 110);
             this.ugbCosto.TabIndex = 52;
             this.ugbCosto.Text = "Costo";
             // 
             // uneTotal
             // 
-            this.uneTotal.Location = new System.Drawing.Point(87, 80);
+            this.uneTotal.Location = new System.Drawing.Point(120, 80);
             this.uneTotal.Name = "uneTotal";
             this.uneTotal.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
             this.uneTotal.Size = new System.Drawing.Size(100, 21);
@@ -607,7 +607,7 @@
             // 
             // uneImpuesto
             // 
-            this.uneImpuesto.Location = new System.Drawing.Point(87, 55);
+            this.uneImpuesto.Location = new System.Drawing.Point(120, 55);
             this.uneImpuesto.Name = "uneImpuesto";
             this.uneImpuesto.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
             this.uneImpuesto.Size = new System.Drawing.Size(100, 21);
@@ -615,41 +615,41 @@
             // 
             // uneSubTotal
             // 
-            this.uneSubTotal.Location = new System.Drawing.Point(87, 30);
+            this.uneSubTotal.Location = new System.Drawing.Point(120, 30);
             this.uneSubTotal.Name = "uneSubTotal";
             this.uneSubTotal.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
             this.uneSubTotal.Size = new System.Drawing.Size(100, 21);
             this.uneSubTotal.TabIndex = 56;
             // 
-            // ultraLabel10
+            // LabelTotal
             // 
             appearance5.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel10.Appearance = appearance5;
-            this.ultraLabel10.Location = new System.Drawing.Point(13, 84);
-            this.ultraLabel10.Name = "ultraLabel10";
-            this.ultraLabel10.Size = new System.Drawing.Size(72, 23);
-            this.ultraLabel10.TabIndex = 55;
-            this.ultraLabel10.Text = "Total";
+            this.LabelTotal.Appearance = appearance5;
+            this.LabelTotal.Location = new System.Drawing.Point(13, 84);
+            this.LabelTotal.Name = "LabelTotal";
+            this.LabelTotal.Size = new System.Drawing.Size(101, 23);
+            this.LabelTotal.TabIndex = 55;
+            this.LabelTotal.Text = "Total";
             // 
-            // ultraLabel9
+            // LabelImpuesto
             // 
             appearance6.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel9.Appearance = appearance6;
-            this.ultraLabel9.Location = new System.Drawing.Point(13, 59);
-            this.ultraLabel9.Name = "ultraLabel9";
-            this.ultraLabel9.Size = new System.Drawing.Size(72, 23);
-            this.ultraLabel9.TabIndex = 54;
-            this.ultraLabel9.Text = "Impuesto";
+            this.LabelImpuesto.Appearance = appearance6;
+            this.LabelImpuesto.Location = new System.Drawing.Point(13, 59);
+            this.LabelImpuesto.Name = "LabelImpuesto";
+            this.LabelImpuesto.Size = new System.Drawing.Size(101, 23);
+            this.LabelImpuesto.TabIndex = 54;
+            this.LabelImpuesto.Text = "Impuesto";
             // 
-            // ultraLabel8
+            // LabelSubTotal
             // 
             appearance7.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel8.Appearance = appearance7;
-            this.ultraLabel8.Location = new System.Drawing.Point(13, 30);
-            this.ultraLabel8.Name = "ultraLabel8";
-            this.ultraLabel8.Size = new System.Drawing.Size(72, 23);
-            this.ultraLabel8.TabIndex = 53;
-            this.ultraLabel8.Text = "Sub Total";
+            this.LabelSubTotal.Appearance = appearance7;
+            this.LabelSubTotal.Location = new System.Drawing.Point(13, 30);
+            this.LabelSubTotal.Name = "LabelSubTotal";
+            this.LabelSubTotal.Size = new System.Drawing.Size(101, 23);
+            this.LabelSubTotal.TabIndex = 53;
+            this.LabelSubTotal.Text = "Sub Total";
             // 
             // ultraLabel11
             // 
@@ -666,7 +666,7 @@
             this.txtObservacion.Location = new System.Drawing.Point(104, 420);
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
-            this.txtObservacion.Size = new System.Drawing.Size(349, 49);
+            this.txtObservacion.Size = new System.Drawing.Size(321, 49);
             this.txtObservacion.TabIndex = 9;
             this.txtObservacion.TextChanged += new System.EventHandler(this.txtObservacion_TextChanged);
             // 
@@ -761,9 +761,9 @@
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor uneTotal;
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor uneImpuesto;
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor uneSubTotal;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel10;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel9;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel8;
+        private Infragistics.Win.Misc.UltraLabel LabelTotal;
+        private Infragistics.Win.Misc.UltraLabel LabelImpuesto;
+        private Infragistics.Win.Misc.UltraLabel LabelSubTotal;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtObservacion;
         private Infragistics.Win.Misc.UltraLabel ultraLabel11;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtOrdenProduccion;
