@@ -213,6 +213,20 @@ namespace Soft.Ventas.Win
             {
                 Cotizacion.TipoDocumento = (TipoCotizacion)HelperNHibernate.GetEntityByID("TipoCotizacion", TipoDocumento.ID);
                 Cotizacion.GenerarNumCp();
+
+                try
+                {
+                    FrmSelectedEntity FrmSeleccionarEmpleado = new FrmSelectedEntity();
+                    String filtro = "IDUsuario='" + FrmMain.Usuario.ID + "'";
+                    SocioNegocio sn = (SocioNegocio)FrmSeleccionarEmpleado.GetSelectedEntity(typeof(SocioNegocio), "Empleado", filtro);
+
+                    Cotizacion.Responsable = (SocioNegocio)HelperNHibernate.GetEntityByID("SocioNegocio", sn.ID);
+                }
+                catch (Exception)
+                {
+                }
+
+
             }
             Mostrar();
 
