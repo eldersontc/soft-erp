@@ -234,5 +234,10 @@ namespace Soft.Ventas.Win
             MostrarEscalas(ItemListaPreciosTransporte);
         }
 
+        private void ugDistritos_ClickCell(object sender, ClickCellEventArgs e)
+        {
+           MostrarItem(e.Cell.Row);
+        }
+
     }
 }
