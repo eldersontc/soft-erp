@@ -12,7 +12,8 @@
     <property name="SubTotal" type="decimal"/>
     <property name="Impuesto" type="decimal"/>
     <property name="Total" type="decimal"/>
-
+    <property name="TipoCambioFecha" type="decimal"/>
+    <property name="TotalSoles" type="decimal"/>
     <many-to-one name="TipoDocumento" class="Soft.Inventario.Entidades.TipoDocumentoInventario" column="IDTipoDocumento" insert="true" update="true" lazy="false"/>
     <many-to-one name="Proveedor" class="Soft.Entities.SocioNegocio" column="IDProveedor" insert="true" update="true" lazy="false"/>
     <many-to-one name="Responsable" class="Soft.Entities.SocioNegocio" column="IDResponsable" insert="true" update="true" lazy="false"/>
