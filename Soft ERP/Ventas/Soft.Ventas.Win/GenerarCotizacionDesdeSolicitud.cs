@@ -5,6 +5,7 @@ using System.Text;
 using Soft.DataAccess;
 using Soft.Ventas.Entidades;
 using Soft.Entities;
+using Soft.Win;
 
 namespace Soft.Ventas.Win
 {
@@ -26,6 +27,25 @@ namespace Soft.Ventas.Win
                 Cotizacion.Vendedor = SolicitudCotizacion.Responsable;
 
                 Cotizacion.Observacion = String.Format("Generado desde la Solicitud - {0}", SolicitudCotizacion.Numeracion);
+                Cotizacion.Moneda = SolicitudCotizacion.Moneda;
+
+                String filtro = "";
+                if (Cotizacion.Moneda != null)
+                {
+                    if (Cotizacion.Moneda.Simbolo.Equals("US $"))
+                    {
+                        filtro = "IDMoneda='" + Cotizacion.Moneda.ID + "' and Fecha='" + Cotizacion.FechaCreacion.Date + "'";
+                        FrmSelectedEntity FrmSelectedMoneda = new FrmSelectedEntity();
+                        TipoCambio tc = (TipoCambio)FrmSelectedMoneda.GetSelectedEntity(typeof(TipoCambio), "Tipo de Cambio", filtro);
+                        Cotizacion.TipoCambioFecha = tc.TipoCambioVenta;
+                    }
+                    else
+                    {
+                        Cotizacion.TipoCambioFecha = 1;
+                    }
+                }
+
+
                 foreach (ItemSolicitudCotizacion Item in SolicitudCotizacion.Items)
                 {
                     ItemCotizacion ItemCotizacion = Cotizacion.AddItem();
