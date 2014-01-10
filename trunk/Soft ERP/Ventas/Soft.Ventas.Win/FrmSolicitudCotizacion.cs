@@ -172,7 +172,13 @@ namespace Soft.Ventas.Win
 
         private void ssCliente_Search(object sender, EventArgs e)
         {
-            String filtro = "UserID='" + FrmMain.Usuario.UserID + "'";
+            String filtro = "Activo=1 ";
+
+            if (FrmMain.Usuario.SuperAdministrador==false)
+            {
+                filtro = "UserID='" + FrmMain.Usuario.UserID + "'";
+            }
+            
 
             if (ssCliente.Text.Length > 0)
             {
