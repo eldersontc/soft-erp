@@ -35,6 +35,7 @@ namespace Soft.Inventario.Entidades
         public virtual Decimal Largo { get; set; }
         public virtual Decimal Alto { get; set; }
         public virtual Decimal CostoUltimaCompra { get; set; }
+        public virtual Decimal CostoPromedio { get; set; }
 
         public virtual IList<ExistenciaUnidad> Unidades { get; set; }
         public virtual IList<ExistenciaAlmacen> Almacenes { get; set; }
