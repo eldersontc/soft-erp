@@ -25,6 +25,7 @@ namespace Soft.Inventario.Transaccional
                         EntradaInventario EntradaInventario = (EntradaInventario)m_ObjectFlow;
 
                         Sesion.Save(EntradaInventario);
+                        Sesion.Flush();
 
                         foreach (ItemEntradaInventario Item in EntradaInventario.Items)
                         {
