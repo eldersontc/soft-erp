@@ -65,6 +65,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Compilacion\Soft.Reporte.Entidades.dll</HintPath>
     </Reference>
+    <Reference Include="Soft.Seguridad.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Soft.Seguridad.Entidades.dll</HintPath>
+    </Reference>
     <Reference Include="Soft.Ventas.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Compilacion\Soft.Ventas.Entidades.dll</HintPath>
