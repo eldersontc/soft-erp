@@ -29,23 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmExistencia));
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
@@ -86,8 +87,10 @@
             this.txtLargo = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.txtAlto = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ugbCostos = new Infragistics.Win.Misc.UltraGroupBox();
-            this.lblCostoUltimaCompra = new Infragistics.Win.Misc.UltraLabel();
             this.uneCostoUltimaCompra = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.lblCostoUltimaCompra = new Infragistics.Win.Misc.UltraLabel();
+            this.uneCostoPromedio = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.lblCostoPromedio = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.ultraTabPageControl1.SuspendLayout();
@@ -116,6 +119,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ugbCostos)).BeginInit();
             this.ugbCostos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoUltimaCompra)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uneCostoPromedio)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
@@ -567,8 +571,8 @@
             // 
             // ultraLabel2
             // 
-            appearance14.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance14;
+            appearance15.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance15;
             this.ultraLabel2.Location = new System.Drawing.Point(16, 73);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(74, 22);
@@ -585,8 +589,8 @@
             // 
             // Nombre
             // 
-            appearance15.BackColor = System.Drawing.Color.Transparent;
-            this.Nombre.Appearance = appearance15;
+            appearance16.BackColor = System.Drawing.Color.Transparent;
+            this.Nombre.Appearance = appearance16;
             this.Nombre.Location = new System.Drawing.Point(16, 45);
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(60, 23);
@@ -603,8 +607,8 @@
             // 
             // Codigo
             // 
-            appearance16.BackColor = System.Drawing.Color.Transparent;
-            this.Codigo.Appearance = appearance16;
+            appearance17.BackColor = System.Drawing.Color.Transparent;
+            this.Codigo.Appearance = appearance17;
             this.Codigo.Location = new System.Drawing.Point(16, 18);
             this.Codigo.Name = "Codigo";
             this.Codigo.Size = new System.Drawing.Size(60, 23);
@@ -613,14 +617,14 @@
             // 
             // boxGeneralidades
             // 
-            appearance12.BackColor = System.Drawing.Color.Transparent;
-            this.boxGeneralidades.Appearance = appearance12;
+            appearance13.BackColor = System.Drawing.Color.Transparent;
+            this.boxGeneralidades.Appearance = appearance13;
             this.boxGeneralidades.Controls.Add(this.checkEsInventariable);
             this.boxGeneralidades.Controls.Add(this.checkesServicio);
             this.boxGeneralidades.Controls.Add(this.checkEsVenta);
             this.boxGeneralidades.Controls.Add(this.checkEsCompra);
-            appearance13.BackColor = System.Drawing.Color.Transparent;
-            this.boxGeneralidades.HeaderAppearance = appearance13;
+            appearance14.BackColor = System.Drawing.Color.Transparent;
+            this.boxGeneralidades.HeaderAppearance = appearance14;
             this.boxGeneralidades.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.boxGeneralidades.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
             this.boxGeneralidades.Location = new System.Drawing.Point(443, 17);
@@ -683,8 +687,8 @@
             // 
             // ultraTabControl1
             // 
-            appearance10.BackColor = System.Drawing.Color.Transparent;
-            this.ultraTabControl1.Appearance = appearance10;
+            appearance11.BackColor = System.Drawing.Color.Transparent;
+            this.ultraTabControl1.Appearance = appearance11;
             this.ultraTabControl1.Controls.Add(this.ultraTabSharedControlsPage1);
             this.ultraTabControl1.Controls.Add(this.ultraTabPageControl1);
             this.ultraTabControl1.Controls.Add(this.ultraTabPageControl2);
@@ -693,8 +697,8 @@
             this.ultraTabControl1.Name = "ultraTabControl1";
             this.ultraTabControl1.SharedControlsPage = this.ultraTabSharedControlsPage1;
             this.ultraTabControl1.Size = new System.Drawing.Size(571, 244);
-            appearance11.BackColor = System.Drawing.Color.Transparent;
-            this.ultraTabControl1.TabHeaderAreaAppearance = appearance11;
+            appearance12.BackColor = System.Drawing.Color.Transparent;
+            this.ultraTabControl1.TabHeaderAreaAppearance = appearance12;
             this.ultraTabControl1.TabIndex = 21;
             ultraTab1.TabPage = this.ultraTabPageControl1;
             ultraTab1.Text = ".:: Unidades ::.";
@@ -715,12 +719,12 @@
             // 
             // ugbClasificacion
             // 
-            appearance8.BackColor = System.Drawing.Color.Transparent;
-            this.ugbClasificacion.Appearance = appearance8;
+            appearance9.BackColor = System.Drawing.Color.Transparent;
+            this.ugbClasificacion.Appearance = appearance9;
             this.ugbClasificacion.Controls.Add(this.busItemClasificacion);
             this.ugbClasificacion.Controls.Add(this.busClasificacion);
-            appearance9.BackColor = System.Drawing.Color.Transparent;
-            this.ugbClasificacion.HeaderAppearance = appearance9;
+            appearance10.BackColor = System.Drawing.Color.Transparent;
+            this.ugbClasificacion.HeaderAppearance = appearance10;
             this.ugbClasificacion.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.ugbClasificacion.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
             this.ugbClasificacion.Location = new System.Drawing.Point(16, 173);
@@ -749,8 +753,8 @@
             // 
             // lblMarca
             // 
-            appearance7.BackColor = System.Drawing.Color.Transparent;
-            this.lblMarca.Appearance = appearance7;
+            appearance8.BackColor = System.Drawing.Color.Transparent;
+            this.lblMarca.Appearance = appearance8;
             this.lblMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblMarca.Location = new System.Drawing.Point(16, 151);
             this.lblMarca.Name = "lblMarca";
@@ -769,8 +773,8 @@
             // 
             // labelGramaje
             // 
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            this.labelGramaje.Appearance = appearance6;
+            appearance7.BackColor = System.Drawing.Color.Transparent;
+            this.labelGramaje.Appearance = appearance7;
             this.labelGramaje.Location = new System.Drawing.Point(17, 119);
             this.labelGramaje.Name = "labelGramaje";
             this.labelGramaje.Size = new System.Drawing.Size(60, 23);
@@ -792,8 +796,8 @@
             // 
             // LabelLargo
             // 
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            this.LabelLargo.Appearance = appearance5;
+            appearance6.BackColor = System.Drawing.Color.Transparent;
+            this.LabelLargo.Appearance = appearance6;
             this.LabelLargo.Location = new System.Drawing.Point(195, 119);
             this.LabelLargo.Name = "LabelLargo";
             this.LabelLargo.Size = new System.Drawing.Size(40, 23);
@@ -802,8 +806,8 @@
             // 
             // ultraLabel3
             // 
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel3.Appearance = appearance4;
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel3.Appearance = appearance5;
             this.ultraLabel3.Location = new System.Drawing.Point(324, 119);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(40, 23);
@@ -838,10 +842,12 @@
             // 
             appearance1.BackColor = System.Drawing.Color.Transparent;
             this.ugbCostos.Appearance = appearance1;
+            this.ugbCostos.Controls.Add(this.lblCostoPromedio);
+            this.ugbCostos.Controls.Add(this.uneCostoPromedio);
             this.ugbCostos.Controls.Add(this.uneCostoUltimaCompra);
             this.ugbCostos.Controls.Add(this.lblCostoUltimaCompra);
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.ugbCostos.HeaderAppearance = appearance3;
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.ugbCostos.HeaderAppearance = appearance4;
             this.ugbCostos.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.ugbCostos.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
             this.ugbCostos.Location = new System.Drawing.Point(443, 142);
@@ -850,27 +856,49 @@
             this.ugbCostos.TabIndex = 11;
             this.ugbCostos.Text = "Costos";
             // 
-            // lblCostoUltimaCompra
-            // 
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.lblCostoUltimaCompra.Appearance = appearance2;
-            this.lblCostoUltimaCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblCostoUltimaCompra.Location = new System.Drawing.Point(28, 34);
-            this.lblCostoUltimaCompra.Name = "lblCostoUltimaCompra";
-            this.lblCostoUltimaCompra.Size = new System.Drawing.Size(83, 23);
-            this.lblCostoUltimaCompra.TabIndex = 32;
-            this.lblCostoUltimaCompra.Text = "Ùltima Compra";
-            // 
             // uneCostoUltimaCompra
             // 
             this.uneCostoUltimaCompra.Enabled = false;
-            this.uneCostoUltimaCompra.Location = new System.Drawing.Point(10, 55);
+            this.uneCostoUltimaCompra.Location = new System.Drawing.Point(44, 33);
             this.uneCostoUltimaCompra.MaskInput = "nnnn.nn";
             this.uneCostoUltimaCompra.Name = "uneCostoUltimaCompra";
             this.uneCostoUltimaCompra.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
-            this.uneCostoUltimaCompra.Size = new System.Drawing.Size(120, 21);
+            this.uneCostoUltimaCompra.Size = new System.Drawing.Size(85, 21);
             this.uneCostoUltimaCompra.TabIndex = 32;
             this.uneCostoUltimaCompra.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
+            // 
+            // lblCostoUltimaCompra
+            // 
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.lblCostoUltimaCompra.Appearance = appearance3;
+            this.lblCostoUltimaCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblCostoUltimaCompra.Location = new System.Drawing.Point(11, 37);
+            this.lblCostoUltimaCompra.Name = "lblCostoUltimaCompra";
+            this.lblCostoUltimaCompra.Size = new System.Drawing.Size(32, 23);
+            this.lblCostoUltimaCompra.TabIndex = 32;
+            this.lblCostoUltimaCompra.Text = "U.C";
+            // 
+            // uneCostoPromedio
+            // 
+            this.uneCostoPromedio.Enabled = false;
+            this.uneCostoPromedio.Location = new System.Drawing.Point(44, 59);
+            this.uneCostoPromedio.MaskInput = "nnnn.nn";
+            this.uneCostoPromedio.Name = "uneCostoPromedio";
+            this.uneCostoPromedio.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
+            this.uneCostoPromedio.Size = new System.Drawing.Size(85, 21);
+            this.uneCostoPromedio.TabIndex = 33;
+            this.uneCostoPromedio.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
+            // 
+            // lblCostoPromedio
+            // 
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.lblCostoPromedio.Appearance = appearance2;
+            this.lblCostoPromedio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblCostoPromedio.Location = new System.Drawing.Point(11, 63);
+            this.lblCostoPromedio.Name = "lblCostoPromedio";
+            this.lblCostoPromedio.Size = new System.Drawing.Size(32, 23);
+            this.lblCostoPromedio.TabIndex = 34;
+            this.lblCostoPromedio.Text = "C.P";
             // 
             // FrmExistencia
             // 
@@ -909,6 +937,7 @@
             this.ugbCostos.ResumeLayout(false);
             this.ugbCostos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoUltimaCompra)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uneCostoPromedio)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -955,6 +984,8 @@
         private Infragistics.Win.Misc.UltraGroupBox ugbCostos;
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor uneCostoUltimaCompra;
         private Infragistics.Win.Misc.UltraLabel lblCostoUltimaCompra;
+        private Infragistics.Win.Misc.UltraLabel lblCostoPromedio;
+        private Infragistics.Win.UltraWinEditors.UltraNumericEditor uneCostoPromedio;
 
     }
 }
