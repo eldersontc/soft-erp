@@ -250,7 +250,7 @@ namespace Soft.Inventario.Win
                 Existencia Producto = (Existencia)Productos[1];
                 Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
                 Item.Cantidad = 1;
-                Item.Precio = Item.Producto.CostoUltimaCompra;
+                Item.Precio = Item.Producto.CostoPromedio;
                 MostrarItem(Row);
             }
             else if (Productos.Count > 1) {
@@ -266,7 +266,7 @@ namespace Soft.Inventario.Win
                     Existencia ProductoNuevo = (Existencia)Productos[i];
                     ItemNuevo.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", ProductoNuevo.ID);
                     ItemNuevo.Cantidad = 1;
-                    Item.Precio = Item.Producto.CostoUltimaCompra;
+                    Item.Precio = Item.Producto.CostoPromedio;
                     RowNuevo.Tag = ItemNuevo;
                     MostrarItem(RowNuevo);
                 }
