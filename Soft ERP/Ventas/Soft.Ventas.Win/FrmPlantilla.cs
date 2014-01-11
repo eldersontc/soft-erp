@@ -85,6 +85,9 @@ namespace Soft.Ventas.Win
         {
             ItemPlantilla Item = (ItemPlantilla)Node.Tag;
             txtNombreItem.Text = Item.Nombre;
+            chkTieneMedidaAbierta.Checked = Item.TieneMedidaAbierta;
+            chkTieneMedidadCerrada.Checked = Item.TieneMedidaCerrada;
+            chkTieneTiraRetira.Checked = Item.TieneTiraRetira;
             ssOperacion.Text = (Item.Operacion != null) ? Item.Operacion.Nombre : "";
             ssMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
             ssTipoUnidad.Text = (Item.TipoUnidad!= null) ? Item.TipoUnidad.Nombre : "";
@@ -286,8 +289,6 @@ namespace Soft.Ventas.Win
                 ItemPlantilla.Operacion = null;
                 ssOperacion.Text = null;
             }
-
-
         }
 
         private void btnBorrarMaterial_Click(object sender, EventArgs e)
@@ -299,7 +300,29 @@ namespace Soft.Ventas.Win
             }
         }
 
-    
+        private void chkTieneMedidaAbierta_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ItemPlantilla != null)
+            {
+                ItemPlantilla.TieneMedidaAbierta = chkTieneMedidaAbierta.Checked;
+            }
+        }
+
+        private void chkTieneMedidadCerrada_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ItemPlantilla != null)
+            {
+                ItemPlantilla.TieneMedidaCerrada = chkTieneMedidadCerrada.Checked;
+            }
+        }
+
+        private void chkTieneTiraRetira_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ItemPlantilla != null)
+            {
+                ItemPlantilla.TieneTiraRetira = chkTieneTiraRetira.Checked;
+            }
+        }
 
     }
 }
