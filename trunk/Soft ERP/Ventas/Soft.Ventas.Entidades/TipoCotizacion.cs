@@ -18,5 +18,11 @@ namespace Soft.Ventas.Entidades
             }
         }
 
+        public virtual ListaPreciosExistencia ListaPreciosExistencia { get; set; }
+        public virtual ListaCostosMaquina ListaCostosMaquina { get; set; }
+        public virtual ListaPreciosTransporte ListaPreciosTransporte { get; set; }
+
+
+
     }
 }
