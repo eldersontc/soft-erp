@@ -19,6 +19,11 @@
 
 
     <many-to-one name="Reporte" class="Soft.Reporte.Entidades.Reporte" column="IDReporte" insert="true" update="true" lazy="false"/>
+    <many-to-one name="ListaPreciosExistencia" class="Soft.Ventas.Entidades.ListaPreciosExistencia" column="IDListaPreciosExistencia" insert="true" update="true" lazy="false"/>
+    <many-to-one name="ListaCostosMaquina" class="Soft.Ventas.Entidades.ListaCostosMaquina" column="IDListaCostosMaquina" insert="true" update="true" lazy="false"/>
+    <many-to-one name="ListaPreciosTransporte" class="Soft.Ventas.Entidades.ListaPreciosTransporte" column="IDListaPreciosTransporte" insert="true" update="true" lazy="false"/>
+
+
 
   </class>
 
