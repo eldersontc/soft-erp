@@ -115,6 +115,9 @@ namespace Soft.Ventas.Win
         public void MostrarItem(UltraTreeNode Node)
         {
             ItemCotizacion Item = (ItemCotizacion)Node.Tag;
+            GrupoMedidaAbierta.Visible = Item.TieneMedidaAbierta;
+            GrupoMedidaCerrada.Visible = Item.TieneMedidaCerrada;
+            GruposTiras.Visible = Item.TieneTiraRetira;
             ssMaquina.Text = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
             ssMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
             lblTipoUnidad.Text = Item.TipoUnidad;
