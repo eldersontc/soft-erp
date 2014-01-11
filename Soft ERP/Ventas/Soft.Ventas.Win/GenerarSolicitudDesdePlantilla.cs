@@ -28,6 +28,9 @@ namespace Soft.Ventas.Win
                     ItemSolicitud.Material = Item.Material;
                     ItemSolicitud.m_FiltroMaquina = Item.ObtenerFiltroMaquinas();
                     ItemSolicitud.m_FiltroServicios = Item.ObtenerFiltroServicios();
+                    ItemSolicitud.TieneMedidaAbierta = Item.TieneMedidaAbierta;
+                    ItemSolicitud.TieneMedidaCerrada = Item.TieneMedidaCerrada;
+                    ItemSolicitud.TieneTiraRetira = Item.TieneTiraRetira;
                     foreach (ItemPlantillaServicio ItemServicio in Item.Servicios)
                     {
                         ItemSolicitudCotizacionServicio ItemSolicitudSerivcio = ItemSolicitud.AddServicio();
