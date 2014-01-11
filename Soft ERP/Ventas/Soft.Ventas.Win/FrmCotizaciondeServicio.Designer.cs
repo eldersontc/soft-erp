@@ -31,69 +31,69 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCotizaciondeServicio));
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            this.softSearch1 = new Soft.Controls.SoftSearch();
+            this.bussAcabado = new Soft.Controls.SoftSearch();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.GrupoMedidaAbierta = new Infragistics.Win.Misc.UltraGroupBox();
-            this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
-            this.softSearch2 = new Soft.Controls.SoftSearch();
+            this.txtCantidadAcabado = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.ultraLabel11 = new Infragistics.Win.Misc.UltraLabel();
+            this.txtCostoAcabado = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
-            this.uneCostoMaquina = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.busUnidadAcabado = new Soft.Controls.SoftSearch();
+            this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
+            this.txtCantidadMaquina = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.ultraLabel12 = new Infragistics.Win.Misc.UltraLabel();
+            this.txtCostoMaquina = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel4 = new Infragistics.Win.Misc.UltraLabel();
+            this.busTipoCosteo = new Soft.Controls.SoftSearch();
             this.ultraLabel5 = new Infragistics.Win.Misc.UltraLabel();
+            this.busMaquina = new Soft.Controls.SoftSearch();
             this.ultraLabel6 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraNumericEditor1 = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.softSearch3 = new Soft.Controls.SoftSearch();
-            this.softSearch4 = new Soft.Controls.SoftSearch();
             this.ultraGroupBox2 = new Infragistics.Win.Misc.UltraGroupBox();
-            this.ultraNumericEditor2 = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.txtCantidadMaterial = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.ultraLabel13 = new Infragistics.Win.Misc.UltraLabel();
+            this.txtCostoMaterial = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel7 = new Infragistics.Win.Misc.UltraLabel();
-            this.softSearch5 = new Soft.Controls.SoftSearch();
+            this.busUnidadMaterial = new Soft.Controls.SoftSearch();
             this.ultraLabel8 = new Infragistics.Win.Misc.UltraLabel();
-            this.softSearch6 = new Soft.Controls.SoftSearch();
+            this.txtNombreMaterial = new Soft.Controls.SoftSearch();
             this.ultraLabel9 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel10 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraNumericEditor3 = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.ultraNumericEditor4 = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.ultraLabel11 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraNumericEditor5 = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.ultraLabel12 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraNumericEditor6 = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.ultraLabel13 = new Infragistics.Win.Misc.UltraLabel();
+            this.txtCostoTotal = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrupoMedidaAbierta)).BeginInit();
             this.GrupoMedidaAbierta.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uneCostoMaquina)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCantidadAcabado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCostoAcabado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
             this.ultraGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraNumericEditor1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCantidadMaquina)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCostoMaquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).BeginInit();
             this.ultraGroupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraNumericEditor2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraNumericEditor3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraNumericEditor4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraNumericEditor5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraNumericEditor6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCantidadMaterial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCostoMaterial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCostoTotal)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
             // 
-            this.ugbParent.Controls.Add(this.ultraNumericEditor3);
+            this.ugbParent.Controls.Add(this.txtCostoTotal);
             this.ugbParent.Controls.Add(this.ultraLabel10);
             this.ugbParent.Controls.Add(this.ultraGroupBox2);
             this.ugbParent.Controls.Add(this.ultraGroupBox1);
@@ -105,7 +105,7 @@
             this.ugbParent.Controls.SetChildIndex(this.ultraGroupBox1, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraGroupBox2, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel10, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ultraNumericEditor3, 0);
+            this.ugbParent.Controls.SetChildIndex(this.txtCostoTotal, 0);
             // 
             // ubCancelar
             // 
@@ -366,13 +366,14 @@
             this.ilMain.Images.SetKeyName(245, "zoom_in.png");
             this.ilMain.Images.SetKeyName(246, "zoom_out.png");
             // 
-            // softSearch1
+            // bussAcabado
             // 
-            this.softSearch1.BackColor = System.Drawing.Color.Transparent;
-            this.softSearch1.Location = new System.Drawing.Point(90, 28);
-            this.softSearch1.Name = "softSearch1";
-            this.softSearch1.Size = new System.Drawing.Size(323, 28);
-            this.softSearch1.TabIndex = 81;
+            this.bussAcabado.BackColor = System.Drawing.Color.Transparent;
+            this.bussAcabado.Location = new System.Drawing.Point(90, 28);
+            this.bussAcabado.Name = "bussAcabado";
+            this.bussAcabado.Size = new System.Drawing.Size(323, 28);
+            this.bussAcabado.TabIndex = 81;
+            this.bussAcabado.Search += new System.EventHandler(this.bussAcabado_Search);
             // 
             // ultraLabel1
             // 
@@ -389,13 +390,13 @@
             // 
             appearance12.BackColor = System.Drawing.Color.Transparent;
             this.GrupoMedidaAbierta.Appearance = appearance12;
-            this.GrupoMedidaAbierta.Controls.Add(this.ultraNumericEditor4);
+            this.GrupoMedidaAbierta.Controls.Add(this.txtCantidadAcabado);
             this.GrupoMedidaAbierta.Controls.Add(this.ultraLabel11);
-            this.GrupoMedidaAbierta.Controls.Add(this.uneCostoMaquina);
+            this.GrupoMedidaAbierta.Controls.Add(this.txtCostoAcabado);
             this.GrupoMedidaAbierta.Controls.Add(this.ultraLabel3);
-            this.GrupoMedidaAbierta.Controls.Add(this.softSearch2);
+            this.GrupoMedidaAbierta.Controls.Add(this.busUnidadAcabado);
             this.GrupoMedidaAbierta.Controls.Add(this.ultraLabel2);
-            this.GrupoMedidaAbierta.Controls.Add(this.softSearch1);
+            this.GrupoMedidaAbierta.Controls.Add(this.bussAcabado);
             this.GrupoMedidaAbierta.Controls.Add(this.ultraLabel1);
             this.GrupoMedidaAbierta.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.GrupoMedidaAbierta.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
@@ -405,24 +406,60 @@
             this.GrupoMedidaAbierta.TabIndex = 83;
             this.GrupoMedidaAbierta.Text = "Acabado y/o Servicio";
             // 
-            // ultraLabel2
+            // txtCantidadAcabado
             // 
-            appearance15.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance15;
-            this.ultraLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel2.Location = new System.Drawing.Point(6, 52);
-            this.ultraLabel2.Name = "ultraLabel2";
-            this.ultraLabel2.Size = new System.Drawing.Size(55, 23);
-            this.ultraLabel2.TabIndex = 82;
-            this.ultraLabel2.Text = "Unidad";
+            this.txtCantidadAcabado.Location = new System.Drawing.Point(90, 77);
+            this.txtCantidadAcabado.MaskInput = "nnnnnn.nn";
+            this.txtCantidadAcabado.MaxValue = new decimal(new int[] {
+            2500,
+            0,
+            0,
+            0});
+            this.txtCantidadAcabado.MinValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtCantidadAcabado.Name = "txtCantidadAcabado";
+            this.txtCantidadAcabado.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
+            this.txtCantidadAcabado.Size = new System.Drawing.Size(86, 21);
+            this.txtCantidadAcabado.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
+            this.txtCantidadAcabado.TabIndex = 92;
+            this.txtCantidadAcabado.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
+            this.txtCantidadAcabado.ValueChanged += new System.EventHandler(this.txtCantidadAcabado_ValueChanged);
             // 
-            // softSearch2
+            // ultraLabel11
             // 
-            this.softSearch2.BackColor = System.Drawing.Color.Transparent;
-            this.softSearch2.Location = new System.Drawing.Point(90, 52);
-            this.softSearch2.Name = "softSearch2";
-            this.softSearch2.Size = new System.Drawing.Size(159, 28);
-            this.softSearch2.TabIndex = 83;
+            appearance13.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel11.Appearance = appearance13;
+            this.ultraLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ultraLabel11.Location = new System.Drawing.Point(6, 81);
+            this.ultraLabel11.Name = "ultraLabel11";
+            this.ultraLabel11.Size = new System.Drawing.Size(55, 23);
+            this.ultraLabel11.TabIndex = 91;
+            this.ultraLabel11.Text = "Cantidad";
+            // 
+            // txtCostoAcabado
+            // 
+            this.txtCostoAcabado.Enabled = false;
+            this.txtCostoAcabado.Location = new System.Drawing.Point(326, 77);
+            this.txtCostoAcabado.MaskInput = "nnnnnn.nn";
+            this.txtCostoAcabado.MaxValue = new decimal(new int[] {
+            2500,
+            0,
+            0,
+            0});
+            this.txtCostoAcabado.MinValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtCostoAcabado.Name = "txtCostoAcabado";
+            this.txtCostoAcabado.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
+            this.txtCostoAcabado.Size = new System.Drawing.Size(86, 21);
+            this.txtCostoAcabado.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
+            this.txtCostoAcabado.TabIndex = 90;
+            this.txtCostoAcabado.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
             // 
             // ultraLabel3
             // 
@@ -435,38 +472,37 @@
             this.ultraLabel3.TabIndex = 84;
             this.ultraLabel3.Text = "Costo";
             // 
-            // uneCostoMaquina
+            // busUnidadAcabado
             // 
-            this.uneCostoMaquina.Location = new System.Drawing.Point(326, 77);
-            this.uneCostoMaquina.MaskInput = "nnnnnn.nn";
-            this.uneCostoMaquina.MaxValue = new decimal(new int[] {
-            2500,
-            0,
-            0,
-            0});
-            this.uneCostoMaquina.MinValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.uneCostoMaquina.Name = "uneCostoMaquina";
-            this.uneCostoMaquina.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
-            this.uneCostoMaquina.Size = new System.Drawing.Size(86, 21);
-            this.uneCostoMaquina.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
-            this.uneCostoMaquina.TabIndex = 90;
-            this.uneCostoMaquina.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
+            this.busUnidadAcabado.BackColor = System.Drawing.Color.Transparent;
+            this.busUnidadAcabado.Location = new System.Drawing.Point(90, 52);
+            this.busUnidadAcabado.Name = "busUnidadAcabado";
+            this.busUnidadAcabado.Size = new System.Drawing.Size(159, 28);
+            this.busUnidadAcabado.TabIndex = 83;
+            this.busUnidadAcabado.Search += new System.EventHandler(this.busUnidadAcabado_Search);
+            // 
+            // ultraLabel2
+            // 
+            appearance15.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance15;
+            this.ultraLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ultraLabel2.Location = new System.Drawing.Point(6, 52);
+            this.ultraLabel2.Name = "ultraLabel2";
+            this.ultraLabel2.Size = new System.Drawing.Size(55, 23);
+            this.ultraLabel2.TabIndex = 82;
+            this.ultraLabel2.Text = "Unidad";
             // 
             // ultraGroupBox1
             // 
             appearance7.BackColor = System.Drawing.Color.Transparent;
             this.ultraGroupBox1.Appearance = appearance7;
-            this.ultraGroupBox1.Controls.Add(this.ultraNumericEditor5);
+            this.ultraGroupBox1.Controls.Add(this.txtCantidadMaquina);
             this.ultraGroupBox1.Controls.Add(this.ultraLabel12);
-            this.ultraGroupBox1.Controls.Add(this.ultraNumericEditor1);
+            this.ultraGroupBox1.Controls.Add(this.txtCostoMaquina);
             this.ultraGroupBox1.Controls.Add(this.ultraLabel4);
-            this.ultraGroupBox1.Controls.Add(this.softSearch3);
+            this.ultraGroupBox1.Controls.Add(this.busTipoCosteo);
             this.ultraGroupBox1.Controls.Add(this.ultraLabel5);
-            this.ultraGroupBox1.Controls.Add(this.softSearch4);
+            this.ultraGroupBox1.Controls.Add(this.busMaquina);
             this.ultraGroupBox1.Controls.Add(this.ultraLabel6);
             this.ultraGroupBox1.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.ultraGroupBox1.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
@@ -475,6 +511,61 @@
             this.ultraGroupBox1.Size = new System.Drawing.Size(419, 104);
             this.ultraGroupBox1.TabIndex = 84;
             this.ultraGroupBox1.Text = "Maquina";
+            // 
+            // txtCantidadMaquina
+            // 
+            this.txtCantidadMaquina.Location = new System.Drawing.Point(90, 77);
+            this.txtCantidadMaquina.MaskInput = "nnnnnn.nn";
+            this.txtCantidadMaquina.MaxValue = new decimal(new int[] {
+            2500,
+            0,
+            0,
+            0});
+            this.txtCantidadMaquina.MinValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtCantidadMaquina.Name = "txtCantidadMaquina";
+            this.txtCantidadMaquina.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
+            this.txtCantidadMaquina.Size = new System.Drawing.Size(86, 21);
+            this.txtCantidadMaquina.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
+            this.txtCantidadMaquina.TabIndex = 94;
+            this.txtCantidadMaquina.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
+            this.txtCantidadMaquina.ValueChanged += new System.EventHandler(this.txtCantidadMaquina_ValueChanged);
+            // 
+            // ultraLabel12
+            // 
+            appearance8.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel12.Appearance = appearance8;
+            this.ultraLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ultraLabel12.Location = new System.Drawing.Point(6, 81);
+            this.ultraLabel12.Name = "ultraLabel12";
+            this.ultraLabel12.Size = new System.Drawing.Size(55, 23);
+            this.ultraLabel12.TabIndex = 93;
+            this.ultraLabel12.Text = "Cantidad";
+            // 
+            // txtCostoMaquina
+            // 
+            this.txtCostoMaquina.Enabled = false;
+            this.txtCostoMaquina.Location = new System.Drawing.Point(326, 77);
+            this.txtCostoMaquina.MaskInput = "nnnnnn.nn";
+            this.txtCostoMaquina.MaxValue = new decimal(new int[] {
+            2500,
+            0,
+            0,
+            0});
+            this.txtCostoMaquina.MinValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtCostoMaquina.Name = "txtCostoMaquina";
+            this.txtCostoMaquina.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
+            this.txtCostoMaquina.Size = new System.Drawing.Size(86, 21);
+            this.txtCostoMaquina.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
+            this.txtCostoMaquina.TabIndex = 90;
+            this.txtCostoMaquina.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
             // 
             // ultraLabel4
             // 
@@ -487,6 +578,15 @@
             this.ultraLabel4.TabIndex = 84;
             this.ultraLabel4.Text = "Costo";
             // 
+            // busTipoCosteo
+            // 
+            this.busTipoCosteo.BackColor = System.Drawing.Color.Transparent;
+            this.busTipoCosteo.Location = new System.Drawing.Point(90, 52);
+            this.busTipoCosteo.Name = "busTipoCosteo";
+            this.busTipoCosteo.Size = new System.Drawing.Size(159, 28);
+            this.busTipoCosteo.TabIndex = 83;
+            this.busTipoCosteo.Search += new System.EventHandler(this.busTipoCosteo_Search);
+            // 
             // ultraLabel5
             // 
             appearance10.BackColor = System.Drawing.Color.Transparent;
@@ -497,6 +597,15 @@
             this.ultraLabel5.Size = new System.Drawing.Size(86, 23);
             this.ultraLabel5.TabIndex = 82;
             this.ultraLabel5.Text = "Tipo de Costeo";
+            // 
+            // busMaquina
+            // 
+            this.busMaquina.BackColor = System.Drawing.Color.Transparent;
+            this.busMaquina.Location = new System.Drawing.Point(90, 28);
+            this.busMaquina.Name = "busMaquina";
+            this.busMaquina.Size = new System.Drawing.Size(323, 28);
+            this.busMaquina.TabIndex = 81;
+            this.busMaquina.Search += new System.EventHandler(this.busMaquina_Search);
             // 
             // ultraLabel6
             // 
@@ -509,54 +618,17 @@
             this.ultraLabel6.TabIndex = 80;
             this.ultraLabel6.Text = "Nombre";
             // 
-            // ultraNumericEditor1
-            // 
-            this.ultraNumericEditor1.Location = new System.Drawing.Point(326, 77);
-            this.ultraNumericEditor1.MaskInput = "nnnnnn.nn";
-            this.ultraNumericEditor1.MaxValue = new decimal(new int[] {
-            2500,
-            0,
-            0,
-            0});
-            this.ultraNumericEditor1.MinValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.ultraNumericEditor1.Name = "ultraNumericEditor1";
-            this.ultraNumericEditor1.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
-            this.ultraNumericEditor1.Size = new System.Drawing.Size(86, 21);
-            this.ultraNumericEditor1.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
-            this.ultraNumericEditor1.TabIndex = 90;
-            this.ultraNumericEditor1.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
-            // 
-            // softSearch3
-            // 
-            this.softSearch3.BackColor = System.Drawing.Color.Transparent;
-            this.softSearch3.Location = new System.Drawing.Point(90, 52);
-            this.softSearch3.Name = "softSearch3";
-            this.softSearch3.Size = new System.Drawing.Size(159, 28);
-            this.softSearch3.TabIndex = 83;
-            // 
-            // softSearch4
-            // 
-            this.softSearch4.BackColor = System.Drawing.Color.Transparent;
-            this.softSearch4.Location = new System.Drawing.Point(90, 28);
-            this.softSearch4.Name = "softSearch4";
-            this.softSearch4.Size = new System.Drawing.Size(323, 28);
-            this.softSearch4.TabIndex = 81;
-            // 
             // ultraGroupBox2
             // 
             appearance2.BackColor = System.Drawing.Color.Transparent;
             this.ultraGroupBox2.Appearance = appearance2;
-            this.ultraGroupBox2.Controls.Add(this.ultraNumericEditor6);
+            this.ultraGroupBox2.Controls.Add(this.txtCantidadMaterial);
             this.ultraGroupBox2.Controls.Add(this.ultraLabel13);
-            this.ultraGroupBox2.Controls.Add(this.ultraNumericEditor2);
+            this.ultraGroupBox2.Controls.Add(this.txtCostoMaterial);
             this.ultraGroupBox2.Controls.Add(this.ultraLabel7);
-            this.ultraGroupBox2.Controls.Add(this.softSearch5);
+            this.ultraGroupBox2.Controls.Add(this.busUnidadMaterial);
             this.ultraGroupBox2.Controls.Add(this.ultraLabel8);
-            this.ultraGroupBox2.Controls.Add(this.softSearch6);
+            this.ultraGroupBox2.Controls.Add(this.txtNombreMaterial);
             this.ultraGroupBox2.Controls.Add(this.ultraLabel9);
             this.ultraGroupBox2.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.ultraGroupBox2.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
@@ -566,26 +638,60 @@
             this.ultraGroupBox2.TabIndex = 85;
             this.ultraGroupBox2.Text = "Material";
             // 
-            // ultraNumericEditor2
+            // txtCantidadMaterial
             // 
-            this.ultraNumericEditor2.Location = new System.Drawing.Point(327, 77);
-            this.ultraNumericEditor2.MaskInput = "nnnnnn.nn";
-            this.ultraNumericEditor2.MaxValue = new decimal(new int[] {
+            this.txtCantidadMaterial.Location = new System.Drawing.Point(90, 77);
+            this.txtCantidadMaterial.MaskInput = "nnnnnn.nn";
+            this.txtCantidadMaterial.MaxValue = new decimal(new int[] {
             2500,
             0,
             0,
             0});
-            this.ultraNumericEditor2.MinValue = new decimal(new int[] {
+            this.txtCantidadMaterial.MinValue = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.ultraNumericEditor2.Name = "ultraNumericEditor2";
-            this.ultraNumericEditor2.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
-            this.ultraNumericEditor2.Size = new System.Drawing.Size(86, 21);
-            this.ultraNumericEditor2.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
-            this.ultraNumericEditor2.TabIndex = 90;
-            this.ultraNumericEditor2.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
+            this.txtCantidadMaterial.Name = "txtCantidadMaterial";
+            this.txtCantidadMaterial.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
+            this.txtCantidadMaterial.Size = new System.Drawing.Size(86, 21);
+            this.txtCantidadMaterial.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
+            this.txtCantidadMaterial.TabIndex = 94;
+            this.txtCantidadMaterial.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
+            this.txtCantidadMaterial.ValueChanged += new System.EventHandler(this.txtCantidadMaterial_ValueChanged);
+            // 
+            // ultraLabel13
+            // 
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel13.Appearance = appearance3;
+            this.ultraLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ultraLabel13.Location = new System.Drawing.Point(6, 81);
+            this.ultraLabel13.Name = "ultraLabel13";
+            this.ultraLabel13.Size = new System.Drawing.Size(55, 17);
+            this.ultraLabel13.TabIndex = 93;
+            this.ultraLabel13.Text = "Cantidad";
+            // 
+            // txtCostoMaterial
+            // 
+            this.txtCostoMaterial.Enabled = false;
+            this.txtCostoMaterial.Location = new System.Drawing.Point(327, 77);
+            this.txtCostoMaterial.MaskInput = "nnnnnn.nn";
+            this.txtCostoMaterial.MaxValue = new decimal(new int[] {
+            2500,
+            0,
+            0,
+            0});
+            this.txtCostoMaterial.MinValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtCostoMaterial.Name = "txtCostoMaterial";
+            this.txtCostoMaterial.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
+            this.txtCostoMaterial.Size = new System.Drawing.Size(86, 21);
+            this.txtCostoMaterial.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
+            this.txtCostoMaterial.TabIndex = 90;
+            this.txtCostoMaterial.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
             // 
             // ultraLabel7
             // 
@@ -598,13 +704,14 @@
             this.ultraLabel7.TabIndex = 84;
             this.ultraLabel7.Text = "Costo";
             // 
-            // softSearch5
+            // busUnidadMaterial
             // 
-            this.softSearch5.BackColor = System.Drawing.Color.Transparent;
-            this.softSearch5.Location = new System.Drawing.Point(90, 52);
-            this.softSearch5.Name = "softSearch5";
-            this.softSearch5.Size = new System.Drawing.Size(159, 28);
-            this.softSearch5.TabIndex = 83;
+            this.busUnidadMaterial.BackColor = System.Drawing.Color.Transparent;
+            this.busUnidadMaterial.Location = new System.Drawing.Point(90, 52);
+            this.busUnidadMaterial.Name = "busUnidadMaterial";
+            this.busUnidadMaterial.Size = new System.Drawing.Size(159, 28);
+            this.busUnidadMaterial.TabIndex = 83;
+            this.busUnidadMaterial.Search += new System.EventHandler(this.busUnidadMaterial_Search);
             // 
             // ultraLabel8
             // 
@@ -617,13 +724,14 @@
             this.ultraLabel8.TabIndex = 82;
             this.ultraLabel8.Text = "Unidad";
             // 
-            // softSearch6
+            // txtNombreMaterial
             // 
-            this.softSearch6.BackColor = System.Drawing.Color.Transparent;
-            this.softSearch6.Location = new System.Drawing.Point(90, 28);
-            this.softSearch6.Name = "softSearch6";
-            this.softSearch6.Size = new System.Drawing.Size(323, 28);
-            this.softSearch6.TabIndex = 81;
+            this.txtNombreMaterial.BackColor = System.Drawing.Color.Transparent;
+            this.txtNombreMaterial.Location = new System.Drawing.Point(90, 28);
+            this.txtNombreMaterial.Name = "txtNombreMaterial";
+            this.txtNombreMaterial.Size = new System.Drawing.Size(323, 28);
+            this.txtNombreMaterial.TabIndex = 81;
+            this.txtNombreMaterial.Search += new System.EventHandler(this.txtNombreMaterial_Search);
             // 
             // ultraLabel9
             // 
@@ -647,123 +755,28 @@
             this.ultraLabel10.TabIndex = 86;
             this.ultraLabel10.Text = "Costo Total";
             // 
-            // ultraNumericEditor3
+            // txtCostoTotal
             // 
-            this.ultraNumericEditor3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraNumericEditor3.Location = new System.Drawing.Point(345, 347);
-            this.ultraNumericEditor3.MaskInput = "nnnnnn.nn";
-            this.ultraNumericEditor3.MaxValue = new decimal(new int[] {
+            this.txtCostoTotal.Enabled = false;
+            this.txtCostoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCostoTotal.Location = new System.Drawing.Point(345, 347);
+            this.txtCostoTotal.MaskInput = "nnnnnn.nn";
+            this.txtCostoTotal.MaxValue = new decimal(new int[] {
             2500,
             0,
             0,
             0});
-            this.ultraNumericEditor3.MinValue = new decimal(new int[] {
+            this.txtCostoTotal.MinValue = new decimal(new int[] {
             0,
             0,
             0,
             0});
-            this.ultraNumericEditor3.Name = "ultraNumericEditor3";
-            this.ultraNumericEditor3.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
-            this.ultraNumericEditor3.Size = new System.Drawing.Size(86, 21);
-            this.ultraNumericEditor3.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
-            this.ultraNumericEditor3.TabIndex = 91;
-            this.ultraNumericEditor3.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
-            // 
-            // ultraNumericEditor4
-            // 
-            this.ultraNumericEditor4.Location = new System.Drawing.Point(90, 77);
-            this.ultraNumericEditor4.MaskInput = "nnnnnn.nn";
-            this.ultraNumericEditor4.MaxValue = new decimal(new int[] {
-            2500,
-            0,
-            0,
-            0});
-            this.ultraNumericEditor4.MinValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.ultraNumericEditor4.Name = "ultraNumericEditor4";
-            this.ultraNumericEditor4.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
-            this.ultraNumericEditor4.Size = new System.Drawing.Size(86, 21);
-            this.ultraNumericEditor4.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
-            this.ultraNumericEditor4.TabIndex = 92;
-            this.ultraNumericEditor4.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
-            // 
-            // ultraLabel11
-            // 
-            appearance13.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel11.Appearance = appearance13;
-            this.ultraLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel11.Location = new System.Drawing.Point(6, 81);
-            this.ultraLabel11.Name = "ultraLabel11";
-            this.ultraLabel11.Size = new System.Drawing.Size(55, 23);
-            this.ultraLabel11.TabIndex = 91;
-            this.ultraLabel11.Text = "Cantidad";
-            // 
-            // ultraNumericEditor5
-            // 
-            this.ultraNumericEditor5.Location = new System.Drawing.Point(90, 77);
-            this.ultraNumericEditor5.MaskInput = "nnnnnn.nn";
-            this.ultraNumericEditor5.MaxValue = new decimal(new int[] {
-            2500,
-            0,
-            0,
-            0});
-            this.ultraNumericEditor5.MinValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.ultraNumericEditor5.Name = "ultraNumericEditor5";
-            this.ultraNumericEditor5.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
-            this.ultraNumericEditor5.Size = new System.Drawing.Size(86, 21);
-            this.ultraNumericEditor5.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
-            this.ultraNumericEditor5.TabIndex = 94;
-            this.ultraNumericEditor5.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
-            // 
-            // ultraLabel12
-            // 
-            appearance8.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel12.Appearance = appearance8;
-            this.ultraLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel12.Location = new System.Drawing.Point(6, 81);
-            this.ultraLabel12.Name = "ultraLabel12";
-            this.ultraLabel12.Size = new System.Drawing.Size(55, 23);
-            this.ultraLabel12.TabIndex = 93;
-            this.ultraLabel12.Text = "Cantidad";
-            // 
-            // ultraNumericEditor6
-            // 
-            this.ultraNumericEditor6.Location = new System.Drawing.Point(90, 77);
-            this.ultraNumericEditor6.MaskInput = "nnnnnn.nn";
-            this.ultraNumericEditor6.MaxValue = new decimal(new int[] {
-            2500,
-            0,
-            0,
-            0});
-            this.ultraNumericEditor6.MinValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.ultraNumericEditor6.Name = "ultraNumericEditor6";
-            this.ultraNumericEditor6.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
-            this.ultraNumericEditor6.Size = new System.Drawing.Size(86, 21);
-            this.ultraNumericEditor6.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
-            this.ultraNumericEditor6.TabIndex = 94;
-            this.ultraNumericEditor6.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
-            // 
-            // ultraLabel13
-            // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel13.Appearance = appearance3;
-            this.ultraLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel13.Location = new System.Drawing.Point(6, 81);
-            this.ultraLabel13.Name = "ultraLabel13";
-            this.ultraLabel13.Size = new System.Drawing.Size(55, 17);
-            this.ultraLabel13.TabIndex = 93;
-            this.ultraLabel13.Text = "Cantidad";
+            this.txtCostoTotal.Name = "txtCostoTotal";
+            this.txtCostoTotal.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
+            this.txtCostoTotal.Size = new System.Drawing.Size(86, 21);
+            this.txtCostoTotal.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
+            this.txtCostoTotal.TabIndex = 91;
+            this.txtCostoTotal.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
             // 
             // FrmCotizaciondeServicio
             // 
@@ -778,53 +791,53 @@
             ((System.ComponentModel.ISupportInitialize)(this.GrupoMedidaAbierta)).EndInit();
             this.GrupoMedidaAbierta.ResumeLayout(false);
             this.GrupoMedidaAbierta.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uneCostoMaquina)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCantidadAcabado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCostoAcabado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).EndInit();
             this.ultraGroupBox1.ResumeLayout(false);
             this.ultraGroupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraNumericEditor1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCantidadMaquina)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCostoMaquina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).EndInit();
             this.ultraGroupBox2.ResumeLayout(false);
             this.ultraGroupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraNumericEditor2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraNumericEditor3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraNumericEditor4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraNumericEditor5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraNumericEditor6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCantidadMaterial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCostoMaterial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCostoTotal)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Controls.SoftSearch softSearch1;
+        private Controls.SoftSearch bussAcabado;
         private Infragistics.Win.Misc.UltraLabel ultraLabel1;
         private Infragistics.Win.Misc.UltraGroupBox GrupoMedidaAbierta;
-        private Controls.SoftSearch softSearch2;
+        private Controls.SoftSearch busUnidadAcabado;
         private Infragistics.Win.Misc.UltraLabel ultraLabel2;
         private Infragistics.Win.Misc.UltraLabel ultraLabel3;
-        private Infragistics.Win.UltraWinEditors.UltraNumericEditor ultraNumericEditor3;
+        private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtCostoTotal;
         private Infragistics.Win.Misc.UltraLabel ultraLabel10;
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox2;
-        private Infragistics.Win.UltraWinEditors.UltraNumericEditor ultraNumericEditor2;
+        private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtCostoMaterial;
         private Infragistics.Win.Misc.UltraLabel ultraLabel7;
-        private Controls.SoftSearch softSearch5;
+        private Controls.SoftSearch busUnidadMaterial;
         private Infragistics.Win.Misc.UltraLabel ultraLabel8;
-        private Controls.SoftSearch softSearch6;
+        private Controls.SoftSearch txtNombreMaterial;
         private Infragistics.Win.Misc.UltraLabel ultraLabel9;
         private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox1;
-        private Infragistics.Win.UltraWinEditors.UltraNumericEditor ultraNumericEditor1;
+        private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtCostoMaquina;
         private Infragistics.Win.Misc.UltraLabel ultraLabel4;
-        private Controls.SoftSearch softSearch3;
+        private Controls.SoftSearch busTipoCosteo;
         private Infragistics.Win.Misc.UltraLabel ultraLabel5;
-        private Controls.SoftSearch softSearch4;
+        private Controls.SoftSearch busMaquina;
         private Infragistics.Win.Misc.UltraLabel ultraLabel6;
-        private Infragistics.Win.UltraWinEditors.UltraNumericEditor uneCostoMaquina;
-        private Infragistics.Win.UltraWinEditors.UltraNumericEditor ultraNumericEditor6;
+        private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtCostoAcabado;
+        private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtCantidadMaterial;
         private Infragistics.Win.Misc.UltraLabel ultraLabel13;
-        private Infragistics.Win.UltraWinEditors.UltraNumericEditor ultraNumericEditor5;
+        private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtCantidadMaquina;
         private Infragistics.Win.Misc.UltraLabel ultraLabel12;
-        private Infragistics.Win.UltraWinEditors.UltraNumericEditor ultraNumericEditor4;
+        private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtCantidadAcabado;
         private Infragistics.Win.Misc.UltraLabel ultraLabel11;
     }
 }
