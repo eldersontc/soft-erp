@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSolicitudCotizacion));
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
@@ -38,8 +41,6 @@
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
@@ -63,12 +64,16 @@
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             this.tabItems = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ugServicios = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.ubEliminarServicio = new Infragistics.Win.Misc.UltraButton();
             this.ubNuevoServicio = new Infragistics.Win.Misc.UltraButton();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.GruposTiras = new Infragistics.Win.Misc.UltraGroupBox();
+            this.txtImpresoRetiraColor = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.txtImpresoTiraColor = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.lblImpresoTiraColor = new Infragistics.Win.Misc.UltraLabel();
+            this.lblImpresoRetiraColor = new Infragistics.Win.Misc.UltraLabel();
             this.GrupoMedidaCerrada = new Infragistics.Win.Misc.UltraGroupBox();
             this.txtMedidaCerradaLargo = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
@@ -85,10 +90,6 @@
             this.ssMaquina = new Soft.Controls.SoftSearch();
             this.lblMaterial = new Infragistics.Win.Misc.UltraLabel();
             this.lblMaquina = new Infragistics.Win.Misc.UltraLabel();
-            this.txtImpresoRetiraColor = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.lblImpresoRetiraColor = new Infragistics.Win.Misc.UltraLabel();
-            this.txtImpresoTiraColor = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.lblImpresoTiraColor = new Infragistics.Win.Misc.UltraLabel();
             this.txtObservacionItem = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.lblObservacionItem = new Infragistics.Win.Misc.UltraLabel();
             this.utcAcabadosyServicios = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
@@ -123,12 +124,16 @@
             this.ultraTabSharedControlsPage2 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.ssMoneda = new Soft.Controls.SoftSearch();
             this.lblMoneda = new Infragistics.Win.Misc.UltraLabel();
-            this.GruposTiras = new Infragistics.Win.Misc.UltraGroupBox();
+            this.btnEliminarElemento = new Infragistics.Win.Misc.UltraButton();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.tabItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ugServicios)).BeginInit();
             this.ultraTabPageControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GruposTiras)).BeginInit();
+            this.GruposTiras.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtImpresoRetiraColor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtImpresoTiraColor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrupoMedidaCerrada)).BeginInit();
             this.GrupoMedidaCerrada.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMedidaCerradaLargo)).BeginInit();
@@ -138,8 +143,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMedidaAbiertoLargo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMedidaAbiertoAlto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidadItem)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtImpresoRetiraColor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtImpresoTiraColor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservacionItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcAcabadosyServicios)).BeginInit();
             this.utcAcabadosyServicios.SuspendLayout();
@@ -152,12 +155,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.utSolicitudCotizacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcItemSolicitid)).BeginInit();
             this.utcItemSolicitid.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GruposTiras)).BeginInit();
-            this.GruposTiras.SuspendLayout();
             this.SuspendLayout();
             // 
             // ugbParent
             // 
+            this.ugbParent.Controls.Add(this.btnEliminarElemento);
             this.ugbParent.Controls.Add(this.ssMoneda);
             this.ugbParent.Controls.Add(this.lblMoneda);
             this.ugbParent.Controls.Add(this.utSolicitudCotizacion);
@@ -180,7 +182,7 @@
             this.ugbParent.Controls.Add(this.lblCliente);
             this.ugbParent.Controls.Add(this.lblTipoDocumento);
             this.ugbParent.Controls.Add(this.utcItemSolicitid);
-            this.ugbParent.Size = new System.Drawing.Size(835, 556);
+            this.ugbParent.Size = new System.Drawing.Size(840, 556);
             this.ugbParent.Controls.SetChildIndex(this.utcItemSolicitid, 0);
             this.ugbParent.Controls.SetChildIndex(this.lblTipoDocumento, 0);
             this.ugbParent.Controls.SetChildIndex(this.lblCliente, 0);
@@ -203,16 +205,17 @@
             this.ugbParent.Controls.SetChildIndex(this.utSolicitudCotizacion, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.lblMoneda, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ssMoneda, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
+            this.ugbParent.Controls.SetChildIndex(this.ssMoneda, 0);
+            this.ugbParent.Controls.SetChildIndex(this.btnEliminarElemento, 0);
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(745, 521);
+            this.ubCancelar.Location = new System.Drawing.Point(754, 521);
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(664, 521);
+            this.ubAceptar.Location = new System.Drawing.Point(673, 521);
             // 
             // ilMain
             // 
@@ -522,7 +525,66 @@
             this.ultraTabPageControl1.Controls.Add(this.utcAcabadosyServicios);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(673, 298);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(683, 298);
+            // 
+            // GruposTiras
+            // 
+            appearance13.BackColor = System.Drawing.Color.Transparent;
+            this.GruposTiras.Appearance = appearance13;
+            this.GruposTiras.Controls.Add(this.txtImpresoRetiraColor);
+            this.GruposTiras.Controls.Add(this.txtImpresoTiraColor);
+            this.GruposTiras.Controls.Add(this.lblImpresoTiraColor);
+            this.GruposTiras.Controls.Add(this.lblImpresoRetiraColor);
+            this.GruposTiras.Location = new System.Drawing.Point(180, 101);
+            this.GruposTiras.Name = "GruposTiras";
+            this.GruposTiras.Size = new System.Drawing.Size(131, 57);
+            this.GruposTiras.TabIndex = 83;
+            // 
+            // txtImpresoRetiraColor
+            // 
+            this.txtImpresoRetiraColor.Location = new System.Drawing.Point(76, 29);
+            this.txtImpresoRetiraColor.MaskInput = "nn";
+            this.txtImpresoRetiraColor.Name = "txtImpresoRetiraColor";
+            this.txtImpresoRetiraColor.Size = new System.Drawing.Size(45, 21);
+            this.txtImpresoRetiraColor.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
+            this.txtImpresoRetiraColor.TabIndex = 72;
+            this.txtImpresoRetiraColor.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
+            this.txtImpresoRetiraColor.ValueChanged += new System.EventHandler(this.txtImpresoRetiraColor_ValueChanged);
+            // 
+            // txtImpresoTiraColor
+            // 
+            this.txtImpresoTiraColor.Location = new System.Drawing.Point(76, 7);
+            this.txtImpresoTiraColor.MaskInput = "nn";
+            this.txtImpresoTiraColor.MaxValue = 16;
+            this.txtImpresoTiraColor.MinValue = 0;
+            this.txtImpresoTiraColor.Name = "txtImpresoTiraColor";
+            this.txtImpresoTiraColor.Size = new System.Drawing.Size(45, 21);
+            this.txtImpresoTiraColor.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
+            this.txtImpresoTiraColor.TabIndex = 70;
+            this.txtImpresoTiraColor.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
+            this.txtImpresoTiraColor.ValueChanged += new System.EventHandler(this.txtImpresoTiraColor_ValueChanged);
+            // 
+            // lblImpresoTiraColor
+            // 
+            appearance14.BackColor = System.Drawing.Color.Transparent;
+            this.lblImpresoTiraColor.Appearance = appearance14;
+            this.lblImpresoTiraColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblImpresoTiraColor.Location = new System.Drawing.Point(7, 11);
+            this.lblImpresoTiraColor.Name = "lblImpresoTiraColor";
+            this.lblImpresoTiraColor.Size = new System.Drawing.Size(63, 23);
+            this.lblImpresoTiraColor.TabIndex = 69;
+            this.lblImpresoTiraColor.Text = "Tira Color";
+            // 
+            // lblImpresoRetiraColor
+            // 
+            appearance15.BackColor = System.Drawing.Color.Transparent;
+            this.lblImpresoRetiraColor.Appearance = appearance15;
+            this.lblImpresoRetiraColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblImpresoRetiraColor.Location = new System.Drawing.Point(7, 33);
+            this.lblImpresoRetiraColor.Name = "lblImpresoRetiraColor";
+            this.lblImpresoRetiraColor.Size = new System.Drawing.Size(70, 23);
+            this.lblImpresoRetiraColor.TabIndex = 71;
+            this.lblImpresoRetiraColor.Text = "Retira Color";
             // 
             // GrupoMedidaCerrada
             // 
@@ -534,7 +596,7 @@
             this.GrupoMedidaCerrada.Controls.Add(this.txtMedidaCerradaAlto);
             this.GrupoMedidaCerrada.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.GrupoMedidaCerrada.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
-            this.GrupoMedidaCerrada.Location = new System.Drawing.Point(149, 14);
+            this.GrupoMedidaCerrada.Location = new System.Drawing.Point(180, 14);
             this.GrupoMedidaCerrada.Name = "GrupoMedidaCerrada";
             this.GrupoMedidaCerrada.Size = new System.Drawing.Size(131, 83);
             this.GrupoMedidaCerrada.TabIndex = 82;
@@ -618,7 +680,7 @@
             this.GrupoMedidaAbierta.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
             this.GrupoMedidaAbierta.Location = new System.Drawing.Point(9, 13);
             this.GrupoMedidaAbierta.Name = "GrupoMedidaAbierta";
-            this.GrupoMedidaAbierta.Size = new System.Drawing.Size(136, 84);
+            this.GrupoMedidaAbierta.Size = new System.Drawing.Size(165, 84);
             this.GrupoMedidaAbierta.TabIndex = 81;
             this.GrupoMedidaAbierta.Text = "Medida Abierta";
             // 
@@ -690,7 +752,7 @@
             // 
             // txtCantidadItem
             // 
-            this.txtCantidadItem.Location = new System.Drawing.Point(63, 103);
+            this.txtCantidadItem.Location = new System.Drawing.Point(101, 103);
             this.txtCantidadItem.MaskInput = "nnnnnn";
             this.txtCantidadItem.Name = "txtCantidadItem";
             this.txtCantidadItem.Size = new System.Drawing.Size(73, 21);
@@ -706,7 +768,7 @@
             this.lblTipoUnidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblTipoUnidad.Location = new System.Drawing.Point(15, 107);
             this.lblTipoUnidad.Name = "lblTipoUnidad";
-            this.lblTipoUnidad.Size = new System.Drawing.Size(55, 23);
+            this.lblTipoUnidad.Size = new System.Drawing.Size(80, 23);
             this.lblTipoUnidad.TabIndex = 77;
             this.lblTipoUnidad.Text = "[Unidad]";
             // 
@@ -750,58 +812,12 @@
             this.lblMaquina.TabIndex = 73;
             this.lblMaquina.Text = "Máquina";
             // 
-            // txtImpresoRetiraColor
-            // 
-            this.txtImpresoRetiraColor.Location = new System.Drawing.Point(76, 29);
-            this.txtImpresoRetiraColor.MaskInput = "nn";
-            this.txtImpresoRetiraColor.Name = "txtImpresoRetiraColor";
-            this.txtImpresoRetiraColor.Size = new System.Drawing.Size(73, 21);
-            this.txtImpresoRetiraColor.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
-            this.txtImpresoRetiraColor.TabIndex = 72;
-            this.txtImpresoRetiraColor.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
-            this.txtImpresoRetiraColor.ValueChanged += new System.EventHandler(this.txtImpresoRetiraColor_ValueChanged);
-            // 
-            // lblImpresoRetiraColor
-            // 
-            appearance15.BackColor = System.Drawing.Color.Transparent;
-            this.lblImpresoRetiraColor.Appearance = appearance15;
-            this.lblImpresoRetiraColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblImpresoRetiraColor.Location = new System.Drawing.Point(7, 33);
-            this.lblImpresoRetiraColor.Name = "lblImpresoRetiraColor";
-            this.lblImpresoRetiraColor.Size = new System.Drawing.Size(70, 23);
-            this.lblImpresoRetiraColor.TabIndex = 71;
-            this.lblImpresoRetiraColor.Text = "Retira Color";
-            // 
-            // txtImpresoTiraColor
-            // 
-            this.txtImpresoTiraColor.Location = new System.Drawing.Point(76, 7);
-            this.txtImpresoTiraColor.MaskInput = "nn";
-            this.txtImpresoTiraColor.MaxValue = 16;
-            this.txtImpresoTiraColor.MinValue = 0;
-            this.txtImpresoTiraColor.Name = "txtImpresoTiraColor";
-            this.txtImpresoTiraColor.Size = new System.Drawing.Size(73, 21);
-            this.txtImpresoTiraColor.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
-            this.txtImpresoTiraColor.TabIndex = 70;
-            this.txtImpresoTiraColor.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
-            this.txtImpresoTiraColor.ValueChanged += new System.EventHandler(this.txtImpresoTiraColor_ValueChanged);
-            // 
-            // lblImpresoTiraColor
-            // 
-            appearance14.BackColor = System.Drawing.Color.Transparent;
-            this.lblImpresoTiraColor.Appearance = appearance14;
-            this.lblImpresoTiraColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblImpresoTiraColor.Location = new System.Drawing.Point(7, 11);
-            this.lblImpresoTiraColor.Name = "lblImpresoTiraColor";
-            this.lblImpresoTiraColor.Size = new System.Drawing.Size(63, 23);
-            this.lblImpresoTiraColor.TabIndex = 69;
-            this.lblImpresoTiraColor.Text = "Tira Color";
-            // 
             // txtObservacionItem
             // 
-            this.txtObservacionItem.Location = new System.Drawing.Point(63, 223);
+            this.txtObservacionItem.Location = new System.Drawing.Point(9, 253);
             this.txtObservacionItem.Multiline = true;
             this.txtObservacionItem.Name = "txtObservacionItem";
-            this.txtObservacionItem.Size = new System.Drawing.Size(244, 56);
+            this.txtObservacionItem.Size = new System.Drawing.Size(302, 32);
             this.txtObservacionItem.TabIndex = 64;
             this.txtObservacionItem.TextChanged += new System.EventHandler(this.txtObservacionItem_TextChanged);
             // 
@@ -809,9 +825,9 @@
             // 
             appearance25.BackColor = System.Drawing.Color.Transparent;
             this.lblObservacionItem.Appearance = appearance25;
-            this.lblObservacionItem.Location = new System.Drawing.Point(9, 227);
+            this.lblObservacionItem.Location = new System.Drawing.Point(9, 232);
             this.lblObservacionItem.Name = "lblObservacionItem";
-            this.lblObservacionItem.Size = new System.Drawing.Size(61, 23);
+            this.lblObservacionItem.Size = new System.Drawing.Size(61, 20);
             this.lblObservacionItem.TabIndex = 63;
             this.lblObservacionItem.Text = "Observ.";
             // 
@@ -821,7 +837,7 @@
             this.utcAcabadosyServicios.Appearance = appearance26;
             this.utcAcabadosyServicios.Controls.Add(this.ultraTabSharedControlsPage1);
             this.utcAcabadosyServicios.Controls.Add(this.tabItems);
-            this.utcAcabadosyServicios.Location = new System.Drawing.Point(313, 13);
+            this.utcAcabadosyServicios.Location = new System.Drawing.Point(324, 14);
             this.utcAcabadosyServicios.Name = "utcAcabadosyServicios";
             this.utcAcabadosyServicios.SharedControlsPage = this.ultraTabSharedControlsPage1;
             this.utcAcabadosyServicios.Size = new System.Drawing.Size(350, 268);
@@ -1094,7 +1110,7 @@
             appearance2.FontData.ItalicAsString = "True";
             _override1.ActiveNodeAppearance = appearance2;
             this.utSolicitudCotizacion.Override = _override1;
-            this.utSolicitudCotizacion.Size = new System.Drawing.Size(121, 324);
+            this.utSolicitudCotizacion.Size = new System.Drawing.Size(121, 297);
             this.utSolicitudCotizacion.TabIndex = 70;
             this.utSolicitudCotizacion.AfterSelect += new Infragistics.Win.UltraWinTree.AfterNodeSelectEventHandler(this.utSolicitudCotizacion_AfterSelect);
             // 
@@ -1108,7 +1124,7 @@
             this.utcItemSolicitid.Location = new System.Drawing.Point(145, 163);
             this.utcItemSolicitid.Name = "utcItemSolicitid";
             this.utcItemSolicitid.SharedControlsPage = this.ultraTabSharedControlsPage2;
-            this.utcItemSolicitid.Size = new System.Drawing.Size(677, 324);
+            this.utcItemSolicitid.Size = new System.Drawing.Size(687, 324);
             appearance31.BackColor = System.Drawing.Color.Transparent;
             this.utcItemSolicitid.TabHeaderAreaAppearance = appearance31;
             this.utcItemSolicitid.TabIndex = 71;
@@ -1124,7 +1140,7 @@
             // 
             this.ultraTabSharedControlsPage2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
-            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(673, 298);
+            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(683, 298);
             // 
             // ssMoneda
             // 
@@ -1146,24 +1162,21 @@
             this.lblMoneda.TabIndex = 72;
             this.lblMoneda.Text = "Moneda";
             // 
-            // GruposTiras
+            // btnEliminarElemento
             // 
-            appearance13.BackColor = System.Drawing.Color.Transparent;
-            this.GruposTiras.Appearance = appearance13;
-            this.GruposTiras.Controls.Add(this.txtImpresoRetiraColor);
-            this.GruposTiras.Controls.Add(this.txtImpresoTiraColor);
-            this.GruposTiras.Controls.Add(this.lblImpresoTiraColor);
-            this.GruposTiras.Controls.Add(this.lblImpresoRetiraColor);
-            this.GruposTiras.Location = new System.Drawing.Point(149, 101);
-            this.GruposTiras.Name = "GruposTiras";
-            this.GruposTiras.Size = new System.Drawing.Size(158, 57);
-            this.GruposTiras.TabIndex = 83;
+            this.btnEliminarElemento.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Office2010Button;
+            this.btnEliminarElemento.Location = new System.Drawing.Point(53, 461);
+            this.btnEliminarElemento.Name = "btnEliminarElemento";
+            this.btnEliminarElemento.Size = new System.Drawing.Size(86, 23);
+            this.btnEliminarElemento.TabIndex = 74;
+            this.btnEliminarElemento.Text = "&Eliminar";
+            this.btnEliminarElemento.Click += new System.EventHandler(this.btnEliminarElemento_Click);
             // 
             // FrmSolicitudCotizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(851, 594);
+            this.ClientSize = new System.Drawing.Size(856, 594);
             this.Name = "FrmSolicitudCotizacion";
             this.Text = "Solicitud de Cotización";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
@@ -1173,6 +1186,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.ugServicios)).EndInit();
             this.ultraTabPageControl1.ResumeLayout(false);
             this.ultraTabPageControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GruposTiras)).EndInit();
+            this.GruposTiras.ResumeLayout(false);
+            this.GruposTiras.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtImpresoRetiraColor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtImpresoTiraColor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrupoMedidaCerrada)).EndInit();
             this.GrupoMedidaCerrada.ResumeLayout(false);
             this.GrupoMedidaCerrada.PerformLayout();
@@ -1184,8 +1202,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMedidaAbiertoLargo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMedidaAbiertoAlto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidadItem)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtImpresoRetiraColor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtImpresoTiraColor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservacionItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcAcabadosyServicios)).EndInit();
             this.utcAcabadosyServicios.ResumeLayout(false);
@@ -1198,9 +1214,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.utSolicitudCotizacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcItemSolicitid)).EndInit();
             this.utcItemSolicitid.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GruposTiras)).EndInit();
-            this.GruposTiras.ResumeLayout(false);
-            this.GruposTiras.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1267,5 +1280,6 @@
         private Controls.SoftSearch ssContacto;
         private Infragistics.Win.Misc.UltraLabel lblContacto;
         private Infragistics.Win.Misc.UltraGroupBox GruposTiras;
+        private Infragistics.Win.Misc.UltraButton btnEliminarElemento;
     }
 }
