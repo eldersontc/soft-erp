@@ -11,6 +11,7 @@ using Soft.Configuracion.Entidades;
 using System.Xml;
 using Soft.DataAccess;
 using Infragistics.Win.UltraWinGrid;
+using Soft.Exceptions;
 
 namespace Soft.Win
 {
@@ -152,8 +153,40 @@ namespace Soft.Win
                 case colObligatorio:
                     atributo.Obligatorio = Convert.ToBoolean(e.Cell.Text);
                     break;
+                case colCampo:
+                    atributo.Campo = Convert.ToString(e.Cell.Text);
+                    break;
                 default:
                     break;
+            }
+        }
+
+        private void ubNuevo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AtributoSF atributo = new AtributoSF();
+                UltraGridRow Row = ugAtributos.DisplayLayout.Bands[0].AddNew();
+                Row.Tag = atributo;
+                EntidadSF.Atributos.Add(atributo);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ubEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ugAtributos.ActiveRow == null) { return; }
+                EntidadSF.Atributos.Remove((AtributoSF)ugAtributos.ActiveRow.Tag);
+                ugAtributos.ActiveRow.Delete(false);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
             }
         }
 
