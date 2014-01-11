@@ -387,25 +387,25 @@ namespace Soft.Ventas.Win
         private void txtMedidaAbiertoLargo_ValueChanged(object sender, EventArgs e)
         {
             if (ItemSolicitudCotizacion == null) { return; }
-            ItemSolicitudCotizacion.MedidaAbiertaLargo = Convert.ToInt32(txtMedidaAbiertoLargo.Value);
+            ItemSolicitudCotizacion.MedidaAbiertaLargo = Convert.ToDecimal(txtMedidaAbiertoLargo.Value);
         }
 
         private void txtMedidaAbiertoAlto_ValueChanged(object sender, EventArgs e)
         {
             if (ItemSolicitudCotizacion == null) { return; }
-            ItemSolicitudCotizacion.MedidaAbiertaAlto = Convert.ToInt32(txtMedidaAbiertoAlto.Value);
+            ItemSolicitudCotizacion.MedidaAbiertaAlto = Convert.ToDecimal(txtMedidaAbiertoAlto.Value);
         }
 
         private void txtMedidaCerradaLargo_ValueChanged(object sender, EventArgs e)
         {
             if (ItemSolicitudCotizacion == null) { return; }
-            ItemSolicitudCotizacion.MedidaCerradaLargo = Convert.ToInt32(txtMedidaCerradaLargo.Value);
+            ItemSolicitudCotizacion.MedidaCerradaLargo = Convert.ToDecimal(txtMedidaCerradaLargo.Value);
         }
 
         private void txtMedidaCerradaAlto_ValueChanged(object sender, EventArgs e)
         {
             if (ItemSolicitudCotizacion == null) { return; }
-            ItemSolicitudCotizacion.MedidaCerradaAlto = Convert.ToInt32(txtMedidaCerradaAlto.Value);
+            ItemSolicitudCotizacion.MedidaCerradaAlto = Convert.ToDecimal(txtMedidaCerradaAlto.Value);
         }
 
         private void ssMoneda_Search(object sender, EventArgs e)
@@ -442,6 +442,18 @@ namespace Soft.Ventas.Win
                 SolicitudCotizacion.DireccionFacturacion = Direccion.Direccion;
                 ssDireccionFactura.Text = Direccion.Direccion;
             }
+        }
+
+        private void btnEliminarElemento_Click(object sender, EventArgs e)
+        {
+            UltraTreeNode Node = utSolicitudCotizacion.ActiveNode;
+            if (Node != null)
+            {
+                ItemSolicitudCotizacion = (ItemSolicitudCotizacion)Node.Tag;
+                SolicitudCotizacion.Items.Remove(ItemSolicitudCotizacion);
+                Mostrar();
+            }
+
         }
 
 
