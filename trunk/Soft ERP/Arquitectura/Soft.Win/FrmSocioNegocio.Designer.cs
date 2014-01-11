@@ -479,7 +479,7 @@
             this.ultraTabPageControl9.Controls.Add(this.checkActivoEmpleado);
             this.ultraTabPageControl9.Controls.Add(this.ultraLabel11);
             this.ultraTabPageControl9.Controls.Add(this.busArea);
-            this.ultraTabPageControl9.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl9.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl9.Name = "ultraTabPageControl9";
             this.ultraTabPageControl9.Size = new System.Drawing.Size(600, 236);
             // 
@@ -547,7 +547,7 @@
             this.ultraTabPageControl4.Controls.Add(this.GrillaDirecciones);
             this.ultraTabPageControl4.Controls.Add(this.btnEliminar);
             this.ultraTabPageControl4.Controls.Add(this.btnAgregarDireccion);
-            this.ultraTabPageControl4.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl4.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl4.Name = "ultraTabPageControl4";
             this.ultraTabPageControl4.Size = new System.Drawing.Size(600, 236);
             // 
@@ -585,7 +585,7 @@
             // 
             // btnAgregarDireccion
             // 
-            this.btnAgregarDireccion.Location = new System.Drawing.Point(288, 208);
+            this.btnAgregarDireccion.Location = new System.Drawing.Point(287, 208);
             this.btnAgregarDireccion.Name = "btnAgregarDireccion";
             this.btnAgregarDireccion.Size = new System.Drawing.Size(75, 23);
             this.btnAgregarDireccion.TabIndex = 0;
@@ -755,9 +755,9 @@
             this.ultraLabel1.Appearance = appearance16;
             this.ultraLabel1.Location = new System.Drawing.Point(19, 51);
             this.ultraLabel1.Name = "ultraLabel1";
-            this.ultraLabel1.Size = new System.Drawing.Size(100, 23);
+            this.ultraLabel1.Size = new System.Drawing.Size(119, 23);
             this.ultraLabel1.TabIndex = 19;
-            this.ultraLabel1.Text = "Código";
+            this.ultraLabel1.Text = "DNI / RUC / CARNET";
             // 
             // ultraLabel3
             // 
