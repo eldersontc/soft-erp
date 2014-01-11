@@ -29,15 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEntitySF));
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.ugAtributos = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.ssTabla = new Soft.Controls.SoftSearch();
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
@@ -170,8 +174,8 @@
             // 
             // ultraLabel2
             // 
-            appearance8.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance8;
+            appearance12.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance12;
             this.ultraLabel2.Location = new System.Drawing.Point(11, 32);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(84, 23);
@@ -180,8 +184,8 @@
             // 
             // ultraLabel3
             // 
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel3.Appearance = appearance5;
+            appearance8.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel3.Appearance = appearance8;
             this.ultraLabel3.Location = new System.Drawing.Point(11, 32);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(74, 23);
@@ -190,8 +194,8 @@
             // 
             // ultraLabel1
             // 
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel1.Appearance = appearance6;
+            appearance9.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel1.Appearance = appearance9;
             this.ultraLabel1.Location = new System.Drawing.Point(285, 34);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(54, 23);
@@ -217,8 +221,8 @@
             // 
             // ultraLabel5
             // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel5.Appearance = appearance3;
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel5.Appearance = appearance5;
             this.ultraLabel5.Location = new System.Drawing.Point(11, 32);
             this.ultraLabel5.Name = "ultraLabel5";
             this.ultraLabel5.Size = new System.Drawing.Size(71, 23);
@@ -227,8 +231,8 @@
             // 
             // ultraLabel6
             // 
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel6.Appearance = appearance2;
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel6.Appearance = appearance4;
             this.ultraLabel6.Location = new System.Drawing.Point(285, 33);
             this.ultraLabel6.Name = "ultraLabel6";
             this.ultraLabel6.Size = new System.Drawing.Size(52, 23);
@@ -254,10 +258,12 @@
             // 
             // ugbGeneral
             // 
+            appearance11.BackColor = System.Drawing.Color.Transparent;
+            this.ugbGeneral.Appearance = appearance11;
             this.ugbGeneral.Controls.Add(this.ssTabla);
             this.ugbGeneral.Controls.Add(this.ultraLabel2);
-            appearance9.BackColor = System.Drawing.Color.Transparent;
-            this.ugbGeneral.HeaderAppearance = appearance9;
+            appearance13.BackColor = System.Drawing.Color.Transparent;
+            this.ugbGeneral.HeaderAppearance = appearance13;
             this.ugbGeneral.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.ugbGeneral.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
             this.ugbGeneral.Location = new System.Drawing.Point(16, 15);
@@ -268,12 +274,14 @@
             // 
             // ugbClase
             // 
+            appearance7.BackColor = System.Drawing.Color.Transparent;
+            this.ugbClase.Appearance = appearance7;
             this.ugbClase.Controls.Add(this.txtNombreClase);
             this.ugbClase.Controls.Add(this.ultraLabel3);
             this.ugbClase.Controls.Add(this.ssEnsambladoClase);
             this.ugbClase.Controls.Add(this.ultraLabel1);
-            appearance7.BackColor = System.Drawing.Color.Transparent;
-            this.ugbClase.HeaderAppearance = appearance7;
+            appearance10.BackColor = System.Drawing.Color.Transparent;
+            this.ugbClase.HeaderAppearance = appearance10;
             this.ugbClase.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.ugbClase.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
             this.ugbClase.Location = new System.Drawing.Point(16, 80);
@@ -284,12 +292,14 @@
             // 
             // ugbFormulario
             // 
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.ugbFormulario.Appearance = appearance3;
             this.ugbFormulario.Controls.Add(this.txtNombreFormulario);
             this.ugbFormulario.Controls.Add(this.ultraLabel6);
             this.ugbFormulario.Controls.Add(this.ultraLabel5);
             this.ugbFormulario.Controls.Add(this.ssEnsambladoFormulario);
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            this.ugbFormulario.HeaderAppearance = appearance4;
+            appearance6.BackColor = System.Drawing.Color.Transparent;
+            this.ugbFormulario.HeaderAppearance = appearance6;
             this.ugbFormulario.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.ugbFormulario.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
             this.ugbFormulario.Location = new System.Drawing.Point(16, 144);
@@ -300,11 +310,13 @@
             // 
             // ugbAtributos
             // 
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            this.ugbAtributos.Appearance = appearance1;
             this.ugbAtributos.Controls.Add(this.ubEliminar);
             this.ugbAtributos.Controls.Add(this.ubNuevo);
             this.ugbAtributos.Controls.Add(this.ugAtributos);
-            appearance1.BackColor = System.Drawing.Color.Transparent;
-            this.ugbAtributos.HeaderAppearance = appearance1;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.ugbAtributos.HeaderAppearance = appearance2;
             this.ugbAtributos.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.ugbAtributos.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
             this.ugbAtributos.Location = new System.Drawing.Point(16, 210);
