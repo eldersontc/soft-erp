@@ -28,12 +28,13 @@ namespace Soft.Ventas.Entidades
         public virtual Decimal MedidaCerradaAlto { get; set; }
         public virtual Decimal Costo { get; set; }
         public virtual Decimal Precio { get; set; }
-
         public virtual Decimal CostoMaquina { get; set; }
         public virtual Decimal CostoMaterial { get; set; }
         public virtual Decimal CostoTransporte { get; set; }
+        public virtual Boolean TieneMedidaAbierta { get; set; }
+        public virtual Boolean TieneMedidaCerrada { get; set; }
+        public virtual Boolean TieneTiraRetira { get; set; }
         
-
         public virtual ItemCotizacionServicio AddServicio()
         {
             ItemCotizacionServicio Item = new ItemCotizacionServicio();
