@@ -34,7 +34,27 @@ namespace Soft.Ventas.Entidades
         public virtual ListaCostosMaquina ListaCostosMaquina { get; set; }
         public virtual ListaPreciosExistencia ListaPreciosExistencia { get; set; }
         public virtual ListaPreciosTransporte ListaPreciosTransporte { get; set; }
-        
+
+
+
+
+        public virtual void AsignarListadeCostosDesdeTipoDocumento()
+        {
+                TipoCotizacion tipo = (TipoCotizacion)TipoDocumento;
+                if (tipo != null)
+                {
+                    ListaCostosMaquina = tipo.ListaCostosMaquina;
+                    ListaPreciosExistencia = tipo.ListaPreciosExistencia;
+                    ListaPreciosTransporte = tipo.ListaPreciosTransporte;
+                }
+                else
+                {
+                    ListaCostosMaquina = null;
+                    ListaPreciosExistencia = null;
+                    ListaPreciosTransporte = null;
+                 }
+        }
+
 
         public virtual void GenerarNumCp()
         {
