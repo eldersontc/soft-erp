@@ -30,6 +30,9 @@ namespace Soft.Ventas.Entidades
         public virtual Decimal MedidaCerradaAlto { get; set; }
         public virtual String m_FiltroMaquina { get; set; }
         public virtual String m_FiltroServicios { get; set; }
+        public virtual Boolean TieneMedidaAbierta { get; set; }
+        public virtual Boolean TieneMedidaCerrada { get; set; }
+        public virtual Boolean TieneTiraRetira { get; set; }
 
         public virtual ItemSolicitudCotizacionServicio AddServicio()
         {
