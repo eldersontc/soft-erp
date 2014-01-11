@@ -65,6 +65,9 @@
             this.ubNuevoItem = new Infragistics.Win.Misc.UltraButton();
             this.ubEliminarItem = new Infragistics.Win.Misc.UltraButton();
             this.btnBorrarOperacion = new Infragistics.Win.Misc.UltraButton();
+            this.chkTieneMedidaAbierta = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
+            this.chkTieneMedidadCerrada = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
+            this.chkTieneTiraRetira = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.ultraTabPageControl1.SuspendLayout();
@@ -78,6 +81,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.utcDetalle)).BeginInit();
             this.utcDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.utPlantilla)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneMedidaAbierta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneMedidadCerrada)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneTiraRetira)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
@@ -369,6 +375,9 @@
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.Controls.Add(this.chkTieneTiraRetira);
+            this.ultraTabPageControl1.Controls.Add(this.chkTieneMedidadCerrada);
+            this.ultraTabPageControl1.Controls.Add(this.chkTieneMedidaAbierta);
             this.ultraTabPageControl1.Controls.Add(this.btnBorrarMaterial);
             this.ultraTabPageControl1.Controls.Add(this.txtNombreItem);
             this.ultraTabPageControl1.Controls.Add(this.lblNombreItem);
@@ -387,7 +396,7 @@
             // 
             // btnBorrarMaterial
             // 
-            this.btnBorrarMaterial.Location = new System.Drawing.Point(455, 128);
+            this.btnBorrarMaterial.Location = new System.Drawing.Point(453, 126);
             this.btnBorrarMaterial.Name = "btnBorrarMaterial";
             this.btnBorrarMaterial.Size = new System.Drawing.Size(53, 23);
             this.btnBorrarMaterial.TabIndex = 17;
@@ -405,7 +414,7 @@
             // lblNombreItem
             // 
             this.lblNombreItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblNombreItem.Location = new System.Drawing.Point(17, 18);
+            this.lblNombreItem.Location = new System.Drawing.Point(17, 19);
             this.lblNombreItem.Name = "lblNombreItem";
             this.lblNombreItem.Size = new System.Drawing.Size(100, 21);
             this.lblNombreItem.TabIndex = 14;
@@ -440,7 +449,7 @@
             // 
             // lblTipoUnidad
             // 
-            this.lblTipoUnidad.Location = new System.Drawing.Point(17, 72);
+            this.lblTipoUnidad.Location = new System.Drawing.Point(17, 74);
             this.lblTipoUnidad.Name = "lblTipoUnidad";
             this.lblTipoUnidad.Size = new System.Drawing.Size(100, 21);
             this.lblTipoUnidad.TabIndex = 12;
@@ -500,7 +509,7 @@
             // 
             // lblRelacion
             // 
-            this.lblRelacion.Location = new System.Drawing.Point(17, 45);
+            this.lblRelacion.Location = new System.Drawing.Point(17, 47);
             this.lblRelacion.Name = "lblRelacion";
             this.lblRelacion.Size = new System.Drawing.Size(100, 21);
             this.lblRelacion.TabIndex = 9;
@@ -508,7 +517,7 @@
             // 
             // lbMaterial
             // 
-            this.lbMaterial.Location = new System.Drawing.Point(17, 127);
+            this.lbMaterial.Location = new System.Drawing.Point(17, 129);
             this.lbMaterial.Name = "lbMaterial";
             this.lbMaterial.Size = new System.Drawing.Size(100, 23);
             this.lbMaterial.TabIndex = 7;
@@ -517,7 +526,7 @@
             // lblOperacion
             // 
             this.lblOperacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblOperacion.Location = new System.Drawing.Point(17, 99);
+            this.lblOperacion.Location = new System.Drawing.Point(17, 102);
             this.lblOperacion.Name = "lblOperacion";
             this.lblOperacion.Size = new System.Drawing.Size(116, 21);
             this.lblOperacion.TabIndex = 3;
@@ -599,7 +608,7 @@
             // utPlantilla
             // 
             this.utPlantilla.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.utPlantilla.Location = new System.Drawing.Point(17, 50);
+            this.utPlantilla.Location = new System.Drawing.Point(17, 52);
             this.utPlantilla.Name = "utPlantilla";
             this.utPlantilla.NodeConnectorColor = System.Drawing.SystemColors.ControlDark;
             ultraTreeNode1.LeftImages.Add(((object)(resources.GetObject("ultraTreeNode1.LeftImages"))));
@@ -634,12 +643,39 @@
             // 
             // btnBorrarOperacion
             // 
-            this.btnBorrarOperacion.Location = new System.Drawing.Point(677, 172);
+            this.btnBorrarOperacion.Location = new System.Drawing.Point(676, 171);
             this.btnBorrarOperacion.Name = "btnBorrarOperacion";
-            this.btnBorrarOperacion.Size = new System.Drawing.Size(53, 23);
+            this.btnBorrarOperacion.Size = new System.Drawing.Size(54, 23);
             this.btnBorrarOperacion.TabIndex = 16;
             this.btnBorrarOperacion.Text = "Borrar";
             this.btnBorrarOperacion.Click += new System.EventHandler(this.btnBorrarOperacion_Click);
+            // 
+            // chkTieneMedidaAbierta
+            // 
+            this.chkTieneMedidaAbierta.Location = new System.Drawing.Point(359, 16);
+            this.chkTieneMedidaAbierta.Name = "chkTieneMedidaAbierta";
+            this.chkTieneMedidaAbierta.Size = new System.Drawing.Size(136, 20);
+            this.chkTieneMedidaAbierta.TabIndex = 18;
+            this.chkTieneMedidaAbierta.Text = "Tiene Medida Abierta";
+            this.chkTieneMedidaAbierta.CheckedChanged += new System.EventHandler(this.chkTieneMedidaAbierta_CheckedChanged);
+            // 
+            // chkTieneMedidadCerrada
+            // 
+            this.chkTieneMedidadCerrada.Location = new System.Drawing.Point(359, 44);
+            this.chkTieneMedidadCerrada.Name = "chkTieneMedidadCerrada";
+            this.chkTieneMedidadCerrada.Size = new System.Drawing.Size(136, 20);
+            this.chkTieneMedidadCerrada.TabIndex = 19;
+            this.chkTieneMedidadCerrada.Text = "Tiene Medida Cerrada";
+            this.chkTieneMedidadCerrada.CheckedChanged += new System.EventHandler(this.chkTieneMedidadCerrada_CheckedChanged);
+            // 
+            // chkTieneTiraRetira
+            // 
+            this.chkTieneTiraRetira.Location = new System.Drawing.Point(359, 71);
+            this.chkTieneTiraRetira.Name = "chkTieneTiraRetira";
+            this.chkTieneTiraRetira.Size = new System.Drawing.Size(136, 20);
+            this.chkTieneTiraRetira.TabIndex = 20;
+            this.chkTieneTiraRetira.Text = "Tiene Tira y Retira";
+            this.chkTieneTiraRetira.CheckedChanged += new System.EventHandler(this.chkTieneTiraRetira_CheckedChanged);
             // 
             // FrmPlantilla
             // 
@@ -663,6 +699,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.utcDetalle)).EndInit();
             this.utcDetalle.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.utPlantilla)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneMedidaAbierta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneMedidadCerrada)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneTiraRetira)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -696,5 +735,8 @@
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtNombreItem;
         private Infragistics.Win.Misc.UltraButton btnBorrarOperacion;
         private Infragistics.Win.Misc.UltraButton btnBorrarMaterial;
+        private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkTieneMedidaAbierta;
+        private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkTieneTiraRetira;
+        private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkTieneMedidadCerrada;
     }
 }
