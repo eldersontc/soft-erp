@@ -36,7 +36,12 @@ namespace Soft.Ventas.Win
 
             bussAcabado.Text = (Item.Servicio != null) ? Item.Servicio.Nombre : "";
             busUnidadAcabado.Text = (Item.UnidadServicio != null) ? Item.UnidadServicio.Nombre : "";
-
+            busMaquina.Text = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
+            txtNombreMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
+            busUnidadMaterial.Text = (Item.UnidadMaterial != null) ? Item.UnidadMaterial.Nombre : "";
+            txtCantidadAcabado.Value = Item.CantidadServicio;
+            txtCantidadMaquina.Value = Item.CantidadMaquina;
+            txtCantidadMaterial.Value = Item.CantidadMaterial;
         }
 
         private void bussAcabado_Search(object sender, EventArgs e)
@@ -89,7 +94,14 @@ namespace Soft.Ventas.Win
         private void busMaquina_Search(object sender, EventArgs e)
         {
             try
-            {
+                {
+
+                String filtro = "Nombre like '%"+busMaquina.Text+"%'";
+
+                FrmSelectedEntity formulario = new FrmSelectedEntity();
+                Maquina maquina = (Maquina)formulario.GetSelectedEntity(typeof(Maquina), "Máquina", filtro);
+                Item.Maquina = (Maquina)HelperNHibernate.GetEntityByID("Maquina", maquina.ID);
+                Mostrar();
 
             }
             catch (Exception ex)
@@ -115,7 +127,7 @@ namespace Soft.Ventas.Win
         {
             try
             {
-
+                Item.CantidadMaquina = Convert.ToDecimal(txtCantidadMaquina.Value);
             }
             catch (Exception ex)
             {
@@ -129,6 +141,12 @@ namespace Soft.Ventas.Win
             try
             {
 
+                String filtro = "Nombre like '%" +txtNombreMaterial.Text + "%'";
+
+                FrmSelectedEntity formulario = new FrmSelectedEntity();
+                Existencia existencia = (Existencia)formulario.GetSelectedEntity(typeof(Existencia), "Existencia", filtro);
+                Item.Material = (Existencia)HelperNHibernate.GetEntityByID("Existencia", existencia.ID);
+                Mostrar();
             }
             catch (Exception ex)
             {
@@ -141,7 +159,14 @@ namespace Soft.Ventas.Win
         {
             try
             {
+                String filtro = "Nombre like '%" + busUnidadMaterial.Text + "%' and IDExistencia='"+Item.Material.ID+"'";
 
+
+
+                FrmSelectedEntity formulario = new FrmSelectedEntity();
+                Unidad unidad = (Unidad)formulario.GetSelectedEntity(typeof(Unidad), "ExistenciaUnidad", filtro);
+                Item.UnidadMaterial = (Unidad)HelperNHibernate.GetEntityByID("Unidad", unidad.ID);
+                Mostrar();
             }
             catch (Exception ex)
             {
@@ -154,7 +179,7 @@ namespace Soft.Ventas.Win
         {
             try
             {
-
+                Item.CantidadMaterial = Convert.ToDecimal(txtCantidadMaterial.Value);
             }
             catch (Exception ex)
             {
