@@ -35,8 +35,15 @@ namespace Soft.Ventas.Win
         }
 
         const String colServicio = "Servicio";
+        const String colServicioCosto = "Costo Servicio";
+
         const String colMaterial = "Material";
+        const String colMaterialCosto = "Costo Material";
+
+        
         const String colMaquina = "Máquina";
+        const String colMaquinaCosto = "Costo Maquina";
+
 
         private Boolean ActualizandoIU = false;
 
@@ -48,11 +55,25 @@ namespace Soft.Ventas.Win
             column = columns.Columns.Add(colServicio);
             column.DataType = typeof(String);
 
+
+            column = columns.Columns.Add(colServicioCosto);
+            column.DataType = typeof(Decimal);
+
+
             column = columns.Columns.Add(colMaterial);
             column.DataType = typeof(String);
 
+
+            column = columns.Columns.Add(colMaterialCosto);
+            column.DataType = typeof(Decimal);
+
+
             column = columns.Columns.Add(colMaquina);
             column.DataType = typeof(String);
+
+             column = columns.Columns.Add(colMaquinaCosto);
+            column.DataType = typeof(Decimal);
+
 
             ugServicios.DataSource = columns;
             ugServicios.DisplayLayout.Bands[0].Columns[colServicio].Width = 250;
@@ -152,8 +173,19 @@ namespace Soft.Ventas.Win
             ItemCotizacionServicio Item = (ItemCotizacionServicio)Row.Tag;
             Row.Cells[colServicio].Activation = (Item.Servicio != null)?Activation.NoEdit: Activation.AllowEdit;
             Row.Cells[colServicio].Value = (Item.Servicio != null)?Item.Servicio.Nombre:"";
+
+            Row.Cells[colServicioCosto].Activation = (Item.Servicio != null)?Activation.NoEdit: Activation.AllowEdit;
+            Row.Cells[colServicioCosto].Value = (Item.Servicio != null)?Item.CostoServicio:0;
+
             Row.Cells[colMaterial].Activation = (Item.Material != null) ? Activation.NoEdit : Activation.AllowEdit;
             Row.Cells[colMaterial].Value = (Item.Material != null) ? Item.Material.Nombre : "";
+            
+            Row.Cells[colMaterialCosto].Activation = (Item.Maquina != null)?Activation.NoEdit: Activation.AllowEdit;
+            Row.Cells[colMaterialCosto].Value = (Item.Maquina != null)?Item.CostoServicio:0;
+
+
+            
+            
             Row.Cells[colMaquina].Activation = (Item.Maquina != null) ? Activation.NoEdit : Activation.AllowEdit;
             Row.Cells[colMaquina].Value = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
         }
