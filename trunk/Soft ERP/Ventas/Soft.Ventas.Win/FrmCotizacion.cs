@@ -216,7 +216,7 @@ namespace Soft.Ventas.Win
             {
                 Cotizacion.TipoDocumento = (TipoCotizacion)HelperNHibernate.GetEntityByID("TipoCotizacion", TipoDocumento.ID);
                 Cotizacion.GenerarNumCp();
-
+                Cotizacion.AsignarListadeCostosDesdeTipoDocumento();
                 try
                 {
                     FrmSelectedEntity FrmSeleccionarEmpleado = new FrmSelectedEntity();
@@ -355,6 +355,11 @@ namespace Soft.Ventas.Win
 
         private void ubNuevoServicio_Click(object sender, EventArgs e)
         {
+
+            FrmCotizaciondeServicio AgregarServicio = new FrmCotizaciondeServicio();
+            ItemCotizacionServicio item = AgregarServicio.ObtenerServicio(Cotizacion);
+
+            
             if (ItemCotizacion == null) { return; }
             UltraGridRow Row = ugServicios.DisplayLayout.Bands[0].AddNew();
             Row.Tag = ItemCotizacion.AddServicio();
@@ -445,8 +450,9 @@ namespace Soft.Ventas.Win
         private Decimal obtenerItemListaCostosMaterial(ItemCotizacion itemCotizacion)
         {
             Decimal resultado = 0;
-            resultado =  itemCotizacion.Material.CostoUltimaCompra * itemCotizacion.Cantidad* itemCotizacion.Material.Largo*itemCotizacion.MedidaAbiertaLargo ;
+            resultado = itemCotizacion.Material.CostoUltimaCompra * itemCotizacion.Cantidad * itemCotizacion.MedidaAbiertaAlto * itemCotizacion.MedidaAbiertaLargo;
             return resultado;
+
         }
 
 
@@ -477,11 +483,8 @@ namespace Soft.Ventas.Win
             UnidadListaCostosMaquina Uilcm = null;
             foreach (UnidadListaCostosMaquina unidad in ilcm.Unidades)
             {
-                if (unidad.Unidad.Codigo == "M2")
-                {
-                    Uilcm = unidad;
+                Uilcm = unidad;
                     break;
-                }
             }
             return Uilcm;
         }
@@ -518,7 +521,7 @@ namespace Soft.Ventas.Win
         private void ubRecalcular_Click(object sender, EventArgs e)
         {
             Costeo();
-            GenerarGraficosNormal();
+            //GenerarGraficosNormal();
             Mostrar();
         }
 
@@ -759,6 +762,7 @@ namespace Soft.Ventas.Win
                 ssDireccionFactura.Text = Direccion.Direccion;
             }
         }
+
         
     }
 }
