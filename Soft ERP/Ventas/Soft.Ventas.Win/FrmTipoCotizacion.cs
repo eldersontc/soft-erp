@@ -40,6 +40,11 @@ namespace Soft.Ventas.Win
             CheckActivo.Checked = TipoCotizacion.Activo;
             CheckNumeracionAutomatica.Checked = TipoCotizacion.NumeracionAutomatica;
             CheckGeneraNumeracionalFinal.Checked = TipoCotizacion.GeneraNumeracionAlFinal;
+
+            busListaCostoMaquina.Text = (TipoCotizacion.ListaCostosMaquina != null) ? TipoCotizacion.ListaCostosMaquina.Nombre : "";
+            busListaPrecioMaterial.Text = (TipoCotizacion.ListaPreciosExistencia != null) ? TipoCotizacion.ListaPreciosExistencia.Nombre : "";
+            busListaPreciosTransporte.Text = (TipoCotizacion.ListaPreciosTransporte != null) ? TipoCotizacion.ListaPreciosTransporte.Nombre : "";
+
         }
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)
@@ -98,5 +103,29 @@ namespace Soft.Ventas.Win
             TipoCotizacion.Reporte = (Soft.Reporte.Entidades.Reporte)FrmSeleccionarReporte.GetSelectedEntity(typeof(Soft.Reporte.Entidades.Reporte), "Reporte");
             ssReporte.Text = (TipoCotizacion.Reporte != null) ? TipoCotizacion.Reporte.Nombre : "";
         }
+
+        private void busListaPrecioMaterial_Search(object sender, EventArgs e)
+        {
+
+            FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+            TipoCotizacion.ListaPreciosExistencia = (ListaPreciosExistencia)FrmSeleccionar.GetSelectedEntity(typeof(ListaPreciosExistencia), "Lista Precios Producto Servicio", " Activo = 1");
+            busListaPrecioMaterial.Text = (TipoCotizacion.ListaPreciosExistencia != null) ? TipoCotizacion.ListaPreciosExistencia.Nombre : "";
+
+        }
+
+        private void busListaCostoMaquina_Search(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+            TipoCotizacion.ListaCostosMaquina = (ListaCostosMaquina)FrmSeleccionar.GetSelectedEntity(typeof(ListaCostosMaquina), "Lista de Costos Máquina", " Activo = 1");
+            busListaCostoMaquina.Text = (TipoCotizacion.ListaCostosMaquina != null) ? TipoCotizacion.ListaCostosMaquina.Nombre : "";
+        }
+
+        private void busListaPreciosTransporte_Search(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+            TipoCotizacion.ListaPreciosTransporte = (ListaPreciosTransporte)FrmSeleccionar.GetSelectedEntity(typeof(ListaPreciosTransporte), "Lista Precios Transporte", " Activo = 1");
+            busListaPreciosTransporte.Text = (TipoCotizacion.ListaPreciosTransporte != null) ? TipoCotizacion.ListaPreciosTransporte.Nombre : "";
+        }
+
     }
 }
