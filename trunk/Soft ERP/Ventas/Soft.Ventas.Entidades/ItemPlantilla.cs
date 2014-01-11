@@ -19,6 +19,9 @@ namespace Soft.Ventas.Entidades
         public virtual Existencia Material { get; set; }
         public virtual TipoUnidad TipoUnidad { get; set; }
         public virtual RelacionMedidas RelacionMedidas { get; set; }
+        public virtual Boolean TieneMedidaAbierta { get; set; }
+        public virtual Boolean TieneMedidaCerrada { get; set; }
+        public virtual Boolean TieneTiraRetira { get; set; }
 
         public virtual ItemPlantillaServicio CrearServicio(Existencia Servicio)
         {
