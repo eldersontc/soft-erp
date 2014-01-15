@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Soft.DataAccess;
+//using Soft.DataAccess;
 
 namespace Soft.Entities
 {
@@ -70,15 +70,15 @@ namespace Soft.Entities
             set { mTotal = value; }
         }
 
-        public virtual void GenerarNumCpAlFinal()
-        {
-            String SQL2 = "UPDATE " + TipoDocumento.Entidad + " SET Numeracion ='" + TipoDocumento.ObtenerNumeroActual() + "' WHERE ID ='" + ID + "'";
+        //public virtual void GenerarNumCpAlFinal()
+        //{
+        //    String SQL2 = "UPDATE " + TipoDocumento.Entidad + " SET Numeracion ='" + TipoDocumento.ObtenerNumeroActual() + "' WHERE ID ='" + ID + "'";
 
-                String SQL = "UPDATE " + TipoDocumento.EntidadTipoDocumento + " SET NumeracionActual = " + (TipoDocumento.NumeracionActual + 1) + " WHERE ID ='" + TipoDocumento.ID + "'";
+        //        String SQL = "UPDATE " + TipoDocumento.EntidadTipoDocumento + " SET NumeracionActual = " + (TipoDocumento.NumeracionActual + 1) + " WHERE ID ='" + TipoDocumento.ID + "'";
 
-                HelperNHibernate.GetDataSet(SQL);
-                HelperNHibernate.GetDataSet(SQL2); 
-        }
+        //        HelperNHibernate.GetDataSet(SQL);
+        //        HelperNHibernate.GetDataSet(SQL2); 
+        //}
 
     }
 }
