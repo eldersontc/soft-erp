@@ -32,7 +32,7 @@ namespace Soft.Win
         public override void Start()
         {
             Init();
-            Show();
+            if (base.m_Modal) { ShowDialog(); } else { Show(); }
         }
 
         public virtual void Init() {}
@@ -150,6 +150,10 @@ namespace Soft.Win
 
         private void FrmParent_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Cerrar(e);
+        }
+
+        public virtual void Cerrar(FormClosingEventArgs e) {
             if (base.m_ResultProcess == EnumResult.SUCESS) { return; }
             FrmMessageBox MsBox = new FrmMessageBox();
             MsBox.Show(MessageBoxIcon.Question);
