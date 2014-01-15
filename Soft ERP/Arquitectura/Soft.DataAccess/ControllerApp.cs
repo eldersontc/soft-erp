@@ -28,6 +28,7 @@ namespace Soft.DataAccess
         public ItemAccion m_ItemAccionAcual;
         public EntidadSF m_EntidadSF;
         public ItemContenedor m_ItemContenedor;
+        public Boolean m_Modal;
 
         protected static Configuration m_Configuration = new Configuration();
         protected static ISessionFactory m_SessionFactory;
