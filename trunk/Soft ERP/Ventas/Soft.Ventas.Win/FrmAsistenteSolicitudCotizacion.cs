@@ -28,6 +28,7 @@ namespace Soft.Ventas.Win
 
         public void Iniciar() {
             InfoAsistente = new InfoAsistenSolicitudCotizacion();
+            udtFechaCreacion.Value = InfoAsistente.FechaCreacion;
             ObtenerCodigoGrupo(InfoAsistente);
         }
 
