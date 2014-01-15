@@ -92,6 +92,12 @@
     <Compile Include="FrmCotizacion.Designer.cs">
       <DependentUpon>FrmCotizacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCotizaciondeServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCotizaciondeServicio.Designer.cs">
+      <DependentUpon>FrmCotizaciondeServicio.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmListaCostosMaquina.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +198,9 @@
   <ItemGroup>
     <EmbeddedResource Include="FrmCotizacion.resx">
       <DependentUpon>FrmCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCotizaciondeServicio.resx">
+      <DependentUpon>FrmCotizaciondeServicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmListaCostosMaquina.resx">
       <DependentUpon>FrmListaCostosMaquina.cs</DependentUpon>
