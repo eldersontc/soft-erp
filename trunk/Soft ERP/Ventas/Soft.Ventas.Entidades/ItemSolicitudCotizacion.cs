@@ -19,7 +19,6 @@ namespace Soft.Ventas.Entidades
         public virtual Decimal MedidaCerrada { get; set; }
         public virtual Int32 ImpresoTiraColor { get; set; }
         public virtual Int32 ImpresoRetiraColor { get; set; }
-        public virtual Int32 Cantidad { get; set; }
         public virtual String Observacion { get; set; }
         public virtual Maquina Maquina { get; set; }
         public virtual Existencia Material { get; set; }
@@ -29,7 +28,7 @@ namespace Soft.Ventas.Entidades
         public virtual Decimal MedidaCerradaLargo { get; set; }
         public virtual Decimal MedidaCerradaAlto { get; set; }
         public virtual String m_FiltroMaquina { get; set; }
-        public virtual String m_FiltroServicios { get; set; }
+        //public virtual String m_FiltroServicios { get; set; }
         public virtual Boolean TieneMedidaAbierta { get; set; }
         public virtual Boolean TieneMedidaCerrada { get; set; }
         public virtual Boolean TieneTiraRetira { get; set; }

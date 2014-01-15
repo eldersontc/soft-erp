@@ -57,6 +57,7 @@
     <Compile Include="EscalaListaCostosMaquina.cs" />
     <Compile Include="EscalaListaPreciosExistencia.cs" />
     <Compile Include="EscalaListaPreciosTransporte.cs" />
+    <Compile Include="InfoAsistenSolicitudCotizacion.cs" />
     <Compile Include="ItemCotizacion.cs" />
     <Compile Include="ItemCotizacionServicio.cs" />
     <Compile Include="ItemListaCostosMaquina.cs" />

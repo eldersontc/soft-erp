@@ -17,7 +17,6 @@ namespace Soft.Ventas.Entidades
         public virtual IList<ItemCotizacionServicio> Servicios { get; set; }
         public virtual Int32 ImpresoTiraColor { get; set; }
         public virtual Int32 ImpresoRetiraColor { get; set; }
-        public virtual Int32 Cantidad { get; set; }
         public virtual String Observacion { get; set; }
         public virtual Maquina Maquina { get; set; }
         public virtual Existencia Material { get; set; }
@@ -27,7 +26,6 @@ namespace Soft.Ventas.Entidades
         public virtual Decimal MedidaCerradaLargo { get; set; }
         public virtual Decimal MedidaCerradaAlto { get; set; }
         public virtual Decimal Costo { get; set; }
-        public virtual Decimal Precio { get; set; }
         public virtual Decimal CostoMaquina { get; set; }
         public virtual Decimal CostoMaterial { get; set; }
         public virtual Decimal CostoTransporte { get; set; }
