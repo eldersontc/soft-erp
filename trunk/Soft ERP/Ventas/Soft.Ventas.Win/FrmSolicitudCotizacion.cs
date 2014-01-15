@@ -54,7 +54,7 @@ namespace Soft.Ventas.Win
         public void Mostrar()
         {
             ActualizandoIU = true;
-            ssTipoDocumento.Text = (SolicitudCotizacion.TipoDocumento != null) ? SolicitudCotizacion.TipoDocumento.Descripcion : "";
+            ssTipoDocumento.Text = (SolicitudCotizacion.TipoDocumento != null) ? SolicitudCotizacion.TipoDocumento.Nombre : "";
             ssCliente.Text = (SolicitudCotizacion.Cliente != null) ? SolicitudCotizacion.Cliente.Nombre : "";
             ssResponsable.Text = (SolicitudCotizacion.Responsable != null) ? SolicitudCotizacion.Responsable.Nombre : "";
             ssFormaPago.Text = (SolicitudCotizacion.ModalidadCredito != null) ? SolicitudCotizacion.ModalidadCredito.Descripcion : "";
@@ -68,7 +68,7 @@ namespace Soft.Ventas.Win
             txtDescripcion.Text = SolicitudCotizacion.Descripcion;
             uneCantidad.Value = SolicitudCotizacion.Cantidad;
             txtNumeracion.Text = SolicitudCotizacion.Numeracion;
-
+            txtCodigoGrupo.Value = SolicitudCotizacion.CodigoGrupo;
             MostrarItems();
             ActualizandoIU = false;
         }
@@ -220,8 +220,11 @@ namespace Soft.Ventas.Win
             if (ItemSolicitudCotizacion == null) { return; }
             UltraGridRow Row = ugServicios.DisplayLayout.Bands[0].AddNew();
             Row.Tag = ItemSolicitudCotizacion.AddServicio();
-            Row.Cells[colNombre].Activate();
-            ugServicios.PerformAction(Infragistics.Win.UltraWinGrid.UltraGridAction.EnterEditMode);
+            AgregarServicios("%", "%", Row);
+            //
+            //
+            //Row.Cells[colNombre].Activate();
+            //ugServicios.PerformAction(Infragistics.Win.UltraWinGrid.UltraGridAction.EnterEditMode);
         }
 
         private void ubEliminarExistencia_Click(object sender, EventArgs e)
@@ -244,7 +247,7 @@ namespace Soft.Ventas.Win
             FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
             ItemSolicitudCotizacionServicio Item = (ItemSolicitudCotizacionServicio)Row.Tag;
             String Filtro = String.Format(" Codigo LIKE '{0}%' AND Nombre LIKE '{1}%'", Codigo, Descripcion);
-            if (ItemSolicitudCotizacion.m_FiltroServicios.Length > 0) { Filtro += String.Format(" AND {0}", ItemSolicitudCotizacion.m_FiltroServicios); }
+            //if (ItemSolicitudCotizacion.m_FiltroServicios.Length > 0) { Filtro += String.Format(" AND {0}", ItemSolicitudCotizacion.m_FiltroServicios); }
             Productos = FrmSeleccionar.GetSelectedsEntities(typeof(Existencia), "Selección de Servicios", Filtro);
             if (Productos.Count == 1)
             {
@@ -272,27 +275,27 @@ namespace Soft.Ventas.Win
             }
         }
 
-        public void ugServicios_CellKeyEnter(UltraGridCell Cell)
-        {
-            try
-            {
-                if (Cell == null || ItemSolicitudCotizacion == null) { return; }
-                ItemSolicitudCotizacionServicio Item = (ItemSolicitudCotizacionServicio)Cell.Row.Tag;
-                switch (Cell.Column.Key)
-                {
-                    case colNombre:
-                        if (Cell.Text.Equals("")) { break; }
-                        AgregarServicios("%", Cell.Text, Cell.Row);
-                        break;
-                    default:
-                        break;
-                }
-            }
-            catch (Exception)
-            {
-                //MessageBox.Show(ex.Message);
-            }
-        }
+        //public void ugServicios_CellKeyEnter(UltraGridCell Cell)
+        //{
+        //    try
+        //    {
+        //        if (Cell == null || ItemSolicitudCotizacion == null) { return; }
+        //        ItemSolicitudCotizacionServicio Item = (ItemSolicitudCotizacionServicio)Cell.Row.Tag;
+        //        switch (Cell.Column.Key)
+        //        {
+        //            case colNombre:
+        //                if (Cell.Text.Equals("")) { break; }
+        //                AgregarServicios("%", Cell.Text, Cell.Row);
+        //                break;
+        //            default:
+        //                break;
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        //MessageBox.Show(ex.Message);
+        //    }
+        //}
 
 
         private void ubRecalcular_Click(object sender, EventArgs e)
