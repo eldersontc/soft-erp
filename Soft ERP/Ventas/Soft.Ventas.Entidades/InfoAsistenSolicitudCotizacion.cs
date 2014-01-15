@@ -9,7 +9,7 @@ namespace Soft.Ventas.Entidades
     public class InfoAsistenSolicitudCotizacion
     {
 
-        public InfoAsistenSolicitudCotizacion() { }
+        public InfoAsistenSolicitudCotizacion() { FechaCreacion = DateTime.Now; }
 
         public virtual Plantilla Plantilla { get; set; }
         public virtual TipoDocumento TipoDocumento { get; set; }
