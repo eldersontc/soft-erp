@@ -39,6 +39,9 @@
             Infragistics.Win.UltraWinTree.Override _override1 = new Infragistics.Win.UltraWinTree.Override();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.chkTieneTiraRetira = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
+            this.chkTieneMedidadCerrada = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
+            this.chkTieneMedidaAbierta = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.btnBorrarMaterial = new Infragistics.Win.Misc.UltraButton();
             this.txtNombreItem = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.lblNombreItem = new Infragistics.Win.Misc.UltraLabel();
@@ -65,12 +68,12 @@
             this.ubNuevoItem = new Infragistics.Win.Misc.UltraButton();
             this.ubEliminarItem = new Infragistics.Win.Misc.UltraButton();
             this.btnBorrarOperacion = new Infragistics.Win.Misc.UltraButton();
-            this.chkTieneMedidaAbierta = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
-            this.chkTieneMedidadCerrada = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
-            this.chkTieneTiraRetira = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.ultraTabPageControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneTiraRetira)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneMedidadCerrada)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneMedidaAbierta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombreItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ugbServicios)).BeginInit();
             this.ugbServicios.SuspendLayout();
@@ -81,9 +84,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.utcDetalle)).BeginInit();
             this.utcDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.utPlantilla)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkTieneMedidaAbierta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkTieneMedidadCerrada)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkTieneTiraRetira)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
@@ -394,6 +394,33 @@
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(516, 392);
             // 
+            // chkTieneTiraRetira
+            // 
+            this.chkTieneTiraRetira.Location = new System.Drawing.Point(359, 71);
+            this.chkTieneTiraRetira.Name = "chkTieneTiraRetira";
+            this.chkTieneTiraRetira.Size = new System.Drawing.Size(136, 20);
+            this.chkTieneTiraRetira.TabIndex = 20;
+            this.chkTieneTiraRetira.Text = "Tiene Tira y Retira";
+            this.chkTieneTiraRetira.CheckedChanged += new System.EventHandler(this.chkTieneTiraRetira_CheckedChanged);
+            // 
+            // chkTieneMedidadCerrada
+            // 
+            this.chkTieneMedidadCerrada.Location = new System.Drawing.Point(359, 44);
+            this.chkTieneMedidadCerrada.Name = "chkTieneMedidadCerrada";
+            this.chkTieneMedidadCerrada.Size = new System.Drawing.Size(136, 20);
+            this.chkTieneMedidadCerrada.TabIndex = 19;
+            this.chkTieneMedidadCerrada.Text = "Tiene Medida Cerrada";
+            this.chkTieneMedidadCerrada.CheckedChanged += new System.EventHandler(this.chkTieneMedidadCerrada_CheckedChanged);
+            // 
+            // chkTieneMedidaAbierta
+            // 
+            this.chkTieneMedidaAbierta.Location = new System.Drawing.Point(359, 16);
+            this.chkTieneMedidaAbierta.Name = "chkTieneMedidaAbierta";
+            this.chkTieneMedidaAbierta.Size = new System.Drawing.Size(136, 20);
+            this.chkTieneMedidaAbierta.TabIndex = 18;
+            this.chkTieneMedidaAbierta.Text = "Tiene Medida Abierta";
+            this.chkTieneMedidaAbierta.CheckedChanged += new System.EventHandler(this.chkTieneMedidaAbierta_CheckedChanged);
+            // 
             // btnBorrarMaterial
             // 
             this.btnBorrarMaterial.Location = new System.Drawing.Point(453, 126);
@@ -650,33 +677,6 @@
             this.btnBorrarOperacion.Text = "Borrar";
             this.btnBorrarOperacion.Click += new System.EventHandler(this.btnBorrarOperacion_Click);
             // 
-            // chkTieneMedidaAbierta
-            // 
-            this.chkTieneMedidaAbierta.Location = new System.Drawing.Point(359, 16);
-            this.chkTieneMedidaAbierta.Name = "chkTieneMedidaAbierta";
-            this.chkTieneMedidaAbierta.Size = new System.Drawing.Size(136, 20);
-            this.chkTieneMedidaAbierta.TabIndex = 18;
-            this.chkTieneMedidaAbierta.Text = "Tiene Medida Abierta";
-            this.chkTieneMedidaAbierta.CheckedChanged += new System.EventHandler(this.chkTieneMedidaAbierta_CheckedChanged);
-            // 
-            // chkTieneMedidadCerrada
-            // 
-            this.chkTieneMedidadCerrada.Location = new System.Drawing.Point(359, 44);
-            this.chkTieneMedidadCerrada.Name = "chkTieneMedidadCerrada";
-            this.chkTieneMedidadCerrada.Size = new System.Drawing.Size(136, 20);
-            this.chkTieneMedidadCerrada.TabIndex = 19;
-            this.chkTieneMedidadCerrada.Text = "Tiene Medida Cerrada";
-            this.chkTieneMedidadCerrada.CheckedChanged += new System.EventHandler(this.chkTieneMedidadCerrada_CheckedChanged);
-            // 
-            // chkTieneTiraRetira
-            // 
-            this.chkTieneTiraRetira.Location = new System.Drawing.Point(359, 71);
-            this.chkTieneTiraRetira.Name = "chkTieneTiraRetira";
-            this.chkTieneTiraRetira.Size = new System.Drawing.Size(136, 20);
-            this.chkTieneTiraRetira.TabIndex = 20;
-            this.chkTieneTiraRetira.Text = "Tiene Tira y Retira";
-            this.chkTieneTiraRetira.CheckedChanged += new System.EventHandler(this.chkTieneTiraRetira_CheckedChanged);
-            // 
             // FrmPlantilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -689,6 +689,9 @@
             this.ugbParent.PerformLayout();
             this.ultraTabPageControl1.ResumeLayout(false);
             this.ultraTabPageControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneTiraRetira)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneMedidadCerrada)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneMedidaAbierta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombreItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ugbServicios)).EndInit();
             this.ugbServicios.ResumeLayout(false);
@@ -699,9 +702,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.utcDetalle)).EndInit();
             this.utcDetalle.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.utPlantilla)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkTieneMedidaAbierta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkTieneMedidadCerrada)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkTieneTiraRetira)).EndInit();
             this.ResumeLayout(false);
 
         }
