@@ -90,67 +90,99 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmAsistenteSolicitudCotizacion.cs" />
+    <Compile Include="FrmAsistenteSolicitudCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmAsistenteSolicitudCotizacion.Designer.cs">
       <DependentUpon>FrmAsistenteSolicitudCotizacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCotizacion.cs" />
+    <Compile Include="FrmCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmCotizacion.Designer.cs">
       <DependentUpon>FrmCotizacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCotizaciondeServicio.cs" />
+    <Compile Include="FrmCotizaciondeServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmCotizaciondeServicio.Designer.cs">
       <DependentUpon>FrmCotizaciondeServicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmListaCostosMaquina.cs" />
+    <Compile Include="FrmListaCostosMaquina.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmListaCostosMaquina.Designer.cs">
       <DependentUpon>FrmListaCostosMaquina.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmListaPreciosExistencia.cs" />
+    <Compile Include="FrmListaPreciosExistencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmListaPreciosExistencia.Designer.cs">
       <DependentUpon>FrmListaPreciosExistencia.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmListaPreciosTransporte.cs" />
+    <Compile Include="FrmListaPreciosTransporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmListaPreciosTransporte.Designer.cs">
       <DependentUpon>FrmListaPreciosTransporte.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmMaquina.cs" />
+    <Compile Include="FrmMaquina.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmMaquina.Designer.cs">
       <DependentUpon>FrmMaquina.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmModalidadCredito.cs" />
+    <Compile Include="FrmModalidadCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmModalidadCredito.Designer.cs">
       <DependentUpon>FrmModalidadCredito.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmPlantilla.cs" />
+    <Compile Include="FrmPlantilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmPlantilla.Designer.cs">
       <DependentUpon>FrmPlantilla.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmPresupuesto.cs" />
+    <Compile Include="FrmPresupuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmPresupuesto.Designer.cs">
       <DependentUpon>FrmPresupuesto.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmRelacionMedidas.cs" />
+    <Compile Include="FrmRelacionMedidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmRelacionMedidas.Designer.cs">
       <DependentUpon>FrmRelacionMedidas.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmSolicitudCotizacion.cs" />
+    <Compile Include="FrmSolicitudCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmSolicitudCotizacion.Designer.cs">
       <DependentUpon>FrmSolicitudCotizacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmTipoCotizacion.cs" />
+    <Compile Include="FrmTipoCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmTipoCotizacion.Designer.cs">
       <DependentUpon>FrmTipoCotizacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmTipoPresupuesto.cs" />
+    <Compile Include="FrmTipoPresupuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmTipoPresupuesto.Designer.cs">
       <DependentUpon>FrmTipoPresupuesto.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmTipoSolicitudCotizacion.cs" />
+    <Compile Include="FrmTipoSolicitudCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmTipoSolicitudCotizacion.Designer.cs">
       <DependentUpon>FrmTipoSolicitudCotizacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmTipoUnidad.cs" />
+    <Compile Include="FrmTipoUnidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmTipoUnidad.Designer.cs">
       <DependentUpon>FrmTipoUnidad.cs</DependentUpon>
     </Compile>
@@ -161,7 +193,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FrmTipoMaquina.cs" />
+    <Compile Include="FrmTipoMaquina.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmTipoMaquina.Designer.cs">
       <DependentUpon>FrmTipoMaquina.cs</DependentUpon>
     </Compile>
