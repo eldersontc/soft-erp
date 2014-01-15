@@ -6,7 +6,7 @@
     <id name="ID" column ="ID" type="string" unsaved-value="0"/>
     <property name="ImpresoTiraColor" type="int"/>
     <property name="ImpresoRetiraColor" type="int"/>
-    <property name="Cantidad" type="int"/>
+    <property name="Cantidad" type="decimal"/>
     <property name="Observacion" type="string"/>
     <property name="TipoUnidad" type="string"/>
     <property name="Nombre" type="string"/>
