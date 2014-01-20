@@ -27,6 +27,12 @@ namespace Soft.Inventario.Entidades
         public virtual Boolean EsServicio { get; set; }
         public virtual Boolean EsInventariable { get; set; }
 
+        public virtual Boolean EsCotizacion { get; set; }
+
+
+        public virtual string UnidadMedidaDimensiones { get; set; }
+
+
         public virtual ClasificacionExistencia ClasificacionExistencia { get; set; }
         public virtual ItemClasificacionExistencia ItemClasificacionExistencia { get; set; }
         public virtual Marca Marca { get; set; }
