@@ -137,6 +137,9 @@ namespace Soft.Inventario.Win
         {
             txtCodigo.Text = this.Existencia.Codigo;
 
+
+            comboUnidad.Text = this.Existencia.UnidadMedidaDimensiones;
+            chekEnCotizacion.Checked = this.Existencia.EsCotizacion;
             
             txtNombre.Text = this.Existencia.Nombre;
             txtDescripcion.Text = this.Existencia.Descripcion;
@@ -504,6 +507,33 @@ namespace Soft.Inventario.Win
         private void txtAlto_ValueChanged(object sender, EventArgs e)
         {
             Existencia.Alto = Convert.ToDecimal(txtAlto.Value);
+        }
+
+        private void comboUnidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Existencia.UnidadMedidaDimensiones = comboUnidad.Text;
+            }
+            catch (Exception ex)
+            {
+
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
+            
+        }
+
+        private void chekEnCotizacion_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Existencia.EsCotizacion = chekEnCotizacion.Checked;
+            }
+            catch (Exception ex)
+            {
+
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
         }
 
     }
