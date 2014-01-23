@@ -61,8 +61,7 @@ namespace Soft.Ventas.Win
 
             column = columns.Columns.Add(colServicioCosto);
             column.DataType = typeof(Decimal);
-
-
+            
             column = columns.Columns.Add(colMaterial);
             column.DataType = typeof(String);
 
@@ -79,7 +78,16 @@ namespace Soft.Ventas.Win
 
 
             ugServicios.DataSource = columns;
-            ugServicios.DisplayLayout.Bands[0].Columns[colServicio].Width = 250;
+            ugServicios.DisplayLayout.Bands[0].Columns[colServicio].Width = 100;
+            ugServicios.DisplayLayout.Bands[0].Columns[colServicioCosto].Width = 50;
+            
+            ugServicios.DisplayLayout.Bands[0].Columns[colMaterial].Width = 100;
+            ugServicios.DisplayLayout.Bands[0].Columns[colMaterialCosto].Width = 50;
+
+            ugServicios.DisplayLayout.Bands[0].Columns[colMaquina].Width = 100;
+            ugServicios.DisplayLayout.Bands[0].Columns[colMaquinaCosto].Width = 50;
+
+
             MapKeys(ref ugServicios);
         }
 
@@ -156,7 +164,6 @@ namespace Soft.Ventas.Win
             uneCostoMaquina.Value = Item.CostoMaquina;
             uneCostoMaterial.Value = Item.CostoMaterial;
             uneCosto.Value = Item.Costo;
-            unePrecio.Value = Item.Precio;
             uneSeparacionX.Value = Item.SeparacionX;
             uneSeparacionY.Value = Item.SeparacionY;
             MostrarServicios(Item);
@@ -185,11 +192,14 @@ namespace Soft.Ventas.Win
             Row.Cells[colMaterial].Activation = (Item.Material != null) ? Activation.NoEdit : Activation.AllowEdit;
             Row.Cells[colMaterial].Value = (Item.Material != null) ? Item.Material.Nombre : "";
             
-            Row.Cells[colMaterialCosto].Activation = (Item.Maquina != null)?Activation.NoEdit: Activation.AllowEdit;
-            Row.Cells[colMaterialCosto].Value = (Item.Maquina != null)?Item.CostoServicio:0;
+            Row.Cells[colMaterialCosto].Activation = (Item.Material != null)?Activation.NoEdit: Activation.AllowEdit;
+            Row.Cells[colMaterialCosto].Value = (Item.Material != null) ? Item.CostoMaterial : 0;
 
             Row.Cells[colMaquina].Activation = (Item.Maquina != null) ? Activation.NoEdit : Activation.AllowEdit;
             Row.Cells[colMaquina].Value = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
+
+            Row.Cells[colMaquinaCosto].Activation = (Item.Maquina != null) ? Activation.NoEdit : Activation.AllowEdit;
+            Row.Cells[colMaquinaCosto].Value = (Item.Maquina != null) ? Item.CostoMaquina: 0;
         }
 
         public void DeshabilitarControles()
@@ -324,42 +334,49 @@ namespace Soft.Ventas.Win
         private void txtMedidaAbiertoLargo_ValueChanged(object sender, EventArgs e)
         {
             if (ItemCotizacion == null) { return; }
+            if (ActualizandoIU) { return; }
             ItemCotizacion.MedidaAbiertaLargo = Convert.ToDecimal(txtMedidaAbiertoLargo.Value);
         }
 
         private void txtMedidaAbiertoAlto_ValueChanged(object sender, EventArgs e)
         {
             if (ItemCotizacion == null) { return; }
+            if (ActualizandoIU) { return; }
             ItemCotizacion.MedidaAbiertaAlto = Convert.ToDecimal(txtMedidaAbiertoAlto.Value);
         }
 
         private void txtMedidaCerradaLargo_ValueChanged(object sender, EventArgs e)
         {
             if (ItemCotizacion == null) { return; }
+            if (ActualizandoIU) { return; }
             ItemCotizacion.MedidaCerradaLargo = Convert.ToDecimal(txtMedidaCerradaLargo.Value);
         }
 
         private void txtMedidaCerradaAlto_ValueChanged(object sender, EventArgs e)
         {
             if (ItemCotizacion == null) { return; }
+            if (ActualizandoIU) { return; }
             ItemCotizacion.MedidaCerradaAlto = Convert.ToDecimal(txtMedidaCerradaAlto.Value);
         }
 
         private void txtImpresoTiraColor_ValueChanged(object sender, EventArgs e)
         {
             if (ItemCotizacion == null) { return; }
+            if (ActualizandoIU) { return; }
             ItemCotizacion.ImpresoTiraColor = Convert.ToInt32(txtImpresoTiraColor.Value);
         }
 
         private void txtCantidadItem_ValueChanged(object sender, EventArgs e)
         {
             if (ItemCotizacion == null) { return; }
+            if (ActualizandoIU) { return; }
             ItemCotizacion.Cantidad = Convert.ToInt32(txtCantidadItem.Value);
         }
 
         private void txtImpresoRetiraColor_ValueChanged(object sender, EventArgs e)
         {
             if (ItemCotizacion == null) { return; }
+            if (ActualizandoIU) { return; }
             ItemCotizacion.ImpresoRetiraColor = Convert.ToInt32(txtImpresoRetiraColor.Value);
         }
 
@@ -389,21 +406,22 @@ namespace Soft.Ventas.Win
         private void txtObservacionItem_TextChanged(object sender, EventArgs e)
         {
             if (ItemCotizacion == null) { return; }
+            if (ActualizandoIU) { return; }
             ItemCotizacion.Observacion = txtObservacionItem.Text;
         }
 
         private void ubNuevoServicio_Click(object sender, EventArgs e)
         {
-
             FrmCotizaciondeServicio AgregarServicio = new FrmCotizaciondeServicio();
             ItemCotizacionServicio item = AgregarServicio.ObtenerServicio(Cotizacion);
+            if (item != null) { 
+                UltraGridRow Row = ugServicios.DisplayLayout.Bands[0].AddNew();
+                Row.Tag = item;
+                Row.Cells[colServicio].Activate();
+                ugServicios.PerformAction(Infragistics.Win.UltraWinGrid.UltraGridAction.EnterEditMode);
+                MostrarServicio(Row);
+            }
 
-            
-            if (ItemCotizacion == null) { return; }
-            UltraGridRow Row = ugServicios.DisplayLayout.Bands[0].AddNew();
-            Row.Tag = ItemCotizacion.AddServicio();
-            Row.Cells[colServicio].Activate();
-            ugServicios.PerformAction(Infragistics.Win.UltraWinGrid.UltraGridAction.EnterEditMode);
         }
 
         private void ubEliminarServicio_Click(object sender, EventArgs e)
@@ -489,7 +507,16 @@ namespace Soft.Ventas.Win
         private Decimal obtenerItemListaCostosMaterial(ItemCotizacion itemCotizacion)
         {
             Decimal resultado = 0;
-            resultado = itemCotizacion.Material.CostoUltimaCompra * itemCotizacion.Cantidad * itemCotizacion.MedidaAbiertaAlto * itemCotizacion.MedidaAbiertaLargo;
+            try
+            {
+                resultado = itemCotizacion.Material.CostoUltimaCompra * itemCotizacion.Cantidad;
+            
+            }
+            catch (Exception)
+            {
+            }
+            
+            
             return resultado;
 
         }
@@ -499,17 +526,35 @@ namespace Soft.Ventas.Win
         private Decimal obtenerItemListaCostosMaquina(ItemCotizacion itemCotizacion)
         {
             Decimal resultado = 0;
+            try
+            {
             ItemListaCostosMaquina ilcm = obtenerItemListaCostosMaquina(itemCotizacion.Maquina);
             UnidadListaCostosMaquina Uilcm = obtenerUnidadLCM(ilcm);
             EscalaListaCostosMaquina Elcm = obtenerEscalaLCM(Uilcm, itemCotizacion);
-            resultado = Elcm.Costo*((itemCotizacion.MedidaAbiertaAlto * itemCotizacion.MedidaAbiertaLargo) * ItemCotizacion.Cantidad);
+            
+
+                resultado = Elcm.Costo * ((itemCotizacion.MedidaAbiertaAlto * itemCotizacion.MedidaAbiertaLargo) * ItemCotizacion.Cantidad);
+            }
+            catch (Exception)
+            {
+               
+            }
+
+
             return resultado;
         }
         private ItemListaCostosMaquina obtenerItemListaCostosMaquina(Maquina maquina)
         {
             ItemListaCostosMaquina resultado = null;
+            if (maquina == null)
+            {
+                return resultado;
+            }
+                
+
             foreach (ItemListaCostosMaquina item in lcm.Items)
             {
+                
                 if (item.Maquina.ID == maquina.ID)
                 {
                     resultado = item;
@@ -520,6 +565,11 @@ namespace Soft.Ventas.Win
         }
         private UnidadListaCostosMaquina obtenerUnidadLCM(ItemListaCostosMaquina ilcm) {
             UnidadListaCostosMaquina Uilcm = null;
+
+            if (ilcm == null) {
+                return Uilcm;
+            }
+
             foreach (UnidadListaCostosMaquina unidad in ilcm.Unidades)
             {
                 Uilcm = unidad;
@@ -530,6 +580,11 @@ namespace Soft.Ventas.Win
         private EscalaListaCostosMaquina obtenerEscalaLCM(UnidadListaCostosMaquina Uilcm, ItemCotizacion itemcotizacion)
         {
             EscalaListaCostosMaquina eUilcm = null;
+
+            if (Uilcm == null) {
+                return eUilcm;
+            }
+
             Decimal metroscuadrado = itemcotizacion.MedidaAbiertaAlto * itemcotizacion.MedidaAbiertaLargo * itemcotizacion.Cantidad;
 
             foreach (EscalaListaCostosMaquina escala in Uilcm.Escalas)
@@ -705,14 +760,11 @@ namespace Soft.Ventas.Win
         private void uneCosto_ValueChanged(object sender, EventArgs e)
         {
             if (ItemCotizacion == null) { return; }
+            if (ActualizandoIU) { return; }
             ItemCotizacion.Costo = Convert.ToDecimal(uneCosto.Value);
         }
 
-        private void unePrecio_ValueChanged(object sender, EventArgs e)
-        {
-            if (ItemCotizacion == null) { return; }
-            ItemCotizacion.Precio = Convert.ToDecimal(unePrecio.Value);
-        }
+        
 
         private void udtFechaCreacion_ValueChanged(object sender, EventArgs e)
         {
@@ -922,6 +974,35 @@ namespace Soft.Ventas.Win
         private void ubImprimirGraficoImpresion_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            ModificarServicio();
+        }
+
+        private void ModificarServicio() {
+            if (ugServicios.ActiveRow != null) {
+                ItemCotizacionServicio itemCotizacion = (ItemCotizacionServicio)ugServicios.ActiveRow.Tag;
+                FrmCotizaciondeServicio AgregarServicio = new FrmCotizaciondeServicio(itemCotizacion);
+                ItemCotizacionServicio item = AgregarServicio.ObtenerServicio(Cotizacion);
+                if (item != null) {
+                    ugServicios.ActiveRow.Tag = item;
+                    ugServicios.ActiveRow.Cells[colServicio].Activate();
+                    MostrarServicio(ugServicios.ActiveRow);
+                }
+            }else{
+                Exception ex= new Exception("Debe seleccionar un servicio para poder modificar");
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
+
+            
+        }
+
+
+        private void ugServicios_DoubleClickCell(object sender, DoubleClickCellEventArgs e)
+        {
+            ModificarServicio();
         }
 
         
