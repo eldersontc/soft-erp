@@ -20,6 +20,7 @@ namespace Soft.Ventas.Entidades
         public virtual Decimal CostoServicio { get; set; }
         public virtual Decimal CantidadMaquina { get; set; }
         public virtual Decimal CostoMaquina { get; set; }
+        public virtual Unidad UnidadMaquina { get; set; }
 
         public virtual Unidad UnidadMaterial { get; set; }
         public virtual Decimal CantidadMaterial { get; set; }
