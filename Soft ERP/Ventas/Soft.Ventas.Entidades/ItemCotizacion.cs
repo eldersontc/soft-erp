@@ -18,11 +18,50 @@ namespace Soft.Ventas.Entidades
         public virtual Int32 ImpresoTiraColor { get; set; }
         public virtual Int32 ImpresoRetiraColor { get; set; }
         public virtual String Observacion { get; set; }
-        public virtual Maquina Maquina { get; set; }
+        
+        private Maquina mMaquina;
+        public virtual Maquina Maquina
+        {
+            get
+            {
+                return mMaquina;
+            }
+            set
+            {
+                mMaquina = value;
+            }
+        }
+
         public virtual Existencia Material { get; set; }
+
         public virtual String TipoUnidad { get; set; }
-        public virtual Decimal MedidaAbiertaLargo { get; set; }
-        public virtual Decimal MedidaAbiertaAlto { get; set; }
+
+        private Decimal mMedidaAbiertaLargo;
+        public virtual Decimal MedidaAbiertaLargo
+        {
+            get
+            {
+                return mMedidaAbiertaLargo;
+            }
+            set
+            {
+                mMedidaAbiertaLargo = value;
+            }
+        }
+
+        private Decimal mMedidaAbiertaAlto;
+        public virtual Decimal MedidaAbiertaAlto
+        {
+            get
+            {
+                return mMedidaAbiertaAlto;
+            }
+            set
+            {
+                mMedidaAbiertaAlto = value;
+            }
+        }
+
         public virtual Decimal MedidaCerradaLargo { get; set; }
         public virtual Decimal MedidaCerradaAlto { get; set; }
         public virtual Decimal Costo { get; set; }
@@ -35,6 +74,16 @@ namespace Soft.Ventas.Entidades
         public virtual Int32 SeparacionX { get; set; }
         public virtual Int32 SeparacionY { get; set; }
         
+        //Nuevos
+        public virtual Decimal FormatoImpresionLargo { get; set; }
+        public virtual Decimal FormatoImpresionAlto { get; set; }
+        public virtual Boolean GraficoPrecorteGirado { get; set; }
+        public virtual Boolean GraficoImpresionGirado { get; set; }
+        public virtual Int32 NroPiezasPrecorte { get; set; }
+        public virtual Int32 NroPiezasImpresion { get; set; }
+        public virtual String MetodoImpresion { get; set; }
+        public virtual Boolean TieneGraficos { get; set; }
+
         public virtual ItemCotizacionServicio AddServicio()
         {
             ItemCotizacionServicio Item = new ItemCotizacionServicio();
