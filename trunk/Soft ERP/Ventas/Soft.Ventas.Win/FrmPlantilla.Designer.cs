@@ -68,6 +68,7 @@
             this.ubNuevoItem = new Infragistics.Win.Misc.UltraButton();
             this.ubEliminarItem = new Infragistics.Win.Misc.UltraButton();
             this.btnBorrarOperacion = new Infragistics.Win.Misc.UltraButton();
+            this.chkTieneGraficos = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.ultraTabPageControl1.SuspendLayout();
@@ -84,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.utcDetalle)).BeginInit();
             this.utcDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.utPlantilla)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneGraficos)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
@@ -375,6 +377,7 @@
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.Controls.Add(this.chkTieneGraficos);
             this.ultraTabPageControl1.Controls.Add(this.chkTieneTiraRetira);
             this.ultraTabPageControl1.Controls.Add(this.chkTieneMedidadCerrada);
             this.ultraTabPageControl1.Controls.Add(this.chkTieneMedidaAbierta);
@@ -396,7 +399,7 @@
             // 
             // chkTieneTiraRetira
             // 
-            this.chkTieneTiraRetira.Location = new System.Drawing.Point(359, 71);
+            this.chkTieneTiraRetira.Location = new System.Drawing.Point(359, 55);
             this.chkTieneTiraRetira.Name = "chkTieneTiraRetira";
             this.chkTieneTiraRetira.Size = new System.Drawing.Size(136, 20);
             this.chkTieneTiraRetira.TabIndex = 20;
@@ -405,7 +408,7 @@
             // 
             // chkTieneMedidadCerrada
             // 
-            this.chkTieneMedidadCerrada.Location = new System.Drawing.Point(359, 44);
+            this.chkTieneMedidadCerrada.Location = new System.Drawing.Point(359, 34);
             this.chkTieneMedidadCerrada.Name = "chkTieneMedidadCerrada";
             this.chkTieneMedidadCerrada.Size = new System.Drawing.Size(136, 20);
             this.chkTieneMedidadCerrada.TabIndex = 19;
@@ -414,7 +417,7 @@
             // 
             // chkTieneMedidaAbierta
             // 
-            this.chkTieneMedidaAbierta.Location = new System.Drawing.Point(359, 16);
+            this.chkTieneMedidaAbierta.Location = new System.Drawing.Point(359, 13);
             this.chkTieneMedidaAbierta.Name = "chkTieneMedidaAbierta";
             this.chkTieneMedidaAbierta.Size = new System.Drawing.Size(136, 20);
             this.chkTieneMedidaAbierta.TabIndex = 18;
@@ -677,6 +680,15 @@
             this.btnBorrarOperacion.Text = "Borrar";
             this.btnBorrarOperacion.Click += new System.EventHandler(this.btnBorrarOperacion_Click);
             // 
+            // chkTieneGraficos
+            // 
+            this.chkTieneGraficos.Location = new System.Drawing.Point(359, 75);
+            this.chkTieneGraficos.Name = "chkTieneGraficos";
+            this.chkTieneGraficos.Size = new System.Drawing.Size(136, 20);
+            this.chkTieneGraficos.TabIndex = 21;
+            this.chkTieneGraficos.Text = "Tiene Graficos";
+            this.chkTieneGraficos.CheckedChanged += new System.EventHandler(this.chkTieneGraficos_CheckedChanged);
+            // 
             // FrmPlantilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -702,6 +714,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.utcDetalle)).EndInit();
             this.utcDetalle.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.utPlantilla)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneGraficos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -738,5 +751,6 @@
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkTieneMedidaAbierta;
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkTieneTiraRetira;
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkTieneMedidadCerrada;
+        private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkTieneGraficos;
     }
 }
