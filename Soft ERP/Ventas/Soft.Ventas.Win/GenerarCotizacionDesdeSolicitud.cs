@@ -63,6 +63,7 @@ namespace Soft.Ventas.Win
                     ItemCotizacion.TieneMedidaAbierta = Item.TieneMedidaAbierta;
                     ItemCotizacion.TieneMedidaCerrada = Item.TieneMedidaCerrada;
                     ItemCotizacion.TieneTiraRetira = Item.TieneTiraRetira;
+                    ItemCotizacion.TieneGraficos = Item.TieneGraficos;
 
                     foreach (ItemSolicitudCotizacionServicio ItemServicio in Item.Servicios)
                     {
