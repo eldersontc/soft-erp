@@ -10,6 +10,7 @@
     <property name="CostoServicio" type="decimal"/>
 
     <many-to-one name="Maquina" class="Soft.Ventas.Entidades.Maquina" column="IDMaquina" insert="true" update="true" lazy="false"/>
+    <many-to-one name="UnidadMaquina" class="Soft.Inventario.Entidades.Unidad" column="IDUnidadMaquina" insert="true" update="true" lazy="false"/>
     <property name="CantidadMaquina" type="decimal"/>
     <property name="CostoMaquina" type="decimal"/>
 
