@@ -324,5 +324,13 @@ namespace Soft.Ventas.Win
             }
         }
 
+        private void chkTieneGraficos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ItemPlantilla != null)
+            {
+                ItemPlantilla.TieneGraficos = chkTieneGraficos.Checked;
+            }
+        }
+
     }
 }
