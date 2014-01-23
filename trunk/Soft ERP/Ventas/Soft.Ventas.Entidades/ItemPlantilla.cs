@@ -22,6 +22,7 @@ namespace Soft.Ventas.Entidades
         public virtual Boolean TieneMedidaAbierta { get; set; }
         public virtual Boolean TieneMedidaCerrada { get; set; }
         public virtual Boolean TieneTiraRetira { get; set; }
+        public virtual Boolean TieneGraficos { get; set; }
 
         public virtual ItemPlantillaServicio CrearServicio(Existencia Servicio)
         {
