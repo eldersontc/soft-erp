@@ -71,6 +71,8 @@ namespace Soft.Ventas.Win
                 Solicitud.Moneda = InfoAsistente.Moneda;
                 Solicitud.FechaCreacion = InfoAsistente.FechaCreacion;
                 Solicitud.CodigoGrupo = InfoAsistente.CodigoGrupo;
+                Solicitud.Contacto = InfoAsistente.Contacto;
+                Solicitud.ModalidadCredito = InfoAsistente.ModalidadCredito;
                 Solicitud.GenerarNumCp();
                 IniciarSolicitud(Solicitud);
             }
@@ -174,6 +176,35 @@ namespace Soft.Ventas.Win
                     InfoAsistente.Plantilla = Plantilla;
                     ssPlantilla.Text = InfoAsistente.Plantilla.Nombre;
                 }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ssContacto_Search(object sender, EventArgs e)
+        {
+            try
+            {
+                if (InfoAsistente.Cliente == null) { throw new Exception("No ha seleccionado ningún cliente."); }
+                FrmSelectedEntity FrmSeleccionarContacto = new FrmSelectedEntity();
+                InfoAsistente.Contacto = (ItemSocioNegocioContacto)FrmSeleccionarContacto.GetSelectedEntity(typeof(ItemSocioNegocioContacto), "Contacto", String.Format("IDSocioNegocio = '{0}'", InfoAsistente.Cliente.ID));
+                ssContacto.Text = (InfoAsistente.Contacto != null) ? InfoAsistente.Contacto.Nombre : "";
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ssFormaPago_Search(object sender, EventArgs e)
+        {
+            try
+            {
+                FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+                InfoAsistente.ModalidadCredito = (ModalidadCredito)FrmSeleccionar.GetSelectedEntity(typeof(ModalidadCredito), "Modalidad de Crédito");
+                ssFormaPago.Text = (InfoAsistente.ModalidadCredito != null) ? InfoAsistente.ModalidadCredito.Descripcion : "";
             }
             catch (Exception ex)
             {
