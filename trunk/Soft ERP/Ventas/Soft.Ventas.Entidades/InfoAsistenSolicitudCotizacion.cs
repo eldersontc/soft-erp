@@ -17,5 +17,7 @@ namespace Soft.Ventas.Entidades
         public virtual Moneda Moneda { get; set; }
         public virtual DateTime FechaCreacion { get; set; }
         public virtual Int32 CodigoGrupo { get; set; }
+        public virtual ModalidadCredito ModalidadCredito { get; set; }
+        public virtual ItemSocioNegocioContacto Contacto { get; set; }
     }
 }
