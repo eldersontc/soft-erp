@@ -26,10 +26,14 @@ namespace Soft.Controls
         {
             switch (e.Button.Key) { 
                 case "Search":
-                    Search(sender, e);
+                    if (Search != null) {
+                        Search(sender, e);
+                    }
                     break;
                 case "Clear":
-                    Clear(sender, e);
+                    if (Clear != null) {
+                        Clear(sender, e);
+                    }
                     break;
             }
         }
