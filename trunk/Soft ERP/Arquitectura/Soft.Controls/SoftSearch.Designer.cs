@@ -30,21 +30,27 @@
         {
             Infragistics.Win.UltraWinEditors.EditorButton editorButton1 = new Infragistics.Win.UltraWinEditors.EditorButton("Search");
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SoftSearch));
+            Infragistics.Win.UltraWinEditors.EditorButton editorButton2 = new Infragistics.Win.UltraWinEditors.EditorButton("Clear");
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.txtSearch = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSearch
             // 
-            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
+            appearance1.Image = global::Soft.Controls.Properties.Resources.search;
             appearance1.ImageHAlign = Infragistics.Win.HAlign.Center;
             appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
             editorButton1.Appearance = appearance1;
             editorButton1.Key = "Search";
             editorButton1.Text = "";
-            editorButton1.Width = 25;
+            appearance2.Image = global::Soft.Controls.Properties.Resources.delete;
+            appearance2.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            editorButton2.Appearance = appearance2;
+            editorButton2.Key = "Clear";
             this.txtSearch.ButtonsRight.Add(editorButton1);
+            this.txtSearch.ButtonsRight.Add(editorButton2);
             this.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSearch.Location = new System.Drawing.Point(0, 0);
             this.txtSearch.Name = "txtSearch";

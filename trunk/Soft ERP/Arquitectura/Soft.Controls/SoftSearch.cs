@@ -13,6 +13,7 @@ namespace Soft.Controls
     {
 
         public event EventHandler Search;
+        public event EventHandler Clear;
 
         public SoftSearch()
         {
@@ -26,6 +27,9 @@ namespace Soft.Controls
             switch (e.Button.Key) { 
                 case "Search":
                     Search(sender, e);
+                    break;
+                case "Clear":
+                    Clear(sender, e);
                     break;
             }
         }
