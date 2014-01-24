@@ -23,9 +23,8 @@ namespace Soft.Ventas.Win
                 Cotizacion.Cliente = SolicitudCotizacion.Cliente;
                 Cotizacion.ModalidadCredito = SolicitudCotizacion.ModalidadCredito;
                 Cotizacion.TipoDocumento = (TipoCotizacion)HelperNHibernate.GetEntityByID("TipoCotizacion", "B8AA5B25-9180-44A6-B750-F96D1EA17147");
-
+                Cotizacion.Contacto = SolicitudCotizacion.Contacto;
                 Cotizacion.Vendedor = SolicitudCotizacion.Responsable;
-
                 Cotizacion.Observacion = String.Format("Generado desde la Solicitud - {0}", SolicitudCotizacion.Numeracion);
                 Cotizacion.Moneda = SolicitudCotizacion.Moneda;
 
