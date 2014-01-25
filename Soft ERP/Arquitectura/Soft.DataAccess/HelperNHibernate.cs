@@ -166,8 +166,8 @@ namespace Soft.DataAccess
             {
                 EvictProperties(Entity);
                 Session.Evict(Entity);
-                Entity.ID = HelperNHibernate.GenerateID();
                 Copy = (Parent)Session.Merge(Entity);
+                Copy.ID = GenerateID();
             }
             return Copy;
         }
@@ -187,7 +187,7 @@ namespace Soft.DataAccess
                         {
                             EvictProperties(Item);
                             Session.Evict(Item);
-                            ((Parent)Item).ID = HelperNHibernate.GenerateID();
+                            Item.ID = GenerateID();
                         }
                     }
                 }

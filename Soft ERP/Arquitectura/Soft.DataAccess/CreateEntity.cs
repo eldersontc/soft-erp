@@ -35,7 +35,7 @@ namespace Soft.DataAccess
                     {
                         Trans.Rollback();
                         m_ResultProcess = EnumResult.ERROR;
-                        SoftException.Control(ex.InnerException);
+                        SoftException.Control(ex);
                     }
                 }
             }

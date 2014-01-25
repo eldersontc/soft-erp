@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Collections;
 using Soft.DataAccess;
 using System.Windows.Forms;
+using Soft.Exceptions;
 
 namespace Soft.DataAccess
 {
@@ -25,7 +26,7 @@ namespace Soft.DataAccess
             catch (Exception ex)
             {
                 base.m_ResultProcess = EnumResult.ERROR;
-                MessageBox.Show(ex.InnerException.ToString());
+                SoftException.Control(ex);
             }
             base.Start();
         }

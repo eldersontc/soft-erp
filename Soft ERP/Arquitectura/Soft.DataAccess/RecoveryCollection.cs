@@ -37,7 +37,7 @@ namespace Soft.DataAccess
             catch (Exception ex)
             {
                 base.m_ResultProcess = EnumResult.ERROR;
-                SoftException.Control(ex.InnerException);
+                SoftException.Control(ex);
             }
             base.Start();
         }
