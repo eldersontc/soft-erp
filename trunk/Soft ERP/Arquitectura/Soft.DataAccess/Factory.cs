@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 using Soft.Seguridad.Entidades;
 using Soft.DataAccess;
 using System.Drawing;
+using Soft.Exceptions;
 
 namespace Soft.DataAccess
 {
@@ -24,16 +25,14 @@ namespace Soft.DataAccess
             {
                 this.CreateNewObject();             
                 base.m_ResultProcess = EnumResult.SUCESS;
-            }catch (Exception){
+            }catch (Exception ex){
                 base.m_ResultProcess = EnumResult.ERROR;
-                throw;
+                SoftException.Control(ex);
             }
             base.Start();
         }
 
         public void CreateNewObject() {
-            //String[] Parametros = Convert.ToString(this.m_Parameter).Split('|');
-            //this.m_ObjectFlow = InstanceObject(Parametros[0], Parametros[1]);
             base.m_ObjectFlow = InstanceObject(base.m_EntidadSF.EnsambladoClase.Ensamblado_, base.m_EntidadSF.NombreClase);
         }
 
