@@ -167,7 +167,9 @@ namespace Soft.Ventas.Win
                     {
                     }
                 }
-                Mostrar();
+                //Mostrar();
+                ssTipoDocumento.Text = (SolicitudCotizacion.TipoDocumento != null) ? SolicitudCotizacion.TipoDocumento.Nombre : "";
+                ssResponsable.Text = (SolicitudCotizacion.Responsable != null) ? SolicitudCotizacion.Responsable.Nombre : "";
 
             }
             catch (Exception ex)

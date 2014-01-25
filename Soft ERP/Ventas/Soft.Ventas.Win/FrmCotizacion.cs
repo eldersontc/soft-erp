@@ -155,7 +155,7 @@ namespace Soft.Ventas.Win
             ssMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
             lblTipoUnidad.Text = Item.TipoUnidad;
             txtObservacionItem.Text = Item.Observacion;
-            txtCantidadItem.Value = Item.Cantidad;
+            txtCantidadItem.Value = Item.CantidadElemento;
             txtMedidaAbiertoLargo.Value = Item.MedidaAbiertaLargo;
             txtMedidaAbiertoAlto.Value = Item.MedidaAbiertaAlto;
             txtMedidaCerradaLargo.Value = Item.MedidaCerradaLargo;
@@ -173,8 +173,23 @@ namespace Soft.Ventas.Win
             txtNroPiezasImpresion.Value = Item.NroPiezasImpresion;
             txtImpresionAlto.Value = Item.MedidaAbiertaAlto;
             txtImpresionLargo.Value = Item.MedidaAbiertaLargo;
-            ubeMetodo.Text = Item.MetodoImpresion;
+            ssMaquina.Visible = Item.TieneMaquina;
+            lblMaquina.Visible = Item.TieneMaquina;
+            ssMaterial.Visible = Item.TieneMaterial;
+            lblMaterial.Visible = Item.TieneMaterial;
+            txtCostoServicio.Value = Item.CostoServicio;
+            lblCostoMaquina.Visible = Item.TieneMaquina;
+            uneCostoMaquina.Visible = Item.TieneMaquina;
+            lblCostoMaterial.Visible = Item.TieneMaterial;
+            uneCostoMaterial.Visible = Item.TieneMaterial;
+
+            if (Item.MetodoImpresion != null) {
+                ubeMetodo.Text = Item.MetodoImpresion;
+            }
+
             utcItemCotizacion.Tabs["Graficos"].Visible = Item.TieneGraficos;
+            txtDemasia.Value = Item.CantidadDemasia;
+
             if (Item.TieneGraficos & !Cotizacion.NewInstance) {
                 if (Item.GraficoImpresionGirado)
                 {
@@ -294,8 +309,9 @@ namespace Soft.Ventas.Win
 
 
             }
-            Mostrar();
-
+            //Mostrar();
+            ssTipoDocumento.Text = (Cotizacion.TipoDocumento != null) ? Cotizacion.TipoDocumento.Descripcion : "";
+            ssResponsable.Text = (Cotizacion.Responsable != null) ? Cotizacion.Responsable.Nombre : "";
         }
 
         private void txtNumeracion_TextChanged(object sender, EventArgs e)
@@ -393,7 +409,7 @@ namespace Soft.Ventas.Win
         {
             if (ItemCotizacion == null) { return; }
             if (ActualizandoIU) { return; }
-            ItemCotizacion.Cantidad = Convert.ToInt32(txtCantidadItem.Value);
+            ItemCotizacion.CantidadElemento = Convert.ToInt32(txtCantidadItem.Value);
         }
 
         private void txtImpresoRetiraColor_ValueChanged(object sender, EventArgs e)
@@ -446,6 +462,7 @@ namespace Soft.Ventas.Win
                 Row.Tag = item;
                 Row.Cells[colServicio].Activate();
                 ugServicios.PerformAction(Infragistics.Win.UltraWinGrid.UltraGridAction.EnterEditMode);
+                ItemCotizacion.Servicios.Add(item);
                 MostrarServicio(Row);
             }
 
@@ -499,36 +516,41 @@ namespace Soft.Ventas.Win
             lpe = (ListaPreciosExistencia)HelperNHibernate.GetEntityByID("ListaPreciosExistencia", Cotizacion.ListaPreciosExistencia.ID);
             lpt = (ListaPreciosTransporte)HelperNHibernate.GetEntityByID("ListaPreciosTransporte", Cotizacion.ListaPreciosTransporte.ID);
 
-            foreach (ItemCotizacion itemcotizacion in Cotizacion.Items) {
-                CosteoElemento(itemcotizacion);
+            foreach (ItemCotizacion itemcotizacion2 in Cotizacion.Items) {
+                CosteoElemento(itemcotizacion2);
                 
             }
-            Cotizacion.SubTotal = Cotizacion.SubTotal;
+            //Cotizacion.SubTotal = Cotizacion.SubTotal;
         }
 
-        private void CosteoElemento(ItemCotizacion itemCotizacion) {
-            if (ItemCotizacion.Maquina != null)
+        private void CosteoElemento(ItemCotizacion itemCotizacion2) {
+            if (itemCotizacion2.Maquina != null)
             {
-                ItemCotizacion.CostoMaquina = obtenerItemListaCostosMaquina(itemCotizacion);
+                itemCotizacion2.CostoMaquina = obtenerItemListaCostosMaquina(itemCotizacion2);
             }
             else {
-                ItemCotizacion.CostoMaquina = 0;
+                itemCotizacion2.CostoMaquina = 0;
             }
 
 
-            if (ItemCotizacion.Material != null)
+            if (itemCotizacion2.Material != null)
             {
-                ItemCotizacion.CostoMaterial = obtenerItemListaCostosMaterial(itemCotizacion);
+                itemCotizacion2.CostoMaterial = obtenerItemListaCostosMaterial(itemCotizacion2);
             }
             else
             {
-                ItemCotizacion.CostoMaterial = 0;
+                itemCotizacion2.CostoMaterial = 0;
             }
 
-           
-            ItemCotizacion.Costo = ItemCotizacion.CostoMaquina + ItemCotizacion.CostoMaterial;
-            ItemCotizacion.Precio = ItemCotizacion.Costo;
-            
+            Decimal totalservicio = 0;
+            foreach (ItemCotizacionServicio item in itemCotizacion2.Servicios)
+            {
+                totalservicio += item.CostoTotalServicio;
+            }
+            itemCotizacion2.CostoServicio = totalservicio;
+            itemCotizacion2.Cantidad = 1;
+            itemCotizacion2.Costo = itemCotizacion2.CostoMaquina + itemCotizacion2.CostoMaterial + itemCotizacion2.CostoServicio;
+            itemCotizacion2.Precio = itemCotizacion2.Costo;    
         }
 
         private Decimal obtenerItemListaCostosMaterial(ItemCotizacion itemCotizacion)
@@ -536,7 +558,7 @@ namespace Soft.Ventas.Win
             Decimal resultado = 0;
             try
             {
-                resultado = itemCotizacion.Material.CostoUltimaCompra * itemCotizacion.Cantidad;
+                resultado = itemCotizacion.Material.CostoUltimaCompra * itemCotizacion.CantidadMaterial;
             
             }
             catch (Exception)
@@ -558,16 +580,45 @@ namespace Soft.Ventas.Win
             ItemListaCostosMaquina ilcm = obtenerItemListaCostosMaquina(itemCotizacion.Maquina);
             UnidadListaCostosMaquina Uilcm = obtenerUnidadLCM(ilcm);
             EscalaListaCostosMaquina Elcm = obtenerEscalaLCM(Uilcm, itemCotizacion);
-            
 
-                resultado = Elcm.Costo * ((itemCotizacion.MedidaAbiertaAlto * itemCotizacion.MedidaAbiertaLargo) * ItemCotizacion.Cantidad);
+            Int32 multiplicador = 1;
+            if (Uilcm.Unidad.Nombre.Equals("MILLAR")) {
+                multiplicador = 1000;
+                resultado = itemCotizacion.CantidadProduccion/multiplicador;
+                Int32 entero = Convert.ToInt32(resultado);
+                Decimal residuo = resultado-entero;
+                if (residuo > 0 && residuo <= 1)
+                {
+                    resultado = (entero + 1) * Elcm.Costo;
+                }
+                else
+                {
+                    resultado = (entero) * Elcm.Costo;
+                }
+            }
+
+
+
+            else 
+            {
+                multiplicador = 1;
+                resultado = itemCotizacion.CantidadProduccion / multiplicador;
+                Int32 entero = Convert.ToInt32(resultado);
+                Decimal residuo = resultado - entero;
+                if (residuo > 0 && residuo <= 1)
+                {
+                    resultado = (entero + 1) * Elcm.Costo;
+                }
+                else
+                {
+                    resultado = (entero) * Elcm.Costo;
+                }
+            }
             }
             catch (Exception)
             {
                
             }
-
-
             return resultado;
         }
         private ItemListaCostosMaquina obtenerItemListaCostosMaquina(Maquina maquina)
@@ -612,16 +663,21 @@ namespace Soft.Ventas.Win
                 return eUilcm;
             }
 
-            Decimal metroscuadrado = itemcotizacion.MedidaAbiertaAlto * itemcotizacion.MedidaAbiertaLargo * itemcotizacion.Cantidad;
-
+          
             foreach (EscalaListaCostosMaquina escala in Uilcm.Escalas)
             {
+
+                if (itemcotizacion.CantidadProduccion==0) {
+                    itemcotizacion.CantidadProduccion = (itemcotizacion.CantidadElemento + itemcotizacion.CantidadDemasia) * itemcotizacion.MedidaAbiertaAlto * itemcotizacion.MedidaAbiertaLargo;
+                }
+                
+
                 if ((escala.Desde == 0) && (escala.Hasta == 0))
                 {
                     eUilcm = escala;
                     break;
                 }
-                else if ((escala.Desde <= metroscuadrado) && (escala.Hasta >= metroscuadrado))
+                else if ((escala.Desde <= itemcotizacion.CantidadProduccion) && (escala.Hasta >= itemcotizacion.CantidadProduccion))
                 {
                     eUilcm = escala;
                     break;
@@ -895,6 +951,7 @@ namespace Soft.Ventas.Win
                 if (ItemCotizacion == null) { return; }
                 ItemCotizacion.GraficoPrecorteGirado = false;
                 GenerarGraficoPrecorteNormal();
+                CalcularProduccionItem();
             }
             catch (Exception ex)
             {
@@ -909,6 +966,7 @@ namespace Soft.Ventas.Win
                 if (ItemCotizacion == null) { return; }
                 ItemCotizacion.GraficoPrecorteGirado = true;
                 GenerarGraficoPrecorteRotado();
+                CalcularProduccionItem();
             }
             catch (Exception ex)
             {
@@ -1020,8 +1078,8 @@ namespace Soft.Ventas.Win
 
         private void ModificarServicio() {
             if (ugServicios.ActiveRow != null) {
-                ItemCotizacionServicio itemCotizacion = (ItemCotizacionServicio)ugServicios.ActiveRow.Tag;
-                FrmCotizaciondeServicio AgregarServicio = new FrmCotizaciondeServicio(itemCotizacion);
+                ItemCotizacionServicio itemCotizacionServicio = (ItemCotizacionServicio)ugServicios.ActiveRow.Tag;
+                FrmCotizaciondeServicio AgregarServicio = new FrmCotizaciondeServicio(itemCotizacionServicio, ItemCotizacion);
                 ItemCotizacionServicio item = AgregarServicio.ObtenerServicio(Cotizacion);
                 if (item != null) {
                     ugServicios.ActiveRow.Tag = item;
@@ -1045,6 +1103,9 @@ namespace Soft.Ventas.Win
             {
                 if (ItemCotizacion == null) { return; }
                 ItemCotizacion.MetodoImpresion = ubeMetodo.Text;
+                ItemCotizacion.NumerodePases = Convert.ToInt32(ubeMetodo.SelectedItem.Tag);
+
+
             }
             catch (Exception ex)
             {
@@ -1078,6 +1139,38 @@ namespace Soft.Ventas.Win
                 SoftException.Control(ex);
             }
         }
+
+        private void txtDemasia_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemCotizacion == null) { return; }
+                ItemCotizacion.CantidadDemasia = Convert.ToDecimal(txtDemasia.Value);
+            }
+            catch (Exception ex)
+            {
+               SoftException.ShowException(ex);
+            }
+        }
+
+
+        private void CalcularProduccionItem(){
+            try
+            {
+                if (ItemCotizacion == null) { return; }
+                ItemCotizacion.CantidadMaterial = ItemCotizacion.CantidadElemento / (ItemCotizacion.NroPiezasPrecorte * ItemCotizacion.NroPiezasImpresion);
+                ItemCotizacion.CantidadProduccion = ItemCotizacion.CantidadMaterial * ItemCotizacion.NumerodePases;
+            }
+            catch (Exception ex)
+            {
+                //SoftException.ShowException(ex);
+            }
+
+
+         }
+
+     
+
 
         
     }

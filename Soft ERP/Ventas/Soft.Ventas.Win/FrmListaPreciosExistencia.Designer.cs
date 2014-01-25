@@ -92,7 +92,7 @@
             this.ugbParent.Controls.Add(this.txtCodigo);
             this.ugbParent.Controls.Add(this.lblNombre);
             this.ugbParent.Controls.Add(this.lblCodigo);
-            this.ugbParent.Size = new System.Drawing.Size(635, 466);
+            this.ugbParent.Size = new System.Drawing.Size(805, 466);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.lblCodigo, 0);
@@ -106,11 +106,11 @@
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(548, 428);
+            this.ubCancelar.Location = new System.Drawing.Point(711, 428);
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(467, 428);
+            this.ubAceptar.Location = new System.Drawing.Point(630, 428);
             // 
             // ilMain
             // 
@@ -370,7 +370,7 @@
             this.ultraTabPageControl1.Controls.Add(this.grillaExistencias);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(274, 315);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(437, 315);
             // 
             // ubEliminarExistencia
             // 
@@ -393,10 +393,12 @@
             // grillaExistencias
             // 
             this.grillaExistencias.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.grillaExistencias.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow;
+            this.grillaExistencias.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortSingle;
             this.grillaExistencias.Dock = System.Windows.Forms.DockStyle.Top;
             this.grillaExistencias.Location = new System.Drawing.Point(0, 0);
             this.grillaExistencias.Name = "grillaExistencias";
-            this.grillaExistencias.Size = new System.Drawing.Size(274, 283);
+            this.grillaExistencias.Size = new System.Drawing.Size(437, 283);
             this.grillaExistencias.TabIndex = 0;
             this.grillaExistencias.Text = "ultraGrid1";
             this.grillaExistencias.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grillaExistencias_AfterSelectChange);
@@ -431,6 +433,7 @@
             // ugUnidades
             // 
             this.ugUnidades.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.ugUnidades.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortSingle;
             this.ugUnidades.Dock = System.Windows.Forms.DockStyle.Top;
             this.ugUnidades.Location = new System.Drawing.Point(0, 0);
             this.ugUnidades.Name = "ugUnidades";
@@ -469,6 +472,7 @@
             // ugEscalas
             // 
             this.ugEscalas.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.ugEscalas.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortSingle;
             this.ugEscalas.Dock = System.Windows.Forms.DockStyle.Top;
             this.ugEscalas.Location = new System.Drawing.Point(0, 0);
             this.ugEscalas.Name = "ugEscalas";
@@ -481,7 +485,7 @@
             // 
             this.uceActivo.BackColor = System.Drawing.Color.Transparent;
             this.uceActivo.BackColorInternal = System.Drawing.Color.Transparent;
-            this.uceActivo.Location = new System.Drawing.Point(564, 9);
+            this.uceActivo.Location = new System.Drawing.Point(550, 43);
             this.uceActivo.Name = "uceActivo";
             this.uceActivo.Size = new System.Drawing.Size(58, 20);
             this.uceActivo.TabIndex = 16;
@@ -490,15 +494,15 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(109, 35);
+            this.txtNombre.Location = new System.Drawing.Point(109, 42);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(514, 21);
+            this.txtNombre.Size = new System.Drawing.Size(407, 21);
             this.txtNombre.TabIndex = 15;
             this.txtNombre.ValueChanged += new System.EventHandler(this.txtNombre_ValueChanged);
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(109, 6);
+            this.txtCodigo.Location = new System.Drawing.Point(109, 13);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(133, 21);
             this.txtCodigo.TabIndex = 14;
@@ -509,7 +513,7 @@
             appearance7.BackColor = System.Drawing.Color.Transparent;
             this.lblNombre.Appearance = appearance7;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblNombre.Location = new System.Drawing.Point(18, 39);
+            this.lblNombre.Location = new System.Drawing.Point(18, 46);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(85, 23);
             this.lblNombre.TabIndex = 13;
@@ -520,7 +524,7 @@
             appearance8.BackColor = System.Drawing.Color.Transparent;
             this.lblCodigo.Appearance = appearance8;
             this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblCodigo.Location = new System.Drawing.Point(18, 10);
+            this.lblCodigo.Location = new System.Drawing.Point(18, 17);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(85, 23);
             this.lblCodigo.TabIndex = 12;
@@ -535,7 +539,7 @@
             this.utcExistencias.Location = new System.Drawing.Point(18, 81);
             this.utcExistencias.Name = "utcExistencias";
             this.utcExistencias.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.utcExistencias.Size = new System.Drawing.Size(278, 341);
+            this.utcExistencias.Size = new System.Drawing.Size(441, 341);
             appearance6.BackColor = System.Drawing.Color.Transparent;
             this.utcExistencias.TabHeaderAreaAppearance = appearance6;
             this.utcExistencias.TabIndex = 17;
@@ -548,7 +552,7 @@
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(274, 315);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(437, 315);
             // 
             // utcUnidades
             // 
@@ -556,7 +560,7 @@
             this.utcUnidades.Appearance = appearance3;
             this.utcUnidades.Controls.Add(this.ultraTabSharedControlsPage2);
             this.utcUnidades.Controls.Add(this.ultraTabPageControl2);
-            this.utcUnidades.Location = new System.Drawing.Point(302, 81);
+            this.utcUnidades.Location = new System.Drawing.Point(465, 81);
             this.utcUnidades.Name = "utcUnidades";
             this.utcUnidades.SharedControlsPage = this.ultraTabSharedControlsPage2;
             this.utcUnidades.Size = new System.Drawing.Size(322, 157);
@@ -580,7 +584,7 @@
             this.utcEscalas.Appearance = appearance1;
             this.utcEscalas.Controls.Add(this.ultraTabSharedControlsPage3);
             this.utcEscalas.Controls.Add(this.ultraTabPageControl3);
-            this.utcEscalas.Location = new System.Drawing.Point(303, 244);
+            this.utcEscalas.Location = new System.Drawing.Point(466, 244);
             this.utcEscalas.Name = "utcEscalas";
             this.utcEscalas.SharedControlsPage = this.ultraTabSharedControlsPage3;
             this.utcEscalas.Size = new System.Drawing.Size(322, 178);
@@ -602,7 +606,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 504);
+            this.ClientSize = new System.Drawing.Size(821, 504);
             this.Name = "FrmListaPreciosExistencia";
             this.Text = "Lista de  Precios de Existencias";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
