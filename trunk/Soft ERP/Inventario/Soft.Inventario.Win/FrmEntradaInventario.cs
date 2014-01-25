@@ -222,10 +222,11 @@ namespace Soft.Inventario.Win
 
         private void ubNuevoProducto_Click(object sender, EventArgs e)
         {
-            UltraGridRow Row = ugProductos.DisplayLayout.Bands[0].AddNew();
-            Row.Tag = EntradaInventario.AddItem();
-            Row.Cells[colCodigo].Activate();
-            ugProductos.PerformAction(Infragistics.Win.UltraWinGrid.UltraGridAction.EnterEditMode);
+            AgregarProductos();
+            //UltraGridRow Row = ugProductos.DisplayLayout.Bands[0].AddNew();
+            //Row.Tag = EntradaInventario.AddItem();
+            //Row.Cells[colCodigo].Activate();
+            //ugProductos.PerformAction(Infragistics.Win.UltraWinGrid.UltraGridAction.EnterEditMode);
         }
 
         private void ubEliminarProducto_Click(object sender, EventArgs e)
@@ -241,32 +242,48 @@ namespace Soft.Inventario.Win
             EntradaInventario.Observacion = txtObservacion.Text;
         }
 
-        public void AgregarProductos(String Codigo ,String Descripcion ,UltraGridRow Row) {
+        //public void AgregarProductos(String Codigo ,String Descripcion ,UltraGridRow Row) {
+        //    Collection Productos = new Collection();
+        //    FrmSelectedEntity FrmSeleccionarProducto = new FrmSelectedEntity();
+        //    ItemEntradaInventario Item = (ItemEntradaInventario)Row.Tag;
+        //    Productos = FrmSeleccionarProducto.GetSelectedsEntities(typeof(Existencia), "Seleción de Existencia", String.Format(" Codigo LIKE '{0}%' AND Nombre LIKE '{1}%' AND IDAlmacen = '{2}'", Codigo, Descripcion, EntradaInventario.Almacen.ID));
+        //    if (Productos.Count == 1) {
+        //        Existencia Producto = (Existencia)Productos[1];
+        //        Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
+        //        Item.Cantidad = 1;
+        //        MostrarItem(Row);
+        //    }
+        //    else if (Productos.Count > 1) {
+        //        Existencia Producto = (Existencia)Productos[1];
+        //        Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
+        //        Item.Cantidad = 1;
+        //        MostrarItem(Row);
+        //        for (int i = 2; i <= Productos.Count; i++)
+        //        {
+        //            UltraGridRow RowNuevo = ugProductos.DisplayLayout.Bands[0].AddNew();
+        //            ItemEntradaInventario ItemNuevo = EntradaInventario.AddItem();
+        //            Existencia ProductoNuevo = (Existencia)Productos[i];
+        //            ItemNuevo.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", ProductoNuevo.ID);
+        //            ItemNuevo.Cantidad = 1;
+        //            RowNuevo.Tag = ItemNuevo;
+        //            MostrarItem(RowNuevo);
+        //        }
+        //    }
+        //}
+
+        public void AgregarProductos()
+        {
             Collection Productos = new Collection();
             FrmSelectedEntity FrmSeleccionarProducto = new FrmSelectedEntity();
-            ItemEntradaInventario Item = (ItemEntradaInventario)Row.Tag;
-            Productos = FrmSeleccionarProducto.GetSelectedsEntities(typeof(Existencia), "Seleción de Existencia", String.Format(" Codigo LIKE '{0}%' AND Nombre LIKE '{1}%' AND IDAlmacen = '{2}'", Codigo, Descripcion, EntradaInventario.Almacen.ID));
-            if (Productos.Count == 1) {
-                Existencia Producto = (Existencia)Productos[1];
-                Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
-                Item.Cantidad = 1;
-                MostrarItem(Row);
-            }
-            else if (Productos.Count > 1) {
-                Existencia Producto = (Existencia)Productos[1];
-                Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
-                Item.Cantidad = 1;
-                MostrarItem(Row);
-                for (int i = 2; i <= Productos.Count; i++)
-                {
-                    UltraGridRow RowNuevo = ugProductos.DisplayLayout.Bands[0].AddNew();
-                    ItemEntradaInventario ItemNuevo = EntradaInventario.AddItem();
-                    Existencia ProductoNuevo = (Existencia)Productos[i];
-                    ItemNuevo.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", ProductoNuevo.ID);
-                    ItemNuevo.Cantidad = 1;
-                    RowNuevo.Tag = ItemNuevo;
-                    MostrarItem(RowNuevo);
-                }
+            Productos = FrmSeleccionarProducto.GetSelectedsEntities(typeof(Existencia), "Seleción de Existencia", String.Format(" IDAlmacen = '{0}'", EntradaInventario.Almacen.ID));
+            foreach (Existencia Producto in Productos)
+            {
+                UltraGridRow RowNuevo = ugProductos.DisplayLayout.Bands[0].AddNew();
+                ItemEntradaInventario ItemNuevo = EntradaInventario.AddItem();
+                ItemNuevo.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
+                ItemNuevo.Cantidad = 1;
+                RowNuevo.Tag = ItemNuevo;
+                MostrarItem(RowNuevo);
             }
         }
 
@@ -314,31 +331,31 @@ namespace Soft.Inventario.Win
 	        }
         }
 
-        public void ugProductos_CellKeyEnter(UltraGridCell Cell)
-        {
-            try
-            {
-                if (Cell == null) { return; }
-                ItemEntradaInventario Item = (ItemEntradaInventario)Cell.Row.Tag;
-                switch (Cell.Column.Key)
-                {
-                    case colCodigo:
-                        if (Cell.Text.Equals("")) { break; }
-                        AgregarProductos(Cell.Text, "%", Cell.Row);
-                        break;
-                    case colNombre:
-                        if (Cell.Text.Equals("")) { break; }
-                        AgregarProductos("%", Cell.Text, Cell.Row);
-                        break;
-                    default:
-                        break;
-                }
-            }
-            catch (Exception)
-            {
-                //MessageBox.Show(ex.Message);
-            }
-        }
+        //public void ugProductos_CellKeyEnter(UltraGridCell Cell)
+        //{
+        //    try
+        //    {
+        //        if (Cell == null) { return; }
+        //        ItemEntradaInventario Item = (ItemEntradaInventario)Cell.Row.Tag;
+        //        switch (Cell.Column.Key)
+        //        {
+        //            case colCodigo:
+        //                if (Cell.Text.Equals("")) { break; }
+        //                AgregarProductos(Cell.Text, "%", Cell.Row);
+        //                break;
+        //            case colNombre:
+        //                if (Cell.Text.Equals("")) { break; }
+        //                AgregarProductos("%", Cell.Text, Cell.Row);
+        //                break;
+        //            default:
+        //                break;
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        //MessageBox.Show(ex.Message);
+        //    }
+        //}
 
         private void ssMoneda_Search(object sender, EventArgs e)
         {
