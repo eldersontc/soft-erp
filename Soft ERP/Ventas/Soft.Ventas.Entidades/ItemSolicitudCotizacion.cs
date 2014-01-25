@@ -42,5 +42,38 @@ namespace Soft.Ventas.Entidades
             return Item;
         }
 
+        public virtual ItemSolicitudCotizacion Copiar()
+        {
+            ItemSolicitudCotizacion ItemCopia = new ItemSolicitudCotizacion();
+            ItemCopia.Nombre = Nombre;
+            ItemCopia.ImpresoTiraColor = ImpresoTiraColor;
+            ItemCopia.ImpresoRetiraColor = ImpresoRetiraColor;
+            ItemCopia.Observacion = Observacion;
+            ItemCopia.Maquina = Maquina;
+            ItemCopia.Material = Material;
+            ItemCopia.TipoUnidad = TipoUnidad;
+            ItemCopia.MedidaAbiertaLargo = MedidaAbiertaLargo;
+            ItemCopia.MedidaAbiertaAlto = MedidaAbiertaAlto;
+            ItemCopia.MedidaCerradaLargo = MedidaCerradaLargo;
+            ItemCopia.MedidaCerradaAlto = MedidaCerradaAlto;
+            ItemCopia.TieneMedidaAbierta = TieneMedidaAbierta;
+            ItemCopia.TieneMedidaCerrada = TieneMedidaCerrada;
+            ItemCopia.TieneTiraRetira = TieneTiraRetira;
+            ItemCopia.TieneGraficos = TieneGraficos;
+            ItemCopia.TieneMaquina = TieneMaquina;
+            ItemCopia.TieneMaterial = TieneMaterial;
+
+            foreach (ItemSolicitudCotizacionServicio ItemServicio in Servicios)
+            {
+                ItemSolicitudCotizacionServicio ItemServicioCopia = new ItemSolicitudCotizacionServicio();
+                ItemServicioCopia.Servicio = ItemServicio.Servicio;
+                ItemServicioCopia.Unidad = ItemServicio.Unidad;
+                ItemServicioCopia.CantidadInicial = ItemServicio.CantidadInicial;
+                ItemServicioCopia.CantidadFinal = ItemServicio.CantidadFinal;
+                ItemCopia.Servicios.Add(ItemServicioCopia);
+            }
+            return ItemCopia;
+        }
+
     }
 }
