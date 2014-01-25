@@ -166,6 +166,7 @@ namespace Soft.DataAccess
             {
                 EvictProperties(Entity);
                 Session.Evict(Entity);
+                //Entity.ID = GenerateID();
                 Copy = (Parent)Session.Merge(Entity);
                 Copy.ID = GenerateID();
             }
