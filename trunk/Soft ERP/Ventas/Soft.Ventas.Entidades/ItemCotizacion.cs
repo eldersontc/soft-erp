@@ -83,6 +83,8 @@ namespace Soft.Ventas.Entidades
         public virtual Int32 NroPiezasImpresion { get; set; }
         public virtual String MetodoImpresion { get; set; }
         public virtual Boolean TieneGraficos { get; set; }
+        public virtual Boolean TieneMaterial { get; set; }
+        public virtual Boolean TieneMaquina { get; set; }
 
         public virtual ItemCotizacionServicio AddServicio()
         {
