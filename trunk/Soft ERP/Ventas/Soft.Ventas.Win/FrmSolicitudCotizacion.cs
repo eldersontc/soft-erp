@@ -15,6 +15,7 @@ using Microsoft.VisualBasic;
 using Soft.Inventario.Entidades;
 using Infragistics.Win.UltraWinTree;
 using Soft.Seguridad.Entidades;
+using Soft.Exceptions;
 
 namespace Soft.Ventas.Win
 {
@@ -82,7 +83,7 @@ namespace Soft.Ventas.Win
                 Node.Tag = Item;
                 Node.Text = Item.Nombre;
                 utSolicitudCotizacion.Nodes.Add(Node);
-                MostrarItem(Node);
+                MostrarItem(Item);
             }
             if (utSolicitudCotizacion.Nodes.Count > 0)
             {
@@ -92,12 +93,16 @@ namespace Soft.Ventas.Win
             utSolicitudCotizacion.ExpandAll();
         }
 
-        public void MostrarItem(UltraTreeNode Node)
+        public void MostrarItem(ItemSolicitudCotizacion Item)
         {
-            ItemSolicitudCotizacion Item = (ItemSolicitudCotizacion)Node.Tag;
+            //ItemSolicitudCotizacion Item = (ItemSolicitudCotizacion)Node.Tag;
             GrupoMedidaAbierta.Visible = Item.TieneMedidaAbierta;
             GrupoMedidaCerrada.Visible = Item.TieneMedidaCerrada;
             GruposTiras.Visible = Item.TieneTiraRetira;
+            ssMaquina.Visible = Item.TieneMaquina;
+            lblMaquina.Visible = Item.TieneMaquina;
+            ssMaterial.Visible = Item.TieneMaterial;
+            lblMaterial.Visible = Item.TieneMaterial;
             ssMaquina.Text = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
             ssMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
             lblTipoUnidad.Text = Item.TipoUnidad;
@@ -109,6 +114,13 @@ namespace Soft.Ventas.Win
             txtMedidaCerradaAlto.Value = Item.MedidaCerradaAlto;
             txtImpresoTiraColor.Value = Item.ImpresoTiraColor;
             txtImpresoRetiraColor.Value = Item.ImpresoRetiraColor;
+            //txtNombre.Text = Item.Nombre;
+            chkTieneMedidaAbierta.Checked = Item.TieneMedidaAbierta;
+            chkTieneMedidadCerrada.Checked = Item.TieneMedidaCerrada;
+            chkTieneTiraRetira.Checked = Item.TieneTiraRetira;
+            chkTieneGraficos.Checked = Item.TieneGraficos;
+            chkTieneMaquina.Checked = Item.TieneMaquina;
+            chkTieneMaterial.Checked = Item.TieneMaterial;
             MostrarServicios(Item);
         }
 
@@ -135,7 +147,6 @@ namespace Soft.Ventas.Win
 
         private void ssTipoDocumento_Search(object sender, EventArgs e)
         {
-
             try
             {
                 FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
@@ -161,84 +172,134 @@ namespace Soft.Ventas.Win
             }
             catch (Exception ex)
             {
-
-                Soft.Exceptions.SoftException.ShowException(ex);
+                SoftException.Control(ex);
             }
-
-
         }
 
         private void txtNumeracion_TextChanged(object sender, EventArgs e)
         {
-            SolicitudCotizacion.Numeracion = txtNumeracion.Text;
+            try
+            {
+                SolicitudCotizacion.Numeracion = txtNumeracion.Text;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void ssCliente_Search(object sender, EventArgs e)
         {
-            String filtro = "Activo=1 ";
-
-            if (FrmMain.Usuario.SuperAdministrador==false)
+            try
             {
-                filtro = "UserID='" + FrmMain.Usuario.UserID + "'";
+                String filtro = "Activo=1 ";
+                if (FrmMain.Usuario.SuperAdministrador == false)
+                {
+                    filtro = "UserID='" + FrmMain.Usuario.UserID + "'";
+                }
+                if (ssCliente.Text.Length > 0)
+                {
+                    filtro = filtro + " and Nombre like '" + ssCliente.Text + "%'";
+                }
+                FrmSelectedEntity FrmSeleccionarProveedor = new FrmSelectedEntity();
+                SolicitudCotizacion.Cliente = (SocioNegocio)FrmSeleccionarProveedor.GetSelectedEntity(typeof(SocioNegocio), "Cliente", filtro);
+                ssCliente.Text = (SolicitudCotizacion.Cliente != null) ? SolicitudCotizacion.Cliente.Nombre : "";
             }
-            
-
-            if (ssCliente.Text.Length > 0)
+            catch (Exception ex)
             {
-                filtro = filtro + " and Nombre like '" + ssCliente.Text + "%'";
+                SoftException.Control(ex);
             }
-
-            FrmSelectedEntity FrmSeleccionarProveedor = new FrmSelectedEntity();
-            SolicitudCotizacion.Cliente = (SocioNegocio)FrmSeleccionarProveedor.GetSelectedEntity(typeof(SocioNegocio), "Cliente", filtro);
-            ssCliente.Text = (SolicitudCotizacion.Cliente != null) ? SolicitudCotizacion.Cliente.Nombre : "";
-
-
         }
 
         private void udtFechaCreacion_ValueChanged(object sender, EventArgs e)
         {
-            SolicitudCotizacion.FechaCreacion = Convert.ToDateTime(udtFechaCreacion.Value);
+            try
+            {
+                SolicitudCotizacion.FechaCreacion = Convert.ToDateTime(udtFechaCreacion.Value);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void txtDescripcion_TextChanged(object sender, EventArgs e)
         {
-            SolicitudCotizacion.Descripcion = txtDescripcion.Text;
+            try
+            {
+                SolicitudCotizacion.Descripcion = txtDescripcion.Text;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void uneCantidad_ValueChanged(object sender, EventArgs e)
         {
-            SolicitudCotizacion.Cantidad = Convert.ToInt32(uneCantidad.Value);
+            try
+            {
+                SolicitudCotizacion.Cantidad = Convert.ToInt32(uneCantidad.Value);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void txtObservacion_TextChanged(object sender, EventArgs e)
         {
-            SolicitudCotizacion.Observacion = txtObservacion.Text;
+            try
+            {
+                SolicitudCotizacion.Observacion = txtObservacion.Text;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void ubNuevaExistencia_Click(object sender, EventArgs e)
         {
-            if (ItemSolicitudCotizacion == null) { return; }
-            UltraGridRow Row = ugServicios.DisplayLayout.Bands[0].AddNew();
-            Row.Tag = ItemSolicitudCotizacion.AddServicio();
-            AgregarServicios("%", "%", Row);
-            //
-            //
-            //Row.Cells[colNombre].Activate();
-            //ugServicios.PerformAction(Infragistics.Win.UltraWinGrid.UltraGridAction.EnterEditMode);
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                UltraGridRow Row = ugServicios.DisplayLayout.Bands[0].AddNew();
+                Row.Tag = ItemSolicitudCotizacion.AddServicio();
+                AgregarServicios("%", "%", Row);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void ubEliminarExistencia_Click(object sender, EventArgs e)
         {
-            if (ugServicios.ActiveRow == null) { return; }
-            ItemSolicitudCotizacion.Servicios.Remove((ItemSolicitudCotizacionServicio)ugServicios.ActiveRow.Tag);
-            ugServicios.ActiveRow.Delete(false);
+            try
+            {
+                if (ugServicios.ActiveRow == null) { return; }
+                ItemSolicitudCotizacion.Servicios.Remove((ItemSolicitudCotizacionServicio)ugServicios.ActiveRow.Tag);
+                ugServicios.ActiveRow.Delete(false);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void ssResponsable_Search(object sender, EventArgs e)
         {
-            FrmSelectedEntity FrmSeleccionarResponsable = new FrmSelectedEntity();
-            SolicitudCotizacion.Responsable = (SocioNegocio)FrmSeleccionarResponsable.GetSelectedEntity(typeof(SocioNegocio), "Socio de Negocio", " Empleado = 1");
-            ssResponsable.Text = (SolicitudCotizacion.Responsable != null) ? SolicitudCotizacion.Responsable.Nombre : "";
+            try
+            {
+                FrmSelectedEntity FrmSeleccionarResponsable = new FrmSelectedEntity();
+                SolicitudCotizacion.Responsable = (SocioNegocio)FrmSeleccionarResponsable.GetSelectedEntity(typeof(SocioNegocio), "Socio de Negocio", " Empleado = 1");
+                ssResponsable.Text = (SolicitudCotizacion.Responsable != null) ? SolicitudCotizacion.Responsable.Nombre : "";
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         public void AgregarServicios(String Codigo, String Descripcion, UltraGridRow Row)
@@ -275,53 +336,36 @@ namespace Soft.Ventas.Win
             }
         }
 
-        //public void ugServicios_CellKeyEnter(UltraGridCell Cell)
-        //{
-        //    try
-        //    {
-        //        if (Cell == null || ItemSolicitudCotizacion == null) { return; }
-        //        ItemSolicitudCotizacionServicio Item = (ItemSolicitudCotizacionServicio)Cell.Row.Tag;
-        //        switch (Cell.Column.Key)
-        //        {
-        //            case colNombre:
-        //                if (Cell.Text.Equals("")) { break; }
-        //                AgregarServicios("%", Cell.Text, Cell.Row);
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        //MessageBox.Show(ex.Message);
-        //    }
-        //}
-
-
-        private void ubRecalcular_Click(object sender, EventArgs e)
-        {
-            //foreach (ItemSolicitudCotizacion Item in SolicitudCotizacion.Items)
-            //{
-            //    Item.CantidadFinal = Item.CantidadInicial * SolicitudCotizacion.Cantidad;
-            //}
-            //MostrarItems();
-        }
-
         private void ssFormaPago_Search(object sender, EventArgs e)
         {
-            FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-            SolicitudCotizacion.ModalidadCredito = (ModalidadCredito)FrmSeleccionar.GetSelectedEntity(typeof(ModalidadCredito), "Modalidad de Crédito");
-            ssFormaPago.Text = (SolicitudCotizacion.ModalidadCredito != null) ? SolicitudCotizacion.ModalidadCredito.Descripcion : "";
+            try
+            {
+                FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+                SolicitudCotizacion.ModalidadCredito = (ModalidadCredito)FrmSeleccionar.GetSelectedEntity(typeof(ModalidadCredito), "Modalidad de Crédito");
+                ssFormaPago.Text = (SolicitudCotizacion.ModalidadCredito != null) ? SolicitudCotizacion.ModalidadCredito.Descripcion : "";
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void utSolicitudCotizacion_AfterSelect(object sender, Infragistics.Win.UltraWinTree.SelectEventArgs e)
         {
-            UltraTreeNode Node = utSolicitudCotizacion.ActiveNode;
-            if (Node != null)
+            try
             {
-                ItemSolicitudCotizacion = (ItemSolicitudCotizacion)Node.Tag;
-                utcItemSolicitid.Tabs[0].Text = Node.Text;
-                MostrarItem(Node);
+                UltraTreeNode Node = utSolicitudCotizacion.ActiveNode;
+                if (Node != null)
+                {
+                    ItemSolicitudCotizacion = (ItemSolicitudCotizacion)Node.Tag;
+                    utcItemSolicitid.Tabs[0].Text = Node.Text;
+                    txtNombre.Text = Node.Text;
+                    MostrarItem(ItemSolicitudCotizacion);
+                }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
             }
         }
 
@@ -348,115 +392,328 @@ namespace Soft.Ventas.Win
 
         private void txtImpresoTiraColor_ValueChanged(object sender, EventArgs e)
         {
-            if (ItemSolicitudCotizacion == null) { return; }
-            ItemSolicitudCotizacion.ImpresoTiraColor = Convert.ToInt32(txtImpresoTiraColor.Value);
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.ImpresoTiraColor = Convert.ToInt32(txtImpresoTiraColor.Value);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void txtImpresoRetiraColor_ValueChanged(object sender, EventArgs e)
         {
-            if (ItemSolicitudCotizacion == null) { return; }
-            ItemSolicitudCotizacion.ImpresoRetiraColor = Convert.ToInt32(txtImpresoRetiraColor.Value);
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.ImpresoRetiraColor = Convert.ToInt32(txtImpresoRetiraColor.Value);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void ssMaquina_Search(object sender, EventArgs e)
         {
-            if (ItemSolicitudCotizacion == null) { return; }
-            FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-            ItemSolicitudCotizacion.Maquina = (Maquina)FrmSeleccionar.GetSelectedEntity(typeof(Maquina), "Máquina", ItemSolicitudCotizacion.m_FiltroMaquina);
-            ssMaquina.Text = (ItemSolicitudCotizacion.Maquina != null) ? ItemSolicitudCotizacion.Maquina.Nombre : "";
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+                ItemSolicitudCotizacion.Maquina = (Maquina)FrmSeleccionar.GetSelectedEntity(typeof(Maquina), "Máquina", ItemSolicitudCotizacion.m_FiltroMaquina);
+                ssMaquina.Text = (ItemSolicitudCotizacion.Maquina != null) ? ItemSolicitudCotizacion.Maquina.Nombre : "";
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void ssMaterial_Search(object sender, EventArgs e)
         {
-            if (ItemSolicitudCotizacion == null) { return; }
-            FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-            ItemSolicitudCotizacion.Material = (Existencia)FrmSeleccionar.GetSelectedEntity(typeof(Existencia), "Existencia", " EsInventariable = 1");
-            ssMaterial.Text = (ItemSolicitudCotizacion.Material != null) ? ItemSolicitudCotizacion.Material.Nombre : "";
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+                ItemSolicitudCotizacion.Material = (Existencia)FrmSeleccionar.GetSelectedEntity(typeof(Existencia), "Existencia", " EsInventariable = 1");
+                ssMaterial.Text = (ItemSolicitudCotizacion.Material != null) ? ItemSolicitudCotizacion.Material.Nombre : "";
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void txtCantidadItem_ValueChanged(object sender, EventArgs e)
         {
-            if (ItemSolicitudCotizacion == null) { return; }
-            ItemSolicitudCotizacion.Cantidad = Convert.ToInt32(txtCantidadItem.Value);
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.Cantidad = Convert.ToInt32(txtCantidadItem.Value);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void txtObservacionItem_TextChanged(object sender, EventArgs e)
         {
-            if (ItemSolicitudCotizacion == null) { return; }
-            ItemSolicitudCotizacion.Observacion = txtObservacionItem.Text;
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.Observacion = txtObservacionItem.Text;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
 
         private void txtMedidaAbiertoLargo_ValueChanged(object sender, EventArgs e)
         {
-            if (ItemSolicitudCotizacion == null) { return; }
-            ItemSolicitudCotizacion.MedidaAbiertaLargo = Convert.ToDecimal(txtMedidaAbiertoLargo.Value);
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.MedidaAbiertaLargo = Convert.ToDecimal(txtMedidaAbiertoLargo.Value);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void txtMedidaAbiertoAlto_ValueChanged(object sender, EventArgs e)
         {
-            if (ItemSolicitudCotizacion == null) { return; }
-            ItemSolicitudCotizacion.MedidaAbiertaAlto = Convert.ToDecimal(txtMedidaAbiertoAlto.Value);
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.MedidaAbiertaAlto = Convert.ToDecimal(txtMedidaAbiertoAlto.Value);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void txtMedidaCerradaLargo_ValueChanged(object sender, EventArgs e)
         {
-            if (ItemSolicitudCotizacion == null) { return; }
-            ItemSolicitudCotizacion.MedidaCerradaLargo = Convert.ToDecimal(txtMedidaCerradaLargo.Value);
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.MedidaCerradaLargo = Convert.ToDecimal(txtMedidaCerradaLargo.Value);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void txtMedidaCerradaAlto_ValueChanged(object sender, EventArgs e)
         {
-            if (ItemSolicitudCotizacion == null) { return; }
-            ItemSolicitudCotizacion.MedidaCerradaAlto = Convert.ToDecimal(txtMedidaCerradaAlto.Value);
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.MedidaCerradaAlto = Convert.ToDecimal(txtMedidaCerradaAlto.Value);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void ssMoneda_Search(object sender, EventArgs e)
         {
-            FrmSelectedEntity FrmSeleccionarMoneda = new FrmSelectedEntity();
-            SolicitudCotizacion.Moneda = (Moneda)FrmSeleccionarMoneda.GetSelectedEntity(typeof(Moneda), "Moneda");
-            ssMoneda.Text = (SolicitudCotizacion.Moneda != null) ? SolicitudCotizacion.Moneda.Simbolo : "";
+            try
+            {
+                FrmSelectedEntity FrmSeleccionarMoneda = new FrmSelectedEntity();
+                SolicitudCotizacion.Moneda = (Moneda)FrmSeleccionarMoneda.GetSelectedEntity(typeof(Moneda), "Moneda");
+                ssMoneda.Text = (SolicitudCotizacion.Moneda != null) ? SolicitudCotizacion.Moneda.Simbolo : "";
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void ssContacto_Search(object sender, EventArgs e)
         {
-            FrmSelectedEntity FrmSeleccionarContacto = new FrmSelectedEntity();
-            SolicitudCotizacion.Contacto = (ItemSocioNegocioContacto)FrmSeleccionarContacto.GetSelectedEntity(typeof(ItemSocioNegocioContacto), "Contacto", String.Format("IDSocioNegocio = '{0}'", SolicitudCotizacion.Cliente.ID));
-            ssContacto.Text = (SolicitudCotizacion.Contacto != null) ? SolicitudCotizacion.Contacto.Nombre : "";
+            try
+            {
+                FrmSelectedEntity FrmSeleccionarContacto = new FrmSelectedEntity();
+                SolicitudCotizacion.Contacto = (ItemSocioNegocioContacto)FrmSeleccionarContacto.GetSelectedEntity(typeof(ItemSocioNegocioContacto), "Contacto", String.Format("IDSocioNegocio = '{0}'", SolicitudCotizacion.Cliente.ID));
+                ssContacto.Text = (SolicitudCotizacion.Contacto != null) ? SolicitudCotizacion.Contacto.Nombre : "";
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void ssDireccionEntrega_Search(object sender, EventArgs e)
         {
-            FrmSelectedEntity FrmSeleccionarDireccion = new FrmSelectedEntity();
-            ItemSocioNegocioDireccion Direccion = (ItemSocioNegocioDireccion)FrmSeleccionarDireccion.GetSelectedEntity(typeof(ItemSocioNegocioDireccion), "Dirección", String.Format("IDSocioNegocio = '{0}' AND EsDireccionEntrega = 1", SolicitudCotizacion.Cliente.ID));
-            if (Direccion != null)
+            try
             {
-                SolicitudCotizacion.DireccionEntrega = Direccion.Direccion;
-                ssDireccionEntrega.Text = Direccion.Direccion;
+                FrmSelectedEntity FrmSeleccionarDireccion = new FrmSelectedEntity();
+                ItemSocioNegocioDireccion Direccion = (ItemSocioNegocioDireccion)FrmSeleccionarDireccion.GetSelectedEntity(typeof(ItemSocioNegocioDireccion), "Dirección", String.Format("IDSocioNegocio = '{0}' AND EsDireccionEntrega = 1", SolicitudCotizacion.Cliente.ID));
+                if (Direccion != null)
+                {
+                    SolicitudCotizacion.DireccionEntrega = Direccion.Direccion;
+                    ssDireccionEntrega.Text = Direccion.Direccion;
+                }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
             }
         }
 
         private void ssDireccionFactura_Search(object sender, EventArgs e)
         {
-            FrmSelectedEntity FrmSeleccionarDireccion = new FrmSelectedEntity();
-            ItemSocioNegocioDireccion Direccion = (ItemSocioNegocioDireccion)FrmSeleccionarDireccion.GetSelectedEntity(typeof(ItemSocioNegocioDireccion), "Dirección", String.Format("IDSocioNegocio = '{0}' AND EsDireccionFacturacion = 1", SolicitudCotizacion.Cliente.ID));
-            if (Direccion != null)
+            try
             {
-                SolicitudCotizacion.DireccionFacturacion = Direccion.Direccion;
-                ssDireccionFactura.Text = Direccion.Direccion;
+                FrmSelectedEntity FrmSeleccionarDireccion = new FrmSelectedEntity();
+                ItemSocioNegocioDireccion Direccion = (ItemSocioNegocioDireccion)FrmSeleccionarDireccion.GetSelectedEntity(typeof(ItemSocioNegocioDireccion), "Dirección", String.Format("IDSocioNegocio = '{0}' AND EsDireccionFacturacion = 1", SolicitudCotizacion.Cliente.ID));
+                if (Direccion != null)
+                {
+                    SolicitudCotizacion.DireccionFacturacion = Direccion.Direccion;
+                    ssDireccionFactura.Text = Direccion.Direccion;
+                }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
             }
         }
 
         private void btnEliminarElemento_Click(object sender, EventArgs e)
         {
-            UltraTreeNode Node = utSolicitudCotizacion.ActiveNode;
-            if (Node != null)
+            try
             {
-                ItemSolicitudCotizacion = (ItemSolicitudCotizacion)Node.Tag;
+                if (ItemSolicitudCotizacion == null) { return; }
                 SolicitudCotizacion.Items.Remove(ItemSolicitudCotizacion);
                 Mostrar();
             }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
 
+        private void btnCopiarElemento_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion ItemCopia = ItemSolicitudCotizacion.Copiar();
+                SolicitudCotizacion.Items.Add(ItemCopia);
+                MostrarItems();
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void chkTieneMedidaAbierta_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.TieneMedidaAbierta = chkTieneMedidaAbierta.Checked;
+                MostrarItem(ItemSolicitudCotizacion);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void chkTieneMedidadCerrada_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.TieneMedidaCerrada = chkTieneMedidadCerrada.Checked;
+                MostrarItem(ItemSolicitudCotizacion);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void chkTieneTiraRetira_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.TieneTiraRetira = chkTieneTiraRetira.Checked;
+                MostrarItem(ItemSolicitudCotizacion);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void chkTieneGraficos_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.TieneGraficos = chkTieneGraficos.Checked;
+                MostrarItem(ItemSolicitudCotizacion);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void chkTieneMaterial_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.TieneMaterial = chkTieneMaterial.Checked;
+                MostrarItem(ItemSolicitudCotizacion);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void chkTieneMaquina_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.TieneMaquina = chkTieneMaquina.Checked;
+                MostrarItem(ItemSolicitudCotizacion);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void txtNombre_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.Nombre = txtNombre.Text;
+                utSolicitudCotizacion.ActiveNode.Text = txtNombre.Text;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
 
