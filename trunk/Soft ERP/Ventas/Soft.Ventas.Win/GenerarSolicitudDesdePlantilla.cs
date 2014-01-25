@@ -31,6 +31,8 @@ namespace Soft.Ventas.Win
                     ItemSolicitud.TieneMedidaCerrada = Item.TieneMedidaCerrada;
                     ItemSolicitud.TieneTiraRetira = Item.TieneTiraRetira;
                     ItemSolicitud.TieneGraficos = Item.TieneGraficos;
+                    ItemSolicitud.TieneMaquina = Item.TieneMaquina;
+                    ItemSolicitud.TieneMaterial = Item.TieneMaterial;
                     foreach (ItemPlantillaServicio ItemServicio in Item.Servicios)
                     {
                         ItemSolicitudCotizacionServicio ItemSolicitudSerivcio = ItemSolicitud.AddServicio();

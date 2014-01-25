@@ -21,16 +21,27 @@ namespace Soft.Ventas.Win
             Item=new ItemCotizacionServicio();
         }
 
-        public FrmCotizaciondeServicio(ItemCotizacionServicio m_Item)
+        //public FrmCotizaciondeServicio(ItemCotizacionServicio m_Item)
+        //{
+        //    InitializeComponent();
+        //    Item = m_Item;
+        //    Mostrar();
+        //}
+
+        public FrmCotizaciondeServicio(ItemCotizacionServicio m_Item, ItemCotizacion m_ItemElemento)
         {
             InitializeComponent();
+            ItemElemento = m_ItemElemento;
             Item = m_Item;
             Mostrar();
         }
 
 
+
         private Cotizacion cotizacion = null;
         private ItemCotizacionServicio Item = null;
+        private ItemCotizacion ItemElemento = null;
+
         private Boolean SWAcept = false;
         private ListaCostosMaquina lcm = null;
         private ListaPreciosExistencia lpe = null;
@@ -365,6 +376,18 @@ namespace Soft.Ventas.Win
             catch (Exception ex)
             {
                 Soft.Exceptions.SoftException.ShowException(ex);
+            }
+        }
+
+        private void btnObtenerCostoElemento_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txtCantidadAcabado.Value = (ItemElemento.CantidadElemento * ItemElemento.MedidaAbiertaAlto * ItemElemento.MedidaAbiertaLargo);
+            }
+            catch (Exception)
+            {
+                
             }
         }
 

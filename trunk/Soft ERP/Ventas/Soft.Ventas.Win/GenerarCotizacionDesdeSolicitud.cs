@@ -49,7 +49,8 @@ namespace Soft.Ventas.Win
                 {
                     ItemCotizacion ItemCotizacion = Cotizacion.AddItem();
                     ItemCotizacion.Nombre = Item.Nombre;
-                    ItemCotizacion.Cantidad = Item.Cantidad;
+                    ItemCotizacion.Cantidad = 1;
+                    ItemCotizacion.CantidadMaterial = Item.Cantidad;
                     ItemCotizacion.Maquina = Item.Maquina;
                     ItemCotizacion.TipoUnidad = Item.TipoUnidad;
                     ItemCotizacion.Material = Item.Material;
@@ -63,6 +64,8 @@ namespace Soft.Ventas.Win
                     ItemCotizacion.TieneMedidaCerrada = Item.TieneMedidaCerrada;
                     ItemCotizacion.TieneTiraRetira = Item.TieneTiraRetira;
                     ItemCotizacion.TieneGraficos = Item.TieneGraficos;
+                    ItemCotizacion.TieneMaquina = Item.TieneMaquina;
+                    ItemCotizacion.TieneMaterial = Item.TieneMaterial;
 
                     foreach (ItemSolicitudCotizacionServicio ItemServicio in Item.Servicios)
                     {
