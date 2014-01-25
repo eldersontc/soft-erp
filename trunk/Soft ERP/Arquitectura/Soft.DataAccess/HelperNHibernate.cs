@@ -159,5 +159,40 @@ namespace Soft.DataAccess
             return Guid.NewGuid().ToString().ToUpper();
         }
 
+        public Parent Copy(Parent Entity)
+        {
+            Parent Copy = null;
+            using (ISession Session = m_SessionFactory.OpenSession())
+            {
+                this.EvictProperties(Entity);
+                Session.Evict(Entity);
+                Entity.ID = HelperNHibernate.GenerateID();
+                Copy = (Parent)Session.Merge(Entity);
+            }
+            return Copy;
+        }
+
+        public void EvictProperties(Parent Entity)
+        {
+            using (ISession Session = m_SessionFactory.OpenSession())
+            {
+                Type EntityType = Entity.GetType();
+                PropertyInfo[] properties = EntityType.GetProperties();
+                foreach (PropertyInfo Property in properties)
+                {
+                    if (Property.PropertyType.Name.Equals("IList`1"))
+                    {
+                        IList List = (IList)Property.GetValue(Entity, null);
+                        foreach (Parent Item in List)
+                        {
+                            this.EvictProperties(Item);
+                            Session.Evict(Item);
+                            ((Parent)Item).ID = HelperNHibernate.GenerateID();
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }
