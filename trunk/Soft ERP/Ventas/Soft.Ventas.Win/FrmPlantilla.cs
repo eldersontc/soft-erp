@@ -88,6 +88,9 @@ namespace Soft.Ventas.Win
             chkTieneMedidaAbierta.Checked = Item.TieneMedidaAbierta;
             chkTieneMedidadCerrada.Checked = Item.TieneMedidaCerrada;
             chkTieneTiraRetira.Checked = Item.TieneTiraRetira;
+            chkTieneGraficos.Checked = Item.TieneGraficos;
+            chkTieneMaquina.Checked = Item.TieneMaquina;
+            chkTieneMaterial.Checked = Item.TieneMaterial;
             ssOperacion.Text = (Item.Operacion != null) ? Item.Operacion.Nombre : "";
             ssMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
             ssTipoUnidad.Text = (Item.TipoUnidad!= null) ? Item.TipoUnidad.Nombre : "";
@@ -283,23 +286,6 @@ namespace Soft.Ventas.Win
             ActualizandoIU = false;
         }
 
-        private void btnBorrarOperacion_Click(object sender, EventArgs e)
-        {
-            if (ItemPlantilla != null) { 
-                ItemPlantilla.Operacion = null;
-                ssOperacion.Text = null;
-            }
-        }
-
-        private void btnBorrarMaterial_Click(object sender, EventArgs e)
-        {
-            if (ItemPlantilla != null)
-            {
-                ItemPlantilla.Material = null;
-                ssMaterial.Text = null;
-            }
-        }
-
         private void chkTieneMedidaAbierta_CheckedChanged(object sender, EventArgs e)
         {
             if (ItemPlantilla != null)
@@ -329,6 +315,40 @@ namespace Soft.Ventas.Win
             if (ItemPlantilla != null)
             {
                 ItemPlantilla.TieneGraficos = chkTieneGraficos.Checked;
+            }
+        }
+
+        private void ssOperacion_Clear(object sender, EventArgs e)
+        {
+            if (ItemPlantilla != null)
+            {
+                ItemPlantilla.Operacion = null;
+                ssOperacion.Text = null;
+            }
+        }
+
+        private void ssMaterial_Clear(object sender, EventArgs e)
+        {
+            if (ItemPlantilla != null)
+            {
+                ItemPlantilla.Material = null;
+                ssMaterial.Text = null;
+            }
+        }
+
+        private void chkTieneMaterial_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ItemPlantilla != null)
+            {
+                ItemPlantilla.TieneMaterial = chkTieneMaterial.Checked;
+            }
+        }
+
+        private void chkTieneMaquina_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ItemPlantilla != null)
+            {
+                ItemPlantilla.TieneMaquina = chkTieneMaquina.Checked;
             }
         }
 
