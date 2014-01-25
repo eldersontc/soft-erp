@@ -159,12 +159,12 @@ namespace Soft.DataAccess
             return Guid.NewGuid().ToString().ToUpper();
         }
 
-        public Parent Copy(Parent Entity)
+        public static Parent Copy(Parent Entity)
         {
             Parent Copy = null;
             using (ISession Session = m_SessionFactory.OpenSession())
             {
-                this.EvictProperties(Entity);
+                EvictProperties(Entity);
                 Session.Evict(Entity);
                 Entity.ID = HelperNHibernate.GenerateID();
                 Copy = (Parent)Session.Merge(Entity);
@@ -172,7 +172,7 @@ namespace Soft.DataAccess
             return Copy;
         }
 
-        public void EvictProperties(Parent Entity)
+        public static void EvictProperties(Parent Entity)
         {
             using (ISession Session = m_SessionFactory.OpenSession())
             {
@@ -185,7 +185,7 @@ namespace Soft.DataAccess
                         IList List = (IList)Property.GetValue(Entity, null);
                         foreach (Parent Item in List)
                         {
-                            this.EvictProperties(Item);
+                            EvictProperties(Item);
                             Session.Evict(Item);
                             ((Parent)Item).ID = HelperNHibernate.GenerateID();
                         }
