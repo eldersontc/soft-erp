@@ -32,6 +32,8 @@ namespace Soft.Ventas.Entidades
         public virtual Boolean TieneMedidaCerrada { get; set; }
         public virtual Boolean TieneTiraRetira { get; set; }
         public virtual Boolean TieneGraficos { get; set; }
+        public virtual Boolean TieneMaterial { get; set; }
+        public virtual Boolean TieneMaquina { get; set; }
 
         public virtual ItemSolicitudCotizacionServicio AddServicio()
         {
