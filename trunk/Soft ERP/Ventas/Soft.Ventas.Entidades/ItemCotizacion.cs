@@ -86,6 +86,15 @@ namespace Soft.Ventas.Entidades
         public virtual Boolean TieneMaterial { get; set; }
         public virtual Boolean TieneMaquina { get; set; }
 
+        public virtual Int32 NumerodePases { get; set; }
+        public virtual Decimal CantidadMaterial { get; set; }
+        public virtual Decimal CantidadProduccion { get; set; }
+        public virtual Decimal CantidadDemasia { get; set; }
+
+        public virtual Decimal CantidadElemento { get; set; }
+
+        public virtual Decimal CostoServicio { get; set; }
+
         public virtual ItemCotizacionServicio AddServicio()
         {
             ItemCotizacionServicio Item = new ItemCotizacionServicio();

@@ -34,7 +34,20 @@ namespace Soft.Ventas.Entidades
         public virtual ListaPreciosExistencia ListaPreciosExistencia { get; set; }
         public virtual ListaPreciosTransporte ListaPreciosTransporte { get; set; }
 
-
+        private Decimal mTotal;
+        public override Decimal Total
+        {
+            get
+            {
+                Decimal PorcentajeUtilidad = base.Total * (this.PorcentajeUtilidad / 100);
+                mTotal = base.Total + PorcentajeUtilidad;
+                return mTotal;
+            }
+            set
+            {
+                mTotal = value;
+            }
+        }
 
 
         public virtual void AsignarListadeCostosDesdeTipoDocumento()
