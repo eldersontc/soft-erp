@@ -33,6 +33,8 @@
     <property name="NroPiezasImpresion" type="int"/>
     <property name="MetodoImpresion" type="string"/>
     <property name="TieneGraficos" type="boolean"/>
+    <property name="TieneMaterial" type="boolean"/>
+    <property name="TieneMaquina" type="boolean"/>
     
     <many-to-one name="Maquina" class="Soft.Ventas.Entidades.Maquina" column="IDMaquina" insert="true" update="true" lazy="false"/>
     <many-to-one name="Material" class="Soft.Inventario.Entidades.Existencia" column="IDMaterial" insert="true" update="true" lazy="false"/>
