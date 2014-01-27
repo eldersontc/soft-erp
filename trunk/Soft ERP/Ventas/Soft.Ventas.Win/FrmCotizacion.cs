@@ -731,9 +731,9 @@ namespace Soft.Ventas.Win
                 {
                     g.DrawRectangle(MyPen, new Rectangle(x - LargoPieza, y - AltoPieza, LargoPieza, AltoPieza));
                     CantidadPiezas += 1;
-                    y += ItemCotizacion.SeparacionY;
+                    y += ItemCotizacion.SeparacionY / 10;
                 }
-                x += ItemCotizacion.SeparacionX;
+                x += ItemCotizacion.SeparacionX / 10;
             }
             ItemCotizacion.NroPiezasImpresion = CantidadPiezas;
             txtNroPiezasImpresion.Value = CantidadPiezas;
@@ -768,9 +768,9 @@ namespace Soft.Ventas.Win
                 {
                     g.DrawRectangle(MyPen, new Rectangle(x - AltoPieza, y - LargoPieza, AltoPieza, LargoPieza));
                     CantidadPiezas += 1;
-                    y += ItemCotizacion.SeparacionY;
+                    y += ItemCotizacion.SeparacionY / 10;
                 }
-                x += ItemCotizacion.SeparacionX;
+                x += ItemCotizacion.SeparacionX / 10;
             }
             ItemCotizacion.NroPiezasImpresion = CantidadPiezas;
             txtNroPiezasImpresion.Value = CantidadPiezas;
@@ -976,40 +976,40 @@ namespace Soft.Ventas.Win
 
         private void ubImprimirGraficoPrecorte_Click(object sender, EventArgs e)
         {
-            try
-            {
-            //Bitmap b = new Bitmap((Image)upbPrecorte.Image);
-            Bitmap b = new Bitmap((Image)upbImpresion.Image);
-            String PathImagenCorte = String.Format("{0}Grafico-{1}.png", FrmMain.CarpetaImagenes, ItemCotizacion.ID);
-            b.Save(PathImagenCorte);
-            Soft.Reporte.Entidades.Reporte Reporte = (Soft.Reporte.Entidades.Reporte)HelperNHibernate.GetEntityByID("Reporte", "01F1035F-77F6-4188-B75F-7B9436FAB7DD");
-            foreach (ParametroReporte Parametro in Reporte.ParametrosCrystal)
-            {
-                if (Parametro.Nombre.Equals("PathImagenPrecorte"))
-                {
-                    Parametro.Valor = PathImagenCorte;
-                }
-                else if (Parametro.Nombre.Equals("PathImagenImpresion"))
-                {
-                    Parametro.Valor = PathImagenCorte;
-                }
-                else if (Parametro.Nombre.Equals("DimensionesPapelPrecorte"))
-                {
-                    Parametro.Valor = String.Format("{0} x {1} cm", ItemCotizacion.Material.Largo, ItemCotizacion.Material.Alto);
-                }
-                else if (Parametro.Nombre.Equals("DimensionesImpresoraPrecorte"))
-                {
-                    Parametro.Valor = String.Format("{0} x {1} cm", ItemCotizacion.Maquina.PliegoAnchoMaximo, ItemCotizacion.Maquina.PliegoAltoMaximo);
-                }
-            }
-            PrintReport ControladorImpresion = new PrintReport();
-            ControladorImpresion.m_ObjectFlow = Reporte;
-            ControladorImpresion.Start();
-            }
-            catch (Exception ex)
-            {
-                SoftException.Control(ex);
-            }
+            //try
+            //{
+            ////Bitmap b = new Bitmap((Image)upbPrecorte.Image);
+            //Bitmap b = new Bitmap((Image)upbImpresion.Image);
+            //String PathImagenCorte = String.Format("{0}Grafico-{1}.png", FrmMain.CarpetaImagenes, ItemCotizacion.ID);
+            //b.Save(PathImagenCorte);
+            //Soft.Reporte.Entidades.Reporte Reporte = (Soft.Reporte.Entidades.Reporte)HelperNHibernate.GetEntityByID("Reporte", "01F1035F-77F6-4188-B75F-7B9436FAB7DD");
+            //foreach (ParametroReporte Parametro in Reporte.ParametrosCrystal)
+            //{
+            //    if (Parametro.Nombre.Equals("PathImagenPrecorte"))
+            //    {
+            //        Parametro.Valor = PathImagenCorte;
+            //    }
+            //    else if (Parametro.Nombre.Equals("PathImagenImpresion"))
+            //    {
+            //        Parametro.Valor = PathImagenCorte;
+            //    }
+            //    else if (Parametro.Nombre.Equals("DimensionesPapelPrecorte"))
+            //    {
+            //        Parametro.Valor = String.Format("{0} x {1} cm", ItemCotizacion.Material.Largo, ItemCotizacion.Material.Alto);
+            //    }
+            //    else if (Parametro.Nombre.Equals("DimensionesImpresoraPrecorte"))
+            //    {
+            //        Parametro.Valor = String.Format("{0} x {1} cm", ItemCotizacion.Maquina.PliegoAnchoMaximo, ItemCotizacion.Maquina.PliegoAltoMaximo);
+            //    }
+            //}
+            //PrintReport ControladorImpresion = new PrintReport();
+            //ControladorImpresion.m_ObjectFlow = Reporte;
+            //ControladorImpresion.Start();
+            //}
+            //catch (Exception ex)
+            //{
+            //    SoftException.Control(ex);
+            //}
         }
 
         private void uneSeparacionX_ValueChanged(object sender, EventArgs e)
