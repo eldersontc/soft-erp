@@ -19,5 +19,6 @@ namespace Soft.Ventas.Entidades
         public virtual Int32 CodigoGrupo { get; set; }
         public virtual ModalidadCredito ModalidadCredito { get; set; }
         public virtual ItemSocioNegocioContacto Contacto { get; set; }
+        public virtual SocioNegocio Responsable { get; set; }
     }
 }
