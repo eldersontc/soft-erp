@@ -16,6 +16,7 @@ using Soft.Inventario.Entidades;
 using Infragistics.Win.UltraWinTree;
 using Soft.Seguridad.Entidades;
 using Soft.Exceptions;
+using System.Xml;
 
 namespace Soft.Ventas.Win
 {
@@ -145,6 +146,20 @@ namespace Soft.Ventas.Win
             }
         }
 
+        public SocioNegocio ObtenerResponsable()
+        {
+            XmlDocument XML = HelperNHibernate.ExecuteSQL("SELECT TOP (1) IDSocioNegocio FROM SocioNegocioEmpleado ", String.Format(" IDUsuario = '{0}'", FrmMain.Usuario.ID));
+            SocioNegocio Responsable = null;
+            if (XML.HasChildNodes)
+            {
+                foreach (XmlNode NodoItem in XML.DocumentElement.ChildNodes)
+                {
+                    Responsable = (SocioNegocio)HelperNHibernate.GetEntityByID("SocioNegocio", NodoItem.SelectSingleNode("@IDSocioNegocio").Value);
+                }
+            }
+            return Responsable;
+        }
+
         private void ssTipoDocumento_Search(object sender, EventArgs e)
         {
             try
@@ -155,22 +170,10 @@ namespace Soft.Ventas.Win
                 {
                     SolicitudCotizacion.TipoDocumento = (TipoSolicitudCotizacion)HelperNHibernate.GetEntityByID("TipoSolicitudCotizacion", TipoDocumento.ID);
                     SolicitudCotizacion.GenerarNumCp();
-                    try
-                    {
-                        FrmSelectedEntity FrmSeleccionarEmpleado = new FrmSelectedEntity();
-                        String filtro = "IDUsuario='" + FrmMain.Usuario.ID + "'";
-                        SocioNegocio sn = (SocioNegocio)FrmSeleccionarEmpleado.GetSelectedEntity(typeof(SocioNegocio), "Empleado", filtro);
-
-                        SolicitudCotizacion.Responsable = (SocioNegocio)HelperNHibernate.GetEntityByID("SocioNegocio", sn.ID);
-                    }
-                    catch (Exception)
-                    {
-                    }
+                    SolicitudCotizacion.Responsable = ObtenerResponsable();
+                    ssResponsable.Text = (SolicitudCotizacion.Responsable != null) ? SolicitudCotizacion.Responsable.Nombre : "";
+                    ssTipoDocumento.Text = (SolicitudCotizacion.TipoDocumento != null) ? SolicitudCotizacion.TipoDocumento.Nombre : "";
                 }
-                //Mostrar();
-                ssTipoDocumento.Text = (SolicitudCotizacion.TipoDocumento != null) ? SolicitudCotizacion.TipoDocumento.Nombre : "";
-                ssResponsable.Text = (SolicitudCotizacion.Responsable != null) ? SolicitudCotizacion.Responsable.Nombre : "";
-
             }
             catch (Exception ex)
             {
