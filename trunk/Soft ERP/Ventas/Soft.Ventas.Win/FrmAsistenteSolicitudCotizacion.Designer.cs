@@ -29,16 +29,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAsistenteSolicitudCotizacion));
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             this.ugbGeneral = new Infragistics.Win.Misc.UltraGroupBox();
+            this.ssFormaPago = new Soft.Controls.SoftSearch();
+            this.ssContacto = new Soft.Controls.SoftSearch();
+            this.lblFormaPago = new Infragistics.Win.Misc.UltraLabel();
+            this.lblContacto = new Infragistics.Win.Misc.UltraLabel();
             this.txtCodigoGrupo = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.lblCodigoGrupo = new Infragistics.Win.Misc.UltraLabel();
             this.ssPlantilla = new Soft.Controls.SoftSearch();
@@ -52,10 +57,8 @@
             this.lblCliente = new Infragistics.Win.Misc.UltraLabel();
             this.lblTipoDocumento = new Infragistics.Win.Misc.UltraLabel();
             this.ubGenerarSolicitudCotizacion = new Infragistics.Win.Misc.UltraButton();
-            this.lblContacto = new Infragistics.Win.Misc.UltraLabel();
-            this.lblFormaPago = new Infragistics.Win.Misc.UltraLabel();
-            this.ssContacto = new Soft.Controls.SoftSearch();
-            this.ssFormaPago = new Soft.Controls.SoftSearch();
+            this.lblReponsable = new Infragistics.Win.Misc.UltraLabel();
+            this.ssReponsable = new Soft.Controls.SoftSearch();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ugbGeneral)).BeginInit();
@@ -68,7 +71,7 @@
             // 
             this.ugbParent.Controls.Add(this.ubGenerarSolicitudCotizacion);
             this.ugbParent.Controls.Add(this.ugbGeneral);
-            this.ugbParent.Size = new System.Drawing.Size(612, 207);
+            this.ugbParent.Size = new System.Drawing.Size(612, 233);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ugbGeneral, 0);
@@ -76,12 +79,12 @@
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(523, 213);
+            this.ubCancelar.Location = new System.Drawing.Point(523, 245);
             this.ubCancelar.Visible = false;
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(442, 213);
+            this.ubAceptar.Location = new System.Drawing.Point(442, 245);
             this.ubAceptar.Visible = false;
             // 
             // ilMain
@@ -337,8 +340,10 @@
             // 
             // ugbGeneral
             // 
-            appearance1.BackColor = System.Drawing.Color.Transparent;
-            this.ugbGeneral.Appearance = appearance1;
+            appearance11.BackColor = System.Drawing.Color.Transparent;
+            this.ugbGeneral.Appearance = appearance11;
+            this.ugbGeneral.Controls.Add(this.ssReponsable);
+            this.ugbGeneral.Controls.Add(this.lblReponsable);
             this.ugbGeneral.Controls.Add(this.ssFormaPago);
             this.ugbGeneral.Controls.Add(this.ssContacto);
             this.ugbGeneral.Controls.Add(this.lblFormaPago);
@@ -359,9 +364,49 @@
             this.ugbGeneral.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
             this.ugbGeneral.Location = new System.Drawing.Point(18, 17);
             this.ugbGeneral.Name = "ugbGeneral";
-            this.ugbGeneral.Size = new System.Drawing.Size(580, 149);
+            this.ugbGeneral.Size = new System.Drawing.Size(580, 175);
             this.ugbGeneral.TabIndex = 82;
             this.ugbGeneral.Text = "General";
+            // 
+            // ssFormaPago
+            // 
+            this.ssFormaPago.BackColor = System.Drawing.Color.Transparent;
+            this.ssFormaPago.Location = new System.Drawing.Point(447, 115);
+            this.ssFormaPago.Name = "ssFormaPago";
+            this.ssFormaPago.Size = new System.Drawing.Size(119, 28);
+            this.ssFormaPago.TabIndex = 92;
+            this.ssFormaPago.Search += new System.EventHandler(this.ssFormaPago_Search);
+            // 
+            // ssContacto
+            // 
+            this.ssContacto.BackColor = System.Drawing.Color.Transparent;
+            this.ssContacto.Location = new System.Drawing.Point(117, 115);
+            this.ssContacto.Name = "ssContacto";
+            this.ssContacto.Size = new System.Drawing.Size(192, 28);
+            this.ssContacto.TabIndex = 91;
+            this.ssContacto.Search += new System.EventHandler(this.ssContacto_Search);
+            // 
+            // lblFormaPago
+            // 
+            appearance13.BackColor = System.Drawing.Color.Transparent;
+            this.lblFormaPago.Appearance = appearance13;
+            this.lblFormaPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblFormaPago.Location = new System.Drawing.Point(324, 118);
+            this.lblFormaPago.Name = "lblFormaPago";
+            this.lblFormaPago.Size = new System.Drawing.Size(130, 23);
+            this.lblFormaPago.TabIndex = 90;
+            this.lblFormaPago.Text = "Forma de Pago";
+            // 
+            // lblContacto
+            // 
+            appearance14.BackColor = System.Drawing.Color.Transparent;
+            this.lblContacto.Appearance = appearance14;
+            this.lblContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblContacto.Location = new System.Drawing.Point(10, 118);
+            this.lblContacto.Name = "lblContacto";
+            this.lblContacto.Size = new System.Drawing.Size(130, 23);
+            this.lblContacto.TabIndex = 89;
+            this.lblContacto.Text = "Contacto";
             // 
             // txtCodigoGrupo
             // 
@@ -373,8 +418,8 @@
             // 
             // lblCodigoGrupo
             // 
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            this.lblCodigoGrupo.Appearance = appearance4;
+            appearance15.BackColor = System.Drawing.Color.Transparent;
+            this.lblCodigoGrupo.Appearance = appearance15;
             this.lblCodigoGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblCodigoGrupo.Location = new System.Drawing.Point(324, 91);
             this.lblCodigoGrupo.Name = "lblCodigoGrupo";
@@ -403,8 +448,8 @@
             // 
             // lblPlantilla
             // 
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            this.lblPlantilla.Appearance = appearance5;
+            appearance16.BackColor = System.Drawing.Color.Transparent;
+            this.lblPlantilla.Appearance = appearance16;
             this.lblPlantilla.Location = new System.Drawing.Point(10, 91);
             this.lblPlantilla.Name = "lblPlantilla";
             this.lblPlantilla.Size = new System.Drawing.Size(130, 23);
@@ -413,8 +458,8 @@
             // 
             // lblFechaCreacion
             // 
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            this.lblFechaCreacion.Appearance = appearance6;
+            appearance17.BackColor = System.Drawing.Color.Transparent;
+            this.lblFechaCreacion.Appearance = appearance17;
             this.lblFechaCreacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblFechaCreacion.Location = new System.Drawing.Point(324, 33);
             this.lblFechaCreacion.Name = "lblFechaCreacion";
@@ -442,8 +487,8 @@
             // 
             // lblMoneda
             // 
-            appearance7.BackColor = System.Drawing.Color.Transparent;
-            this.lblMoneda.Appearance = appearance7;
+            appearance18.BackColor = System.Drawing.Color.Transparent;
+            this.lblMoneda.Appearance = appearance18;
             this.lblMoneda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblMoneda.Location = new System.Drawing.Point(324, 62);
             this.lblMoneda.Name = "lblMoneda";
@@ -462,8 +507,8 @@
             // 
             // lblCliente
             // 
-            appearance8.BackColor = System.Drawing.Color.Transparent;
-            this.lblCliente.Appearance = appearance8;
+            appearance19.BackColor = System.Drawing.Color.Transparent;
+            this.lblCliente.Appearance = appearance19;
             this.lblCliente.Location = new System.Drawing.Point(10, 62);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(130, 23);
@@ -472,8 +517,8 @@
             // 
             // lblTipoDocumento
             // 
-            appearance9.BackColor = System.Drawing.Color.Transparent;
-            this.lblTipoDocumento.Appearance = appearance9;
+            appearance20.BackColor = System.Drawing.Color.Transparent;
+            this.lblTipoDocumento.Appearance = appearance20;
             this.lblTipoDocumento.Location = new System.Drawing.Point(10, 35);
             this.lblTipoDocumento.Name = "lblTipoDocumento";
             this.lblTipoDocumento.Size = new System.Drawing.Size(130, 23);
@@ -482,58 +527,38 @@
             // 
             // ubGenerarSolicitudCotizacion
             // 
-            this.ubGenerarSolicitudCotizacion.Location = new System.Drawing.Point(18, 172);
+            this.ubGenerarSolicitudCotizacion.Location = new System.Drawing.Point(18, 198);
             this.ubGenerarSolicitudCotizacion.Name = "ubGenerarSolicitudCotizacion";
             this.ubGenerarSolicitudCotizacion.Size = new System.Drawing.Size(580, 23);
             this.ubGenerarSolicitudCotizacion.TabIndex = 83;
             this.ubGenerarSolicitudCotizacion.Text = "Generar Solicitud Cotización";
             this.ubGenerarSolicitudCotizacion.Click += new System.EventHandler(this.ubGenerarSolicitudCotizacion_Click);
             // 
-            // lblContacto
+            // lblReponsable
             // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.lblContacto.Appearance = appearance3;
-            this.lblContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblContacto.Location = new System.Drawing.Point(10, 118);
-            this.lblContacto.Name = "lblContacto";
-            this.lblContacto.Size = new System.Drawing.Size(130, 23);
-            this.lblContacto.TabIndex = 89;
-            this.lblContacto.Text = "Contacto";
+            appearance12.BackColor = System.Drawing.Color.Transparent;
+            this.lblReponsable.Appearance = appearance12;
+            this.lblReponsable.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblReponsable.Location = new System.Drawing.Point(10, 146);
+            this.lblReponsable.Name = "lblReponsable";
+            this.lblReponsable.Size = new System.Drawing.Size(130, 23);
+            this.lblReponsable.TabIndex = 93;
+            this.lblReponsable.Text = "Reponsable";
             // 
-            // lblFormaPago
+            // ssReponsable
             // 
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.lblFormaPago.Appearance = appearance2;
-            this.lblFormaPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblFormaPago.Location = new System.Drawing.Point(324, 118);
-            this.lblFormaPago.Name = "lblFormaPago";
-            this.lblFormaPago.Size = new System.Drawing.Size(130, 23);
-            this.lblFormaPago.TabIndex = 90;
-            this.lblFormaPago.Text = "Forma de Pago";
-            // 
-            // ssContacto
-            // 
-            this.ssContacto.BackColor = System.Drawing.Color.Transparent;
-            this.ssContacto.Location = new System.Drawing.Point(117, 115);
-            this.ssContacto.Name = "ssContacto";
-            this.ssContacto.Size = new System.Drawing.Size(192, 28);
-            this.ssContacto.TabIndex = 91;
-            this.ssContacto.Search += new System.EventHandler(this.ssContacto_Search);
-            // 
-            // ssFormaPago
-            // 
-            this.ssFormaPago.BackColor = System.Drawing.Color.Transparent;
-            this.ssFormaPago.Location = new System.Drawing.Point(447, 115);
-            this.ssFormaPago.Name = "ssFormaPago";
-            this.ssFormaPago.Size = new System.Drawing.Size(119, 28);
-            this.ssFormaPago.TabIndex = 92;
-            this.ssFormaPago.Search += new System.EventHandler(this.ssFormaPago_Search);
+            this.ssReponsable.BackColor = System.Drawing.Color.Transparent;
+            this.ssReponsable.Location = new System.Drawing.Point(117, 141);
+            this.ssReponsable.Name = "ssReponsable";
+            this.ssReponsable.Size = new System.Drawing.Size(192, 28);
+            this.ssReponsable.TabIndex = 94;
+            this.ssReponsable.Search += new System.EventHandler(this.ssReponsable_Search);
             // 
             // FrmAsistenteSolicitudCotizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 245);
+            this.ClientSize = new System.Drawing.Size(628, 271);
             this.Name = "FrmAsistenteSolicitudCotizacion";
             this.Text = "Asistente para la  Creación de Solicitudes de Cotización";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
@@ -567,5 +592,7 @@
         private Controls.SoftSearch ssContacto;
         private Infragistics.Win.Misc.UltraLabel lblFormaPago;
         private Infragistics.Win.Misc.UltraLabel lblContacto;
+        private Infragistics.Win.Misc.UltraLabel lblReponsable;
+        private Controls.SoftSearch ssReponsable;
     }
 }
