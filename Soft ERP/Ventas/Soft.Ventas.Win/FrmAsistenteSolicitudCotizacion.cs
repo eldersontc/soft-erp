@@ -13,6 +13,7 @@ using Soft.Entities;
 using Soft.DataAccess;
 using NHibernate;
 using System.Data.SqlClient;
+using System.Xml;
 
 namespace Soft.Ventas.Win
 {
@@ -73,6 +74,7 @@ namespace Soft.Ventas.Win
                 Solicitud.CodigoGrupo = InfoAsistente.CodigoGrupo;
                 Solicitud.Contacto = InfoAsistente.Contacto;
                 Solicitud.ModalidadCredito = InfoAsistente.ModalidadCredito;
+                Solicitud.Responsable = InfoAsistente.Responsable;
                 Solicitud.GenerarNumCp();
                 IniciarSolicitud(Solicitud);
             }
@@ -100,6 +102,20 @@ namespace Soft.Ventas.Win
             return;
         }
 
+        public SocioNegocio ObtenerResponsable()
+        {
+            XmlDocument XML = HelperNHibernate.ExecuteSQL("SELECT TOP (1) IDSocioNegocio FROM SocioNegocioEmpleado ", String.Format(" IDUsuario = '{0}'", FrmMain.Usuario.ID));
+            SocioNegocio Responsable = null;
+            if (XML.HasChildNodes)
+            {
+                foreach (XmlNode NodoItem in XML.DocumentElement.ChildNodes)
+                {
+                    Responsable = (SocioNegocio)HelperNHibernate.GetEntityByID("SocioNegocio", NodoItem.SelectSingleNode("@IDSocioNegocio").Value);
+                }
+            }
+            return Responsable;
+        }
+
         private void ssTipoDocumento_Search(object sender, EventArgs e)
         {
             try
@@ -109,6 +125,8 @@ namespace Soft.Ventas.Win
                 if (TipoDocumento != null) {
                     InfoAsistente.TipoDocumento = TipoDocumento;
                     ssTipoDocumento.Text = InfoAsistente.TipoDocumento.Nombre;
+                    InfoAsistente.Responsable = ObtenerResponsable();
+                    ssReponsable.Text = (InfoAsistente.Responsable != null) ? InfoAsistente.Responsable.Nombre : "";
                 }
             }
             catch (Exception ex)
@@ -205,6 +223,20 @@ namespace Soft.Ventas.Win
                 FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
                 InfoAsistente.ModalidadCredito = (ModalidadCredito)FrmSeleccionar.GetSelectedEntity(typeof(ModalidadCredito), "Modalidad de Crédito");
                 ssFormaPago.Text = (InfoAsistente.ModalidadCredito != null) ? InfoAsistente.ModalidadCredito.Descripcion : "";
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ssReponsable_Search(object sender, EventArgs e)
+        {
+            try
+            {
+                FrmSelectedEntity FrmSeleccionarResponsable = new FrmSelectedEntity();
+                InfoAsistente.Responsable = (SocioNegocio)FrmSeleccionarResponsable.GetSelectedEntity(typeof(SocioNegocio), "Socio de Negocio", " Empleado = 1");
+                ssReponsable.Text = (InfoAsistente.Responsable != null) ? InfoAsistente.Responsable.Nombre : "";
             }
             catch (Exception ex)
             {
