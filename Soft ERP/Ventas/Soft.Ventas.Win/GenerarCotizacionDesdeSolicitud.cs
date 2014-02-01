@@ -50,7 +50,7 @@ namespace Soft.Ventas.Win
                     ItemCotizacion ItemCotizacion = Cotizacion.AddItem();
                     ItemCotizacion.Nombre = Item.Nombre;
                     ItemCotizacion.Cantidad = 1;
-                    ItemCotizacion.CantidadMaterial = Item.Cantidad;
+                    ItemCotizacion.CantidadElemento = Item.Cantidad;
                     ItemCotizacion.Maquina = Item.Maquina;
                     ItemCotizacion.TipoUnidad = Item.TipoUnidad;
                     ItemCotizacion.Material = Item.Material;
