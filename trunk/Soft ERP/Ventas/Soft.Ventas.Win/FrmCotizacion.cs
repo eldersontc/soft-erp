@@ -456,23 +456,38 @@ namespace Soft.Ventas.Win
         private void ubNuevoServicio_Click(object sender, EventArgs e)
         {
             FrmCotizaciondeServicio AgregarServicio = new FrmCotizaciondeServicio();
-            ItemCotizacionServicio item = AgregarServicio.ObtenerServicio(Cotizacion);
+            ItemCotizacionServicio item = AgregarServicio.ObtenerServicio(Cotizacion, ItemCotizacion);
             if (item != null) { 
                 UltraGridRow Row = ugServicios.DisplayLayout.Bands[0].AddNew();
                 Row.Tag = item;
                 Row.Cells[colServicio].Activate();
                 ugServicios.PerformAction(Infragistics.Win.UltraWinGrid.UltraGridAction.EnterEditMode);
                 ItemCotizacion.Servicios.Add(item);
+                MostrarTotalServicio(ItemCotizacion);
                 MostrarServicio(Row);
             }
 
         }
+
+
+        private void MostrarTotalServicio(ItemCotizacion item){
+            Decimal total = 0; 
+            foreach (ItemCotizacionServicio itemServicio in item.Servicios)
+            {
+                total += itemServicio.CostoTotalServicio;
+            }
+            item.CostoServicio=total;
+            txtCostoServicio.Value = item.CostoServicio;
+        }
+
 
         private void ubEliminarServicio_Click(object sender, EventArgs e)
         {
             if (ugServicios.ActiveRow == null) { return; }
             ItemCotizacion.Servicios.Remove((ItemCotizacionServicio)ugServicios.ActiveRow.Tag);
             ugServicios.ActiveRow.Delete(false);
+            MostrarTotalServicio(ItemCotizacion);
+
         }
 
         public void ugServicios_CellKeyEnter(UltraGridCell Cell)
@@ -515,10 +530,8 @@ namespace Soft.Ventas.Win
             lcm = (ListaCostosMaquina)HelperNHibernate.GetEntityByID("ListaCostosMaquina", Cotizacion.ListaCostosMaquina.ID);
             lpe = (ListaPreciosExistencia)HelperNHibernate.GetEntityByID("ListaPreciosExistencia", Cotizacion.ListaPreciosExistencia.ID);
             lpt = (ListaPreciosTransporte)HelperNHibernate.GetEntityByID("ListaPreciosTransporte", Cotizacion.ListaPreciosTransporte.ID);
-
             foreach (ItemCotizacion itemcotizacion2 in Cotizacion.Items) {
                 CosteoElemento(itemcotizacion2);
-                
             }
             //Cotizacion.SubTotal = Cotizacion.SubTotal;
         }
@@ -597,8 +610,6 @@ namespace Soft.Ventas.Win
                 }
             }
 
-
-
             else 
             {
                 multiplicador = 1;
@@ -663,14 +674,12 @@ namespace Soft.Ventas.Win
                 return eUilcm;
             }
 
+            CalcularProduccionItem(itemcotizacion);
+
           
             foreach (EscalaListaCostosMaquina escala in Uilcm.Escalas)
             {
 
-                if (itemcotizacion.CantidadProduccion==0) {
-                    itemcotizacion.CantidadProduccion = (itemcotizacion.CantidadElemento + itemcotizacion.CantidadDemasia) * itemcotizacion.MedidaAbiertaAlto * itemcotizacion.MedidaAbiertaLargo;
-                }
-                
 
                 if ((escala.Desde == 0) && (escala.Hasta == 0))
                 {
@@ -682,18 +691,34 @@ namespace Soft.Ventas.Win
                     eUilcm = escala;
                     break;
                 }
-
                 else if ((escala.Hasta == 0))
                 {
                     eUilcm = escala;
                     break;
                 }
-
             }
             return eUilcm;
         
         }
-        
+
+
+
+        private void CalcularProduccionItem(ItemCotizacion itemcosteado)
+        {
+            try
+            {
+                if (itemcosteado == null) { return; }
+                itemcosteado.CantidadMaterial = Math.Round( (itemcosteado.CantidadElemento / (itemcosteado.NroPiezasPrecorte * itemcosteado.NroPiezasImpresion)),0);
+                itemcosteado.CantidadProduccion = itemcosteado.CantidadMaterial * itemcosteado.NumerodePases;
+                itemcosteado.CantidadMaterial += itemcosteado.CantidadDemasia;
+            }
+            catch (Exception ex)
+            {
+                //SoftException.ShowException(ex);
+            }
+
+        }
+
 
         private void ubRecalcular_Click(object sender, EventArgs e)
         {
@@ -1074,13 +1099,14 @@ namespace Soft.Ventas.Win
         private void btnModificar_Click(object sender, EventArgs e)
         {
             ModificarServicio();
+            MostrarTotalServicio(ItemCotizacion);
         }
 
         private void ModificarServicio() {
             if (ugServicios.ActiveRow != null) {
                 ItemCotizacionServicio itemCotizacionServicio = (ItemCotizacionServicio)ugServicios.ActiveRow.Tag;
-                FrmCotizaciondeServicio AgregarServicio = new FrmCotizaciondeServicio(itemCotizacionServicio, ItemCotizacion);
-                ItemCotizacionServicio item = AgregarServicio.ObtenerServicio(Cotizacion);
+                FrmCotizaciondeServicio AgregarServicio = new FrmCotizaciondeServicio(Cotizacion,itemCotizacionServicio, ItemCotizacion);
+                ItemCotizacionServicio item = AgregarServicio.ObtenerServicio(Cotizacion, ItemCotizacion);
                 if (item != null) {
                     ugServicios.ActiveRow.Tag = item;
                     ugServicios.ActiveRow.Cells[colServicio].Activate();
@@ -1168,6 +1194,8 @@ namespace Soft.Ventas.Win
 
 
          }
+
+   
 
      
 
