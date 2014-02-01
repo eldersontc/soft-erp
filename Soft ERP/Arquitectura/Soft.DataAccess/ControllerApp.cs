@@ -39,7 +39,7 @@ namespace Soft.DataAccess
         {
             try
             {
-                m_Configuration.Configure("hibernate.cfg.xml");
+                m_Configuration.Configure("Soft.Win.exe.config");
                 m_SessionFactory = m_Configuration.BuildSessionFactory();
             }
             catch (Exception ex)
