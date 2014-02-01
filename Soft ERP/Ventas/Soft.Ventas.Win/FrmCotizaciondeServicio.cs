@@ -28,9 +28,13 @@ namespace Soft.Ventas.Win
         //    Mostrar();
         //}
 
-        public FrmCotizaciondeServicio(ItemCotizacionServicio m_Item, ItemCotizacion m_ItemElemento)
+        public FrmCotizaciondeServicio(Cotizacion m_Cotizacion,ItemCotizacionServicio m_Item, ItemCotizacion m_ItemElemento)
         {
             InitializeComponent();
+            cotizacion = m_Cotizacion;
+            lcm = cotizacion.ListaCostosMaquina;
+            lpe = cotizacion.ListaPreciosExistencia;
+            lpt = cotizacion.ListaPreciosTransporte;
             ItemElemento = m_ItemElemento;
             Item = m_Item;
             Mostrar();
@@ -48,13 +52,13 @@ namespace Soft.Ventas.Win
         private ListaPreciosTransporte lpt = null;
 
 
-        public ItemCotizacionServicio ObtenerServicio(Cotizacion m_Cotizacion)
+        public ItemCotizacionServicio ObtenerServicio(Cotizacion m_Cotizacion, ItemCotizacion m_ItemElemento)
         {
             cotizacion = m_Cotizacion;
             lcm = cotizacion.ListaCostosMaquina;
             lpe = cotizacion.ListaPreciosExistencia;
             lpt = cotizacion.ListaPreciosTransporte;
-
+            ItemElemento = m_ItemElemento;
             ShowDialog();
             if (SWAcept) { return Item; }
             return null;
@@ -267,6 +271,8 @@ namespace Soft.Ventas.Win
                         {
                             if (unidadLPE.Unidad.Nombre.Equals(Item.UnidadServicio.Nombre))
                             {
+
+                                
                                 foreach (EscalaListaPreciosExistencia escala in unidadLPE.Escalas)
                                 {
                                     if ((escala.Desde == 0) && (escala.Hasta == 0))
@@ -385,9 +391,9 @@ namespace Soft.Ventas.Win
             {
                 txtCantidadAcabado.Value = (ItemElemento.CantidadElemento * ItemElemento.MedidaAbiertaAlto * ItemElemento.MedidaAbiertaLargo);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+                Soft.Exceptions.SoftException.ShowException(ex);
             }
         }
 
