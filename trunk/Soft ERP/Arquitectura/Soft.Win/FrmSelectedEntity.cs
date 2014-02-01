@@ -122,7 +122,7 @@ namespace Soft.Win
             {
                 if (Query.Length > 0) { Query += ","; }
                 if (NameView == String.Empty) { NameView = NodoItem.SelectSingleNode("@NombreVista").Value; }
-                Query += NodoItem.SelectSingleNode("@CampoSQL").Value;
+                Query += String.Format("ISNULL({0},'') AS {0}", NodoItem.SelectSingleNode("@CampoSQL").Value);
                 UltraGridColumn Column = Band.Columns.Add(NodoItem.SelectSingleNode("@CampoSQL").Value);
                 Column.CellActivation = Activation.NoEdit;
                 Column.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Default;
