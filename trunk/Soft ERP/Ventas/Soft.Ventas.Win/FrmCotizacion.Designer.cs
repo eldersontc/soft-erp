@@ -634,8 +634,8 @@
             this.txtCostoServicio.Location = new System.Drawing.Point(219, 175);
             this.txtCostoServicio.MaskInput = "nnnnnnnn.nn";
             this.txtCostoServicio.MaxValue = new decimal(new int[] {
-            2500,
-            0,
+            2050327040,
+            10,
             0,
             0});
             this.txtCostoServicio.MinValue = new decimal(new int[] {
@@ -817,8 +817,8 @@
             this.uneCostoMaterial.Location = new System.Drawing.Point(256, 237);
             this.uneCostoMaterial.MaskInput = "nnnnnnn.nn";
             this.uneCostoMaterial.MaxValue = new decimal(new int[] {
-            2500,
-            0,
+            2050327040,
+            10,
             0,
             0});
             this.uneCostoMaterial.MinValue = new decimal(new int[] {
@@ -839,8 +839,8 @@
             this.uneCostoMaquina.Location = new System.Drawing.Point(256, 185);
             this.uneCostoMaquina.MaskInput = "nnnnnnnn.nn";
             this.uneCostoMaquina.MaxValue = new decimal(new int[] {
-            2500,
-            0,
+            2050327040,
+            10,
             0,
             0});
             this.uneCostoMaquina.MinValue = new decimal(new int[] {
@@ -883,8 +883,8 @@
             this.uneCosto.Location = new System.Drawing.Point(256, 267);
             this.uneCosto.MaskInput = "nnnnnnn.nn";
             this.uneCosto.MaxValue = new decimal(new int[] {
-            2500,
-            0,
+            2050327040,
+            10,
             0,
             0});
             this.uneCosto.MinValue = new decimal(new int[] {
@@ -1876,7 +1876,7 @@
             this.txtObservacion.Location = new System.Drawing.Point(144, 558);
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
-            this.txtObservacion.Size = new System.Drawing.Size(260, 49);
+            this.txtObservacion.Size = new System.Drawing.Size(260, 23);
             this.txtObservacion.TabIndex = 84;
             this.txtObservacion.TextChanged += new System.EventHandler(this.txtObservacion_TextChanged);
             // 
@@ -2061,36 +2061,36 @@
             // 
             // uneTotal
             // 
-            this.uneTotal.Location = new System.Drawing.Point(759, 610);
+            this.uneTotal.Location = new System.Drawing.Point(703, 610);
             this.uneTotal.Name = "uneTotal";
             this.uneTotal.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
             this.uneTotal.ReadOnly = true;
-            this.uneTotal.Size = new System.Drawing.Size(100, 21);
+            this.uneTotal.Size = new System.Drawing.Size(156, 21);
             this.uneTotal.TabIndex = 58;
             // 
             // uneImpuesto
             // 
-            this.uneImpuesto.Location = new System.Drawing.Point(759, 585);
+            this.uneImpuesto.Location = new System.Drawing.Point(703, 585);
             this.uneImpuesto.Name = "uneImpuesto";
             this.uneImpuesto.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
             this.uneImpuesto.ReadOnly = true;
-            this.uneImpuesto.Size = new System.Drawing.Size(100, 21);
+            this.uneImpuesto.Size = new System.Drawing.Size(156, 21);
             this.uneImpuesto.TabIndex = 57;
             // 
             // uneSubTotal
             // 
-            this.uneSubTotal.Location = new System.Drawing.Point(759, 560);
+            this.uneSubTotal.Location = new System.Drawing.Point(703, 560);
             this.uneSubTotal.Name = "uneSubTotal";
             this.uneSubTotal.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
             this.uneSubTotal.ReadOnly = true;
-            this.uneSubTotal.Size = new System.Drawing.Size(100, 21);
+            this.uneSubTotal.Size = new System.Drawing.Size(156, 21);
             this.uneSubTotal.TabIndex = 56;
             // 
             // ultraLabel10
             // 
             appearance3.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel10.Appearance = appearance3;
-            this.ultraLabel10.Location = new System.Drawing.Point(685, 615);
+            this.ultraLabel10.Location = new System.Drawing.Point(641, 615);
             this.ultraLabel10.Name = "ultraLabel10";
             this.ultraLabel10.Size = new System.Drawing.Size(72, 23);
             this.ultraLabel10.TabIndex = 55;
@@ -2100,7 +2100,7 @@
             // 
             appearance4.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel9.Appearance = appearance4;
-            this.ultraLabel9.Location = new System.Drawing.Point(685, 590);
+            this.ultraLabel9.Location = new System.Drawing.Point(641, 590);
             this.ultraLabel9.Name = "ultraLabel9";
             this.ultraLabel9.Size = new System.Drawing.Size(72, 23);
             this.ultraLabel9.TabIndex = 54;
@@ -2110,7 +2110,7 @@
             // 
             appearance5.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel8.Appearance = appearance5;
-            this.ultraLabel8.Location = new System.Drawing.Point(685, 561);
+            this.ultraLabel8.Location = new System.Drawing.Point(641, 561);
             this.ultraLabel8.Name = "ultraLabel8";
             this.ultraLabel8.Size = new System.Drawing.Size(72, 23);
             this.ultraLabel8.TabIndex = 53;
@@ -2118,11 +2118,11 @@
             // 
             // ubRecalcular
             // 
-            this.ubRecalcular.Location = new System.Drawing.Point(556, 559);
+            this.ubRecalcular.Location = new System.Drawing.Point(410, 593);
             this.ubRecalcular.Name = "ubRecalcular";
-            this.ubRecalcular.Size = new System.Drawing.Size(119, 23);
+            this.ubRecalcular.Size = new System.Drawing.Size(75, 23);
             this.ubRecalcular.TabIndex = 97;
-            this.ubRecalcular.Text = "Recalcular";
+            this.ubRecalcular.Text = "Costeo";
             this.ubRecalcular.Click += new System.EventHandler(this.ubRecalcular_Click);
             // 
             // ssMoneda
