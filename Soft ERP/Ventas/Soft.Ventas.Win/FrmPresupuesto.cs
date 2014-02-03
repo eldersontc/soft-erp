@@ -46,15 +46,19 @@ namespace Soft.Ventas.Win
 
             column = columns.Columns.Add(colNumero);
             column.DataType = typeof(String);
+            column.ReadOnly = true;
 
             column = columns.Columns.Add(colCliente);
             column.DataType = typeof(String);
+            column.ReadOnly = true;
 
             column = columns.Columns.Add(colFecha);
             column.DataType = typeof(DateTime);
+            column.ReadOnly = true;
 
             column = columns.Columns.Add(colTotal);
             column.DataType = typeof(Decimal);
+            column.ReadOnly = true;
 
             column = columns.Columns.Add(colRecargo);
             column.DataType = typeof(Decimal);
@@ -95,7 +99,7 @@ namespace Soft.Ventas.Win
                     Row.Cells[colNumero].Value = NodoItem.SelectSingleNode("@Numeracion").Value;
                     Row.Cells[colCliente].Value = NodoItem.SelectSingleNode("@Cliente").Value;
                     Row.Cells[colFecha].Value = NodoItem.SelectSingleNode("@Fecha").Value;
-                    Row.Cells[colTotal].Value = NodoItem.SelectSingleNode("@Total").Value;
+                    Row.Cells[colTotal].Value = Convert.ToDecimal(NodoItem.SelectSingleNode("@Total").Value);
                     Row.Cells[colRecargo].Value = Item.Recargo;
                     if (Nuevo) { Item.TotalFinal = Item.Total; }
                     Row.Cells[colTotalFinal].Value = Item.TotalFinal;
