@@ -22,6 +22,8 @@ namespace Soft.Ventas.Transaccional
                     try
                     {
                         Presupuesto Presupuesto = (Presupuesto)m_ObjectFlow;
+                        
+                        
                         SqlCommand SqlCmd = new SqlCommand();
                         SqlCmd.Connection = (SqlConnection)Sesion.Connection;
                         Trans.Enlist(SqlCmd);
@@ -30,7 +32,7 @@ namespace Soft.Ventas.Transaccional
                         SqlCmd.Parameters.AddWithValue("@IDPresupuesto", Presupuesto.ID);
                         SqlCmd.Parameters.AddWithValue("@Items", ContruirXML(Presupuesto));
                         SqlCmd.ExecuteNonQuery();
-                        Sesion.Save(Presupuesto);
+                        Sesion.Save(Presupuesto);                        
                         Trans.Commit();
                         m_ResultProcess = EnumResult.SUCESS;
                     }
