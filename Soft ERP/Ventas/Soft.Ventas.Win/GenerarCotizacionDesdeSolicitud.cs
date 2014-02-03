@@ -6,6 +6,7 @@ using Soft.DataAccess;
 using Soft.Ventas.Entidades;
 using Soft.Entities;
 using Soft.Win;
+using Soft.Exceptions;
 
 namespace Soft.Ventas.Win
 {
@@ -16,6 +17,13 @@ namespace Soft.Ventas.Win
             try 
 	        {
                 SolicitudCotizacion SolicitudCotizacion = (SolicitudCotizacion)base.m_ObjectFlow;
+                if (!SolicitudCotizacion.EstadoAprobacion.Equals("Aprobado")) {
+                    
+                    throw new Exception("La Solicitud no esta aprobada");
+
+                }
+
+
                 Cotizacion Cotizacion = new Cotizacion();
                 Cotizacion.Cantidad = 1;
                 Cotizacion.Descripcion = SolicitudCotizacion.Descripcion;
@@ -52,6 +60,13 @@ namespace Soft.Ventas.Win
                     ItemCotizacion.Cantidad = 1;
                     ItemCotizacion.CantidadElemento = Item.Cantidad;
                     ItemCotizacion.Maquina = Item.Maquina;
+
+                    if (ItemCotizacion.Maquina != null) {
+                        ItemCotizacion.FormatoImpresionAlto = ItemCotizacion.Maquina.PliegoAltoMaximo;
+                        ItemCotizacion.FormatoImpresionLargo=ItemCotizacion.Maquina.PliegoAnchoMaximo;
+
+                    }
+
                     ItemCotizacion.TipoUnidad = Item.TipoUnidad;
                     ItemCotizacion.Material = Item.Material;
                     ItemCotizacion.ImpresoRetiraColor = Item.ImpresoRetiraColor;
@@ -77,9 +92,10 @@ namespace Soft.Ventas.Win
                 base.m_EntidadSF = (EntidadSF)HelperNHibernate.GetEntityByID("EntidadSF", "11D3E3C0-1639-49FF-8596-149E9D24F60A");
                 base.m_ResultProcess = EnumResult.SUCESS;
 	        }
-	        catch (Exception)
+	        catch (Exception ex)
 	        {
                 base.m_ResultProcess = EnumResult.ERROR;
+                SoftException.ShowException(ex);
 	        }
  	        base.Start();
         }
