@@ -14,6 +14,7 @@ using Soft.DataAccess;
 using NHibernate;
 using System.Data.SqlClient;
 using System.Xml;
+using Soft.Ventas.Transaccional;
 
 namespace Soft.Ventas.Win
 {
@@ -94,6 +95,11 @@ namespace Soft.Ventas.Win
                 CreateEntity Crear = new CreateEntity();
                 Crear.m_ObjectFlow = FrmSolicitud.m_ObjectFlow;
                 Crear.Start();
+                CrearSolicitudCotizacion numeracion = new CrearSolicitudCotizacion();
+                numeracion.m_ObjectFlow = FrmSolicitud.m_ObjectFlow;
+                numeracion.Start();
+                
+
                 FrmMain.RefreshView();
             }
         }

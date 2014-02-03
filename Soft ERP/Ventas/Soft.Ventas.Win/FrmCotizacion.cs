@@ -722,6 +722,7 @@ namespace Soft.Ventas.Win
 
         private void ubRecalcular_Click(object sender, EventArgs e)
         {
+
             Costeo();
             Mostrar();
         }
@@ -1194,6 +1195,8 @@ namespace Soft.Ventas.Win
 
 
          }
+
+
 
    
 
