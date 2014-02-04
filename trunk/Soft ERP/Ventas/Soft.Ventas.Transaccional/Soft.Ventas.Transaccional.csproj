@@ -68,9 +68,12 @@
     <Compile Include="AprobarSolicitudCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CrearCotizacion.cs" />
     <Compile Include="CrearPresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CrearPresupuestoNumeracionFinal.cs" />
+    <Compile Include="CrearSolicitudCotizacion.cs" />
     <Compile Include="DesaprobarCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
