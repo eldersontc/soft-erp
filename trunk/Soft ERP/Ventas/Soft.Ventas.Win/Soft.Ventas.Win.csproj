@@ -268,6 +268,10 @@
       <Project>{7711A220-5A8B-47B1-AB38-142B9EC22F02}</Project>
       <Name>Soft.Ventas.Entidades</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Soft.Ventas.Transaccional\Soft.Ventas.Transaccional.csproj">
+      <Project>{0204BDCE-0760-463B-92D5-366DB59564BE}</Project>
+      <Name>Soft.Ventas.Transaccional</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\green_button.png" />
