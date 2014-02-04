@@ -57,9 +57,11 @@
     <Compile Include="CrearEntradaInventario.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CrearEntradaInventarioNumeracion.cs" />
     <Compile Include="CrearSalidaInventario.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CrearSalidaInvetarioNumeracion.cs" />
     <Compile Include="EliminarEntradaInventario.cs">
       <SubType>Form</SubType>
     </Compile>
