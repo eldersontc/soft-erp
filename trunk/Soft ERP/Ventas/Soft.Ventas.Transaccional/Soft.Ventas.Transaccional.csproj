@@ -68,12 +68,18 @@
     <Compile Include="AprobarSolicitudCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CrearCotizacion.cs" />
+    <Compile Include="CrearCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CrearPresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CrearPresupuestoNumeracionFinal.cs" />
-    <Compile Include="CrearSolicitudCotizacion.cs" />
+    <Compile Include="CrearPresupuestoNumeracionFinal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrearSolicitudCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DesaprobarCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
