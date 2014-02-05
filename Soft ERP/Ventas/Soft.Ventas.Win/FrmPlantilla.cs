@@ -352,5 +352,42 @@ namespace Soft.Ventas.Win
             }
         }
 
+        private void ssRelacionMedidas_Clear(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemPlantilla != null)
+                {
+                    ItemPlantilla.RelacionMedidas = null;
+                    ssRelacionMedidas.Text = "";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
+
+        }
+
+        private void ssTipoUnidad_Clear(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemPlantilla != null)
+                {
+                    ItemPlantilla.TipoUnidad = null;
+                    ssTipoUnidad.Text = "";
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
+        }
+
     }
 }
