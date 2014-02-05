@@ -104,11 +104,24 @@ namespace Soft.Ventas.Win
             lblMaquina.Visible = Item.TieneMaquina;
             ssMaterial.Visible = Item.TieneMaterial;
             lblMaterial.Visible = Item.TieneMaterial;
+            ssOperacion.Text = (Item.Operacion != null) ? Item.Operacion.Nombre : "";
             ssMaquina.Text = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
             ssMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
             lblTipoUnidad.Text = Item.TipoUnidad;
             txtObservacionItem.Text = Item.Observacion;
-            txtCantidadItem.Value = Item.Cantidad;
+
+            if (Item.TipoUnidad != null)
+            {
+                txtCantidadItem.Value = Item.Cantidad;
+                txtCantidadItem.Visible = true;
+            }
+            else {
+                txtCantidadItem.Value = 0;
+                txtCantidadItem.Visible = false;
+            }
+
+            txtCantidadItemProduccion.Value = Item.CantidadItem;
+
             txtMedidaAbiertoLargo.Value = Item.MedidaAbiertaLargo;
             txtMedidaAbiertoAlto.Value = Item.MedidaAbiertaAlto;
             txtMedidaCerradaLargo.Value = Item.MedidaCerradaLargo;
@@ -242,14 +255,7 @@ namespace Soft.Ventas.Win
 
         private void uneCantidad_ValueChanged(object sender, EventArgs e)
         {
-            try
-            {
-                SolicitudCotizacion.Cantidad = Convert.ToInt32(uneCantidad.Value);
-            }
-            catch (Exception ex)
-            {
-                SoftException.Control(ex);
-            }
+            
         }
 
         private void txtObservacion_TextChanged(object sender, EventArgs e)
@@ -425,9 +431,13 @@ namespace Soft.Ventas.Win
         {
             try
             {
+                String filtro = "";
+                if (ItemSolicitudCotizacion.Operacion != null) {
+                    filtro = "IDOperacion='"+ItemSolicitudCotizacion.Operacion.ID+"'";
+                }
                 if (ItemSolicitudCotizacion == null) { return; }
                 FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-                ItemSolicitudCotizacion.Maquina = (Maquina)FrmSeleccionar.GetSelectedEntity(typeof(Maquina), "Máquina", ItemSolicitudCotizacion.m_FiltroMaquina);
+                ItemSolicitudCotizacion.Maquina = (Maquina)FrmSeleccionar.GetSelectedEntity(typeof(Maquina), "Maquina Operacion", filtro);
                 ssMaquina.Text = (ItemSolicitudCotizacion.Maquina != null) ? ItemSolicitudCotizacion.Maquina.Nombre : "";
             }
             catch (Exception ex)
@@ -714,6 +724,56 @@ namespace Soft.Ventas.Win
                 if (ItemSolicitudCotizacion == null) { return; }
                 ItemSolicitudCotizacion.Nombre = txtNombre.Text;
                 utSolicitudCotizacion.ActiveNode.Text = txtNombre.Text;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ssMaquina_Clear(object sender, EventArgs e)
+        {
+            try
+            {
+                ItemSolicitudCotizacion.Maquina = null;
+                ssMaquina.Text = null;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void uneCantidad_AfterEditorButtonCloseUp(object sender, Infragistics.Win.UltraWinEditors.EditorButtonEventArgs e)
+        {
+            
+        }
+
+        private void uneCantidad_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void uneCantidad_Enter(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void uneCantidad_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                SolicitudCotizacion.Cantidad = Convert.ToInt32(uneCantidad.Value);
+
+                foreach (ItemSolicitudCotizacion item in SolicitudCotizacion.Items)
+                {
+                    item.CantidadItem = SolicitudCotizacion.Cantidad;
+                    if (item.ID.Equals(ItemSolicitudCotizacion.ID)) {
+                        txtCantidadItemProduccion.Value = item.CantidadItem;
+                    }
+                }
+  
+
             }
             catch (Exception ex)
             {
