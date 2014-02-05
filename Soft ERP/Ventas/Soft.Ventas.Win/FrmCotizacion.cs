@@ -18,6 +18,7 @@ using Soft.Reporte.Entidades;
 using Soft.Exceptions;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Xml;
 
 namespace Soft.Ventas.Win
 {
@@ -285,31 +286,33 @@ namespace Soft.Ventas.Win
             }
         }
 
+        public SocioNegocio ObtenerResponsable()
+        {
+            XmlDocument XML = HelperNHibernate.ExecuteSQL("SELECT TOP (1) IDSocioNegocio FROM SocioNegocioEmpleado ", String.Format(" IDUsuario = '{0}'", FrmMain.Usuario.ID));
+            SocioNegocio Responsable = null;
+            if (XML.HasChildNodes)
+            {
+                foreach (XmlNode NodoItem in XML.DocumentElement.ChildNodes)
+                {
+                    Responsable = (SocioNegocio)HelperNHibernate.GetEntityByID("SocioNegocio", NodoItem.SelectSingleNode("@IDSocioNegocio").Value);
+                }
+            }
+            return Responsable;
+        }
+
         private void ssTipoDocumento_Search(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
             TipoCotizacion TipoDocumento = (TipoCotizacion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoCotizacion), "Tipo de Cotización");
-
             if ((Cotizacion.TipoDocumento == null) || (Cotizacion.TipoDocumento.Codigo != TipoDocumento.Codigo))
             {
                 Cotizacion.TipoDocumento = (TipoCotizacion)HelperNHibernate.GetEntityByID("TipoCotizacion", TipoDocumento.ID);
                 Cotizacion.GenerarNumCp();
                 Cotizacion.AsignarListadeCostosDesdeTipoDocumento();
-                try
-                {
-                    FrmSelectedEntity FrmSeleccionarEmpleado = new FrmSelectedEntity();
-                    String filtro = "IDUsuario='" + FrmMain.Usuario.ID + "'";
-                    SocioNegocio sn = (SocioNegocio)FrmSeleccionarEmpleado.GetSelectedEntity(typeof(SocioNegocio), "Empleado", filtro);
-
-                    Cotizacion.Responsable = (SocioNegocio)HelperNHibernate.GetEntityByID("SocioNegocio", sn.ID);
-                }
-                catch (Exception)
-                {
-                }
-
-
+                Cotizacion.Responsable = ObtenerResponsable();
+                ssResponsable.Text = (Cotizacion.Responsable != null) ? Cotizacion.Responsable.Nombre : "";
+                ssTipoDocumento.Text = (Cotizacion.TipoDocumento != null) ? Cotizacion.TipoDocumento.Nombre : "";
             }
-            //Mostrar();
             ssTipoDocumento.Text = (Cotizacion.TipoDocumento != null) ? Cotizacion.TipoDocumento.Descripcion : "";
             ssResponsable.Text = (Cotizacion.Responsable != null) ? Cotizacion.Responsable.Nombre : "";
         }
