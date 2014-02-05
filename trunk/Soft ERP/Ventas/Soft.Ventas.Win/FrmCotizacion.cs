@@ -18,7 +18,6 @@ using Soft.Reporte.Entidades;
 using Soft.Exceptions;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Xml;
 
 namespace Soft.Ventas.Win
 {
@@ -156,7 +155,8 @@ namespace Soft.Ventas.Win
             ssMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
             lblTipoUnidad.Text = Item.TipoUnidad;
             txtObservacionItem.Text = Item.Observacion;
-            txtCantidadItem.Value = Item.CantidadElemento;
+            txtCantidadItem.Value = Item.CantidadUnidad;
+            txtCantidadProduccion.Value = Item.CantidadElemento;
             txtMedidaAbiertoLargo.Value = Item.MedidaAbiertaLargo;
             txtMedidaAbiertoAlto.Value = Item.MedidaAbiertaAlto;
             txtMedidaCerradaLargo.Value = Item.MedidaCerradaLargo;
@@ -286,33 +286,31 @@ namespace Soft.Ventas.Win
             }
         }
 
-        public SocioNegocio ObtenerResponsable()
-        {
-            XmlDocument XML = HelperNHibernate.ExecuteSQL("SELECT TOP (1) IDSocioNegocio FROM SocioNegocioEmpleado ", String.Format(" IDUsuario = '{0}'", FrmMain.Usuario.ID));
-            SocioNegocio Responsable = null;
-            if (XML.HasChildNodes)
-            {
-                foreach (XmlNode NodoItem in XML.DocumentElement.ChildNodes)
-                {
-                    Responsable = (SocioNegocio)HelperNHibernate.GetEntityByID("SocioNegocio", NodoItem.SelectSingleNode("@IDSocioNegocio").Value);
-                }
-            }
-            return Responsable;
-        }
-
         private void ssTipoDocumento_Search(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
             TipoCotizacion TipoDocumento = (TipoCotizacion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoCotizacion), "Tipo de Cotización");
+
             if ((Cotizacion.TipoDocumento == null) || (Cotizacion.TipoDocumento.Codigo != TipoDocumento.Codigo))
             {
                 Cotizacion.TipoDocumento = (TipoCotizacion)HelperNHibernate.GetEntityByID("TipoCotizacion", TipoDocumento.ID);
                 Cotizacion.GenerarNumCp();
                 Cotizacion.AsignarListadeCostosDesdeTipoDocumento();
-                Cotizacion.Responsable = ObtenerResponsable();
-                ssResponsable.Text = (Cotizacion.Responsable != null) ? Cotizacion.Responsable.Nombre : "";
-                ssTipoDocumento.Text = (Cotizacion.TipoDocumento != null) ? Cotizacion.TipoDocumento.Nombre : "";
+                try
+                {
+                    FrmSelectedEntity FrmSeleccionarEmpleado = new FrmSelectedEntity();
+                    String filtro = "IDUsuario='" + FrmMain.Usuario.ID + "'";
+                    SocioNegocio sn = (SocioNegocio)FrmSeleccionarEmpleado.GetSelectedEntity(typeof(SocioNegocio), "Empleado", filtro);
+
+                    Cotizacion.Responsable = (SocioNegocio)HelperNHibernate.GetEntityByID("SocioNegocio", sn.ID);
+                }
+                catch (Exception)
+                {
+                }
+
+
             }
+            //Mostrar();
             ssTipoDocumento.Text = (Cotizacion.TipoDocumento != null) ? Cotizacion.TipoDocumento.Descripcion : "";
             ssResponsable.Text = (Cotizacion.Responsable != null) ? Cotizacion.Responsable.Nombre : "";
         }
@@ -412,7 +410,7 @@ namespace Soft.Ventas.Win
         {
             if (ItemCotizacion == null) { return; }
             if (ActualizandoIU) { return; }
-            ItemCotizacion.CantidadElemento = Convert.ToInt32(txtCantidadItem.Value);
+            ItemCotizacion.CantidadUnidad = Convert.ToInt32(txtCantidadItem.Value);
         }
 
         private void txtImpresoRetiraColor_ValueChanged(object sender, EventArgs e)
@@ -425,8 +423,14 @@ namespace Soft.Ventas.Win
         private void ssMaquina_Search(object sender, EventArgs e)
         {
             if (ItemCotizacion == null) { return; }
+            String filtro = "";
+            if (ItemCotizacion.Operacion != null)
+            {
+                filtro = "IDOperacion='" + ItemCotizacion.Operacion.ID + "'";
+            }
             FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-            ItemCotizacion.Maquina = (Maquina)FrmSeleccionar.GetSelectedEntity(typeof(Maquina), "Máquina");
+            ItemCotizacion.Maquina = (Maquina)FrmSeleccionar.GetSelectedEntity(typeof(Maquina), "Maquina Operacion", filtro);
+             
             if (ItemCotizacion.Maquina != null) {
                 ItemCotizacion.Maquina = (Maquina)HelperNHibernate.GetEntityByID("Maquina", ItemCotizacion.Maquina.ID);
                 ItemCotizacion.FormatoImpresionAlto = ItemCotizacion.Maquina.PliegoAltoMaximo;
@@ -530,12 +534,22 @@ namespace Soft.Ventas.Win
         ListaPreciosTransporte lpt = null;
         private void Costeo()
         {
-            lcm = (ListaCostosMaquina)HelperNHibernate.GetEntityByID("ListaCostosMaquina", Cotizacion.ListaCostosMaquina.ID);
-            lpe = (ListaPreciosExistencia)HelperNHibernate.GetEntityByID("ListaPreciosExistencia", Cotizacion.ListaPreciosExistencia.ID);
-            lpt = (ListaPreciosTransporte)HelperNHibernate.GetEntityByID("ListaPreciosTransporte", Cotizacion.ListaPreciosTransporte.ID);
-            foreach (ItemCotizacion itemcotizacion2 in Cotizacion.Items) {
-                CosteoElemento(itemcotizacion2);
+            try
+            {
+                lcm = (ListaCostosMaquina)HelperNHibernate.GetEntityByID("ListaCostosMaquina", Cotizacion.ListaCostosMaquina.ID);
+                lpe = (ListaPreciosExistencia)HelperNHibernate.GetEntityByID("ListaPreciosExistencia", Cotizacion.ListaPreciosExistencia.ID);
+                lpt = (ListaPreciosTransporte)HelperNHibernate.GetEntityByID("ListaPreciosTransporte", Cotizacion.ListaPreciosTransporte.ID);
+                foreach (ItemCotizacion itemcotizacion2 in Cotizacion.Items)
+                {
+                    CosteoElemento(itemcotizacion2);
+                }
             }
+            catch (Exception ex)
+            {
+
+                SoftException.ShowException(ex);
+            }
+           
             //Cotizacion.SubTotal = Cotizacion.SubTotal;
         }
 
@@ -715,7 +729,7 @@ namespace Soft.Ventas.Win
                 itemcosteado.CantidadProduccion = itemcosteado.CantidadMaterial * itemcosteado.NumerodePases;
                 itemcosteado.CantidadMaterial += itemcosteado.CantidadDemasia;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //SoftException.ShowException(ex);
             }
@@ -1283,13 +1297,55 @@ namespace Soft.Ventas.Win
                 ItemCotizacion.CantidadMaterial = ItemCotizacion.CantidadElemento / (ItemCotizacion.NroPiezasPrecorte * ItemCotizacion.NroPiezasImpresion);
                 ItemCotizacion.CantidadProduccion = ItemCotizacion.CantidadMaterial * ItemCotizacion.NumerodePases;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //SoftException.ShowException(ex);
             }
 
 
          }
+
+        private void ssMaquina_Clear(object sender, EventArgs e)
+        {
+            try
+            {
+                ItemCotizacion.Maquina = null;
+                ssMaquina.Text = null;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+
+        }
+
+
+        private void ssMaterial_Clear(object sender, EventArgs e)
+        {
+            try
+            {
+                ItemCotizacion.Material = null;
+                ssMaterial.Text = null;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void txtCantidadProduccion_ValueChanged(object sender, EventArgs e)
+        {
+            if (ItemCotizacion == null) { return; }
+            if (ActualizandoIU) { return; }
+            ItemCotizacion.CantidadElemento = Convert.ToInt32(txtCantidadProduccion.Value);
+        }
+
+        private void txtDemasia_ValueChanged_1(object sender, EventArgs e)
+        {
+            if (ItemCotizacion == null) { return; }
+            if (ActualizandoIU) { return; }
+            ItemCotizacion.CantidadDemasia = Convert.ToInt32(txtDemasia.Value);
+        }
 
 
 
