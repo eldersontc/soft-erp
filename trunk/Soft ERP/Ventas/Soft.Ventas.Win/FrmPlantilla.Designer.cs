@@ -514,6 +514,7 @@
             this.ssTipoUnidad.Size = new System.Drawing.Size(165, 32);
             this.ssTipoUnidad.TabIndex = 8;
             this.ssTipoUnidad.Search += new System.EventHandler(this.ssTipoUnidad_Search);
+            this.ssTipoUnidad.Clear += new System.EventHandler(this.ssTipoUnidad_Clear);
             // 
             // lblTipoUnidad
             // 
@@ -575,6 +576,7 @@
             this.ssRelacionMedidas.Size = new System.Drawing.Size(165, 30);
             this.ssRelacionMedidas.TabIndex = 7;
             this.ssRelacionMedidas.Search += new System.EventHandler(this.ssRelacionMedidas_Search);
+            this.ssRelacionMedidas.Clear += new System.EventHandler(this.ssRelacionMedidas_Clear);
             // 
             // lblRelacion
             // 
