@@ -10,6 +10,6 @@ namespace Soft.Ventas.Entidades
     public class TipoUnidad : Parent
     {
         public TipoUnidad() { }
-        public virtual String Nombre { get; set; }
+        //public virtual String Nombre { get; set; }
     }
 }

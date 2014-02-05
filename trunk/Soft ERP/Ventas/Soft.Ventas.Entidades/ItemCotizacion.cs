@@ -18,7 +18,9 @@ namespace Soft.Ventas.Entidades
         public virtual Int32 ImpresoTiraColor { get; set; }
         public virtual Int32 ImpresoRetiraColor { get; set; }
         public virtual String Observacion { get; set; }
-        
+        public virtual Existencia Operacion { get; set; }
+
+
         private Maquina mMaquina;
         public virtual Maquina Maquina
         {
@@ -94,6 +96,9 @@ namespace Soft.Ventas.Entidades
         public virtual Decimal CantidadElemento { get; set; }
 
         public virtual Decimal CostoServicio { get; set; }
+
+        public virtual Decimal CantidadUnidad { get; set; }
+
 
         public virtual ItemCotizacionServicio AddServicio()
         {

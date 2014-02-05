@@ -10,7 +10,7 @@ namespace Soft.Ventas.Entidades
     public class RelacionMedidas : Parent
     {
         public RelacionMedidas() { }
-        public virtual String Nombre { get; set; }
+        //public virtual String Nombre { get; set; }
         public virtual Int32 Abierta { get; set; }
         public virtual Int32 Cerrada { get; set; }
     }
