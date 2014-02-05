@@ -49,14 +49,14 @@ namespace Soft.DataAccess
             }
         }
 
-        public static IList GetEntityByField(String Class, String Field, String Value)
+        public static Object GetEntityByField(String Class, String Field, String Value)
         {
             try
             {
                 using (ISession Sesion = m_SessionFactory.OpenSession())
                 {
-                    IList List = (IList)Sesion.CreateCriteria(Class).Add(Restrictions.Eq(Field, Value)).UniqueResult();
-                    return List;
+                    Object Obj = (Object)Sesion.CreateCriteria(Class).Add(Restrictions.Eq(Field, Value)).UniqueResult();
+                    return Obj;
                 }
             }
             catch (Exception)
