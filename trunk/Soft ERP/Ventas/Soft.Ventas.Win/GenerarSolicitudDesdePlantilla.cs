@@ -24,7 +24,11 @@ namespace Soft.Ventas.Win
                 {
                     ItemSolicitudCotizacion ItemSolicitud = Solicitud.AddItem();
                     ItemSolicitud.Nombre = Item.Nombre;
-                    ItemSolicitud.TipoUnidad = Item.TipoUnidad.Nombre;
+
+                    if (Item.TipoUnidad != null) {
+                        ItemSolicitud.TipoUnidad = Item.TipoUnidad.Nombre;
+                    }
+                    ItemSolicitud.Operacion = Item.Operacion;
                     ItemSolicitud.Material = Item.Material;
                     ItemSolicitud.m_FiltroMaquina = Item.ObtenerFiltroMaquinas();
                     ItemSolicitud.TieneMedidaAbierta = Item.TieneMedidaAbierta;

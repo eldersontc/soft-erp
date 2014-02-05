@@ -17,7 +17,8 @@ namespace Soft.Ventas.Win
             try 
 	        {
                 SolicitudCotizacion SolicitudCotizacion = (SolicitudCotizacion)base.m_ObjectFlow;
-                if (!SolicitudCotizacion.EstadoAprobacion.Equals("Aprobado")) {
+                if (!SolicitudCotizacion.EstadoAprobacion.Equals("APROBADO"))
+                {
                     
                     throw new Exception("La Solicitud no esta aprobada");
 
@@ -58,13 +59,14 @@ namespace Soft.Ventas.Win
                     ItemCotizacion ItemCotizacion = Cotizacion.AddItem();
                     ItemCotizacion.Nombre = Item.Nombre;
                     ItemCotizacion.Cantidad = 1;
-                    ItemCotizacion.CantidadElemento = Item.Cantidad;
+                    ItemCotizacion.CantidadUnidad = Item.Cantidad;
+                    ItemCotizacion.CantidadElemento = Item.CantidadItem;
+                    ItemCotizacion.Operacion = Item.Operacion;
                     ItemCotizacion.Maquina = Item.Maquina;
 
                     if (ItemCotizacion.Maquina != null) {
                         ItemCotizacion.FormatoImpresionAlto = ItemCotizacion.Maquina.PliegoAltoMaximo;
                         ItemCotizacion.FormatoImpresionLargo=ItemCotizacion.Maquina.PliegoAnchoMaximo;
-
                     }
 
                     ItemCotizacion.TipoUnidad = Item.TipoUnidad;
