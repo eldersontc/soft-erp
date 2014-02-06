@@ -1480,9 +1480,9 @@
             // 
             this.txtNroPiezasImpresion.Location = new System.Drawing.Point(634, 261);
             this.txtNroPiezasImpresion.Name = "txtNroPiezasImpresion";
-            this.txtNroPiezasImpresion.ReadOnly = true;
             this.txtNroPiezasImpresion.Size = new System.Drawing.Size(62, 21);
             this.txtNroPiezasImpresion.TabIndex = 98;
+            this.txtNroPiezasImpresion.ValueChanged += new System.EventHandler(this.txtNroPiezasImpresion_ValueChanged);
             // 
             // lblCantidadPiezas
             // 
