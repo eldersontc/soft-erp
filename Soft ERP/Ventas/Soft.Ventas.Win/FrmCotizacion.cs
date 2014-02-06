@@ -1347,6 +1347,13 @@ namespace Soft.Ventas.Win
             ItemCotizacion.CantidadDemasia = Convert.ToInt32(txtDemasia.Value);
         }
 
+        private void txtNroPiezasImpresion_ValueChanged(object sender, EventArgs e)
+        {
+            if (ItemCotizacion == null) { return; }
+            if (ActualizandoIU) { return; }
+            ItemCotizacion.NroPiezasImpresion = Convert.ToInt32(txtNroPiezasImpresion.Value);
+        }
+
 
 
    
