@@ -155,20 +155,29 @@ namespace Soft.Ventas.Win
 
         private void ssCliente_Search(object sender, EventArgs e)
         {
+
+
             try
             {
-                FrmSelectedEntity FrmSeleccionarCliente = new FrmSelectedEntity();
-                SocioNegocio Cliente = (SocioNegocio)FrmSeleccionarCliente.GetSelectedEntity(typeof(SocioNegocio), "Cliente");
-                if (Cliente != null)
+                String filtro = "Activo=1 ";
+                if (FrmMain.Usuario.SuperAdministrador == false)
                 {
-                    InfoAsistente.Cliente = Cliente;
-                    ssCliente.Text = InfoAsistente.Cliente.Nombre;
+                    filtro = "UserID='" + FrmMain.Usuario.UserID + "'";
                 }
+                if (ssCliente.Text.Length > 0)
+                {
+                    filtro = filtro + " and Nombre like '" + ssCliente.Text + "%'";
+                }
+                FrmSelectedEntity FrmSeleccionarProveedor = new FrmSelectedEntity();
+                InfoAsistente.Cliente = (SocioNegocio)FrmSeleccionarProveedor.GetSelectedEntity(typeof(SocioNegocio), "Cliente", filtro);
+                ssCliente.Text = (InfoAsistente.Cliente != null) ? InfoAsistente.Cliente.Nombre : "";
             }
             catch (Exception ex)
             {
                 SoftException.Control(ex);
             }
+
+            
         }
 
         private void ssMoneda_Search(object sender, EventArgs e)
