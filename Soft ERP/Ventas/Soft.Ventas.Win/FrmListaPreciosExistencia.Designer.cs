@@ -395,6 +395,7 @@
             this.grillaExistencias.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
             this.grillaExistencias.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow;
             this.grillaExistencias.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortSingle;
+            this.grillaExistencias.DisplayLayout.Override.RowSelectorNumberStyle = Infragistics.Win.UltraWinGrid.RowSelectorNumberStyle.ListIndex;
             this.grillaExistencias.Dock = System.Windows.Forms.DockStyle.Top;
             this.grillaExistencias.Location = new System.Drawing.Point(0, 0);
             this.grillaExistencias.Name = "grillaExistencias";
@@ -434,6 +435,7 @@
             // 
             this.ugUnidades.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
             this.ugUnidades.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortSingle;
+            this.ugUnidades.DisplayLayout.Override.RowSelectorNumberStyle = Infragistics.Win.UltraWinGrid.RowSelectorNumberStyle.ListIndex;
             this.ugUnidades.Dock = System.Windows.Forms.DockStyle.Top;
             this.ugUnidades.Location = new System.Drawing.Point(0, 0);
             this.ugUnidades.Name = "ugUnidades";
@@ -473,6 +475,7 @@
             // 
             this.ugEscalas.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
             this.ugEscalas.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortSingle;
+            this.ugEscalas.DisplayLayout.Override.RowSelectorNumberStyle = Infragistics.Win.UltraWinGrid.RowSelectorNumberStyle.ListIndex;
             this.ugEscalas.Dock = System.Windows.Forms.DockStyle.Top;
             this.ugEscalas.Location = new System.Drawing.Point(0, 0);
             this.ugEscalas.Name = "ugEscalas";
