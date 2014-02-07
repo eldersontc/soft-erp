@@ -13,6 +13,7 @@ using Microsoft.VisualBasic;
 using Infragistics.Win.UltraWinDataSource;
 using Soft.DataAccess;
 using Soft.Configuracion.Entidades;
+using Soft.Exceptions;
 
 namespace Soft.Win
 {
@@ -20,6 +21,7 @@ namespace Soft.Win
     {
         private XmlDocument m_XMLCofiguration;
         private ItemContenedor m_ItemContenedor;
+        private Dictionary<string, string> Filtros = new Dictionary<string, string>();
 
         public FrmDetails()
         {
@@ -32,32 +34,37 @@ namespace Soft.Win
             m_ItemContenedor = ItemContenedor;
             Tag = ItemContenedor;
             InitializeComponent();
-            ConfigurePanel(ItemContenedor);
+            ConfigurarPanel(ItemContenedor);
             Show();
         }
 
-        public void ConfigurePanel(ItemContenedor ItemContenedor)
+        public void ConfigurarPanel(ItemContenedor ItemContenedor)
         {
-            String Query = String.Empty;
-            String NameView = String.Empty;
+            String ConsultaSQL = String.Empty;
+            String Ordenamiento = String.Empty;
             Text = String.Format(":: {0} ::", ItemContenedor.Nombre);
             ugDetails.DisplayLayout.Appearance.ImageBackground = Image.FromFile(String.Format("{0}{1}", FrmMain.CarpetaImagenes, FrmMain.Usuario.Imagen));
             ugDetails.DataSource = null;
-            m_XMLCofiguration = HelperNHibernate.ExecuteView("vSF_ColumnasxPanel", String.Format(" NombrePanel = '{0}' ORDER BY Orden", ItemContenedor.Panel.Nombre));
-            foreach (XmlNode NodoItem in m_XMLCofiguration.DocumentElement.ChildNodes)
-            {   
-                if (Query.Length > 0) { Query += ","; }
-                if (NameView == String.Empty) { NameView = NodoItem.SelectSingleNode("@NombreVista").Value; }
-                UltraGridColumn Column = ugDetails.DisplayLayout.Bands[0].Columns.Add(NodoItem.SelectSingleNode("@CampoSQL").Value);
-                Column.Header.Caption = NodoItem.SelectSingleNode("@NombreColumna").Value;
-                Column.Hidden = !Convert.ToBoolean(Convert.ToInt32(NodoItem.SelectSingleNode("@Visible").Value));
-                Column.Width = Convert.ToInt32(NodoItem.SelectSingleNode("@Ancho").Value);
-                Column.Key = NodoItem.SelectSingleNode("@CampoSQL").Value;
-                Query += NodoItem.SelectSingleNode("@CampoSQL").Value;    
+            Soft.Configuracion.Entidades.Panel Panel = (Soft.Configuracion.Entidades.Panel)HelperNHibernate.GetEntityByField("Panel", "Nombre", ItemContenedor.Panel.Nombre);
+            foreach (ColumnaPanel  Columna in Panel.Columnas)
+            {
+                UltraGridColumn Column = ugDetails.DisplayLayout.Bands[0].Columns.Add(Columna.CampoSQL);
+                Column.Header.Caption = Columna.Nombre;
+                Column.Width = Columna.Ancho;
+                Column.Hidden = !Columna.Visible;
+                if (Columna.Indice) { Ordenamiento = String.Format("ORDER BY {0}", Columna.CampoSQL);}
             }
-            Query = String.Format("SELECT {0} FROM {1} {2}", Query, NameView,ItemContenedor.Filtro);
-            ugDetails.DataSource = HelperNHibernate.GetDataSet(Query);
-            if (ugDetails.Rows.Count > 0) { ugDetails.Rows[0].Selected = true; }
+            ConsultaSQL = String.Format("SELECT * FROM {0} {1} {2}", Panel.NombreVista, ItemContenedor.Filtro, Ordenamiento);
+            ugDetails.DataSource = HelperNHibernate.GetDataSet(ConsultaSQL);
+            RecuperarFiltros();
+        }
+
+        public void RecuperarFiltros() {
+            foreach (KeyValuePair<string,string> Filtro in Filtros)
+            {
+                ugDetails.DisplayLayout.Bands[0].ColumnFilters[Filtro.Key].FilterConditions.Clear();
+                ugDetails.DisplayLayout.Bands[0].ColumnFilters[Filtro.Key].FilterConditions.Add(FilterComparisionOperator.Contains, Filtro.Value);
+            }
         }
 
         public List<String> GetIDs() {
@@ -72,7 +79,7 @@ namespace Soft.Win
         public Int32 CountRows { get { return ugDetails.Rows.Count; } }
 
         public void RefreshView() {
-            this.ConfigurePanel(m_ItemContenedor);
+            this.ConfigurarPanel(m_ItemContenedor);
         }
 
         private void ugDetails_DoubleClickRow(object sender, DoubleClickRowEventArgs e)
@@ -87,6 +94,28 @@ namespace Soft.Win
                 case Keys.Enter:
                     FrmMain.ModificarEntidad();
                     break;
+            }
+        }
+
+        private void ugDetails_FilterCellValueChanged(object sender, FilterCellValueChangedEventArgs e)
+        {
+            try
+            {
+                if (e.FilterCell.IsFilterRowCell)
+                {
+                    if (Filtros.ContainsKey(e.FilterCell.Column.Key))
+                    {
+                        Filtros[e.FilterCell.Column.Key] = e.FilterCell.Text;
+                    }
+                    else
+                    {
+                        Filtros.Add(e.FilterCell.Column.Key, e.FilterCell.Text);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
             }
         }
 

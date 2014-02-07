@@ -43,6 +43,7 @@
             this.ugDetails.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
             this.ugDetails.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
             this.ugDetails.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            this.ugDetails.DisplayLayout.Override.FilterEvaluationTrigger = Infragistics.Win.UltraWinGrid.FilterEvaluationTrigger.OnCellValueChange;
             this.ugDetails.DisplayLayout.Override.FilterOperandStyle = Infragistics.Win.UltraWinGrid.FilterOperandStyle.UseColumnEditor;
             this.ugDetails.DisplayLayout.Override.FilterOperatorDefaultValue = Infragistics.Win.UltraWinGrid.FilterOperatorDefaultValue.Contains;
             this.ugDetails.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow;
@@ -50,14 +51,14 @@
             appearance1.AlphaLevel = ((short)(180));
             appearance1.BackColorAlpha = Infragistics.Win.Alpha.Transparent;
             this.ugDetails.DisplayLayout.Override.RowAppearance = appearance1;
-            this.ugDetails.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
+            this.ugDetails.DisplayLayout.Override.RowSelectorNumberStyle = Infragistics.Win.UltraWinGrid.RowSelectorNumberStyle.ListIndex;
             this.ugDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ugDetails.Location = new System.Drawing.Point(0, 0);
             this.ugDetails.Name = "ugDetails";
             this.ugDetails.Size = new System.Drawing.Size(284, 262);
             this.ugDetails.TabIndex = 0;
-            this.ugDetails.Text = "ultraGrid1";
             this.ugDetails.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler(this.ugDetails_DoubleClickRow);
+            this.ugDetails.FilterCellValueChanged += new Infragistics.Win.UltraWinGrid.FilterCellValueChangedEventHandler(this.ugDetails_FilterCellValueChanged);
             this.ugDetails.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ugDetails_KeyDown);
             // 
             // FrmDetails
