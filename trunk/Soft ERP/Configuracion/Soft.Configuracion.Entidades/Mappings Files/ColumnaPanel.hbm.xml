@@ -12,6 +12,7 @@
     <property name="Propiedad" type="string"/>
     <property name="Establecer" type="boolean"/>
     <property name="Orden" type="int"/>
+    <property name="Indice" type="boolean"/>
 
   </class>
 
