@@ -14,6 +14,7 @@ using Soft.Win;
 using System.Reflection;
 using Microsoft.VisualBasic;
 using Soft.DataAccess;
+using Soft.Exceptions;
 
 namespace Soft.Win
 {
@@ -187,21 +188,28 @@ namespace Soft.Win
 
         private void ugEntity_KeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.KeyCode)
+            try
             {
-                case Keys.Enter:
-                    base.m_ResultProcess = EnumResult.SUCESS;
-                    SWAcept = true;
-                    Close();
-                    break;
-                case Keys.Escape :
-                    base.m_ResultProcess = EnumResult.SUCESS;
-                    SWAcept = false;
-                    Close();
-                    break;
-                case Keys.Space :
-                    ChangeStateCheck();
-                    break;
+                switch (e.KeyCode)
+                {
+                    case Keys.Enter:
+                        base.m_ResultProcess = EnumResult.SUCESS;
+                        SWAcept = true;
+                        Close();
+                        break;
+                    case Keys.Escape:
+                        base.m_ResultProcess = EnumResult.SUCESS;
+                        SWAcept = false;
+                        Close();
+                        break;
+                    //case Keys.Space:
+                    //    ChangeStateCheck();
+                    //    break;
+                }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
             }
         }
 
