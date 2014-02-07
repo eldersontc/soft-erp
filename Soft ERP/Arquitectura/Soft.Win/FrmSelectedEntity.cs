@@ -15,126 +15,105 @@ using System.Reflection;
 using Microsoft.VisualBasic;
 using Soft.DataAccess;
 using Soft.Exceptions;
+using Soft.Configuracion.Entidades;
+using Soft.Exceptions;
 
 namespace Soft.Win
 {
     public partial class FrmSelectedEntity : FrmParent 
     {
 
-        private XmlDocument XMLCofiguration;
-        private Boolean SWAcept = false;
+        private EntidadSF mEntidadSF = null;
+        private Boolean mAceptar = false;
 
         public FrmSelectedEntity()
         {
             InitializeComponent();
         }
 
-        public Parent GetSelectedEntity(Type Type,String NamePanel, String Filter = "")
+        public Parent GetSelectedEntity(Type Tipo,String NombrePanel, String Filtro = "")
         {
             try
             {
-                Parent SelectedEntity = null;
-                ConfigureColumns(NamePanel, Filter);
+                Parent EntidadSeleccionada = null;
+                ConfigurarColumnas(NombrePanel, Filtro);
                 if (ugEntity.Rows.Count == 1)
                 {
-                    SelectedEntity = AsignValuesToParent(Type, ugEntity.Rows[0]);
-                    return SelectedEntity;
+                    String ID = ugEntity.Rows[0].Cells["ID"].Value.ToString();
+                    EntidadSeleccionada = HelperNHibernate.GetEntityByID(mEntidadSF.NombreClase, ID);
+                    return EntidadSeleccionada;
                 }
                 else {
                     ShowDialog();
                 }
-                if (SWAcept & ugEntity.ActiveRow != null && !ugEntity.ActiveRow.IsFilterRow) { 
-                    SelectedEntity = AsignValuesToParent(Type, ugEntity.ActiveRow); 
+                if (mAceptar & ugEntity.ActiveRow != null && !ugEntity.ActiveRow.IsFilterRow) {
+                    String ID = ugEntity.ActiveRow.Cells["ID"].Value.ToString();
+                    EntidadSeleccionada = HelperNHibernate.GetEntityByID(mEntidadSF.NombreClase, ID);
                 }
-                return SelectedEntity;
+                return EntidadSeleccionada;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                SoftException.Control(ex);
+                return null;
             }
         }
 
-        public Collection GetSelectedsEntities(Type Type, String NamePanel, String Filter = "")
+        public Collection GetSelectedsEntities(Type Tipo, String NombrePanel, String Filtro = "")
         {
             try
             {
-                Collection ColReturn = new Collection();
-                ConfigureColumns(NamePanel, Filter);
+                Collection ColRetorno = new Collection();
+                ConfigurarColumnas(NombrePanel, Filtro);
                 ActivarMultiSeleccion();
                 if (ugEntity.Rows.Count == 1)
                 {
-                    Parent Entity = AsignValuesToParent(Type, ugEntity.Rows[0]);
-                    ColReturn.Add(Entity);
-                    return ColReturn;
+                    String ID = ugEntity.Rows[0].Cells["ID"].Value.ToString();
+                    Parent Entidad = HelperNHibernate.GetEntityByID(mEntidadSF.NombreClase, ID);
+                    ColRetorno.Add(Entidad);
+                    return ColRetorno;
                 }
                 else {
                     ShowDialog();
                 }
-                if (SWAcept) {
+                if (mAceptar) {
                     foreach (UltraGridRow Row in ugEntity.Rows)
                     {
                         if (Convert.ToBoolean(Row.Cells["Select"].Value)) {
-                            Parent Entity = AsignValuesToParent(Type, Row);
-                            ColReturn.Add(Entity);
+                            String ID = Row.Cells["ID"].Value.ToString();
+                            Parent Entidad = HelperNHibernate.GetEntityByID(mEntidadSF.NombreClase, ID);
+                            ColRetorno.Add(Entidad);
                         }
                     }
                 }
-                return ColReturn;
+                return ColRetorno;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                SoftException.Control(ex);
+                return null;
             }
         }
 
-        public Parent AsignValuesToParent(Type Type,UltraGridRow Row)
+        public void ConfigurarColumnas(String NombrePanel, String Filtro)
         {
-            Parent Entity = Cast(Activator.CreateInstance(Type), Type); 
-            foreach (XmlNode NodoItem in XMLCofiguration.DocumentElement.ChildNodes)
-            {
-                if (NodoItem.SelectSingleNode("@Establecer").Value == "1")
-                {
-                    PropertyInfo pInfo = Type.GetProperty(NodoItem.SelectSingleNode("@Propiedad").Value);
-                    if (pInfo != null)
-                    {
-                        pInfo.SetValue(Entity, Row.Cells[NodoItem.SelectSingleNode("@CampoSQL").Value].Value, null);
-                    }
-                    else
-                    {
-                        throw new Exception(String.Format("Propiedad no encontrada : {0}", NodoItem.SelectSingleNode("@Propiedad").Value));
-                    }
-                }
-            }
-            return Entity;
-        }
-
-        public static dynamic Cast(dynamic obj, Type castTo)
-        {
-            return Convert.ChangeType(obj, castTo);
-        }
-
-        public void ConfigureColumns(String NamePanel, String Filter)
-        {
-            XMLCofiguration = HelperNHibernate.ExecuteView("vSF_ColumnasxPanel", String.Format(" NombrePanel = '{0}' ORDER BY Orden", NamePanel));
-            String Query = String.Empty;
-            String NameView = String.Empty;
+            String ConsultaSQL = String.Empty;
+            String Ordenamiento = String.Empty;
             UltraGridBand Band = ugEntity.DisplayLayout.Bands[0];
-            foreach (XmlNode NodoItem in XMLCofiguration.DocumentElement.ChildNodes)
+            Soft.Configuracion.Entidades.Panel Panel = (Soft.Configuracion.Entidades.Panel)HelperNHibernate.GetEntityByField("Panel", "Nombre", NombrePanel);
+            mEntidadSF = Panel.EntidadSF;
+            foreach (ColumnaPanel Columna in Panel.Columnas)
             {
-                if (Query.Length > 0) { Query += ","; }
-                if (NameView == String.Empty) { NameView = NodoItem.SelectSingleNode("@NombreVista").Value; }
-                Query += String.Format("ISNULL({0},'') AS {0}", NodoItem.SelectSingleNode("@CampoSQL").Value);
-                UltraGridColumn Column = Band.Columns.Add(NodoItem.SelectSingleNode("@CampoSQL").Value);
+                UltraGridColumn Column = Band.Columns.Add(Columna.CampoSQL);
                 Column.CellActivation = Activation.NoEdit;
-                Column.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Default;
-                Column.Header.Caption = NodoItem.SelectSingleNode("@NombreColumna").Value;
-                Column.Hidden = !Convert.ToBoolean(Convert.ToInt32(NodoItem.SelectSingleNode("@Visible").Value));
-                Column.Width = Convert.ToInt32(NodoItem.SelectSingleNode("@Ancho").Value);
-                Column.Key = NodoItem.SelectSingleNode("@CampoSQL").Value;
+                Column.Header.Caption = Columna.Nombre;
+                Column.Width = Columna.Ancho;
+                Column.Hidden = !Columna.Visible;
+                if (Columna.Indice) { Ordenamiento = String.Format("ORDER BY {0}", Columna.CampoSQL); }
             }
-            Query = String.Format("SELECT {0} FROM {1} ", Query, NameView);
-            if (Filter.Length > 0) { Query += String.Format(" WHERE {0} ", Filter); }
-            ugEntity.DataSource = HelperNHibernate.GetDataSet(Query);
+            if (Filtro.Length > 0) { Filtro = String.Format(" WHERE {0} ", Filtro); }
+            ConsultaSQL = String.Format("SELECT * FROM {0} {1} {2}", Panel.NombreVista, Filtro, Ordenamiento);
+            ugEntity.DataSource = HelperNHibernate.GetDataSet(ConsultaSQL);
         }
 
         public void ActivarMultiSeleccion() {
@@ -175,14 +154,14 @@ namespace Soft.Win
         private void ubSelecionar_Click(object sender, EventArgs e)
         {
             base.m_ResultProcess = EnumResult.SUCESS;
-            SWAcept = true;
+            mAceptar = true;
             Close();
         }
 
         private void ugEntity_DoubleClickCell(object sender, DoubleClickCellEventArgs e)
         {
             base.m_ResultProcess = EnumResult.SUCESS;
-            SWAcept = true;
+            mAceptar = true;
             Close();
         }
 
@@ -194,12 +173,12 @@ namespace Soft.Win
                 {
                     case Keys.Enter:
                         base.m_ResultProcess = EnumResult.SUCESS;
-                        SWAcept = true;
+                        mAceptar = true;
                         Close();
                         break;
                     case Keys.Escape:
                         base.m_ResultProcess = EnumResult.SUCESS;
-                        SWAcept = false;
+                        mAceptar = false;
                         Close();
                         break;
                     //case Keys.Space:
@@ -213,7 +192,7 @@ namespace Soft.Win
             }
         }
 
-        public void ChangeStateCheck()
+        public void CambiarEstadoCheck()
         {
             if (ugEntity.ActiveRow != null && ugEntity.ActiveRow.Cells.Exists("Select")) {
                 ugEntity.ActiveRow.Cells["Select"].Value = !Convert.ToBoolean(ugEntity.ActiveRow.Cells["Select"].Value);
