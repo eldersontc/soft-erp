@@ -43,7 +43,7 @@
             this.ugbParent.Controls.Add(this.ubSelecionar);
             this.ugbParent.Controls.Add(this.uceTodos);
             this.ugbParent.Controls.Add(this.ugEntity);
-            this.ugbParent.Size = new System.Drawing.Size(757, 415);
+            this.ugbParent.Size = new System.Drawing.Size(789, 491);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ugEntity, 0);
@@ -53,12 +53,12 @@
             // ubCancelar
             // 
             this.ubCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ubCancelar.Location = new System.Drawing.Point(669, 380);
+            this.ubCancelar.Location = new System.Drawing.Point(701, 456);
             // 
             // ubAceptar
             // 
             this.ubAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ubAceptar.Location = new System.Drawing.Point(465, 380);
+            this.ubAceptar.Location = new System.Drawing.Point(497, 456);
             this.ubAceptar.Size = new System.Drawing.Size(92, 23);
             this.ubAceptar.Visible = false;
             // 
@@ -133,10 +133,10 @@
             this.ugEntity.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow;
             this.ugEntity.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortSingle;
             this.ugEntity.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsVista;
-            this.ugEntity.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
+            this.ugEntity.DisplayLayout.Override.RowSelectorNumberStyle = Infragistics.Win.UltraWinGrid.RowSelectorNumberStyle.ListIndex;
             this.ugEntity.Location = new System.Drawing.Point(3, 3);
             this.ugEntity.Name = "ugEntity";
-            this.ugEntity.Size = new System.Drawing.Size(754, 369);
+            this.ugEntity.Size = new System.Drawing.Size(786, 445);
             this.ugEntity.TabIndex = 5;
             this.ugEntity.Text = "ultraGrid1";
             this.ugEntity.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.ugEntity_ClickCell);
@@ -149,7 +149,7 @@
             this.uceTodos.BackColor = System.Drawing.Color.Transparent;
             this.uceTodos.BackColorInternal = System.Drawing.Color.Transparent;
             this.uceTodos.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Office2010Button;
-            this.uceTodos.Location = new System.Drawing.Point(12, 383);
+            this.uceTodos.Location = new System.Drawing.Point(12, 459);
             this.uceTodos.Name = "uceTodos";
             this.uceTodos.Size = new System.Drawing.Size(81, 20);
             this.uceTodos.TabIndex = 6;
@@ -160,7 +160,7 @@
             // ubSelecionar
             // 
             this.ubSelecionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ubSelecionar.Location = new System.Drawing.Point(568, 380);
+            this.ubSelecionar.Location = new System.Drawing.Point(600, 456);
             this.ubSelecionar.Name = "ubSelecionar";
             this.ubSelecionar.Size = new System.Drawing.Size(95, 23);
             this.ubSelecionar.TabIndex = 7;
@@ -171,7 +171,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 491);
+            this.ClientSize = new System.Drawing.Size(805, 529);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.Name = "FrmSelectedEntity";
             this.Text = "Seleccionar ";
