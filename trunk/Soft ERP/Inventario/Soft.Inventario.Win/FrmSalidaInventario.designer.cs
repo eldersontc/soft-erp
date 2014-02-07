@@ -413,6 +413,7 @@
             // 
             this.ugProductos.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
             this.ugProductos.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
+            this.ugProductos.DisplayLayout.Override.RowSelectorNumberStyle = Infragistics.Win.UltraWinGrid.RowSelectorNumberStyle.ListIndex;
             this.ugProductos.DisplayLayout.TabNavigation = Infragistics.Win.UltraWinGrid.TabNavigation.NextControl;
             this.ugProductos.Dock = System.Windows.Forms.DockStyle.Top;
             this.ugProductos.Location = new System.Drawing.Point(0, 0);

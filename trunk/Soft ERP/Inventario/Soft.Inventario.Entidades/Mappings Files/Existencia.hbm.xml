@@ -17,7 +17,7 @@
     <property name="Gramaje" type="integer"/>
     <property name="CostoUltimaCompra" type="decimal" insert="true" update="false"/>
     <property name="CostoPromedio" type="decimal" insert="true" update="false"/>
-
+    <property name="Ubicacion" type="string"/>
 
     <property name="EsCotizacion" type="boolean"/>
     <property name="UnidadMedidaDimensiones" type="string"/>
@@ -31,20 +31,15 @@
       <one-to-many class="Soft.Inventario.Entidades.ExistenciaUnidad"/>
     </bag>
 
-
     <bag name="Almacenes" cascade="all-delete-orphan" order-by="Orden" lazy="false">
       <key column="IDExistencia"/>
       <one-to-many class="Soft.Inventario.Entidades.ExistenciaAlmacen"/>
     </bag>
 
-
-
-
     <bag name="Maquinas" cascade="all-delete-orphan" order-by="Orden" lazy="false">
       <key column="IDExistencia"/>
       <one-to-many class="Soft.Inventario.Entidades.ExistenciaMaquina"/>
     </bag>
-
 
   </class>
 

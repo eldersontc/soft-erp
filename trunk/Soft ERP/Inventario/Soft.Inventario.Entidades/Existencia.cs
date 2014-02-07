@@ -29,9 +29,7 @@ namespace Soft.Inventario.Entidades
 
         public virtual Boolean EsCotizacion { get; set; }
 
-
         public virtual string UnidadMedidaDimensiones { get; set; }
-
 
         public virtual ClasificacionExistencia ClasificacionExistencia { get; set; }
         public virtual ItemClasificacionExistencia ItemClasificacionExistencia { get; set; }
@@ -42,6 +40,7 @@ namespace Soft.Inventario.Entidades
         public virtual Decimal Alto { get; set; }
         public virtual Decimal CostoUltimaCompra { get; set; }
         public virtual Decimal CostoPromedio { get; set; }
+        public virtual String Ubicacion { get; set; }
 
         public virtual IList<ExistenciaUnidad> Unidades { get; set; }
         public virtual IList<ExistenciaAlmacen> Almacenes { get; set; }
@@ -61,14 +60,12 @@ namespace Soft.Inventario.Entidades
             return Item;
         }
 
-
         public virtual ExistenciaMaquina AddItemMaquina()
         {
             ExistenciaMaquina Item = new ExistenciaMaquina();
             this.Maquinas.Add(Item);
             return Item;
         }
-
 
         public virtual Unidad UnidadBase()
         {
