@@ -19,11 +19,8 @@ namespace Soft.Ventas.Win
                 SolicitudCotizacion SolicitudCotizacion = (SolicitudCotizacion)base.m_ObjectFlow;
                 if (!SolicitudCotizacion.EstadoAprobacion.Equals("APROBADO"))
                 {
-                    
-                    throw new Exception("La Solicitud no esta aprobada");
-
+                    throw new Exception(String.Format("La Solicitud de Cotización Nº : {0} no está APROBADO",SolicitudCotizacion.Numeracion));
                 }
-
 
                 Cotizacion Cotizacion = new Cotizacion();
                 Cotizacion.Cantidad = 1;
@@ -34,7 +31,7 @@ namespace Soft.Ventas.Win
                 Cotizacion.TipoDocumento = (TipoCotizacion)HelperNHibernate.GetEntityByID("TipoCotizacion", "B8AA5B25-9180-44A6-B750-F96D1EA17147");
                 Cotizacion.Contacto = SolicitudCotizacion.Contacto;
                 Cotizacion.Vendedor = SolicitudCotizacion.Responsable;
-                Cotizacion.Observacion = String.Format("Generado desde la Solicitud - {0}", SolicitudCotizacion.Numeracion);
+                Cotizacion.Observacion = SolicitudCotizacion.Observacion;
                 Cotizacion.Moneda = SolicitudCotizacion.Moneda;
 
                 String filtro = "";
