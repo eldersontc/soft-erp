@@ -610,7 +610,6 @@ namespace Soft.Win
         public void HabilitarOpciones() {
             HabilitarOpcionesEstandar();
             ConstruirGrupoPersonalizado();
-            MostrarToolBar();
         }
 
         public void DeshabilitarOpciones() {
@@ -660,10 +659,6 @@ namespace Soft.Win
                 SoftException.Control(ex, SystemIcons.Warning.ToBitmap());   
             }
             
-        }
-
-        public void MostrarToolBar() {
-            usbMain.Panels[1].Text = String.Format("NRO. FILAS : {0}", ((FrmDetails)m_ActiveForm).CountRows);     
         }
 
         private void utbmMain_BeforeToolbarListDropdown(object sender, BeforeToolbarListDropdownEventArgs e)

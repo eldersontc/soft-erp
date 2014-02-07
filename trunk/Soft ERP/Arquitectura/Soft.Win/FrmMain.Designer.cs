@@ -127,8 +127,8 @@
             this.uebMain.Location = new System.Drawing.Point(8, 55);
             this.uebMain.Name = "uebMain";
             this.uebMain.NavigationPaneExpansionMode = ((Infragistics.Win.UltraWinExplorerBar.NavigationPaneExpansionMode)((Infragistics.Win.UltraWinExplorerBar.NavigationPaneExpansionMode.OnButtonClick | Infragistics.Win.UltraWinExplorerBar.NavigationPaneExpansionMode.OnSizeChanged)));
-            this.uebMain.NavigationPaneFlyoutSize = new System.Drawing.Size(214, 0);
-            this.uebMain.Size = new System.Drawing.Size(214, 351);
+            this.uebMain.NavigationPaneFlyoutSize = new System.Drawing.Size(251, 0);
+            this.uebMain.Size = new System.Drawing.Size(251, 351);
             this.uebMain.Style = Infragistics.Win.UltraWinExplorerBar.UltraExplorerBarStyle.OutlookNavigationPane;
             this.uebMain.TabIndex = 12;
             this.uebMain.ViewStyle = Infragistics.Win.UltraWinExplorerBar.UltraExplorerBarViewStyle.Office2007;
