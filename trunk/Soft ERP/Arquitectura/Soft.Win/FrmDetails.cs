@@ -19,7 +19,6 @@ namespace Soft.Win
 {
     public partial class FrmDetails : Form
     {
-        private XmlDocument m_XMLCofiguration;
         private ItemContenedor m_ItemContenedor;
         private Dictionary<string, string> Filtros = new Dictionary<string, string>();
 
