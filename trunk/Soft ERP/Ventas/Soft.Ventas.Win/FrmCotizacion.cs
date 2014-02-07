@@ -751,30 +751,68 @@ namespace Soft.Ventas.Win
             if (ItemCotizacion.Material == null) { MessageBox.Show("No se ha asignado ningún material.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return; }
             if (ItemCotizacion.Maquina == null) { MessageBox.Show("No se ha asignado ninguna máquina.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return; }
 
-            Int32 LargoTotal = 0;
-            Int32 AltoTotal = 0;
+            Int32 LargoGrafico = 0;
+            Int32 AltoGrafico = 0;
+            Int32 LargoPictureBox = 0;
+            Int32 AltoPictureBox = 0;
 
             if (ItemCotizacion.MetodoImpresion.Equals("TIRA Y RETIRA"))
             {
-                LargoTotal = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo) / 2;
-                AltoTotal = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
+                if (ItemCotizacion.GraficoPrecorteGirado)
+                {
+                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
+                    LargoGrafico = LargoPictureBox / 2;
+                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
+                    AltoGrafico = AltoPictureBox;
+                }
+                else
+                {
+                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
+                    LargoGrafico = LargoPictureBox / 2;
+                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
+                    AltoGrafico = AltoPictureBox;
+                }
             }
             else if (ItemCotizacion.MetodoImpresion.Equals("CONTRAPINZA"))
             {
-                LargoTotal = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-                AltoTotal = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto) / 2;
+                if (ItemCotizacion.GraficoPrecorteGirado)
+                {
+                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
+                    LargoGrafico = LargoPictureBox;
+                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
+                    AltoGrafico = AltoPictureBox / 2;
+                }
+                else
+                {
+                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
+                    LargoGrafico = LargoPictureBox;
+                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
+                    AltoGrafico = AltoPictureBox / 2;
+                }
             }
             else
             {
-                LargoTotal = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-                AltoTotal = Convert.ToInt32(ItemCotizacion.Material.Alto);
+                if (ItemCotizacion.GraficoPrecorteGirado)
+                {
+                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
+                    LargoGrafico = LargoPictureBox;
+                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
+                    AltoGrafico = AltoPictureBox;
+                }
+                else
+                {
+                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
+                    LargoGrafico = LargoPictureBox;
+                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
+                    AltoGrafico = AltoPictureBox;
+                }
             }
 
             Int32 LargoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo);
             Int32 AltoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaAlto);
 
-            upbImpresion.Width = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-            upbImpresion.Height = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
+            upbImpresion.Width = LargoPictureBox;
+            upbImpresion.Height = AltoPictureBox;
 
             Bitmap b;
             b = new Bitmap(upbImpresion.Width, upbImpresion.Height);
@@ -784,9 +822,9 @@ namespace Soft.Ventas.Win
             Pen MyPen = new Pen(System.Drawing.Color.Black, 1);
             
             int CantidadPiezas = 0;
-            for (int x = LargoPieza; x <= LargoTotal; x += LargoPieza)
+            for (int x = LargoPieza; x <= LargoGrafico; x += LargoPieza)
             {
-                for (int y = AltoPieza; y <= AltoTotal; y += AltoPieza)
+                for (int y = AltoPieza; y <= AltoGrafico; y += AltoPieza)
                 {
                     g.DrawRectangle(MyPen, new Rectangle(x - LargoPieza, y - AltoPieza, LargoPieza, AltoPieza));
                     CantidadPiezas += 1;
@@ -801,23 +839,23 @@ namespace Soft.Ventas.Win
                 Brush Brush = new SolidBrush(System.Drawing.Color.Red);
                 Pen Pen = new Pen(System.Drawing.Color.Red, 1);
 
-                g.DrawImage((Image)upbImpresion.Image, LargoTotal, 0);
-                g.DrawLine(Pen, LargoTotal, 0, LargoTotal, AltoTotal);
-                g.DrawString("T", Font, Brush, (LargoTotal / 2) - 10, (AltoTotal / 2) - 10);
-                g.DrawString("R", Font, Brush, ((LargoTotal / 2) * 3) - 10, (AltoTotal / 2) - 10);
+                g.DrawImage((Image)upbImpresion.Image, LargoGrafico, 0);
+                g.DrawLine(Pen, LargoGrafico, 0, LargoGrafico, AltoGrafico);
+                g.DrawString("T", Font, Brush, (LargoGrafico / 2) - 10, (AltoGrafico / 2) - 10);
+                g.DrawString("R", Font, Brush, ((LargoGrafico / 2) * 3) - 10, (AltoGrafico / 2) - 10);
 
                 CantidadPiezas = CantidadPiezas * 2;
             }
-            else if(ItemCotizacion.MetodoImpresion.Equals("CONTRAPINZA"))
+            else if (ItemCotizacion.MetodoImpresion.Equals("CONTRAPINZA"))
             {
                 Font Font = new System.Drawing.Font("Arial Narrow", 20, FontStyle.Regular);
                 Brush Brush = new SolidBrush(System.Drawing.Color.Red);
                 Pen Pen = new Pen(System.Drawing.Color.Red, 1);
 
-                g.DrawImage((Image)upbImpresion.Image, 0, AltoTotal);
-                g.DrawLine(Pen, 0, AltoTotal, LargoTotal, AltoTotal);
-                g.DrawString("T", Font, Brush, (LargoTotal / 2) - 10, (AltoTotal / 2) - 10);
-                g.DrawString("R", Font, Brush, (LargoTotal / 2) - 10, ((AltoTotal / 2) * 3) - 10);
+                g.DrawImage((Image)upbImpresion.Image, 0, AltoGrafico);
+                g.DrawLine(Pen, 0, AltoGrafico, LargoGrafico, AltoGrafico);
+                g.DrawString("T", Font, Brush, (LargoGrafico / 2) - 10, (AltoGrafico / 2) - 10);
+                g.DrawString("R", Font, Brush, (LargoGrafico / 2) - 10, ((AltoGrafico / 2) * 3) - 10);
 
                 CantidadPiezas = CantidadPiezas * 2;
             }
@@ -835,30 +873,67 @@ namespace Soft.Ventas.Win
             if (ItemCotizacion.Material == null) { MessageBox.Show("No se ha asignado ningún material.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return; }
             if (ItemCotizacion.Maquina == null) { MessageBox.Show("No se ha asignado ninguna máquina.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return; }
 
-            Int32 LargoTotal = 0;
-            Int32 AltoTotal = 0;
+            Int32 LargoGrafico = 0;
+            Int32 AltoGrafico = 0;
+            Int32 LargoPictureBox = 0;
+            Int32 AltoPictureBox = 0;
 
             if (ItemCotizacion.MetodoImpresion.Equals("TIRA Y RETIRA"))
             {
-                LargoTotal = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo) / 2;
-                AltoTotal = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
+                if (ItemCotizacion.GraficoPrecorteGirado)
+                {
+                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
+                    LargoGrafico = LargoPictureBox / 2;
+                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
+                    AltoGrafico = AltoPictureBox;
+                }
+                else {
+                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
+                    LargoGrafico = LargoPictureBox / 2;
+                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
+                    AltoGrafico = AltoPictureBox;
+                }
             }
             else if (ItemCotizacion.MetodoImpresion.Equals("CONTRAPINZA"))
             {
-                LargoTotal = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-                AltoTotal = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto) / 2;
+                if (ItemCotizacion.GraficoPrecorteGirado)
+                {
+                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
+                    LargoGrafico = LargoPictureBox;
+                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
+                    AltoGrafico = AltoPictureBox / 2;
+                }
+                else {
+                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
+                    LargoGrafico = LargoPictureBox;
+                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
+                    AltoGrafico = AltoPictureBox / 2;
+                }
             }
             else
             {
-                LargoTotal = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-                AltoTotal = Convert.ToInt32(ItemCotizacion.Material.Alto);
+                if (ItemCotizacion.GraficoPrecorteGirado)
+                {
+                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
+                    LargoGrafico = LargoPictureBox;
+                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
+                    AltoGrafico = AltoPictureBox;
+                }
+                else
+                {
+                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
+                    LargoGrafico = LargoPictureBox;
+                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
+                    AltoGrafico = AltoPictureBox;
+                }
             }
 
             Int32 LargoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo);
             Int32 AltoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaAlto);
 
-            upbImpresion.Width = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-            upbImpresion.Height = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
+            upbImpresion.Width = LargoPictureBox;
+            upbImpresion.Height = AltoPictureBox;
+
             Bitmap b;
             b = new Bitmap(upbImpresion.Width, upbImpresion.Height);
             upbImpresion.Image = (Image)b;
@@ -867,9 +942,9 @@ namespace Soft.Ventas.Win
             Pen MyPen = new Pen(System.Drawing.Color.Black, 1);
             
             int CantidadPiezas = 0;
-            for (int x = AltoPieza; x <= LargoTotal; x += AltoPieza)
+            for (int x = AltoPieza; x <= LargoGrafico; x += AltoPieza)
             {
-                for (int y = LargoPieza; y <= AltoTotal; y += LargoPieza)
+                for (int y = LargoPieza; y <= AltoGrafico; y += LargoPieza)
                 {
                     g.DrawRectangle(MyPen, new Rectangle(x - AltoPieza, y - LargoPieza, AltoPieza, LargoPieza));
                     CantidadPiezas += 1;
@@ -884,10 +959,10 @@ namespace Soft.Ventas.Win
                 Brush Brush = new SolidBrush(System.Drawing.Color.Red);
                 Pen Pen = new Pen(System.Drawing.Color.Red, 1);
 
-                g.DrawImage((Image)upbImpresion.Image, LargoTotal, 0);
-                g.DrawLine(Pen, LargoTotal, 0, LargoTotal, AltoTotal);
-                g.DrawString("T", Font, Brush, (LargoTotal / 2) - 10, (AltoTotal / 2) - 10);
-                g.DrawString("R", Font, Brush, ((LargoTotal / 2) * 3) - 10, (AltoTotal / 2) - 10);
+                g.DrawImage((Image)upbImpresion.Image, LargoGrafico, 0);
+                g.DrawLine(Pen, LargoGrafico, 0, LargoGrafico, AltoGrafico);
+                g.DrawString("T", Font, Brush, (LargoGrafico / 2) - 10, (AltoGrafico / 2) - 10);
+                g.DrawString("R", Font, Brush, ((LargoGrafico / 2) * 3) - 10, (AltoGrafico / 2) - 10);
 
                 CantidadPiezas = CantidadPiezas * 2;
             }
@@ -897,10 +972,10 @@ namespace Soft.Ventas.Win
                 Brush Brush = new SolidBrush(System.Drawing.Color.Red);
                 Pen Pen = new Pen(System.Drawing.Color.Red, 1);
 
-                g.DrawImage((Image)upbImpresion.Image, 0, AltoTotal);
-                g.DrawLine(Pen, 0, AltoTotal, LargoTotal, AltoTotal);
-                g.DrawString("T", Font, Brush, (LargoTotal / 2) - 10, (AltoTotal / 2) - 10);
-                g.DrawString("R", Font, Brush, (LargoTotal / 2) - 10, ((AltoTotal / 2) * 3) - 10);
+                g.DrawImage((Image)upbImpresion.Image, 0, AltoGrafico);
+                g.DrawLine(Pen, 0, AltoGrafico, LargoGrafico, AltoGrafico);
+                g.DrawString("T", Font, Brush, (LargoGrafico / 2) - 10, (AltoGrafico / 2) - 10);
+                g.DrawString("R", Font, Brush, (LargoGrafico / 2) - 10, ((AltoGrafico / 2) * 3) - 10);
 
                 CantidadPiezas = CantidadPiezas * 2;
             }
@@ -1203,7 +1278,22 @@ namespace Soft.Ventas.Win
 
         private void ubImprimirGraficoImpresion_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                Bitmap b = new Bitmap((Image)upbImpresion.Image);
+                String RutaGrafico = String.Format("{0}Grafico_{1}.png", FrmMain.CarpetaImagenes, ItemCotizacion.ID);
+                b.Save(RutaGrafico);
+                Soft.Reporte.Entidades.Reporte Reporte = (Soft.Reporte.Entidades.Reporte)HelperNHibernate.GetEntityByField("Reporte", "Codigo", "VEN-0005");
+                ParametroReporte Parametro = Reporte.Parametros[0];
+                Parametro.Valor = RutaGrafico;
+                PrintReport ControladorImpresion = new PrintReport();
+                ControladorImpresion.m_ObjectFlow = Reporte;
+                ControladorImpresion.Start();
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
