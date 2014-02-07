@@ -19,5 +19,6 @@ namespace Soft.Configuracion.Entidades
         public virtual String Propiedad { get; set; }
         public virtual Boolean Establecer { get; set; }
         public virtual int Orden { get; set; }
+        public virtual Boolean Indice { get; set; }
     }
 }

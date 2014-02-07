@@ -28,6 +28,7 @@ namespace Soft.Configuracion.Win
 
         private Boolean UpdateUI = false;
 
+        const String colOrden = "#";
         const String colNombre = "Nombre";
         const String colCampo = "Campo";
         const String colAncho = "Ancho";
@@ -36,8 +37,8 @@ namespace Soft.Configuracion.Win
         const String colPropiedad = "Propiedad";
         const String colEstablecer = "Establecer";
         const String colDescripcion = "Descripción";
-        const String colOrden = "#";
-
+        const String colIndice = "Indice";
+        
         public Soft.Configuracion.Entidades.Panel Panel { get { return (Soft.Configuracion.Entidades.Panel)base.m_ObjectFlow; } }
 
         #region Metodos
@@ -77,6 +78,9 @@ namespace Soft.Configuracion.Win
             column = columns.Columns.Add(colEstilo);
             column.DataType = typeof(String);
 
+            column = columns.Columns.Add(colIndice);
+            column.DataType = typeof(Boolean);
+
             ugColumnas.DataSource = columns;
             ugColumnas.DisplayLayout.Bands[0].Columns[colOrden].Width = 50;
             ugColumnas.DisplayLayout.Bands[0].Columns[colAncho].Width = 50;
@@ -104,6 +108,7 @@ namespace Soft.Configuracion.Win
         }
 
         public void MostrarColumnas() {
+            ugColumnas.EventManager.AllEventsEnabled = false;
             base.ClearAllRows(ref ugColumnas);
             foreach (ColumnaPanel Item in Panel.Columnas)
             {
@@ -111,11 +116,13 @@ namespace Soft.Configuracion.Win
                 Row.Tag = Item;
                 MostrarColumna(Row);
             }
+            ugColumnas.EventManager.AllEventsEnabled = true;
         }
 
         public void MostrarColumna(UltraGridRow Row) {
             ColumnaPanel columna = (ColumnaPanel)Row.Tag;
             columna.Orden = Row.Index + 1;
+            Row.Cells[colOrden].Value = columna.Orden;
             Row.Cells[colNombre].Value = columna.Nombre;
             Row.Cells[colCampo].Value = columna.CampoSQL;
             Row.Cells[colAncho].Value = columna.Ancho;
@@ -123,7 +130,7 @@ namespace Soft.Configuracion.Win
             Row.Cells[colEstilo].Value = columna.Estilo;
             Row.Cells[colPropiedad].Value = columna.Propiedad;
             Row.Cells[colEstablecer].Value = columna.Establecer;
-            Row.Cells[colOrden].Value = columna.Orden;
+            Row.Cells[colIndice].Value = columna.Indice;
         }
 
         public void ConstruirColumnas(XmlDocument XML) {
@@ -183,6 +190,9 @@ namespace Soft.Configuracion.Win
                     break;
                 case colOrden:
                     columna.Orden = Convert.ToInt32(e.Cell.Text);
+                    break;
+                case colIndice:
+                    columna.Indice = !Convert.ToBoolean(e.Cell.Value);
                     break;
                 default:
                     break;

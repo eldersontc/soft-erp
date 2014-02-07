@@ -66,6 +66,8 @@
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ubBajar = new Infragistics.Win.Misc.UltraButton();
+            this.ugSubir = new Infragistics.Win.Misc.UltraButton();
             this.ugItemAccion = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.ubEliminar = new Infragistics.Win.Misc.UltraButton();
             this.ubNuevo = new Infragistics.Win.Misc.UltraButton();
@@ -81,8 +83,6 @@
             this.ucTeclas = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             this.utcSubAcciones = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
-            this.ubBajar = new Infragistics.Win.Misc.UltraButton();
-            this.ugSubir = new Infragistics.Win.Misc.UltraButton();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.ultraTabPageControl1.SuspendLayout();
@@ -109,7 +109,7 @@
             this.ugbParent.Controls.Add(this.txtNombre);
             this.ugbParent.Controls.Add(this.ultraLabel2);
             this.ugbParent.Controls.Add(this.ultraLabel1);
-            this.ugbParent.Size = new System.Drawing.Size(475, 433);
+            this.ugbParent.Size = new System.Drawing.Size(675, 460);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel1, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
@@ -126,12 +126,12 @@
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(387, 398);
+            this.ubCancelar.Location = new System.Drawing.Point(578, 422);
             this.ubCancelar.TabIndex = 10;
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(306, 398);
+            this.ubAceptar.Location = new System.Drawing.Point(497, 422);
             this.ubAceptar.TabIndex = 9;
             // 
             // ilMain
@@ -394,7 +394,25 @@
             this.ultraTabPageControl1.Controls.Add(this.ubNuevo);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(437, 219);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(630, 288);
+            // 
+            // ubBajar
+            // 
+            this.ubBajar.Location = new System.Drawing.Point(80, 257);
+            this.ubBajar.Name = "ubBajar";
+            this.ubBajar.Size = new System.Drawing.Size(70, 23);
+            this.ubBajar.TabIndex = 16;
+            this.ubBajar.Text = "Bajar";
+            this.ubBajar.Click += new System.EventHandler(this.ubBajar_Click);
+            // 
+            // ugSubir
+            // 
+            this.ugSubir.Location = new System.Drawing.Point(8, 257);
+            this.ugSubir.Name = "ugSubir";
+            this.ugSubir.Size = new System.Drawing.Size(66, 23);
+            this.ugSubir.TabIndex = 15;
+            this.ugSubir.Text = "Subir";
+            this.ugSubir.Click += new System.EventHandler(this.ugSubir_Click);
             // 
             // ugItemAccion
             // 
@@ -402,7 +420,7 @@
             this.ugItemAccion.Dock = System.Windows.Forms.DockStyle.Top;
             this.ugItemAccion.Location = new System.Drawing.Point(0, 0);
             this.ugItemAccion.Name = "ugItemAccion";
-            this.ugItemAccion.Size = new System.Drawing.Size(437, 183);
+            this.ugItemAccion.Size = new System.Drawing.Size(630, 251);
             this.ugItemAccion.TabIndex = 9;
             this.ugItemAccion.Text = "ultraGrid1";
             this.ugItemAccion.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ugItemAccion_CellChange);
@@ -411,7 +429,7 @@
             // ubEliminar
             // 
             this.ubEliminar.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Office2010Button;
-            this.ubEliminar.Location = new System.Drawing.Point(354, 189);
+            this.ubEliminar.Location = new System.Drawing.Point(548, 257);
             this.ubEliminar.Name = "ubEliminar";
             this.ubEliminar.Size = new System.Drawing.Size(75, 23);
             this.ubEliminar.TabIndex = 8;
@@ -421,7 +439,7 @@
             // ubNuevo
             // 
             this.ubNuevo.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Office2010Button;
-            this.ubNuevo.Location = new System.Drawing.Point(273, 189);
+            this.ubNuevo.Location = new System.Drawing.Point(467, 257);
             this.ubNuevo.Name = "ubNuevo";
             this.ubNuevo.Size = new System.Drawing.Size(75, 23);
             this.ubNuevo.TabIndex = 7;
@@ -452,7 +470,7 @@
             // 
             this.txtNombre.Location = new System.Drawing.Point(127, 13);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(266, 21);
+            this.txtNombre.Size = new System.Drawing.Size(345, 21);
             this.txtNombre.TabIndex = 0;
             this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
@@ -460,7 +478,7 @@
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(128, 44);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(266, 21);
+            this.txtDescripcion.Size = new System.Drawing.Size(344, 21);
             this.txtDescripcion.TabIndex = 3;
             this.txtDescripcion.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
             // 
@@ -470,7 +488,7 @@
             this.uceActivo.Appearance = appearance6;
             this.uceActivo.BackColor = System.Drawing.Color.Transparent;
             this.uceActivo.BackColorInternal = System.Drawing.Color.Transparent;
-            this.uceActivo.Location = new System.Drawing.Point(127, 128);
+            this.uceActivo.Location = new System.Drawing.Point(589, 14);
             this.uceActivo.Name = "uceActivo";
             this.uceActivo.Size = new System.Drawing.Size(70, 20);
             this.uceActivo.TabIndex = 4;
@@ -483,11 +501,11 @@
             this.uceFilaSeleccionada.Appearance = appearance5;
             this.uceFilaSeleccionada.BackColor = System.Drawing.Color.Transparent;
             this.uceFilaSeleccionada.BackColorInternal = System.Drawing.Color.Transparent;
-            this.uceFilaSeleccionada.Location = new System.Drawing.Point(127, 102);
+            this.uceFilaSeleccionada.Location = new System.Drawing.Point(499, 14);
             this.uceFilaSeleccionada.Name = "uceFilaSeleccionada";
-            this.uceFilaSeleccionada.Size = new System.Drawing.Size(116, 20);
+            this.uceFilaSeleccionada.Size = new System.Drawing.Size(82, 20);
             this.uceFilaSeleccionada.TabIndex = 5;
-            this.uceFilaSeleccionada.Text = "Fila Seleccionada";
+            this.uceFilaSeleccionada.Text = "Fila Selec.";
             this.uceFilaSeleccionada.CheckedChanged += new System.EventHandler(this.uceFilaSeleccionada_CheckedChanged);
             // 
             // ubBuscarImage
@@ -496,7 +514,7 @@
             appearance4.ImageHAlign = Infragistics.Win.HAlign.Center;
             appearance4.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.ubBuscarImage.Appearance = appearance4;
-            this.ubBuscarImage.Location = new System.Drawing.Point(365, 105);
+            this.ubBuscarImage.Location = new System.Drawing.Point(580, 51);
             this.ubBuscarImage.Name = "ubBuscarImage";
             this.ubBuscarImage.Size = new System.Drawing.Size(28, 20);
             this.ubBuscarImage.TabIndex = 6;
@@ -507,7 +525,7 @@
             this.upbImagen.BackColor = System.Drawing.Color.Transparent;
             this.upbImagen.BorderShadowColor = System.Drawing.Color.Empty;
             this.upbImagen.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
-            this.upbImagen.Location = new System.Drawing.Point(318, 100);
+            this.upbImagen.Location = new System.Drawing.Point(533, 46);
             this.upbImagen.Name = "upbImagen";
             this.upbImagen.Size = new System.Drawing.Size(41, 40);
             this.upbImagen.TabIndex = 36;
@@ -610,7 +628,7 @@
             valueListItem27});
             this.ucTeclas.Location = new System.Drawing.Point(127, 73);
             this.ucTeclas.Name = "ucTeclas";
-            this.ucTeclas.Size = new System.Drawing.Size(266, 21);
+            this.ucTeclas.Size = new System.Drawing.Size(143, 21);
             this.ucTeclas.TabIndex = 40;
             this.ucTeclas.ValueChanged += new System.EventHandler(this.ucTeclas_ValueChanged);
             // 
@@ -620,10 +638,10 @@
             this.utcSubAcciones.Appearance = appearance1;
             this.utcSubAcciones.Controls.Add(this.ultraTabSharedControlsPage1);
             this.utcSubAcciones.Controls.Add(this.ultraTabPageControl1);
-            this.utcSubAcciones.Location = new System.Drawing.Point(21, 147);
+            this.utcSubAcciones.Location = new System.Drawing.Point(21, 102);
             this.utcSubAcciones.Name = "utcSubAcciones";
             this.utcSubAcciones.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.utcSubAcciones.Size = new System.Drawing.Size(441, 245);
+            this.utcSubAcciones.Size = new System.Drawing.Size(634, 314);
             appearance2.BackColor = System.Drawing.Color.Transparent;
             this.utcSubAcciones.TabHeaderAreaAppearance = appearance2;
             this.utcSubAcciones.TabIndex = 41;
@@ -636,31 +654,13 @@
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(437, 219);
-            // 
-            // ubBajar
-            // 
-            this.ubBajar.Location = new System.Drawing.Point(80, 189);
-            this.ubBajar.Name = "ubBajar";
-            this.ubBajar.Size = new System.Drawing.Size(70, 23);
-            this.ubBajar.TabIndex = 16;
-            this.ubBajar.Text = "Bajar";
-            this.ubBajar.Click += new System.EventHandler(this.ubBajar_Click);
-            // 
-            // ugSubir
-            // 
-            this.ugSubir.Location = new System.Drawing.Point(8, 189);
-            this.ugSubir.Name = "ugSubir";
-            this.ugSubir.Size = new System.Drawing.Size(66, 23);
-            this.ugSubir.TabIndex = 15;
-            this.ugSubir.Text = "Subir";
-            this.ugSubir.Click += new System.EventHandler(this.ugSubir_Click);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(630, 288);
             // 
             // FrmAccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 471);
+            this.ClientSize = new System.Drawing.Size(691, 498);
             this.Name = "FrmAccion";
             this.Text = "Acción";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();

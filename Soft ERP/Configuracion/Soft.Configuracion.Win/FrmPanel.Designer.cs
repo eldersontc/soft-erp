@@ -38,7 +38,11 @@
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl3 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ubEliminarColumna = new Infragistics.Win.Misc.UltraButton();
+            this.ubNuevaColumna = new Infragistics.Win.Misc.UltraButton();
+            this.ubBajar = new Infragistics.Win.Misc.UltraButton();
             this.ugColumnas = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.ugSubir = new Infragistics.Win.Misc.UltraButton();
             this.txtNombre = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
@@ -47,10 +51,6 @@
             this.ssVistaSQL = new Soft.Controls.SoftSearch();
             this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
             this.ssEntidadSF = new Soft.Controls.SoftSearch();
-            this.ugSubir = new Infragistics.Win.Misc.UltraButton();
-            this.ubBajar = new Infragistics.Win.Misc.UltraButton();
-            this.ubNuevaColumna = new Infragistics.Win.Misc.UltraButton();
-            this.ubEliminarColumna = new Infragistics.Win.Misc.UltraButton();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.ultraTabPageControl3.SuspendLayout();
@@ -69,7 +69,7 @@
             this.ugbParent.Controls.Add(this.ultraLabel2);
             this.ugbParent.Controls.Add(this.txtNombre);
             this.ugbParent.Controls.Add(this.ultraLabel1);
-            this.ugbParent.Size = new System.Drawing.Size(493, 438);
+            this.ugbParent.Size = new System.Drawing.Size(728, 482);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel1, 0);
@@ -82,11 +82,11 @@
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(400, 404);
+            this.ubCancelar.Location = new System.Drawing.Point(636, 443);
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(319, 404);
+            this.ubAceptar.Location = new System.Drawing.Point(555, 443);
             // 
             // ilMain
             // 
@@ -153,7 +153,34 @@
             this.ultraTabPageControl3.Controls.Add(this.ugSubir);
             this.ultraTabPageControl3.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl3.Name = "ultraTabPageControl3";
-            this.ultraTabPageControl3.Size = new System.Drawing.Size(451, 262);
+            this.ultraTabPageControl3.Size = new System.Drawing.Size(687, 335);
+            // 
+            // ubEliminarColumna
+            // 
+            this.ubEliminarColumna.Location = new System.Drawing.Point(614, 304);
+            this.ubEliminarColumna.Name = "ubEliminarColumna";
+            this.ubEliminarColumna.Size = new System.Drawing.Size(66, 23);
+            this.ubEliminarColumna.TabIndex = 16;
+            this.ubEliminarColumna.Text = "Eliminar";
+            this.ubEliminarColumna.Click += new System.EventHandler(this.ubEliminarColumna_Click);
+            // 
+            // ubNuevaColumna
+            // 
+            this.ubNuevaColumna.Location = new System.Drawing.Point(543, 304);
+            this.ubNuevaColumna.Name = "ubNuevaColumna";
+            this.ubNuevaColumna.Size = new System.Drawing.Size(66, 23);
+            this.ubNuevaColumna.TabIndex = 15;
+            this.ubNuevaColumna.Text = "Nuevo";
+            this.ubNuevaColumna.Click += new System.EventHandler(this.ubNuevaColumna_Click);
+            // 
+            // ubBajar
+            // 
+            this.ubBajar.Location = new System.Drawing.Point(79, 304);
+            this.ubBajar.Name = "ubBajar";
+            this.ubBajar.Size = new System.Drawing.Size(70, 23);
+            this.ubBajar.TabIndex = 14;
+            this.ubBajar.Text = "Bajar";
+            this.ubBajar.Click += new System.EventHandler(this.ubBajar_Click);
             // 
             // ugColumnas
             // 
@@ -169,16 +196,25 @@
             this.ugColumnas.Dock = System.Windows.Forms.DockStyle.Top;
             this.ugColumnas.Location = new System.Drawing.Point(0, 0);
             this.ugColumnas.Name = "ugColumnas";
-            this.ugColumnas.Size = new System.Drawing.Size(451, 230);
+            this.ugColumnas.Size = new System.Drawing.Size(687, 298);
             this.ugColumnas.TabIndex = 2;
             this.ugColumnas.Text = "ultraGrid1";
             this.ugColumnas.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ugColumnas_CellChange);
             // 
+            // ugSubir
+            // 
+            this.ugSubir.Location = new System.Drawing.Point(7, 304);
+            this.ugSubir.Name = "ugSubir";
+            this.ugSubir.Size = new System.Drawing.Size(66, 23);
+            this.ugSubir.TabIndex = 13;
+            this.ugSubir.Text = "Subir";
+            this.ugSubir.Click += new System.EventHandler(this.ugSubir_Click);
+            // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(128, 17);
+            this.txtNombre.Location = new System.Drawing.Point(126, 17);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(267, 21);
+            this.txtNombre.Size = new System.Drawing.Size(234, 21);
             this.txtNombre.TabIndex = 6;
             this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
@@ -186,7 +222,7 @@
             // 
             appearance7.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel1.Appearance = appearance7;
-            this.ultraLabel1.Location = new System.Drawing.Point(21, 21);
+            this.ultraLabel1.Location = new System.Drawing.Point(19, 21);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(100, 23);
             this.ultraLabel1.TabIndex = 5;
@@ -196,9 +232,9 @@
             // 
             appearance6.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel2.Appearance = appearance6;
-            this.ultraLabel2.Location = new System.Drawing.Point(21, 75);
+            this.ultraLabel2.Location = new System.Drawing.Point(373, 47);
             this.ultraLabel2.Name = "ultraLabel2";
-            this.ultraLabel2.Size = new System.Drawing.Size(100, 23);
+            this.ultraLabel2.Size = new System.Drawing.Size(78, 23);
             this.ultraLabel2.TabIndex = 7;
             this.ultraLabel2.Text = "Vista SQL";
             // 
@@ -208,17 +244,17 @@
             this.ultraTabControl1.Appearance = appearance2;
             this.ultraTabControl1.Controls.Add(this.ultraTabSharedControlsPage2);
             this.ultraTabControl1.Controls.Add(this.ultraTabPageControl3);
-            this.ultraTabControl1.Location = new System.Drawing.Point(21, 109);
+            this.ultraTabControl1.Location = new System.Drawing.Point(19, 76);
             this.ultraTabControl1.Name = "ultraTabControl1";
             this.ultraTabControl1.SharedControlsPage = this.ultraTabSharedControlsPage2;
-            this.ultraTabControl1.Size = new System.Drawing.Size(455, 288);
+            this.ultraTabControl1.Size = new System.Drawing.Size(691, 361);
             appearance4.BackColor = System.Drawing.Color.Transparent;
             this.ultraTabControl1.TabHeaderAreaAppearance = appearance4;
             this.ultraTabControl1.TabIndex = 9;
             appearance5.BackColor = System.Drawing.Color.Linen;
             ultraTab2.ActiveAppearance = appearance5;
             ultraTab2.TabPage = this.ultraTabPageControl3;
-            ultraTab2.Text = ".:: Columnas ::.";
+            ultraTab2.Text = ":: Columnas ::";
             this.ultraTabControl1.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
             ultraTab2});
             // 
@@ -226,12 +262,12 @@
             // 
             this.ultraTabSharedControlsPage2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
-            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(451, 262);
+            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(687, 335);
             // 
             // ssVistaSQL
             // 
             this.ssVistaSQL.BackColor = System.Drawing.Color.Transparent;
-            this.ssVistaSQL.Location = new System.Drawing.Point(128, 70);
+            this.ssVistaSQL.Location = new System.Drawing.Point(443, 42);
             this.ssVistaSQL.Name = "ssVistaSQL";
             this.ssVistaSQL.Size = new System.Drawing.Size(267, 28);
             this.ssVistaSQL.TabIndex = 10;
@@ -242,7 +278,7 @@
             appearance1.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel3.Appearance = appearance1;
             this.ultraLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel3.Location = new System.Drawing.Point(21, 47);
+            this.ultraLabel3.Location = new System.Drawing.Point(19, 47);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(100, 23);
             this.ultraLabel3.TabIndex = 11;
@@ -251,53 +287,17 @@
             // ssEntidadSF
             // 
             this.ssEntidadSF.BackColor = System.Drawing.Color.Transparent;
-            this.ssEntidadSF.Location = new System.Drawing.Point(127, 43);
+            this.ssEntidadSF.Location = new System.Drawing.Point(125, 43);
             this.ssEntidadSF.Name = "ssEntidadSF";
-            this.ssEntidadSF.Size = new System.Drawing.Size(267, 27);
+            this.ssEntidadSF.Size = new System.Drawing.Size(235, 27);
             this.ssEntidadSF.TabIndex = 12;
             this.ssEntidadSF.Search += new System.EventHandler(this.ssEntidadSF_Search);
-            // 
-            // ugSubir
-            // 
-            this.ugSubir.Location = new System.Drawing.Point(3, 235);
-            this.ugSubir.Name = "ugSubir";
-            this.ugSubir.Size = new System.Drawing.Size(66, 23);
-            this.ugSubir.TabIndex = 13;
-            this.ugSubir.Text = "Subir";
-            this.ugSubir.Click += new System.EventHandler(this.ugSubir_Click);
-            // 
-            // ubBajar
-            // 
-            this.ubBajar.Location = new System.Drawing.Point(75, 235);
-            this.ubBajar.Name = "ubBajar";
-            this.ubBajar.Size = new System.Drawing.Size(70, 23);
-            this.ubBajar.TabIndex = 14;
-            this.ubBajar.Text = "Bajar";
-            this.ubBajar.Click += new System.EventHandler(this.ubBajar_Click);
-            // 
-            // ubNuevaColumna
-            // 
-            this.ubNuevaColumna.Location = new System.Drawing.Point(307, 235);
-            this.ubNuevaColumna.Name = "ubNuevaColumna";
-            this.ubNuevaColumna.Size = new System.Drawing.Size(66, 23);
-            this.ubNuevaColumna.TabIndex = 15;
-            this.ubNuevaColumna.Text = "Nuevo";
-            this.ubNuevaColumna.Click += new System.EventHandler(this.ubNuevaColumna_Click);
-            // 
-            // ubEliminarColumna
-            // 
-            this.ubEliminarColumna.Location = new System.Drawing.Point(378, 235);
-            this.ubEliminarColumna.Name = "ubEliminarColumna";
-            this.ubEliminarColumna.Size = new System.Drawing.Size(66, 23);
-            this.ubEliminarColumna.TabIndex = 16;
-            this.ubEliminarColumna.Text = "Eliminar";
-            this.ubEliminarColumna.Click += new System.EventHandler(this.ubEliminarColumna_Click);
             // 
             // FrmPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(509, 476);
+            this.ClientSize = new System.Drawing.Size(744, 520);
             this.Name = "FrmPanel";
             this.Text = "Panel";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
