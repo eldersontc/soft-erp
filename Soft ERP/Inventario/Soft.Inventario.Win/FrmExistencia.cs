@@ -138,9 +138,9 @@ namespace Soft.Inventario.Win
             txtCodigo.Text = this.Existencia.Codigo;
 
 
-            comboUnidad.Text = this.Existencia.UnidadMedidaDimensiones;
+            uceGramaje.Text = this.Existencia.UnidadMedidaDimensiones;
             chekEnCotizacion.Checked = this.Existencia.EsCotizacion;
-            
+
             txtNombre.Text = this.Existencia.Nombre;
             txtDescripcion.Text = this.Existencia.Descripcion;
             CheckActivo.Checked = this.Existencia.Activo;
@@ -149,6 +149,7 @@ namespace Soft.Inventario.Win
             checkesServicio.Checked = this.Existencia.EsServicio;
             checkEsInventariable.Checked = this.Existencia.EsInventariable;
 
+            txtUbicacion.Text = this.Existencia.Ubicacion;
             txtLargo.Value = this.Existencia.Largo;
             txtAlto.Value = this.Existencia.Alto;
             txtGramaje.Value = this.Existencia.Gramaje;
@@ -493,7 +494,6 @@ namespace Soft.Inventario.Win
             this.grillaMaquinas.ActiveRow.Delete(false);
         }
 
-        
         private void txtGramaje_ValueChanged(object sender, EventArgs e)
         {
             Existencia.Gramaje = Convert.ToInt32(txtGramaje.Value);
@@ -509,20 +509,6 @@ namespace Soft.Inventario.Win
             Existencia.Alto = Convert.ToDecimal(txtAlto.Value);
         }
 
-        private void comboUnidad_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                Existencia.UnidadMedidaDimensiones = comboUnidad.Text;
-            }
-            catch (Exception ex)
-            {
-
-                Soft.Exceptions.SoftException.ShowException(ex);
-            }
-            
-        }
-
         private void chekEnCotizacion_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -531,7 +517,30 @@ namespace Soft.Inventario.Win
             }
             catch (Exception ex)
             {
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
+        }
 
+        private void uceGramaje_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Existencia.UnidadMedidaDimensiones = uceGramaje.Text;
+            }
+            catch (Exception ex)
+            {
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
+        }
+
+        private void txtUbicacion_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Existencia.Ubicacion = txtUbicacion.Text;
+            }
+            catch (Exception ex)
+            {
                 Soft.Exceptions.SoftException.ShowException(ex);
             }
         }

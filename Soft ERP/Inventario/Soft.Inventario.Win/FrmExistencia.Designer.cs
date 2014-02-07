@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmExistencia));
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
@@ -49,6 +50,9 @@
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ubEliminar = new Infragistics.Win.Misc.UltraButton();
             this.ubNuevo = new Infragistics.Win.Misc.UltraButton();
@@ -69,6 +73,7 @@
             this.txtCodigo = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.Codigo = new Infragistics.Win.Misc.UltraLabel();
             this.boxGeneralidades = new Infragistics.Win.Misc.UltraGroupBox();
+            this.chekEnCotizacion = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.checkEsInventariable = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.checkesServicio = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.checkEsVenta = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
@@ -91,8 +96,10 @@
             this.uneCostoPromedio = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.uneCostoUltimaCompra = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.lblCostoUltimaCompra = new Infragistics.Win.Misc.UltraLabel();
-            this.chekEnCotizacion = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
-            this.comboUnidad = new System.Windows.Forms.ComboBox();
+            this.uceGramaje = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
+            this.ultraTabPageControl4 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.txtUbicacion = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.lblUbicacion = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.ultraTabPageControl1.SuspendLayout();
@@ -107,6 +114,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxGeneralidades)).BeginInit();
             this.boxGeneralidades.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chekEnCotizacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEsInventariable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkesServicio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEsVenta)).BeginInit();
@@ -122,12 +130,14 @@
             this.ugbCostos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoPromedio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoUltimaCompra)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chekEnCotizacion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uceGramaje)).BeginInit();
+            this.ultraTabPageControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUbicacion)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
             // 
-            this.ugbParent.Controls.Add(this.comboUnidad);
+            this.ugbParent.Controls.Add(this.uceGramaje);
             this.ugbParent.Controls.Add(this.ugbCostos);
             this.ugbParent.Controls.Add(this.txtAlto);
             this.ugbParent.Controls.Add(this.txtLargo);
@@ -169,7 +179,7 @@
             this.ugbParent.Controls.SetChildIndex(this.txtLargo, 0);
             this.ugbParent.Controls.SetChildIndex(this.txtAlto, 0);
             this.ugbParent.Controls.SetChildIndex(this.ugbCostos, 0);
-            this.ugbParent.Controls.SetChildIndex(this.comboUnidad, 0);
+            this.ugbParent.Controls.SetChildIndex(this.uceGramaje, 0);
             // 
             // ubCancelar
             // 
@@ -437,7 +447,7 @@
             this.ultraTabPageControl1.Controls.Add(this.ubEliminar);
             this.ultraTabPageControl1.Controls.Add(this.ubNuevo);
             this.ultraTabPageControl1.Controls.Add(this.grillaUnidades);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(567, 218);
             // 
@@ -576,8 +586,8 @@
             // 
             // ultraLabel2
             // 
-            appearance15.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance15;
+            appearance16.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance16;
             this.ultraLabel2.Location = new System.Drawing.Point(16, 73);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(74, 22);
@@ -594,8 +604,8 @@
             // 
             // Nombre
             // 
-            appearance16.BackColor = System.Drawing.Color.Transparent;
-            this.Nombre.Appearance = appearance16;
+            appearance17.BackColor = System.Drawing.Color.Transparent;
+            this.Nombre.Appearance = appearance17;
             this.Nombre.Location = new System.Drawing.Point(16, 45);
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(60, 23);
@@ -612,8 +622,8 @@
             // 
             // Codigo
             // 
-            appearance17.BackColor = System.Drawing.Color.Transparent;
-            this.Codigo.Appearance = appearance17;
+            appearance18.BackColor = System.Drawing.Color.Transparent;
+            this.Codigo.Appearance = appearance18;
             this.Codigo.Location = new System.Drawing.Point(16, 18);
             this.Codigo.Name = "Codigo";
             this.Codigo.Size = new System.Drawing.Size(60, 23);
@@ -622,15 +632,15 @@
             // 
             // boxGeneralidades
             // 
-            appearance13.BackColor = System.Drawing.Color.Transparent;
-            this.boxGeneralidades.Appearance = appearance13;
+            appearance14.BackColor = System.Drawing.Color.Transparent;
+            this.boxGeneralidades.Appearance = appearance14;
             this.boxGeneralidades.Controls.Add(this.chekEnCotizacion);
             this.boxGeneralidades.Controls.Add(this.checkEsInventariable);
             this.boxGeneralidades.Controls.Add(this.checkesServicio);
             this.boxGeneralidades.Controls.Add(this.checkEsVenta);
             this.boxGeneralidades.Controls.Add(this.checkEsCompra);
-            appearance14.BackColor = System.Drawing.Color.Transparent;
-            this.boxGeneralidades.HeaderAppearance = appearance14;
+            appearance15.BackColor = System.Drawing.Color.Transparent;
+            this.boxGeneralidades.HeaderAppearance = appearance15;
             this.boxGeneralidades.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.boxGeneralidades.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
             this.boxGeneralidades.Location = new System.Drawing.Point(443, 7);
@@ -638,6 +648,19 @@
             this.boxGeneralidades.Size = new System.Drawing.Size(141, 135);
             this.boxGeneralidades.TabIndex = 10;
             this.boxGeneralidades.Text = "Generalidades";
+            // 
+            // chekEnCotizacion
+            // 
+            this.chekEnCotizacion.BackColor = System.Drawing.Color.Transparent;
+            this.chekEnCotizacion.BackColorInternal = System.Drawing.Color.Transparent;
+            this.chekEnCotizacion.Checked = true;
+            this.chekEnCotizacion.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chekEnCotizacion.Location = new System.Drawing.Point(19, 112);
+            this.chekEnCotizacion.Name = "chekEnCotizacion";
+            this.chekEnCotizacion.Size = new System.Drawing.Size(116, 20);
+            this.chekEnCotizacion.TabIndex = 4;
+            this.chekEnCotizacion.Text = "En Cotizacion";
+            this.chekEnCotizacion.CheckedChanged += new System.EventHandler(this.chekEnCotizacion_CheckedChanged);
             // 
             // checkEsInventariable
             // 
@@ -699,23 +722,27 @@
             this.ultraTabControl1.Controls.Add(this.ultraTabPageControl1);
             this.ultraTabControl1.Controls.Add(this.ultraTabPageControl2);
             this.ultraTabControl1.Controls.Add(this.ultraTabPageControl3);
+            this.ultraTabControl1.Controls.Add(this.ultraTabPageControl4);
             this.ultraTabControl1.Location = new System.Drawing.Point(16, 240);
             this.ultraTabControl1.Name = "ultraTabControl1";
             this.ultraTabControl1.SharedControlsPage = this.ultraTabSharedControlsPage1;
             this.ultraTabControl1.Size = new System.Drawing.Size(571, 244);
-            appearance12.BackColor = System.Drawing.Color.Transparent;
-            this.ultraTabControl1.TabHeaderAreaAppearance = appearance12;
+            appearance13.BackColor = System.Drawing.Color.Transparent;
+            this.ultraTabControl1.TabHeaderAreaAppearance = appearance13;
             this.ultraTabControl1.TabIndex = 21;
             ultraTab1.TabPage = this.ultraTabPageControl1;
-            ultraTab1.Text = ".:: Unidades ::.";
+            ultraTab1.Text = ":: Unidades ::";
             ultraTab2.TabPage = this.ultraTabPageControl2;
-            ultraTab2.Text = ".:: Almacenes ::.";
+            ultraTab2.Text = ":: Almacenes ::";
             ultraTab3.TabPage = this.ultraTabPageControl3;
-            ultraTab3.Text = ".:: Maquinas  ::.";
+            ultraTab3.Text = ":: Maquinas  ::";
+            ultraTab4.TabPage = this.ultraTabPageControl4;
+            ultraTab4.Text = ":: Información Adicional ::";
             this.ultraTabControl1.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
             ultraTab1,
             ultraTab2,
-            ultraTab3});
+            ultraTab3,
+            ultraTab4});
             // 
             // ultraTabSharedControlsPage1
             // 
@@ -789,7 +816,7 @@
             // 
             // txtGramaje
             // 
-            this.txtGramaje.Location = new System.Drawing.Point(156, 115);
+            this.txtGramaje.Location = new System.Drawing.Point(164, 115);
             this.txtGramaje.MaskInput = "nnnnn";
             this.txtGramaje.MaxValue = 1200;
             this.txtGramaje.MinValue = 0;
@@ -804,7 +831,7 @@
             // 
             appearance6.BackColor = System.Drawing.Color.Transparent;
             this.LabelLargo.Appearance = appearance6;
-            this.LabelLargo.Location = new System.Drawing.Point(222, 119);
+            this.LabelLargo.Location = new System.Drawing.Point(231, 119);
             this.LabelLargo.Name = "LabelLargo";
             this.LabelLargo.Size = new System.Drawing.Size(40, 23);
             this.LabelLargo.TabIndex = 29;
@@ -814,7 +841,7 @@
             // 
             appearance5.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel3.Appearance = appearance5;
-            this.ultraLabel3.Location = new System.Drawing.Point(340, 119);
+            this.ultraLabel3.Location = new System.Drawing.Point(345, 119);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(40, 23);
             this.ultraLabel3.TabIndex = 31;
@@ -822,7 +849,7 @@
             // 
             // txtLargo
             // 
-            this.txtLargo.Location = new System.Drawing.Point(266, 115);
+            this.txtLargo.Location = new System.Drawing.Point(270, 115);
             this.txtLargo.MaskInput = "nnnn.nn";
             this.txtLargo.Name = "txtLargo";
             this.txtLargo.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
@@ -906,30 +933,46 @@
             this.lblCostoUltimaCompra.TabIndex = 32;
             this.lblCostoUltimaCompra.Text = "U.C";
             // 
-            // chekEnCotizacion
+            // uceGramaje
             // 
-            this.chekEnCotizacion.BackColor = System.Drawing.Color.Transparent;
-            this.chekEnCotizacion.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chekEnCotizacion.Checked = true;
-            this.chekEnCotizacion.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chekEnCotizacion.Location = new System.Drawing.Point(19, 112);
-            this.chekEnCotizacion.Name = "chekEnCotizacion";
-            this.chekEnCotizacion.Size = new System.Drawing.Size(116, 20);
-            this.chekEnCotizacion.TabIndex = 4;
-            this.chekEnCotizacion.Text = "En Cotizacion";
-            this.chekEnCotizacion.CheckedChanged += new System.EventHandler(this.chekEnCotizacion_CheckedChanged);
+            valueListItem1.DataValue = "ValueListItem0";
+            valueListItem1.DisplayText = "cm.";
+            valueListItem2.DataValue = "ValueListItem1";
+            valueListItem2.DisplayText = "mt.";
+            this.uceGramaje.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem1,
+            valueListItem2});
+            this.uceGramaje.Location = new System.Drawing.Point(96, 115);
+            this.uceGramaje.Name = "uceGramaje";
+            this.uceGramaje.Size = new System.Drawing.Size(60, 21);
+            this.uceGramaje.TabIndex = 33;
+            this.uceGramaje.ValueChanged += new System.EventHandler(this.uceGramaje_ValueChanged);
             // 
-            // comboUnidad
+            // ultraTabPageControl4
             // 
-            this.comboUnidad.FormattingEnabled = true;
-            this.comboUnidad.Items.AddRange(new object[] {
-            "cm.",
-            "mt."});
-            this.comboUnidad.Location = new System.Drawing.Point(98, 115);
-            this.comboUnidad.Name = "comboUnidad";
-            this.comboUnidad.Size = new System.Drawing.Size(48, 21);
-            this.comboUnidad.TabIndex = 32;
-            this.comboUnidad.SelectedIndexChanged += new System.EventHandler(this.comboUnidad_SelectedIndexChanged);
+            this.ultraTabPageControl4.Controls.Add(this.txtUbicacion);
+            this.ultraTabPageControl4.Controls.Add(this.lblUbicacion);
+            this.ultraTabPageControl4.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl4.Name = "ultraTabPageControl4";
+            this.ultraTabPageControl4.Size = new System.Drawing.Size(567, 218);
+            // 
+            // txtUbicacion
+            // 
+            this.txtUbicacion.Location = new System.Drawing.Point(99, 16);
+            this.txtUbicacion.Name = "txtUbicacion";
+            this.txtUbicacion.Size = new System.Drawing.Size(344, 21);
+            this.txtUbicacion.TabIndex = 34;
+            this.txtUbicacion.TextChanged += new System.EventHandler(this.txtUbicacion_TextChanged);
+            // 
+            // lblUbicacion
+            // 
+            appearance12.BackColor = System.Drawing.Color.Transparent;
+            this.lblUbicacion.Appearance = appearance12;
+            this.lblUbicacion.Location = new System.Drawing.Point(19, 16);
+            this.lblUbicacion.Name = "lblUbicacion";
+            this.lblUbicacion.Size = new System.Drawing.Size(60, 23);
+            this.lblUbicacion.TabIndex = 35;
+            this.lblUbicacion.Text = "Ubicación";
             // 
             // FrmExistencia
             // 
@@ -953,6 +996,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxGeneralidades)).EndInit();
             this.boxGeneralidades.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chekEnCotizacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEsInventariable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkesServicio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEsVenta)).EndInit();
@@ -969,7 +1013,10 @@
             this.ugbCostos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoPromedio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoUltimaCompra)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chekEnCotizacion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uceGramaje)).EndInit();
+            this.ultraTabPageControl4.ResumeLayout(false);
+            this.ultraTabPageControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUbicacion)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1018,8 +1065,11 @@
         private Infragistics.Win.Misc.UltraLabel lblCostoUltimaCompra;
         private Infragistics.Win.Misc.UltraLabel lblCostoPromedio;
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor uneCostoPromedio;
-        private System.Windows.Forms.ComboBox comboUnidad;
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor chekEnCotizacion;
+        private Infragistics.Win.UltraWinEditors.UltraComboEditor uceGramaje;
+        private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl4;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtUbicacion;
+        private Infragistics.Win.Misc.UltraLabel lblUbicacion;
 
     }
 }
