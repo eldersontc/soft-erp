@@ -268,9 +268,9 @@
             this.ugbGeneral.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
             this.ugbGeneral.Location = new System.Drawing.Point(16, 15);
             this.ugbGeneral.Name = "ugbGeneral";
-            this.ugbGeneral.Size = new System.Drawing.Size(478, 60);
+            this.ugbGeneral.Size = new System.Drawing.Size(505, 60);
             this.ugbGeneral.TabIndex = 15;
-            this.ugbGeneral.Text = "BASE DE DATOS";
+            this.ugbGeneral.Text = "Base de Datos";
             // 
             // ugbClase
             // 
@@ -288,7 +288,7 @@
             this.ugbClase.Name = "ugbClase";
             this.ugbClase.Size = new System.Drawing.Size(505, 60);
             this.ugbClase.TabIndex = 21;
-            this.ugbClase.Text = "CLASE";
+            this.ugbClase.Text = "Clase";
             // 
             // ugbFormulario
             // 
@@ -306,7 +306,7 @@
             this.ugbFormulario.Name = "ugbFormulario";
             this.ugbFormulario.Size = new System.Drawing.Size(505, 60);
             this.ugbFormulario.TabIndex = 22;
-            this.ugbFormulario.Text = "FORMULARIO";
+            this.ugbFormulario.Text = "Formulario";
             // 
             // ugbAtributos
             // 
@@ -323,7 +323,7 @@
             this.ugbAtributos.Name = "ugbAtributos";
             this.ugbAtributos.Size = new System.Drawing.Size(505, 298);
             this.ugbAtributos.TabIndex = 23;
-            this.ugbAtributos.Text = "ATRIBUTOS";
+            this.ugbAtributos.Text = "Atributos";
             // 
             // ubEliminar
             // 
