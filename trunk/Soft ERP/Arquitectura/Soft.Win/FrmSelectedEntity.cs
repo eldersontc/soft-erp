@@ -21,8 +21,8 @@ namespace Soft.Win
     public partial class FrmSelectedEntity : FrmParent 
     {
 
-        private XmlDocument XMLCofiguration;
-        private Boolean SWAcept = false;
+        private Soft.Configuracion.Entidades.Panel mPanel = null;
+        private Boolean mAceptar = false;
 
         public FrmSelectedEntity()
         {
@@ -43,7 +43,7 @@ namespace Soft.Win
                 else {
                     ShowDialog();
                 }
-                if (SWAcept & ugEntity.ActiveRow != null && !ugEntity.ActiveRow.IsFilterRow) { 
+                if (mAceptar & ugEntity.ActiveRow != null && !ugEntity.ActiveRow.IsFilterRow) { 
                     SelectedEntity = AsignValuesToParent(Type, ugEntity.ActiveRow); 
                 }
                 return SelectedEntity;
@@ -70,7 +70,7 @@ namespace Soft.Win
                 else {
                     ShowDialog();
                 }
-                if (SWAcept) {
+                if (mAceptar) {
                     foreach (UltraGridRow Row in ugEntity.Rows)
                     {
                         if (Convert.ToBoolean(Row.Cells["Select"].Value)) {
@@ -89,19 +89,18 @@ namespace Soft.Win
 
         public Parent AsignValuesToParent(Type Type,UltraGridRow Row)
         {
-            Parent Entity = Cast(Activator.CreateInstance(Type), Type); 
-            foreach (XmlNode NodoItem in XMLCofiguration.DocumentElement.ChildNodes)
+            Parent Entity = Cast(Activator.CreateInstance(Type), Type);
+            foreach (ColumnaPanel Columna in mPanel.Columnas)
             {
-                if (NodoItem.SelectSingleNode("@Establecer").Value == "1")
-                {
-                    PropertyInfo pInfo = Type.GetProperty(NodoItem.SelectSingleNode("@Propiedad").Value);
+                if (Columna.Establecer){
+                    PropertyInfo pInfo = Type.GetProperty(Columna.Propiedad);
                     if (pInfo != null)
                     {
-                        pInfo.SetValue(Entity, Row.Cells[NodoItem.SelectSingleNode("@CampoSQL").Value].Value, null);
+                        pInfo.SetValue(Entity, Row.Cells[Columna.CampoSQL].Value, null);
                     }
                     else
                     {
-                        throw new Exception(String.Format("Propiedad no encontrada : {0}", NodoItem.SelectSingleNode("@Propiedad").Value));
+                        throw new Exception(String.Format("Propiedad no encontrada : {0}", Columna.Propiedad));
                     }
                 }
             }
@@ -118,8 +117,8 @@ namespace Soft.Win
             String ConsultaSQL = String.Empty;
             String Ordenamiento = String.Empty;
             UltraGridBand Band = ugEntity.DisplayLayout.Bands[0];
-            Soft.Configuracion.Entidades.Panel Panel = (Soft.Configuracion.Entidades.Panel)HelperNHibernate.GetEntityByField("Panel", "Nombre", NombrePanel);
-            foreach (ColumnaPanel Columna in Panel.Columnas)
+            mPanel = (Soft.Configuracion.Entidades.Panel)HelperNHibernate.GetEntityByField("Panel", "Nombre", NombrePanel);
+            foreach (ColumnaPanel Columna in mPanel.Columnas)
             {
                 UltraGridColumn Column = Band.Columns.Add(Columna.CampoSQL);
                 Column.CellActivation = Activation.NoEdit;
@@ -129,7 +128,7 @@ namespace Soft.Win
                 if (Columna.Indice) { Ordenamiento = String.Format("ORDER BY {0}", Columna.CampoSQL); }
             }
             if (Filtro.Length > 0) { Filtro = String.Format(" WHERE {0} ", Filtro); }
-            ConsultaSQL = String.Format("SELECT * FROM {0} {1} {2}", Panel.NombreVista, Filtro, Ordenamiento);
+            ConsultaSQL = String.Format("SELECT * FROM {0} {1} {2}", mPanel.NombreVista, Filtro, Ordenamiento);
             ugEntity.DataSource = HelperNHibernate.GetDataSet(ConsultaSQL);
         }
 
@@ -171,14 +170,14 @@ namespace Soft.Win
         private void ubSelecionar_Click(object sender, EventArgs e)
         {
             base.m_ResultProcess = EnumResult.SUCESS;
-            SWAcept = true;
+            mAceptar = true;
             Close();
         }
 
         private void ugEntity_DoubleClickCell(object sender, DoubleClickCellEventArgs e)
         {
             base.m_ResultProcess = EnumResult.SUCESS;
-            SWAcept = true;
+            mAceptar = true;
             Close();
         }
 
@@ -188,12 +187,12 @@ namespace Soft.Win
             {
                 case Keys.Enter:
                     base.m_ResultProcess = EnumResult.SUCESS;
-                    SWAcept = true;
+                    mAceptar = true;
                     Close();
                     break;
                 case Keys.Escape :
                     base.m_ResultProcess = EnumResult.SUCESS;
-                    SWAcept = false;
+                    mAceptar = false;
                     Close();
                     break;
                 //case Keys.Space :
