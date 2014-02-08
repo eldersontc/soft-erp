@@ -14,6 +14,7 @@ using Soft.Win;
 using System.Reflection;
 using Microsoft.VisualBasic;
 using Soft.DataAccess;
+using Soft.Configuracion.Entidades;
 
 namespace Soft.Win
 {
@@ -112,28 +113,24 @@ namespace Soft.Win
             return Convert.ChangeType(obj, castTo);
         }
 
-        public void ConfigureColumns(String NamePanel, String Filter)
+        public void ConfigureColumns(String NombrePanel, String Filtro)
         {
-            XMLCofiguration = HelperNHibernate.ExecuteView("vSF_ColumnasxPanel", String.Format(" NombrePanel = '{0}' ORDER BY Orden", NamePanel));
-            String Query = String.Empty;
-            String NameView = String.Empty;
+            String ConsultaSQL = String.Empty;
+            String Ordenamiento = String.Empty;
             UltraGridBand Band = ugEntity.DisplayLayout.Bands[0];
-            foreach (XmlNode NodoItem in XMLCofiguration.DocumentElement.ChildNodes)
+            Soft.Configuracion.Entidades.Panel Panel = (Soft.Configuracion.Entidades.Panel)HelperNHibernate.GetEntityByField("Panel", "Nombre", NombrePanel);
+            foreach (ColumnaPanel Columna in Panel.Columnas)
             {
-                if (Query.Length > 0) { Query += ","; }
-                if (NameView == String.Empty) { NameView = NodoItem.SelectSingleNode("@NombreVista").Value; }
-                Query += String.Format("ISNULL({0},'') AS {0}", NodoItem.SelectSingleNode("@CampoSQL").Value);
-                UltraGridColumn Column = Band.Columns.Add(NodoItem.SelectSingleNode("@CampoSQL").Value);
+                UltraGridColumn Column = Band.Columns.Add(Columna.CampoSQL);
                 Column.CellActivation = Activation.NoEdit;
-                Column.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Default;
-                Column.Header.Caption = NodoItem.SelectSingleNode("@NombreColumna").Value;
-                Column.Hidden = !Convert.ToBoolean(Convert.ToInt32(NodoItem.SelectSingleNode("@Visible").Value));
-                Column.Width = Convert.ToInt32(NodoItem.SelectSingleNode("@Ancho").Value);
-                Column.Key = NodoItem.SelectSingleNode("@CampoSQL").Value;
+                Column.Header.Caption = Columna.Nombre;
+                Column.Width = Columna.Ancho;
+                Column.Hidden = !Columna.Visible;
+                if (Columna.Indice) { Ordenamiento = String.Format("ORDER BY {0}", Columna.CampoSQL); }
             }
-            Query = String.Format("SELECT {0} FROM {1} ", Query, NameView);
-            if (Filter.Length > 0) { Query += String.Format(" WHERE {0} ", Filter); }
-            ugEntity.DataSource = HelperNHibernate.GetDataSet(Query);
+            if (Filtro.Length > 0) { Filtro = String.Format(" WHERE {0} ", Filtro); }
+            ConsultaSQL = String.Format("SELECT * FROM {0} {1} {2}", Panel.NombreVista, Filtro, Ordenamiento);
+            ugEntity.DataSource = HelperNHibernate.GetDataSet(ConsultaSQL);
         }
 
         public void ActivarMultiSeleccion() {
