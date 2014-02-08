@@ -184,6 +184,10 @@ namespace Soft.Ventas.Win
             lblCostoMaterial.Visible = Item.TieneMaterial;
             uneCostoMaterial.Visible = Item.TieneMaterial;
 
+            txtDemasiaP.Value = Item.CantidadDemasia * Item.NumerodePases;
+            txtCantidadMaquinaProduccion.Value = Item.CantidadProduccion;
+            txtCantidadMaterial.Value = Item.CantidadMaterial;
+
             if (Item.MetodoImpresion != null) {
                 ubeMetodo.Text = Item.MetodoImpresion;
             }
@@ -192,7 +196,9 @@ namespace Soft.Ventas.Win
             txtDemasia.Value = Item.CantidadDemasia;
 
             if (Item.TieneGraficos & !Cotizacion.NewInstance) {
-                if (Item.GraficoImpresionGirado)
+                try
+                {
+ if (Item.GraficoImpresionGirado)
                 {
                     GenerarGraficoImpresionRotado();
                 }
@@ -202,6 +208,13 @@ namespace Soft.Ventas.Win
                     GenerarGraficoPrecorteRotado();
                 }
                 else { GenerarGraficoPrecorteNormal(); }
+                }
+                catch (Exception)
+                {
+                    
+                }
+
+               
             }
             MostrarServicios(Item);
         }
@@ -444,8 +457,13 @@ namespace Soft.Ventas.Win
         private void ssMaterial_Search(object sender, EventArgs e)
         {
             if (ItemCotizacion == null) { return; }
+            string filtro = "EsInventariable = 1";
+            if (ssMaterial.Text.Length>0){
+                filtro += " and Nombre like '%" + ssMaterial.Text + "%'";
+            }
+
             FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-            ItemCotizacion.Material = (Existencia)FrmSeleccionar.GetSelectedEntity(typeof(Existencia), "Existencia", " EsInventariable = 1");
+            ItemCotizacion.Material = (Existencia)FrmSeleccionar.GetSelectedEntity(typeof(Existencia), "Existencia", filtro);
             if (ItemCotizacion.Material != null)
             {
                 ItemCotizacion.Material = (Existencia)HelperNHibernate.GetEntityByID("Existencia", ItemCotizacion.Material.ID);
@@ -532,13 +550,18 @@ namespace Soft.Ventas.Win
         ListaCostosMaquina lcm = null;
         ListaPreciosExistencia lpe = null;
         ListaPreciosTransporte lpt = null;
+        Boolean acatualizalistas = true;
         private void Costeo()
         {
             try
             {
-                lcm = (ListaCostosMaquina)HelperNHibernate.GetEntityByID("ListaCostosMaquina", Cotizacion.ListaCostosMaquina.ID);
-                lpe = (ListaPreciosExistencia)HelperNHibernate.GetEntityByID("ListaPreciosExistencia", Cotizacion.ListaPreciosExistencia.ID);
-                lpt = (ListaPreciosTransporte)HelperNHibernate.GetEntityByID("ListaPreciosTransporte", Cotizacion.ListaPreciosTransporte.ID);
+                if (acatualizalistas) {
+                    lcm = (ListaCostosMaquina)HelperNHibernate.GetEntityByID("ListaCostosMaquina", Cotizacion.ListaCostosMaquina.ID);
+                    lpe = (ListaPreciosExistencia)HelperNHibernate.GetEntityByID("ListaPreciosExistencia", Cotizacion.ListaPreciosExistencia.ID);
+                    lpt = (ListaPreciosTransporte)HelperNHibernate.GetEntityByID("ListaPreciosTransporte", Cotizacion.ListaPreciosTransporte.ID);
+                    acatualizalistas = false;
+                }
+
                 foreach (ItemCotizacion itemcotizacion2 in Cotizacion.Items)
                 {
                     CosteoElemento(itemcotizacion2);
@@ -588,7 +611,7 @@ namespace Soft.Ventas.Win
             Decimal resultado = 0;
             try
             {
-                resultado = itemCotizacion.Material.CostoUltimaCompra * itemCotizacion.CantidadMaterial;
+                resultado = itemCotizacion.Material.CostoUltimaCompra * (itemCotizacion.CantidadMaterial + (itemCotizacion.CantidadDemasia / itemCotizacion.NroPiezasPrecorte));
             
             }
             catch (Exception)
@@ -694,6 +717,18 @@ namespace Soft.Ventas.Win
             CalcularProduccionItem(itemcotizacion);
 
           
+            Decimal cantidadProduccion=0;
+            if (Uilcm.Unidad.Nombre.Equals("MILLAR"))
+            {
+
+                cantidadProduccion = itemcotizacion.CantidadProduccion / 1000;
+            }
+            else {
+                cantidadProduccion = itemcotizacion.CantidadProduccion;
+            
+            }
+
+
             foreach (EscalaListaCostosMaquina escala in Uilcm.Escalas)
             {
 
@@ -703,7 +738,7 @@ namespace Soft.Ventas.Win
                     eUilcm = escala;
                     break;
                 }
-                else if ((escala.Desde <= itemcotizacion.CantidadProduccion) && (escala.Hasta >= itemcotizacion.CantidadProduccion))
+                else if ((escala.Desde <= cantidadProduccion) && (escala.Hasta >= cantidadProduccion))
                 {
                     eUilcm = escala;
                     break;
@@ -725,9 +760,20 @@ namespace Soft.Ventas.Win
             try
             {
                 if (itemcosteado == null) { return; }
+
+                if (itemcosteado.Operacion.Codigo.Equals("IMPRVINIL")||itemcosteado.Operacion.Nombre.Equals("IMPRESION BANNER"))
+                {
+                    itemcosteado.CantidadMaterial = Math.Round((itemcosteado.CantidadElemento * (itemcosteado.MedidaAbiertaLargo * itemcosteado.MedidaAbiertaAlto)), 0);
+                    itemcosteado.CantidadProduccion = itemcosteado.CantidadMaterial;
+                    //itemcosteado.CantidadMaterial += itemcosteado.CantidadDemasia;
+                }
+                else { 
+
                 itemcosteado.CantidadMaterial = Math.Round( (itemcosteado.CantidadElemento / (itemcosteado.NroPiezasPrecorte * itemcosteado.NroPiezasImpresion)),0);
-                itemcosteado.CantidadProduccion = itemcosteado.CantidadMaterial * itemcosteado.NumerodePases;
-                itemcosteado.CantidadMaterial += itemcosteado.CantidadDemasia;
+                itemcosteado.CantidadProduccion = itemcosteado.CantidadMaterial * itemcosteado.NumerodePases * itemcosteado.NroPiezasPrecorte;
+                //itemcosteado.CantidadMaterial += itemcosteado.CantidadDemasia;
+
+                }
             }
             catch (Exception)
             {
@@ -1162,6 +1208,8 @@ namespace Soft.Ventas.Win
                 ItemCotizacion.GraficoPrecorteGirado = false;
                 GenerarGraficoPrecorteNormal();
                 CalcularProduccionItem();
+                MostrarItem(utCotizacion.ActiveNode);
+
             }
             catch (Exception ex)
             {
@@ -1177,6 +1225,8 @@ namespace Soft.Ventas.Win
                 ItemCotizacion.GraficoPrecorteGirado = true;
                 GenerarGraficoPrecorteRotado();
                 CalcularProduccionItem();
+
+                MostrarItem(utCotizacion.ActiveNode);
             }
             catch (Exception ex)
             {
@@ -1255,6 +1305,8 @@ namespace Soft.Ventas.Win
                 if (ItemCotizacion == null) { return; }
                 ItemCotizacion.GraficoImpresionGirado = false;
                 GenerarGraficoImpresionNormal();
+                CalcularProduccionItem();
+                MostrarItem(utCotizacion.ActiveNode);
             }
             catch (Exception ex)
             {
@@ -1269,6 +1321,9 @@ namespace Soft.Ventas.Win
                 if (ItemCotizacion == null) { return; }
                 ItemCotizacion.GraficoImpresionGirado = true;
                 GenerarGraficoImpresionRotado();
+                CalcularProduccionItem();
+                MostrarItem(utCotizacion.ActiveNode);
+
             }
             catch (Exception ex)
             {
@@ -1330,8 +1385,8 @@ namespace Soft.Ventas.Win
                 if (ItemCotizacion == null) { return; }
                 ItemCotizacion.MetodoImpresion = ubeMetodo.Text;
                 ItemCotizacion.NumerodePases = Convert.ToInt32(ubeMetodo.SelectedItem.Tag);
-
-
+                CalcularProduccionItem();
+                MostrarItem(utCotizacion.ActiveNode);
             }
             catch (Exception ex)
             {
@@ -1384,8 +1439,8 @@ namespace Soft.Ventas.Win
             try
             {
                 if (ItemCotizacion == null) { return; }
-                ItemCotizacion.CantidadMaterial = ItemCotizacion.CantidadElemento / (ItemCotizacion.NroPiezasPrecorte * ItemCotizacion.NroPiezasImpresion);
-                ItemCotizacion.CantidadProduccion = ItemCotizacion.CantidadMaterial * ItemCotizacion.NumerodePases;
+                ItemCotizacion.CantidadMaterial =Math.Round(( ItemCotizacion.CantidadElemento / (ItemCotizacion.NroPiezasPrecorte * ItemCotizacion.NroPiezasImpresion)),0);
+                ItemCotizacion.CantidadProduccion = ItemCotizacion.CantidadMaterial * ItemCotizacion.NroPiezasPrecorte * ItemCotizacion.NumerodePases;
             }
             catch (Exception)
             {
@@ -1435,6 +1490,9 @@ namespace Soft.Ventas.Win
             if (ItemCotizacion == null) { return; }
             if (ActualizandoIU) { return; }
             ItemCotizacion.CantidadDemasia = Convert.ToInt32(txtDemasia.Value);
+            CalcularProduccionItem();
+            MostrarItem(utCotizacion.ActiveNode);
+
         }
 
         private void txtNroPiezasImpresion_ValueChanged(object sender, EventArgs e)
@@ -1443,6 +1501,8 @@ namespace Soft.Ventas.Win
             if (ActualizandoIU) { return; }
             ItemCotizacion.NroPiezasImpresion = Convert.ToInt32(txtNroPiezasImpresion.Value);
         }
+
+       
 
 
 
