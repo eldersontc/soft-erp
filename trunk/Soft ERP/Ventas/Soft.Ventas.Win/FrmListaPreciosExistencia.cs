@@ -197,7 +197,7 @@ namespace Soft.Ventas.Win
             String filtro = "IDExistencia='"+ItemListaPreciosExistencia.Existencia.ID+"'";
 
             if (ItemListaPreciosExistencia.FiltroUnidades.Length > 0) {
-                filtro = " and " + ItemListaPreciosExistencia.FiltroUnidades;
+                filtro += " and " + ItemListaPreciosExistencia.FiltroUnidades;
             }
             if (ItemListaPreciosExistencia == null) { return; }
             FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
