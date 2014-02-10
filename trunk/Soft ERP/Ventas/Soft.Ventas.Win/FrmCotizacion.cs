@@ -188,9 +188,9 @@ namespace Soft.Ventas.Win
             txtHojasMaquina.Value = (Item.CantidadMaterial) * Item.NroPiezasPrecorte;
             txtTiraje.Value = Item.CantidadProduccion;
 
-            LabelMateriaPrima.Text = Item.CantidadMaterial.ToString() + " + " + Item.CantidadDemasiaMaterial.ToString() +" = "+ (Item.CantidadMaterial + Item.CantidadDemasiaMaterial).ToString() + " Hjs/Resma";
+            LabelMateriaPrima.Text = Math.Round(Item.CantidadMaterial, 0).ToString() + " + " + Math.Round(Item.CantidadDemasiaMaterial, 0).ToString() + " = " + Math.Round((Item.CantidadMaterial + Item.CantidadDemasiaMaterial),0).ToString() + " Hjs/Resma";
 
-            LabelProduccion.Text = ((Item.CantidadMaterial + Item.CantidadDemasiaMaterial) * Item.NroPiezasPrecorte).ToString() + " Hjs/Maquina";
+            LabelProduccion.Text = Math.Round(((Item.CantidadMaterial + Item.CantidadDemasiaMaterial) * Item.NroPiezasPrecorte),0).ToString() + " Hjs/Maquina";
 
             if (Item.MetodoImpresion != null) {
                 ubeMetodo.Text = Item.MetodoImpresion;
