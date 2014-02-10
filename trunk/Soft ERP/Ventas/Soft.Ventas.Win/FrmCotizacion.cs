@@ -804,54 +804,24 @@ namespace Soft.Ventas.Win
 
             if (ItemCotizacion.MetodoImpresion.Equals("TIRA Y RETIRA"))
             {
-                if (ItemCotizacion.GraficoPrecorteGirado)
-                {
-                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
-                    LargoGrafico = LargoPictureBox / 2;
-                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-                    AltoGrafico = AltoPictureBox;
-                }
-                else
-                {
-                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-                    LargoGrafico = LargoPictureBox / 2;
-                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
-                    AltoGrafico = AltoPictureBox;
-                }
+                LargoPictureBox = Math.Max(Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo), Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto));
+                LargoGrafico = LargoPictureBox / 2;
+                AltoPictureBox = Math.Min(Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto), Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo));
+                AltoGrafico = AltoPictureBox;
             }
             else if (ItemCotizacion.MetodoImpresion.Equals("CONTRAPINZA"))
             {
-                if (ItemCotizacion.GraficoPrecorteGirado)
-                {
-                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
-                    LargoGrafico = LargoPictureBox;
-                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-                    AltoGrafico = AltoPictureBox / 2;
-                }
-                else
-                {
-                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-                    LargoGrafico = LargoPictureBox;
-                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
-                    AltoGrafico = AltoPictureBox / 2;
-                }
+                LargoPictureBox = Math.Max(Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo), Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto));
+                LargoGrafico = LargoPictureBox;
+                AltoPictureBox = Math.Min(Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto), Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo));
+                AltoGrafico = AltoPictureBox / 2;
             }
             else
             {
-                if (ItemCotizacion.GraficoPrecorteGirado)
-                {
-                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
-                    LargoGrafico = LargoPictureBox;
-                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-                    AltoGrafico = AltoPictureBox;
-                }
-                else
-                {
-                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-                    LargoGrafico = LargoPictureBox;
-                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
-                    AltoGrafico = AltoPictureBox;
-                }
+                LargoPictureBox = Math.Max(Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo), Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto));
+                LargoGrafico = LargoPictureBox;
+                AltoPictureBox = Math.Min(Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto),Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo));
+                AltoGrafico = AltoPictureBox;
             }
 
             Int32 LargoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo);
@@ -926,52 +896,24 @@ namespace Soft.Ventas.Win
 
             if (ItemCotizacion.MetodoImpresion.Equals("TIRA Y RETIRA"))
             {
-                if (ItemCotizacion.GraficoPrecorteGirado)
-                {
-                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
-                    LargoGrafico = LargoPictureBox / 2;
-                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-                    AltoGrafico = AltoPictureBox;
-                }
-                else {
-                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-                    LargoGrafico = LargoPictureBox / 2;
-                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
-                    AltoGrafico = AltoPictureBox;
-                }
+                LargoPictureBox = Math.Max(Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo), Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto));
+                LargoGrafico = LargoPictureBox / 2;
+                AltoPictureBox = Math.Min(Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto), Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo));
+                AltoGrafico = AltoPictureBox;
             }
             else if (ItemCotizacion.MetodoImpresion.Equals("CONTRAPINZA"))
             {
-                if (ItemCotizacion.GraficoPrecorteGirado)
-                {
-                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
-                    LargoGrafico = LargoPictureBox;
-                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-                    AltoGrafico = AltoPictureBox / 2;
-                }
-                else {
-                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-                    LargoGrafico = LargoPictureBox;
-                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
-                    AltoGrafico = AltoPictureBox / 2;
-                }
+                LargoPictureBox = Math.Max(Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo), Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto));
+                LargoGrafico = LargoPictureBox;
+                AltoPictureBox = Math.Min(Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto), Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo));
+                AltoGrafico = AltoPictureBox / 2;
             }
             else
             {
-                if (ItemCotizacion.GraficoPrecorteGirado)
-                {
-                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
-                    LargoGrafico = LargoPictureBox;
-                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-                    AltoGrafico = AltoPictureBox;
-                }
-                else
-                {
-                    LargoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo);
-                    LargoGrafico = LargoPictureBox;
-                    AltoPictureBox = Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto);
-                    AltoGrafico = AltoPictureBox;
-                }
+                LargoPictureBox = Math.Max(Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo), Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto));
+                LargoGrafico = LargoPictureBox;
+                AltoPictureBox = Math.Min(Convert.ToInt32(ItemCotizacion.FormatoImpresionAlto), Convert.ToInt32(ItemCotizacion.FormatoImpresionLargo));
+                AltoGrafico = AltoPictureBox;
             }
 
             Int32 LargoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo);
