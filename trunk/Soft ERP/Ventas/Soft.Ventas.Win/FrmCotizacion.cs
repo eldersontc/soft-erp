@@ -134,7 +134,6 @@ namespace Soft.Ventas.Win
                 Node.Tag = Item;
                 Node.Text = Item.Nombre;
                 utCotizacion.Nodes.Add(Node);
-                MostrarItem(Node);
             }
             if (utCotizacion.Nodes.Count > 0)
             {
@@ -184,9 +183,14 @@ namespace Soft.Ventas.Win
             lblCostoMaterial.Visible = Item.TieneMaterial;
             uneCostoMaterial.Visible = Item.TieneMaterial;
 
-            txtDemasiaP.Value = Item.CantidadDemasia * Item.NumerodePases;
-            txtCantidadMaquinaProduccion.Value = Item.CantidadProduccion;
-            txtCantidadMaterial.Value = Item.CantidadMaterial;
+            txtDemasia.Value = Item.CantidadDemasia;
+            txtPases.Value = Item.NumerodePases;
+            txtHojasMaquina.Value = (Item.CantidadMaterial) * Item.NroPiezasPrecorte;
+            txtTiraje.Value = Item.CantidadProduccion;
+
+            LabelMateriaPrima.Text = Item.CantidadMaterial.ToString() + " + " + Item.CantidadDemasiaMaterial.ToString() +" = "+ (Item.CantidadMaterial + Item.CantidadDemasiaMaterial).ToString() + " Hjs/Resma";
+
+            LabelProduccion.Text = ((Item.CantidadMaterial + Item.CantidadDemasiaMaterial) * Item.NroPiezasPrecorte).ToString() + " Hjs/Maquina";
 
             if (Item.MetodoImpresion != null) {
                 ubeMetodo.Text = Item.MetodoImpresion;
@@ -611,7 +615,7 @@ namespace Soft.Ventas.Win
             Decimal resultado = 0;
             try
             {
-                resultado = itemCotizacion.Material.CostoUltimaCompra * (itemCotizacion.CantidadMaterial + (itemCotizacion.CantidadDemasia / itemCotizacion.NroPiezasPrecorte));
+                resultado = itemCotizacion.Material.CostoUltimaCompra * (itemCotizacion.CantidadMaterial + itemCotizacion.CantidadDemasiaMaterial );
             
             }
             catch (Exception)
@@ -637,16 +641,16 @@ namespace Soft.Ventas.Win
             Int32 multiplicador = 1;
             if (Uilcm.Unidad.Nombre.Equals("MILLAR")) {
                 multiplicador = 1000;
-                resultado = itemCotizacion.CantidadProduccion/multiplicador;
+                resultado = (itemCotizacion.CantidadProduccion/itemCotizacion.NumerodePases) /multiplicador;
                 Int32 entero = Convert.ToInt32(resultado);
                 Decimal residuo = resultado-entero;
                 if (residuo > 0 && residuo <= 1)
                 {
-                    resultado = (entero + 1) * Elcm.Costo;
+                    resultado = (entero + 1) * Elcm.Costo * itemCotizacion.NumerodePases;
                 }
                 else
                 {
-                    resultado = (entero) * Elcm.Costo;
+                    resultado = (entero) * Elcm.Costo * itemCotizacion.NumerodePases;
                 }
             }
 
@@ -764,14 +768,51 @@ namespace Soft.Ventas.Win
                 if (itemcosteado.Operacion.Codigo.Equals("IMPRVINIL")||itemcosteado.Operacion.Nombre.Equals("IMPRESION BANNER"))
                 {
                     itemcosteado.CantidadMaterial = Math.Round((itemcosteado.CantidadElemento * (itemcosteado.MedidaAbiertaLargo * itemcosteado.MedidaAbiertaAlto)), 0);
-                    itemcosteado.CantidadProduccion = itemcosteado.CantidadMaterial;
+                    itemcosteado.CantidadDemasiaMaterial = itemcosteado.CantidadDemasia / itemcosteado.NroPiezasPrecorte;
+
+
+
+                    itemcosteado.CantidadProduccion = itemcosteado.CantidadMaterial + itemcosteado.CantidadDemasiaMaterial;
+
                     //itemcosteado.CantidadMaterial += itemcosteado.CantidadDemasia;
                 }
-                else { 
+                else {
 
-                itemcosteado.CantidadMaterial = Math.Round( (itemcosteado.CantidadElemento / (itemcosteado.NroPiezasPrecorte * itemcosteado.NroPiezasImpresion)),0);
-                itemcosteado.CantidadProduccion = itemcosteado.CantidadMaterial * itemcosteado.NumerodePases * itemcosteado.NroPiezasPrecorte;
-                //itemcosteado.CantidadMaterial += itemcosteado.CantidadDemasia;
+
+               Decimal mat = (itemcosteado.CantidadElemento / (itemcosteado.NroPiezasPrecorte * itemcosteado.NroPiezasImpresion));
+               Int32 mate = Convert.ToInt32( mat);
+
+               if ((mat - mate) > 0)
+               {
+                   itemcosteado.CantidadMaterial = mate + 1;
+               }
+               else {
+                   itemcosteado.CantidadMaterial = mate;
+               }
+
+                    
+                    //itemcosteado.CantidadMaterial += itemcosteado.CantidadDemasia;
+                try
+                {
+                    itemcosteado.CantidadDemasiaMaterial = itemcosteado.CantidadDemasia / itemcosteado.NroPiezasPrecorte;
+                }
+                catch (Exception)
+                {
+                }
+
+
+                Int32 pases = 1;
+
+                if (itemcosteado.MetodoImpresion.Equals("TIRA Y RETIRA")) {
+                    pases = 2;
+                }
+                else if (itemcosteado.MetodoImpresion.Equals("CONTRAPINZA"))
+                {
+                    pases = 2;
+                }
+
+                itemcosteado.CantidadProduccion = (itemcosteado.CantidadMaterial + itemcosteado.CantidadDemasiaMaterial) * itemcosteado.NumerodePases * itemcosteado.NroPiezasPrecorte * pases;
+               
 
                 }
             }
@@ -788,6 +829,7 @@ namespace Soft.Ventas.Win
 
             Costeo();
             Mostrar();
+            MostrarItem(utCotizacion.ActiveNode);
         }
 
         public void GenerarGraficoImpresionNormal()
@@ -1149,7 +1191,7 @@ namespace Soft.Ventas.Win
                 if (ItemCotizacion == null) { return; }
                 ItemCotizacion.GraficoPrecorteGirado = false;
                 GenerarGraficoPrecorteNormal();
-                CalcularProduccionItem();
+                CalcularProduccionItem(ItemCotizacion);
                 MostrarItem(utCotizacion.ActiveNode);
 
             }
@@ -1166,7 +1208,7 @@ namespace Soft.Ventas.Win
                 if (ItemCotizacion == null) { return; }
                 ItemCotizacion.GraficoPrecorteGirado = true;
                 GenerarGraficoPrecorteRotado();
-                CalcularProduccionItem();
+                CalcularProduccionItem(ItemCotizacion);
 
                 MostrarItem(utCotizacion.ActiveNode);
             }
@@ -1247,7 +1289,7 @@ namespace Soft.Ventas.Win
                 if (ItemCotizacion == null) { return; }
                 ItemCotizacion.GraficoImpresionGirado = false;
                 GenerarGraficoImpresionNormal();
-                CalcularProduccionItem();
+                CalcularProduccionItem(ItemCotizacion);
                 MostrarItem(utCotizacion.ActiveNode);
             }
             catch (Exception ex)
@@ -1263,7 +1305,7 @@ namespace Soft.Ventas.Win
                 if (ItemCotizacion == null) { return; }
                 ItemCotizacion.GraficoImpresionGirado = true;
                 GenerarGraficoImpresionRotado();
-                CalcularProduccionItem();
+                CalcularProduccionItem(ItemCotizacion);
                 MostrarItem(utCotizacion.ActiveNode);
 
             }
@@ -1327,7 +1369,7 @@ namespace Soft.Ventas.Win
                 if (ItemCotizacion == null) { return; }
                 ItemCotizacion.MetodoImpresion = ubeMetodo.Text;
                 ItemCotizacion.NumerodePases = Convert.ToInt32(ubeMetodo.SelectedItem.Tag);
-                CalcularProduccionItem();
+                CalcularProduccionItem(ItemCotizacion);
                 MostrarItem(utCotizacion.ActiveNode);
             }
             catch (Exception ex)
@@ -1377,20 +1419,6 @@ namespace Soft.Ventas.Win
         }
 
 
-        private void CalcularProduccionItem(){
-            try
-            {
-                if (ItemCotizacion == null) { return; }
-                ItemCotizacion.CantidadMaterial =Math.Round(( ItemCotizacion.CantidadElemento / (ItemCotizacion.NroPiezasPrecorte * ItemCotizacion.NroPiezasImpresion)),0);
-                ItemCotizacion.CantidadProduccion = ItemCotizacion.CantidadMaterial * ItemCotizacion.NroPiezasPrecorte * ItemCotizacion.NumerodePases;
-            }
-            catch (Exception)
-            {
-                //SoftException.ShowException(ex);
-            }
-
-
-         }
 
         private void ssMaquina_Clear(object sender, EventArgs e)
         {
@@ -1432,9 +1460,8 @@ namespace Soft.Ventas.Win
             if (ItemCotizacion == null) { return; }
             if (ActualizandoIU) { return; }
             ItemCotizacion.CantidadDemasia = Convert.ToInt32(txtDemasia.Value);
-            CalcularProduccionItem();
+            CalcularProduccionItem(ItemCotizacion);
             MostrarItem(utCotizacion.ActiveNode);
-
         }
 
         private void txtNroPiezasImpresion_ValueChanged(object sender, EventArgs e)
