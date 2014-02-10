@@ -99,6 +99,7 @@ namespace Soft.Ventas.Entidades
 
         public virtual Decimal CantidadUnidad { get; set; }
 
+        public virtual Decimal CantidadDemasiaMaterial { get; set; }
 
         public virtual ItemCotizacionServicio AddServicio()
         {
