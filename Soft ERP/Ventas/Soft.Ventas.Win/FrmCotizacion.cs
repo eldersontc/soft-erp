@@ -643,10 +643,14 @@ namespace Soft.Ventas.Win
                 multiplicador = 1000;
                 resultado = (itemCotizacion.CantidadProduccion/itemCotizacion.NumerodePases) /multiplicador;
                 Int32 entero = Convert.ToInt32(resultado);
-                Decimal residuo = resultado-entero;
-                if (residuo > 0 && residuo <= 1)
+                Decimal residuo = (resultado-entero)*100;
+                if (residuo >= 20 && residuo <= 100)
                 {
                     resultado = (entero + 1) * Elcm.Costo * itemCotizacion.NumerodePases;
+                }
+                else if (entero == 0 && residuo>0)
+                {
+                    resultado = (1) * Elcm.Costo * itemCotizacion.NumerodePases;
                 }
                 else
                 {
@@ -726,6 +730,18 @@ namespace Soft.Ventas.Win
             {
 
                 cantidadProduccion = itemcotizacion.CantidadProduccion / 1000;
+
+                Decimal entero = Convert.ToInt32(cantidadProduccion);
+
+                Decimal dif = (cantidadProduccion - entero)*100;
+                if (dif< 20)
+                {
+
+                    cantidadProduccion = entero;
+                }
+
+
+
             }
             else {
                 cantidadProduccion = itemcotizacion.CantidadProduccion;
@@ -768,7 +784,7 @@ namespace Soft.Ventas.Win
                 if (itemcosteado.Operacion.Codigo.Equals("IMPRVINIL")||itemcosteado.Operacion.Nombre.Equals("IMPRESION BANNER"))
                 {
                     itemcosteado.CantidadMaterial = Math.Round((itemcosteado.CantidadElemento * (itemcosteado.MedidaAbiertaLargo * itemcosteado.MedidaAbiertaAlto)), 0);
-                    itemcosteado.CantidadDemasiaMaterial = itemcosteado.CantidadDemasia / itemcosteado.NroPiezasPrecorte;
+                    itemcosteado.CantidadDemasiaMaterial = itemcosteado.CantidadDemasia ;
 
 
 
@@ -866,8 +882,15 @@ namespace Soft.Ventas.Win
                 AltoGrafico = AltoPictureBox;
             }
 
-            Int32 LargoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo);
-            Int32 AltoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaAlto);
+            Int32 LargoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo)*10;
+            Int32 AltoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaAlto)*10;
+
+
+            LargoPictureBox = LargoPictureBox*10;
+            LargoGrafico = LargoGrafico * 10;
+            AltoPictureBox = AltoPictureBox*10;
+            AltoGrafico = AltoGrafico*10;
+
 
             upbImpresion.Width = LargoPictureBox;
             upbImpresion.Height = AltoPictureBox;
@@ -882,20 +905,36 @@ namespace Soft.Ventas.Win
             int CantidadPiezas = 0;
             for (int x = LargoPieza; x <= LargoGrafico; x += LargoPieza)
             {
+
+                Boolean MargenInicio = false;
+                Boolean MargenFin = false;
+                
+
                 for (int y = AltoPieza; y <= AltoGrafico; y += AltoPieza)
                 {
+                    if (MargenInicio == false) {
+                        //y += 10;
+                        MargenInicio = true;
+                    }
                     g.DrawRectangle(MyPen, new Rectangle(x - LargoPieza, y - AltoPieza, LargoPieza, AltoPieza));
                     CantidadPiezas += 1;
-                    y += ItemCotizacion.SeparacionY / 10;
+                    //y += ItemCotizacion.SeparacionY / 10;
+                    y += ItemCotizacion.SeparacionY;
                 }
-                x += ItemCotizacion.SeparacionX / 10;
+                //x += ItemCotizacion.SeparacionX / 10;
+                if (MargenFin == false)
+                {
+                    //x += 10;
+                    MargenFin = true;
+                }
+                x += ItemCotizacion.SeparacionX;
             }
 
             if (ItemCotizacion.MetodoImpresion.Equals("TIRA Y RETIRA"))
             {
-                Font Font = new System.Drawing.Font("Arial Narrow", 20, FontStyle.Regular);
+                Font Font = new System.Drawing.Font("Arial Narrow", 80, FontStyle.Bold);
                 Brush Brush = new SolidBrush(System.Drawing.Color.Red);
-                Pen Pen = new Pen(System.Drawing.Color.Red, 1);
+                Pen Pen = new Pen(System.Drawing.Color.Red, 4);
 
                 g.DrawImage((Image)upbImpresion.Image, LargoGrafico, 0);
                 g.DrawLine(Pen, LargoGrafico, 0, LargoGrafico, AltoGrafico);
@@ -906,19 +945,23 @@ namespace Soft.Ventas.Win
             }
             else if (ItemCotizacion.MetodoImpresion.Equals("CONTRAPINZA"))
             {
-                Font Font = new System.Drawing.Font("Arial Narrow", 20, FontStyle.Regular);
+                Font Font = new System.Drawing.Font("Arial Narrow", 80, FontStyle.Regular);
                 Brush Brush = new SolidBrush(System.Drawing.Color.Red);
-                Pen Pen = new Pen(System.Drawing.Color.Red, 1);
+                Pen Pen = new Pen(System.Drawing.Color.Red, 4);
 
                 g.DrawImage((Image)upbImpresion.Image, 0, AltoGrafico);
                 g.DrawLine(Pen, 0, AltoGrafico, LargoGrafico, AltoGrafico);
-                g.DrawString("T", Font, Brush, (LargoGrafico / 2) - 10, (AltoGrafico / 2) - 10);
-                g.DrawString("R", Font, Brush, (LargoGrafico / 2) - 10, ((AltoGrafico / 2) * 3) - 10);
-
+                g.DrawString("R", Font, Brush, (LargoGrafico / 2) - 10, (AltoGrafico / 2) - 10);
+                g.DrawString("T", Font, Brush, (LargoGrafico / 2) - 10, ((AltoGrafico / 2) * 3) - 10);
                 CantidadPiezas = CantidadPiezas * 2;
             }
-
+            
             g.DrawRectangle(MyPen, new Rectangle(0, 0, upbImpresion.Width - 1, upbImpresion.Height - 1));
+
+            upbImpresion.Width = upbImpresion.Width / 6;
+            upbImpresion.Height = upbImpresion.Height / 6;
+
+            
 
             ItemCotizacion.NroPiezasImpresion = CantidadPiezas;
             txtNroPiezasImpresion.Value = CantidadPiezas;
@@ -961,6 +1004,19 @@ namespace Soft.Ventas.Win
             Int32 LargoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo);
             Int32 AltoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaAlto);
 
+         
+
+
+            //ELEVAMOS 10 VECES MAS
+            LargoPieza = LargoPieza * 10;
+            AltoPieza = AltoPieza * 10;
+
+
+            LargoPictureBox = LargoPictureBox * 10;
+            LargoGrafico = LargoGrafico * 10;
+            AltoPictureBox = AltoPictureBox * 10;
+            AltoGrafico = AltoGrafico * 10;
+
             upbImpresion.Width = LargoPictureBox;
             upbImpresion.Height = AltoPictureBox;
 
@@ -978,16 +1034,20 @@ namespace Soft.Ventas.Win
                 {
                     g.DrawRectangle(MyPen, new Rectangle(x - AltoPieza, y - LargoPieza, AltoPieza, LargoPieza));
                     CantidadPiezas += 1;
-                    y += ItemCotizacion.SeparacionY / 10;
+                    //y += ItemCotizacion.SeparacionY / 10;
+                    y += ItemCotizacion.SeparacionY ;
+
                 }
-                x += ItemCotizacion.SeparacionX / 10;
+                //x += ItemCotizacion.SeparacionX / 10;
+                x += ItemCotizacion.SeparacionX ;
+
             }
 
             if (ItemCotizacion.MetodoImpresion.Equals("TIRA Y RETIRA"))
             {
-                Font Font = new System.Drawing.Font("Arial Narrow", 20, FontStyle.Regular);
+                Font Font = new System.Drawing.Font("Arial Narrow", 80, FontStyle.Regular);
                 Brush Brush = new SolidBrush(System.Drawing.Color.Red);
-                Pen Pen = new Pen(System.Drawing.Color.Red, 1);
+                Pen Pen = new Pen(System.Drawing.Color.Red, 3);
 
                 g.DrawImage((Image)upbImpresion.Image, LargoGrafico, 0);
                 g.DrawLine(Pen, LargoGrafico, 0, LargoGrafico, AltoGrafico);
@@ -998,9 +1058,9 @@ namespace Soft.Ventas.Win
             }
             else if (ItemCotizacion.MetodoImpresion.Equals("CONTRAPINZA"))
             {
-                Font Font = new System.Drawing.Font("Arial Narrow", 20, FontStyle.Regular);
+                Font Font = new System.Drawing.Font("Arial Narrow", 80, FontStyle.Regular);
                 Brush Brush = new SolidBrush(System.Drawing.Color.Red);
-                Pen Pen = new Pen(System.Drawing.Color.Red, 1);
+                Pen Pen = new Pen(System.Drawing.Color.Red, 3);
 
                 g.DrawImage((Image)upbImpresion.Image, 0, AltoGrafico);
                 g.DrawLine(Pen, 0, AltoGrafico, LargoGrafico, AltoGrafico);
@@ -1011,6 +1071,10 @@ namespace Soft.Ventas.Win
             }
 
             g.DrawRectangle(MyPen, new Rectangle(0, 0, upbImpresion.Width - 1, upbImpresion.Height - 1));
+
+            upbImpresion.Width = upbImpresion.Width / 6;
+            upbImpresion.Height = upbImpresion.Height / 6;
+
 
             ItemCotizacion.NroPiezasImpresion = CantidadPiezas;
             txtNroPiezasImpresion.Value = CantidadPiezas;
@@ -1262,6 +1326,16 @@ namespace Soft.Ventas.Win
             {
                 if (ItemCotizacion == null) { return; }
                 ItemCotizacion.SeparacionX = Convert.ToInt32(uneSeparacionX.Value);
+                if (ItemCotizacion.GraficoImpresionGirado == true)
+                {
+                    GenerarGraficoImpresionRotado();
+                }
+                else {
+                    GenerarGraficoImpresionNormal();
+                }
+
+                CalcularProduccionItem(ItemCotizacion);
+                MostrarItem(utCotizacion.ActiveNode);
             }
             catch (Exception ex)
             {
@@ -1275,6 +1349,16 @@ namespace Soft.Ventas.Win
             {
                 if (ItemCotizacion == null) { return; }
                 ItemCotizacion.SeparacionY = Convert.ToInt32(uneSeparacionY.Value);
+                if (ItemCotizacion.GraficoImpresionGirado == true)
+                {
+                    GenerarGraficoImpresionRotado();
+                }
+                else
+                {
+                    GenerarGraficoImpresionNormal();
+                }
+                CalcularProduccionItem(ItemCotizacion);
+                MostrarItem(utCotizacion.ActiveNode);
             }
             catch (Exception ex)
             {
