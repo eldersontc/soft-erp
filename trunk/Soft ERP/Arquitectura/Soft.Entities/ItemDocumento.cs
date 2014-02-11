@@ -20,6 +20,6 @@ namespace Soft.Entities
         public virtual Int32 Factor { get { return mFactor; } set { mFactor = value; } }
 
         private Decimal mTotal;
-        public virtual Decimal Total { get { return Precio * (Cantidad * Factor); } set { mTotal = value; } }
+        public virtual Decimal Total { get { return Math.Round(Precio * (Cantidad * Factor), 2); } set { mTotal = value; } }
     }
 }
