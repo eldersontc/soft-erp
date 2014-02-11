@@ -35,7 +35,7 @@ namespace Soft.Entities
                 {
                     SubTotal += Item.Total;
                 }
-                return SubTotal;
+                return Math.Round (SubTotal, 2);
             }
             set { mSubTotal = value; }
         }
@@ -50,7 +50,7 @@ namespace Soft.Entities
                 {
                     Impuesto = SubTotal * (TipoDocumento.PorcentajeImpuesto / 100);
                 }
-                return Impuesto;
+                return  Math.Round(Impuesto, 2);
             }
             set { mImpuesto = value; }
         }
@@ -65,20 +65,10 @@ namespace Soft.Entities
                     Total = SubTotal + Impuesto;
                     TotalSoles = Total / TipoCambioFecha;
                 }
-                return Total;
+                return Math.Round(Total, 2);
             }
             set { mTotal = value; }
         }
-
-        //public virtual void GenerarNumCpAlFinal()
-        //{
-        //    String SQL2 = "UPDATE " + TipoDocumento.Entidad + " SET Numeracion ='" + TipoDocumento.ObtenerNumeroActual() + "' WHERE ID ='" + ID + "'";
-
-        //        String SQL = "UPDATE " + TipoDocumento.EntidadTipoDocumento + " SET NumeracionActual = " + (TipoDocumento.NumeracionActual + 1) + " WHERE ID ='" + TipoDocumento.ID + "'";
-
-        //        HelperNHibernate.GetDataSet(SQL);
-        //        HelperNHibernate.GetDataSet(SQL2); 
-        //}
 
     }
 }
