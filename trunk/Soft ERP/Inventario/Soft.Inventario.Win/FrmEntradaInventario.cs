@@ -122,21 +122,19 @@ namespace Soft.Inventario.Win
 
         public void MostrarItem(UltraGridRow Row)
         {
-            //ugProductos.SuspendLayout();
             ItemEntradaInventario Item = (ItemEntradaInventario)Row.Tag;
             if (Item.Producto != null) {
                 Row.Cells[colCodigo].Activation = Activation.NoEdit;
                 Row.Cells[colNombre].Activation = Activation.NoEdit;
                 Row.Cells[colCodigo].Value =Item.Producto.Codigo;
                 Row.Cells[colNombre].Value = Item.Producto.Nombre;
-                AgregarUnidades(Row);
+                Row.Cells[colUnidad].Value = Item.Unidad.Nombre;
             }
             Row.Cells[colObservacion].Value = Item.Observacion;
             Row.Cells[colUnidad].Value = (Item.Unidad != null) ? Item.Unidad.Nombre : "";
             Row.Cells[colPrecio].Value = Item.Precio;
             Row.Cells[colCantidad].Value = Item.Cantidad;
             Row.Cells[colTotal].Value = Item.Total;
-            //ugProductos.ResumeLayout();
         }
 
         private void ssTipoDocumento_Search(object sender, EventArgs e)
@@ -223,10 +221,6 @@ namespace Soft.Inventario.Win
         private void ubNuevoProducto_Click(object sender, EventArgs e)
         {
             AgregarProductos();
-            //UltraGridRow Row = ugProductos.DisplayLayout.Bands[0].AddNew();
-            //Row.Tag = EntradaInventario.AddItem();
-            //Row.Cells[colCodigo].Activate();
-            //ugProductos.PerformAction(Infragistics.Win.UltraWinGrid.UltraGridAction.EnterEditMode);
         }
 
         private void ubEliminarProducto_Click(object sender, EventArgs e)
@@ -242,35 +236,6 @@ namespace Soft.Inventario.Win
             EntradaInventario.Observacion = txtObservacion.Text;
         }
 
-        //public void AgregarProductos(String Codigo ,String Descripcion ,UltraGridRow Row) {
-        //    Collection Productos = new Collection();
-        //    FrmSelectedEntity FrmSeleccionarProducto = new FrmSelectedEntity();
-        //    ItemEntradaInventario Item = (ItemEntradaInventario)Row.Tag;
-        //    Productos = FrmSeleccionarProducto.GetSelectedsEntities(typeof(Existencia), "Seleción de Existencia", String.Format(" Codigo LIKE '{0}%' AND Nombre LIKE '{1}%' AND IDAlmacen = '{2}'", Codigo, Descripcion, EntradaInventario.Almacen.ID));
-        //    if (Productos.Count == 1) {
-        //        Existencia Producto = (Existencia)Productos[1];
-        //        Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
-        //        Item.Cantidad = 1;
-        //        MostrarItem(Row);
-        //    }
-        //    else if (Productos.Count > 1) {
-        //        Existencia Producto = (Existencia)Productos[1];
-        //        Item.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
-        //        Item.Cantidad = 1;
-        //        MostrarItem(Row);
-        //        for (int i = 2; i <= Productos.Count; i++)
-        //        {
-        //            UltraGridRow RowNuevo = ugProductos.DisplayLayout.Bands[0].AddNew();
-        //            ItemEntradaInventario ItemNuevo = EntradaInventario.AddItem();
-        //            Existencia ProductoNuevo = (Existencia)Productos[i];
-        //            ItemNuevo.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", ProductoNuevo.ID);
-        //            ItemNuevo.Cantidad = 1;
-        //            RowNuevo.Tag = ItemNuevo;
-        //            MostrarItem(RowNuevo);
-        //        }
-        //    }
-        //}
-
         public void AgregarProductos()
         {
             Collection Productos = new Collection();
@@ -283,6 +248,7 @@ namespace Soft.Inventario.Win
                 ItemNuevo.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
                 ItemNuevo.Cantidad = 1;
                 RowNuevo.Tag = ItemNuevo;
+                AgregarUnidades(RowNuevo);
                 MostrarItem(RowNuevo);
             }
         }
@@ -293,8 +259,11 @@ namespace Soft.Inventario.Win
             ValueList List = new ValueList();
             foreach (ExistenciaUnidad Unidad in Item.Producto.Unidades)
             {
-                if (Unidad.EsUnidadBase) { Item.Unidad = Unidad.Unidad; }
-                List.ValueListItems.Add(Unidad.Unidad, Unidad.Unidad.Nombre);
+                if (Unidad.EsUnidadBase) { 
+                    Item.Unidad = Unidad.Unidad;
+                    Item.Factor = Unidad.FactorConversion;
+                }
+                List.ValueListItems.Add(Unidad, Unidad.Unidad.Nombre);
             }
             Row.Cells[colUnidad].ValueList = List;
         }
@@ -307,7 +276,9 @@ namespace Soft.Inventario.Win
                 switch (e.Cell.Column.Key)
                 {
                     case colUnidad:
-                        Item.Unidad = (Unidad)e.Cell.ValueList.GetValue(e.Cell.ValueList.SelectedItemIndex);
+                        ExistenciaUnidad Unidad = (ExistenciaUnidad)e.Cell.ValueList.GetValue(e.Cell.ValueList.SelectedItemIndex);
+                        Item.Unidad = Unidad.Unidad;
+                        Item.Factor = Unidad.FactorConversion;
                         break;
                     case colPrecio:
                         Item.Precio = Convert.ToDecimal(e.Cell.Text.Replace('_', ' '));
@@ -324,6 +295,7 @@ namespace Soft.Inventario.Win
                         break;
                 }
                 MostrarItem(e.Cell.Row);
+                MostrarCostos();
 	        }   
 	        catch (Exception ex)
 	        {
