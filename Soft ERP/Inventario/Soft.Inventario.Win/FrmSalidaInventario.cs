@@ -124,21 +124,19 @@ namespace Soft.Inventario.Win
 
         public void MostrarItem(UltraGridRow Row)
         {
-            //ugProductos.SuspendLayout();
             ItemSalidaInventario Item = (ItemSalidaInventario)Row.Tag;
             if (Item.Producto != null) {
                 Row.Cells[colCodigo].Activation = Activation.NoEdit;
                 Row.Cells[colNombre].Activation = Activation.NoEdit;
                 Row.Cells[colCodigo].Value =Item.Producto.Codigo;
                 Row.Cells[colNombre].Value = Item.Producto.Nombre;
-                AgregarUnidades(Row);
+                Row.Cells[colUnidad].Value = Item.Unidad.Nombre;
             }
             Row.Cells[colObservacion].Value = Item.Observacion;
             Row.Cells[colUnidad].Value = (Item.Unidad != null) ? Item.Unidad.Nombre : "";
             Row.Cells[colPrecio].Value = Item.Precio;
             Row.Cells[colCantidad].Value = Item.Cantidad;
             Row.Cells[colTotal].Value = Item.Total;
-            //ugProductos.ResumeLayout();
         }
 
         private void ssTipoDocumento_Search(object sender, EventArgs e)
@@ -251,6 +249,7 @@ namespace Soft.Inventario.Win
                 ItemNuevo.Cantidad = 1;
                 ItemNuevo.Precio = ItemNuevo.Producto.CostoPromedio;
                 RowNuevo.Tag = ItemNuevo;
+                AgregarUnidades(RowNuevo);
                 MostrarItem(RowNuevo);
             }
             MostrarCostos();
@@ -298,39 +297,13 @@ namespace Soft.Inventario.Win
                         break;
                 }
                 MostrarItem(e.Cell.Row);
+                MostrarCostos();
 	        }   
 	        catch (Exception ex)
 	        {
                 MessageBox.Show(ex.Message);
 	        }
         }
-
-        //public void ugProductos_CellKeyEnter(UltraGridCell Cell)
-        //{
-        //    try
-        //    {
-        //        if (Cell == null) { return; }
-        //        ItemSalidaInventario Item = (ItemSalidaInventario)Cell.Row.Tag;
-        //        switch (Cell.Column.Key)
-        //        {
-        //            case colCodigo:
-        //                if (Cell.Text.Equals("")) { break; }
-        //                AgregarProductos(Cell.Text, "%", Cell.Row);
-        //                break;
-        //            case colNombre:
-        //                if (Cell.Text.Equals("")) { break; }
-        //                AgregarProductos("%", Cell.Text, Cell.Row);
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //MessageBox.Show(ex.Message);
-        //    }
-        //}
-
         private void txtOrdenProduccion_TextChanged(object sender, EventArgs e)
         {
             SalidaInventario.OrdenProduccion = txtOrdenProduccion.Text;
