@@ -96,6 +96,12 @@
     <Compile Include="FrmAsistenteSolicitudCotizacion.Designer.cs">
       <DependentUpon>FrmAsistenteSolicitudCotizacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCalculoMetros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCalculoMetros.Designer.cs">
+      <DependentUpon>FrmCalculoMetros.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +214,9 @@
   <ItemGroup>
     <EmbeddedResource Include="FrmAsistenteSolicitudCotizacion.resx">
       <DependentUpon>FrmAsistenteSolicitudCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCalculoMetros.resx">
+      <DependentUpon>FrmCalculoMetros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCotizacion.resx">
       <DependentUpon>FrmCotizacion.cs</DependentUpon>
