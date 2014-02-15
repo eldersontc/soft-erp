@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSolicitudCotizacion));
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
@@ -68,12 +69,13 @@
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             this.tabItems = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ugServicios = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.ubEliminarServicio = new Infragistics.Win.Misc.UltraButton();
             this.ubNuevoServicio = new Infragistics.Win.Misc.UltraButton();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ssOperacion = new Soft.Controls.SoftSearch();
+            this.ultraLabel5 = new Infragistics.Win.Misc.UltraLabel();
             this.txtCantidadItemProduccion = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel4 = new Infragistics.Win.Misc.UltraLabel();
             this.txtNombre = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -144,8 +146,6 @@
             this.lblGrupo = new Infragistics.Win.Misc.UltraLabel();
             this.txtCodigoGrupo = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.btnCopiarElemento = new Infragistics.Win.Misc.UltraButton();
-            this.ultraLabel5 = new Infragistics.Win.Misc.UltraLabel();
-            this.ssOperacion = new Soft.Controls.SoftSearch();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.tabItems.SuspendLayout();
@@ -571,6 +571,25 @@
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(683, 316);
             // 
+            // ssOperacion
+            // 
+            this.ssOperacion.BackColor = System.Drawing.Color.Transparent;
+            this.ssOperacion.Location = new System.Drawing.Point(64, 196);
+            this.ssOperacion.Name = "ssOperacion";
+            this.ssOperacion.Size = new System.Drawing.Size(187, 28);
+            this.ssOperacion.TabIndex = 88;
+            // 
+            // ultraLabel5
+            // 
+            appearance14.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel5.Appearance = appearance14;
+            this.ultraLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ultraLabel5.Location = new System.Drawing.Point(10, 198);
+            this.ultraLabel5.Name = "ultraLabel5";
+            this.ultraLabel5.Size = new System.Drawing.Size(63, 23);
+            this.ultraLabel5.TabIndex = 87;
+            this.ultraLabel5.Text = "Operacion";
+            // 
             // txtCantidadItemProduccion
             // 
             this.txtCantidadItemProduccion.Location = new System.Drawing.Point(77, 135);
@@ -864,6 +883,7 @@
             this.ssMaterial.Size = new System.Drawing.Size(244, 28);
             this.ssMaterial.TabIndex = 76;
             this.ssMaterial.Search += new System.EventHandler(this.ssMaterial_Search);
+            this.ssMaterial.Clear += new System.EventHandler(this.ssMaterial_Clear);
             // 
             // ssMaquina
             // 
@@ -1362,25 +1382,6 @@
             this.btnCopiarElemento.TabIndex = 77;
             this.btnCopiarElemento.Text = "&Copiar";
             this.btnCopiarElemento.Click += new System.EventHandler(this.btnCopiarElemento_Click);
-            // 
-            // ultraLabel5
-            // 
-            appearance14.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel5.Appearance = appearance14;
-            this.ultraLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel5.Location = new System.Drawing.Point(10, 198);
-            this.ultraLabel5.Name = "ultraLabel5";
-            this.ultraLabel5.Size = new System.Drawing.Size(63, 23);
-            this.ultraLabel5.TabIndex = 87;
-            this.ultraLabel5.Text = "Operacion";
-            // 
-            // ssOperacion
-            // 
-            this.ssOperacion.BackColor = System.Drawing.Color.Transparent;
-            this.ssOperacion.Location = new System.Drawing.Point(64, 196);
-            this.ssOperacion.Name = "ssOperacion";
-            this.ssOperacion.Size = new System.Drawing.Size(187, 28);
-            this.ssOperacion.TabIndex = 88;
             // 
             // FrmSolicitudCotizacion
             // 
