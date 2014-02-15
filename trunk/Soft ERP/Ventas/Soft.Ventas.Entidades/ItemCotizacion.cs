@@ -101,6 +101,8 @@ namespace Soft.Ventas.Entidades
 
         public virtual Decimal CantidadDemasiaMaterial { get; set; }
 
+        public virtual Int32 NumeroPliegos { get; set; }
+
         public virtual ItemCotizacionServicio AddServicio()
         {
             ItemCotizacionServicio Item = new ItemCotizacionServicio();
