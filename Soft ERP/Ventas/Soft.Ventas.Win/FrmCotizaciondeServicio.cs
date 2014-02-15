@@ -454,6 +454,10 @@ namespace Soft.Ventas.Win
                 FrmCalculoMetros form = new FrmCalculoMetros(Item, ItemElemento);
                 Item=form.m_item;
             }
+            else if (busUnidadMaterial.Text.Equals("METRO CUADRADO"))
+            {
+                Item.CantidadMaterial = ItemElemento.MedidaAbiertaLargo * ItemElemento.MedidaAbiertaAlto * ItemElemento.CantidadElemento;
+            }
             Mostrar();
         }
 
