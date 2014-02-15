@@ -1333,40 +1333,22 @@ namespace Soft.Ventas.Win
 
         private void ubImprimirGraficoPrecorte_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            ////Bitmap b = new Bitmap((Image)upbPrecorte.Image);
-            //Bitmap b = new Bitmap((Image)upbImpresion.Image);
-            //String PathImagenCorte = String.Format("{0}Grafico-{1}.png", FrmMain.CarpetaImagenes, ItemCotizacion.ID);
-            //b.Save(PathImagenCorte);
-            //Soft.Reporte.Entidades.Reporte Reporte = (Soft.Reporte.Entidades.Reporte)HelperNHibernate.GetEntityByID("Reporte", "01F1035F-77F6-4188-B75F-7B9436FAB7DD");
-            //foreach (ParametroReporte Parametro in Reporte.ParametrosCrystal)
-            //{
-            //    if (Parametro.Nombre.Equals("PathImagenPrecorte"))
-            //    {
-            //        Parametro.Valor = PathImagenCorte;
-            //    }
-            //    else if (Parametro.Nombre.Equals("PathImagenImpresion"))
-            //    {
-            //        Parametro.Valor = PathImagenCorte;
-            //    }
-            //    else if (Parametro.Nombre.Equals("DimensionesPapelPrecorte"))
-            //    {
-            //        Parametro.Valor = String.Format("{0} x {1} cm", ItemCotizacion.Material.Largo, ItemCotizacion.Material.Alto);
-            //    }
-            //    else if (Parametro.Nombre.Equals("DimensionesImpresoraPrecorte"))
-            //    {
-            //        Parametro.Valor = String.Format("{0} x {1} cm", ItemCotizacion.Maquina.PliegoAnchoMaximo, ItemCotizacion.Maquina.PliegoAltoMaximo);
-            //    }
-            //}
-            //PrintReport ControladorImpresion = new PrintReport();
-            //ControladorImpresion.m_ObjectFlow = Reporte;
-            //ControladorImpresion.Start();
-            //}
-            //catch (Exception ex)
-            //{
-            //    SoftException.Control(ex);
-            //}
+            try
+            {
+                Bitmap b = new Bitmap((Image)upbPrecorte.Image);
+                String RutaGrafico = String.Format("{0}Grafico_Precorte_{1}.png", FrmMain.CarpetaImagenes, ItemCotizacion.ID);
+                b.Save(RutaGrafico);
+                Soft.Reporte.Entidades.Reporte Reporte = (Soft.Reporte.Entidades.Reporte)HelperNHibernate.GetEntityByField("Reporte", "Codigo", "VEN-0006");
+                ParametroReporte Parametro = Reporte.Parametros[0];
+                Parametro.Valor = RutaGrafico;
+                PrintReport ControladorImpresion = new PrintReport();
+                ControladorImpresion.m_ObjectFlow = Reporte;
+                ControladorImpresion.Start();
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
         private void uneSeparacionX_ValueChanged(object sender, EventArgs e)
@@ -1453,7 +1435,7 @@ namespace Soft.Ventas.Win
             try
             {
                 Bitmap b = new Bitmap((Image)upbImpresion.Image);
-                String RutaGrafico = String.Format("{0}Grafico_{1}.png", FrmMain.CarpetaImagenes, ItemCotizacion.ID);
+                String RutaGrafico = String.Format("{0}Grafico_Impresion_{1}.png", FrmMain.CarpetaImagenes, ItemCotizacion.ID);
                 b.Save(RutaGrafico);
                 Soft.Reporte.Entidades.Reporte Reporte = (Soft.Reporte.Entidades.Reporte)HelperNHibernate.GetEntityByField("Reporte", "Codigo", "VEN-0005");
                 ParametroReporte Parametro = Reporte.Parametros[0];
@@ -1465,7 +1447,7 @@ namespace Soft.Ventas.Win
             catch (Exception ex)
             {
                 SoftException.Control(ex);
-            }
+            }	
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
