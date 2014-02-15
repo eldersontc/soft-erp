@@ -281,6 +281,7 @@ namespace Soft.Inventario.Win
                         ExistenciaUnidad Unidad = (ExistenciaUnidad)e.Cell.ValueList.GetValue(e.Cell.ValueList.SelectedItemIndex);
                         Item.Unidad = Unidad.Unidad;
                         Item.Factor = Unidad.FactorConversion;
+                        Item.Precio = Item.Precio * Item.Factor;
                         break;
                     case colPrecio:
                         Item.Precio = Convert.ToDecimal(e.Cell.Text.Replace('_', ' '));
