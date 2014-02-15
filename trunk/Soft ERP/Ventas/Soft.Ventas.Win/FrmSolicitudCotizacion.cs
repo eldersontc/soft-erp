@@ -96,7 +96,6 @@ namespace Soft.Ventas.Win
 
         public void MostrarItem(ItemSolicitudCotizacion Item)
         {
-            //ItemSolicitudCotizacion Item = (ItemSolicitudCotizacion)Node.Tag;
             GrupoMedidaAbierta.Visible = Item.TieneMedidaAbierta;
             GrupoMedidaCerrada.Visible = Item.TieneMedidaCerrada;
             GruposTiras.Visible = Item.TieneTiraRetira;
@@ -106,7 +105,7 @@ namespace Soft.Ventas.Win
             lblMaterial.Visible = Item.TieneMaterial;
             ssOperacion.Text = (Item.Operacion != null) ? Item.Operacion.Nombre : "";
             ssMaquina.Text = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
-            ssMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
+            ssMaterial.Text = (Item.Material != null) ? Item.Material.Descripcion : "";
             lblTipoUnidad.Text = Item.TipoUnidad;
             txtObservacionItem.Text = Item.Observacion;
 
@@ -453,7 +452,7 @@ namespace Soft.Ventas.Win
                 if (ItemSolicitudCotizacion == null) { return; }
                 FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
                 ItemSolicitudCotizacion.Material = (Existencia)FrmSeleccionar.GetSelectedEntity(typeof(Existencia), "Existencia", " EsInventariable = 1");
-                ssMaterial.Text = (ItemSolicitudCotizacion.Material != null) ? ItemSolicitudCotizacion.Material.Nombre : "";
+                ssMaterial.Text = (ItemSolicitudCotizacion.Material != null) ? ItemSolicitudCotizacion.Material.Descripcion : "";
             }
             catch (Exception ex)
             {
@@ -774,6 +773,19 @@ namespace Soft.Ventas.Win
                 }
   
 
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ssMaterial_Clear(object sender, EventArgs e)
+        {
+            try
+            {
+                ItemSolicitudCotizacion.Material = null;
+                ssMaterial.Text = null;
             }
             catch (Exception ex)
             {
