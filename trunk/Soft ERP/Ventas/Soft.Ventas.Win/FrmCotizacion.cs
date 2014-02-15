@@ -113,7 +113,7 @@ namespace Soft.Ventas.Win
             uneSubTotal.Value = Cotizacion.SubTotal;
             uneImpuesto.Value = Cotizacion.Impuesto;
             uneTotal.Value = Cotizacion.Total;
-
+            uneCostoMillar.Value = Cotizacion.Total / 1000;
 
             busListaCostoMaquina.Text = (Cotizacion.ListaCostosMaquina != null) ? Cotizacion.ListaCostosMaquina.Nombre : "";
             busListaPrecioMaterial.Text = (Cotizacion.ListaPreciosExistencia != null) ? Cotizacion.ListaPreciosExistencia.Nombre : "";
@@ -151,7 +151,7 @@ namespace Soft.Ventas.Win
             GrupoMedidaCerrada.Visible = Item.TieneMedidaCerrada;
             GruposTiras.Visible = Item.TieneTiraRetira;
             ssMaquina.Text = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
-            ssMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
+            ssMaterial.Text = (Item.Material != null) ? Item.Material.Descripcion : "";
             lblTipoUnidad.Text = Item.TipoUnidad;
             txtObservacionItem.Text = Item.Observacion;
             txtCantidadItem.Value = Item.CantidadUnidad;
@@ -483,7 +483,7 @@ namespace Soft.Ventas.Win
             {
                 ItemCotizacion.Material = (Existencia)HelperNHibernate.GetEntityByID("Existencia", ItemCotizacion.Material.ID);
             }
-            ssMaterial.Text = (ItemCotizacion.Material != null) ? ItemCotizacion.Material.Nombre : "";
+            ssMaterial.Text = (ItemCotizacion.Material != null) ? ItemCotizacion.Material.Descripcion : "";
         }
 
         private void txtObservacionItem_TextChanged(object sender, EventArgs e)
