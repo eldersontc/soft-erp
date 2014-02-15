@@ -234,9 +234,8 @@ namespace Soft.Ventas.Win
                             }
                         }
                     }
+                    Item.UnidadMaterial = (Unidad)HelperNHibernate.GetEntityByID("Unidad", unidad.ID);
                 }
-
-                Item.UnidadMaterial = (Unidad)HelperNHibernate.GetEntityByID("Unidad", unidad.ID);
                 Mostrar();
             }
             catch (Exception ex)
