@@ -190,12 +190,52 @@ namespace Soft.Ventas.Win
         {
             try
             {
-                String filtro = "Nombre like '%" + busUnidadMaterial.Text + "%' and IDExistencia='"+Item.Material.ID+"'";
+                String filtro = "IDExistencia='"+Item.Material.ID+"'";
 
 
 
                 FrmSelectedEntity formulario = new FrmSelectedEntity();
                 Unidad unidad = (Unidad)formulario.GetSelectedEntity(typeof(Unidad), "ExistenciaUnidad", filtro);
+
+
+                if (Item.UnidadMaterial != null) {
+                    if (unidad != null) {
+                        if (!Item.UnidadMaterial.Nombre.Equals(unidad.Nombre))
+                        {
+
+                            ExistenciaUnidad eu = null;
+                            foreach (ExistenciaUnidad Itemunidad in Item.Material.Unidades)
+                            {
+                                if (Itemunidad.Unidad.Nombre.Equals(Item.UnidadMaterial.Nombre))
+                                {
+                                    eu = Itemunidad;
+                                    break;
+                                }
+                            }
+
+                            ExistenciaUnidad eu2 = null;
+                            foreach (ExistenciaUnidad Itemunidad in Item.Material.Unidades)
+                            {
+                                if (Itemunidad.Unidad.Nombre.Equals(unidad.Nombre))
+                                {
+                                    eu2 = Itemunidad;
+                                    break;
+                                }
+                            }
+
+                            Item.UnidadMaterial = (Unidad)HelperNHibernate.GetEntityByID("Unidad", unidad.ID);
+
+                            if (eu.FactorConversion > eu2.FactorConversion)
+                            {
+                                Item.CantidadMaterial = Item.CantidadMaterial / eu.FactorConversion;
+                            }
+                            else {
+                                Item.CantidadMaterial = Item.CantidadMaterial * eu.FactorConversion;
+                            }
+                        }
+                    }
+                }
+
                 Item.UnidadMaterial = (Unidad)HelperNHibernate.GetEntityByID("Unidad", unidad.ID);
                 Mostrar();
             }
@@ -309,7 +349,17 @@ namespace Soft.Ventas.Win
         private void ObtenerCostoMaterial() {
             try
             {
-                Item.CostoMaterial = Item.CantidadMaterial * Item.Material.CostoUltimaCompra;
+                ExistenciaUnidad eu = null;
+                foreach (ExistenciaUnidad Itemunidad in Item.Material.Unidades)
+                {
+                    if (Itemunidad.Unidad.Nombre.Equals(Item.UnidadMaterial.Nombre))
+                    {
+                        eu = Itemunidad;
+                        break;
+                    }
+                }
+
+                Item.CostoMaterial = (Item.CantidadMaterial * Item.Material.CostoUltimaCompra) / eu.FactorConversion;
             }
             catch (Exception)
             {
@@ -396,6 +446,17 @@ namespace Soft.Ventas.Win
                 Soft.Exceptions.SoftException.ShowException(ex);
             }
         }
+
+        private void btnObtenerCantidadMaterial_Click(object sender, EventArgs e)
+        {
+            if (busUnidadMaterial.Text.Equals("METRO"))
+            {
+                FrmCalculoMetros form = new FrmCalculoMetros(Item, ItemElemento);
+                Item=form.m_item;
+            }
+            Mostrar();
+        }
+
 
 
     }

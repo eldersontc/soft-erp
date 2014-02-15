@@ -65,6 +65,7 @@
             this.busMaquina = new Soft.Controls.SoftSearch();
             this.ultraLabel6 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraGroupBox2 = new Infragistics.Win.Misc.UltraGroupBox();
+            this.btnObtenerCantidadMaterial = new Infragistics.Win.Misc.UltraButton();
             this.txtCantidadMaterial = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel13 = new Infragistics.Win.Misc.UltraLabel();
             this.txtCostoMaterial = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
@@ -633,6 +634,7 @@
             // 
             appearance2.BackColor = System.Drawing.Color.Transparent;
             this.ultraGroupBox2.Appearance = appearance2;
+            this.ultraGroupBox2.Controls.Add(this.btnObtenerCantidadMaterial);
             this.ultraGroupBox2.Controls.Add(this.txtCantidadMaterial);
             this.ultraGroupBox2.Controls.Add(this.ultraLabel13);
             this.ultraGroupBox2.Controls.Add(this.txtCostoMaterial);
@@ -648,6 +650,15 @@
             this.ultraGroupBox2.Size = new System.Drawing.Size(496, 104);
             this.ultraGroupBox2.TabIndex = 85;
             this.ultraGroupBox2.Text = "Material";
+            // 
+            // btnObtenerCantidadMaterial
+            // 
+            this.btnObtenerCantidadMaterial.Location = new System.Drawing.Point(254, 76);
+            this.btnObtenerCantidadMaterial.Name = "btnObtenerCantidadMaterial";
+            this.btnObtenerCantidadMaterial.Size = new System.Drawing.Size(36, 23);
+            this.btnObtenerCantidadMaterial.TabIndex = 95;
+            this.btnObtenerCantidadMaterial.Text = "Obt.";
+            this.btnObtenerCantidadMaterial.Click += new System.EventHandler(this.btnObtenerCantidadMaterial_Click);
             // 
             // txtCantidadMaterial
             // 
@@ -851,5 +862,6 @@
         private Controls.SoftSearch busUnidadMaquina;
         private Infragistics.Win.Misc.UltraLabel ultraLabel5;
         private Infragistics.Win.Misc.UltraButton btnObtenerCostoElemento;
+        private Infragistics.Win.Misc.UltraButton btnObtenerCantidadMaterial;
     }
 }
