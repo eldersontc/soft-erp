@@ -188,9 +188,18 @@ namespace Soft.Ventas.Win
             txtHojasMaquina.Value = (Item.CantidadMaterial) * Item.NroPiezasPrecorte;
             txtTiraje.Value = Item.CantidadProduccion;
 
-            LabelMateriaPrima.Text = Math.Round(Item.CantidadMaterial, 0).ToString() + " + " + Math.Round(Item.CantidadDemasiaMaterial, 0).ToString() + " = " + Math.Round((Item.CantidadMaterial + Item.CantidadDemasiaMaterial),0).ToString() + " Hjs/Resma";
-
-            LabelProduccion.Text = Math.Round(((Item.CantidadMaterial + Item.CantidadDemasiaMaterial) * Item.NroPiezasPrecorte),0).ToString() + " Hjs/Maquina";
+            LabelMateriaPrima.Text = "";
+            if (Item.NumeroPliegos > 0) {
+                LabelMateriaPrima.Text = Item.NumeroPliegos + " pliegos de : ";
+            }
+            LabelMateriaPrima.Text += Math.Round(Item.CantidadMaterial, 0).ToString() + " + " + Math.Round(Item.CantidadDemasiaMaterial, 0).ToString() + " = " + Math.Round((Item.CantidadMaterial + Item.CantidadDemasiaMaterial),0).ToString() + " Hjs/Resma";
+            LabelProduccion.Text = "";
+            if (Item.NumeroPliegos > 0) {
+                LabelProduccion.Text = Item.NumeroPliegos + " pliegos de : ";
+            }
+            LabelProduccion.Text += Math.Round(((Item.CantidadMaterial + Item.CantidadDemasiaMaterial) * Item.NroPiezasPrecorte),0).ToString() + " Hjs/Maquina";
+            txtPliegos.Value = Item.NumeroPliegos;
+            
 
             if (Item.MetodoImpresion != null) {
                 ubeMetodo.Text = Item.MetodoImpresion;
@@ -199,7 +208,7 @@ namespace Soft.Ventas.Win
             utcItemCotizacion.Tabs["Graficos"].Visible = Item.TieneGraficos;
             txtDemasia.Value = Item.CantidadDemasia;
 
-            if (Item.TieneGraficos & !Cotizacion.NewInstance) {
+            if (Item.TieneGraficos ) {
                 try
                 {
  if (Item.GraficoImpresionGirado)
@@ -220,6 +229,8 @@ namespace Soft.Ventas.Win
 
                
             }
+
+
             MostrarServicios(Item);
         }
 
@@ -615,7 +626,11 @@ namespace Soft.Ventas.Win
             Decimal resultado = 0;
             try
             {
-                resultado = itemCotizacion.Material.CostoUltimaCompra * (itemCotizacion.CantidadMaterial + itemCotizacion.CantidadDemasiaMaterial );
+                if (itemCotizacion.NumeroPliegos == 0) {
+                    itemCotizacion.NumeroPliegos = 1;
+                }
+
+                resultado = itemCotizacion.Material.CostoUltimaCompra * (itemCotizacion.CantidadMaterial + itemCotizacion.CantidadDemasiaMaterial) * itemCotizacion.NumeroPliegos;
             
             }
             catch (Exception)
@@ -646,15 +661,15 @@ namespace Soft.Ventas.Win
                 Decimal residuo = (resultado-entero)*100;
                 if (residuo >= 20 && residuo <= 100)
                 {
-                    resultado = (entero + 1) * Elcm.Costo * itemCotizacion.NumerodePases;
+                    resultado = (entero + 1) * Elcm.Costo * itemCotizacion.NumerodePases * itemCotizacion.NumeroPliegos;
                 }
                 else if (entero == 0 && residuo>0)
                 {
-                    resultado = (1) * Elcm.Costo * itemCotizacion.NumerodePases;
+                    resultado = (1) * Elcm.Costo * itemCotizacion.NumerodePases * itemCotizacion.NumeroPliegos;
                 }
                 else
                 {
-                    resultado = (entero) * Elcm.Costo * itemCotizacion.NumerodePases;
+                    resultado = (entero) * Elcm.Costo * itemCotizacion.NumerodePases * itemCotizacion.NumeroPliegos;
                 }
             }
 
@@ -786,7 +801,7 @@ namespace Soft.Ventas.Win
                     itemcosteado.CantidadMaterial = Math.Round((itemcosteado.CantidadElemento * (itemcosteado.MedidaAbiertaLargo * itemcosteado.MedidaAbiertaAlto)), 0);
                     itemcosteado.CantidadDemasiaMaterial = itemcosteado.CantidadDemasia ;
 
-
+                  
 
                     itemcosteado.CantidadProduccion = itemcosteado.CantidadMaterial + itemcosteado.CantidadDemasiaMaterial;
 
@@ -817,7 +832,15 @@ namespace Soft.Ventas.Win
                 }
 
 
+
+                
+
+
                 Int32 pases = 1;
+
+
+
+
 
                 if (itemcosteado.MetodoImpresion.Equals("TIRA Y RETIRA")) {
                     pases = 2;
@@ -826,6 +849,32 @@ namespace Soft.Ventas.Win
                 {
                     pases = 2;
                 }
+
+
+
+
+
+
+                if (itemcosteado.CantidadUnidad == 0)
+                {
+                    itemcosteado.NumeroPliegos = 1;
+                }
+                else
+                {
+                    Decimal pliegos = itemcosteado.CantidadUnidad/( itemcosteado.NroPiezasImpresion * 2);
+                    Decimal entero = Math.Truncate(pliegos);
+                    Decimal paginasresiduo = entero - pliegos;
+
+                    itemcosteado.NumeroPliegos = Convert.ToInt32(entero);
+
+                    if (itemcosteado.NumeroPliegos == 0)
+                    {
+                        itemcosteado.NumeroPliegos = 1;
+                    }
+                }
+
+
+
 
                 itemcosteado.CantidadProduccion = (itemcosteado.CantidadMaterial + itemcosteado.CantidadDemasiaMaterial) * itemcosteado.NumerodePases * itemcosteado.NroPiezasPrecorte * pases;
                
