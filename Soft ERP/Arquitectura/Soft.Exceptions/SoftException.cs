@@ -13,15 +13,19 @@ namespace Soft.Exceptions
     {
         public static void Control(Exception ex)
         {
-            switch (ex.GetType().Name)
+            if (ex.InnerException == null)
             {
-                case "SqlException":
-                    ShowSqlException((SqlException)ex);
-                    break;
-                default:
-                    ShowException(ex);
-                    break;
+                switch (ex.GetType().Name)
+                {
+                    case "SqlException":
+                        ShowSqlException((SqlException)ex);
+                        break;
+                    default:
+                        ShowException(ex);
+                        break;
+                }
             }
+            else { Control(ex.InnerException); }
         }
 
         public static void ShowException(Exception ex) {
