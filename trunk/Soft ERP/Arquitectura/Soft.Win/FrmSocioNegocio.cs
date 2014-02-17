@@ -30,32 +30,26 @@ namespace Soft.Win
             Mostrar();
         }
 
-
         Boolean mUIMoficiado = false;
 
-        //Constantes DIRECCIONES
+        //Constantes Direcciones
         const String colDepartamento = "Departamento";
         const String colProvincia = "Provincia";
         const String colDistrito = "Distrito";
-        const String colDireccion = "Direccion";
+        const String colDireccion = "Dirección";
         const String colDirEntrega = "Entrega";
         const String colDirFactura = "Factura";
 
-
-
-        //Constantes CONTACTOS
+        //Constantes Contactos
         const String colContactoNombre = "Nombre";
         const String colContactoCargo = "Cargo";
-        const String colContactoTelefono = "Telefono";
+        const String colContactoTelefono = "Teléfono";
         const String colContactoCorreo = "Correo";
 
-
-
-        //Constantes BANCOS
+        //Constantes Bancos
         const String colBanco = "Banco";
         const String colMoneda = "Moneda";
-        const String colBancoDescripcion = "Descripcion";
-        
+        const String colBancoDescripcion = "Descripción";
 
         public void InitGridDirecciones()
         {
@@ -64,27 +58,27 @@ namespace Soft.Win
 
             column = columns.Columns.Add(colDepartamento);
             column.DataType = typeof(String);
-            
-            
+
+
             column = columns.Columns.Add(colProvincia);
             column.DataType = typeof(String);
-            
+
 
             column = columns.Columns.Add(colDistrito);
             column.DataType = typeof(String);
-            
+
 
             column = columns.Columns.Add(colDireccion);
             column.DataType = typeof(String);
-            
-            
+
+
             column = columns.Columns.Add(colDirEntrega);
             column.DataType = typeof(Boolean);
-            
+
 
             column = columns.Columns.Add(colDirFactura);
             column.DataType = typeof(Boolean);
-            
+
 
 
             GrillaDirecciones.DataSource = columns;
@@ -115,25 +109,24 @@ namespace Soft.Win
 
             column = columns.Columns.Add(colContactoNombre);
             column.DataType = typeof(String);
-            
+
             column = columns.Columns.Add(colContactoCargo);
             column.DataType = typeof(String);
-            
+
             column = columns.Columns.Add(colContactoTelefono);
             column.DataType = typeof(String);
 
             column = columns.Columns.Add(colContactoCorreo);
             column.DataType = typeof(String);
-            
+
             GrillaContactos.DataSource = columns;
             GrillaContactos.DisplayLayout.Bands[0].Columns[colContactoNombre].Width = 120;
             GrillaContactos.DisplayLayout.Bands[0].Columns[colContactoCargo].Width = 70;
             GrillaContactos.DisplayLayout.Bands[0].Columns[colContactoTelefono].Width = 70;
             GrillaContactos.DisplayLayout.Bands[0].Columns[colContactoCorreo].Width = 100;
-            
+
             //MapKeys(ref GrillaContactos);
         }
-
 
         public void InitGridBancos()
         {
@@ -157,12 +150,11 @@ namespace Soft.Win
 
             GrillaBancos.DisplayLayout.Bands[0].Columns[colBanco].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Button;
             GrillaBancos.DisplayLayout.Bands[0].Columns[colMoneda].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Button;
-            
+
 
 
             //MapKeys(ref GrillaContactos);
         }
-
 
         public void Mostrar()
         {
@@ -170,7 +162,6 @@ namespace Soft.Win
             if (SocioNegocio.TipoSocioNegocio != null) { ssTipoSocio.Text = SocioNegocio.TipoSocioNegocio.Descripcion; }
             txtCodigo.Text = SocioNegocio.Codigo;
             txtNombre.Text = SocioNegocio.Nombre;
-            //txtDescripcion.Text = SocioNegocio.Descripcion;
             udtAniversario.Value = SocioNegocio.Aniversario;
             uceActivo.Checked = SocioNegocio.Activo;
             uceCliente.Checked = SocioNegocio.Cliente;
@@ -188,6 +179,11 @@ namespace Soft.Win
 
             txtCorreo.Text = SocioNegocio.Correo;
             txtPaginaWeb.Text = SocioNegocio.PaginaWeb;
+
+            if (!SocioNegocio.Firma.Equals(""))
+            {
+                pbFirma.Image = Image.FromFile(String.Format("{0}{1}", FrmMain.CarpetaImagenes, SocioNegocio.Firma));
+            }
 
             MostrarDirecciones();
             MostrarContactos();
@@ -219,11 +215,6 @@ namespace Soft.Win
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
             SocioNegocio.Nombre = txtNombre.Text;
-        }
-
-        private void txtDescripcion_TextChanged(object sender, EventArgs e)
-        {
-            //SocioNegocio.Descripcion = txtDescripcion.Text;
         }
 
         private void udtAniversario_ValueChanged(object sender, EventArgs e)
@@ -258,8 +249,9 @@ namespace Soft.Win
 
         private void uceEmpleado_CheckedChanged(object sender, EventArgs e)
         {
-            if (mUIMoficiado) {
-                return;  
+            if (mUIMoficiado)
+            {
+                return;
             }
 
             SocioNegocio.Empleado = uceEmpleado.Checked;
@@ -273,8 +265,6 @@ namespace Soft.Win
             }
             Mostrar();
         }
-
-        
 
         public void MostrarDireccion(UltraGridRow Row)
         {
@@ -297,11 +287,11 @@ namespace Soft.Win
             Row.Cells[colContactoTelefono].Value = item.Telefono;
         }
 
-
         public void MostrarBanco(UltraGridRow Row)
         {
             ItemSocioNegocioBanco item = (ItemSocioNegocioBanco)Row.Tag;
-            if (item.Banco != null) {
+            if (item.Banco != null)
+            {
                 Row.Cells[colBanco].Value = item.Banco.Nombre;
             }
 
@@ -311,7 +301,6 @@ namespace Soft.Win
             }
             Row.Cells[colBancoDescripcion].Value = item.Descripcion;
         }
-
 
         public void MostrarDirecciones()
         {
@@ -324,7 +313,6 @@ namespace Soft.Win
             }
         }
 
-
         public void MostrarContactos()
         {
             base.ClearAllRows(ref GrillaContactos);
@@ -335,8 +323,6 @@ namespace Soft.Win
                 this.MostrarContacto(Row);
             }
         }
-
-
 
         public void MostrarBancos()
         {
@@ -353,7 +339,8 @@ namespace Soft.Win
         {
             FrmSeleccionarDireccion SeleccionarDireccion = new FrmSeleccionarDireccion();
             ItemSocioNegocioDireccion ItemDireccion = SeleccionarDireccion.ObtenerDireccion();
-            if (ItemDireccion != null) {
+            if (ItemDireccion != null)
+            {
                 SocioNegocio.Direcciones.Add(ItemDireccion);
                 UltraGridRow Row = GrillaDirecciones.DisplayLayout.Bands[0].AddNew();
                 Row.Tag = ItemDireccion;
@@ -386,8 +373,8 @@ namespace Soft.Win
             this.MostrarDireccion(e.Cell.Row);
         }
 
-
-        private void ModificarDireccion(UltraGridRow Row) {
+        private void ModificarDireccion(UltraGridRow Row)
+        {
             ItemSocioNegocioDireccion ItemDireccion = (ItemSocioNegocioDireccion)Row.Tag;
             FrmSeleccionarDireccion SeleccionarDireccion = new FrmSeleccionarDireccion();
             ItemDireccion = SeleccionarDireccion.ModificarDireccion(ItemDireccion);
@@ -396,8 +383,9 @@ namespace Soft.Win
 
         private void btnModificarDireccion_Click(object sender, EventArgs e)
         {
-            if (GrillaDirecciones.ActiveRow != null) {
-                ModificarDireccion(GrillaDirecciones.ActiveRow);    
+            if (GrillaDirecciones.ActiveRow != null)
+            {
+                ModificarDireccion(GrillaDirecciones.ActiveRow);
             }
         }
 
@@ -413,8 +401,6 @@ namespace Soft.Win
             UltraGridRow Row = GrillaContactos.DisplayLayout.Bands[0].AddNew();
             Row.Tag = this.SocioNegocio.AddItemContacto();
         }
-
-       
 
         private void btnEliminarContacto_Click(object sender, EventArgs e)
         {
@@ -449,38 +435,19 @@ namespace Soft.Win
         private void btnAgregarBancos_Click(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmSeleccionarPanel = new FrmSelectedEntity();
-            String filtro = "id not in (";
-            String ids = "";
-
-            foreach (ItemSocioNegocioBanco Item in SocioNegocio.Bancos)
-            {
-                ids = ids + "'" + Item.Banco.ID + "',";
-
-            }
-
-            if (ids.Length > 0)
-            {
-                filtro = filtro + ids.Substring(0, ids.Length - 1) + ")";
-            }
-            else
-            {
-                filtro = "";
-            }
-
-
-            Banco ban = (Banco)FrmSeleccionarPanel.GetSelectedEntity(typeof(Banco), "Banco", filtro);
-
-            if (ban != null)
+            String Filtro = "ID NOT IN (";
+            String IDs = "";
+            foreach (ItemSocioNegocioBanco Item in SocioNegocio.Bancos) { IDs = IDs + "'" + Item.Banco.ID + "',"; }
+            if (IDs.Length > 0) { Filtro = Filtro + IDs.Substring(0, IDs.Length - 1) + ")"; }
+            else { Filtro = ""; }
+            Banco Banco = (Banco)FrmSeleccionarPanel.GetSelectedEntity(typeof(Banco), "Banco", Filtro);
+            if (Banco != null)
             {
                 UltraGridRow Row = GrillaBancos.DisplayLayout.Bands[0].AddNew();
-
-
                 Row.Tag = this.SocioNegocio.AddItemBanco();
-                ItemSocioNegocioBanco item = (ItemSocioNegocioBanco)Row.Tag;
-                item.Banco = ban;
-
+                ItemSocioNegocioBanco Item = (ItemSocioNegocioBanco)Row.Tag;
+                Item.Banco = Banco;
                 MostrarBanco(Row);
-
             }
         }
 
@@ -549,8 +516,6 @@ namespace Soft.Win
             txtNombre.Text = SocioNegocio.Nombre;
         }
 
-     
-
         private void txtPaginaWeb_ValueChanged(object sender, EventArgs e)
         {
             SocioNegocio.PaginaWeb = txtPaginaWeb.Text;
@@ -564,42 +529,41 @@ namespace Soft.Win
         private void busArea_Search(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-            SocioNegocioEmpleado empleado=SocioNegocio.Empleados.First();
+            SocioNegocioEmpleado empleado = SocioNegocio.Empleados.First();
             empleado.Area = (Area)FrmSeleccionar.GetSelectedEntity(typeof(Area), "Area");
             MostrarEmpleado();
         }
 
-        private void MostrarEmpleado() {
+        private void MostrarEmpleado()
+        {
             mUIMoficiado = true;
             if (SocioNegocio.Empleados.Count > 0)
-            { 
-            SocioNegocioEmpleado empleado = SocioNegocio.Empleados.First();
-            if (empleado != null) {
-                if (empleado.Area != null)
+            {
+                SocioNegocioEmpleado empleado = SocioNegocio.Empleados.First();
+                if (empleado != null)
                 {
-                    busArea.Text = empleado.Area.Nombre;
-                }
-                else {
-                    busArea.Text = null;
-                }
-
-
-                if (empleado.Usuario != null)
-                {
-                    busNombreUsuario.Text = empleado.Usuario.NombreUsuario;
-                    busCodigoUsuario.Text = empleado.Usuario.UserID;
-                }
-                else
-                {
-                    busNombreUsuario.Text = null;
-                    busCodigoUsuario.Text = null;
-                }
-
-                
-                checkActivoEmpleado.Checked = empleado.Activo;
+                    if (empleado.Area != null)
+                    {
+                        busArea.Text = empleado.Area.Nombre;
+                    }
+                    else
+                    {
+                        busArea.Text = null;
+                    }
+                    if (empleado.Usuario != null)
+                    {
+                        busNombreUsuario.Text = empleado.Usuario.NombreUsuario;
+                        busCodigoUsuario.Text = empleado.Usuario.UserID;
+                    }
+                    else
+                    {
+                        busNombreUsuario.Text = null;
+                        busCodigoUsuario.Text = null;
+                    }
+                    checkActivoEmpleado.Checked = empleado.Activo;
                 }
             }
-            mUIMoficiado=false;
+            mUIMoficiado = false;
         }
 
         private void checkActivoEmpleado_CheckedChanged(object sender, EventArgs e)
@@ -607,9 +571,6 @@ namespace Soft.Win
             SocioNegocioEmpleado empleado = SocioNegocio.Empleados.First();
             empleado.Activo = checkActivoEmpleado.Checked;
         }
-
-
-
 
         private void MostrarCliente()
         {
@@ -621,18 +582,15 @@ namespace Soft.Win
                 {
                     if (cliente.SocioNegocioEmpleado != null)
                     {
-
                         FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-                        String Filtro = "ID='" + cliente.SocioNegocioEmpleado.ID+"'";
+                        String Filtro = "ID='" + cliente.SocioNegocioEmpleado.ID + "'";
                         cliente.SocioNegocioEmpleado = (SocioNegocioEmpleado)FrmSeleccionar.GetSelectedEntity(typeof(SocioNegocioEmpleado), "Vendedor", Filtro);
-
                         busVendedor.Text = cliente.SocioNegocioEmpleado.Nombre;
                     }
                     else
                     {
                         busVendedor.Text = null;
                     }
-
                     checkActivoClliente.Checked = cliente.Activo;
                 }
             }
@@ -655,32 +613,41 @@ namespace Soft.Win
 
         private void busNombreUsuario_Search(object sender, EventArgs e)
         {
-            String filtro = "";
-            if (busNombreUsuario.Text.Length > 0) {
-                filtro = "NombreUsuario like '" + busNombreUsuario.Text + "%'";
+            String Filtro = "";
+            if (busNombreUsuario.Text.Length > 0)
+            {
+                Filtro = "NombreUsuario like '" + busNombreUsuario.Text + "%'";
             }
-
             FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-            SocioNegocioEmpleado empleado = SocioNegocio.Empleados.First();
-            empleado.Usuario = (Usuario)FrmSeleccionar.GetSelectedEntity(typeof(Usuario), "Usuario", filtro);
+            SocioNegocioEmpleado Empleado = SocioNegocio.Empleados.First();
+            Empleado.Usuario = (Usuario)FrmSeleccionar.GetSelectedEntity(typeof(Usuario), "Usuario", Filtro);
             MostrarEmpleado();
         }
 
         private void busCodigoUsuario_Search(object sender, EventArgs e)
         {
-            String filtro = "";
+            String Filtro = "";
             if (busCodigoUsuario.Text.Length > 0)
             {
-                filtro = "UserID like '" + busCodigoUsuario.Text + "%'";
+                Filtro = "UserID like '" + busCodigoUsuario.Text + "%'";
             }
             FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-            SocioNegocioEmpleado empleado = SocioNegocio.Empleados.First();
-            empleado.Usuario = (Usuario)FrmSeleccionar.GetSelectedEntity(typeof(Usuario), "Usuario",filtro);
+            SocioNegocioEmpleado Empleado = SocioNegocio.Empleados.First();
+            Empleado.Usuario = (Usuario)FrmSeleccionar.GetSelectedEntity(typeof(Usuario), "Usuario", Filtro);
             MostrarEmpleado();
         }
 
-        
-
+        private void ubFirma_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog OpenFile = new OpenFileDialog();
+            OpenFile.InitialDirectory = FrmMain.CarpetaImagenes;
+            OpenFile.Filter = "[JPG,JPEG]|*.jpg|[PNG]|*.png";
+            if (OpenFile.ShowDialog() == DialogResult.OK)
+            {
+                SocioNegocio.Firma = OpenFile.SafeFileName;
+                pbFirma.Image = Image.FromFile(OpenFile.FileName);
+            }
+        }
 
     }
 }
