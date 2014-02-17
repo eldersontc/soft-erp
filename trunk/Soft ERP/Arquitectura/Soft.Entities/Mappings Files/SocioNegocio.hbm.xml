@@ -4,25 +4,23 @@
   <class name="Soft.Entities.SocioNegocio, Soft.Entities" table="SocioNegocio">
 
     <id name="ID" column ="ID" type="string" unsaved-value="0"/>
-    <property name="Codigo" column="Codigo" type="string"/>
-    <property name="Nombre" column="Nombre" type="string"/>
-    <property name="Descripcion" column="Descripcion" type="string"/>
-    <property name="Aniversario" column="Aniversario" type="DateTime"/>
-    <property name="Cliente" column="Cliente" type="boolean"/>
-    <property name="Proveedor" column="Proveedor" type="boolean"/>
-    <property name="Empleado" column="Empleado" type="boolean"/>
+    <property name="Codigo" type="string"/>
+    <property name="Nombre" type="string"/>
+    <property name="Descripcion" type="string"/>
+    <property name="Aniversario" type="DateTime"/>
+    <property name="Cliente" type="boolean"/>
+    <property name="Proveedor" type="boolean"/>
+    <property name="Empleado" type="boolean"/>
 
-    <property name="ApellidoPaterno" column="ApellidoPaterno" type="string"/>
-    <property name="ApellidoMaterno" column="ApellidoMaterno" type="string"/>
-    <property name="Nombre1" column="Nombre1" type="string"/>
-    <property name="Nombre2" column="Nombre2" type="string"/>
-    <property name="Correo" column="Correo" type="string"/>
-    <property name="PaginaWeb" column="PaginaWeb" type="string"/>
+    <property name="ApellidoPaterno"  type="string"/>
+    <property name="ApellidoMaterno"  type="string"/>
+    <property name="Nombre1"  type="string"/>
+    <property name="Nombre2"  type="string"/>
+    <property name="Correo" type="string"/>
+    <property name="PaginaWeb" type="string"/>
+    <property name="Firma" type="string"/>
 
-
-
-
-    <property name="Activo" column="Activo" type="boolean"/>
+    <property name="Activo" type="boolean"/>
 
     <many-to-one name="TipoSocioNegocio" class="Soft.Entities.TipoSocioNegocio" column="IDTipoSocioNegocio" lazy="false" not-null="true" unique="true" insert="true" update="true"/>
 
