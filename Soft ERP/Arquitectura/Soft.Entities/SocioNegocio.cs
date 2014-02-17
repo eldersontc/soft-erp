@@ -36,6 +36,7 @@ namespace Soft.Entities
         public virtual String Nombre2 { get; set; }
         public virtual String Correo { get; set; }
         public virtual String PaginaWeb { get; set; }
+        public virtual String Firma { get; set; }
 
         public virtual void ConcatenarNombres()
         {
