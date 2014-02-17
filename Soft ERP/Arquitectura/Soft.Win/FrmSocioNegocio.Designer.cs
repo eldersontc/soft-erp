@@ -79,6 +79,8 @@
             this.btnAgregarBancos = new Infragistics.Win.Misc.UltraButton();
             this.GrillaBancos = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ubFirma = new Infragistics.Win.Misc.UltraButton();
+            this.pbFirma = new System.Windows.Forms.PictureBox();
             this.txtPaginaWeb = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel10 = new Infragistics.Win.Misc.UltraLabel();
             this.udtAniversario = new Infragistics.Win.UltraWinEditors.UltraDateTimeEditor();
@@ -120,6 +122,7 @@
             this.ultraTabPageControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrillaBancos)).BeginInit();
             this.ultraTabPageControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFirma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPaginaWeb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udtAniversario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCorreo)).BeginInit();
@@ -153,7 +156,7 @@
             this.ugbParent.Controls.Add(this.ultraLabel3);
             this.ugbParent.Controls.Add(this.ultraLabel1);
             this.ugbParent.Controls.Add(this.ultraLabel2);
-            this.ugbParent.Size = new System.Drawing.Size(633, 582);
+            this.ugbParent.Size = new System.Drawing.Size(633, 588);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel2, 0);
@@ -547,7 +550,7 @@
             this.ultraTabPageControl4.Controls.Add(this.GrillaDirecciones);
             this.ultraTabPageControl4.Controls.Add(this.btnEliminar);
             this.ultraTabPageControl4.Controls.Add(this.btnAgregarDireccion);
-            this.ultraTabPageControl4.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl4.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl4.Name = "ultraTabPageControl4";
             this.ultraTabPageControl4.Size = new System.Drawing.Size(600, 236);
             // 
@@ -675,15 +678,35 @@
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.Controls.Add(this.ubFirma);
+            this.ultraTabPageControl1.Controls.Add(this.pbFirma);
             this.ultraTabPageControl1.Controls.Add(this.txtPaginaWeb);
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel10);
             this.ultraTabPageControl1.Controls.Add(this.udtAniversario);
             this.ultraTabPageControl1.Controls.Add(this.txtCorreo);
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel5);
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel4);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(600, 236);
+            // 
+            // ubFirma
+            // 
+            this.ubFirma.Location = new System.Drawing.Point(329, 104);
+            this.ubFirma.Name = "ubFirma";
+            this.ubFirma.Size = new System.Drawing.Size(75, 23);
+            this.ubFirma.TabIndex = 42;
+            this.ubFirma.Text = "Firma";
+            this.ubFirma.Click += new System.EventHandler(this.ubFirma_Click);
+            // 
+            // pbFirma
+            // 
+            this.pbFirma.Location = new System.Drawing.Point(23, 104);
+            this.pbFirma.Name = "pbFirma";
+            this.pbFirma.Size = new System.Drawing.Size(299, 110);
+            this.pbFirma.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFirma.TabIndex = 41;
+            this.pbFirma.TabStop = false;
             // 
             // txtPaginaWeb
             // 
@@ -1004,7 +1027,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 620);
+            this.ClientSize = new System.Drawing.Size(649, 626);
             this.Name = "FrmSocioNegocio";
             this.Text = "Socio de Negocio";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
@@ -1022,6 +1045,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GrillaBancos)).EndInit();
             this.ultraTabPageControl1.ResumeLayout(false);
             this.ultraTabPageControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFirma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPaginaWeb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udtAniversario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCorreo)).EndInit();
@@ -1102,5 +1126,7 @@
         private Infragistics.Win.Misc.UltraLabel ultraLabel13;
         private Controls.SoftSearch busNombreUsuario;
         private Controls.SoftSearch busCodigoUsuario;
+        private Infragistics.Win.Misc.UltraButton ubFirma;
+        private System.Windows.Forms.PictureBox pbFirma;
     }
 }
