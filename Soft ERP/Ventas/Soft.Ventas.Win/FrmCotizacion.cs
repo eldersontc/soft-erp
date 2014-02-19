@@ -828,7 +828,7 @@ namespace Soft.Ventas.Win
                     Decimal largo=itemcosteado.MedidaAbiertaLargo;
                     Decimal alto = itemcosteado.MedidaAbiertaAlto;
 
-                    if (itemcosteado.UnidadMedidaAbierta.Equals("MT.")) {
+                    if (itemcosteado.UnidadMedidaAbierta.Equals("CM.")) {
                         largo = largo / 100;
                         alto = alto / 100;
                     }
