@@ -85,7 +85,16 @@ namespace Soft.Ventas.Win
         {
             if (checkHorizontal.Checked == true)
             {
-                txtHorizontal.Value=CalcularMetro(m_itemCotizacion.MedidaAbiertaAlto);
+                Decimal largo = m_itemCotizacion.MedidaAbiertaLargo;
+                Decimal alto = m_itemCotizacion.MedidaAbiertaAlto;
+
+                if (m_itemCotizacion.UnidadMedidaAbierta.Equals("CM."))
+                {
+                    largo = largo / 100;
+                    alto = alto / 100;
+                }
+
+                txtHorizontal.Value = CalcularMetro(alto);
             }
             else {
                 txtHorizontal.Value = 0;
@@ -97,7 +106,16 @@ namespace Soft.Ventas.Win
         {
             if (checkHorizontal.Checked == true)
             {
-                txtVertical.Value = CalcularMetro(m_itemCotizacion.MedidaAbiertaLargo);
+                Decimal largo = m_itemCotizacion.MedidaAbiertaLargo;
+                Decimal alto = m_itemCotizacion.MedidaAbiertaAlto;
+
+                if (m_itemCotizacion.UnidadMedidaAbierta.Equals("CM."))
+                {
+                    largo = largo / 100;
+                    alto = alto / 100;
+                }
+
+                txtVertical.Value = CalcularMetro(largo);
             }
             else
             {

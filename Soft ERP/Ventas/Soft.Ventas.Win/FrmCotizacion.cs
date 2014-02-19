@@ -113,7 +113,8 @@ namespace Soft.Ventas.Win
             uneSubTotal.Value = Cotizacion.SubTotal;
             uneImpuesto.Value = Cotizacion.Impuesto;
             uneTotal.Value = Cotizacion.Total;
-            uneCostoMillar.Value = Cotizacion.Total / 1000;
+            uneCostoUnidad.Value = Cotizacion.Total / Cotizacion.Cantidad;
+            uneCostoMillar.Value = (Cotizacion.Total / Cotizacion.Cantidad) * 1000;
 
             busListaCostoMaquina.Text = (Cotizacion.ListaCostosMaquina != null) ? Cotizacion.ListaCostosMaquina.Nombre : "";
             busListaPrecioMaterial.Text = (Cotizacion.ListaPreciosExistencia != null) ? Cotizacion.ListaPreciosExistencia.Nombre : "";
@@ -145,6 +146,7 @@ namespace Soft.Ventas.Win
 
         public void MostrarItem(UltraTreeNode Node)
         {
+            ActualizandoIU = true;
             ItemCotizacion Item = (ItemCotizacion)Node.Tag;
             ItemCotizacion = Item;
             GrupoMedidaAbierta.Visible = Item.TieneMedidaAbierta;
@@ -183,6 +185,16 @@ namespace Soft.Ventas.Win
             lblCostoMaterial.Visible = Item.TieneMaterial;
             uneCostoMaterial.Visible = Item.TieneMaterial;
 
+
+            comboMedida.Text = Item.UnidadMedidaAbierta;
+            lblTipoUnidad.Visible = Item.TieneTipoUnidad;
+            txtCantidadItem.Visible = Item.TieneTipoUnidad;
+            if (Item.TieneTipoUnidad == false)
+            {
+                txtCantidadItem.Value = 0;
+            }
+
+
             txtDemasia.Value = Item.CantidadDemasia;
             txtPases.Value = Item.NumerodePases;
             txtHojasMaquina.Value = (Item.CantidadMaterial) * Item.NroPiezasPrecorte;
@@ -201,9 +213,9 @@ namespace Soft.Ventas.Win
             txtPliegos.Value = Item.NumeroPliegos;
             
 
-            if (Item.MetodoImpresion != null) {
-                ubeMetodo.Text = Item.MetodoImpresion;
-            }
+           // if (Item.MetodoImpresion != null) {
+              ubeMetodo.Text = Item.MetodoImpresion;
+            //}
 
 
             checkGraficoImpresionManual.Checked = Item.GraficoImpresionManual;
@@ -246,6 +258,7 @@ namespace Soft.Ventas.Win
 
 
             MostrarServicios(Item);
+            ActualizandoIU = false;
         }
 
         public void MostrarServicios(ItemCotizacion ItemCotizacion)
@@ -352,9 +365,9 @@ namespace Soft.Ventas.Win
 
 
             }
-            //Mostrar();
-            ssTipoDocumento.Text = (Cotizacion.TipoDocumento != null) ? Cotizacion.TipoDocumento.Descripcion : "";
-            ssResponsable.Text = (Cotizacion.Responsable != null) ? Cotizacion.Responsable.Nombre : "";
+            Mostrar();
+            /*ssTipoDocumento.Text = (Cotizacion.TipoDocumento != null) ? Cotizacion.TipoDocumento.Descripcion : "";
+            ssResponsable.Text = (Cotizacion.Responsable != null) ? Cotizacion.Responsable.Nombre : "";*/
         }
 
         private void txtNumeracion_TextChanged(object sender, EventArgs e)
@@ -812,7 +825,15 @@ namespace Soft.Ventas.Win
 
                 if (itemcosteado.Operacion.Codigo.Equals("IMPRVINIL")||itemcosteado.Operacion.Nombre.Equals("IMPRESION BANNER"))
                 {
-                    itemcosteado.CantidadMaterial = Math.Round((itemcosteado.CantidadElemento * (itemcosteado.MedidaAbiertaLargo * itemcosteado.MedidaAbiertaAlto)), 0);
+                    Decimal largo=itemcosteado.MedidaAbiertaLargo;
+                    Decimal alto = itemcosteado.MedidaAbiertaAlto;
+
+                    if (itemcosteado.UnidadMedidaAbierta.Equals("MT.")) {
+                        largo = largo / 100;
+                        alto = alto / 100;
+                    }
+
+                    itemcosteado.CantidadMaterial = Math.Round((itemcosteado.CantidadElemento * (largo * alto)), 0);
                     itemcosteado.CantidadDemasiaMaterial = itemcosteado.CantidadDemasia ;
 
                   
@@ -1370,6 +1391,8 @@ namespace Soft.Ventas.Win
             try
             {
                 if (ItemCotizacion == null) { return; }
+                if (ActualizandoIU) { return; }
+
                 ItemCotizacion.SeparacionX = Convert.ToInt32(uneSeparacionX.Value);
                 if (ItemCotizacion.GraficoImpresionGirado == true)
                 {
@@ -1393,6 +1416,8 @@ namespace Soft.Ventas.Win
             try
             {
                 if (ItemCotizacion == null) { return; }
+                if (ActualizandoIU) { return; }
+
                 ItemCotizacion.SeparacionY = Convert.ToInt32(uneSeparacionY.Value);
                 if (ItemCotizacion.GraficoImpresionGirado == true)
                 {
@@ -1501,6 +1526,7 @@ namespace Soft.Ventas.Win
             try
             {
                 if (ItemCotizacion == null) { return; }
+                if (ActualizandoIU) { return; }
                 ItemCotizacion.MetodoImpresion = ubeMetodo.Text;
                 ItemCotizacion.NumerodePases = Convert.ToInt32(ubeMetodo.SelectedItem.Tag);
                 CalcularProduccionItem(ItemCotizacion);
@@ -1612,6 +1638,15 @@ namespace Soft.Ventas.Win
             if (ItemCotizacion == null) { return; }
             if (ActualizandoIU) { return; }
             ItemCotizacion.GraficoImpresionManual = checkGraficoImpresionManual.Checked;
+            CalcularProduccionItem(ItemCotizacion);
+            MostrarItem(utCotizacion.ActiveNode);
+        }
+
+        private void comboMedida_ValueChanged(object sender, EventArgs e)
+        {
+            if (ItemCotizacion == null) { return; }
+            if (ActualizandoIU) { return; }
+            ItemCotizacion.UnidadMedidaAbierta = comboMedida.Text;
             CalcularProduccionItem(ItemCotizacion);
             MostrarItem(utCotizacion.ActiveNode);
         }
