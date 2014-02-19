@@ -10,7 +10,14 @@ namespace Soft.Ventas.Entidades
     [Serializable]
     public class Presupuesto : Documento  
     {
-        public Presupuesto() { FechaCreacion = DateTime.Now; }
+        public Presupuesto() { 
+            FechaCreacion = DateTime.Now; 
+            if (NewInstance){
+                FechaCreacion = DateTime.Now;
+                EstadoAceptacion = "PENDIENTE";
+            }
+        
+        }
         public virtual SocioNegocio Cliente { get; set; }
 
         public virtual ItemPresupuesto AddItem(Cotizacion Cotizacion)
@@ -20,6 +27,8 @@ namespace Soft.Ventas.Entidades
             Items.Add(Item);
             return Item;
         }
+
+        public virtual String EstadoAceptacion { get; set; }
 
         public virtual String ObtenerFiltroCotizaciones() {
             String Filtro = "";
