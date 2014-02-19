@@ -37,6 +37,8 @@ namespace Soft.Ventas.Win
                     ItemSolicitud.TieneGraficos = Item.TieneGraficos;
                     ItemSolicitud.TieneMaquina = Item.TieneMaquina;
                     ItemSolicitud.TieneMaterial = Item.TieneMaterial;
+                    ItemSolicitud.TieneTipoUnidad = Item.TieneTipoUnidad;
+                    ItemSolicitud.UnidadMedidaAbierta = Item.UnidadMedidaAbierta;
                     foreach (ItemPlantillaServicio ItemServicio in Item.Servicios)
                     {
                         ItemSolicitudCotizacionServicio ItemSolicitudSerivcio = ItemSolicitud.AddServicio();

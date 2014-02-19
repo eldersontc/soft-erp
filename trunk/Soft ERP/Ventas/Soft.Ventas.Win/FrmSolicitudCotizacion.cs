@@ -84,7 +84,7 @@ namespace Soft.Ventas.Win
                 Node.Tag = Item;
                 Node.Text = Item.Nombre;
                 utSolicitudCotizacion.Nodes.Add(Node);
-                MostrarItem(Item);
+                //MostrarItem(Item);
             }
             if (utSolicitudCotizacion.Nodes.Count > 0)
             {
@@ -96,6 +96,7 @@ namespace Soft.Ventas.Win
 
         public void MostrarItem(ItemSolicitudCotizacion Item)
         {
+            ActualizandoIU = true;
             GrupoMedidaAbierta.Visible = Item.TieneMedidaAbierta;
             GrupoMedidaCerrada.Visible = Item.TieneMedidaCerrada;
             GruposTiras.Visible = Item.TieneTiraRetira;
@@ -103,6 +104,13 @@ namespace Soft.Ventas.Win
             lblMaquina.Visible = Item.TieneMaquina;
             ssMaterial.Visible = Item.TieneMaterial;
             lblMaterial.Visible = Item.TieneMaterial;
+
+            lblTipoUnidad.Visible = Item.TieneTipoUnidad;
+            txtCantidadItem.Visible = Item.TieneTipoUnidad;
+      
+            chkTieneTipoUnidad.Checked = Item.TieneTipoUnidad;
+            comboMedida.Text = Item.UnidadMedidaAbierta;
+
             ssOperacion.Text = (Item.Operacion != null) ? Item.Operacion.Nombre : "";
             ssMaquina.Text = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
             ssMaterial.Text = (Item.Material != null) ? Item.Material.Descripcion : "";
@@ -111,8 +119,10 @@ namespace Soft.Ventas.Win
 
             if (Item.TipoUnidad != null)
             {
-                txtCantidadItem.Value = Item.Cantidad;
-                txtCantidadItem.Visible = true;
+                if (Item.TieneTipoUnidad) {
+                    txtCantidadItem.Value = Item.CantidadUnidad;
+                    txtCantidadItem.Visible = true;
+                }
             }
             else {
                 txtCantidadItem.Value = 0;
@@ -135,6 +145,7 @@ namespace Soft.Ventas.Win
             chkTieneMaquina.Checked = Item.TieneMaquina;
             chkTieneMaterial.Checked = Item.TieneMaterial;
             MostrarServicios(Item);
+            ActualizandoIU = false;
         }
 
         public void MostrarServicios(ItemSolicitudCotizacion ItemSolicitud)
@@ -465,7 +476,8 @@ namespace Soft.Ventas.Win
             try
             {
                 if (ItemSolicitudCotizacion == null) { return; }
-                ItemSolicitudCotizacion.Cantidad = Convert.ToInt32(txtCantidadItem.Value);
+                if (ActualizandoIU) { return; }
+                ItemSolicitudCotizacion.CantidadUnidad = Convert.ToInt32(txtCantidadItem.Value);
             }
             catch (Exception ex)
             {
@@ -786,6 +798,35 @@ namespace Soft.Ventas.Win
             {
                 ItemSolicitudCotizacion.Material = null;
                 ssMaterial.Text = null;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void chkTieneTipoUnidad_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                if (ActualizandoIU) { return; }
+                ItemSolicitudCotizacion.TieneTipoUnidad = chkTieneTipoUnidad.Checked;
+                MostrarItem(ItemSolicitudCotizacion);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void comboMedida_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.UnidadMedidaAbierta = comboMedida.Text;
+                MostrarItem(ItemSolicitudCotizacion);
             }
             catch (Exception ex)
             {

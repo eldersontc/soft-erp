@@ -39,6 +39,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPlantilla));
             Infragistics.Win.UltraWinTree.Override _override1 = new Infragistics.Win.UltraWinTree.Override();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem6 = new Infragistics.Win.ValueListItem();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ugbRestriccione = new Infragistics.Win.Misc.UltraGroupBox();
             this.chkTieneMaquina = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
@@ -71,6 +73,8 @@
             this.utPlantilla = new Infragistics.Win.UltraWinTree.UltraTree();
             this.ubNuevoItem = new Infragistics.Win.Misc.UltraButton();
             this.ubEliminarItem = new Infragistics.Win.Misc.UltraButton();
+            this.comboMedida = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
+            this.chkTieneTipoUnidad = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.ultraTabPageControl1.SuspendLayout();
@@ -92,6 +96,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.utcDetalle)).BeginInit();
             this.utcDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.utPlantilla)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboMedida)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneTipoUnidad)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
@@ -381,6 +387,7 @@
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.Controls.Add(this.comboMedida);
             this.ultraTabPageControl1.Controls.Add(this.ugbRestriccione);
             this.ultraTabPageControl1.Controls.Add(this.txtNombreItem);
             this.ultraTabPageControl1.Controls.Add(this.lblNombreItem);
@@ -401,6 +408,7 @@
             // 
             appearance3.BackColor = System.Drawing.Color.Transparent;
             this.ugbRestriccione.Appearance = appearance3;
+            this.ugbRestriccione.Controls.Add(this.chkTieneTipoUnidad);
             this.ugbRestriccione.Controls.Add(this.chkTieneMaquina);
             this.ugbRestriccione.Controls.Add(this.chkTieneMaterial);
             this.ugbRestriccione.Controls.Add(this.chkTieneMedidadCerrada);
@@ -409,9 +417,9 @@
             this.ugbRestriccione.Controls.Add(this.chkTieneTiraRetira);
             this.ugbRestriccione.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.ugbRestriccione.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
-            this.ugbRestriccione.Location = new System.Drawing.Point(394, 9);
+            this.ugbRestriccione.Location = new System.Drawing.Point(394, 4);
             this.ugbRestriccione.Name = "ugbRestriccione";
-            this.ugbRestriccione.Size = new System.Drawing.Size(156, 142);
+            this.ugbRestriccione.Size = new System.Drawing.Size(156, 166);
             this.ugbRestriccione.TabIndex = 83;
             this.ugbRestriccione.Text = "Restricciones";
             // 
@@ -533,9 +541,9 @@
             this.ugbServicios.Controls.Add(this.ubEliminar);
             this.ugbServicios.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.ugbServicios.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
-            this.ugbServicios.Location = new System.Drawing.Point(15, 158);
+            this.ugbServicios.Location = new System.Drawing.Point(15, 176);
             this.ugbServicios.Name = "ugbServicios";
-            this.ugbServicios.Size = new System.Drawing.Size(535, 218);
+            this.ugbServicios.Size = new System.Drawing.Size(535, 200);
             this.ugbServicios.TabIndex = 11;
             this.ugbServicios.Text = "Servicios y Acabados";
             // 
@@ -712,6 +720,30 @@
             this.ubEliminarItem.Text = "Eliminar";
             this.ubEliminarItem.Click += new System.EventHandler(this.ubEliminarItem_Click);
             // 
+            // comboMedida
+            // 
+            valueListItem5.DataValue = "CM.";
+            valueListItem5.Tag = 1;
+            valueListItem6.DataValue = "MT.";
+            valueListItem6.Tag = 100;
+            this.comboMedida.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem5,
+            valueListItem6});
+            this.comboMedida.Location = new System.Drawing.Point(335, 43);
+            this.comboMedida.Name = "comboMedida";
+            this.comboMedida.Size = new System.Drawing.Size(53, 21);
+            this.comboMedida.TabIndex = 119;
+            this.comboMedida.ValueChanged += new System.EventHandler(this.comboMedida_ValueChanged);
+            // 
+            // chkTieneTipoUnidad
+            // 
+            this.chkTieneTipoUnidad.Location = new System.Drawing.Point(13, 140);
+            this.chkTieneTipoUnidad.Name = "chkTieneTipoUnidad";
+            this.chkTieneTipoUnidad.Size = new System.Drawing.Size(136, 20);
+            this.chkTieneTipoUnidad.TabIndex = 24;
+            this.chkTieneTipoUnidad.Text = "Tiene Tipo Unidad";
+            this.chkTieneTipoUnidad.CheckedChanged += new System.EventHandler(this.chkTieneTipoUnidad_CheckedChanged);
+            // 
             // FrmPlantilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -742,6 +774,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.utcDetalle)).EndInit();
             this.utcDetalle.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.utPlantilla)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboMedida)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneTipoUnidad)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -780,5 +814,7 @@
         private Infragistics.Win.Misc.UltraGroupBox ugbRestriccione;
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkTieneMaterial;
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkTieneMaquina;
+        private Infragistics.Win.UltraWinEditors.UltraComboEditor comboMedida;
+        private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkTieneTipoUnidad;
     }
 }

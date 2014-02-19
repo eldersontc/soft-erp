@@ -13,6 +13,7 @@ using Soft.Inventario.Entidades;
 using Soft.DataAccess;
 using Infragistics.Win;
 using Infragistics.Win.UltraWinTree;
+using Soft.Exceptions;
 
 namespace Soft.Ventas.Win
 {
@@ -95,6 +96,11 @@ namespace Soft.Ventas.Win
             ssMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
             ssTipoUnidad.Text = (Item.TipoUnidad!= null) ? Item.TipoUnidad.Nombre : "";
             ssRelacionMedidas.Text = (Item.RelacionMedidas != null) ? Item.RelacionMedidas.Nombre : "";
+
+            //comboMedida.Text = "";
+            comboMedida.Text=Item.UnidadMedidaAbierta;
+            chkTieneTipoUnidad.Checked = Item.TieneTipoUnidad;
+
             MostrarServicios(Item);
         }
 
@@ -386,6 +392,32 @@ namespace Soft.Ventas.Win
             {
 
                 Soft.Exceptions.SoftException.ShowException(ex);
+            }
+        }
+
+        private void comboMedida_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemPlantilla == null) { return; }
+                ItemPlantilla.UnidadMedidaAbierta = comboMedida.Text;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void chkTieneTipoUnidad_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemPlantilla == null) { return; }
+                ItemPlantilla.TieneTipoUnidad = chkTieneTipoUnidad.Checked;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
             }
         }
 
