@@ -41,6 +41,13 @@ namespace Soft.Ventas.Entidades
         public virtual Decimal CantidadItem { get; set; }
 
 
+        public virtual Boolean TieneTipoUnidad { get; set; }
+        public virtual String UnidadMedidaAbierta { get; set; }
+
+
+        public virtual Int32 CantidadUnidad { get; set; }
+
+
         public virtual ItemSolicitudCotizacionServicio AddServicio()
         {
             ItemSolicitudCotizacionServicio Item = new ItemSolicitudCotizacionServicio();
@@ -69,7 +76,7 @@ namespace Soft.Ventas.Entidades
             ItemCopia.TieneMaquina = TieneMaquina;
             ItemCopia.TieneMaterial = TieneMaterial;
             ItemCopia.CantidadItem = CantidadItem;
-
+            ItemCopia.Operacion = Operacion;
             foreach (ItemSolicitudCotizacionServicio ItemServicio in Servicios)
             {
                 ItemSolicitudCotizacionServicio ItemServicioCopia = new ItemSolicitudCotizacionServicio();

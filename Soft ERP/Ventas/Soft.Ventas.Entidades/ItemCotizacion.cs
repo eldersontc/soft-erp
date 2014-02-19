@@ -105,6 +105,9 @@ namespace Soft.Ventas.Entidades
 
         public virtual Boolean GraficoImpresionManual { get; set; }
 
+        public virtual Boolean TieneTipoUnidad { get; set; }
+        public virtual String UnidadMedidaAbierta { get; set; }
+        
         public virtual ItemCotizacionServicio AddServicio()
         {
             ItemCotizacionServicio Item = new ItemCotizacionServicio();
