@@ -28,9 +28,11 @@ namespace Soft.Ventas.Win
             base.Init();
             Mostrar();
         }
+        private Boolean ActualizandoIU = false;
 
         public void Mostrar()
         {
+            ActualizandoIU = true;
             ssTipoMaquina.Text = (Maquina.TipoMaquina != null)?Maquina.TipoMaquina.Descripcion:"";
             ssMarca.Text = (Maquina.Marca != null) ? Maquina.Marca.Nombre : "";
             ssProveedor.Text = (Maquina.Proveedor != null) ? Maquina.Proveedor.Nombre : "";
@@ -51,6 +53,8 @@ namespace Soft.Ventas.Win
             uceActivo.Checked = Maquina.Activo;
             txtResolucionMinimo.Value = Maquina.ResolucionMinimo;
             txtResolucionMaximo.Value = Maquina.ResolucionMaximo;
+            txtDescripcción.Text = Maquina.Descripcion;
+            ActualizandoIU = false;
 
         }
 
@@ -161,6 +165,22 @@ namespace Soft.Ventas.Win
         {
                 Maquina.ResolucionMaximo = Convert.ToInt32(txtResolucionMaximo.Value);
             
+        }
+
+        private void txtDescripcción_ValueChanged(object sender, EventArgs e)
+        {
+            if (ActualizandoIU) { return; }
+
+            try
+            {
+                Maquina.Descripcion = txtDescripcción.Text;
+            }
+            catch (Exception ex)
+            {
+
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
+
         }
 
     
