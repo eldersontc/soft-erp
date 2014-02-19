@@ -81,6 +81,9 @@ namespace Soft.Ventas.Win
                     ItemCotizacion.TieneMaquina = Item.TieneMaquina;
                     ItemCotizacion.TieneMaterial = Item.TieneMaterial;
 
+                    ItemCotizacion.TieneTipoUnidad = Item.TieneTipoUnidad;
+                    ItemCotizacion.UnidadMedidaAbierta = Item.UnidadMedidaAbierta;
+                    ItemCotizacion.CantidadUnidad = Item.CantidadUnidad;
                     foreach (ItemSolicitudCotizacionServicio ItemServicio in Item.Servicios)
                     {
                         ItemCotizacionServicio ItemCotizacionServicio = ItemCotizacion.AddServicio();
