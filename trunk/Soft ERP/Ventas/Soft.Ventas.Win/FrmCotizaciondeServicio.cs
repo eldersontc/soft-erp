@@ -455,7 +455,16 @@ namespace Soft.Ventas.Win
             if (ActualizandoIU) { return; }
             try
             {
-                txtCantidadAcabado.Value = (ItemElemento.CantidadElemento * ItemElemento.MedidaAbiertaAlto * ItemElemento.MedidaAbiertaLargo);
+                Decimal largo = ItemElemento.MedidaAbiertaLargo;
+                Decimal alto = ItemElemento.MedidaAbiertaAlto;
+
+                if (ItemElemento.UnidadMedidaAbierta.Equals("CM."))
+                {
+                    largo = largo / 100;
+                    alto = alto / 100;
+                }
+
+                txtCantidadAcabado.Value = (ItemElemento.CantidadElemento * alto * largo);
             }
             catch (Exception ex)
             {
@@ -474,7 +483,15 @@ namespace Soft.Ventas.Win
             }
             else if (busUnidadMaterial.Text.Equals("METRO CUADRADO"))
             {
-                Item.CantidadMaterial = ItemElemento.MedidaAbiertaLargo * ItemElemento.MedidaAbiertaAlto * ItemElemento.CantidadElemento;
+                Decimal largo = ItemElemento.MedidaAbiertaLargo;
+                Decimal alto = ItemElemento.MedidaAbiertaAlto;
+
+                if (ItemElemento.UnidadMedidaAbierta.Equals("CM."))
+                {
+                    largo = largo / 100;
+                    alto = alto / 100;
+                }
+                Item.CantidadMaterial = largo * alto * ItemElemento.CantidadElemento;
             }
             Mostrar();
         }
