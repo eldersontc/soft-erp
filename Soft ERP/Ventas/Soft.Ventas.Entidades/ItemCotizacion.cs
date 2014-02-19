@@ -103,6 +103,8 @@ namespace Soft.Ventas.Entidades
 
         public virtual Int32 NumeroPliegos { get; set; }
 
+        public virtual Boolean GraficoImpresionManual { get; set; }
+
         public virtual ItemCotizacionServicio AddServicio()
         {
             ItemCotizacionServicio Item = new ItemCotizacionServicio();
