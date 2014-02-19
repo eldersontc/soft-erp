@@ -63,9 +63,9 @@ namespace Soft.Ventas.Win
             if (SWAcept) { return Item; }
             return null;
         }
-
+        private Boolean ActualizandoIU = false;
         private void Mostrar() {
-
+            ActualizandoIU = true;
             bussAcabado.Text = (Item.Servicio != null) ? Item.Servicio.Nombre : "";
             busUnidadAcabado.Text = (Item.UnidadServicio != null) ? Item.UnidadServicio.Nombre : "";
             busMaquina.Text = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
@@ -79,12 +79,13 @@ namespace Soft.Ventas.Win
             txtCostoAcabado.Value = Item.CostoServicio;
             txtCostoMaquina.Value = Item.CostoMaquina;
             txtCostoMaterial.Value = Item.CostoMaterial;
-           
 
+            ActualizandoIU = false;
         }
 
         private void bussAcabado_Search(object sender, EventArgs e)
         {
+            if (ActualizandoIU) { return; }
               try
             {
                 FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
@@ -102,6 +103,7 @@ namespace Soft.Ventas.Win
 
         private void busUnidadAcabado_Search(object sender, EventArgs e)
         {
+            if (ActualizandoIU) { return; }
             try
             {
                 foreach (var unidad in Item.Servicio.Unidades)
@@ -120,6 +122,7 @@ namespace Soft.Ventas.Win
 
         private void txtCantidadAcabado_ValueChanged(object sender, EventArgs e)
         {
+            if (ActualizandoIU) { return; }
             try
             {
                 Item.CantidadServicio = Convert.ToDecimal(txtCantidadAcabado.Value);
@@ -134,6 +137,7 @@ namespace Soft.Ventas.Win
 
         private void busMaquina_Search(object sender, EventArgs e)
         {
+            if (ActualizandoIU) { return; }
             try
                 {
 
@@ -155,6 +159,7 @@ namespace Soft.Ventas.Win
 
         private void txtCantidadMaquina_ValueChanged(object sender, EventArgs e)
         {
+            if (ActualizandoIU) { return; }
             try
             {
                 Item.CantidadMaquina = Convert.ToDecimal(txtCantidadMaquina.Value);
@@ -169,6 +174,7 @@ namespace Soft.Ventas.Win
 
         private void txtNombreMaterial_Search(object sender, EventArgs e)
         {
+            if (ActualizandoIU) { return; }
             try
             {
 
@@ -188,6 +194,7 @@ namespace Soft.Ventas.Win
 
         private void busUnidadMaterial_Search(object sender, EventArgs e)
         {
+            if (ActualizandoIU) { return; }
             try
             {
                 String filtro = "IDExistencia='"+Item.Material.ID+"'";
@@ -247,6 +254,7 @@ namespace Soft.Ventas.Win
 
         private void txtCantidadMaterial_ValueChanged(object sender, EventArgs e)
         {
+            if (ActualizandoIU) { return; }
             try
             {
                 Item.CantidadMaterial = Convert.ToDecimal(txtCantidadMaterial.Value);
@@ -276,23 +284,27 @@ namespace Soft.Ventas.Win
 
         private void txtCostoAcabado_ValueChanged(object sender, EventArgs e)
         {
+            if (ActualizandoIU) { return; }
             Item.CostoServicio = Convert.ToDecimal ( txtCostoAcabado.Value);
             SumarTotal();
         }
 
         private void txtCostoMaquina_ValueChanged(object sender, EventArgs e)
         {
+            if (ActualizandoIU) { return; }
             Item.CostoMaquina = Convert.ToDecimal (txtCostoMaquina.Value);
             SumarTotal();
         }
 
         private void txtCostoMaterial_ValueChanged(object sender, EventArgs e)
         {
+            if (ActualizandoIU) { return; }
             Item.CostoMaterial =Convert.ToDecimal ( txtCostoMaterial.Value);
             SumarTotal();
         }
 
         public void SumarTotal() {
+            if (ActualizandoIU) { return; }
             Item.CostoTotalServicio = Item.CostoMaterial + Item.CostoMaquina + Item.CostoServicio;
             txtCostoTotal.Value  = Item.CostoTotalServicio ;
         }
@@ -346,6 +358,7 @@ namespace Soft.Ventas.Win
         }
 
         private void ObtenerCostoMaterial() {
+            if (ActualizandoIU) { return; }
             try
             {
                 ExistenciaUnidad eu = null;
@@ -358,7 +371,9 @@ namespace Soft.Ventas.Win
                     }
                 }
 
-                Item.CostoMaterial = (Item.CantidadMaterial * Item.Material.CostoUltimaCompra) / eu.FactorConversion;
+                Existencia existenciaActualizada = (Existencia) HelperNHibernate.GetEntityByID("Existencia", Item.Material.ID);
+
+                Item.CostoMaterial = (Item.CantidadMaterial * existenciaActualizada.CostoUltimaCompra) / eu.FactorConversion;
             }
             catch (Exception)
             {
@@ -415,6 +430,7 @@ namespace Soft.Ventas.Win
 
         private void busUnidadMaquina_Search(object sender, EventArgs e)
         {
+            if (ActualizandoIU) { return; }
             try
             {
                 String filtro = "Nombre like '%" + busUnidadMaquina.Text + "%' and IDMaquina='" + Item.Maquina.ID + "' and IDLista='"+lcm.ID+"'";
@@ -436,6 +452,7 @@ namespace Soft.Ventas.Win
 
         private void btnObtenerCostoElemento_Click(object sender, EventArgs e)
         {
+            if (ActualizandoIU) { return; }
             try
             {
                 txtCantidadAcabado.Value = (ItemElemento.CantidadElemento * ItemElemento.MedidaAbiertaAlto * ItemElemento.MedidaAbiertaLargo);
@@ -448,10 +465,12 @@ namespace Soft.Ventas.Win
 
         private void btnObtenerCantidadMaterial_Click(object sender, EventArgs e)
         {
+            if (ActualizandoIU) { return; }
             if (busUnidadMaterial.Text.Equals("METRO"))
             {
                 FrmCalculoMetros form = new FrmCalculoMetros(Item, ItemElemento);
                 Item=form.m_item;
+                ObtenerCostoMaterial();
             }
             else if (busUnidadMaterial.Text.Equals("METRO CUADRADO"))
             {
