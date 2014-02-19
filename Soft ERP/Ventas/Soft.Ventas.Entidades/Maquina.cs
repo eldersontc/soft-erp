@@ -29,5 +29,6 @@ namespace Soft.Ventas.Entidades
         public virtual Int32 MargenCalle { get; set; }
         public virtual Int32 ResolucionMinimo { get; set; }
         public virtual Int32 ResolucionMaximo { get; set; }
+        public virtual String Descripcion { get; set; }
     }
 }
