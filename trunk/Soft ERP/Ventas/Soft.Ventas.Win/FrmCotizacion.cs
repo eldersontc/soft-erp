@@ -205,29 +205,43 @@ namespace Soft.Ventas.Win
                 ubeMetodo.Text = Item.MetodoImpresion;
             }
 
+
+            checkGraficoImpresionManual.Checked = Item.GraficoImpresionManual;
+
             utcItemCotizacion.Tabs["Graficos"].Visible = Item.TieneGraficos;
             txtDemasia.Value = Item.CantidadDemasia;
 
             if (Item.TieneGraficos ) {
                 try
                 {
- if (Item.GraficoImpresionGirado)
-                {
-                    GenerarGraficoImpresionRotado();
-                }
-                else { GenerarGraficoImpresionNormal(); }
-                if (Item.GraficoPrecorteGirado)
-                {
-                    GenerarGraficoPrecorteRotado();
-                }
-                else { GenerarGraficoPrecorteNormal(); }
-                }
+                    upbImpresion.Visible = true;
+                    txtNroPiezasImpresion.ReadOnly = true;
+                    if (Item.GraficoImpresionManual){
+                        upbImpresion.Visible = false;
+                        txtNroPiezasImpresion.ReadOnly = false;
+                    }
+                    else if (Item.GraficoImpresionGirado)
+                    {
+                        GenerarGraficoImpresionRotado();
+                    }
+                    else { 
+                        GenerarGraficoImpresionNormal(); 
+                    }
+
+
+
+                    if (Item.GraficoPrecorteGirado)
+                    {
+                        
+                        GenerarGraficoPrecorteRotado();
+                        
+                    }
+                    else { GenerarGraficoPrecorteNormal(); }
+                    }
                 catch (Exception)
                 {
                     
                 }
-
-               
             }
 
 
@@ -1402,8 +1416,13 @@ namespace Soft.Ventas.Win
             try
             {
                 if (ItemCotizacion == null) { return; }
-                ItemCotizacion.GraficoImpresionGirado = false;
-                GenerarGraficoImpresionNormal();
+
+                if (ItemCotizacion.GraficoImpresionManual==false) { 
+                    ItemCotizacion.GraficoImpresionGirado = false;
+                    GenerarGraficoImpresionNormal();
+                }
+
+
                 CalcularProduccionItem(ItemCotizacion);
                 MostrarItem(utCotizacion.ActiveNode);
             }
@@ -1584,6 +1603,17 @@ namespace Soft.Ventas.Win
             if (ItemCotizacion == null) { return; }
             if (ActualizandoIU) { return; }
             ItemCotizacion.NroPiezasImpresion = Convert.ToInt32(txtNroPiezasImpresion.Value);
+            CalcularProduccionItem(ItemCotizacion);
+            MostrarItem(utCotizacion.ActiveNode);
+        }
+
+        private void checkGraficoImpresionManual_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ItemCotizacion == null) { return; }
+            if (ActualizandoIU) { return; }
+            ItemCotizacion.GraficoImpresionManual = checkGraficoImpresionManual.Checked;
+            CalcularProduccionItem(ItemCotizacion);
+            MostrarItem(utCotizacion.ActiveNode);
         }
 
        
