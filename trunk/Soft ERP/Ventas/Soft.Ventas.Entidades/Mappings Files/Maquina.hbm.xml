@@ -6,7 +6,9 @@
     <id name="ID" column ="ID" type="string" unsaved-value="0"/>
     <property name="Codigo" column="Codigo" type="string"/>
     <property name="Nombre" column="Nombre" type="string"/>
-    
+
+    <property name="Descripcion" column="Descripcion" type="string"/>
+
     <property name="CantidadCuerpos" column="CantidadCuerpos" type="int"/>
     <property name="MaximoGramaje" column="MaximoGramaje" type="decimal"/>
     <property name="MinimoGramaje" column="MinimoGramaje" type="decimal"/>
