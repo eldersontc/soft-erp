@@ -180,9 +180,11 @@ namespace Soft.Win
             txtCorreo.Text = SocioNegocio.Correo;
             txtPaginaWeb.Text = SocioNegocio.PaginaWeb;
 
-            if (!SocioNegocio.Firma.Equals(""))
-            {
-                pbFirma.Image = Image.FromFile(String.Format("{0}{1}", FrmMain.CarpetaImagenes, SocioNegocio.Firma));
+            if (!(SocioNegocio.Firma == null)) {
+                if ((!SocioNegocio.Firma.Equals("")) )
+                {
+                    pbFirma.Image = Image.FromFile(String.Format("{0}{1}", FrmMain.CarpetaImagenes, SocioNegocio.Firma));
+                }
             }
 
             MostrarDirecciones();
