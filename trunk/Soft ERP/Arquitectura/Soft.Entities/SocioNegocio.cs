@@ -38,6 +38,8 @@ namespace Soft.Entities
         public virtual String PaginaWeb { get; set; }
         public virtual String Firma { get; set; }
 
+        public virtual String NombreComercial { get; set; }
+
         public virtual void ConcatenarNombres()
         {
             if(ApellidoPaterno.Length>0 ){
