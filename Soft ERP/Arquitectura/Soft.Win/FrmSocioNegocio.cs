@@ -194,6 +194,8 @@ namespace Soft.Win
             MostrarEmpleado();
             MostrarCliente();
 
+            txtNombreComercial.Text = SocioNegocio.NombreComercial;
+
             mUIMoficiado = false;
         }
 
@@ -649,6 +651,12 @@ namespace Soft.Win
                 SocioNegocio.Firma = OpenFile.SafeFileName;
                 pbFirma.Image = Image.FromFile(OpenFile.FileName);
             }
+        }
+
+        private void txtNombreComercial_TextChanged(object sender, EventArgs e)
+        {
+            SocioNegocio.NombreComercial = txtNombreComercial.Text;
+            txtNombreComercial.Text = SocioNegocio.NombreComercial;
         }
 
     }
