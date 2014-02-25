@@ -41,6 +41,8 @@
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
+            Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem6 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
@@ -106,8 +108,6 @@
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.ValueListItem valueListItem6 = new Infragistics.Win.ValueListItem();
             this.tabItems = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.txtCostoServicio = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel17 = new Infragistics.Win.Misc.UltraLabel();
@@ -135,6 +135,7 @@
             this.txtMedidaCerradaAlto = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
             this.GrupoMedidaAbierta = new Infragistics.Win.Misc.UltraGroupBox();
+            this.comboMedida = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             this.txtMedidaAbiertoLargo = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.txtMedidaAbiertoAlto = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
@@ -177,6 +178,7 @@
             this.lblSeparacionX = new Infragistics.Win.Misc.UltraLabel();
             this.ubMostrarGraficoPrecorte = new Infragistics.Win.Misc.UltraButton();
             this.ugbImpresion = new Infragistics.Win.Misc.UltraGroupBox();
+            this.checkGraficoImpresionManual = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.txtPliegos = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.labelPliegos = new Infragistics.Win.Misc.UltraLabel();
             this.txtTiraje = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
@@ -243,10 +245,8 @@
             this.lblMoneda = new Infragistics.Win.Misc.UltraLabel();
             this.uneCostoMillar = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel22 = new Infragistics.Win.Misc.UltraLabel();
-            this.checkGraficoImpresionManual = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.uneCostoUnidad = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel23 = new Infragistics.Win.Misc.UltraLabel();
-            this.comboMedida = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.tabItems.SuspendLayout();
@@ -267,6 +267,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMedidaCerradaAlto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrupoMedidaAbierta)).BeginInit();
             this.GrupoMedidaAbierta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboMedida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMedidaAbiertoLargo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMedidaAbiertoAlto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidadItem)).BeginInit();
@@ -291,6 +292,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.uneSeparacionX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ugbImpresion)).BeginInit();
             this.ugbImpresion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkGraficoImpresionManual)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPliegos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTiraje)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPases)).BeginInit();
@@ -313,9 +315,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.uneImpuesto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneSubTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoMillar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkGraficoImpresionManual)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoUnidad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboMedida)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
@@ -1053,6 +1053,21 @@
             this.GrupoMedidaAbierta.TabIndex = 81;
             this.GrupoMedidaAbierta.Text = "Medida Abierta";
             // 
+            // comboMedida
+            // 
+            valueListItem5.DataValue = "CM.";
+            valueListItem5.Tag = 1;
+            valueListItem6.DataValue = "MT.";
+            valueListItem6.Tag = 100;
+            this.comboMedida.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem5,
+            valueListItem6});
+            this.comboMedida.Location = new System.Drawing.Point(123, 28);
+            this.comboMedida.Name = "comboMedida";
+            this.comboMedida.Size = new System.Drawing.Size(52, 21);
+            this.comboMedida.TabIndex = 121;
+            this.comboMedida.ValueChanged += new System.EventHandler(this.comboMedida_ValueChanged);
+            // 
             // txtMedidaAbiertoLargo
             // 
             this.txtMedidaAbiertoLargo.Location = new System.Drawing.Point(44, 29);
@@ -1631,6 +1646,15 @@
             this.ugbImpresion.Size = new System.Drawing.Size(320, 145);
             this.ugbImpresion.TabIndex = 101;
             this.ugbImpresion.Text = "Gráfico de Impresión";
+            // 
+            // checkGraficoImpresionManual
+            // 
+            this.checkGraficoImpresionManual.Location = new System.Drawing.Point(212, 29);
+            this.checkGraficoImpresionManual.Name = "checkGraficoImpresionManual";
+            this.checkGraficoImpresionManual.Size = new System.Drawing.Size(100, 20);
+            this.checkGraficoImpresionManual.TabIndex = 128;
+            this.checkGraficoImpresionManual.Text = "Grafico Manual";
+            this.checkGraficoImpresionManual.CheckedChanged += new System.EventHandler(this.checkGraficoImpresionManual_CheckedChanged);
             // 
             // txtPliegos
             // 
@@ -2333,15 +2357,6 @@
             this.ultraLabel22.TabIndex = 98;
             this.ultraLabel22.Text = "Costo Millar";
             // 
-            // checkGraficoImpresionManual
-            // 
-            this.checkGraficoImpresionManual.Location = new System.Drawing.Point(212, 29);
-            this.checkGraficoImpresionManual.Name = "checkGraficoImpresionManual";
-            this.checkGraficoImpresionManual.Size = new System.Drawing.Size(100, 20);
-            this.checkGraficoImpresionManual.TabIndex = 128;
-            this.checkGraficoImpresionManual.Text = "Grafico Manual";
-            this.checkGraficoImpresionManual.CheckedChanged += new System.EventHandler(this.checkGraficoImpresionManual_CheckedChanged);
-            // 
             // uneCostoUnidad
             // 
             this.uneCostoUnidad.Location = new System.Drawing.Point(342, 619);
@@ -2360,21 +2375,6 @@
             this.ultraLabel23.Size = new System.Drawing.Size(90, 21);
             this.ultraLabel23.TabIndex = 100;
             this.ultraLabel23.Text = "Costo Unidad";
-            // 
-            // comboMedida
-            // 
-            valueListItem5.DataValue = "CM.";
-            valueListItem5.Tag = 1;
-            valueListItem6.DataValue = "MT.";
-            valueListItem6.Tag = 100;
-            this.comboMedida.Items.AddRange(new Infragistics.Win.ValueListItem[] {
-            valueListItem5,
-            valueListItem6});
-            this.comboMedida.Location = new System.Drawing.Point(123, 28);
-            this.comboMedida.Name = "comboMedida";
-            this.comboMedida.Size = new System.Drawing.Size(52, 21);
-            this.comboMedida.TabIndex = 121;
-            this.comboMedida.ValueChanged += new System.EventHandler(this.comboMedida_ValueChanged);
             // 
             // FrmCotizacion
             // 
@@ -2409,6 +2409,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GrupoMedidaAbierta)).EndInit();
             this.GrupoMedidaAbierta.ResumeLayout(false);
             this.GrupoMedidaAbierta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboMedida)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMedidaAbiertoLargo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMedidaAbiertoAlto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidadItem)).EndInit();
@@ -2436,6 +2437,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ugbImpresion)).EndInit();
             this.ugbImpresion.ResumeLayout(false);
             this.ugbImpresion.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkGraficoImpresionManual)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPliegos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTiraje)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPases)).EndInit();
@@ -2459,9 +2461,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.uneImpuesto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneSubTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoMillar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkGraficoImpresionManual)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoUnidad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboMedida)).EndInit();
             this.ResumeLayout(false);
 
         }
