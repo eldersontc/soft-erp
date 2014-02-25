@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem6 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
@@ -39,10 +41,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPlantilla));
             Infragistics.Win.UltraWinTree.Override _override1 = new Infragistics.Win.UltraWinTree.Override();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.ValueListItem valueListItem6 = new Infragistics.Win.ValueListItem();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.comboMedida = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             this.ugbRestriccione = new Infragistics.Win.Misc.UltraGroupBox();
+            this.chkTieneTipoUnidad = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.chkTieneMaquina = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.chkTieneMaterial = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.chkTieneMedidadCerrada = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
@@ -73,13 +75,13 @@
             this.utPlantilla = new Infragistics.Win.UltraWinTree.UltraTree();
             this.ubNuevoItem = new Infragistics.Win.Misc.UltraButton();
             this.ubEliminarItem = new Infragistics.Win.Misc.UltraButton();
-            this.comboMedida = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
-            this.chkTieneTipoUnidad = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.ultraTabPageControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboMedida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ugbRestriccione)).BeginInit();
             this.ugbRestriccione.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneTipoUnidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTieneMaquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTieneMaterial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTieneMedidadCerrada)).BeginInit();
@@ -96,8 +98,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.utcDetalle)).BeginInit();
             this.utcDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.utPlantilla)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboMedida)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkTieneTipoUnidad)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
@@ -404,6 +404,21 @@
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(564, 392);
             // 
+            // comboMedida
+            // 
+            valueListItem5.DataValue = "CM.";
+            valueListItem5.Tag = 1;
+            valueListItem6.DataValue = "MT.";
+            valueListItem6.Tag = 100;
+            this.comboMedida.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem5,
+            valueListItem6});
+            this.comboMedida.Location = new System.Drawing.Point(335, 43);
+            this.comboMedida.Name = "comboMedida";
+            this.comboMedida.Size = new System.Drawing.Size(53, 21);
+            this.comboMedida.TabIndex = 119;
+            this.comboMedida.ValueChanged += new System.EventHandler(this.comboMedida_ValueChanged);
+            // 
             // ugbRestriccione
             // 
             appearance3.BackColor = System.Drawing.Color.Transparent;
@@ -422,6 +437,15 @@
             this.ugbRestriccione.Size = new System.Drawing.Size(156, 166);
             this.ugbRestriccione.TabIndex = 83;
             this.ugbRestriccione.Text = "Restricciones";
+            // 
+            // chkTieneTipoUnidad
+            // 
+            this.chkTieneTipoUnidad.Location = new System.Drawing.Point(13, 140);
+            this.chkTieneTipoUnidad.Name = "chkTieneTipoUnidad";
+            this.chkTieneTipoUnidad.Size = new System.Drawing.Size(136, 20);
+            this.chkTieneTipoUnidad.TabIndex = 24;
+            this.chkTieneTipoUnidad.Text = "Tiene Tipo Unidad";
+            this.chkTieneTipoUnidad.CheckedChanged += new System.EventHandler(this.chkTieneTipoUnidad_CheckedChanged);
             // 
             // chkTieneMaquina
             // 
@@ -720,30 +744,6 @@
             this.ubEliminarItem.Text = "Eliminar";
             this.ubEliminarItem.Click += new System.EventHandler(this.ubEliminarItem_Click);
             // 
-            // comboMedida
-            // 
-            valueListItem5.DataValue = "CM.";
-            valueListItem5.Tag = 1;
-            valueListItem6.DataValue = "MT.";
-            valueListItem6.Tag = 100;
-            this.comboMedida.Items.AddRange(new Infragistics.Win.ValueListItem[] {
-            valueListItem5,
-            valueListItem6});
-            this.comboMedida.Location = new System.Drawing.Point(335, 43);
-            this.comboMedida.Name = "comboMedida";
-            this.comboMedida.Size = new System.Drawing.Size(53, 21);
-            this.comboMedida.TabIndex = 119;
-            this.comboMedida.ValueChanged += new System.EventHandler(this.comboMedida_ValueChanged);
-            // 
-            // chkTieneTipoUnidad
-            // 
-            this.chkTieneTipoUnidad.Location = new System.Drawing.Point(13, 140);
-            this.chkTieneTipoUnidad.Name = "chkTieneTipoUnidad";
-            this.chkTieneTipoUnidad.Size = new System.Drawing.Size(136, 20);
-            this.chkTieneTipoUnidad.TabIndex = 24;
-            this.chkTieneTipoUnidad.Text = "Tiene Tipo Unidad";
-            this.chkTieneTipoUnidad.CheckedChanged += new System.EventHandler(this.chkTieneTipoUnidad_CheckedChanged);
-            // 
             // FrmPlantilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -756,8 +756,10 @@
             this.ugbParent.PerformLayout();
             this.ultraTabPageControl1.ResumeLayout(false);
             this.ultraTabPageControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboMedida)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ugbRestriccione)).EndInit();
             this.ugbRestriccione.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkTieneTipoUnidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTieneMaquina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTieneMaterial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTieneMedidadCerrada)).EndInit();
@@ -774,8 +776,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.utcDetalle)).EndInit();
             this.utcDetalle.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.utPlantilla)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboMedida)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkTieneTipoUnidad)).EndInit();
             this.ResumeLayout(false);
 
         }
