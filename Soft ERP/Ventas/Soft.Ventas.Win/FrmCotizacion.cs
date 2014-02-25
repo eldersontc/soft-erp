@@ -270,6 +270,8 @@ namespace Soft.Ventas.Win
                 Row.Tag = Item;
                 MostrarServicio(Row);
             }
+
+            MostrarTotalServicio(ItemCotizacion);
         }
 
         public void MostrarServicio(UltraGridRow Row)
@@ -537,14 +539,14 @@ namespace Soft.Ventas.Win
         }
 
 
-        private void MostrarTotalServicio(ItemCotizacion item){
+        private void MostrarTotalServicio(ItemCotizacion itemSe){
             Decimal total = 0; 
-            foreach (ItemCotizacionServicio itemServicio in item.Servicios)
+            foreach (ItemCotizacionServicio itemServicio in itemSe.Servicios)
             {
                 total += itemServicio.CostoTotalServicio;
             }
-            item.CostoServicio=total;
-            txtCostoServicio.Value = item.CostoServicio;
+            itemSe.CostoServicio = total;
+            txtCostoServicio.Value = itemSe.CostoServicio;
         }
 
 
