@@ -329,16 +329,19 @@ namespace Soft.Ventas.Win
                                     if ((escala.Desde == 0) && (escala.Hasta == 0))
                                         {
                                             Item.CostoServicio = Item.CantidadServicio * escala.Costo;
+                                            Item.CostoTotalServicio = Item.CostoServicio;
                                             break;
                                         }
                                     else if ((escala.Desde <= Item.CantidadServicio) && (escala.Hasta >= Item.CantidadServicio))
                                         {
                                             Item.CostoServicio = Item.CantidadServicio * escala.Costo;
+                                            Item.CostoTotalServicio = Item.CostoServicio;
                                             break;
                                         }
                                      else if ((escala.Hasta == 0))
                                         {
                                             Item.CostoServicio = Item.CantidadServicio * escala.Costo;
+                                            Item.CostoTotalServicio = Item.CostoServicio;
                                             break;
                                         }
                                 }
