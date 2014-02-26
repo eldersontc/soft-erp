@@ -18,6 +18,7 @@
     <property name="CostoUltimaCompra" type="decimal" insert="true" update="false"/>
     <property name="CostoPromedio" type="decimal" insert="true" update="false"/>
     <property name="Ubicacion" type="string"/>
+    <property name="CostoReferencia" type="decimal"/>
 
     <property name="EsCotizacion" type="boolean"/>
     <property name="UnidadMedidaDimensiones" type="string"/>
