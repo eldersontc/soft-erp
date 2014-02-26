@@ -41,6 +41,7 @@ namespace Soft.Inventario.Entidades
         public virtual Decimal CostoUltimaCompra { get; set; }
         public virtual Decimal CostoPromedio { get; set; }
         public virtual String Ubicacion { get; set; }
+        public virtual Decimal CostoReferencia { get; set; }
 
         public virtual IList<ExistenciaUnidad> Unidades { get; set; }
         public virtual IList<ExistenciaAlmacen> Almacenes { get; set; }
