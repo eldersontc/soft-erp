@@ -62,7 +62,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AceptarClientePresupuesto.cs" />
+    <Compile Include="AceptarClientePresupuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AprobarCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,12 +92,16 @@
     <Compile Include="EliminarPresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EnviarClientePresupuesto.cs" />
+    <Compile Include="EnviarClientePresupuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ModificarPresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RechazarClientePresupuesto.cs" />
+    <Compile Include="RechazarClientePresupuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Soft.Ventas.Entidades\Soft.Ventas.Entidades.csproj">
