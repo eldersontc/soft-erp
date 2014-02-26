@@ -24,32 +24,24 @@ namespace Soft.Inventario.Win
             InitializeComponent();
         }
 
-
-
         //Constantes
         const String colUnidad = "Unidad";
         const String colEsBase = "Es Base";
-        const String colFactor = "Factor de Conversion";
-
+        const String colFactor = "Factor de Conversión";
 
         //Constantes
-        const String colAlmacen = "Almacen";
+        const String colAlmacen = "Almacén";
         const String colStockFisico = "Stock";
         const String colStockComprometido = "Comprometido";
 
         //Constantes Maquinas
-        const String colCodigoMaquina = "Codigo";
+        const String colCodigoMaquina = "Código";
         const String colNombreMaquina = "Nombre";
         const String colMaquinaDefecto = "Por Defecto";
-
-        
-
 
         public Existencia Existencia { get { return (Existencia)base.m_ObjectFlow; } }
 
         private ExistenciaUnidad ExistenciaUnidad;
-
-
 
         public override void Init()
         {
@@ -58,7 +50,6 @@ namespace Soft.Inventario.Win
             this.InitGridMaquina();
             this.Mostrar();
         }
-
 
         public void InitGridUnidad()
         {
@@ -104,8 +95,6 @@ namespace Soft.Inventario.Win
             grillaAlmacenes.DisplayLayout.Bands[0].Columns[colStockComprometido].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Double;
         }
 
-
-
         public void InitGridMaquina()
         {
             DataTable columns = new DataTable();
@@ -132,12 +121,9 @@ namespace Soft.Inventario.Win
         
         }
 
-
         public void Mostrar()
         {
             txtCodigo.Text = this.Existencia.Codigo;
-
-
             uceGramaje.Text = this.Existencia.UnidadMedidaDimensiones;
             chekEnCotizacion.Checked = this.Existencia.EsCotizacion;
 
@@ -155,6 +141,7 @@ namespace Soft.Inventario.Win
             txtGramaje.Value = this.Existencia.Gramaje;
             uneCostoUltimaCompra.Value = this.Existencia.CostoUltimaCompra;
             uneCostoPromedio.Value = this.Existencia.CostoPromedio;
+            uneCostoReferencia.Value = this.Existencia.CostoReferencia;
 
             busClasificacion.Text = (this.Existencia.ClasificacionExistencia != null) ? this.Existencia.ClasificacionExistencia.Nombre : "";
             busItemClasificacion.Text = (this.Existencia.ItemClasificacionExistencia != null) ? this.Existencia.ItemClasificacionExistencia.Nombre : "";
@@ -538,6 +525,18 @@ namespace Soft.Inventario.Win
             try
             {
                 Existencia.Ubicacion = txtUbicacion.Text;
+            }
+            catch (Exception ex)
+            {
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
+        }
+
+        private void uneCostoReferencia_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Existencia.CostoReferencia = Convert.ToDecimal(uneCostoReferencia.Value);
             }
             catch (Exception ex)
             {
