@@ -23,7 +23,6 @@ namespace Soft.Ventas.Transaccional
                     {
                         Presupuesto Presupuesto = (Presupuesto)m_ObjectFlow;
                         
-                        
                         SqlCommand SqlCmd = new SqlCommand();
                         SqlCmd.Connection = (SqlConnection)Sesion.Connection;
                         Trans.Enlist(SqlCmd);
@@ -32,6 +31,12 @@ namespace Soft.Ventas.Transaccional
                         SqlCmd.Parameters.AddWithValue("@IDPresupuesto", Presupuesto.ID);
                         SqlCmd.Parameters.AddWithValue("@Items", ContruirXML(Presupuesto));
                         SqlCmd.ExecuteNonQuery();
+
+                        if (EstaModificado(Presupuesto))
+                        {
+                            Presupuesto.EstadoAprobacion = "MODIFICADO";
+                        }
+
                         Sesion.Save(Presupuesto);                        
                         Trans.Commit();
                         m_ResultProcess = EnumResult.SUCESS;
@@ -45,6 +50,15 @@ namespace Soft.Ventas.Transaccional
                 }
             }
             base.Start();
+        }
+
+        public Boolean EstaModificado(Presupuesto Presupuesto) {
+            Boolean Modificado = false;
+            foreach (ItemPresupuesto Item in Presupuesto.Items)
+            {
+                if (Item.Recargo > 0) { Modificado = true; break; } 
+            }
+            return Modificado;
         }
 
         public String ContruirXML(Presupuesto Presupuesto) {
