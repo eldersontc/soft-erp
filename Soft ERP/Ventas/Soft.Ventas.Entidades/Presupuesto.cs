@@ -29,6 +29,7 @@ namespace Soft.Ventas.Entidades
         }
 
         public virtual String EstadoAceptacion { get; set; }
+        public virtual String EstadoAprobacion { get; set; }
 
         public virtual String ObtenerFiltroCotizaciones() {
             String Filtro = "";
