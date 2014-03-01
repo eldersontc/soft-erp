@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Produccion.Entidades.ItemOrdenProduccionServicio, Soft.Produccion.Entidades">
+
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <many-to-one name="Servicio" class="Soft.Inventario.Entidades.Existencia" column="IDServicio" insert="true" update="true" lazy="false"/>
+    <many-to-one name="UnidadServicio" class="Soft.Inventario.Entidades.Unidad" column="IDUnidadServicio" insert="true" update="true" lazy="false"/>
+    <property name="CantidadServicio" type="decimal"/>
+    <property name="CostoServicio" type="decimal"/>
+
+    <many-to-one name="Maquina" class="Soft.Ventas.Entidades.Maquina" column="IDMaquina" insert="true" update="true" lazy="false"/>
+    <many-to-one name="UnidadMaquina" class="Soft.Inventario.Entidades.Unidad" column="IDUnidadMaquina" insert="true" update="true" lazy="false"/>
+    <property name="CantidadMaquina" type="decimal"/>
+    <property name="CostoMaquina" type="decimal"/>
+
+    <many-to-one name="Material" class="Soft.Inventario.Entidades.Existencia" column="IDMaterial" insert="true" update="true" lazy="false"/>
+    <many-to-one name="UnidadMaterial" class="Soft.Inventario.Entidades.Unidad" column="IDUnidadMaterial" insert="true" update="true" lazy="false"/>
+    <property name="CantidadMaterial" type="decimal"/>
+    <property name="CostoMaterial" type="decimal"/>
+
+    <property name="CostoTotalServicio" type="decimal"/>
+
+
+  </class>
+
+</hibernate-mapping>
