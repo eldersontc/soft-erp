@@ -55,9 +55,13 @@ namespace Soft.Ventas.Transaccional
         public Boolean EstaModificado(Presupuesto Presupuesto)
         {
             Boolean Modificado = false;
+
+
             foreach (ItemPresupuesto Item in Presupuesto.Items)
             {
-                if (Item.Recargo > 0) { Modificado = true; break; }
+                ItemPresupuesto ItemBD = (ItemPresupuesto)HelperNHibernate.GetEntityByID("ItemPresupuesto", Item.ID);
+
+                if (Item.Recargo != ItemBD.Recargo) { Modificado = true; break; }
             }
             return Modificado;
         }
