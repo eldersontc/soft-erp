@@ -15,10 +15,12 @@ namespace Soft.Ventas.Entidades
             if (NewInstance){
                 FechaCreacion = DateTime.Now;
                 EstadoAceptacion = "PENDIENTE";
+                EstadoOrdenProduccion = "PENDIENTE";
             }
         
         }
         public virtual SocioNegocio Cliente { get; set; }
+        
 
         public virtual ItemPresupuesto AddItem(Cotizacion Cotizacion)
         {
@@ -30,6 +32,7 @@ namespace Soft.Ventas.Entidades
 
         public virtual String EstadoAceptacion { get; set; }
         public virtual String EstadoAprobacion { get; set; }
+        public virtual String EstadoOrdenProduccion { get; set; }
 
         public virtual String ObtenerFiltroCotizaciones() {
             String Filtro = "";
