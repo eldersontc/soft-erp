@@ -724,6 +724,7 @@ namespace Soft.Ventas.Win
             }
             return resultado;
         }
+       
         private ItemListaCostosMaquina obtenerItemListaCostosMaquina(Maquina maquina)
         {
             ItemListaCostosMaquina resultado = null;
