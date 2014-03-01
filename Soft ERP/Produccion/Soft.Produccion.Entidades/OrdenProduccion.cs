@@ -1,0 +1,78 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Soft.Entities;
+using Soft.DataAccess;
+using Soft.Ventas.Entidades;
+using System.Windows.Forms;
+
+
+namespace Soft.Produccion.Entidades
+{
+    [Serializable]
+    public class OrdenProduccion : Documento 
+    {
+        public OrdenProduccion()
+        {
+            if (NewInstance)
+            {
+                Activo = true;
+                this.Moneda = (Moneda)HelperNHibernate.GetEntityByID("Moneda", "1F0B7D4B-A581-476C-9039-3EFB6ADD4AC4");
+                this.TipoCambioFecha = 1;
+                this.FechaCreacion = DateTime.Now;
+                this.FechaTentativaEntrega = DateTime.Now;
+            }
+
+        }
+        public virtual String IDItemPresupuesto { get; set; }
+
+        public virtual SocioNegocio Cliente { get; set; }
+        public virtual SocioNegocio Vendedor { get; set; }
+        public virtual SocioNegocio Cotizador { get; set; }
+        
+
+        public virtual Decimal Cantidad { get; set; }
+        public virtual String Descripcion { get; set; }
+        public virtual ItemSocioNegocioContacto Contacto { get; set; }
+        public virtual String DireccionEntrega { get; set; }
+        public virtual String DireccionFacturacion { get; set; }
+
+        public virtual DateTime FechaTentativaEntrega { get; set; }
+        public virtual String Prioridad { get; set; }
+
+        public virtual String EstadoAprobacion { get; set; }
+        
+
+        public virtual ListaCostosMaquina ListaCostosMaquina { get; set; }
+        public virtual ListaPreciosExistencia ListaPreciosExistencia { get; set; }
+        public virtual ListaPreciosTransporte ListaPreciosTransporte { get; set; }
+
+        public virtual Decimal Total { get; set; }
+
+
+        public virtual void GenerarNumCp()
+        {
+            String Result = "";
+            if (NewInstance)
+            {
+                Result = TipoDocumento.GenerarNumerodeDocumento();
+                Numeracion = Result;
+            }
+            if (!Result.Equals(""))
+            {
+                String SQL = "UPDATE TipoCotizacion SET NumeracionActual = " + (TipoDocumento.NumeracionActual + 1) + " WHERE ID ='" + TipoDocumento.ID + "'";
+                HelperNHibernate.GetDataSet(SQL);
+            }
+        }
+
+
+        public virtual ItemOrdenProduccion AddItem()
+        {
+            ItemOrdenProduccion Item = new ItemOrdenProduccion();
+            Items.Add(Item);
+            return Item;
+        }
+
+    }
+}
