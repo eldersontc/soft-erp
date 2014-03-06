@@ -39,8 +39,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Compilacion\Soft.Entities.dll</HintPath>
     </Reference>
+    <Reference Include="Soft.Inventario.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Soft.Inventario.Entidades.dll</HintPath>
+    </Reference>
+    <Reference Include="Soft.Ventas.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Soft.Ventas.Entidades.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +57,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InfoAsistenteGeneracionOPdesdePresupuesto.cs" />
+    <Compile Include="ItemOrdenProduccion.cs" />
+    <Compile Include="ItemOrdenProduccionServicio.cs" />
+    <Compile Include="OrdenProduccion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoOrdenProduccion.cs" />
   </ItemGroup>
@@ -55,6 +68,11 @@
     <EmbeddedResource Include="Mappings Files\TipoOrdenProduccion.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mappings Files\ItemOrdenProduccion.hbm.xml" />
+    <Content Include="Mappings Files\ItemOrdenProduccionServicio.hbm.xml" />
+    <Content Include="Mappings Files\OrdenProduccion.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
