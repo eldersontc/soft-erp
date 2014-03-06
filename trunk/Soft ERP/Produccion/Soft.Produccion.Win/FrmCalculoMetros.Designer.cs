@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCalculoMetros));
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.txtTotal = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.busUnidadMaterial = new Soft.Controls.SoftSearch();
@@ -352,8 +352,8 @@
             // 
             // ultraLabel1
             // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel1.Appearance = appearance3;
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel1.Appearance = appearance1;
             this.ultraLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.ultraLabel1.Location = new System.Drawing.Point(76, 104);
             this.ultraLabel1.Name = "ultraLabel1";
@@ -372,8 +372,8 @@
             // 
             // ultraLabel8
             // 
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel8.Appearance = appearance4;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel8.Appearance = appearance2;
             this.ultraLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.ultraLabel8.Location = new System.Drawing.Point(6, 6);
             this.ultraLabel8.Name = "ultraLabel8";

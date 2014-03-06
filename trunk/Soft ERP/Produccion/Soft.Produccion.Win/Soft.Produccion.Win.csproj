@@ -34,7 +34,9 @@
     <Reference Include="Infragistics4.Shared.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Infragistics4.Win.Misc.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinEditors.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinGrid.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinTabControl.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinTree.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
@@ -57,9 +59,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Compilacion\Soft.Exceptions.dll</HintPath>
     </Reference>
-    <Reference Include="Soft.Produccion.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Soft.Inventario.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Compilacion\Soft.Produccion.Entidades.dll</HintPath>
+      <HintPath>..\..\Compilacion\Soft.Inventario.Entidades.dll</HintPath>
     </Reference>
     <Reference Include="Soft.Reporte.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -68,6 +70,10 @@
     <Reference Include="Soft.Seguridad.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Compilacion\Soft.Seguridad.Entidades.dll</HintPath>
+    </Reference>
+    <Reference Include="Soft.Ventas.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Soft.Ventas.Entidades.dll</HintPath>
     </Reference>
     <Reference Include="Soft.Win, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -89,19 +95,68 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="FrmAsistenteGeneracionOPdesdePresupuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAsistenteGeneracionOPdesdePresupuesto.Designer.cs">
+      <DependentUpon>FrmAsistenteGeneracionOPdesdePresupuesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCalculoMetros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCalculoMetros.Designer.cs">
+      <DependentUpon>FrmCalculoMetros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOrdenProduccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOrdenProduccion.Designer.cs">
+      <DependentUpon>FrmOrdenProduccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOrdenProducciondeServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOrdenProducciondeServicio.Designer.cs">
+      <DependentUpon>FrmOrdenProducciondeServicio.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTipoOrdenProduccion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmTipoOrdenProduccion.Designer.cs">
       <DependentUpon>FrmTipoOrdenProduccion.cs</DependentUpon>
     </Compile>
+    <Compile Include="GenerarOrdenProduccionDesdePresupuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmAsistenteGeneracionOPdesdePresupuesto.resx">
+      <DependentUpon>FrmAsistenteGeneracionOPdesdePresupuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCalculoMetros.resx">
+      <DependentUpon>FrmCalculoMetros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOrdenProduccion.resx">
+      <DependentUpon>FrmOrdenProduccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOrdenProducciondeServicio.resx">
+      <DependentUpon>FrmOrdenProducciondeServicio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmTipoOrdenProduccion.resx">
       <DependentUpon>FrmTipoOrdenProduccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Soft.Produccion.Entidades\Soft.Produccion.Entidades.csproj">
+      <Project>{1D4432AF-3DEE-4A39-81AA-83EA0E2B1862}</Project>
+      <Name>Soft.Produccion.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Soft.Produccion.Transaccional\Soft.Produccion.Transaccional.csproj">
+      <Project>{6CD6BF79-B927-4386-9B08-7536BFC3F010}</Project>
+      <Name>Soft.Produccion.Transaccional</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

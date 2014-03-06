@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAsistenteGeneracionOPdesdePresupuesto));
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.udtFechaCreacion = new Infragistics.Win.UltraWinEditors.UltraDateTimeEditor();
             this.lblFechaCreacion = new Infragistics.Win.Misc.UltraLabel();
             this.ssCliente = new Soft.Controls.SoftSearch();
@@ -349,8 +349,8 @@
             // 
             // lblFechaCreacion
             // 
-            appearance8.BackColor = System.Drawing.Color.Transparent;
-            this.lblFechaCreacion.Appearance = appearance8;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.lblFechaCreacion.Appearance = appearance3;
             this.lblFechaCreacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblFechaCreacion.Location = new System.Drawing.Point(312, 7);
             this.lblFechaCreacion.Name = "lblFechaCreacion";
@@ -379,8 +379,8 @@
             // 
             // lblCliente
             // 
-            appearance9.BackColor = System.Drawing.Color.Transparent;
-            this.lblCliente.Appearance = appearance9;
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.lblCliente.Appearance = appearance4;
             this.lblCliente.Location = new System.Drawing.Point(9, 36);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(130, 23);
@@ -389,8 +389,8 @@
             // 
             // lblTipoDocumento
             // 
-            appearance10.BackColor = System.Drawing.Color.Transparent;
-            this.lblTipoDocumento.Appearance = appearance10;
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            this.lblTipoDocumento.Appearance = appearance5;
             this.lblTipoDocumento.Location = new System.Drawing.Point(9, 9);
             this.lblTipoDocumento.Name = "lblTipoDocumento";
             this.lblTipoDocumento.Size = new System.Drawing.Size(130, 23);
@@ -409,8 +409,8 @@
             // 
             // lblPlantilla
             // 
-            appearance7.BackColor = System.Drawing.Color.Transparent;
-            this.lblPlantilla.Appearance = appearance7;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.lblPlantilla.Appearance = appearance2;
             this.lblPlantilla.Location = new System.Drawing.Point(9, 67);
             this.lblPlantilla.Name = "lblPlantilla";
             this.lblPlantilla.Size = new System.Drawing.Size(130, 23);
@@ -429,8 +429,8 @@
             // 
             // lblReponsable
             // 
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            this.lblReponsable.Appearance = appearance6;
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            this.lblReponsable.Appearance = appearance1;
             this.lblReponsable.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblReponsable.Location = new System.Drawing.Point(313, 33);
             this.lblReponsable.Name = "lblReponsable";
