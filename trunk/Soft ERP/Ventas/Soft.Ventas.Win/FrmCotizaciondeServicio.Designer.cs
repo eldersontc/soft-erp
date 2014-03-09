@@ -782,9 +782,9 @@
             this.txtCostoTotal.Enabled = false;
             this.txtCostoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCostoTotal.Location = new System.Drawing.Point(362, 347);
-            this.txtCostoTotal.MaskInput = "nnnnnn.nn";
+            this.txtCostoTotal.MaskInput = "nnnnnnnn.nn";
             this.txtCostoTotal.MaxValue = new decimal(new int[] {
-            2500,
+            2500000,
             0,
             0,
             0});

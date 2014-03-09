@@ -10,6 +10,8 @@ using Soft.Win;
 using Soft.Ventas.Entidades;
 using Infragistics.Win.UltraWinGrid;
 using Soft.Inventario.Entidades;
+using Soft.DataAccess;
+
 
 namespace Soft.Ventas.Win
 {
@@ -34,6 +36,7 @@ namespace Soft.Ventas.Win
         const String colDesde = "Desde";
         const String colHasta = "Hasta";
         const String colCosto = "Costo";
+        const String colPorCada = "PorCada";
 
         public override void Init()
         {
@@ -67,10 +70,12 @@ namespace Soft.Ventas.Win
 
             column = columns.Columns.Add(colUnidad);
             column.DataType = typeof(String);
+            column.ReadOnly = true;
 
             ugUnidades.DataSource = columns;
-            MapKeys(ref ugUnidades);
+            ugUnidades.DisplayLayout.Bands[0].Columns[colUnidad].CellActivation = Activation.NoEdit;
 
+            MapKeys(ref ugUnidades);
             //Escalas
             columns = new DataTable();
 
@@ -83,12 +88,20 @@ namespace Soft.Ventas.Win
             column = columns.Columns.Add(colCosto);
             column.DataType = typeof(Decimal);
 
+            column = columns.Columns.Add(colPorCada);
+            column.DataType = typeof(Int32);
+
+
             ugEscalas.DataSource = columns;
             ugEscalas.DisplayLayout.Bands[0].Columns[colDesde].DefaultCellValue = 0;
             ugEscalas.DisplayLayout.Bands[0].Columns[colHasta].DefaultCellValue = 0;
             ugEscalas.DisplayLayout.Bands[0].Columns[colCosto].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
             ugEscalas.DisplayLayout.Bands[0].Columns[colCosto].DefaultCellValue = 0;
             ugEscalas.DisplayLayout.Bands[0].Columns[colCosto].CellAppearance.TextHAlign = Infragistics.Win.HAlign.Right;
+
+            ugEscalas.DisplayLayout.Bands[0].Columns[colPorCada].CellAppearance.TextHAlign = Infragistics.Win.HAlign.Right;
+            ugEscalas.DisplayLayout.Bands[0].Columns[colPorCada].DefaultCellValue = 0;
+
             MapKeys(ref ugEscalas);
 
         }
@@ -134,7 +147,7 @@ namespace Soft.Ventas.Win
         public void MostrarUnidad(UltraGridRow Row)
         {
             UnidadListaPreciosExistencia Item = (UnidadListaPreciosExistencia)Row.Tag;
-            Row.Cells[colUnidad].Value = (Item.Unidad != null) ? Item.Unidad.Nombre : "";
+            Row.Cells[colUnidad].Value = (Item.Unidad != null) ? Item.Unidad.Unidad.Nombre : "";
             MostrarEscalas(Item);
         }
 
@@ -155,6 +168,8 @@ namespace Soft.Ventas.Win
             Row.Cells[colDesde].Value = Item.Desde;
             Row.Cells[colHasta].Value = Item.Hasta;
             Row.Cells[colCosto].Value = Item.Costo;
+            Row.Cells[colPorCada].Value = Item.PorCada;
+
         }
 
         private void txtCodigo_ValueChanged(object sender, EventArgs e)
@@ -201,11 +216,13 @@ namespace Soft.Ventas.Win
             }
             if (ItemListaPreciosExistencia == null) { return; }
             FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-            Unidad Unidad = (Unidad)FrmSeleccionar.GetSelectedEntity(typeof(Unidad), "ExistenciaUnidad", filtro);
+            ExistenciaUnidad Unidad = (ExistenciaUnidad)FrmSeleccionar.GetSelectedEntity(typeof(ExistenciaUnidad), "ExistenciaUnidad", filtro);
             if (Unidad != null)
             {
                 UltraGridRow Row = ugUnidades.DisplayLayout.Bands[0].AddNew();
-                Row.Tag = ItemListaPreciosExistencia.AddUnidad(Unidad);
+
+                ExistenciaUnidad eu = (ExistenciaUnidad)HelperNHibernate.GetEntityByID("ExistenciaUnidad", Unidad.ID);
+                Row.Tag = ItemListaPreciosExistencia.AddUnidad(eu);
                 UnidadListaPreciosExistencia = (UnidadListaPreciosExistencia)Row.Tag;
                 MostrarUnidad(Row);
             }
@@ -260,6 +277,10 @@ namespace Soft.Ventas.Win
                     break;
                 case colCosto:
                     Escala.Costo = Convert.ToDecimal((e.Cell.Value == DBNull.Value) ? 0 : e.Cell.Value);
+                    break;
+
+                case colPorCada:
+                    Escala.PorCada = Convert.ToInt32((e.Cell.Value == DBNull.Value) ? 0 : e.Cell.Value);
                     break;
                 default:
                     break;

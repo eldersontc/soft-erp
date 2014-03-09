@@ -67,12 +67,12 @@ namespace Soft.Ventas.Win
         private void Mostrar() {
             ActualizandoIU = true;
             bussAcabado.Text = (Item.Servicio != null) ? Item.Servicio.Nombre : "";
-            busUnidadAcabado.Text = (Item.UnidadServicio != null) ? Item.UnidadServicio.Nombre : "";
+            busUnidadAcabado.Text = (Item.UnidadServicio != null) ? Item.UnidadServicio.Unidad.Nombre : "";
             busMaquina.Text = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
             busUnidadMaquina.Text = (Item.UnidadMaquina != null) ? Item.UnidadMaquina.Nombre : "";
             
             txtNombreMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
-            busUnidadMaterial.Text = (Item.UnidadMaterial != null) ? Item.UnidadMaterial.Nombre : "";
+            busUnidadMaterial.Text = (Item.UnidadMaterial != null) ? Item.UnidadMaterial.Unidad.Nombre : "";
             txtCantidadAcabado.Value = Item.CantidadServicio;
             txtCantidadMaquina.Value = Item.CantidadMaquina;
             txtCantidadMaterial.Value = Item.CantidadMaterial;
@@ -106,17 +106,17 @@ namespace Soft.Ventas.Win
             if (ActualizandoIU) { return; }
             try
             {
-                foreach (var unidad in Item.Servicio.Unidades)
-                {
-                    ExistenciaUnidad eu = (ExistenciaUnidad)unidad;
-                    Item.UnidadServicio = eu.Unidad;
-                }
+                String filtro = "IDExistencia='" + Item.Servicio.ID + "' and EstaListaPreciosExistencia='SI'";
+                FrmSelectedEntity formulario = new FrmSelectedEntity();
+                ExistenciaUnidad unidad = (ExistenciaUnidad)formulario.GetSelectedEntity(typeof(ExistenciaUnidad), "ExistenciaUnidad", filtro);
+                Item.UnidadServicio = (ExistenciaUnidad)HelperNHibernate.GetEntityByID("ExistenciaUnidad", unidad.ID);
                 Mostrar();
             }
             catch (Exception ex)
             {
                 Soft.Exceptions.SoftException.ShowException(ex);
             }
+
 
         }
 
@@ -198,51 +198,10 @@ namespace Soft.Ventas.Win
             try
             {
                 String filtro = "IDExistencia='"+Item.Material.ID+"'";
-
-
-
                 FrmSelectedEntity formulario = new FrmSelectedEntity();
-                Unidad unidad = (Unidad)formulario.GetSelectedEntity(typeof(Unidad), "ExistenciaUnidad", filtro);
-
-
-                if (Item.UnidadMaterial != null) {
-                    if (unidad != null) {
-                        if (!Item.UnidadMaterial.Nombre.Equals(unidad.Nombre))
-                        {
-
-                            ExistenciaUnidad eu = null;
-                            foreach (ExistenciaUnidad Itemunidad in Item.Material.Unidades)
-                            {
-                                if (Itemunidad.Unidad.Nombre.Equals(Item.UnidadMaterial.Nombre))
-                                {
-                                    eu = Itemunidad;
-                                    break;
-                                }
-                            }
-
-                            ExistenciaUnidad eu2 = null;
-                            foreach (ExistenciaUnidad Itemunidad in Item.Material.Unidades)
-                            {
-                                if (Itemunidad.Unidad.Nombre.Equals(unidad.Nombre))
-                                {
-                                    eu2 = Itemunidad;
-                                    break;
-                                }
-                            }
-
-                            Item.UnidadMaterial = (Unidad)HelperNHibernate.GetEntityByID("Unidad", unidad.ID);
-
-                            if (eu.FactorConversion > eu2.FactorConversion)
-                            {
-                                Item.CantidadMaterial = Item.CantidadMaterial / eu.FactorConversion;
-                            }
-                            else {
-                                Item.CantidadMaterial = Item.CantidadMaterial * eu.FactorConversion;
-                            }
-                        }
-                    }
-                    Item.UnidadMaterial = (Unidad)HelperNHibernate.GetEntityByID("Unidad", unidad.ID);
-                }
+                ExistenciaUnidad unidad = (ExistenciaUnidad)formulario.GetSelectedEntity(typeof(ExistenciaUnidad), "ExistenciaUnidad", filtro);
+                Item.UnidadMaterial = (ExistenciaUnidad)HelperNHibernate.GetEntityByID("ExistenciaUnidad", unidad.ID);
+                
                 Mostrar();
             }
             catch (Exception ex)
@@ -284,27 +243,27 @@ namespace Soft.Ventas.Win
 
         private void txtCostoAcabado_ValueChanged(object sender, EventArgs e)
         {
-            if (ActualizandoIU) { return; }
+            
             Item.CostoServicio = Convert.ToDecimal ( txtCostoAcabado.Value);
             SumarTotal();
         }
 
         private void txtCostoMaquina_ValueChanged(object sender, EventArgs e)
         {
-            if (ActualizandoIU) { return; }
+            //if (ActualizandoIU) { return; }
             Item.CostoMaquina = Convert.ToDecimal (txtCostoMaquina.Value);
             SumarTotal();
         }
 
         private void txtCostoMaterial_ValueChanged(object sender, EventArgs e)
         {
-            if (ActualizandoIU) { return; }
+            //if (ActualizandoIU) { return; }
             Item.CostoMaterial =Convert.ToDecimal ( txtCostoMaterial.Value);
             SumarTotal();
         }
 
         public void SumarTotal() {
-            if (ActualizandoIU) { return; }
+            //if (ActualizandoIU) { return; }
             Item.CostoTotalServicio = Item.CostoMaterial + Item.CostoMaquina + Item.CostoServicio;
             txtCostoTotal.Value  = Item.CostoTotalServicio ;
         }
@@ -320,25 +279,33 @@ namespace Soft.Ventas.Win
                     {
                         foreach (UnidadListaPreciosExistencia unidadLPE in itemLPE.Unidades)
                         {
-                            if (unidadLPE.Unidad.Nombre.Equals(Item.UnidadServicio.Nombre))
+                            if (unidadLPE.Unidad.Unidad.Nombre.Equals(Item.UnidadServicio.Unidad.Nombre))
                             {
 
                                 
                                 foreach (EscalaListaPreciosExistencia escala in unidadLPE.Escalas)
                                 {
+                                    Decimal cantidadBruta = Item.CantidadServicio;
+                                    Decimal cantidadNeta = Item.CantidadServicio / escala.PorCada;
+                                    Decimal cantidadRedondeada = Math.Truncate(cantidadNeta);
+                                    Item.CostoServicio = 0;
+                                    if ((cantidadNeta - cantidadRedondeada) > 0) {
+                                        cantidadRedondeada += 1;
+                                    }
+
                                     if ((escala.Desde == 0) && (escala.Hasta == 0))
                                         {
-                                            Item.CostoServicio = Item.CantidadServicio * escala.Costo;
+                                            Item.CostoServicio = cantidadRedondeada * escala.Costo;
                                             break;
                                         }
                                     else if ((escala.Desde <= Item.CantidadServicio) && (escala.Hasta >= Item.CantidadServicio))
                                         {
-                                            Item.CostoServicio = Item.CantidadServicio * escala.Costo;
+                                            Item.CostoServicio = cantidadRedondeada * escala.Costo;
                                             break;
                                         }
                                      else if ((escala.Hasta == 0))
                                         {
-                                            Item.CostoServicio = Item.CantidadServicio * escala.Costo;
+                                            Item.CostoServicio = cantidadRedondeada * escala.Costo;
                                             break;
                                         }
                                 }
@@ -361,19 +328,20 @@ namespace Soft.Ventas.Win
             if (ActualizandoIU) { return; }
             try
             {
-                ExistenciaUnidad eu = null;
-                foreach (ExistenciaUnidad Itemunidad in Item.Material.Unidades)
-                {
-                    if (Itemunidad.Unidad.Nombre.Equals(Item.UnidadMaterial.Nombre))
-                    {
-                        eu = Itemunidad;
-                        break;
-                    }
-                }
+  
 
+       
                 Existencia existenciaActualizada = (Existencia) HelperNHibernate.GetEntityByID("Existencia", Item.Material.ID);
 
-                Item.CostoMaterial = (Item.CantidadMaterial * existenciaActualizada.CostoUltimaCompra) / eu.FactorConversion;
+                Decimal costo = 0;
+
+                if (existenciaActualizada.CostoUltimaCompra > 0) {
+                    costo = existenciaActualizada.CostoUltimaCompra;
+                }else{
+                    costo = existenciaActualizada.CostoReferencia;
+                }
+
+                Item.CostoMaterial = (Item.CantidadMaterial * costo) / Item.UnidadMaterial.FactorConversion;
             }
             catch (Exception)
             {

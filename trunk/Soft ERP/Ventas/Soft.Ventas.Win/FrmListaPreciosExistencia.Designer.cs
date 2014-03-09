@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListaPreciosExistencia));
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
@@ -513,8 +513,8 @@
             // 
             // lblNombre
             // 
-            appearance7.BackColor = System.Drawing.Color.Transparent;
-            this.lblNombre.Appearance = appearance7;
+            appearance9.BackColor = System.Drawing.Color.Transparent;
+            this.lblNombre.Appearance = appearance9;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblNombre.Location = new System.Drawing.Point(18, 46);
             this.lblNombre.Name = "lblNombre";
@@ -524,8 +524,8 @@
             // 
             // lblCodigo
             // 
-            appearance8.BackColor = System.Drawing.Color.Transparent;
-            this.lblCodigo.Appearance = appearance8;
+            appearance10.BackColor = System.Drawing.Color.Transparent;
+            this.lblCodigo.Appearance = appearance10;
             this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblCodigo.Location = new System.Drawing.Point(18, 17);
             this.lblCodigo.Name = "lblCodigo";

@@ -577,14 +577,14 @@
             this.ugServicios.Dock = System.Windows.Forms.DockStyle.Top;
             this.ugServicios.Location = new System.Drawing.Point(3, 25);
             this.ugServicios.Name = "ugServicios";
-            this.ugServicios.Size = new System.Drawing.Size(529, 158);
+            this.ugServicios.Size = new System.Drawing.Size(529, 139);
             this.ugServicios.TabIndex = 0;
             this.ugServicios.Text = "ultraGrid1";
             this.ugServicios.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ugServicios_CellChange);
             // 
             // ubNuevo
             // 
-            this.ubNuevo.Location = new System.Drawing.Point(369, 189);
+            this.ubNuevo.Location = new System.Drawing.Point(369, 171);
             this.ubNuevo.Name = "ubNuevo";
             this.ubNuevo.Size = new System.Drawing.Size(75, 23);
             this.ubNuevo.TabIndex = 11;
@@ -593,7 +593,7 @@
             // 
             // ubEliminar
             // 
-            this.ubEliminar.Location = new System.Drawing.Point(450, 189);
+            this.ubEliminar.Location = new System.Drawing.Point(450, 171);
             this.ubEliminar.Name = "ubEliminar";
             this.ubEliminar.Size = new System.Drawing.Size(75, 23);
             this.ubEliminar.TabIndex = 12;
