@@ -27,6 +27,8 @@
     <many-to-one name="ItemClasificacionExistencia" class="Soft.Inventario.Entidades.ItemClasificacionExistencia" column="IDItemClasificacionExistencia" insert="true" update="true" lazy="false"/>
     <many-to-one name="Marca" class="Soft.Inventario.Entidades.Marca" column="IDMarca" insert="true" update="true" lazy="false"/>
 
+    <many-to-one name="UnidadBase" class="Soft.Inventario.Entidades.ExistenciaUnidad" column="IDUnidadBase" insert="true" update="true" lazy="false"/>
+
     <bag name="Unidades" cascade="all-delete-orphan" order-by="Orden" lazy="false">
       <key column="IDExistencia"/>
       <one-to-many class="Soft.Inventario.Entidades.ExistenciaUnidad"/>
@@ -41,6 +43,7 @@
       <key column="IDExistencia"/>
       <one-to-many class="Soft.Inventario.Entidades.ExistenciaMaquina"/>
     </bag>
+
 
   </class>
 
