@@ -43,6 +43,9 @@ namespace Soft.Inventario.Entidades
         public virtual String Ubicacion { get; set; }
         public virtual Decimal CostoReferencia { get; set; }
 
+        public virtual ExistenciaUnidad UnidadBase { get; set; }
+
+
         public virtual IList<ExistenciaUnidad> Unidades { get; set; }
         public virtual IList<ExistenciaAlmacen> Almacenes { get; set; }
         public virtual IList<ExistenciaMaquina> Maquinas { get; set; }
@@ -68,11 +71,11 @@ namespace Soft.Inventario.Entidades
             return Item;
         }
 
-        public virtual Unidad UnidadBase()
-        {
-            ExistenciaUnidad uni = (ExistenciaUnidad)Unidades.ElementAt(0);
-            return uni.Unidad;
-        }
+        //public virtual Unidad UnidadBase()
+        //{
+        //    ExistenciaUnidad uni = (ExistenciaUnidad)Unidades.ElementAt(0);
+        //    return uni.Unidad;
+        //}
 
     }
 }
