@@ -22,6 +22,7 @@ namespace Soft.Produccion.Entidades
                 this.TipoCambioFecha = 1;
                 this.FechaCreacion = DateTime.Now;
                 this.FechaTentativaEntrega = DateTime.Now;
+                this.EstadoAprobacion="PENDIENTE";
             }
 
         }
