@@ -33,7 +33,7 @@ namespace Soft.Ventas.Entidades
             }
         }
 
-        public virtual UnidadListaPreciosExistencia AddUnidad(Unidad Unidad)
+        public virtual UnidadListaPreciosExistencia AddUnidad(ExistenciaUnidad Unidad)
         {
             UnidadListaPreciosExistencia Item = new UnidadListaPreciosExistencia();
             Item.Unidad = Unidad;
