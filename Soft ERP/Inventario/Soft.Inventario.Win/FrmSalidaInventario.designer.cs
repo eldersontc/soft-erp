@@ -76,6 +76,7 @@
             this.lblOrdenProduccion = new Infragistics.Win.Misc.UltraLabel();
             this.ssMoneda = new Soft.Controls.SoftSearch();
             this.lblMoneda = new Infragistics.Win.Misc.UltraLabel();
+            this.ultraButton1 = new Infragistics.Win.Misc.UltraButton();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.tabItems.SuspendLayout();
@@ -402,6 +403,7 @@
             // 
             // tabItems
             // 
+            this.tabItems.Controls.Add(this.ultraButton1);
             this.tabItems.Controls.Add(this.ugProductos);
             this.tabItems.Controls.Add(this.ubEliminarProducto);
             this.tabItems.Controls.Add(this.ubNuevoProducto);
@@ -710,6 +712,15 @@
             this.lblMoneda.TabIndex = 56;
             this.lblMoneda.Text = "Moneda";
             // 
+            // ultraButton1
+            // 
+            this.ultraButton1.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Office2010Button;
+            this.ultraButton1.Location = new System.Drawing.Point(3, 189);
+            this.ultraButton1.Name = "ultraButton1";
+            this.ultraButton1.Size = new System.Drawing.Size(104, 23);
+            this.ultraButton1.TabIndex = 10;
+            this.ultraButton1.Text = "&DESDE OP";
+            // 
             // FrmSalidaInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -771,5 +782,6 @@
         private Infragistics.Win.Misc.UltraLabel lblOrdenProduccion;
         private Controls.SoftSearch ssMoneda;
         private Infragistics.Win.Misc.UltraLabel lblMoneda;
+        private Infragistics.Win.Misc.UltraButton ultraButton1;
     }
 }
