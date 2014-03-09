@@ -180,12 +180,24 @@ namespace Soft.Win
             txtCorreo.Text = SocioNegocio.Correo;
             txtPaginaWeb.Text = SocioNegocio.PaginaWeb;
 
-            if (!(SocioNegocio.Firma == null)) {
-                if ((!SocioNegocio.Firma.Equals("")) )
+
+            try
+            {
+                if (!(SocioNegocio.Firma == null))
                 {
-                    pbFirma.Image = Image.FromFile(String.Format("{0}{1}", FrmMain.CarpetaImagenes, SocioNegocio.Firma));
+                    if ((!SocioNegocio.Firma.Equals("")))
+                    {
+                        pbFirma.Image = Image.FromFile(String.Format("{0}{1}", FrmMain.CarpetaFirmas, SocioNegocio.Firma));
+                    }
                 }
             }
+            catch (Exception)
+            {
+                
+                
+            }
+
+            
 
             MostrarDirecciones();
             MostrarContactos();
@@ -644,7 +656,7 @@ namespace Soft.Win
         private void ubFirma_Click(object sender, EventArgs e)
         {
             OpenFileDialog OpenFile = new OpenFileDialog();
-            OpenFile.InitialDirectory = FrmMain.CarpetaImagenes;
+            OpenFile.InitialDirectory = FrmMain.CarpetaFirmas;
             OpenFile.Filter = "[JPG,JPEG]|*.jpg|[PNG]|*.png";
             if (OpenFile.ShowDialog() == DialogResult.OK)
             {
