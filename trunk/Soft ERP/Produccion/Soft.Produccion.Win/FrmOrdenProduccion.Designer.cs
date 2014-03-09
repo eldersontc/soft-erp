@@ -37,8 +37,8 @@
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
-            Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.ValueListItem valueListItem6 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
@@ -52,10 +52,10 @@
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
-            Infragistics.Win.ValueListItem valueListItem7 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.ValueListItem valueListItem8 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.ValueListItem valueListItem9 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.ValueListItem valueListItem10 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem4 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem6 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
@@ -88,9 +88,9 @@
             Infragistics.Win.Appearance appearance55 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance53 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance52 = new Infragistics.Win.Appearance();
-            Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem7 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem8 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem9 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.Appearance appearance51 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance50 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance49 = new Infragistics.Win.Appearance();
@@ -689,7 +689,7 @@
             this.ultraTabPageControl1.Controls.Add(this.txtObservacionItem);
             this.ultraTabPageControl1.Controls.Add(this.lblObservacionItem);
             this.ultraTabPageControl1.Controls.Add(this.utcAcabadosyServicios);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(716, 329);
             // 
@@ -875,13 +875,13 @@
             // 
             // comboMedida
             // 
-            valueListItem5.DataValue = "CM.";
-            valueListItem5.Tag = 1;
-            valueListItem6.DataValue = "MT.";
-            valueListItem6.Tag = 100;
+            valueListItem1.DataValue = "CM.";
+            valueListItem1.Tag = 1;
+            valueListItem2.DataValue = "MT.";
+            valueListItem2.Tag = 100;
             this.comboMedida.Items.AddRange(new Infragistics.Win.ValueListItem[] {
-            valueListItem5,
-            valueListItem6});
+            valueListItem1,
+            valueListItem2});
             this.comboMedida.Location = new System.Drawing.Point(123, 28);
             this.comboMedida.Name = "comboMedida";
             this.comboMedida.Size = new System.Drawing.Size(52, 21);
@@ -1088,7 +1088,7 @@
             this.ultraTabPageControl2.Controls.Add(this.ubGirarGraficoPrecorte);
             this.ultraTabPageControl2.Controls.Add(this.ubImprimirGraficoPrecorte);
             this.ultraTabPageControl2.Controls.Add(this.ultraLabel13);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(716, 329);
             // 
@@ -1142,22 +1142,22 @@
             // 
             // ubeMetodo
             // 
-            valueListItem7.DataValue = "ValueListItem0";
-            valueListItem7.DisplayText = "TIRA";
-            valueListItem7.Tag = 1;
-            valueListItem8.DataValue = "ValueListItem1";
-            valueListItem8.DisplayText = "TIRA / RETIRA";
-            valueListItem8.Tag = 2;
-            valueListItem9.DataValue = "TIRA Y RETIRA";
-            valueListItem9.Tag = 1;
-            valueListItem10.DataValue = "ValueListItem2";
-            valueListItem10.DisplayText = "CONTRAPINZA";
-            valueListItem10.Tag = 1;
+            valueListItem3.DataValue = "ValueListItem0";
+            valueListItem3.DisplayText = "TIRA";
+            valueListItem3.Tag = 1;
+            valueListItem4.DataValue = "ValueListItem1";
+            valueListItem4.DisplayText = "TIRA / RETIRA";
+            valueListItem4.Tag = 2;
+            valueListItem5.DataValue = "TIRA Y RETIRA";
+            valueListItem5.Tag = 1;
+            valueListItem6.DataValue = "ValueListItem2";
+            valueListItem6.DisplayText = "CONTRAPINZA";
+            valueListItem6.Tag = 1;
             this.ubeMetodo.Items.AddRange(new Infragistics.Win.ValueListItem[] {
-            valueListItem7,
-            valueListItem8,
-            valueListItem9,
-            valueListItem10});
+            valueListItem3,
+            valueListItem4,
+            valueListItem5,
+            valueListItem6});
             this.ubeMetodo.Location = new System.Drawing.Point(579, 232);
             this.ubeMetodo.Name = "ubeMetodo";
             this.ubeMetodo.Size = new System.Drawing.Size(119, 21);
@@ -1973,13 +1973,13 @@
             // 
             // cboPrioridad
             // 
-            valueListItem1.DataValue = "ALTA";
-            valueListItem2.DataValue = "MEDIA";
-            valueListItem3.DataValue = "BAJA";
+            valueListItem7.DataValue = "ALTA";
+            valueListItem8.DataValue = "MEDIA";
+            valueListItem9.DataValue = "BAJA";
             this.cboPrioridad.Items.AddRange(new Infragistics.Win.ValueListItem[] {
-            valueListItem1,
-            valueListItem2,
-            valueListItem3});
+            valueListItem7,
+            valueListItem8,
+            valueListItem9});
             this.cboPrioridad.Location = new System.Drawing.Point(691, 115);
             this.cboPrioridad.Name = "cboPrioridad";
             this.cboPrioridad.Size = new System.Drawing.Size(84, 21);

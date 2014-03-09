@@ -105,7 +105,7 @@ namespace Soft.Produccion.Win
                 udtFechaCreacion.Value = OrdenProduccion.FechaCreacion;
                 udtFechaCreacion.ReadOnly = true;
                 udtFechaTentativaEntrega.Value = OrdenProduccion.FechaTentativaEntrega;
-
+                txtNumeracion.Text = OrdenProduccion.Numeracion;
                 cboPrioridad.Text = OrdenProduccion.Prioridad;
                 txtDescripcion.Text = OrdenProduccion.Descripcion;
                 busListaPrecioMaterial.Text = (OrdenProduccion.ListaPreciosExistencia != null) ? OrdenProduccion.ListaPreciosExistencia.Nombre : "";
@@ -275,6 +275,129 @@ namespace Soft.Produccion.Win
 
 
 
+        public void MostrarItem(ItemOrdenProduccion ItemPROD)
+        {
+            ActualizandoIU = true;
+            ItemOrdenProduccion Item = ItemPROD;
+            ItemOrdenProduccion = Item;
+            GrupoMedidaAbierta.Visible = Item.TieneMedidaAbierta;
+            GrupoMedidaCerrada.Visible = Item.TieneMedidaCerrada;
+            GruposTiras.Visible = Item.TieneTiraRetira;
+            ssMaquina.Text = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
+            ssMaterial.Text = (Item.Material != null) ? Item.Material.Descripcion : "";
+            lblTipoUnidad.Text = Item.TipoUnidad;
+            txtObservacionItem.Text = Item.Observacion;
+            txtCantidadItem.Value = Item.CantidadUnidad;
+            txtCantidadProduccion.Value = Item.CantidadElemento;
+            txtMedidaAbiertoLargo.Value = Item.MedidaAbiertaLargo;
+            txtMedidaAbiertoAlto.Value = Item.MedidaAbiertaAlto;
+            txtMedidaCerradaLargo.Value = Item.MedidaCerradaLargo;
+            txtMedidaCerradaAlto.Value = Item.MedidaCerradaAlto;
+            txtImpresoTiraColor.Value = Item.ImpresoTiraColor;
+            txtImpresoRetiraColor.Value = Item.ImpresoRetiraColor;
+            //uneCostoMaquina.Value = Item.CostoMaquina;
+            //uneCostoMaterial.Value = Item.CostoMaterial;
+            //uneCosto.Value = Item.Costo;
+            uneSeparacionX.Value = Item.SeparacionX;
+            uneSeparacionY.Value = Item.SeparacionY;
+            txtFormatoImpresionAlto.Value = Item.FormatoImpresionAlto;
+            txtFormatoImpresionLargo.Value = Item.FormatoImpresionLargo;
+            txtNroPiezasPrecorte.Value = Item.NroPiezasPrecorte;
+            txtNroPiezasImpresion.Value = Item.NroPiezasImpresion;
+            txtImpresionAlto.Value = Item.MedidaAbiertaAlto;
+            txtImpresionLargo.Value = Item.MedidaAbiertaLargo;
+            ssMaquina.Visible = Item.TieneMaquina;
+            lblMaquina.Visible = Item.TieneMaquina;
+            ssMaterial.Visible = Item.TieneMaterial;
+            lblMaterial.Visible = Item.TieneMaterial;
+            //txtCostoServicio.Value = Item.CostoServicio;
+            //lblCostoMaquina.Visible = Item.TieneMaquina;
+            //uneCostoMaquina.Visible = Item.TieneMaquina;
+            //lblCostoMaterial.Visible = Item.TieneMaterial;
+            //uneCostoMaterial.Visible = Item.TieneMaterial;
+
+
+            comboMedida.Text = Item.UnidadMedidaAbierta;
+            lblTipoUnidad.Visible = Item.TieneTipoUnidad;
+            txtCantidadItem.Visible = Item.TieneTipoUnidad;
+            if (Item.TieneTipoUnidad == false)
+            {
+                txtCantidadItem.Value = 0;
+            }
+
+
+            txtDemasia.Value = Item.CantidadDemasia;
+            txtPases.Value = Item.NumerodePases;
+            txtHojasMaquina.Value = (Item.CantidadMaterial) * Item.NroPiezasPrecorte;
+            txtTiraje.Value = Item.CantidadProduccion;
+
+            LabelMateriaPrima.Text = "";
+            if (Item.NumeroPliegos > 0)
+            {
+                LabelMateriaPrima.Text = Item.NumeroPliegos + " pliegos de : ";
+            }
+            LabelMateriaPrima.Text += Math.Round(Item.CantidadMaterial, 0).ToString() + " + " + Math.Round(Item.CantidadDemasiaMaterial, 0).ToString() + " = " + Math.Round((Item.CantidadMaterial + Item.CantidadDemasiaMaterial), 0).ToString() + " Hjs/Resma";
+            LabelProduccion.Text = "";
+            if (Item.NumeroPliegos > 0)
+            {
+                LabelProduccion.Text = Item.NumeroPliegos + " pliegos de : ";
+            }
+            LabelProduccion.Text += Math.Round(((Item.CantidadMaterial + Item.CantidadDemasiaMaterial) * Item.NroPiezasPrecorte), 0).ToString() + " Hjs/Maquina";
+            txtPliegos.Value = Item.NumeroPliegos;
+
+
+            // if (Item.MetodoImpresion != null) {
+            ubeMetodo.Text = Item.MetodoImpresion;
+            //}
+
+
+            checkGraficoImpresionManual.Checked = Item.GraficoImpresionManual;
+
+            utcItemCotizacion.Tabs["Graficos"].Visible = Item.TieneGraficos;
+            txtDemasia.Value = Item.CantidadDemasia;
+
+            if (Item.TieneGraficos)
+            {
+                try
+                {
+                    upbImpresion.Visible = true;
+                    txtNroPiezasImpresion.ReadOnly = true;
+                    if (Item.GraficoImpresionManual)
+                    {
+                        upbImpresion.Visible = false;
+                        txtNroPiezasImpresion.ReadOnly = false;
+                    }
+                    else if (Item.GraficoImpresionGirado)
+                    {
+                        GenerarGraficoImpresionRotado();
+                    }
+                    else
+                    {
+                        GenerarGraficoImpresionNormal();
+                    }
+
+
+
+                    if (Item.GraficoPrecorteGirado)
+                    {
+
+                        GenerarGraficoPrecorteRotado();
+
+                    }
+                    else { GenerarGraficoPrecorteNormal(); }
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+
+
+            MostrarServicios(Item);
+            ActualizandoIU = false;
+        }
+
+
         public void GenerarGraficoPrecorteRotado()
         {
 
@@ -292,7 +415,8 @@ namespace Soft.Produccion.Win
             upbPrecorte.Width = LargoTotal;
             upbPrecorte.Height = AltoTotal;
             Bitmap b;
-            b = new Bitmap(upbPrecorte.Width, upbPrecorte.Height);
+            //b = new Bitmap(upbPrecorte.Width, upbPrecorte.Height);
+            b = new Bitmap(120, 80);
             upbPrecorte.Image = (Image)b;
             Graphics g = Graphics.FromImage(b);
             g.Clear(Color.White);
@@ -377,7 +501,8 @@ namespace Soft.Produccion.Win
                 upbImpresion.Height = AltoPictureBox;
 
                 Bitmap b;
-                b = new Bitmap(upbImpresion.Width, upbImpresion.Height);
+                //b = new Bitmap(upbImpresion.Width, upbImpresion.Height);
+                b = new Bitmap(100 * 10, 70 * 10);
                 upbImpresion.Image = (Image)b;
                 Graphics g = Graphics.FromImage(b);
                 g.Clear(Color.White);
@@ -428,9 +553,10 @@ namespace Soft.Produccion.Win
 
                 g.DrawRectangle(MyPen, new Rectangle(0, 0, upbImpresion.Width - 1, upbImpresion.Height - 1));
 
-                upbImpresion.Width = upbImpresion.Width / 6;
-                upbImpresion.Height = upbImpresion.Height / 6;
-
+                //upbImpresion.Width = upbImpresion.Width / 5;
+                //upbImpresion.Height = upbImpresion.Height / 5;
+                upbImpresion.Width = 100;
+                upbImpresion.Height = 70;
 
                 ItemOrdenProduccion.NroPiezasImpresion = CantidadPiezas;
                 txtNroPiezasImpresion.Value = CantidadPiezas;
@@ -462,7 +588,9 @@ namespace Soft.Produccion.Win
             upbPrecorte.Height = AltoTotal;
 
             Bitmap b;
-            b = new Bitmap(upbPrecorte.Width, upbPrecorte.Height);
+            //b = new Bitmap(upbPrecorte.Width, upbPrecorte.Height);
+            b = new Bitmap(120, 80);
+
             upbPrecorte.Image = (Image)b;
             Graphics g = Graphics.FromImage(b);
             g.Clear(Color.White);
@@ -539,7 +667,10 @@ namespace Soft.Produccion.Win
                 upbImpresion.Height = AltoPictureBox;
 
                 Bitmap b;
-                b = new Bitmap(upbImpresion.Width, upbImpresion.Height);
+                //b = new Bitmap(upbImpresion.Width, upbImpresion.Height);
+
+                b = new Bitmap(100*10, 70*10);
+
                 upbImpresion.Image = (Image)b;
                 Graphics g = Graphics.FromImage(b);
                 g.Clear(Color.White);
@@ -602,8 +733,8 @@ namespace Soft.Produccion.Win
 
                 g.DrawRectangle(MyPen, new Rectangle(0, 0, upbImpresion.Width - 1, upbImpresion.Height - 1));
 
-                upbImpresion.Width = upbImpresion.Width / 6;
-                upbImpresion.Height = upbImpresion.Height / 6;
+                upbImpresion.Width = 100;
+                upbImpresion.Height = 70;
 
 
 
@@ -1590,7 +1721,7 @@ namespace Soft.Produccion.Win
                 if (ItemOrdenProduccion == null) { return; }
                 if (ActualizandoIU) { return; }
                 Bitmap b = new Bitmap((Image)upbPrecorte.Image);
-                String RutaGrafico = String.Format("{0}Grafico_Precorte_{1}.png", FrmMain.CarpetaImagenes, ItemOrdenProduccion.ID);
+                String RutaGrafico = String.Format("{0}Grafico_Precorte_{1}.png", FrmMain.CarpetaOrdenesProduccion, ItemOrdenProduccion.ID);
                 b.Save(RutaGrafico);
                 Soft.Reporte.Entidades.Reporte Reporte = (Soft.Reporte.Entidades.Reporte)HelperNHibernate.GetEntityByField("Reporte", "Codigo", "VEN-0006");
                 ParametroReporte Parametro = Reporte.Parametros[0];
@@ -1603,6 +1734,64 @@ namespace Soft.Produccion.Win
             {
                 SoftException.Control(ex);
             }
+        }
+
+        private void GenerarImagenPreCorte(ItemOrdenProduccion itemGrafico) {
+            try
+            {
+                if (itemGrafico == null) { return; }
+                if (ActualizandoIU) { return; }
+                Bitmap b = new Bitmap((Image)upbPrecorte.Image);
+                String RutaGrafico = String.Format("{0}Grafico_Precorte_{1}.png", FrmMain.CarpetaOrdenesProduccion, itemGrafico.ID);
+                b.Save(RutaGrafico);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+
+        private void GenerarImagenImpresion(ItemOrdenProduccion itemGrafico) {
+
+            try
+            {
+                if (itemGrafico == null) { return; }
+                if (ActualizandoIU) { return; }
+
+                Bitmap b = new Bitmap((Image)upbImpresion.Image);
+                String RutaGrafico = String.Format("{0}Grafico_Impresion_{1}.png", FrmMain.CarpetaOrdenesProduccion, itemGrafico.ID);
+                b.Save(RutaGrafico);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }	
+        
+        }
+
+        private void GenerarImagenes() {
+
+            try
+            {
+                foreach (ItemOrdenProduccion itemPROD in OrdenProduccion.Items)
+                {
+                    if (itemPROD.TieneGraficos)
+                    {
+                        //utOrdenProduccion.ActiveNode(itemPROD);
+                        MostrarItem(itemPROD);
+                        GenerarImagenPreCorte(itemPROD);
+                        GenerarImagenImpresion(itemPROD);
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        
         }
 
         private void ubMostrarGraficoImpresion_Click(object sender, EventArgs e)
@@ -1655,7 +1844,7 @@ namespace Soft.Produccion.Win
                 if (ActualizandoIU) { return; }
 
                 Bitmap b = new Bitmap((Image)upbImpresion.Image);
-                String RutaGrafico = String.Format("{0}Grafico_Impresion_{1}.png", FrmMain.CarpetaImagenes, ItemOrdenProduccion.ID);
+                String RutaGrafico = String.Format("{0}Grafico_Impresion_{1}.png", FrmMain.CarpetaOrdenesProduccion, ItemOrdenProduccion.ID);
                 b.Save(RutaGrafico);
                 Soft.Reporte.Entidades.Reporte Reporte = (Soft.Reporte.Entidades.Reporte)HelperNHibernate.GetEntityByField("Reporte", "Codigo", "VEN-0005");
                 ParametroReporte Parametro = Reporte.Parametros[0];
@@ -1765,6 +1954,7 @@ namespace Soft.Produccion.Win
         public override void Aceptar()
         {
             Costeo();
+            GenerarImagenes();
             base.Aceptar();
             
         }
