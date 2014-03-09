@@ -146,7 +146,8 @@ namespace Soft.Inventario.Win
             busClasificacion.Text = (this.Existencia.ClasificacionExistencia != null) ? this.Existencia.ClasificacionExistencia.Nombre : "";
             busItemClasificacion.Text = (this.Existencia.ItemClasificacionExistencia != null) ? this.Existencia.ItemClasificacionExistencia.Nombre : "";
             busMarca.Text = (this.Existencia.Marca != null) ? this.Existencia.Marca.Nombre : "";
-
+            txtUnidadBase.Text = (this.Existencia.UnidadBase != null) ? Existencia.UnidadBase.Unidad.Nombre : "";
+         
             this.MostrarUnidades();
             this.MostrarAlmacenes();
             this.MostrarMaquinas();
@@ -362,6 +363,10 @@ namespace Soft.Inventario.Win
             {
                 case colEsBase:
                     Item.EsUnidadBase = Convert.ToBoolean(e.Cell.Text);
+                    if (Item.EsUnidadBase) {
+                        Existencia.UnidadBase = Item;
+                        txtUnidadBase.Text = Existencia.UnidadBase.Unidad.Nombre;
+                    }
                     break;
                 case colFactor:
                     Item.FactorConversion = Convert.ToInt32(e.Cell.Text.Replace('_', ' '));
