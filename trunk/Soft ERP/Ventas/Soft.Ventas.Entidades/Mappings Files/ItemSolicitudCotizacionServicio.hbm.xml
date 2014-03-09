@@ -7,7 +7,7 @@
     <property name="CantidadInicial" type="decimal"/>
     <property name="CantidadFinal" type="decimal"/>
 
-    <many-to-one name="Unidad" class="Soft.Inventario.Entidades.Unidad" column="IDUnidad" insert="true" update="true" lazy="false"/>
+    <many-to-one name="Unidad" class="Soft.Inventario.Entidades.ExistenciaUnidad" column="IDUnidad" insert="true" update="true" lazy="false"/>
     <many-to-one name="Servicio" class="Soft.Inventario.Entidades.Existencia" column="IDServicio" insert="true" update="true" lazy="false"/>
 
   </class>
