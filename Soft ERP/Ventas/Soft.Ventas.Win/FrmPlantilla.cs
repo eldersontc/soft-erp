@@ -122,7 +122,7 @@ namespace Soft.Ventas.Win
             {
                 AgregarUnidades(Row);
                 Row.Cells[colNobre].Value = Item.Servicio.Nombre;
-                Row.Cells[colUnidad].Value = Item.Unidad.Nombre;
+                Row.Cells[colUnidad].Value = Item.Unidad.Unidad.Codigo;
             }
             Row.Cells[colCantidad].Value = Item.Cantidad;
         }
@@ -131,11 +131,18 @@ namespace Soft.Ventas.Win
         {
             ItemPlantillaServicio Item = (ItemPlantillaServicio)Row.Tag;
             ValueList List = new ValueList();
+            if (Item.Servicio != null) { 
+            Item.Unidad = Item.Servicio.UnidadBase;
+            }
+
             foreach (ExistenciaUnidad Unidad in Item.Servicio.Unidades)
             {
-                if (Item.Unidad == null & Unidad.EsUnidadBase) { Item.Unidad = Unidad.Unidad; }
-                List.ValueListItems.Add(Unidad.Unidad, Unidad.Unidad.Nombre);
+                if (Item.Unidad == null & Unidad.EsUnidadBase) { 
+                    Item.Unidad = Unidad; 
+                }
+                List.ValueListItems.Add(Unidad, Unidad.Unidad.Codigo);
             }
+
             Row.Cells[colUnidad].ValueList = List;
         }
 
@@ -225,7 +232,7 @@ namespace Soft.Ventas.Win
             switch (e.Cell.Column.Key)
             {
                 case colUnidad:
-                    Item.Unidad = (Unidad)e.Cell.ValueList.GetValue(e.Cell.ValueList.SelectedItemIndex);
+                    Item.Unidad = (ExistenciaUnidad)e.Cell.ValueList.GetValue(e.Cell.ValueList.SelectedItemIndex);
                     break;
                 case colCantidad:
                     Item.Cantidad = Convert.ToDecimal(e.Cell.Text);
