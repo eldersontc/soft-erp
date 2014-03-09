@@ -12,7 +12,7 @@ namespace Soft.Ventas.Entidades
     {
         public ItemPlantillaServicio() { }
         public virtual Existencia Servicio { get; set; }
-        public virtual Unidad Unidad { get; set; }
+        public virtual ExistenciaUnidad Unidad { get; set; }
         public virtual Decimal Cantidad { get; set; }
     }
 }

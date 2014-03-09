@@ -15,7 +15,7 @@ namespace Soft.Ventas.Entidades
             Escalas = new List<EscalaListaPreciosExistencia>();        
         }
 
-        public virtual Unidad Unidad { get; set; }
+        public virtual ExistenciaUnidad Unidad { get; set; }
         public virtual IList<EscalaListaPreciosExistencia> Escalas { get; set; }
 
         public virtual EscalaListaPreciosExistencia AddEscala()

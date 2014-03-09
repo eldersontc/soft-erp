@@ -34,7 +34,7 @@ namespace Soft.Ventas.Entidades
         {
             ItemPlantillaServicio Item = new ItemPlantillaServicio();
             Item.Servicio = Servicio;
-            Item.Unidad = Servicio.UnidadBase();
+            Item.Unidad = Servicio.UnidadBase;
             Item.Cantidad = 1;
             Servicios.Add(Item);
             return Item;

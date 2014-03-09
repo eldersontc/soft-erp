@@ -13,5 +13,7 @@ namespace Soft.Ventas.Entidades
         public virtual Int32 Desde { get; set; }
         public virtual Int32 Hasta { get; set; }
         public virtual Decimal Costo { get; set; }
+        public virtual Int32 PorCada { get; set; }
+        
     }
 }
