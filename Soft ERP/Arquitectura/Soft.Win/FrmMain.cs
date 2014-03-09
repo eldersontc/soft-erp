@@ -564,7 +564,12 @@ namespace Soft.Win
         public static String CarpetaReportes { get { return ConfigurationManager.AppSettings["CarpetaReportes"]; } }
 
         public static String CarpetaImagenes { get { return ConfigurationManager.AppSettings["CarpetaImagenes"]; } }
-        
+
+        public static String CarpetaOrdenesProduccion { get { return ConfigurationManager.AppSettings["CarpetaOrdenesProduccion"]; } }
+
+        public static String CarpetaFirmas { get { return ConfigurationManager.AppSettings["CarpetaFirmas"]; } }
+
+
         public void Tree_Click(object sender, EventArgs e)
         {
             try
