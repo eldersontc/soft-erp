@@ -111,7 +111,7 @@ namespace Soft.Ventas.Win
         private void ssCliente_Search(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmSeleccionarCliente = new FrmSelectedEntity();
-            Presupuesto.Cliente = (SocioNegocio)FrmSeleccionarCliente.GetSelectedEntity(typeof(SocioNegocio), "Socio de Negocio", " Cliente = 1");
+            Presupuesto.Cliente = (SocioNegocio)FrmSeleccionarCliente.GetSelectedEntity(typeof(SocioNegocio), "Cliente Pendiente de Presupuesto");
             ssCliente.Text = (Presupuesto.Cliente != null) ? Presupuesto.Cliente.Nombre : "";
         }
 
