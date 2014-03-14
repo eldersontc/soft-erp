@@ -153,7 +153,7 @@ namespace Soft.Ventas.Win
             GrupoMedidaCerrada.Visible = Item.TieneMedidaCerrada;
             GruposTiras.Visible = Item.TieneTiraRetira;
             ssMaquina.Text = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
-            ssMaterial.Text = (Item.Material != null) ? Item.Material.Descripcion : "";
+            ssMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
             lblTipoUnidad.Text = Item.TipoUnidad;
             txtObservacionItem.Text = Item.Observacion;
             txtCantidadItem.Value = Item.CantidadUnidad;
@@ -512,7 +512,7 @@ namespace Soft.Ventas.Win
             {
                 ItemCotizacion.Material = (Existencia)HelperNHibernate.GetEntityByID("Existencia", ItemCotizacion.Material.ID);
             }
-            ssMaterial.Text = (ItemCotizacion.Material != null) ? ItemCotizacion.Material.Descripcion : "";
+            ssMaterial.Text = (ItemCotizacion.Material != null) ? ItemCotizacion.Material.Nombre : "";
         }
 
         private void txtObservacionItem_TextChanged(object sender, EventArgs e)
@@ -540,6 +540,7 @@ namespace Soft.Ventas.Win
 
 
         private void MostrarTotalServicio(ItemCotizacion itemSe){
+
             Decimal total = 0; 
             foreach (ItemCotizacionServicio itemServicio in itemSe.Servicios)
             {
@@ -847,8 +848,16 @@ namespace Soft.Ventas.Win
                 }
                 else {
 
+                    Decimal mat = 0;
+                    if (itemcosteado.CantidadUnidad > 0 && itemcosteado.TieneTipoUnidad)
+                    {
+                        mat = (itemcosteado.CantidadElemento / (itemcosteado.NroPiezasPrecorte));
+                    }
+                    else {
 
-               Decimal mat = (itemcosteado.CantidadElemento / (itemcosteado.NroPiezasPrecorte * itemcosteado.NroPiezasImpresion));
+                        mat = (itemcosteado.CantidadElemento / (itemcosteado.NroPiezasPrecorte * itemcosteado.NroPiezasImpresion));
+                    }
+
                Int32 mate = Convert.ToInt32( mat);
 
                if ((mat - mate) > 0)
