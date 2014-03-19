@@ -656,11 +656,24 @@ namespace Soft.Ventas.Win
             Decimal resultado = 0;
             try
             {
+
+                Decimal costoMaterial = 0;
+
+                if (itemCotizacion.Material.CostoUltimaCompra > 0)
+                {
+                    costoMaterial = itemCotizacion.Material.CostoUltimaCompra;
+                }
+                else {
+                    costoMaterial = itemCotizacion.Material.CostoReferencia;
+                }
+
+              
+
                 if (itemCotizacion.NumeroPliegos == 0) {
                     itemCotizacion.NumeroPliegos = 1;
                 }
 
-                resultado = itemCotizacion.Material.CostoUltimaCompra * (itemCotizacion.CantidadMaterial + itemCotizacion.CantidadDemasiaMaterial) * itemCotizacion.NumeroPliegos;
+                resultado = costoMaterial * (itemCotizacion.CantidadMaterial + itemCotizacion.CantidadDemasiaMaterial) * itemCotizacion.NumeroPliegos;
             
             }
             catch (Exception)
