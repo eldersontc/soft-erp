@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Facturacion.Entidades", "Soft.Facturacion.Entidades\Soft.Facturacion.Entidades.csproj", "{52C9A9D6-9D04-4137-B43F-1818C99B2D3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Facturacion.Transaccional", "Soft.Facturacion.Transaccional\Soft.Facturacion.Transaccional.csproj", "{2389BD2D-B47F-40EA-9B15-89B1D3BFBF6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soft.Facturacion.Win", "Soft.Facturacion.Win\Soft.Facturacion.Win.csproj", "{6F92A241-C558-415A-8D9C-FF3E746C8658}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52C9A9D6-9D04-4137-B43F-1818C99B2D3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52C9A9D6-9D04-4137-B43F-1818C99B2D3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52C9A9D6-9D04-4137-B43F-1818C99B2D3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52C9A9D6-9D04-4137-B43F-1818C99B2D3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2389BD2D-B47F-40EA-9B15-89B1D3BFBF6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2389BD2D-B47F-40EA-9B15-89B1D3BFBF6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2389BD2D-B47F-40EA-9B15-89B1D3BFBF6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2389BD2D-B47F-40EA-9B15-89B1D3BFBF6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F92A241-C558-415A-8D9C-FF3E746C8658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F92A241-C558-415A-8D9C-FF3E746C8658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F92A241-C558-415A-8D9C-FF3E746C8658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F92A241-C558-415A-8D9C-FF3E746C8658}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal
