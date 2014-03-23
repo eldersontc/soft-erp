@@ -433,7 +433,7 @@ namespace Soft.Win
         }
 
         public void EliminarEntidad() {
-            if (m_ItemContenedor.Modificar)
+            if (m_ItemContenedor.Eliminar)
             {
                 m_AccionActual = (Accion)HelperNHibernate.GetEntityByID("Accion", "D820B486-63F5-40AA-8D41-0AD1E95080EF");
             }
