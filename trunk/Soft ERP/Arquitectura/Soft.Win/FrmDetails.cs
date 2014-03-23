@@ -55,6 +55,7 @@ namespace Soft.Win
             }
             ConsultaSQL = String.Format("SELECT * FROM {0} {1} {2}", Panel.NombreVista, ItemContenedor.Filtro, Ordenamiento);
             ugDetails.DataSource = HelperNHibernate.GetDataSet(ConsultaSQL);
+            if (ugDetails.Rows.Count > 0) { ugDetails.Rows[0].Selected = true; }
             RecuperarFiltros();
         }
 
