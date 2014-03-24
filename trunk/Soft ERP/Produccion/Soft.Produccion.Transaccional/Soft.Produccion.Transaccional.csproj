@@ -66,7 +66,6 @@
     <Compile Include="AprobarOrdenProduccion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="CrearOrdenProduccion.cs">
       <SubType>Form</SubType>
     </Compile>

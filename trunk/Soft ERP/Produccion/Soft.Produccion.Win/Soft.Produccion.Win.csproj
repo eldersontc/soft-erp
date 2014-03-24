@@ -94,7 +94,6 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="FrmAsistenteGeneracionOPdesdePresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>
