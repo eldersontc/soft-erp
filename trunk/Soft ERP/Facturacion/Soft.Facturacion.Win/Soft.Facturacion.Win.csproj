@@ -34,6 +34,7 @@
     <Reference Include="Infragistics4.Shared.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Infragistics4.Win.Misc.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinEditors.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinGrid.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinTabControl.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.v12.2, Version=12.2.20122.1006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Microsoft.VisualBasic" />
@@ -52,6 +53,10 @@
     <Reference Include="Soft.Exceptions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Compilacion\Soft.Exceptions.dll</HintPath>
+    </Reference>
+    <Reference Include="Soft.Produccion.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Soft.Produccion.Entidades.dll</HintPath>
     </Reference>
     <Reference Include="Soft.Reporte.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -76,6 +81,18 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmNotaDebito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNotaDebito.Designer.cs">
+      <DependentUpon>FrmNotaDebito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFacturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFacturacion.Designer.cs">
+      <DependentUpon>FrmFacturacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTipoFacturacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,9 +105,18 @@
     <Compile Include="FrmTipoNotaDebito.Designer.cs">
       <DependentUpon>FrmTipoNotaDebito.cs</DependentUpon>
     </Compile>
+    <Compile Include="GenerarNotaDebitoDesdeFacturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmNotaDebito.resx">
+      <DependentUpon>FrmNotaDebito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFacturacion.resx">
+      <DependentUpon>FrmFacturacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmTipoFacturacion.resx">
       <DependentUpon>FrmTipoFacturacion.cs</DependentUpon>
     </EmbeddedResource>

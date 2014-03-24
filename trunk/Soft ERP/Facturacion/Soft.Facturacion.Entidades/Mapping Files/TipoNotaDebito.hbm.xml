@@ -16,6 +16,7 @@
     <property name="NumeracionAutomatica" type="boolean"/>
     <property name="Entidad" type="string"/>
     <property name="EntidadTipoDocumento" type="string"/>
+    <property name="PorcentajeImpuesto" type="decimal"/>
     
     <many-to-one name="Reporte" class="Soft.Reporte.Entidades.Reporte" column="IDReporte" insert="true" update="true" lazy="false"/>
 

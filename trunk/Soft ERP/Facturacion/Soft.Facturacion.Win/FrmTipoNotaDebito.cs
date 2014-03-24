@@ -40,6 +40,7 @@ namespace Soft.Facturacion.Win
             CheckActivo.Checked = TipoNotaDebito.Activo;
             CheckNumeracionAutomatica.Checked = TipoNotaDebito.NumeracionAutomatica;
             CheckGeneraNumeracionalFinal.Checked = TipoNotaDebito.GeneraNumeracionAlFinal;
+            unePorcentajeImpuesto.Value = TipoNotaDebito.PorcentajeImpuesto;
         }
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)
@@ -97,6 +98,11 @@ namespace Soft.Facturacion.Win
             FrmSelectedEntity FrmSeleccionarReporte = new FrmSelectedEntity();
             TipoNotaDebito.Reporte = (Soft.Reporte.Entidades.Reporte)FrmSeleccionarReporte.GetSelectedEntity(typeof(Soft.Reporte.Entidades.Reporte), "Reporte");
             ssReporte.Text = (TipoNotaDebito.Reporte != null) ? TipoNotaDebito.Reporte.Nombre : "";
+        }
+
+        private void unePorcentajeImpuesto_ValueChanged(object sender, EventArgs e)
+        {
+            TipoNotaDebito.PorcentajeImpuesto = Convert.ToDecimal(unePorcentajeImpuesto.Value);
         }
     }
 }

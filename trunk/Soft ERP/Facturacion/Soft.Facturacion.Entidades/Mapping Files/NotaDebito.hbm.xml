@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Facturacion.Entidades.NotaDebito, Soft.Facturacion.Entidades" dynamic-update="true">
+
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="Numeracion" type="string"/>
+    <property name="FechaCreacion" type="DateTime"/>
+    <property name="Observacion" type="string"/>
+    <property name="SubTotal" type="decimal"/>
+    <property name="Impuesto" type="decimal"/>
+    <property name="Total" type="decimal"/>
+    <property name="NroFactura" type="string"/>
+    <property name="IDFactura" type="string"/>
+
+    <many-to-one name="TipoNotaDebito" class="Soft.Facturacion.Entidades.TipoNotaDebito" column="IDTipoNotaDebito" insert="true" update="true" lazy="false"/>
+    <many-to-one name="Cliente" class="Soft.Entities.SocioNegocio" column="IDCliente" insert="true" update="true" lazy="false"/>
+    <many-to-one name="Responsable" class="Soft.Entities.SocioNegocio" column="IDResponsable" insert="true" update="true" lazy="false"/>
+    <many-to-one name="Moneda" class="Soft.Entities.Moneda" column="IDMoneda" insert="true" update="true" lazy="false"/>
+
+    <bag name="Items" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDNotaDebito"/>
+      <one-to-many class="Soft.Facturacion.Entidades.ItemNotaDebito"/>
+    </bag>
+
+  </class>
+</hibernate-mapping>

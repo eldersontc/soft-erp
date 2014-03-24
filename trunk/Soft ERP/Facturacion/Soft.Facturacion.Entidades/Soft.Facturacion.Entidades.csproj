@@ -43,14 +43,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Facturacion.cs" />
+    <Compile Include="ItemFacturacion.cs" />
+    <Compile Include="ItemNotaDebito.cs" />
+    <Compile Include="NotaDebito.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoFacturacion.cs" />
     <Compile Include="TipoNotaDebito.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping Files\NotaDebito.hbm.xml" />
+    <EmbeddedResource Include="Mapping Files\Facturacion.hbm.xml" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mapping Files\TipoFacturacion.hbm.xml" />
     <EmbeddedResource Include="Mapping Files\TipoNotaDebito.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping Files\ItemFacturacion.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping Files\ItemNotaDebito.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

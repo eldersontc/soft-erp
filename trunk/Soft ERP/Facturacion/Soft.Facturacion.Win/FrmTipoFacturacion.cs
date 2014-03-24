@@ -40,6 +40,8 @@ namespace Soft.Facturacion.Win
             CheckActivo.Checked = TipoFacturacion.Activo;
             CheckNumeracionAutomatica.Checked = TipoFacturacion.NumeracionAutomatica;
             CheckGeneraNumeracionalFinal.Checked = TipoFacturacion.GeneraNumeracionAlFinal;
+            unePorcentajeImpuesto.Value = TipoFacturacion.PorcentajeImpuesto;
+            uceComprobante.Text = TipoFacturacion.Comprobante;
         }
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)
@@ -97,6 +99,16 @@ namespace Soft.Facturacion.Win
             FrmSelectedEntity FrmSeleccionarReporte = new FrmSelectedEntity();
             TipoFacturacion.Reporte = (Soft.Reporte.Entidades.Reporte)FrmSeleccionarReporte.GetSelectedEntity(typeof(Soft.Reporte.Entidades.Reporte), "Reporte");
             ssReporte.Text = (TipoFacturacion.Reporte != null) ? TipoFacturacion.Reporte.Nombre : "";
+        }
+
+        private void unePorcentajeImpuesto_ValueChanged(object sender, EventArgs e)
+        {
+            TipoFacturacion.PorcentajeImpuesto = Convert.ToDecimal(unePorcentajeImpuesto.Value);
+        }
+
+        private void uceComprobante_ValueChanged(object sender, EventArgs e)
+        {
+            TipoFacturacion.Comprobante = uceComprobante.Text;
         }
     }
 }
