@@ -21,22 +21,17 @@ namespace Soft.Produccion.Transaccional
                 {
                     try
                     {
-                        OrdenProduccion cp = (OrdenProduccion)m_ObjectFlow;
-                        
-                        
-                        
-                            SqlCommand SqlCmd = new SqlCommand();
-                            SqlCmd.Connection = (SqlConnection)Sesion.Connection;
-                            Trans.Enlist(SqlCmd);
-                            SqlCmd.CommandText = "pSF_Validar_OrdendeProducion";
-                            SqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
-                            SqlCmd.Parameters.AddWithValue("@IDItemPresupuesto", cp.IDItemPresupuesto);
-                            SqlCmd.ExecuteNonQuery();
-                            Sesion.Save(cp);   
-                            Trans.Commit();
-                            m_ResultProcess = EnumResult.SUCESS;
-
-                            
+                        OrdenProduccion OrdenProduccion = (OrdenProduccion)m_ObjectFlow;
+                        SqlCommand SqlCmd = new SqlCommand();
+                        SqlCmd.Connection = (SqlConnection)Sesion.Connection;
+                        Trans.Enlist(SqlCmd);
+                        SqlCmd.CommandText = "pSF_Validar_OrdendeProducion";
+                        SqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        SqlCmd.Parameters.AddWithValue("@IDItemPresupuesto", OrdenProduccion.IDItemPresupuesto);
+                        SqlCmd.ExecuteNonQuery();
+                        Sesion.Save(OrdenProduccion);   
+                        Trans.Commit();
+                        m_ResultProcess = EnumResult.SUCESS;
                     }
                     catch (Exception ex)
                     {

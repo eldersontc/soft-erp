@@ -23,6 +23,7 @@ namespace Soft.Produccion.Entidades
                 this.FechaCreacion = DateTime.Now;
                 this.FechaTentativaEntrega = DateTime.Now;
                 this.EstadoAprobacion="PENDIENTE";
+                this.EstadoFacturacion = "PENDIENTE";
             }
 
         }
@@ -43,14 +44,13 @@ namespace Soft.Produccion.Entidades
         public virtual String Prioridad { get; set; }
 
         public virtual String EstadoAprobacion { get; set; }
-        
+        public virtual String EstadoFacturacion { get; set; }
 
         public virtual ListaCostosMaquina ListaCostosMaquina { get; set; }
         public virtual ListaPreciosExistencia ListaPreciosExistencia { get; set; }
         public virtual ListaPreciosTransporte ListaPreciosTransporte { get; set; }
 
         public virtual Decimal Total { get; set; }
-
 
         public virtual void GenerarNumCp()
         {
@@ -66,7 +66,6 @@ namespace Soft.Produccion.Entidades
                 HelperNHibernate.GetDataSet(SQL);
             }
         }
-
 
         public virtual ItemOrdenProduccion AddItem()
         {
