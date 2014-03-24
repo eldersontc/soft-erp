@@ -17,5 +17,7 @@ namespace Soft.Facturacion.Entidades
                 EntidadTipoDocumento = "TipoFacturacion";
             }
         }
+
+        public virtual string Comprobante { get; set; }
     }
 }
