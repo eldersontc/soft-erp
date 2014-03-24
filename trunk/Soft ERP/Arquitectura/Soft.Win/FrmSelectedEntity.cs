@@ -29,7 +29,7 @@ namespace Soft.Win
             InitializeComponent();
         }
 
-        public Parent GetSelectedEntity(Type Type,String NamePanel, String Filter = "")
+        public Parent GetSelectedEntity(Type Type,String NamePanel, String Filter = "", bool All = false)
         {
             try
             {
@@ -37,14 +37,26 @@ namespace Soft.Win
                 ConfigureColumns(NamePanel, Filter);
                 if (ugEntity.Rows.Count == 1)
                 {
-                    SelectedEntity = AsignValuesToParent(Type, ugEntity.Rows[0]);
+                    if (All)
+                    {
+                        SelectedEntity = HelperNHibernate.GetEntityByID(Type.Name, Convert.ToString(ugEntity.Rows[0].Cells["ID"].Value));
+                    }
+                    else {
+                        SelectedEntity = AsignValuesToParent(Type, ugEntity.Rows[0]);
+                    }
                     return SelectedEntity;
                 }
                 else {
                     ShowDialog();
                 }
-                if (mAceptar & ugEntity.ActiveRow != null && !ugEntity.ActiveRow.IsFilterRow) { 
-                    SelectedEntity = AsignValuesToParent(Type, ugEntity.ActiveRow); 
+                if (mAceptar & ugEntity.ActiveRow != null && !ugEntity.ActiveRow.IsFilterRow) {
+                    if (All)
+                    {
+                        SelectedEntity = HelperNHibernate.GetEntityByID(Type.Name, Convert.ToString(ugEntity.ActiveRow.Cells["ID"].Value));
+                    }
+                    else {
+                        SelectedEntity = AsignValuesToParent(Type, ugEntity.ActiveRow); 
+                    }
                 }
                 return SelectedEntity;
             }
