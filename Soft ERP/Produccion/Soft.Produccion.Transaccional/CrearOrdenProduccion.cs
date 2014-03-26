@@ -25,11 +25,25 @@ namespace Soft.Produccion.Transaccional
                         SqlCommand SqlCmd = new SqlCommand();
                         SqlCmd.Connection = (SqlConnection)Sesion.Connection;
                         Trans.Enlist(SqlCmd);
-                        SqlCmd.CommandText = "pSF_Validar_OrdendeProducion";
+                        // Valida la OP.
+                        SqlCmd.CommandText = "pSF_Validar_Orden_Producion";
                         SqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
                         SqlCmd.Parameters.AddWithValue("@IDItemPresupuesto", OrdenProduccion.IDItemPresupuesto);
                         SqlCmd.ExecuteNonQuery();
-                        Sesion.Save(OrdenProduccion);   
+                        // Creamos la OP.
+                        Sesion.Save(OrdenProduccion);
+                        Sesion.Flush();
+                        // Actualizamos la Numeración de la Salida de Inventario
+                        if (OrdenProduccion.TipoDocumento.GeneraNumeracionAlFinal)
+                        {
+                            SqlCmd.CommandText = "pSF_Generar_Numeracion";
+                            SqlCmd.Parameters.Clear();
+                            SqlCmd.Parameters.AddWithValue("@Documento", "OrdenProduccion");
+                            SqlCmd.Parameters.AddWithValue("@TipoDocumento", "TipoOrdenProduccion");
+                            SqlCmd.Parameters.AddWithValue("@IDDocumento", OrdenProduccion.ID);
+                            SqlCmd.Parameters.AddWithValue("@IDTipoDocumento", OrdenProduccion.TipoDocumento.ID);
+                            SqlCmd.ExecuteNonQuery();
+                        }
                         Trans.Commit();
                         m_ResultProcess = EnumResult.SUCESS;
                     }

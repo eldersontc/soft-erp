@@ -26,7 +26,6 @@ namespace Soft.Produccion.Win
             InitializeComponent();
         }
 
-
         public OrdenProduccion OrdenProduccion { get { return (OrdenProduccion)base.m_ObjectFlow; } }
         private ItemOrdenProduccion ItemOrdenProduccion = null;
 
@@ -39,14 +38,10 @@ namespace Soft.Produccion.Win
 
         Boolean ActualizandoIU = false;
 
-
         const String colServicio = "Servicio";
         const String colServicioCosto = "Costo Servicio";
-
         const String colMaterial = "Material";
         const String colMaterialCosto = "Costo Material";
-
-
         const String colMaquina = "Máquina";
         const String colMaquinaCosto = "Costo Maquina";
 
@@ -91,13 +86,16 @@ namespace Soft.Produccion.Win
             MapKeys(ref ugServicios);
         }
 
-
         public void Mostrar()
         {
             ActualizandoIU = true;
             try
             {
-                ssTipoDocumento.Text = (OrdenProduccion.TipoDocumento != null) ? OrdenProduccion.TipoDocumento.Descripcion : "";
+                if (OrdenProduccion.TipoDocumento != null)
+                {
+                    ssTipoDocumento.Text = OrdenProduccion.TipoDocumento.Descripcion;
+                    txtNumeracion.Enabled = (OrdenProduccion.TipoDocumento.NumeracionAutomatica) ? false : true;
+                }
                 ssCliente.Text = (OrdenProduccion.Cliente != null) ? OrdenProduccion.Cliente.Nombre : "";
                 ssCotizador.Text = (OrdenProduccion.Cotizador != null) ? OrdenProduccion.Cotizador.Nombre : "";
                 ssResponsable.Text = (OrdenProduccion.Responsable != null) ? OrdenProduccion.Responsable.Nombre : "";
@@ -117,16 +115,14 @@ namespace Soft.Produccion.Win
 
                 ssContacto.Text = (OrdenProduccion.Contacto != null) ? OrdenProduccion.Contacto.Nombre : "";
 
-                
                 uneCantidad.Value = OrdenProduccion.Cantidad;
                 MostrarItems();
 
-                }
+            }
             catch (Exception ex)
             {
                 SoftException.ShowException(ex);
             }
-
             ActualizandoIU = false;
         }
 
@@ -148,8 +144,6 @@ namespace Soft.Produccion.Win
             }
             utOrdenProduccion.ExpandAll();
         }
-
-
 
         public void MostrarItem(UltraTreeNode Node)
         {
@@ -273,8 +267,6 @@ namespace Soft.Produccion.Win
             ActualizandoIU = false;
         }
 
-
-
         public void MostrarItem(ItemOrdenProduccion ItemPROD)
         {
             ActualizandoIU = true;
@@ -397,7 +389,6 @@ namespace Soft.Produccion.Win
             ActualizandoIU = false;
         }
 
-
         public void GenerarGraficoPrecorteRotado()
         {
 
@@ -436,6 +427,7 @@ namespace Soft.Produccion.Win
 
 
         }
+
         public void GenerarGraficoImpresionRotado()
         {
             try
@@ -570,6 +562,7 @@ namespace Soft.Produccion.Win
 
             
         }
+
         public void GenerarGraficoPrecorteNormal()
         {
 
@@ -608,6 +601,7 @@ namespace Soft.Produccion.Win
             ItemOrdenProduccion.NroPiezasPrecorte = CantidadPiezas;
             txtNroPiezasPrecorte.Value = CantidadPiezas;
         }
+
         public void GenerarGraficoImpresionNormal()
         {
 
@@ -765,10 +759,6 @@ namespace Soft.Produccion.Win
             //MostrarTotalServicio(item);
         }
 
-
-      
-        
-
         public void MostrarServicio(UltraGridRow Row)
         {
             ItemOrdenProduccionServicio Item = (ItemOrdenProduccionServicio)Row.Tag;
@@ -792,9 +782,6 @@ namespace Soft.Produccion.Win
             Row.Cells[colMaquinaCosto].Activation = (Item.Maquina != null) ? Activation.NoEdit : Activation.AllowEdit;
             Row.Cells[colMaquinaCosto].Value = (Item.Maquina != null) ? Item.CostoMaquina : 0;*/
         }
-
-
-
 
         private void CalcularProduccionItem(ItemOrdenProduccion itemcosteado)
         {
@@ -888,43 +875,26 @@ namespace Soft.Produccion.Win
 
         }
 
-
         private void ssTipoDocumento_Search(object sender, EventArgs e)
         {
             if (ActualizandoIU) { return; }
-
             try
             {
-
-           
-            FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
-            TipoOrdenProduccion TipoDocumento = (TipoOrdenProduccion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoOrdenProduccion), "Tipo Orden de Producción");
-
-            if ((OrdenProduccion.TipoDocumento == null) || (OrdenProduccion.TipoDocumento.Codigo != TipoDocumento.Codigo))
-            {
-                OrdenProduccion.TipoDocumento = (TipoOrdenProduccion)HelperNHibernate.GetEntityByID("TipoOrdenProduccion", TipoDocumento.ID);
-                OrdenProduccion.GenerarNumCp();
-                try
-                {
-                    FrmSelectedEntity FrmSeleccionarEmpleado = new FrmSelectedEntity();
-                    String filtro = "IDUsuario='" + FrmMain.Usuario.ID + "'";
-                    SocioNegocio sn = (SocioNegocio)FrmSeleccionarEmpleado.GetSelectedEntity(typeof(SocioNegocio), "Empleado", filtro);
-
-                    OrdenProduccion.Responsable = (SocioNegocio)HelperNHibernate.GetEntityByID("SocioNegocio", sn.ID);
-                }
-                catch (Exception)
-                {
+                FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+                OrdenProduccion.TipoDocumento = (TipoOrdenProduccion)FrmSeleccionar.GetSelectedEntity(typeof(TipoOrdenProduccion), "Tipo Orden de Producción", All: true);
+                if (OrdenProduccion.TipoDocumento != null) {
+                    OrdenProduccion.GenerarNumeracion();
+                    OrdenProduccion.Responsable = FrmMain.ObtenerResponsable();
+                    ssTipoDocumento.Text = (OrdenProduccion.TipoDocumento != null) ? OrdenProduccion.TipoDocumento.Descripcion : "";
+                    txtNumeracion.Text = OrdenProduccion.Numeracion;
+                    txtNumeracion.Enabled = (OrdenProduccion.TipoDocumento.NumeracionAutomatica) ? false : true;
+                    ssResponsable.Text = (OrdenProduccion.Responsable != null) ? OrdenProduccion.Responsable.Nombre : "";
                 }
             }
-            Mostrar();
-
-            }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
-
-                SoftException.ShowException(ex);
+                SoftException.Control(ex);
             }
-
         }
 
         private void ssTipoDocumento_Clear(object sender, EventArgs e)
@@ -1721,7 +1691,7 @@ namespace Soft.Produccion.Win
                 if (ItemOrdenProduccion == null) { return; }
                 if (ActualizandoIU) { return; }
                 Bitmap b = new Bitmap((Image)upbPrecorte.Image);
-                String RutaGrafico = String.Format("{0}Grafico_Precorte_{1}.png", FrmMain.CarpetaOrdenesProduccion, ItemOrdenProduccion.ID);
+                String RutaGrafico = String.Format("{0}Grafico_Precorte_{1}.png", FrmMain.ObtenerValorKey("CarpetaOrdenesProduccion"), ItemOrdenProduccion.ID);
                 b.Save(RutaGrafico);
                 Soft.Reporte.Entidades.Reporte Reporte = (Soft.Reporte.Entidades.Reporte)HelperNHibernate.GetEntityByField("Reporte", "Codigo", "VEN-0006");
                 ParametroReporte Parametro = Reporte.Parametros[0];
@@ -1742,7 +1712,7 @@ namespace Soft.Produccion.Win
                 if (itemGrafico == null) { return; }
                 if (ActualizandoIU) { return; }
                 Bitmap b = new Bitmap((Image)upbPrecorte.Image);
-                String RutaGrafico = String.Format("{0}Grafico_Precorte_{1}.png", FrmMain.CarpetaOrdenesProduccion, itemGrafico.ID);
+                String RutaGrafico = String.Format("{0}Grafico_Precorte_{1}.png", FrmMain.ObtenerValorKey("CarpetaOrdenesProduccion"), itemGrafico.ID);
                 b.Save(RutaGrafico);
             }
             catch (Exception ex)
@@ -1750,7 +1720,6 @@ namespace Soft.Produccion.Win
                 SoftException.Control(ex);
             }
         }
-
 
         private void GenerarImagenImpresion(ItemOrdenProduccion itemGrafico) {
 
@@ -1760,7 +1729,7 @@ namespace Soft.Produccion.Win
                 if (ActualizandoIU) { return; }
 
                 Bitmap b = new Bitmap((Image)upbImpresion.Image);
-                String RutaGrafico = String.Format("{0}Grafico_Impresion_{1}.png", FrmMain.CarpetaOrdenesProduccion, itemGrafico.ID);
+                String RutaGrafico = String.Format("{0}Grafico_Impresion_{1}.png", FrmMain.ObtenerValorKey("CarpetaOrdenesProduccion"), itemGrafico.ID);
                 b.Save(RutaGrafico);
             }
             catch (Exception ex)
@@ -1844,7 +1813,7 @@ namespace Soft.Produccion.Win
                 if (ActualizandoIU) { return; }
 
                 Bitmap b = new Bitmap((Image)upbImpresion.Image);
-                String RutaGrafico = String.Format("{0}Grafico_Impresion_{1}.png", FrmMain.CarpetaOrdenesProduccion, ItemOrdenProduccion.ID);
+                String RutaGrafico = String.Format("{0}Grafico_Impresion_{1}.png", FrmMain.ObtenerValorKey("CarpetaOrdenesProduccion"), ItemOrdenProduccion.ID);
                 b.Save(RutaGrafico);
                 Soft.Reporte.Entidades.Reporte Reporte = (Soft.Reporte.Entidades.Reporte)HelperNHibernate.GetEntityByField("Reporte", "Codigo", "VEN-0005");
                 ParametroReporte Parametro = Reporte.Parametros[0];
@@ -1920,7 +1889,6 @@ namespace Soft.Produccion.Win
 
         }
 
-
         private void ModificarServicio()
         {
             if (ugServicios.ActiveRow != null)
@@ -1949,7 +1917,6 @@ namespace Soft.Produccion.Win
             ugServicios.ActiveRow.Delete(false);
             //MostrarTotalServicio(ItemOrdenProduccion);
         }
-
 
         public override void Aceptar()
         {
@@ -2000,8 +1967,6 @@ namespace Soft.Produccion.Win
             }
         }
 
-
-
         private void CosteoElemento(ItemOrdenProduccion item)
         {
             if (item.Maquina != null)
@@ -2033,8 +1998,6 @@ namespace Soft.Produccion.Win
             item.Costo = item.CostoMaquina + item.CostoMaterial + item.CostoServicio;
             item.Precio = item.Costo;
         }
-
-
 
         private Decimal obtenerItemListaCostosMaquina(ItemOrdenProduccion itemOP)
         {
@@ -2110,7 +2073,6 @@ namespace Soft.Produccion.Win
             return resultado;
         }
 
-
         private UnidadListaCostosMaquina obtenerUnidadLCM(ItemListaCostosMaquina ilcm)
         {
             UnidadListaCostosMaquina Uilcm = null;
@@ -2127,8 +2089,6 @@ namespace Soft.Produccion.Win
             }
             return Uilcm;
         }
-
-
 
         private EscalaListaCostosMaquina obtenerEscalaLCM(UnidadListaCostosMaquina Uilcm, ItemOrdenProduccion itemOP)
         {
@@ -2191,7 +2151,6 @@ namespace Soft.Produccion.Win
 
         }
 
-
         private Decimal obtenerItemListaCostosMaterial(ItemOrdenProduccion itemOP)
         {
             Decimal resultado = 0;
@@ -2213,8 +2172,6 @@ namespace Soft.Produccion.Win
             return resultado;
 
         }
-
-
 
     }
 }

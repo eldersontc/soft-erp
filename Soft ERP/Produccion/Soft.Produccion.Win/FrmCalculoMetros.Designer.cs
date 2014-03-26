@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCalculoMetros));
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.txtTotal = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.busUnidadMaterial = new Soft.Controls.SoftSearch();
@@ -72,11 +72,11 @@
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(157, 133);
+            this.ubCancelar.Location = new System.Drawing.Point(145, 130);
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(76, 133);
+            this.ubAceptar.Location = new System.Drawing.Point(64, 130);
             // 
             // ilMain
             // 
@@ -331,7 +331,7 @@
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(122, 104);
+            this.txtTotal.Location = new System.Drawing.Point(128, 103);
             this.txtTotal.MaskInput = "nnnnnn.nn";
             this.txtTotal.MaxValue = new decimal(new int[] {
             90000000,
@@ -352,38 +352,37 @@
             // 
             // ultraLabel1
             // 
-            appearance1.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel1.Appearance = appearance1;
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel1.Appearance = appearance4;
             this.ultraLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel1.Location = new System.Drawing.Point(76, 104);
+            this.ultraLabel1.Location = new System.Drawing.Point(82, 107);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(49, 23);
             this.ultraLabel1.TabIndex = 109;
-            this.ultraLabel1.Text = "TOTAL";
+            this.ultraLabel1.Text = "Total";
             // 
             // busUnidadMaterial
             // 
             this.busUnidadMaterial.BackColor = System.Drawing.Color.Transparent;
-            this.busUnidadMaterial.Location = new System.Drawing.Point(6, 22);
+            this.busUnidadMaterial.Location = new System.Drawing.Point(82, 16);
             this.busUnidadMaterial.Name = "busUnidadMaterial";
-            this.busUnidadMaterial.Size = new System.Drawing.Size(219, 28);
+            this.busUnidadMaterial.Size = new System.Drawing.Size(137, 28);
             this.busUnidadMaterial.TabIndex = 108;
-            this.busUnidadMaterial.Search += new System.EventHandler(this.busUnidadMaterial_Search);
             // 
             // ultraLabel8
             // 
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel8.Appearance = appearance2;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel8.Appearance = appearance3;
             this.ultraLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel8.Location = new System.Drawing.Point(6, 6);
+            this.ultraLabel8.Location = new System.Drawing.Point(23, 20);
             this.ultraLabel8.Name = "ultraLabel8";
-            this.ultraLabel8.Size = new System.Drawing.Size(86, 23);
+            this.ultraLabel8.Size = new System.Drawing.Size(53, 23);
             this.ultraLabel8.TabIndex = 107;
             this.ultraLabel8.Text = "Unidad";
             // 
             // txtVertical
             // 
-            this.txtVertical.Location = new System.Drawing.Point(122, 77);
+            this.txtVertical.Location = new System.Drawing.Point(128, 76);
             this.txtVertical.MaskInput = "nnnnnn.nn";
             this.txtVertical.MaxValue = new decimal(new int[] {
             90000000,
@@ -404,7 +403,7 @@
             // 
             // txtHorizontal
             // 
-            this.txtHorizontal.Location = new System.Drawing.Point(122, 51);
+            this.txtHorizontal.Location = new System.Drawing.Point(128, 50);
             this.txtHorizontal.MaskInput = "nnnnnn.nn";
             this.txtHorizontal.MaxValue = new decimal(new int[] {
             90000000,
@@ -425,18 +424,18 @@
             // 
             // checkVertical
             // 
-            this.checkVertical.Location = new System.Drawing.Point(5, 78);
+            this.checkVertical.Location = new System.Drawing.Point(25, 77);
             this.checkVertical.Name = "checkVertical";
-            this.checkVertical.Size = new System.Drawing.Size(120, 20);
+            this.checkVertical.Size = new System.Drawing.Size(77, 20);
             this.checkVertical.TabIndex = 104;
             this.checkVertical.Text = "Vertical";
             this.checkVertical.CheckedChanged += new System.EventHandler(this.checkVertical_CheckedChanged);
             // 
             // checkHorizontal
             // 
-            this.checkHorizontal.Location = new System.Drawing.Point(5, 52);
+            this.checkHorizontal.Location = new System.Drawing.Point(25, 51);
             this.checkHorizontal.Name = "checkHorizontal";
-            this.checkHorizontal.Size = new System.Drawing.Size(120, 20);
+            this.checkHorizontal.Size = new System.Drawing.Size(77, 20);
             this.checkHorizontal.TabIndex = 103;
             this.checkHorizontal.Text = "Horizontal";
             this.checkHorizontal.CheckedChanged += new System.EventHandler(this.checkHorizontal_CheckedChanged);
@@ -447,7 +446,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(255, 208);
             this.Name = "FrmCalculoMetros";
-            this.Text = "FrmCalculoMetros";
+            this.Text = "Calcular Metros";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
             this.ugbParent.ResumeLayout(false);
             this.ugbParent.PerformLayout();

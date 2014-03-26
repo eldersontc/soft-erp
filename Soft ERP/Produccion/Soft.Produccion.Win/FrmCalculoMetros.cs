@@ -21,11 +21,10 @@ namespace Soft.Produccion.Win
             InitializeComponent();
         }
 
-        private Boolean SWAcept = false;
-        public  ItemOrdenProduccionServicio m_item = null;
-        private ItemOrdenProduccion m_itemOrdenProduccion = null;
-
-        private Decimal TotalCantidad;
+        public Boolean SWAcept = false;
+        public ItemOrdenProduccionServicio m_item = null;
+        public ItemOrdenProduccion m_itemOrdenProduccion = null;
+        public Decimal TotalCantidad;
 
         public FrmCalculoMetros(ItemOrdenProduccionServicio item, ItemOrdenProduccion itemOrdenProduccion)
         {
@@ -35,7 +34,6 @@ namespace Soft.Produccion.Win
             Mostrar();
             ShowDialog();
         }
-
 
         public override void Aceptar()
         {
@@ -52,7 +50,6 @@ namespace Soft.Produccion.Win
         private Decimal CalcularMetro(Decimal medida){
             Decimal resultado = 0;
             ExistenciaUnidad eu=null;
-
             foreach (ExistenciaUnidad Itemunidad in m_item.Material.Unidades)
             {
                 if (Itemunidad.Unidad.Nombre.Equals(m_item.UnidadMaterial.Nombre)) {
@@ -60,7 +57,6 @@ namespace Soft.Produccion.Win
                     break;
                 }
             }
-
             Decimal dividido = medida/ eu.FactorConversion;
             Decimal entero = Math.Truncate(dividido);
             Decimal residuo = dividido - entero;
@@ -71,15 +67,7 @@ namespace Soft.Produccion.Win
             else {
                 resultado = entero;
             }
-
-
-
             return resultado * eu.FactorConversion * m_itemOrdenProduccion.CantidadElemento;
-        }
-
-        private void busUnidadMaterial_Search(object sender, EventArgs e)
-        {
-
         }
 
         private void checkHorizontal_CheckedChanged(object sender, EventArgs e)
@@ -126,7 +114,6 @@ namespace Soft.Produccion.Win
         }
 
         private void Totales() {
-
             txtTotal.Value = Convert.ToDecimal(txtHorizontal.Value) + Convert.ToDecimal(txtVertical.Value);
         }
 
