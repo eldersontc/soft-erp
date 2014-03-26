@@ -27,43 +27,30 @@ namespace Soft.Produccion.Entidades
             }
 
         }
-        public virtual String IDItemPresupuesto { get; set; }
 
+        public virtual String IDItemPresupuesto { get; set; }
         public virtual SocioNegocio Cliente { get; set; }
         public virtual SocioNegocio Vendedor { get; set; }
         public virtual SocioNegocio Cotizador { get; set; }
-        
-
         public virtual Decimal Cantidad { get; set; }
         public virtual String Descripcion { get; set; }
         public virtual ItemSocioNegocioContacto Contacto { get; set; }
         public virtual String DireccionEntrega { get; set; }
         public virtual String DireccionFacturacion { get; set; }
-
         public virtual DateTime FechaTentativaEntrega { get; set; }
         public virtual String Prioridad { get; set; }
-
         public virtual String EstadoAprobacion { get; set; }
         public virtual String EstadoFacturacion { get; set; }
-
         public virtual ListaCostosMaquina ListaCostosMaquina { get; set; }
         public virtual ListaPreciosExistencia ListaPreciosExistencia { get; set; }
         public virtual ListaPreciosTransporte ListaPreciosTransporte { get; set; }
-
         public virtual Decimal Total { get; set; }
-
-        public virtual void GenerarNumCp()
+        
+        public virtual void GenerarNumeracion()
         {
-            String Result = "";
             if (NewInstance)
             {
-                Result = TipoDocumento.GenerarNumerodeDocumento();
-                Numeracion = Result;
-            }
-            if (!Result.Equals(""))
-            {
-                String SQL = "UPDATE TipoCotizacion SET NumeracionActual = " + (TipoDocumento.NumeracionActual + 1) + " WHERE ID ='" + TipoDocumento.ID + "'";
-                HelperNHibernate.GetDataSet(SQL);
+                Numeracion = TipoDocumento.GenerarNumerodeDocumento();
             }
         }
 

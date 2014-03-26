@@ -82,7 +82,7 @@
             this.ugbParent.Controls.Add(this.ultraGroupBox2);
             this.ugbParent.Controls.Add(this.ultraGroupBox1);
             this.ugbParent.Controls.Add(this.GrupoMedidaAbierta);
-            this.ugbParent.Size = new System.Drawing.Size(528, 422);
+            this.ugbParent.Size = new System.Drawing.Size(528, 414);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.GrupoMedidaAbierta, 0);
@@ -91,11 +91,11 @@
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(362, 393);
+            this.ubCancelar.Location = new System.Drawing.Point(439, 377);
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(275, 393);
+            this.ubAceptar.Location = new System.Drawing.Point(352, 377);
             // 
             // ilMain
             // 
@@ -351,7 +351,7 @@
             // bussAcabado
             // 
             this.bussAcabado.BackColor = System.Drawing.Color.Transparent;
-            this.bussAcabado.Location = new System.Drawing.Point(90, 28);
+            this.bussAcabado.Location = new System.Drawing.Point(97, 32);
             this.bussAcabado.Name = "bussAcabado";
             this.bussAcabado.Size = new System.Drawing.Size(323, 28);
             this.bussAcabado.TabIndex = 81;
@@ -362,7 +362,7 @@
             appearance12.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel1.Appearance = appearance12;
             this.ultraLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel1.Location = new System.Drawing.Point(6, 28);
+            this.ultraLabel1.Location = new System.Drawing.Point(13, 32);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(57, 23);
             this.ultraLabel1.TabIndex = 80;
@@ -383,22 +383,22 @@
             this.GrupoMedidaAbierta.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
             this.GrupoMedidaAbierta.Location = new System.Drawing.Point(19, 17);
             this.GrupoMedidaAbierta.Name = "GrupoMedidaAbierta";
-            this.GrupoMedidaAbierta.Size = new System.Drawing.Size(495, 104);
+            this.GrupoMedidaAbierta.Size = new System.Drawing.Size(495, 113);
             this.GrupoMedidaAbierta.TabIndex = 83;
             this.GrupoMedidaAbierta.Text = "Acabado y/o Servicio";
             // 
             // btnObtenerCostoElemento
             // 
-            this.btnObtenerCostoElemento.Location = new System.Drawing.Point(280, 75);
+            this.btnObtenerCostoElemento.Location = new System.Drawing.Point(263, 80);
             this.btnObtenerCostoElemento.Name = "btnObtenerCostoElemento";
-            this.btnObtenerCostoElemento.Size = new System.Drawing.Size(36, 23);
+            this.btnObtenerCostoElemento.Size = new System.Drawing.Size(76, 23);
             this.btnObtenerCostoElemento.TabIndex = 93;
-            this.btnObtenerCostoElemento.Text = "Obt.";
+            this.btnObtenerCostoElemento.Text = "Obtener";
             this.btnObtenerCostoElemento.Click += new System.EventHandler(this.btnObtenerCostoElemento_Click);
             // 
             // txtCantidadAcabado
             // 
-            this.txtCantidadAcabado.Location = new System.Drawing.Point(90, 77);
+            this.txtCantidadAcabado.Location = new System.Drawing.Point(97, 81);
             this.txtCantidadAcabado.MaskInput = "nnnnnnnnnnnnnnnnn.nn";
             this.txtCantidadAcabado.MaxValue = new decimal(new int[] {
             90000000,
@@ -423,7 +423,7 @@
             appearance10.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel11.Appearance = appearance10;
             this.ultraLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel11.Location = new System.Drawing.Point(6, 81);
+            this.ultraLabel11.Location = new System.Drawing.Point(13, 85);
             this.ultraLabel11.Name = "ultraLabel11";
             this.ultraLabel11.Size = new System.Drawing.Size(55, 23);
             this.ultraLabel11.TabIndex = 91;
@@ -432,7 +432,7 @@
             // busUnidadAcabado
             // 
             this.busUnidadAcabado.BackColor = System.Drawing.Color.Transparent;
-            this.busUnidadAcabado.Location = new System.Drawing.Point(90, 52);
+            this.busUnidadAcabado.Location = new System.Drawing.Point(97, 56);
             this.busUnidadAcabado.Name = "busUnidadAcabado";
             this.busUnidadAcabado.Size = new System.Drawing.Size(159, 28);
             this.busUnidadAcabado.TabIndex = 83;
@@ -443,7 +443,7 @@
             appearance11.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel2.Appearance = appearance11;
             this.ultraLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel2.Location = new System.Drawing.Point(6, 52);
+            this.ultraLabel2.Location = new System.Drawing.Point(13, 56);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(55, 23);
             this.ultraLabel2.TabIndex = 82;
@@ -461,15 +461,15 @@
             this.ultraGroupBox1.Controls.Add(this.ultraLabel6);
             this.ultraGroupBox1.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.ultraGroupBox1.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
-            this.ultraGroupBox1.Location = new System.Drawing.Point(19, 125);
+            this.ultraGroupBox1.Location = new System.Drawing.Point(19, 136);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
-            this.ultraGroupBox1.Size = new System.Drawing.Size(495, 104);
+            this.ultraGroupBox1.Size = new System.Drawing.Size(495, 110);
             this.ultraGroupBox1.TabIndex = 84;
             this.ultraGroupBox1.Text = "Maquina";
             // 
             // txtCantidadMaquina
             // 
-            this.txtCantidadMaquina.Location = new System.Drawing.Point(90, 74);
+            this.txtCantidadMaquina.Location = new System.Drawing.Point(97, 77);
             this.txtCantidadMaquina.MaskInput = "nnnnnn.nn";
             this.txtCantidadMaquina.MaxValue = new decimal(new int[] {
             90000000,
@@ -492,7 +492,7 @@
             // busUnidadMaquina
             // 
             this.busUnidadMaquina.BackColor = System.Drawing.Color.Transparent;
-            this.busUnidadMaquina.Location = new System.Drawing.Point(90, 51);
+            this.busUnidadMaquina.Location = new System.Drawing.Point(97, 54);
             this.busUnidadMaquina.Name = "busUnidadMaquina";
             this.busUnidadMaquina.Size = new System.Drawing.Size(188, 28);
             this.busUnidadMaquina.TabIndex = 96;
@@ -503,7 +503,7 @@
             appearance6.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel5.Appearance = appearance6;
             this.ultraLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel5.Location = new System.Drawing.Point(5, 52);
+            this.ultraLabel5.Location = new System.Drawing.Point(12, 55);
             this.ultraLabel5.Name = "ultraLabel5";
             this.ultraLabel5.Size = new System.Drawing.Size(86, 23);
             this.ultraLabel5.TabIndex = 95;
@@ -514,7 +514,7 @@
             appearance7.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel12.Appearance = appearance7;
             this.ultraLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel12.Location = new System.Drawing.Point(6, 78);
+            this.ultraLabel12.Location = new System.Drawing.Point(13, 81);
             this.ultraLabel12.Name = "ultraLabel12";
             this.ultraLabel12.Size = new System.Drawing.Size(55, 23);
             this.ultraLabel12.TabIndex = 93;
@@ -523,7 +523,7 @@
             // busMaquina
             // 
             this.busMaquina.BackColor = System.Drawing.Color.Transparent;
-            this.busMaquina.Location = new System.Drawing.Point(90, 28);
+            this.busMaquina.Location = new System.Drawing.Point(97, 31);
             this.busMaquina.Name = "busMaquina";
             this.busMaquina.Size = new System.Drawing.Size(323, 28);
             this.busMaquina.TabIndex = 81;
@@ -534,7 +534,7 @@
             appearance8.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel6.Appearance = appearance8;
             this.ultraLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel6.Location = new System.Drawing.Point(6, 28);
+            this.ultraLabel6.Location = new System.Drawing.Point(13, 31);
             this.ultraLabel6.Name = "ultraLabel6";
             this.ultraLabel6.Size = new System.Drawing.Size(57, 23);
             this.ultraLabel6.TabIndex = 80;
@@ -553,24 +553,24 @@
             this.ultraGroupBox2.Controls.Add(this.ultraLabel9);
             this.ultraGroupBox2.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.ultraGroupBox2.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
-            this.ultraGroupBox2.Location = new System.Drawing.Point(18, 235);
+            this.ultraGroupBox2.Location = new System.Drawing.Point(18, 252);
             this.ultraGroupBox2.Name = "ultraGroupBox2";
-            this.ultraGroupBox2.Size = new System.Drawing.Size(496, 104);
+            this.ultraGroupBox2.Size = new System.Drawing.Size(496, 119);
             this.ultraGroupBox2.TabIndex = 85;
             this.ultraGroupBox2.Text = "Material";
             // 
             // btnObtenerCantidadMaterial
             // 
-            this.btnObtenerCantidadMaterial.Location = new System.Drawing.Point(254, 76);
+            this.btnObtenerCantidadMaterial.Location = new System.Drawing.Point(264, 82);
             this.btnObtenerCantidadMaterial.Name = "btnObtenerCantidadMaterial";
-            this.btnObtenerCantidadMaterial.Size = new System.Drawing.Size(36, 23);
+            this.btnObtenerCantidadMaterial.Size = new System.Drawing.Size(78, 23);
             this.btnObtenerCantidadMaterial.TabIndex = 95;
-            this.btnObtenerCantidadMaterial.Text = "Obt.";
+            this.btnObtenerCantidadMaterial.Text = "Obtener";
             this.btnObtenerCantidadMaterial.Click += new System.EventHandler(this.btnObtenerCantidadMaterial_Click);
             // 
             // txtCantidadMaterial
             // 
-            this.txtCantidadMaterial.Location = new System.Drawing.Point(90, 77);
+            this.txtCantidadMaterial.Location = new System.Drawing.Point(97, 83);
             this.txtCantidadMaterial.MaskInput = "nnnnnn.nn";
             this.txtCantidadMaterial.MaxValue = new decimal(new int[] {
             90000000,
@@ -595,7 +595,7 @@
             appearance2.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel13.Appearance = appearance2;
             this.ultraLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel13.Location = new System.Drawing.Point(6, 81);
+            this.ultraLabel13.Location = new System.Drawing.Point(13, 87);
             this.ultraLabel13.Name = "ultraLabel13";
             this.ultraLabel13.Size = new System.Drawing.Size(55, 17);
             this.ultraLabel13.TabIndex = 93;
@@ -604,7 +604,7 @@
             // busUnidadMaterial
             // 
             this.busUnidadMaterial.BackColor = System.Drawing.Color.Transparent;
-            this.busUnidadMaterial.Location = new System.Drawing.Point(90, 52);
+            this.busUnidadMaterial.Location = new System.Drawing.Point(97, 58);
             this.busUnidadMaterial.Name = "busUnidadMaterial";
             this.busUnidadMaterial.Size = new System.Drawing.Size(219, 28);
             this.busUnidadMaterial.TabIndex = 83;
@@ -615,7 +615,7 @@
             appearance3.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel8.Appearance = appearance3;
             this.ultraLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel8.Location = new System.Drawing.Point(6, 52);
+            this.ultraLabel8.Location = new System.Drawing.Point(13, 58);
             this.ultraLabel8.Name = "ultraLabel8";
             this.ultraLabel8.Size = new System.Drawing.Size(86, 23);
             this.ultraLabel8.TabIndex = 82;
@@ -624,7 +624,7 @@
             // txtNombreMaterial
             // 
             this.txtNombreMaterial.BackColor = System.Drawing.Color.Transparent;
-            this.txtNombreMaterial.Location = new System.Drawing.Point(90, 28);
+            this.txtNombreMaterial.Location = new System.Drawing.Point(97, 34);
             this.txtNombreMaterial.Name = "txtNombreMaterial";
             this.txtNombreMaterial.Size = new System.Drawing.Size(323, 28);
             this.txtNombreMaterial.TabIndex = 81;
@@ -635,18 +635,18 @@
             appearance4.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel9.Appearance = appearance4;
             this.ultraLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel9.Location = new System.Drawing.Point(6, 28);
+            this.ultraLabel9.Location = new System.Drawing.Point(13, 34);
             this.ultraLabel9.Name = "ultraLabel9";
             this.ultraLabel9.Size = new System.Drawing.Size(57, 23);
             this.ultraLabel9.TabIndex = 80;
             this.ultraLabel9.Text = "Nombre";
             // 
-            // FrmCotizaciondeServicio
+            // FrmOrdenProducciondeServicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 460);
-            this.Name = "FrmCotizaciondeServicio";
+            this.ClientSize = new System.Drawing.Size(544, 452);
+            this.Name = "FrmOrdenProducciondeServicio";
             this.Text = "FrmCotizaciondeServicio";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
             this.ugbParent.ResumeLayout(false);
