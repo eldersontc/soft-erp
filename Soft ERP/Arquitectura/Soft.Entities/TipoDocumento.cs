@@ -10,6 +10,7 @@ namespace Soft.Entities
     public class TipoDocumento : Parent
     {
         public TipoDocumento() { }
+
         public virtual String Codigo { get; set; }
         public virtual String Descripcion { get; set; }
         public virtual String CodigoSerie { get; set; }
@@ -27,34 +28,14 @@ namespace Soft.Entities
 
         public virtual string GenerarNumerodeDocumento()
         {
-            String resultado = "";
+            string numeroRetorno = string.Empty;
             if (NumeracionAutomatica == true)
             {
-                if (GeneraNumeracionAlFinal == false)
-                {
-                    String numeroactual = Convert.ToString(NumeracionActual + 1);
-                    String serie = CodigoSerie.PadLeft(LongitudSerie, '0');
-                    String numeracion = numeroactual.PadLeft(NumeracionLongitud, '0');
-                    resultado = serie + "-" + numeracion;
-                }
+                string serie = CodigoSerie.PadLeft(LongitudSerie, '0');
+                string numeroActual = Convert.ToString(NumeracionActual + 1).PadLeft(NumeracionLongitud, '0');
+                numeroRetorno = string.Format("{0}-{1}", serie, numeroActual);
             }
-            return resultado;
-        }
-
-        public virtual string ObtenerNumeroActual()
-        {
-            String resultado = "";
-            if (NumeracionAutomatica == true)
-            {
-                if (GeneraNumeracionAlFinal == true)
-                {
-                    String numeroactual = Convert.ToString(NumeracionActual + 1);
-                    String serie = CodigoSerie.PadLeft(LongitudSerie, '0');
-                    String numeracion = numeroactual.PadLeft(NumeracionLongitud, '0');
-                    resultado = serie + "-" + numeracion;
-                }
-            }
-            return resultado;
+            return numeroRetorno;
         }
 
     }
