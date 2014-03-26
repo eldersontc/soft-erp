@@ -23,15 +23,15 @@ namespace Soft.Inventario.Transaccional
                     try
                     {
                         EntradaInventario EntradaInventario = (EntradaInventario)m_ObjectFlow;
-
+                        SqlCommand SqlCmd = new SqlCommand();
+                        SqlCmd.Connection = (SqlConnection)Sesion.Connection;
+                        Trans.Enlist(SqlCmd);
+                        // Creamos la Entrada de Inventario.
                         Sesion.Save(EntradaInventario);
                         Sesion.Flush();
-
+                        // Actualizamos los Stocks.
                         foreach (ItemEntradaInventario Item in EntradaInventario.Items)
                         {
-                            SqlCommand SqlCmd = new SqlCommand();
-                            SqlCmd.Connection = (SqlConnection)Sesion.Connection;
-                            Trans.Enlist(SqlCmd);
                             SqlCmd.CommandText = "pSF_ActualizarStocks";
                             SqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
                             SqlCmd.Parameters.AddWithValue("@IDAlmacen", EntradaInventario.Almacen.ID);
@@ -40,7 +40,17 @@ namespace Soft.Inventario.Transaccional
                             SqlCmd.Parameters.AddWithValue("@Operacion", "Incrementar");
                             SqlCmd.ExecuteNonQuery();
                         }
-
+                        // Actualizamos la Numeración de la Entrada de Inventario
+                        if (EntradaInventario.TipoDocumento.GeneraNumeracionAlFinal)
+                        {
+                            SqlCmd.CommandText = "pSF_Generar_Numeracion";
+                            SqlCmd.Parameters.Clear();
+                            SqlCmd.Parameters.AddWithValue("@Documento", "EntradaInventario");
+                            SqlCmd.Parameters.AddWithValue("@TipoDocumento", "TipoDocumentoInventario");
+                            SqlCmd.Parameters.AddWithValue("@IDDocumento", EntradaInventario.ID);
+                            SqlCmd.Parameters.AddWithValue("@IDTipoDocumento", EntradaInventario.TipoDocumento.ID);
+                            SqlCmd.ExecuteNonQuery();
+                        }
                         Trans.Commit();
                         m_ResultProcess = EnumResult.SUCESS;
                     }

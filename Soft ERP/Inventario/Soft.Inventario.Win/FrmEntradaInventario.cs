@@ -83,7 +83,12 @@ namespace Soft.Inventario.Win
         public void Mostrar()
         {
             ActualizandoIU = true;
-            ssTipoDocumento.Text = (EntradaInventario.TipoDocumento != null)?EntradaInventario.TipoDocumento.Descripcion:"";
+            if (EntradaInventario.TipoDocumento != null) {
+                ssTipoDocumento.Text = EntradaInventario.TipoDocumento.Descripcion;
+                LabelSocioNegocio.Text = EntradaInventario.TipoDocumento.TipoSocioDeNegocio;
+                ssProveedor.Enabled = (EntradaInventario.TipoDocumento.TipoSocioDeNegocio.Equals("Ninguno")) ? false : true;
+                txtNumeracion.Enabled = (EntradaInventario.TipoDocumento.NumeracionAutomatica) ? false : true;
+            }
             ssProveedor.Text = (EntradaInventario.Proveedor != null) ? EntradaInventario.Proveedor.Nombre : "";
             ssAlmacen.Text = (EntradaInventario.Almacen != null) ? EntradaInventario.Almacen.Descripcion : "";
             ssResponsable.Text = (EntradaInventario.Responsable != null) ? EntradaInventario.Responsable.Nombre : "";
@@ -93,6 +98,7 @@ namespace Soft.Inventario.Win
             txtFactura.Text = EntradaInventario.Factura;
             udtFechaCreacion.Value = EntradaInventario.FechaCreacion;
             txtObservacion.Text = EntradaInventario.Observacion;
+
             MostrarItems();
             MostrarCostos();
             ActualizandoIU = false;
@@ -137,61 +143,66 @@ namespace Soft.Inventario.Win
             Row.Cells[colTotal].Value = Item.Total;
         }
 
+        public void AgregarProductos()
+        {
+            Collection Productos = new Collection();
+            FrmSelectedEntity FrmSeleccionarProducto = new FrmSelectedEntity();
+            Productos = FrmSeleccionarProducto.GetSelectedsEntities(typeof(Existencia), "Seleción de Existencia", String.Format(" IDAlmacen = '{0}'", EntradaInventario.Almacen.ID));
+            foreach (Existencia Producto in Productos)
+            {
+                UltraGridRow RowNuevo = ugProductos.DisplayLayout.Bands[0].AddNew();
+                ItemEntradaInventario ItemNuevo = EntradaInventario.AddItem();
+                ItemNuevo.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
+                ItemNuevo.Cantidad = 1;
+                RowNuevo.Tag = ItemNuevo;
+                AgregarUnidades(RowNuevo);
+                MostrarItem(RowNuevo);
+            }
+        }
+
+        public void AgregarUnidades(UltraGridRow Row)
+        {
+            ItemEntradaInventario Item = (ItemEntradaInventario)Row.Tag;
+            ValueList List = new ValueList();
+            foreach (ExistenciaUnidad Unidad in Item.Producto.Unidades)
+            {
+                if (Unidad.EsUnidadBase)
+                {
+                    Item.Unidad = Unidad.Unidad;
+                    Item.Factor = Unidad.FactorConversion;
+                }
+                List.ValueListItems.Add(Unidad, Unidad.Unidad.Nombre);
+            }
+            Row.Cells[colUnidad].ValueList = List;
+        }
+
         private void ssTipoDocumento_Search(object sender, EventArgs e)
         {
             try
             {
-
-                FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
-                String Filtro = "Operacion='Entrada'";
-                TipoDocumentoInventario TipoDocumento = (TipoDocumentoInventario)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(TipoDocumentoInventario), "Tipo de Inventario", Filtro);
-
-                if ((EntradaInventario.TipoDocumento == null) || (EntradaInventario.TipoDocumento.Codigo != TipoDocumento.Codigo))
-                {
-                    EntradaInventario.TipoDocumento = (TipoDocumentoInventario)HelperNHibernate.GetEntityByID("TipoDocumentoInventario", TipoDocumento.ID);
-                    EntradaInventario.GenerarNumCp();
-                    LabelSocioNegocio.Text = EntradaInventario.TipoDocumento.TipoSocioDeNegocio;
-                    LabelSocioNegocio.Visible = (EntradaInventario.TipoDocumento.TipoSocioDeNegocio.Equals("Ninguno")) ? false : true;
-                    ssProveedor.Visible = (EntradaInventario.TipoDocumento.TipoSocioDeNegocio.Equals("Ninguno")) ? false : true;
-                    ssProveedor.Enabled = (EntradaInventario.TipoDocumento.TipoSocioDeNegocio.Equals("Ninguno")) ? false : true;
-
-                }
-
-                try
-                {
-                    FrmSelectedEntity FrmSeleccionarEmpleado = new FrmSelectedEntity();
-                    String filtro = "IDUsuario='" + FrmMain.Usuario.ID + "'";
-                    SocioNegocio sn = (SocioNegocio)FrmSeleccionarEmpleado.GetSelectedEntity(typeof(SocioNegocio), "Empleado", filtro);
-
-                    EntradaInventario.Responsable = (SocioNegocio)HelperNHibernate.GetEntityByID("SocioNegocio", sn.ID);
-                }
-                catch (Exception)
-                {
+                FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+                EntradaInventario.TipoDocumento = (TipoDocumentoInventario)FrmSeleccionar.GetSelectedEntity(typeof(TipoDocumentoInventario), "Tipo de Inventario", " Operacion = 'Entrada'", true);
+                if (EntradaInventario.TipoDocumento != null) {
+                    EntradaInventario.GenerarNumeracion();
+                    EntradaInventario.Responsable = FrmMain.ObtenerResponsable();
+                    Mostrar();
                 }
             }
             catch (Exception ex)
             {
-
                 Soft.Exceptions.SoftException.ShowException(ex);
             }
-
-            
-
-            Mostrar();
         }
 
         private void ssProveedor_Search(object sender, EventArgs e)
         {
-            String filtro = "";
-            if (! LabelSocioNegocio.Text.Equals("Socio de Negocio"))
+            if (!LabelSocioNegocio.Text.Equals("Ninguno"))
             {
-                filtro = " "+LabelSocioNegocio + "=1";
+                String Filtro = string.Format(" {0} = 1", LabelSocioNegocio);
                 FrmSelectedEntity FrmSeleccionarProveedor = new FrmSelectedEntity();
-                EntradaInventario.Proveedor = (SocioNegocio)FrmSeleccionarProveedor.GetSelectedEntity(typeof(SocioNegocio), "Socio de Negocio"," Proveedor = 1");
+                EntradaInventario.Proveedor = (SocioNegocio)FrmSeleccionarProveedor.GetSelectedEntity(typeof(SocioNegocio), "Socio de Negocio", Filtro);
                 ssProveedor.Text = (EntradaInventario.Proveedor != null) ? EntradaInventario.Proveedor.Nombre : "";
             }
-            Mostrar();
-
         }
 
         private void ssAlmacen_Search(object sender, EventArgs e)
@@ -236,38 +247,6 @@ namespace Soft.Inventario.Win
             EntradaInventario.Observacion = txtObservacion.Text;
         }
 
-        public void AgregarProductos()
-        {
-            Collection Productos = new Collection();
-            FrmSelectedEntity FrmSeleccionarProducto = new FrmSelectedEntity();
-            Productos = FrmSeleccionarProducto.GetSelectedsEntities(typeof(Existencia), "Seleción de Existencia", String.Format(" IDAlmacen = '{0}'", EntradaInventario.Almacen.ID));
-            foreach (Existencia Producto in Productos)
-            {
-                UltraGridRow RowNuevo = ugProductos.DisplayLayout.Bands[0].AddNew();
-                ItemEntradaInventario ItemNuevo = EntradaInventario.AddItem();
-                ItemNuevo.Producto = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
-                ItemNuevo.Cantidad = 1;
-                RowNuevo.Tag = ItemNuevo;
-                AgregarUnidades(RowNuevo);
-                MostrarItem(RowNuevo);
-            }
-        }
-
-        public void AgregarUnidades(UltraGridRow Row)
-        {
-            ItemEntradaInventario Item = (ItemEntradaInventario)Row.Tag;
-            ValueList List = new ValueList();
-            foreach (ExistenciaUnidad Unidad in Item.Producto.Unidades)
-            {
-                if (Unidad.EsUnidadBase) { 
-                    Item.Unidad = Unidad.Unidad;
-                    Item.Factor = Unidad.FactorConversion;
-                }
-                List.ValueListItems.Add(Unidad, Unidad.Unidad.Nombre);
-            }
-            Row.Cells[colUnidad].ValueList = List;
-        }
-
         private void ugProductos_CellChange(object sender, CellEventArgs e)
         {
             try 
@@ -303,32 +282,6 @@ namespace Soft.Inventario.Win
 	        }
         }
 
-        //public void ugProductos_CellKeyEnter(UltraGridCell Cell)
-        //{
-        //    try
-        //    {
-        //        if (Cell == null) { return; }
-        //        ItemEntradaInventario Item = (ItemEntradaInventario)Cell.Row.Tag;
-        //        switch (Cell.Column.Key)
-        //        {
-        //            case colCodigo:
-        //                if (Cell.Text.Equals("")) { break; }
-        //                AgregarProductos(Cell.Text, "%", Cell.Row);
-        //                break;
-        //            case colNombre:
-        //                if (Cell.Text.Equals("")) { break; }
-        //                AgregarProductos("%", Cell.Text, Cell.Row);
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        //MessageBox.Show(ex.Message);
-        //    }
-        //}
-
         private void ssMoneda_Search(object sender, EventArgs e)
         {
             try
@@ -357,12 +310,6 @@ namespace Soft.Inventario.Win
             }
             Mostrar();
         }
-
-        private void uneSubTotal_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
 
     }
 }

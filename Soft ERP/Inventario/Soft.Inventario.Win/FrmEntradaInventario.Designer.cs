@@ -666,7 +666,6 @@
             this.uneSubTotal.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
             this.uneSubTotal.Size = new System.Drawing.Size(100, 21);
             this.uneSubTotal.TabIndex = 56;
-            this.uneSubTotal.ValueChanged += new System.EventHandler(this.uneSubTotal_ValueChanged);
             // 
             // LabelTotal
             // 

@@ -1015,7 +1015,7 @@
             appearance1.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel1.Appearance = appearance1;
             this.ultraLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel1.Location = new System.Drawing.Point(17, 234);
+            this.ultraLabel1.Location = new System.Drawing.Point(17, 237);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(73, 15);
             this.ultraLabel1.TabIndex = 34;
@@ -1023,7 +1023,7 @@
             // 
             // txtUnidadBase
             // 
-            this.txtUnidadBase.Location = new System.Drawing.Point(96, 230);
+            this.txtUnidadBase.Location = new System.Drawing.Point(99, 233);
             this.txtUnidadBase.Name = "txtUnidadBase";
             this.txtUnidadBase.Size = new System.Drawing.Size(141, 21);
             this.txtUnidadBase.TabIndex = 35;
