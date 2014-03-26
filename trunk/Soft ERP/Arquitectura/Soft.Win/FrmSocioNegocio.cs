@@ -187,7 +187,7 @@ namespace Soft.Win
                 {
                     if ((!SocioNegocio.Firma.Equals("")))
                     {
-                        pbFirma.Image = Image.FromFile(String.Format("{0}{1}", FrmMain.CarpetaFirmas, SocioNegocio.Firma));
+                        pbFirma.Image = Image.FromFile(String.Format("{0}{1}", FrmMain.ObtenerValorKey("CarpetaFirmas"), SocioNegocio.Firma));
                     }
                 }
             }
@@ -656,7 +656,7 @@ namespace Soft.Win
         private void ubFirma_Click(object sender, EventArgs e)
         {
             OpenFileDialog OpenFile = new OpenFileDialog();
-            OpenFile.InitialDirectory = FrmMain.CarpetaFirmas;
+            OpenFile.InitialDirectory = FrmMain.ObtenerValorKey("CarpetaFirmas");
             OpenFile.Filter = "[JPG,JPEG]|*.jpg|[PNG]|*.png";
             if (OpenFile.ShowDialog() == DialogResult.OK)
             {

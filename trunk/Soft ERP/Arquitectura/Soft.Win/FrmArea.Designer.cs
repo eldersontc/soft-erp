@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmArea));
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.uceActivo = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
             this.txtNombre = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -331,8 +331,8 @@
             // 
             // ultraLabel2
             // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance3;
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance1;
             this.ultraLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.ultraLabel2.Location = new System.Drawing.Point(14, 51);
             this.ultraLabel2.Name = "ultraLabel2";
@@ -350,8 +350,8 @@
             // 
             // ultraLabel1
             // 
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel1.Appearance = appearance4;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel1.Appearance = appearance2;
             this.ultraLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.ultraLabel1.Location = new System.Drawing.Point(14, 19);
             this.ultraLabel1.Name = "ultraLabel1";
@@ -373,7 +373,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(348, 159);
             this.Name = "FrmArea";
-            this.Text = "Area";
+            this.Text = "Área";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
             this.ugbParent.ResumeLayout(false);
             this.ugbParent.PerformLayout();

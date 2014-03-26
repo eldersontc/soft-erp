@@ -561,14 +561,27 @@ namespace Soft.Win
             return Abreviacion;
         }
 
-        public static String CarpetaReportes { get { return ConfigurationManager.AppSettings["CarpetaReportes"]; } }
+        public static SocioNegocio ObtenerResponsable()
+        {
+            XmlDocument XML = HelperNHibernate.ExecuteSQL("SELECT TOP (1) IDSocioNegocio FROM SocioNegocioEmpleado ", String.Format(" IDUsuario = '{0}'", FrmMain.Usuario.ID));
+            SocioNegocio Responsable = null;
+            if (XML.HasChildNodes)
+            {
+                foreach (XmlNode NodoItem in XML.DocumentElement.ChildNodes)
+                {
+                    Responsable = (SocioNegocio)HelperNHibernate.GetEntityByID("SocioNegocio", NodoItem.SelectSingleNode("@IDSocioNegocio").Value);
+                }
+            }
+            return Responsable;
+        }
 
-        public static String CarpetaImagenes { get { return ConfigurationManager.AppSettings["CarpetaImagenes"]; } }
+        public static string CarpetaReportes { get { return ConfigurationManager.AppSettings["CarpetaReportes"]; } }
 
-        public static String CarpetaOrdenesProduccion { get { return ConfigurationManager.AppSettings["CarpetaOrdenesProduccion"]; } }
+        public static string CarpetaImagenes { get { return ConfigurationManager.AppSettings["CarpetaImagenes"]; } }
 
-        public static String CarpetaFirmas { get { return ConfigurationManager.AppSettings["CarpetaFirmas"]; } }
-
+        public static string ObtenerValorKey(string key) {
+            return ConfigurationManager.AppSettings[key];
+        }
 
         public void Tree_Click(object sender, EventArgs e)
         {

@@ -442,7 +442,7 @@
             this.ultraTabPageControl7.Controls.Add(this.checkActivoClliente);
             this.ultraTabPageControl7.Controls.Add(this.ultraLabel12);
             this.ultraTabPageControl7.Controls.Add(this.busVendedor);
-            this.ultraTabPageControl7.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl7.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl7.Name = "ultraTabPageControl7";
             this.ultraTabPageControl7.Size = new System.Drawing.Size(600, 236);
             // 
@@ -541,7 +541,7 @@
             this.ultraLabel11.Name = "ultraLabel11";
             this.ultraLabel11.Size = new System.Drawing.Size(52, 23);
             this.ultraLabel11.TabIndex = 37;
-            this.ultraLabel11.Text = "Area";
+            this.ultraLabel11.Text = "Área";
             // 
             // busArea
             // 
@@ -694,7 +694,7 @@
             this.ultraTabPageControl1.Controls.Add(this.txtCorreo);
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel5);
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel4);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(600, 236);
             // 
@@ -847,7 +847,7 @@
             this.ugbComportamiento.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
             this.ugbComportamiento.Location = new System.Drawing.Point(19, 241);
             this.ugbComportamiento.Name = "ugbComportamiento";
-            this.ugbComportamiento.Size = new System.Drawing.Size(601, 52);
+            this.ugbComportamiento.Size = new System.Drawing.Size(604, 52);
             this.ugbComportamiento.TabIndex = 31;
             this.ugbComportamiento.Text = "Comportamiento";
             // 
@@ -1035,7 +1035,7 @@
             // 
             this.txtNombreComercial.Location = new System.Drawing.Point(146, 208);
             this.txtNombreComercial.Name = "txtNombreComercial";
-            this.txtNombreComercial.Size = new System.Drawing.Size(477, 21);
+            this.txtNombreComercial.Size = new System.Drawing.Size(474, 21);
             this.txtNombreComercial.TabIndex = 36;
             this.txtNombreComercial.TextChanged += new System.EventHandler(this.txtNombreComercial_TextChanged);
             // 
