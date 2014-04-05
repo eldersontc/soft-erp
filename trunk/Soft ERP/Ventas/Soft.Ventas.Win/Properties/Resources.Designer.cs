@@ -60,6 +60,13 @@ namespace Soft.Ventas.Win.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap calculator {
+            get {
+                object obj = ResourceManager.GetObject("calculator", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap green_button {
             get {
                 object obj = ResourceManager.GetObject("green_button", resourceCulture);
