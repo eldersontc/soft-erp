@@ -168,9 +168,11 @@ namespace Soft.Inventario.Win
         public void MostrarUnidad(UltraGridRow Row)
         {
             ExistenciaUnidad unidad = (ExistenciaUnidad)Row.Tag;
-            Row.Cells[colUnidad].Value = unidad.Unidad.Nombre;
-            Row.Cells[colEsBase].Value = unidad.EsUnidadBase;
-            Row.Cells[colFactor].Value = unidad.FactorConversion;
+            if (unidad != null) { 
+                Row.Cells[colUnidad].Value = unidad.Unidad.Nombre;
+                Row.Cells[colEsBase].Value = unidad.EsUnidadBase;
+                Row.Cells[colFactor].Value = unidad.FactorConversion;
+            }
         }
 
         public void MostrarAlmacenes()
@@ -312,41 +314,31 @@ namespace Soft.Inventario.Win
         private void ubNuevo_Click(object sender, EventArgs e)
         {
             FrmSelectedEntity FrmSeleccionarPanel = new FrmSelectedEntity();
-            String filtro = "id not in (";
+            String filtro = "ID NOT IN (";
             String ids = "";
 
             foreach (ExistenciaUnidad Item in Existencia.Unidades)
-            {
                 ids = ids + "'" + Item.Unidad.ID + "',";
-                
-            }
-
             if (ids.Length > 0)
-            {
                 filtro = filtro + ids.Substring(0, ids.Length - 1) + ")";
-            }
-            else {
+            else 
                 filtro = "";
-            }
 
+            Unidad unidad = (Unidad)FrmSeleccionarPanel.GetSelectedEntity(typeof(Unidad), "Unidad", filtro);
 
-            Unidad uni = (Unidad)FrmSeleccionarPanel.GetSelectedEntity(typeof(Unidad), "Unidad", filtro);
-
-            if (uni != null) {
+            if (unidad != null) {
                 UltraGridRow Row = grillaUnidades.DisplayLayout.Bands[0].AddNew();
-
-
                 Row.Tag = this.Existencia.AddItem();
                 ExistenciaUnidad itemunidad = (ExistenciaUnidad)Row.Tag;
-                itemunidad.Unidad = uni;
-                itemunidad.EsUnidadBase = true;
+                itemunidad.Unidad = unidad;
+                itemunidad.EsUnidadBase = (Existencia.Unidades.Count == 1) ? true : false;
+                if (itemunidad.EsUnidadBase) {
+                    Existencia.UnidadBase = itemunidad;
+                    txtUnidadBase.Text = Existencia.UnidadBase.Unidad.Nombre;
+                }
                 itemunidad.FactorConversion = 1;
-
                 MostrarUnidad(Row);
-   
             }
-
-            
         }
 
         private void ubEliminar_Click(object sender, EventArgs e)
@@ -354,6 +346,17 @@ namespace Soft.Inventario.Win
             if (grillaUnidades.ActiveRow == null) { return; }
             this.Existencia.Unidades.Remove((ExistenciaUnidad)this.grillaUnidades.ActiveRow.Tag);
             this.grillaUnidades.ActiveRow.Delete(false);
+            if(Existencia.Unidades.Count == 0){
+                Existencia.UnidadBase = null;
+                txtUnidadBase.Text = "";
+            }
+        }
+
+        private void LimpiarUnidades(string IDUnidad) {
+            foreach (ExistenciaUnidad Item in Existencia.Unidades)
+                if(!Item.Unidad.ID.Equals(IDUnidad))
+                    Item.EsUnidadBase = false;
+            MostrarUnidades();
         }
 
         private void grillaUnidades_CellChange(object sender, CellEventArgs e)
@@ -364,6 +367,7 @@ namespace Soft.Inventario.Win
                 case colEsBase:
                     Item.EsUnidadBase = Convert.ToBoolean(e.Cell.Text);
                     if (Item.EsUnidadBase) {
+                        LimpiarUnidades(Item.Unidad.ID);
                         Existencia.UnidadBase = Item;
                         txtUnidadBase.Text = Existencia.UnidadBase.Unidad.Nombre;
                     }
