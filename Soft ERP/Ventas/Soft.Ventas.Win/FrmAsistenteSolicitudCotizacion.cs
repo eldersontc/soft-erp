@@ -259,5 +259,96 @@ namespace Soft.Ventas.Win
             }
         }
 
+        private void ssTipoDocumento_Clear(object sender, EventArgs e)
+        {
+            try
+            {
+                InfoAsistente.TipoDocumento = null;
+                ssTipoDocumento.Text = "";
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ssCliente_Clear(object sender, EventArgs e)
+        {
+            try
+            {
+                InfoAsistente.Cliente = null;
+                ssCliente.Text = "";
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ssPlantilla_Clear(object sender, EventArgs e)
+        {
+            try
+            {
+                InfoAsistente.Plantilla = null;
+                ssPlantilla.Text = "";
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ssContacto_Clear(object sender, EventArgs e)
+        {
+            try
+            {
+                InfoAsistente.Contacto = null;
+                ssContacto.Text = "";
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ssReponsable_Clear(object sender, EventArgs e)
+        {
+            try
+            {
+                InfoAsistente.Responsable = null;
+                ssReponsable.Text = "";
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ssMoneda_Clear(object sender, EventArgs e)
+        {
+            try
+            {
+                InfoAsistente.Moneda = null;
+                ssMoneda.Text = "";
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ssFormaPago_Clear(object sender, EventArgs e)
+        {
+            try
+            {
+                InfoAsistente.ModalidadCredito = null;
+                ssFormaPago.Text = "";
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
     }
 }
