@@ -524,11 +524,67 @@ namespace Soft.Ventas.Win
                     alto = alto / 100;
                 }
                 Item.CantidadMaterial = largo * alto * ItemElemento.CantidadElemento;
+                ObtenerCostoMaterial(); 
             }
             Mostrar();
         }
 
+        private void bussAcabado_Clear(object sender, EventArgs e)
+        {
+            Item.Servicio = null;
+            Item.UnidadServicio = null;
+            Item.CantidadServicio = 0;
+            Item.CostoServicio = 0;
+            SumarTotal();
+            Mostrar();
+        }
 
+        private void busUnidadAcabado_Clear(object sender, EventArgs e)
+        {
+            Item.UnidadServicio = null;
+            Item.CantidadServicio = 0;
+            Item.CostoServicio = 0;
+            SumarTotal();
+            Mostrar();
+        }
 
+        private void busMaquina_Clear(object sender, EventArgs e)
+        {
+            Item.Maquina = null;
+            Item.UnidadMaquina = null;
+            Item.CantidadMaquina = 0;
+            Item.CostoMaquina = 0;
+            SumarTotal();
+            Mostrar();
+        }
+
+        private void busUnidadMaquina_Clear(object sender, EventArgs e)
+        {
+            Item.UnidadMaquina = null;
+            Item.CantidadMaquina = 0;
+            Item.CostoMaquina = 0;
+            SumarTotal();
+            Mostrar();
+        }
+
+        private void txtNombreMaterial_Clear(object sender, EventArgs e)
+        {
+            Item.Material = null;
+            Item.UnidadMaterial = null;
+            Item.CantidadMaterial = 0;
+            Item.CostoMaterial = 0;
+            SumarTotal();
+            Mostrar();
+        }
+
+        private void busUnidadMaterial_Clear(object sender, EventArgs e)
+        {
+            Item.UnidadMaterial = null;
+            Item.CantidadMaterial = 0;
+            Item.CostoMaterial = 0;
+            SumarTotal();
+            Mostrar();
+        }
+        
     }
 }
