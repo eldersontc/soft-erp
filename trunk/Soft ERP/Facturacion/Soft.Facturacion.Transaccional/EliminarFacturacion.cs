@@ -30,7 +30,7 @@ namespace Soft.Facturacion.Transaccional
                         {
                             SqlCmd.Parameters.Clear();
                             SqlCmd.Parameters.AddWithValue("@IDOP", ItemFacturacion.IDOrdenProduccion);
-                            SqlCmd.Parameters.AddWithValue("@EstadoFacturacion", "PENDIENTE");
+                            SqlCmd.Parameters.AddWithValue("@Cantidad", ItemFacturacion.Cantidad * -1);
                             SqlCmd.ExecuteNonQuery();
                         }
                         Sesion.Delete(Facturacion);
