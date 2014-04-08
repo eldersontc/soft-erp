@@ -8,6 +8,7 @@
     <property name="Numeracion" type="string"/>
     <property name="FechaCreacion" type="date"/>
     <property name="Cantidad" type="decimal"/>
+    <property name="CantidadFacturada" type="decimal"/>
     <property name="Total" type="decimal"/>
     <property name="SubTotal" type="decimal"/>
     <property name="Impuesto" type="decimal"/>

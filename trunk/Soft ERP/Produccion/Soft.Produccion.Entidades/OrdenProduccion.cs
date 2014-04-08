@@ -33,6 +33,7 @@ namespace Soft.Produccion.Entidades
         public virtual SocioNegocio Vendedor { get; set; }
         public virtual SocioNegocio Cotizador { get; set; }
         public virtual Decimal Cantidad { get; set; }
+        public virtual Decimal CantidadFacturada { get; set; }
         public virtual String Descripcion { get; set; }
         public virtual ItemSocioNegocioContacto Contacto { get; set; }
         public virtual String DireccionEntrega { get; set; }
