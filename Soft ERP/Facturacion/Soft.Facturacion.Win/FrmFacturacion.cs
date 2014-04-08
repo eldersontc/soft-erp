@@ -15,6 +15,7 @@ using Soft.Produccion.Entidades;
 using System.Xml;
 using Soft.DataAccess;
 using Infragistics.Win.UltraWinGrid;
+using Infragistics.Win;
 
 namespace Soft.Facturacion.Win
 {
@@ -30,9 +31,10 @@ namespace Soft.Facturacion.Win
         const String colNroOP = "Nº OP";
         const String colDescripcion = "Descripción";
         const String colCantidad = "Cantidad";
-        const String colObservacion = "Observación";
+        const String colPrecio = "Precio";
         const String colTotal = "Total";
-
+        const String colObservacion = "Observación";
+        
         public Soft.Facturacion.Entidades.Facturacion Facturacion { get { return (Soft.Facturacion.Entidades.Facturacion)base.m_ObjectFlow; } }
 
         #endregion
@@ -59,13 +61,23 @@ namespace Soft.Facturacion.Win
             column = columns.Columns.Add(colCantidad);
             column.DataType = typeof(decimal);
 
-            column = columns.Columns.Add(colObservacion);
-            column.DataType = typeof(String);
+            column = columns.Columns.Add(colPrecio);
+            column.DataType = typeof(decimal);
 
             column = columns.Columns.Add(colTotal);
             column.DataType = typeof(decimal);
 
+            column = columns.Columns.Add(colObservacion);
+            column.DataType = typeof(String);
+
             ugOrdenesProduccion.DataSource = columns;
+            ugOrdenesProduccion.DisplayLayout.Bands[0].Columns[colCantidad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
+            ugOrdenesProduccion.DisplayLayout.Bands[0].Columns[colCantidad].CellAppearance.TextHAlign = HAlign.Right;
+            ugOrdenesProduccion.DisplayLayout.Bands[0].Columns[colPrecio].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
+            ugOrdenesProduccion.DisplayLayout.Bands[0].Columns[colPrecio].CellAppearance.TextHAlign = HAlign.Right;
+            ugOrdenesProduccion.DisplayLayout.Bands[0].Columns[colTotal].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
+            ugOrdenesProduccion.DisplayLayout.Bands[0].Columns[colTotal].CellAppearance.TextHAlign = HAlign.Right;
+            ugOrdenesProduccion.DisplayLayout.Bands[0].Columns[colTotal].CellActivation = Activation.NoEdit;
             MapKeys(ref ugOrdenesProduccion);
         }
 
@@ -85,6 +97,7 @@ namespace Soft.Facturacion.Win
 
         public void MostrarItems()
         {
+            /*
             if (Facturacion.Items.Count == 0)
             {
                 Facturacion.Total = 0;
@@ -99,16 +112,35 @@ namespace Soft.Facturacion.Win
                 foreach (XmlNode NodoItem in XML.DocumentElement.ChildNodes)
                 {
                     ItemFacturacion Item = Facturacion.ObtenerItem(NodoItem.SelectSingleNode("@IDOP").Value);
-                    Item.Total = Convert.ToDecimal(NodoItem.SelectSingleNode("@Total").Value);
+                    Item.NroOP = Convert.ToString(NodoItem.SelectSingleNode("@NroOP").Value);
+                    Item.Descripcion = Convert.ToString(NodoItem.SelectSingleNode("@Descripcion").Value);
+                    Item.Observacion = Convert.ToString(NodoItem.SelectSingleNode("@Observacion").Value);
+                    Item.Cantidad = Convert.ToDecimal(NodoItem.SelectSingleNode("@Cantidad").Value);
+                    Item.Precio = Convert.ToDecimal(NodoItem.SelectSingleNode("@Precio").Value);
                     UltraGridRow Row = ugOrdenesProduccion.DisplayLayout.Bands[0].AddNew();
                     Row.Tag = Item;
-                    Row.Cells[colNroOP].Value = NodoItem.SelectSingleNode("@Numeracion").Value;
-                    Row.Cells[colDescripcion].Value = NodoItem.SelectSingleNode("@Descripcion").Value;
-                    Row.Cells[colCantidad].Value = NodoItem.SelectSingleNode("@Cantidad").Value;
-                    Row.Cells[colObservacion].Value = NodoItem.SelectSingleNode("@Observacion").Value;
-                    Row.Cells[colTotal].Value = Convert.ToDecimal(NodoItem.SelectSingleNode("@Total").Value);
+                    MostrarItem(Row);
                 }
             }
+             * */
+            base.ClearAllRows(ref ugOrdenesProduccion);
+            foreach (ItemFacturacion Item in Facturacion.Items)
+            {
+                UltraGridRow Row = ugOrdenesProduccion.DisplayLayout.Bands[0].AddNew();
+                Row.Tag = Item;
+                MostrarItem(Row);
+            }
+        }
+
+        public void MostrarItem(UltraGridRow Row)
+        {
+            ItemFacturacion Item = (ItemFacturacion)Row.Tag;
+            Row.Cells[colNroOP].Value = Item.NroOP;
+            Row.Cells[colDescripcion].Value = Item.Descripcion;
+            Row.Cells[colObservacion].Value = Item.Observacion;
+            Row.Cells[colCantidad].Value = Item.Cantidad;
+            Row.Cells[colPrecio].Value = Item.Precio;
+            Row.Cells[colTotal].Value = Item.Total;
         }
 
         public void MostrarTotales() {
@@ -234,11 +266,17 @@ namespace Soft.Facturacion.Win
                 Collection Ops = new Collection();
                 FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
                 String Filtro = Facturacion.ObtenerFiltroOps();
-                Filtro = (Filtro.Length > 0) ? String.Format(" ID NOT IN ({0}) AND IDCliente = '{1}' AND EstadoFacturacion = 'PENDIENTE'", Filtro, Facturacion.Cliente.ID) : String.Format(" IDCliente = '{0}' AND EstadoFacturacion = 'PENDIENTE'", Facturacion.Cliente.ID);
+                Filtro = (Filtro.Length > 0) ? String.Format(" ID NOT IN ({0}) AND IDCliente = '{1}' AND EstadoFacturacion <> 'TOTAL'", Filtro, Facturacion.Cliente.ID) : String.Format(" IDCliente = '{0}' AND EstadoFacturacion <> 'TOTAL'", Facturacion.Cliente.ID);
                 Ops = FrmSeleccionar.GetSelectedsEntities(typeof(OrdenProduccion), "Selección de Ordenes de Producción", Filtro);
-                foreach (OrdenProduccion Item in Ops)
+                foreach (OrdenProduccion ItemOP in Ops)
                 {
-                    Facturacion.AddItem(Item.ID);
+                    ItemFacturacion Item = Facturacion.AddItem();
+                    Item.IDOrdenProduccion = ItemOP.ID;
+                    Item.NroOP = ItemOP.Numeracion;
+                    Item.Descripcion = ItemOP.Descripcion;
+                    Item.CantidadOP = ItemOP.Cantidad;
+                    Item.Cantidad = ItemOP.Cantidad;
+                    Item.Precio = ItemOP.Total / ItemOP.Cantidad;
                 }
                 MostrarItems();
                 MostrarTotales();
@@ -278,5 +316,33 @@ namespace Soft.Facturacion.Win
         }
 
         #endregion
+
+        private void ugOrdenesProduccion_CellChange(object sender, CellEventArgs e)
+        {
+            try
+            {
+                ItemFacturacion Item = (ItemFacturacion)e.Cell.Row.Tag;
+                switch (e.Cell.Column.Key)
+                {
+                    case colCantidad:
+                        decimal Cantidad = Convert.ToDecimal(e.Cell.Text.Replace('_', ' '));
+                        if (Cantidad > Item.CantidadOP)
+                            throw new Exception("La cantidad no puede ser mayor a : " + Item.CantidadOP);
+                        else
+                            Item.Cantidad = Cantidad;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+            finally {
+                MostrarItem(e.Cell.Row);
+                MostrarTotales();
+            }
+        }
     }
 }

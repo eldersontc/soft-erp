@@ -25,10 +25,10 @@ namespace Soft.Facturacion.Entidades
         public virtual decimal Total { get; set; }
         public virtual IList<ItemFacturacion> Items { get; set; }
 
-        public virtual void AddItem(string IDOP) {
+        public virtual ItemFacturacion AddItem() {
             ItemFacturacion Item = new ItemFacturacion();
-            Item.IDOrdenProduccion = IDOP;
             Items.Add(Item);
+            return Item;
         }
 
         public virtual ItemFacturacion ObtenerItem(String IDItem)

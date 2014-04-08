@@ -30,7 +30,7 @@ namespace Soft.Facturacion.Transaccional
                         {
                             SqlCmd.Parameters.Clear();
                             SqlCmd.Parameters.AddWithValue("@IDOP", ItemFacturacion.IDOrdenProduccion);
-                            SqlCmd.Parameters.AddWithValue("@EstadoFacturacion", "TOTAL");
+                            SqlCmd.Parameters.AddWithValue("@Cantidad", ItemFacturacion.Cantidad);
                             SqlCmd.ExecuteNonQuery();
                         }
                         // Creamos la Factura

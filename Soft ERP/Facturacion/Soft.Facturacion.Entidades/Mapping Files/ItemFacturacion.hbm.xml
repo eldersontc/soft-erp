@@ -5,7 +5,12 @@
 
     <id name="ID" column ="ID" type="string" unsaved-value="0"/>
     <property name="IDOrdenProduccion" type="string"/>
+    <property name="NroOP" type="string"/>
+    <property name="Descripcion" type="string"/>
+    <property name="Observacion" type="string"/>
     <property name="Total" type="decimal"/>
+    <property name="Cantidad" type="decimal"/>
+    <property name="Precio" type="decimal"/>
 
   </class>
 </hibernate-mapping>
