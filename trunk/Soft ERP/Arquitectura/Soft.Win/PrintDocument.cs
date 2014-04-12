@@ -16,9 +16,9 @@ namespace Soft.Win
         {
             try
             {
-                if (base.m_ObjectFlow is Documento)
+                if (base.m_ObjectFlow is DocumentoGenerico)
                 {
-                    Documento Documento = (Documento)base.m_ObjectFlow;
+                    DocumentoGenerico Documento = (DocumentoGenerico)base.m_ObjectFlow;
                     Soft.Reporte.Entidades.Reporte Reporte = Documento.TipoDocumento.Reporte;
                     String SQL = Reporte.SQL;
                     foreach (ParametroReporte Parametro in Reporte.ParametrosSQL)

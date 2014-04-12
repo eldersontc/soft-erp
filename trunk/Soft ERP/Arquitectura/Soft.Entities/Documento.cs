@@ -7,19 +7,19 @@ using System.Text;
 namespace Soft.Entities
 {
     [Serializable]
-    public class Documento : Parent
+    public class Documento : DocumentoGenerico
     {
         public Documento() { 
             FechaCreacion = DateTime.Now;
             Items = new List<ItemDocumento>();
         }
 
-        public virtual String Numeracion { get; set; }
-        public virtual String Observacion { get; set; }
-        public virtual DateTime FechaCreacion { get; set; }
+        //public virtual String Numeracion { get; set; }
+        //public virtual String Observacion { get; set; }
+        //public virtual DateTime FechaCreacion { get; set; }
         public virtual SocioNegocio Responsable { get; set; }
         public virtual Moneda Moneda { get; set; }
-        public virtual TipoDocumento TipoDocumento { get; set; }
+        //public virtual TipoDocumento TipoDocumento { get; set; }
         public virtual IList<ItemDocumento> Items { get; set; }
         public virtual Decimal TipoCambioFecha { get; set; }
         public virtual Decimal TotalSoles { get; set; }
