@@ -198,7 +198,7 @@ namespace Soft.Inventario.Win
         {
             if (!LabelSocioNegocio.Text.Equals("Ninguno"))
             {
-                String Filtro = string.Format(" {0} = 1", LabelSocioNegocio);
+                String Filtro = string.Format(" {0} = 1", LabelSocioNegocio.Text);
                 FrmSelectedEntity FrmSeleccionarProveedor = new FrmSelectedEntity();
                 EntradaInventario.Proveedor = (SocioNegocio)FrmSeleccionarProveedor.GetSelectedEntity(typeof(SocioNegocio), "Socio de Negocio", Filtro);
                 ssProveedor.Text = (EntradaInventario.Proveedor != null) ? EntradaInventario.Proveedor.Nombre : "";
