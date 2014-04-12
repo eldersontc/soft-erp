@@ -83,7 +83,7 @@ namespace Soft.Facturacion.Win
 
         public void Mostrar()
         {
-            ssTipoDocumento.Text = (Facturacion.TipoFacturacion != null) ? Facturacion.TipoFacturacion.Descripcion : "";
+            ssTipoDocumento.Text = (Facturacion.TipoDocumento != null) ? Facturacion.TipoDocumento.Descripcion : "";
             ssCliente.Text  = (Facturacion.Cliente != null) ? Facturacion.Cliente.Nombre : "";
             ssResponsable.Text = (Facturacion.Responsable != null) ? Facturacion.Responsable.Nombre : "";
             ssMoneda.Text = (Facturacion.Moneda != null) ? Facturacion.Moneda.Simbolo : "";
@@ -97,32 +97,6 @@ namespace Soft.Facturacion.Win
 
         public void MostrarItems()
         {
-            /*
-            if (Facturacion.Items.Count == 0)
-            {
-                Facturacion.Total = 0;
-                uneTotal.Value = 0;
-                return;
-            }
-            base.ClearAllRows(ref ugOrdenesProduccion);
-            String Filtro = String.Format(" IDOP IN ({0})", Facturacion.ObtenerFiltroOps());
-            XmlDocument XML = HelperNHibernate.ExecuteView("vSF_OrdenProduccionxID", Filtro);
-            if (XML.HasChildNodes)
-            {
-                foreach (XmlNode NodoItem in XML.DocumentElement.ChildNodes)
-                {
-                    ItemFacturacion Item = Facturacion.ObtenerItem(NodoItem.SelectSingleNode("@IDOP").Value);
-                    Item.NroOP = Convert.ToString(NodoItem.SelectSingleNode("@NroOP").Value);
-                    Item.Descripcion = Convert.ToString(NodoItem.SelectSingleNode("@Descripcion").Value);
-                    Item.Observacion = Convert.ToString(NodoItem.SelectSingleNode("@Observacion").Value);
-                    Item.Cantidad = Convert.ToDecimal(NodoItem.SelectSingleNode("@Cantidad").Value);
-                    Item.Precio = Convert.ToDecimal(NodoItem.SelectSingleNode("@Precio").Value);
-                    UltraGridRow Row = ugOrdenesProduccion.DisplayLayout.Bands[0].AddNew();
-                    Row.Tag = Item;
-                    MostrarItem(Row);
-                }
-            }
-             * */
             base.ClearAllRows(ref ugOrdenesProduccion);
             foreach (ItemFacturacion Item in Facturacion.Items)
             {
@@ -171,11 +145,11 @@ namespace Soft.Facturacion.Win
             try
             {
                 FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-                Facturacion.TipoFacturacion = (TipoFacturacion)FrmSeleccionar.GetSelectedEntity(typeof(TipoFacturacion), "Tipo Facturación", All:true);
-                if (Facturacion.TipoFacturacion != null)
+                Facturacion.TipoDocumento = (TipoFacturacion)FrmSeleccionar.GetSelectedEntity(typeof(TipoFacturacion), "Tipo Facturación", All:true);
+                if (Facturacion.TipoDocumento != null)
                 {
-                    ssTipoDocumento.Text = Facturacion.TipoFacturacion.Descripcion;
-                    txtNumeracion.Enabled = !Facturacion.TipoFacturacion.GeneraNumeracionAlFinal;
+                    ssTipoDocumento.Text = Facturacion.TipoDocumento.Descripcion;
+                    txtNumeracion.Enabled = !Facturacion.TipoDocumento.GeneraNumeracionAlFinal;
                 }
             }
             catch (Exception ex)
