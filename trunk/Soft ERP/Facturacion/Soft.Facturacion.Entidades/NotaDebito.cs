@@ -6,26 +6,28 @@ using Soft.Entities;
 
 namespace Soft.Facturacion.Entidades
 {
-    public class NotaDebito : Parent
+    public class NotaDebito : DocumentoGenerico
     {
         public NotaDebito() {
             FechaCreacion = DateTime.Now;
             Items = new List<ItemNotaDebito>(); 
         }
 
-        public virtual TipoNotaDebito TipoNotaDebito { get; set; }
-        public virtual string Numeracion { get; set; }
+        //public virtual TipoNotaDebito TipoNotaDebito { get; set; }
+        //public virtual string Numeracion { get; set; }
         public virtual SocioNegocio Cliente { get; set; }
         public virtual SocioNegocio Responsable { get; set; }
         public virtual Moneda Moneda { get; set; }
-        public virtual DateTime FechaCreacion { get; set; }
-        public virtual string Observacion { get; set; }
+        //public virtual DateTime FechaCreacion { get; set; }
+        //public virtual string Observacion { get; set; }
         public virtual decimal SubTotal { get; set; }
         public virtual decimal Impuesto { get; set; }
         public virtual decimal Total { get; set; }
         public virtual string NroFactura { get; set; }
         public virtual string IDFactura { get; set; }
         public virtual IList<ItemNotaDebito> Items { get; set; }
+
+        public virtual TipoNotaDebito TipoNotaDebito { get { return (TipoNotaDebito)TipoDocumento; } }
 
         public virtual void AddItem(string IDOP)
         {

@@ -13,7 +13,7 @@
     <property name="NroFactura" type="string"/>
     <property name="IDFactura" type="string"/>
 
-    <many-to-one name="TipoNotaDebito" class="Soft.Facturacion.Entidades.TipoNotaDebito" column="IDTipoNotaDebito" insert="true" update="true" lazy="false"/>
+    <many-to-one name="TipoDocumento" class="Soft.Facturacion.Entidades.TipoNotaDebito" column="IDTipoNotaDebito" insert="true" update="true" lazy="false"/>
     <many-to-one name="Cliente" class="Soft.Entities.SocioNegocio" column="IDCliente" insert="true" update="true" lazy="false"/>
     <many-to-one name="Responsable" class="Soft.Entities.SocioNegocio" column="IDResponsable" insert="true" update="true" lazy="false"/>
     <many-to-one name="Moneda" class="Soft.Entities.Moneda" column="IDMoneda" insert="true" update="true" lazy="false"/>

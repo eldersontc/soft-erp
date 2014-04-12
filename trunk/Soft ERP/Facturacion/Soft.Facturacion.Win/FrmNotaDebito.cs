@@ -72,7 +72,7 @@ namespace Soft.Facturacion.Win
 
         public void Mostrar()
         {
-            ssTipoDocumento.Text = (NotaDebito.TipoNotaDebito != null) ? NotaDebito.TipoNotaDebito.Descripcion : "";
+            ssTipoDocumento.Text = (NotaDebito.TipoDocumento != null) ? NotaDebito.TipoDocumento.Descripcion : "";
             ssCliente.Text  = (NotaDebito.Cliente != null) ? NotaDebito.Cliente.Nombre : "";
             ssResponsable.Text = (NotaDebito.Responsable != null) ? NotaDebito.Responsable.Nombre : "";
             ssMoneda.Text = (NotaDebito.Moneda != null) ? NotaDebito.Moneda.Simbolo : "";
@@ -141,11 +141,11 @@ namespace Soft.Facturacion.Win
             try
             {
                 FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-                NotaDebito.TipoNotaDebito = (TipoNotaDebito)FrmSeleccionar.GetSelectedEntity(typeof(TipoNotaDebito), "Tipo Nota Débito", All:true);
+                NotaDebito.TipoDocumento = (TipoNotaDebito)FrmSeleccionar.GetSelectedEntity(typeof(TipoNotaDebito), "Tipo Nota Débito", All:true);
                 if (NotaDebito.TipoNotaDebito != null)
                 {
-                    ssTipoDocumento.Text = NotaDebito.TipoNotaDebito.Descripcion;
-                    txtNumeracion.Enabled = !NotaDebito.TipoNotaDebito.GeneraNumeracionAlFinal;
+                    ssTipoDocumento.Text = NotaDebito.TipoDocumento.Descripcion;
+                    txtNumeracion.Enabled = !NotaDebito.TipoDocumento.GeneraNumeracionAlFinal;
                 }
             }
             catch (Exception ex)
