@@ -58,6 +58,7 @@
     <Compile Include="Departamento.cs" />
     <Compile Include="Distrito.cs" />
     <Compile Include="Documento.cs" />
+    <Compile Include="DocumentoGenerico.cs" />
     <Compile Include="EntidadSF.cs" />
     <Compile Include="ItemDocumento.cs" />
     <Compile Include="ItemSocioNegocioBanco.cs" />
