@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Finanzas.Entidades.ItemSalidaCaja, Soft.Finanzas.Entidades" dynamic-update="true">
+
+    <id name="ID" unsaved-value="0"/>
+    <property name="Codigo"/>
+    <property name="Descripcion"/>
+    <property name="Cantidad"/>
+    <property name="Precio"/>
+    <property name="Total"/>
+    <property name="Observacion"/>
+
+  </class>
+
+</hibernate-mapping>

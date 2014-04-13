@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Finanzas.Entidades.TipoCaja, Soft.Finanzas.Entidades" dynamic-update="true">
+
+    <id name="ID" unsaved-value="0"/>
+    <property name="Codigo"/>
+    <property name="Nombre"/>
+    <property name="Descripcion"/>
+    <property name="Activo"/>
+    <property name="CodigoSerie"/>
+    <property name="LongitudSerie"/>
+    <property name="NumeracionActual"/>
+    <property name="NumeracionLongitud"/>
+    <property name="GeneraNumeracionAlFinal"/>
+    <property name="NumeracionAutomatica"/>
+    <property name="PorcentajeImpuesto"/>
+    <property name="Movimiento"/>
+    <property name="TipoSocioDeNegocio"/>
+    <property name="GeneraDeuda"/>
+    <property name="TipoDeuda"/>
+
+    <many-to-one name="Reporte" class="Soft.Reporte.Entidades.Reporte" column="IDReporte" lazy="false"/>
+
+  </class>
+
+</hibernate-mapping>
