@@ -81,6 +81,12 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmGuiaRemision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGuiaRemision.Designer.cs">
+      <DependentUpon>FrmGuiaRemision.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmNotaDebito.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,12 @@
     </Compile>
     <Compile Include="FrmFacturacion.Designer.cs">
       <DependentUpon>FrmFacturacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTipoEntrega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTipoEntrega.Designer.cs">
+      <DependentUpon>FrmTipoEntrega.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmTipoFacturacion.cs">
       <SubType>Form</SubType>
@@ -111,11 +123,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmGuiaRemision.resx">
+      <DependentUpon>FrmGuiaRemision.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmNotaDebito.resx">
       <DependentUpon>FrmNotaDebito.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFacturacion.resx">
       <DependentUpon>FrmFacturacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTipoEntrega.resx">
+      <DependentUpon>FrmTipoEntrega.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTipoFacturacion.resx">
       <DependentUpon>FrmTipoFacturacion.cs</DependentUpon>
