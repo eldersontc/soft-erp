@@ -7,6 +7,7 @@ using NHibernate;
 using System.Data.SqlClient;
 using Soft.Facturacion.Entidades;
 using Soft.Exceptions;
+using Soft.Entities;
 
 namespace Soft.Facturacion.Transaccional
 {
@@ -36,6 +37,19 @@ namespace Soft.Facturacion.Transaccional
                         // Creamos la Factura
                         Sesion.Save(Facturacion);
                         Sesion.Flush();
+                        // Creamos una Deuda.
+                        if (Facturacion.TipoFacturacion.GeneraDeuda)
+                        {
+                            Deuda Deuda = new Deuda();
+                            Deuda.Tipo = Facturacion.TipoFacturacion.TipoDeuda;
+                            Deuda.TipoDocumento = Facturacion.TipoFacturacion.Comprobante;
+                            Deuda.IDDocumento = Facturacion.ID;
+                            Deuda.Descripcion = Facturacion.TipoDocumento.Nombre;
+                            Deuda.IDSocioNegocio = (Facturacion.Cliente != null) ? Facturacion.Cliente.ID : null;
+                            Deuda.Saldo = Facturacion.Total;
+                            Deuda.Total = Facturacion.Total;
+                            Sesion.Save(Deuda);
+                        }
                         // Actualizamos la Numeración de la Factura
                         if (Facturacion.TipoFacturacion.GeneraNumeracionAlFinal)
                         {

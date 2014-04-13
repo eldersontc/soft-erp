@@ -29,27 +29,11 @@ namespace Soft.Facturacion.Entidades
 
         public virtual TipoNotaDebito TipoNotaDebito { get { return (TipoNotaDebito)TipoDocumento; } }
 
-        public virtual void AddItem(string IDOP)
+        public virtual ItemNotaDebito AddItem()
         {
             ItemNotaDebito Item = new ItemNotaDebito();
-            Item.IDOrdenProduccion = IDOP;
             Items.Add(Item);
-        }
-
-        public virtual ItemNotaDebito ObtenerItem(String IDItem)
-        {
-            return (ItemNotaDebito)Items.First(Item => ((ItemNotaDebito)Item).IDOrdenProduccion.Equals(IDItem));
-        }
-
-        public virtual string ObtenerFiltroOps()
-        {
-            string Filtro = "";
-            foreach (ItemNotaDebito Item in Items)
-            {
-                if (Filtro.Length > 0) { Filtro += ","; }
-                Filtro += String.Format("'{0}'", Item.IDOrdenProduccion);
-            }
-            return Filtro;
+            return Item;
         }
 
         public virtual void CalcularTotales()

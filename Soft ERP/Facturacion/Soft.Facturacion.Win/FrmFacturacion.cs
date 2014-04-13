@@ -83,7 +83,11 @@ namespace Soft.Facturacion.Win
 
         public void Mostrar()
         {
-            ssTipoDocumento.Text = (Facturacion.TipoDocumento != null) ? Facturacion.TipoDocumento.Descripcion : "";
+            if (Facturacion.TipoDocumento != null)
+            {
+                ssTipoDocumento.Text = Facturacion.TipoDocumento.Descripcion;
+                txtNumeracion.Enabled = (Facturacion.TipoDocumento.NumeracionAutomatica) ? false : true;
+            }
             ssCliente.Text  = (Facturacion.Cliente != null) ? Facturacion.Cliente.Nombre : "";
             ssResponsable.Text = (Facturacion.Responsable != null) ? Facturacion.Responsable.Nombre : "";
             ssMoneda.Text = (Facturacion.Moneda != null) ? Facturacion.Moneda.Simbolo : "";
@@ -148,8 +152,9 @@ namespace Soft.Facturacion.Win
                 Facturacion.TipoDocumento = (TipoFacturacion)FrmSeleccionar.GetSelectedEntity(typeof(TipoFacturacion), "Tipo Facturación", All:true);
                 if (Facturacion.TipoDocumento != null)
                 {
-                    ssTipoDocumento.Text = Facturacion.TipoDocumento.Descripcion;
-                    txtNumeracion.Enabled = !Facturacion.TipoDocumento.GeneraNumeracionAlFinal;
+                    Facturacion.GenerarNumeracion();
+                    Facturacion.Responsable = FrmMain.ObtenerResponsable();
+                    Mostrar();
                 }
             }
             catch (Exception ex)
@@ -248,9 +253,9 @@ namespace Soft.Facturacion.Win
                     Item.IDOrdenProduccion = ItemOP.ID;
                     Item.NroOP = ItemOP.Numeracion;
                     Item.Descripcion = ItemOP.Descripcion;
-                    Item.CantidadOP = ItemOP.Cantidad;
-                    Item.Cantidad = ItemOP.Cantidad;
-                    Item.Precio = ItemOP.Total / ItemOP.Cantidad;
+                    Item.CantidadOP = (ItemOP.Cantidad - ItemOP.CantidadFacturada);
+                    Item.Cantidad = Item.CantidadOP;
+                    Item.Precio = (ItemOP.Total / ItemOP.Cantidad);
                 }
                 MostrarItems();
                 MostrarTotales();

@@ -46,7 +46,7 @@
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.tabItems = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.ugOrdenesProduccion = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.ugItems = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.ubQuitarOP = new Infragistics.Win.Misc.UltraButton();
             this.ubAgregarOP = new Infragistics.Win.Misc.UltraButton();
             this.ssMoneda = new Soft.Controls.SoftSearch();
@@ -77,7 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.tabItems.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ugOrdenesProduccion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ugItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udtFechaCreacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumeracion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcOrdenesProducion)).BeginInit();
@@ -394,25 +394,26 @@
             // 
             // tabItems
             // 
-            this.tabItems.Controls.Add(this.ugOrdenesProduccion);
+            this.tabItems.Controls.Add(this.ugItems);
             this.tabItems.Controls.Add(this.ubQuitarOP);
             this.tabItems.Controls.Add(this.ubAgregarOP);
             this.tabItems.Location = new System.Drawing.Point(1, 23);
             this.tabItems.Name = "tabItems";
             this.tabItems.Size = new System.Drawing.Size(658, 224);
             // 
-            // ugOrdenesProduccion
+            // ugItems
             // 
-            this.ugOrdenesProduccion.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            this.ugOrdenesProduccion.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
-            this.ugOrdenesProduccion.DisplayLayout.Override.RowSelectorNumberStyle = Infragistics.Win.UltraWinGrid.RowSelectorNumberStyle.ListIndex;
-            this.ugOrdenesProduccion.DisplayLayout.TabNavigation = Infragistics.Win.UltraWinGrid.TabNavigation.NextControl;
-            this.ugOrdenesProduccion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ugOrdenesProduccion.Location = new System.Drawing.Point(0, 0);
-            this.ugOrdenesProduccion.Name = "ugOrdenesProduccion";
-            this.ugOrdenesProduccion.Size = new System.Drawing.Size(658, 187);
-            this.ugOrdenesProduccion.TabIndex = 9;
-            this.ugOrdenesProduccion.Text = "ultraGrid1";
+            this.ugItems.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.ugItems.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
+            this.ugItems.DisplayLayout.Override.RowSelectorNumberStyle = Infragistics.Win.UltraWinGrid.RowSelectorNumberStyle.ListIndex;
+            this.ugItems.DisplayLayout.TabNavigation = Infragistics.Win.UltraWinGrid.TabNavigation.NextControl;
+            this.ugItems.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ugItems.Location = new System.Drawing.Point(0, 0);
+            this.ugItems.Name = "ugItems";
+            this.ugItems.Size = new System.Drawing.Size(658, 187);
+            this.ugItems.TabIndex = 9;
+            this.ugItems.Text = "ultraGrid1";
+            this.ugItems.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ugItems_CellChange);
             // 
             // ubQuitarOP
             // 
@@ -421,7 +422,7 @@
             this.ubQuitarOP.Name = "ubQuitarOP";
             this.ubQuitarOP.Size = new System.Drawing.Size(111, 23);
             this.ubQuitarOP.TabIndex = 8;
-            this.ubQuitarOP.Text = "&Quitar OP";
+            this.ubQuitarOP.Text = "&Eliminar Item";
             this.ubQuitarOP.Click += new System.EventHandler(this.ubQuitarOP_Click);
             // 
             // ubAgregarOP
@@ -431,7 +432,7 @@
             this.ubAgregarOP.Name = "ubAgregarOP";
             this.ubAgregarOP.Size = new System.Drawing.Size(104, 23);
             this.ubAgregarOP.TabIndex = 7;
-            this.ubAgregarOP.Text = "&Agregar OP";
+            this.ubAgregarOP.Text = "&Nuevo Item";
             this.ubAgregarOP.Click += new System.EventHandler(this.ubAgregarOP_Click);
             // 
             // ssMoneda
@@ -505,7 +506,7 @@
             this.utcOrdenesProducion.TabHeaderAreaAppearance = appearance12;
             this.utcOrdenesProducion.TabIndex = 61;
             ultraTab2.TabPage = this.tabItems;
-            ultraTab2.Text = ":: Ordenes de Producción ::";
+            ultraTab2.Text = ":: Items ::";
             this.utcOrdenesProducion.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
             ultraTab2});
             // 
@@ -697,7 +698,7 @@
             this.ugbParent.ResumeLayout(false);
             this.ugbParent.PerformLayout();
             this.tabItems.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ugOrdenesProduccion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ugItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udtFechaCreacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumeracion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcOrdenesProducion)).EndInit();
@@ -734,7 +735,7 @@
         private Infragistics.Win.UltraWinTabControl.UltraTabControl utcOrdenesProducion;
         private Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage ultraTabSharedControlsPage1;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl tabItems;
-        private Infragistics.Win.UltraWinGrid.UltraGrid ugOrdenesProduccion;
+        private Infragistics.Win.UltraWinGrid.UltraGrid ugItems;
         private Infragistics.Win.Misc.UltraButton ubQuitarOP;
         private Infragistics.Win.Misc.UltraButton ubAgregarOP;
         private Controls.SoftSearch ssResponsable;

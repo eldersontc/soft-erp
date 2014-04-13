@@ -3,18 +3,18 @@
 
   <class name="Soft.Facturacion.Entidades.Facturacion, Soft.Facturacion.Entidades" dynamic-update="true">
 
-    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
-    <property name="Numeracion" type="string"/>
-    <property name="FechaCreacion" type="DateTime"/>
-    <property name="Observacion" type="string"/>
-    <property name="SubTotal" type="decimal"/>
-    <property name="Impuesto" type="decimal"/>
-    <property name="Total" type="decimal"/>
+    <id name="ID" column ="ID" unsaved-value="0"/>
+    <property name="Numeracion"/>
+    <property name="FechaCreacion"/>
+    <property name="Observacion"/>
+    <property name="SubTotal"/>
+    <property name="Impuesto"/>
+    <property name="Total"/>
 
-    <many-to-one name="TipoDocumento" class="Soft.Facturacion.Entidades.TipoFacturacion" column="IDTipoFacturacion" insert="true" update="true" lazy="false"/>
-    <many-to-one name="Cliente" class="Soft.Entities.SocioNegocio" column="IDCliente" insert="true" update="true" lazy="false"/>
-    <many-to-one name="Responsable" class="Soft.Entities.SocioNegocio" column="IDResponsable" insert="true" update="true" lazy="false"/>
-    <many-to-one name="Moneda" class="Soft.Entities.Moneda" column="IDMoneda" insert="true" update="true" lazy="false"/>
+    <many-to-one name="TipoDocumento" class="Soft.Facturacion.Entidades.TipoFacturacion" column="IDTipoFacturacion" lazy="false"/>
+    <many-to-one name="Cliente" class="Soft.Entities.SocioNegocio" column="IDCliente" lazy="false"/>
+    <many-to-one name="Responsable" class="Soft.Entities.SocioNegocio" column="IDResponsable" lazy="false"/>
+    <many-to-one name="Moneda" class="Soft.Entities.Moneda" column="IDMoneda" lazy="false"/>
 
     <bag name="Items" cascade="all-delete-orphan" order-by="Orden" lazy="false">
       <key column="IDFacturacion"/>

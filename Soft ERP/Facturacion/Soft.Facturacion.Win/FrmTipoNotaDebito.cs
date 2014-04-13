@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Soft.Win;
 using Soft.Facturacion.Entidades;
+using Soft.Exceptions;
 
 namespace Soft.Facturacion.Win
 {
@@ -41,6 +42,9 @@ namespace Soft.Facturacion.Win
             CheckNumeracionAutomatica.Checked = TipoNotaDebito.NumeracionAutomatica;
             CheckGeneraNumeracionalFinal.Checked = TipoNotaDebito.GeneraNumeracionAlFinal;
             unePorcentajeImpuesto.Value = TipoNotaDebito.PorcentajeImpuesto;
+            uceGeneraDeuda.Checked = TipoNotaDebito.GeneraDeuda;
+            uceTipoDeuda.Text = TipoNotaDebito.TipoDeuda;
+            uceTipoDeuda.Enabled = TipoNotaDebito.GeneraDeuda;
         }
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)
@@ -103,6 +107,31 @@ namespace Soft.Facturacion.Win
         private void unePorcentajeImpuesto_ValueChanged(object sender, EventArgs e)
         {
             TipoNotaDebito.PorcentajeImpuesto = Convert.ToDecimal(unePorcentajeImpuesto.Value);
+        }
+
+        private void uceGeneraDeuda_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                TipoNotaDebito.GeneraDeuda = uceGeneraDeuda.Checked;
+                uceTipoDeuda.Enabled = TipoNotaDebito.GeneraDeuda;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void uceTipoDeuda_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                TipoNotaDebito.TipoDeuda = uceTipoDeuda.Text;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
     }
 }

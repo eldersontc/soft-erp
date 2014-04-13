@@ -17,5 +17,8 @@ namespace Soft.Facturacion.Entidades
                 EntidadTipoDocumento = "TipoNotaDebito";
             }
         }
+
+        public virtual bool GeneraDeuda { get; set; }
+        public virtual string TipoDeuda { get; set; }
     }
 }

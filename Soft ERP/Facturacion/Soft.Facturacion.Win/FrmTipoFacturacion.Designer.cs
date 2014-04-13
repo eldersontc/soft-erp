@@ -37,19 +37,23 @@ namespace Soft.Facturacion.Win
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.ValueListItem valueListItem8 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem9 = new Infragistics.Win.ValueListItem();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.CheckNumeracionAutomatica = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.CheckGeneraNumeracionalFinal = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
@@ -79,6 +83,10 @@ namespace Soft.Facturacion.Win
             this.unePorcentajeImpuesto = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.lblComprobante = new Infragistics.Win.Misc.UltraLabel();
             this.uceComprobante = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
+            this.ugbImpresion = new Infragistics.Win.Misc.UltraGroupBox();
+            this.ugbDeuda = new Infragistics.Win.Misc.UltraGroupBox();
+            this.uceGeneraDeuda = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
+            this.uceTipoDeuda = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.ultraTabPageControl1.SuspendLayout();
@@ -101,6 +109,12 @@ namespace Soft.Facturacion.Win
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unePorcentajeImpuesto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceComprobante)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ugbImpresion)).BeginInit();
+            this.ugbImpresion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ugbDeuda)).BeginInit();
+            this.ugbDeuda.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uceGeneraDeuda)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uceTipoDeuda)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
@@ -398,7 +412,7 @@ namespace Soft.Facturacion.Win
             this.ultraTabPageControl1.Controls.Add(this.CheckGeneraNumeracionalFinal);
             this.ultraTabPageControl1.Controls.Add(this.ultraGroupBox2);
             this.ultraTabPageControl1.Controls.Add(this.ultraGroupBox1);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(404, 182);
             // 
@@ -534,27 +548,27 @@ namespace Soft.Facturacion.Win
             // 
             // ultraTabPageControl2
             // 
-            this.ultraTabPageControl2.Controls.Add(this.ssReporte);
-            this.ultraTabPageControl2.Controls.Add(this.lblReporte);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Controls.Add(this.ugbDeuda);
+            this.ultraTabPageControl2.Controls.Add(this.ugbImpresion);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(404, 182);
             // 
             // ssReporte
             // 
             this.ssReporte.BackColor = System.Drawing.Color.Transparent;
-            this.ssReporte.Location = new System.Drawing.Point(103, 15);
+            this.ssReporte.Location = new System.Drawing.Point(81, 30);
             this.ssReporte.Name = "ssReporte";
-            this.ssReporte.Size = new System.Drawing.Size(276, 36);
+            this.ssReporte.Size = new System.Drawing.Size(276, 27);
             this.ssReporte.TabIndex = 31;
             this.ssReporte.Search += new System.EventHandler(this.ssReporte_Search);
             // 
             // lblReporte
             // 
-            appearance10.BackColor = System.Drawing.Color.Transparent;
-            this.lblReporte.Appearance = appearance10;
+            appearance12.BackColor = System.Drawing.Color.Transparent;
+            this.lblReporte.Appearance = appearance12;
             this.lblReporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblReporte.Location = new System.Drawing.Point(21, 19);
+            this.lblReporte.Location = new System.Drawing.Point(13, 34);
             this.lblReporte.Name = "lblReporte";
             this.lblReporte.Size = new System.Drawing.Size(100, 23);
             this.lblReporte.TabIndex = 30;
@@ -571,13 +585,13 @@ namespace Soft.Facturacion.Win
             this.utNumeracion.Name = "utNumeracion";
             this.utNumeracion.SharedControlsPage = this.ultraTabSharedControlsPage1;
             this.utNumeracion.Size = new System.Drawing.Size(408, 208);
-            appearance11.BackColor = System.Drawing.Color.Transparent;
-            this.utNumeracion.TabHeaderAreaAppearance = appearance11;
+            appearance13.BackColor = System.Drawing.Color.Transparent;
+            this.utNumeracion.TabHeaderAreaAppearance = appearance13;
             this.utNumeracion.TabIndex = 43;
             ultraTab1.TabPage = this.ultraTabPageControl1;
             ultraTab1.Text = ":: Numeración ::";
             ultraTab2.TabPage = this.ultraTabPageControl2;
-            ultraTab2.Text = ":: Impresión ::";
+            ultraTab2.Text = ":: Configuración ::";
             this.utNumeracion.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
             ultraTab1,
             ultraTab2});
@@ -613,8 +627,8 @@ namespace Soft.Facturacion.Win
             // 
             // ultraLabel2
             // 
-            appearance12.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance12;
+            appearance14.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance14;
             this.ultraLabel2.Location = new System.Drawing.Point(12, 72);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(100, 23);
@@ -631,8 +645,8 @@ namespace Soft.Facturacion.Win
             // 
             // Nombre
             // 
-            appearance13.BackColor = System.Drawing.Color.Transparent;
-            this.Nombre.Appearance = appearance13;
+            appearance15.BackColor = System.Drawing.Color.Transparent;
+            this.Nombre.Appearance = appearance15;
             this.Nombre.Location = new System.Drawing.Point(12, 43);
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(100, 23);
@@ -649,8 +663,8 @@ namespace Soft.Facturacion.Win
             // 
             // Codigo
             // 
-            appearance14.BackColor = System.Drawing.Color.Transparent;
-            this.Codigo.Appearance = appearance14;
+            appearance16.BackColor = System.Drawing.Color.Transparent;
+            this.Codigo.Appearance = appearance16;
             this.Codigo.Location = new System.Drawing.Point(12, 16);
             this.Codigo.Name = "Codigo";
             this.Codigo.Size = new System.Drawing.Size(100, 23);
@@ -706,6 +720,61 @@ namespace Soft.Facturacion.Win
             this.uceComprobante.TabIndex = 46;
             this.uceComprobante.ValueChanged += new System.EventHandler(this.uceComprobante_ValueChanged);
             // 
+            // ugbImpresion
+            // 
+            appearance11.BackColor = System.Drawing.Color.Transparent;
+            this.ugbImpresion.Appearance = appearance11;
+            this.ugbImpresion.Controls.Add(this.ssReporte);
+            this.ugbImpresion.Controls.Add(this.lblReporte);
+            this.ugbImpresion.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
+            this.ugbImpresion.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
+            this.ugbImpresion.Location = new System.Drawing.Point(16, 91);
+            this.ugbImpresion.Name = "ugbImpresion";
+            this.ugbImpresion.Size = new System.Drawing.Size(372, 63);
+            this.ugbImpresion.TabIndex = 39;
+            this.ugbImpresion.Text = "Impresión";
+            // 
+            // ugbDeuda
+            // 
+            appearance10.BackColor = System.Drawing.Color.Transparent;
+            this.ugbDeuda.Appearance = appearance10;
+            this.ugbDeuda.Controls.Add(this.uceGeneraDeuda);
+            this.ugbDeuda.Controls.Add(this.uceTipoDeuda);
+            this.ugbDeuda.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
+            this.ugbDeuda.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
+            this.ugbDeuda.Location = new System.Drawing.Point(16, 15);
+            this.ugbDeuda.Name = "ugbDeuda";
+            this.ugbDeuda.Size = new System.Drawing.Size(372, 63);
+            this.ugbDeuda.TabIndex = 40;
+            this.ugbDeuda.Text = "Deuda";
+            // 
+            // uceGeneraDeuda
+            // 
+            this.uceGeneraDeuda.BackColor = System.Drawing.Color.Transparent;
+            this.uceGeneraDeuda.BackColorInternal = System.Drawing.Color.Transparent;
+            this.uceGeneraDeuda.Location = new System.Drawing.Point(15, 31);
+            this.uceGeneraDeuda.Name = "uceGeneraDeuda";
+            this.uceGeneraDeuda.Size = new System.Drawing.Size(115, 20);
+            this.uceGeneraDeuda.TabIndex = 60;
+            this.uceGeneraDeuda.Text = "Genera Deuda";
+            this.uceGeneraDeuda.CheckedChanged += new System.EventHandler(this.uceGeneraDeuda_CheckedChanged);
+            // 
+            // uceTipoDeuda
+            // 
+            this.uceTipoDeuda.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            valueListItem8.DataValue = "Cobrar";
+            valueListItem8.DisplayText = "Cobrar";
+            valueListItem9.DataValue = "Pagar";
+            valueListItem9.DisplayText = "Pagar";
+            this.uceTipoDeuda.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem8,
+            valueListItem9});
+            this.uceTipoDeuda.Location = new System.Drawing.Point(136, 30);
+            this.uceTipoDeuda.Name = "uceTipoDeuda";
+            this.uceTipoDeuda.Size = new System.Drawing.Size(122, 21);
+            this.uceTipoDeuda.TabIndex = 60;
+            this.uceTipoDeuda.ValueChanged += new System.EventHandler(this.uceTipoDeuda_ValueChanged);
+            // 
             // FrmTipoFacturacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -738,6 +807,13 @@ namespace Soft.Facturacion.Win
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unePorcentajeImpuesto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceComprobante)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ugbImpresion)).EndInit();
+            this.ugbImpresion.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ugbDeuda)).EndInit();
+            this.ugbDeuda.ResumeLayout(false);
+            this.ugbDeuda.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uceGeneraDeuda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uceTipoDeuda)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -773,5 +849,9 @@ namespace Soft.Facturacion.Win
         private Infragistics.Win.Misc.UltraLabel lblPorcentajeImpuesto;
         private Infragistics.Win.UltraWinEditors.UltraComboEditor uceComprobante;
         private Infragistics.Win.Misc.UltraLabel lblComprobante;
+        private Infragistics.Win.Misc.UltraGroupBox ugbImpresion;
+        private Infragistics.Win.Misc.UltraGroupBox ugbDeuda;
+        private Infragistics.Win.UltraWinEditors.UltraCheckEditor uceGeneraDeuda;
+        private Infragistics.Win.UltraWinEditors.UltraComboEditor uceTipoDeuda;
     }
 }

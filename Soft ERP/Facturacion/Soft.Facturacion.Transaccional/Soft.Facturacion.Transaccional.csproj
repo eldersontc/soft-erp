@@ -66,6 +66,9 @@
     <Compile Include="EliminarFacturacion.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="EliminarNotaDebito.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
