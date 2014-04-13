@@ -13,5 +13,13 @@ namespace Soft.Entities
         public virtual String Numeracion { get; set; }
         public virtual String Observacion { get; set; }
         public virtual DateTime FechaCreacion { get; set; }
+
+        public virtual void GenerarNumeracion()
+        {
+            if (NewInstance)
+            {
+                Numeracion = TipoDocumento.GenerarNumerodeDocumento();
+            }
+        }
     }
 }
