@@ -3,22 +3,24 @@
 
   <class name="Soft.Facturacion.Entidades.TipoNotaDebito, Soft.Facturacion.Entidades" dynamic-update="true">
 
-    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
-    <property name="Codigo" type="string"/>
-    <property name="Nombre" type="string"/>
-    <property name="Descripcion" type="string"/>
-    <property name="Activo" type="boolean"/>
-    <property name="CodigoSerie" type="string"/>
-    <property name="LongitudSerie" type="int"/>
-    <property name="NumeracionActual" type="int"/>
-    <property name="NumeracionLongitud" type="int"/>
-    <property name="GeneraNumeracionAlFinal" type="boolean"/>
-    <property name="NumeracionAutomatica" type="boolean"/>
-    <property name="Entidad" type="string"/>
-    <property name="EntidadTipoDocumento" type="string"/>
-    <property name="PorcentajeImpuesto" type="decimal"/>
+    <id name="ID" unsaved-value="0"/>
+    <property name="Codigo"/>
+    <property name="Nombre"/>
+    <property name="Descripcion"/>
+    <property name="Activo"/>
+    <property name="CodigoSerie"/>
+    <property name="LongitudSerie"/>
+    <property name="NumeracionActual"/>
+    <property name="NumeracionLongitud"/>
+    <property name="GeneraNumeracionAlFinal"/>
+    <property name="NumeracionAutomatica"/>
+    <property name="Entidad"/>
+    <property name="EntidadTipoDocumento"/>
+    <property name="PorcentajeImpuesto"/>
+    <property name="GeneraDeuda"/>
+    <property name="TipoDeuda"/>
     
-    <many-to-one name="Reporte" class="Soft.Reporte.Entidades.Reporte" column="IDReporte" insert="true" update="true" lazy="false"/>
+    <many-to-one name="Reporte" class="Soft.Reporte.Entidades.Reporte" column="IDReporte" lazy="false"/>
 
   </class>
 

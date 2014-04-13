@@ -3,9 +3,14 @@
 
   <class name="Soft.Facturacion.Entidades.ItemNotaDebito, Soft.Facturacion.Entidades" dynamic-update="true">
 
-    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
-    <property name="IDOrdenProduccion" type="string"/>
-    <property name="Total" type="decimal"/>
+    <id name="ID" unsaved-value="0"/>
+    <property name="Codigo"/>
+    <property name="Descripcion"/>
+    <property name="Cantidad"/>
+    <property name="Precio"/>
+    <property name="Total"/>
+    <property name="Observacion"/>
 
   </class>
+  
 </hibernate-mapping>

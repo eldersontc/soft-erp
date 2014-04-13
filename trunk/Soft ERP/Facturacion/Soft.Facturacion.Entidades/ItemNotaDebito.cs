@@ -10,7 +10,21 @@ namespace Soft.Facturacion.Entidades
     {
         public ItemNotaDebito() { }
 
-        public virtual string IDOrdenProduccion { get; set; }
-        public virtual decimal Total { get; set; }
+        public virtual string Codigo { get; set; }
+        public virtual string Descripcion { get; set; }
+        public virtual string Observacion { get; set; }
+        public virtual decimal Cantidad { get; set; }
+        public virtual decimal Precio { get; set; }
+
+        private decimal Total_;
+        public virtual decimal Total
+        {
+            get
+            {
+                Total_ = Cantidad * Precio;
+                return Total_;
+            }
+            set { Total_ = value; }
+        }
     }
 }

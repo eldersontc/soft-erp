@@ -7,6 +7,7 @@ using Soft.Facturacion.Entidades;
 using NHibernate;
 using System.Data.SqlClient;
 using Soft.Exceptions;
+using Soft.Entities;
 
 namespace Soft.Facturacion.Transaccional
 {
@@ -24,6 +25,19 @@ namespace Soft.Facturacion.Transaccional
                         // Creamos la Nota de Débito
                         Sesion.Save(NotaDebito);
                         Sesion.Flush();
+                        // Creamos una Deuda.
+                        if (NotaDebito.TipoNotaDebito.GeneraDeuda)
+                        {
+                            Deuda Deuda = new Deuda();
+                            Deuda.Tipo = NotaDebito.TipoNotaDebito.TipoDeuda;
+                            Deuda.TipoDocumento = "Nota de Débito";
+                            Deuda.IDDocumento = NotaDebito.ID;
+                            Deuda.Descripcion = NotaDebito.TipoDocumento.Nombre;
+                            Deuda.IDSocioNegocio = (NotaDebito.Cliente != null) ? NotaDebito.Cliente.ID : null;
+                            Deuda.Saldo = NotaDebito.Total;
+                            Deuda.Total = NotaDebito.Total;
+                            Sesion.Save(Deuda);
+                        }
                         // Actualizamos la Numeración de la Nota de Débito
                         if (NotaDebito.TipoNotaDebito.GeneraNumeracionAlFinal)
                         {

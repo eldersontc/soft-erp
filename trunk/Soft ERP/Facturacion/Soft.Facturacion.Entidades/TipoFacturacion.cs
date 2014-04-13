@@ -19,5 +19,7 @@ namespace Soft.Facturacion.Entidades
         }
 
         public virtual string Comprobante { get; set; }
+        public virtual bool GeneraDeuda { get; set; }
+        public virtual string TipoDeuda { get; set; }
     }
 }

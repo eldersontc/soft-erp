@@ -16,6 +16,7 @@ using System.Xml;
 using Soft.DataAccess;
 using Infragistics.Win.UltraWinGrid;
 using Soft.Facturacion.Entidades;
+using Infragistics.Win;
 
 namespace Soft.Facturacion.Win
 {
@@ -28,8 +29,9 @@ namespace Soft.Facturacion.Win
 
         #region "Propiedades"
 
-        const String colNroOP = "Nº OP";
+        const String colCodigo = "Código";
         const String colDescripcion = "Descripción";
+        const String colPrecio = "Precio";
         const String colCantidad = "Cantidad";
         const String colObservacion = "Observación";
         const String colTotal = "Total";
@@ -51,7 +53,7 @@ namespace Soft.Facturacion.Win
             DataTable columns = new DataTable();
             DataColumn column = new DataColumn();
 
-            column = columns.Columns.Add(colNroOP);
+            column = columns.Columns.Add(colCodigo);
             column.DataType = typeof(string);
 
             column = columns.Columns.Add(colDescripcion);
@@ -60,19 +62,34 @@ namespace Soft.Facturacion.Win
             column = columns.Columns.Add(colCantidad);
             column.DataType = typeof(decimal);
 
-            column = columns.Columns.Add(colObservacion);
-            column.DataType = typeof(String);
+            column = columns.Columns.Add(colPrecio);
+            column.DataType = typeof(decimal);
 
             column = columns.Columns.Add(colTotal);
             column.DataType = typeof(decimal);
 
-            ugOrdenesProduccion.DataSource = columns;
-            MapKeys(ref ugOrdenesProduccion);
+            column = columns.Columns.Add(colObservacion);
+            column.DataType = typeof(String);
+
+            ugItems.DataSource = columns;
+            ugItems.DisplayLayout.Bands[0].Columns[colDescripcion].Width = 250;
+            ugItems.DisplayLayout.Bands[0].Columns[colCantidad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
+            ugItems.DisplayLayout.Bands[0].Columns[colCantidad].CellAppearance.TextHAlign = HAlign.Right;
+            ugItems.DisplayLayout.Bands[0].Columns[colPrecio].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
+            ugItems.DisplayLayout.Bands[0].Columns[colPrecio].CellAppearance.TextHAlign = HAlign.Right;
+            ugItems.DisplayLayout.Bands[0].Columns[colTotal].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
+            ugItems.DisplayLayout.Bands[0].Columns[colTotal].CellAppearance.TextHAlign = HAlign.Right;
+            ugItems.DisplayLayout.Bands[0].Columns[colTotal].CellActivation = Activation.NoEdit;
+            MapKeys(ref ugItems);
         }
 
         public void Mostrar()
         {
-            ssTipoDocumento.Text = (NotaDebito.TipoDocumento != null) ? NotaDebito.TipoDocumento.Descripcion : "";
+            if (NotaDebito.TipoDocumento != null)
+            {
+                ssTipoDocumento.Text = NotaDebito.TipoDocumento.Descripcion;
+                txtNumeracion.Enabled = (NotaDebito.TipoDocumento.NumeracionAutomatica) ? false : true;
+            }
             ssCliente.Text  = (NotaDebito.Cliente != null) ? NotaDebito.Cliente.Nombre : "";
             ssResponsable.Text = (NotaDebito.Responsable != null) ? NotaDebito.Responsable.Nombre : "";
             ssMoneda.Text = (NotaDebito.Moneda != null) ? NotaDebito.Moneda.Simbolo : "";
@@ -87,30 +104,25 @@ namespace Soft.Facturacion.Win
 
         public void MostrarItems()
         {
-            if (NotaDebito.Items.Count == 0)
+            base.ClearAllRows(ref ugItems);
+            foreach (ItemNotaDebito Item in NotaDebito.Items)
             {
-                NotaDebito.Total = 0;
-                uneTotal.Value = 0;
-                return;
+                UltraGridRow Row = ugItems.DisplayLayout.Bands[0].AddNew();
+                Row.Tag = Item;
+                MostrarItem(Row);
             }
-            base.ClearAllRows(ref ugOrdenesProduccion);
-            String Filtro = String.Format(" IDOP IN ({0})", NotaDebito.ObtenerFiltroOps());
-            XmlDocument XML = HelperNHibernate.ExecuteView("vSF_OrdenProduccionxID", Filtro);
-            if (XML.HasChildNodes)
-            {
-                foreach (XmlNode NodoItem in XML.DocumentElement.ChildNodes)
-                {
-                    ItemNotaDebito Item = NotaDebito.ObtenerItem(NodoItem.SelectSingleNode("@IDOP").Value);
-                    Item.Total = Convert.ToDecimal(NodoItem.SelectSingleNode("@Total").Value);
-                    UltraGridRow Row = ugOrdenesProduccion.DisplayLayout.Bands[0].AddNew();
-                    Row.Tag = Item;
-                    Row.Cells[colNroOP].Value = NodoItem.SelectSingleNode("@Numeracion").Value;
-                    Row.Cells[colDescripcion].Value = NodoItem.SelectSingleNode("@Descripcion").Value;
-                    Row.Cells[colCantidad].Value = NodoItem.SelectSingleNode("@Cantidad").Value;
-                    Row.Cells[colObservacion].Value = NodoItem.SelectSingleNode("@Observacion").Value;
-                    Row.Cells[colTotal].Value = Convert.ToDecimal(NodoItem.SelectSingleNode("@Total").Value);
-                }
-            }
+        }
+
+        public void MostrarItem(UltraGridRow Row)
+        {
+            ItemNotaDebito Item = (ItemNotaDebito)Row.Tag;
+
+            Row.Cells[colCodigo].Value = Item.Codigo;
+            Row.Cells[colDescripcion].Value = Item.Descripcion;
+            Row.Cells[colPrecio].Value = Item.Precio;
+            Row.Cells[colCantidad].Value = Item.Cantidad;
+            Row.Cells[colTotal].Value = Item.Total;
+            Row.Cells[colObservacion].Value = Item.Observacion;
         }
 
         public void MostrarTotales() {
@@ -144,8 +156,9 @@ namespace Soft.Facturacion.Win
                 NotaDebito.TipoDocumento = (TipoNotaDebito)FrmSeleccionar.GetSelectedEntity(typeof(TipoNotaDebito), "Tipo Nota Débito", All:true);
                 if (NotaDebito.TipoNotaDebito != null)
                 {
-                    ssTipoDocumento.Text = NotaDebito.TipoDocumento.Descripcion;
-                    txtNumeracion.Enabled = !NotaDebito.TipoDocumento.GeneraNumeracionAlFinal;
+                    NotaDebito.GenerarNumeracion();
+                    NotaDebito.Responsable = FrmMain.ObtenerResponsable();
+                    Mostrar();
                 }
             }
             catch (Exception ex)
@@ -233,17 +246,8 @@ namespace Soft.Facturacion.Win
         {
             try
             {
-                Collection Ops = new Collection();
-                FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-                String Filtro = NotaDebito.ObtenerFiltroOps();
-                Filtro = (Filtro.Length > 0) ? String.Format(" ID NOT IN ({0}) AND IDCliente = '{1}' AND EstadoFacturacion = 'PENDIENTE'", Filtro, NotaDebito.Cliente.ID) : String.Format(" IDCliente = '{0}' AND EstadoFacturacion = 'PENDIENTE'", NotaDebito.Cliente.ID);
-                Ops = FrmSeleccionar.GetSelectedsEntities(typeof(OrdenProduccion), "Selección de Ordenes de Producción", Filtro);
-                foreach (OrdenProduccion Item in Ops)
-                {
-                    NotaDebito.AddItem(Item.ID);
-                }
-                MostrarItems();
-                MostrarTotales();
+                UltraGridRow RowNuevo = ugItems.DisplayLayout.Bands[0].AddNew();
+                RowNuevo.Tag = NotaDebito.AddItem();
             }
             catch (Exception ex)
             {
@@ -255,10 +259,9 @@ namespace Soft.Facturacion.Win
         {
             try
             {
-                if (ugOrdenesProduccion.ActiveRow == null) { return; }
-                NotaDebito.Items.Remove((ItemNotaDebito)ugOrdenesProduccion.ActiveRow.Tag);
-                ugOrdenesProduccion.ActiveRow.Delete(false);
-                MostrarItems();
+                if (ugItems.ActiveRow == null) { return; }
+                NotaDebito.Items.Remove((ItemNotaDebito)ugItems.ActiveRow.Tag);
+                ugItems.ActiveRow.Delete(false);
                 MostrarTotales();
             }
             catch (Exception ex)
@@ -272,6 +275,40 @@ namespace Soft.Facturacion.Win
             try
             {
                 NotaDebito.Observacion = txtObservacion.Text;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ugItems_CellChange(object sender, CellEventArgs e)
+        {
+            try
+            {
+                ItemNotaDebito Item = (ItemNotaDebito)e.Cell.Row.Tag;
+                switch (e.Cell.Column.Key)
+                {
+                    case colCodigo:
+                        Item.Codigo = e.Cell.Text;
+                        break;
+                    case colDescripcion:
+                        Item.Descripcion = e.Cell.Text;
+                        break;
+                    case colPrecio:
+                        Item.Precio = Convert.ToDecimal(e.Cell.Text.Replace('_', ' '));
+                        break;
+                    case colCantidad:
+                        Item.Cantidad = Convert.ToDecimal(e.Cell.Text.Replace('_', ' '));
+                        break;
+                    case colObservacion:
+                        Item.Observacion = e.Cell.Text;
+                        break;
+                    default:
+                        break;
+                }
+                MostrarItem(e.Cell.Row);
+                MostrarTotales();
             }
             catch (Exception ex)
             {

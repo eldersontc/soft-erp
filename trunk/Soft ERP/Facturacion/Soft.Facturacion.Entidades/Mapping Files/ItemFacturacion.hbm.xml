@@ -3,14 +3,14 @@
 
   <class name="Soft.Facturacion.Entidades.ItemFacturacion, Soft.Facturacion.Entidades" dynamic-update="true">
 
-    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
-    <property name="IDOrdenProduccion" type="string"/>
-    <property name="NroOP" type="string"/>
-    <property name="Descripcion" type="string"/>
-    <property name="Observacion" type="string"/>
-    <property name="Total" type="decimal"/>
-    <property name="Cantidad" type="decimal"/>
-    <property name="Precio" type="decimal"/>
+    <id name="ID" unsaved-value="0"/>
+    <property name="IDOrdenProduccion"/>
+    <property name="NroOP"/>
+    <property name="Descripcion"/>
+    <property name="Observacion"/>
+    <property name="Total"/>
+    <property name="Cantidad"/>
+    <property name="Precio"/>
 
   </class>
 </hibernate-mapping>
