@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Finanzas.Entidades.SalidaCaja, Soft.Finanzas.Entidades" dynamic-update="true">
+
+    <id name="ID" unsaved-value="0"/>
+    <property name="Numeracion"/>
+    <property name="FechaCreacion"/>
+    <property name="Observacion"/>
+    <property name="SubTotal"/>
+    <property name="Impuesto"/>
+    <property name="Total"/>
+
+    <many-to-one name="TipoDocumento" class="Soft.Finanzas.Entidades.TipoCaja" column="IDTipoDocumento" lazy="false"/>
+    <many-to-one name="SocioNegocio" class="Soft.Entities.SocioNegocio" column="IDSocioNegocio" lazy="false"/>
+    <many-to-one name="Responsable" class="Soft.Entities.SocioNegocio" column="IDResponsable" lazy="false"/>
+    <many-to-one name="Moneda" class="Soft.Entities.Moneda" column="IDMoneda" lazy="false"/>
+    <many-to-one name="Caja" class="Soft.Finanzas.Entidades.Caja" column="IDCaja" lazy="false"/>
+
+    <bag name="Items" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDSalidaCaja"/>
+      <one-to-many class="Soft.Finanzas.Entidades.ItemSalidaCaja"/>
+    </bag>
+    
+  </class>
+
+</hibernate-mapping>
