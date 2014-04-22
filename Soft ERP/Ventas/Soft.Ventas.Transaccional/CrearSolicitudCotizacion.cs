@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 
 namespace Soft.Ventas.Transaccional
 {
-    public class CrearSolicitudCotizacion : ControllerApp 
+    public class CrearSolicitudCotizacion : ControllerApp
     {
 
 
@@ -25,20 +25,24 @@ namespace Soft.Ventas.Transaccional
                     try
                     {
                         SolicitudCotizacion cp = (SolicitudCotizacion)m_ObjectFlow;
-                        if (cp.TipoDocumento.GeneraNumeracionAlFinal == true)
+                        if (cp.TipoDocumento.GeneraNumeracionAlFinal)
                         {
                             SqlCommand SqlCmd = new SqlCommand();
                             SqlCmd.Connection = (SqlConnection)Sesion.Connection;
                             Trans.Enlist(SqlCmd);
-                            SqlCmd.CommandText = "pSF_NumeracionFinal_SolicitudCotizacion";
-                            SqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
-                            SqlCmd.Parameters.AddWithValue("@IDCp", cp.ID);
-                            SqlCmd.Parameters.AddWithValue("@IDTipoCp", cp.TipoDocumento.ID);
-                            SqlCmd.ExecuteNonQuery();
-                            Trans.Commit();
-                            m_ResultProcess = EnumResult.SUCESS;
+                            {
+                                SqlCmd.CommandText = "pSF_Generar_Numeracion";
+                                SqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                                SqlCmd.Parameters.Clear();
+                                SqlCmd.Parameters.AddWithValue("@Documento", "SolicitudCotizacion");
+                                SqlCmd.Parameters.AddWithValue("@TipoDocumento", "TipoSolicitudCotizacion");
+                                SqlCmd.Parameters.AddWithValue("@IDDocumento", cp.ID);
+                                SqlCmd.Parameters.AddWithValue("@IDTipoDocumento", cp.TipoDocumento.ID);
+                                SqlCmd.ExecuteNonQuery();
+                            }
                         }
                     }
+
                     catch (Exception ex)
                     {
                         Trans.Rollback();
