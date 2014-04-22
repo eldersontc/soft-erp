@@ -183,7 +183,10 @@ namespace Soft.Inventario.Win
                 FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
                 EntradaInventario.TipoDocumento = (TipoDocumentoInventario)FrmSeleccionar.GetSelectedEntity(typeof(TipoDocumentoInventario), "Tipo de Inventario", " Operacion = 'Entrada'", true);
                 if (EntradaInventario.TipoDocumento != null) {
-                    EntradaInventario.GenerarNumeracion();
+
+                    if (!EntradaInventario.TipoDocumento.GeneraNumeracionAlFinal) {
+                        EntradaInventario.GenerarNumeracion();
+                    }
                     EntradaInventario.Responsable = FrmMain.ObtenerResponsable();
                     Mostrar();
                 }
@@ -309,6 +312,31 @@ namespace Soft.Inventario.Win
                 Soft.Exceptions.SoftException.ShowException(ex);
             }
             Mostrar();
+        }
+
+        private void txtOrdenCompra_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                EntradaInventario.OrdenCompra = txtOrdenCompra.Text;
+            }
+            catch (Exception ex)
+            {
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
+
+        }
+
+        private void txtFactura_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                EntradaInventario.Factura = txtFactura.Text;
+            }
+            catch (Exception ex)
+            {
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
         }
 
     }
