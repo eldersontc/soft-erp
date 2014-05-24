@@ -16,6 +16,7 @@ using Infragistics.Win.UltraWinGrid;
 using Soft.Exceptions;
 using Soft.Inventario.Entidades;
 using Soft.Reporte.Entidades;
+using System.Xml;
 
 namespace Soft.Produccion.Win
 {
@@ -116,7 +117,19 @@ namespace Soft.Produccion.Win
                 ssContacto.Text = (OrdenProduccion.Contacto != null) ? OrdenProduccion.Contacto.Nombre : "";
 
                 uneCantidad.Value = OrdenProduccion.Cantidad;
+
+
+
+                MostrarCotizacionPresupuesto();
+
+
+
                 MostrarItems();
+
+               
+
+               
+
 
             }
             catch (Exception ex)
@@ -125,6 +138,21 @@ namespace Soft.Produccion.Win
             }
             ActualizandoIU = false;
         }
+
+
+        private void MostrarCotizacionPresupuesto(){
+            String Filtro = String.Format(" ID ='{0}'", OrdenProduccion.ID);
+            XmlDocument XML = HelperNHibernate.ExecuteView("vSF_PresupuestoCotzacionDesdeOP", Filtro);
+            if (XML.HasChildNodes)
+            {
+                foreach (XmlNode NodoItem in XML.DocumentElement.ChildNodes)
+                {
+                    txtCotizacion.Text = NodoItem.SelectSingleNode("@Cotizacion").Value;
+                    txtPresupuesto.Text = NodoItem.SelectSingleNode("@Presupuesto").Value;
+                }
+            }
+        }
+
 
         public void MostrarItems()
         {
