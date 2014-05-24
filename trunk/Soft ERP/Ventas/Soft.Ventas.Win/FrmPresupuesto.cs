@@ -66,7 +66,33 @@ namespace Soft.Ventas.Win
             column = columns.Columns.Add(colTotalFinal);
             column.DataType = typeof(Decimal);
 
+
             ugCotizaciones.DataSource = columns;
+
+
+            ugCotizaciones.DisplayLayout.Bands[0].Columns[colNumero].CellActivation = Activation.ActivateOnly;
+            ugCotizaciones.DisplayLayout.Bands[0].Columns[colCliente].CellActivation = Activation.ActivateOnly;
+            ugCotizaciones.DisplayLayout.Bands[0].Columns[colFecha].CellActivation = Activation.ActivateOnly;
+
+            
+            ugCotizaciones.DisplayLayout.Bands[0].Columns[colTotal].Width = 80;
+            ugCotizaciones.DisplayLayout.Bands[0].Columns[colTotal].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Double;
+            ugCotizaciones.DisplayLayout.Bands[0].Columns[colTotal].CellAppearance.TextHAlign = Infragistics.Win.HAlign.Right;
+            ugCotizaciones.DisplayLayout.Bands[0].Columns[colTotal].CellActivation = Activation.ActivateOnly;
+            ugCotizaciones.DisplayLayout.Bands[0].Columns[colTotal].Format = "N3";
+            
+            ugCotizaciones.DisplayLayout.Bands[0].Columns[colRecargo].Width = 80;
+            ugCotizaciones.DisplayLayout.Bands[0].Columns[colRecargo].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Double;
+            ugCotizaciones.DisplayLayout.Bands[0].Columns[colRecargo].CellAppearance.TextHAlign = Infragistics.Win.HAlign.Right;
+            ugCotizaciones.DisplayLayout.Bands[0].Columns[colRecargo].Format = "N3";
+
+            ugCotizaciones.DisplayLayout.Bands[0].Columns[colTotalFinal].Width = 80;
+            ugCotizaciones.DisplayLayout.Bands[0].Columns[colTotalFinal].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Double;
+            ugCotizaciones.DisplayLayout.Bands[0].Columns[colTotalFinal].CellAppearance.TextHAlign = Infragistics.Win.HAlign.Right;
+            ugCotizaciones.DisplayLayout.Bands[0].Columns[colTotalFinal].Format = "N3";
+
+
+
             MapKeys(ref ugCotizaciones);
         }
 
@@ -169,13 +195,16 @@ namespace Soft.Ventas.Win
 
         public void ugCotizaciones_CellKeyEnter(UltraGridCell Cell)
         {
-            try
+           /* try
             {
                 ItemPresupuesto Item = (ItemPresupuesto)Cell.Row.Tag;
                 switch (Cell.Column.Key)
                 {
                     case colTotalFinal:
-                        Item.TotalFinal = Convert.ToDecimal(Cell.Text);
+                        Item.TotalFinal = Convert.ToDecimal(Cell.Value);
+                        break;
+                    case colRecargo:
+                        Item.TotalFinal = Convert.ToDecimal(Cell.Value) + Item.Total;
                         break;
                     default:
                         break;
@@ -185,7 +214,34 @@ namespace Soft.Ventas.Win
             catch (Exception ex)
             {
                 SoftException.Control(ex);
+            }*/
+        }
+
+        private void ugCotizaciones_CellChange(object sender, CellEventArgs e)
+        {
+            try
+            {
+                ItemPresupuesto Item = (ItemPresupuesto)e.Cell.Row.Tag;
+                switch (e.Cell.Column.Key)
+                {
+                    case colTotalFinal:
+                        Item.TotalFinal = Convert.ToDecimal(e.Cell.Text.Replace('_', ' '));
+                        e.Cell.Row.Cells[colRecargo].Value =Item.TotalFinal-Item.Total;
+                        break;
+                    case colRecargo:
+                        Item.TotalFinal = Convert.ToDecimal(e.Cell.Text.Replace('_', ' ')) + Item.Total;
+                        e.Cell.Row.Cells[colTotalFinal].Value = Item.TotalFinal;
+                        break;
+                    default:
+                        break;
+                }
+               // MostrarItems(false);
             }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+
         }
 
     }
