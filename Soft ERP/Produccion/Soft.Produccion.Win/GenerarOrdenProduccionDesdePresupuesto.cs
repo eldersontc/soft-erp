@@ -106,10 +106,13 @@ namespace Soft.Produccion.Win
 
                     ItemOrdenProduccion.CalcularProduccionItem();
 
+                    ItemOrdenProduccion.Observacion = Item.Observacion;
+
                     foreach (ItemCotizacionServicio ItemServicio in Item.Servicios)
                     {
                         ItemOrdenProduccionServicio ItemOPServicio = ItemOrdenProduccion.AddServicio();
                         ItemOPServicio.Servicio = ItemServicio.Servicio;
+                        
                     }
 
                 }
