@@ -387,6 +387,7 @@
             this.ugCotizaciones.Size = new System.Drawing.Size(626, 249);
             this.ugCotizaciones.TabIndex = 0;
             this.ugCotizaciones.Text = "ultraGrid1";
+            this.ugCotizaciones.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ugCotizaciones_CellChange);
             // 
             // lblNumeracion
             // 
