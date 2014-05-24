@@ -216,9 +216,9 @@
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
             this.cboPrioridad = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraTextEditor1 = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.txtCotizacion = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel4 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraTextEditor2 = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.txtPresupuesto = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.uneCantidad = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.lblCantidad = new Infragistics.Win.Misc.UltraLabel();
             this.utOrdenProduccion = new Infragistics.Win.UltraWinTree.UltraTree();
@@ -285,8 +285,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udtFechaTentativaEntrega)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPrioridad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditor1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditor2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCotizacion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPresupuesto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.utOrdenProduccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcItemCotizacion)).BeginInit();
@@ -305,8 +305,8 @@
             this.ugbParent.Controls.Add(this.utOrdenProduccion);
             this.ugbParent.Controls.Add(this.uneCantidad);
             this.ugbParent.Controls.Add(this.lblCantidad);
-            this.ugbParent.Controls.Add(this.ultraTextEditor2);
-            this.ugbParent.Controls.Add(this.ultraTextEditor1);
+            this.ugbParent.Controls.Add(this.txtPresupuesto);
+            this.ugbParent.Controls.Add(this.txtCotizacion);
             this.ugbParent.Controls.Add(this.ultraLabel4);
             this.ugbParent.Controls.Add(this.ultraLabel3);
             this.ugbParent.Controls.Add(this.cboPrioridad);
@@ -348,8 +348,8 @@
             this.ugbParent.Controls.SetChildIndex(this.cboPrioridad, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel3, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel4, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ultraTextEditor1, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ultraTextEditor2, 0);
+            this.ugbParent.Controls.SetChildIndex(this.txtCotizacion, 0);
+            this.ugbParent.Controls.SetChildIndex(this.txtPresupuesto, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.lblCantidad, 0);
@@ -1996,12 +1996,13 @@
             this.ultraLabel3.TabIndex = 102;
             this.ultraLabel3.Text = "Nº Cotizacion";
             // 
-            // ultraTextEditor1
+            // txtCotizacion
             // 
-            this.ultraTextEditor1.Location = new System.Drawing.Point(489, 146);
-            this.ultraTextEditor1.Name = "ultraTextEditor1";
-            this.ultraTextEditor1.Size = new System.Drawing.Size(100, 21);
-            this.ultraTextEditor1.TabIndex = 104;
+            this.txtCotizacion.Enabled = false;
+            this.txtCotizacion.Location = new System.Drawing.Point(489, 146);
+            this.txtCotizacion.Name = "txtCotizacion";
+            this.txtCotizacion.Size = new System.Drawing.Size(100, 21);
+            this.txtCotizacion.TabIndex = 104;
             // 
             // ultraLabel4
             // 
@@ -2013,12 +2014,13 @@
             this.ultraLabel4.TabIndex = 103;
             this.ultraLabel4.Text = "Nº Presupuesto";
             // 
-            // ultraTextEditor2
+            // txtPresupuesto
             // 
-            this.ultraTextEditor2.Location = new System.Drawing.Point(698, 146);
-            this.ultraTextEditor2.Name = "ultraTextEditor2";
-            this.ultraTextEditor2.Size = new System.Drawing.Size(100, 21);
-            this.ultraTextEditor2.TabIndex = 105;
+            this.txtPresupuesto.Enabled = false;
+            this.txtPresupuesto.Location = new System.Drawing.Point(698, 146);
+            this.txtPresupuesto.Name = "txtPresupuesto";
+            this.txtPresupuesto.Size = new System.Drawing.Size(100, 21);
+            this.txtPresupuesto.TabIndex = 105;
             // 
             // uneCantidad
             // 
@@ -2210,8 +2212,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDescripcion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udtFechaTentativaEntrega)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPrioridad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditor1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditor2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCotizacion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPresupuesto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.utOrdenProduccion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcItemCotizacion)).EndInit();
@@ -2223,8 +2225,8 @@
 
         #endregion
 
-        private Infragistics.Win.UltraWinEditors.UltraTextEditor ultraTextEditor2;
-        private Infragistics.Win.UltraWinEditors.UltraTextEditor ultraTextEditor1;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtPresupuesto;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtCotizacion;
         private Infragistics.Win.Misc.UltraLabel ultraLabel4;
         private Infragistics.Win.Misc.UltraLabel ultraLabel3;
         private Infragistics.Win.UltraWinEditors.UltraComboEditor cboPrioridad;
