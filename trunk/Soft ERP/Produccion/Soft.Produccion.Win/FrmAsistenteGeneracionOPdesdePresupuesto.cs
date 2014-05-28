@@ -35,12 +35,15 @@ namespace Soft.Produccion.Win
         public void Iniciar()
         {
             InfoAsistente = new InfoAsistenteGeneracionOPdesdePresupuesto();
+            
             Mostrar();
         }
 
         private Boolean ActualizandoIU = false;
 
+
         public void Mostrar() {
+
             ActualizandoIU = true;
             ssTipoDocumento.Text = (InfoAsistente.TipoDocumento != null) ? InfoAsistente.TipoDocumento.Nombre : "";
             ssCliente.Text = (InfoAsistente.Cliente != null) ? InfoAsistente.Cliente.Nombre : "";
