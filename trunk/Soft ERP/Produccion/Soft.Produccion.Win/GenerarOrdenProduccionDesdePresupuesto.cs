@@ -39,6 +39,7 @@ namespace Soft.Produccion.Win
                 Op.DireccionEntrega = cotizacion.DireccionEntrega;
                 Op.DireccionFacturacion = cotizacion.DireccionFacturacion;
 
+    
 
                 foreach (ItemCotizacion Item in cotizacion.Items)
                 {

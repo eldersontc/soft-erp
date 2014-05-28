@@ -118,7 +118,7 @@ namespace Soft.Produccion.Win
 
                 uneCantidad.Value = OrdenProduccion.Cantidad;
 
-
+                txtObservacion.Text = OrdenProduccion.Observacion;
 
                 MostrarCotizacionPresupuesto();
 
@@ -142,7 +142,7 @@ namespace Soft.Produccion.Win
 
         private void MostrarCotizacionPresupuesto(){
             String Filtro = String.Format(" ID ='{0}'", OrdenProduccion.ID);
-            XmlDocument XML = HelperNHibernate.ExecuteView("vSF_PresupuestoCotzacionDesdeOP", Filtro);
+            XmlDocument XML = HelperNHibernate.ExecuteView("vSF_PresupuestoCotizacionDesdeOP", Filtro);
             if (XML.HasChildNodes)
             {
                 foreach (XmlNode NodoItem in XML.DocumentElement.ChildNodes)
