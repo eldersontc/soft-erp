@@ -573,7 +573,7 @@
             this.ultraTabPageControl1.Controls.Add(this.txtObservacionItem);
             this.ultraTabPageControl1.Controls.Add(this.lblObservacionItem);
             this.ultraTabPageControl1.Controls.Add(this.utcAcabadosyServicios);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(683, 316);
             // 
@@ -991,7 +991,7 @@
             this.ultraTabPageControl2.Controls.Add(this.lblDireccionEntrega);
             this.ultraTabPageControl2.Controls.Add(this.ssContacto);
             this.ultraTabPageControl2.Controls.Add(this.lblContacto);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(683, 316);
             // 
