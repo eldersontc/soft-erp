@@ -714,6 +714,22 @@ namespace Soft.Ventas.Win
                 {
                     resultado = (entero) * Elcm.Costo * itemCotizacion.NumerodePases * itemCotizacion.NumeroPliegos;
                 }
+
+                Decimal factorColores=0;
+                //VERIFICANDO METODO
+                if (itemCotizacion.MetodoImpresion.Equals("TIRA/RETIRA"))
+                {
+                    factorColores = Convert.ToDecimal(itemCotizacion.ImpresoTiraColor) / 4;
+                    factorColores += Convert.ToDecimal(itemCotizacion.ImpresoRetiraColor) / 4;
+                }
+                else {
+                    factorColores = Convert.ToDecimal(itemCotizacion.ImpresoTiraColor) / 4;
+                
+                }
+
+                resultado = resultado * factorColores;
+
+
             }
 
             else 
@@ -951,7 +967,6 @@ namespace Soft.Ventas.Win
 
         private void ubRecalcular_Click(object sender, EventArgs e)
         {
-
             Costeo();
             Mostrar();
             MostrarItem(utCotizacion.ActiveNode);
