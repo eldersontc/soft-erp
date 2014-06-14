@@ -75,6 +75,17 @@ namespace Soft.Facturacion.Win
             ssTipoDocumento.Text = (GuiaRemision.TipoEntrega != null) ? GuiaRemision.TipoEntrega.Descripcion : "";
             ssCliente.Text = (GuiaRemision.Cliente != null) ? GuiaRemision.Cliente.Nombre : "";
             ssResponsable.Text = (GuiaRemision.Responsable != null) ? GuiaRemision.Responsable.Nombre : "";
+
+            ssChofer.Text = (GuiaRemision.Chofer != null) ? GuiaRemision.Chofer.Nombre : "";
+            ssContacto.Text = (GuiaRemision.Contacto != null) ? GuiaRemision.Contacto.Nombre : "";
+
+            ssDireccion.Text = (GuiaRemision.Distrito != null) ? GuiaRemision.Departamento.Nombre + "-" + GuiaRemision.Provincia.Nombre + "-" + GuiaRemision.Distrito.Nombre : "";
+            txtDireccion.Text = GuiaRemision.Direccion;
+
+            txtLicenciaConducir.Text = GuiaRemision.LicenciaConducir;
+            txtNumerPlaca.Text = GuiaRemision.NumeroDePlaca;
+            txtContacto.Text = GuiaRemision.ContactoNombre;
+
             txtNumeracion.Text = GuiaRemision.Numeracion;
             udtFechaCreacion.Value = GuiaRemision.FechaCreacion;
             txtObservacion.Text = GuiaRemision.Observacion;
@@ -264,9 +275,166 @@ namespace Soft.Facturacion.Win
             }
         }
 
-     
+        private void ssChofer_Search(object sender, EventArgs e)
+        {
 
-     
+            try
+            {
+                FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+                GuiaRemision.Chofer = (SocioNegocio)FrmSeleccionar.GetSelectedEntity(typeof(SocioNegocio), "Socio de Negocio", " Empleado = 1");
+                if (GuiaRemision.Chofer != null)
+                {
+                    ssChofer.Text = GuiaRemision.Chofer.Nombre;
+
+                    SocioNegocio sn = (SocioNegocio)HelperNHibernate.GetEntityByID("SocioNegocio", GuiaRemision.Chofer.ID);
+
+                    SocioNegocioEmpleado sne = sn.Empleados.First();
+
+                    GuiaRemision.LicenciaConducir = sne.LicenciaConducir;
+                    txtLicenciaConducir.Text = GuiaRemision.LicenciaConducir;
+                }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void txtLicenciaConducir_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GuiaRemision.LicenciaConducir = txtLicenciaConducir.Text;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void txtNumerPlaca_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GuiaRemision.NumeroDePlaca = txtNumerPlaca.Text;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void txtContacto_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                GuiaRemision.ContactoNombre = txtContacto.Text;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+
+        }
+
+        private void txtDireccion_ValueChanged(object sender, EventArgs e)
+        {
+
+            try
+            {
+                GuiaRemision.Direccion = txtDireccion.Text;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ssContacto_Search(object sender, EventArgs e)
+        {
+            try
+            {
+                FrmSelectedEntity FrmSeleccionarContacto = new FrmSelectedEntity();
+                GuiaRemision.Contacto = (ItemSocioNegocioContacto)FrmSeleccionarContacto.GetSelectedEntity(typeof(ItemSocioNegocioContacto), "Contacto", String.Format("IDSocioNegocio = '{0}'", GuiaRemision.Cliente.ID));
+                ssContacto.Text = (GuiaRemision.Contacto != null) ? GuiaRemision.Contacto.Nombre : "";
+                GuiaRemision.ContactoNombre = ssContacto.Text;
+                txtContacto.Text = GuiaRemision.ContactoNombre;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ssDireccion_Search(object sender, EventArgs e)
+        {
+
+            if (GuiaRemision.Distrito != null)
+            {
+                ItemSocioNegocioDireccion ItemDireccionModificado = new ItemSocioNegocioDireccion();
+                ItemDireccionModificado.Departamento = GuiaRemision.Departamento;
+                ItemDireccionModificado.Provincia = GuiaRemision.Provincia;
+                ItemDireccionModificado.Distrito = GuiaRemision.Distrito;
+                ItemDireccionModificado.Direccion = GuiaRemision.Direccion;
+
+                FrmSeleccionarDireccion SeleccionarDireccionModificar = new FrmSeleccionarDireccion();
+                ItemSocioNegocioDireccion ItemDireccionModicado = SeleccionarDireccionModificar.ModificarDireccion(ItemDireccionModificado);
+
+
+                if (ItemDireccionModicado != null)
+                {
+
+                    GuiaRemision.Departamento = ItemDireccionModicado.Departamento;
+                    GuiaRemision.Provincia = ItemDireccionModicado.Provincia;
+                    GuiaRemision.Distrito = ItemDireccionModicado.Distrito;
+                    GuiaRemision.Direccion = ItemDireccionModicado.Direccion;
+
+                    ssDireccion.Text = GuiaRemision.Departamento.Nombre + "-" + GuiaRemision.Provincia.Nombre + "-" + GuiaRemision.Distrito.Nombre;
+
+                    txtDireccion.Text = GuiaRemision.Direccion;
+                }
+
+            }
+
+            else
+            {
+
+                FrmSeleccionarDireccion SeleccionarDireccion = new FrmSeleccionarDireccion();
+                ItemSocioNegocioDireccion ItemDireccion = SeleccionarDireccion.ObtenerDireccion();
+                if (ItemDireccion != null)
+                {
+
+                    GuiaRemision.Departamento = ItemDireccion.Departamento;
+                    GuiaRemision.Provincia = ItemDireccion.Provincia;
+                    GuiaRemision.Distrito = ItemDireccion.Distrito;
+                    GuiaRemision.Direccion = ItemDireccion.Direccion;
+
+                    ssDireccion.Text = GuiaRemision.Departamento.Nombre + "-" + GuiaRemision.Provincia.Nombre + "-" + GuiaRemision.Distrito.Nombre;
+
+                    txtDireccion.Text = GuiaRemision.Direccion;
+                }
+
+            }
+        }
+
+        private void ssDireccion_Clear(object sender, EventArgs e)
+        {
+            GuiaRemision.Departamento = null;
+            GuiaRemision.Provincia = null;
+            GuiaRemision.Distrito = null;
+            GuiaRemision.Direccion = null;
+
+            ssDireccion.Text = null;
+            txtDireccion.Text = null;
+        }
+
+
+
+
+
+
+
+
 
 
     }
