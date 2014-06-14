@@ -10,6 +10,10 @@ namespace Soft.Facturacion.Entidades
     {
         public Facturacion() {
             FechaCreacion = DateTime.Now;
+            if (NewInstance) {
+                EstadoEntrega = "PENDIENTE";
+            }
+
             Items = new List<ItemFacturacion>(); 
         }
 
@@ -23,6 +27,9 @@ namespace Soft.Facturacion.Entidades
         public virtual decimal SubTotal { get; set; }
         public virtual decimal Impuesto { get; set; }
         public virtual decimal Total { get; set; }
+
+        public virtual string EstadoEntrega { get; set; }
+
         public virtual IList<ItemFacturacion> Items { get; set; }
 
         public virtual TipoFacturacion TipoFacturacion { get { return (TipoFacturacion)TipoDocumento; } }
@@ -30,7 +37,7 @@ namespace Soft.Facturacion.Entidades
         public virtual ItemFacturacion AddItem() {
             ItemFacturacion Item = new ItemFacturacion();
             Items.Add(Item);
-            return Item;
+            return Item;    
         }
 
         public virtual string ObtenerFiltroOps()
