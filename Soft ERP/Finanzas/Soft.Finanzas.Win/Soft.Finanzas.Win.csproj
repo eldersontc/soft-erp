@@ -78,6 +78,12 @@
     <Compile Include="FrmCaja.Designer.cs">
       <DependentUpon>FrmCaja.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEntradaCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEntradaCaja.Designer.cs">
+      <DependentUpon>FrmEntradaCaja.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSalidaCaja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
   <ItemGroup>
     <EmbeddedResource Include="FrmCaja.resx">
       <DependentUpon>FrmCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEntradaCaja.resx">
+      <DependentUpon>FrmEntradaCaja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSalidaCaja.resx">
       <DependentUpon>FrmSalidaCaja.cs</DependentUpon>
