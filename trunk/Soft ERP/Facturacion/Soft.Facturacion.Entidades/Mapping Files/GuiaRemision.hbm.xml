@@ -5,6 +5,24 @@
     <property name="Numeracion" type="string"/>
     <property name="FechaCreacion" type="DateTime"/>
     <property name="Observacion" type="string"/>
+
+    <property name="LicenciaConducir" type="string"/>
+    <property name="NumeroDePlaca" type="string"/>
+    <property name="ContactoNombre" type="string"/>
+    <property name="Direccion" type="string"/>
+
+    <property name="EditarDireccionEntrega" type="boolean"/>
+
+    <many-to-one name="Departamento" class="Soft.Entities.Departamento" column="IDDepartamento" lazy="false" not-null="true" unique="true" insert="true" update="true"/>
+    <many-to-one name="Provincia" class="Soft.Entities.Provincia" column="IDProvincia" lazy="false" not-null="true" unique="true" insert="true" update="true"/>
+    <many-to-one name="Distrito" class="Soft.Entities.Distrito" column="IDDistrito" lazy="false" not-null="true" unique="true" insert="true" update="true"/>
+
+
+
+    <many-to-one name="Chofer" class="Soft.Entities.SocioNegocio" column="IDChofer" insert="true" update="true" lazy="false"/>
+
+    <many-to-one name="Contacto" class="Soft.Entities.ItemSocioNegocioContacto" column="IDContacto" insert="true" update="true" lazy="false"/>
+
     <many-to-one name="TipoEntrega" class="Soft.Facturacion.Entidades.TipoEntrega" column="IDTipoEntrega" insert="true" update="true" lazy="false"/>
     <many-to-one name="Cliente" class="Soft.Entities.SocioNegocio" column="IDCliente" insert="true" update="true" lazy="false"/>
     <many-to-one name="Responsable" class="Soft.Entities.SocioNegocio" column="IDResponsable" insert="true" update="true" lazy="false"/>
