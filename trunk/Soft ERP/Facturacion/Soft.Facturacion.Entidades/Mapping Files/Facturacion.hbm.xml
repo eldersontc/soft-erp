@@ -10,7 +10,8 @@
     <property name="SubTotal"/>
     <property name="Impuesto"/>
     <property name="Total"/>
-
+    <property name="EstadoEntrega"/>
+    
     <many-to-one name="TipoDocumento" class="Soft.Facturacion.Entidades.TipoFacturacion" column="IDTipoFacturacion" lazy="false"/>
     <many-to-one name="Cliente" class="Soft.Entities.SocioNegocio" column="IDCliente" lazy="false"/>
     <many-to-one name="Responsable" class="Soft.Entities.SocioNegocio" column="IDResponsable" lazy="false"/>
