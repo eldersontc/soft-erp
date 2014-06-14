@@ -14,6 +14,7 @@ namespace Soft.Ventas.Entidades
             FechaCreacion = DateTime.Now; 
             if (NewInstance){
                 FechaCreacion = DateTime.Now;
+				EstadoAprobacion = "PENDIENTE";
                 EstadoAceptacion = "PENDIENTE";
                 EstadoOrdenProduccion = "PENDIENTE";
             }
