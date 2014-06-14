@@ -556,6 +556,7 @@ namespace Soft.Win
             if (SocioNegocio.Empleados.Count > 0)
             {
                 SocioNegocioEmpleado empleado = SocioNegocio.Empleados.First();
+                txtLicenciaConducir.Text = empleado.LicenciaConducir;
                 if (empleado != null)
                 {
                     if (empleado.Area != null)
@@ -671,5 +672,24 @@ namespace Soft.Win
             txtNombreComercial.Text = SocioNegocio.NombreComercial;
         }
 
+        private void ultraLabel15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ultraTabPageControl9_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtLicenciaConducir_ValueChanged(object sender, EventArgs e)
+        {
+
+            SocioNegocioEmpleado Empleado = SocioNegocio.Empleados.First();
+            Empleado.LicenciaConducir = txtLicenciaConducir.Text;
+            MostrarEmpleado();
+        }
+
+      
     }
 }
