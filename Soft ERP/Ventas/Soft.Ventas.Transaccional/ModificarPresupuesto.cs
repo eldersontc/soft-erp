@@ -32,6 +32,9 @@ namespace Soft.Ventas.Transaccional
                         SqlCmd.Parameters.AddWithValue("@Items", ContruirXML(Presupuesto));
                         SqlCmd.ExecuteNonQuery();
 
+						if (Presupuesto.EstadoAceptacion.Equals("ENVIADO")) {
+                            throw new Exception(String.Format("El presupuesto número {0} ya fue enviado al cliente", Presupuesto.Numeracion));
+                        }
                         if (EstaModificado(Presupuesto))
                         {
                             Presupuesto.EstadoAprobacion = "MODIFICADO";

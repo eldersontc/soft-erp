@@ -31,16 +31,20 @@ namespace Soft.Ventas.Transaccional
                         foreach (Presupuesto Presupuesto in Presupuestos)
                         {
 
-                            if (Presupuesto.EstadoAceptacion ==null)
-                            {
+                            if (!Presupuesto.EstadoAprobacion.Equals("APROBADO")) {
 
+
+
+                                throw new Exception(String.Format("El presupuesto número {0} no esta aprobado", Presupuesto.Numeracion));
                             }
-                            else if (Presupuesto.EstadoAceptacion.Equals("ENVIADO"))
+
+
+                            if (!Presupuesto.EstadoAceptacion.Equals("PENDIENTE"))
                             {
                                 throw new Exception(String.Format("El presupuesto número {0} ya fue enviado", Presupuesto.Numeracion));
                             }
 
-
+							
                             SqlCommand SqlCmd = new SqlCommand();
                             SqlCmd.Connection = (SqlConnection)Sesion.Connection;
                             Trans.Enlist(SqlCmd);
