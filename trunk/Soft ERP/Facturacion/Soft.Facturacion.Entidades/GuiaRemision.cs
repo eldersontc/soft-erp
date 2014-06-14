@@ -26,6 +26,24 @@ namespace Soft.Facturacion.Entidades
         public virtual decimal Total { get; set; }
         public virtual IList<ItemGuiaRemision> Items { get; set; }
 
+        public virtual ItemSocioNegocioContacto Contacto { get; set; }
+
+        public virtual string LicenciaConducir { get; set; }
+
+        public virtual string NumeroDePlaca { get; set; }
+
+        public virtual string ContactoNombre { get; set; }
+
+        public virtual SocioNegocio Chofer { get; set; }
+
+
+        public virtual Departamento Departamento { get; set; }
+        public virtual Provincia Provincia { get; set; }
+        public virtual Distrito Distrito { get; set; }
+        public virtual string Direccion { get; set; }
+
+        public virtual Boolean EditarDireccionEntrega { get; set; }
+
         public virtual void AddItem(string IDOP) {
             ItemGuiaRemision Item = new ItemGuiaRemision();
             Item.IDOrdenProduccion = IDOP;
