@@ -13,5 +13,7 @@ namespace Soft.Entities
         public virtual Area Area { get; set; }
         public virtual Usuario Usuario { get; set; }
 
+        public virtual String LicenciaConducir { get; set; }
+
     }
 }
