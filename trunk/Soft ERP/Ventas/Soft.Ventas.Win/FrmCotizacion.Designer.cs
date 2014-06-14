@@ -56,10 +56,10 @@
             Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
-            Infragistics.Win.ValueListItem valueListItem7 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.ValueListItem valueListItem8 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.ValueListItem valueListItem9 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.ValueListItem valueListItem10 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem4 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
@@ -247,6 +247,7 @@
             this.ultraLabel22 = new Infragistics.Win.Misc.UltraLabel();
             this.uneCostoUnidad = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel23 = new Infragistics.Win.Misc.UltraLabel();
+            this.ultraComboEditor1 = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.tabItems.SuspendLayout();
@@ -316,6 +317,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.uneSubTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoMillar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoUnidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraComboEditor1)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
@@ -769,7 +771,7 @@
             this.ultraTabPageControl1.Controls.Add(this.txtObservacionItem);
             this.ultraTabPageControl1.Controls.Add(this.lblObservacionItem);
             this.ultraTabPageControl1.Controls.Add(this.utcAcabadosyServicios);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(716, 329);
             // 
@@ -1246,6 +1248,7 @@
             // 
             // ultraTabPageControl2
             // 
+            this.ultraTabPageControl2.Controls.Add(this.ultraComboEditor1);
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBox3);
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBox2);
             this.ultraTabPageControl2.Controls.Add(this.ubeMetodo);
@@ -1269,7 +1272,7 @@
             this.ultraTabPageControl2.Controls.Add(this.ubGirarGraficoPrecorte);
             this.ultraTabPageControl2.Controls.Add(this.ubImprimirGraficoPrecorte);
             this.ultraTabPageControl2.Controls.Add(this.ultraLabel13);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(716, 329);
             // 
@@ -1323,22 +1326,19 @@
             // 
             // ubeMetodo
             // 
-            valueListItem7.DataValue = "ValueListItem0";
-            valueListItem7.DisplayText = "TIRA";
-            valueListItem7.Tag = 1;
-            valueListItem8.DataValue = "ValueListItem1";
-            valueListItem8.DisplayText = "TIRA / RETIRA";
-            valueListItem8.Tag = 2;
-            valueListItem9.DataValue = "TIRA Y RETIRA";
-            valueListItem9.Tag = 1;
-            valueListItem10.DataValue = "ValueListItem2";
-            valueListItem10.DisplayText = "CONTRAPINZA";
-            valueListItem10.Tag = 1;
+            valueListItem1.DataValue = "TIRA";
+            valueListItem1.Tag = ((short)(1));
+            valueListItem2.DataValue = "TIRA/RETIRA";
+            valueListItem2.Tag = ((short)(2));
+            valueListItem3.DataValue = "TIRA Y RETIRA";
+            valueListItem3.Tag = 1;
+            valueListItem4.DataValue = "CONTRAPINZA";
+            valueListItem4.Tag = ((short)(1));
             this.ubeMetodo.Items.AddRange(new Infragistics.Win.ValueListItem[] {
-            valueListItem7,
-            valueListItem8,
-            valueListItem9,
-            valueListItem10});
+            valueListItem1,
+            valueListItem2,
+            valueListItem3,
+            valueListItem4});
             this.ubeMetodo.Location = new System.Drawing.Point(579, 232);
             this.ubeMetodo.Name = "ubeMetodo";
             this.ubeMetodo.Size = new System.Drawing.Size(119, 21);
@@ -2376,6 +2376,13 @@
             this.ultraLabel23.TabIndex = 100;
             this.ultraLabel23.Text = "Costo Unidad";
             // 
+            // ultraComboEditor1
+            // 
+            this.ultraComboEditor1.Location = new System.Drawing.Point(264, 223);
+            this.ultraComboEditor1.Name = "ultraComboEditor1";
+            this.ultraComboEditor1.Size = new System.Drawing.Size(144, 21);
+            this.ultraComboEditor1.TabIndex = 120;
+            // 
             // FrmCotizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2462,6 +2469,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.uneSubTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoMillar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoUnidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraComboEditor1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2607,5 +2615,6 @@
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor uneCostoUnidad;
         private Infragistics.Win.Misc.UltraLabel ultraLabel23;
         private Infragistics.Win.UltraWinEditors.UltraComboEditor comboMedida;
+        private Infragistics.Win.UltraWinEditors.UltraComboEditor ultraComboEditor1;
     }
 }
