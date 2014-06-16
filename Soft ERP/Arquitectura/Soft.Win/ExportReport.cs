@@ -26,16 +26,23 @@ namespace Soft.Win
                 ExportFormatType formato;
                 string nombreArchivo = string.Empty;
                 string extension = string.Empty;
+                string sql = string.Empty;
                 if (base.m_ObjectFlow is DocumentoGenerico)
                 {
                     DocumentoGenerico documento = (DocumentoGenerico)base.m_ObjectFlow;
                     reporte = documento.TipoDocumento.Reporte;
                     nombreArchivo = string.Format("{0} - Nº {1} {2}", reporte.Nombre, documento.Numeracion, DateTime.Now.ToString("yyyy-MM-dd"));
+                    sql = reporte.SQL;
+                    foreach (ParametroReporte Parametro in reporte.ParametrosSQL)
+                        sql = sql.Replace(Parametro.Nombre, documento.ValueByProperty(Parametro.Propiedad).ToString());
                 }
                 else if (base.m_ObjectFlow is CReporte)
                 {
                     reporte = (CReporte)base.m_ObjectFlow;
                     nombreArchivo = string.Format("{0} {1}", reporte.Nombre, DateTime.Now.ToString("yyyy-MM-dd"));
+                    sql = reporte.SQL;
+                    foreach (ParametroReporte Parametro in reporte.ParametrosSQL)
+                        sql = sql.Replace(Parametro.Nombre, Parametro.Valor);
                 }
                 switch (base.m_Parameter)
                 {
@@ -59,15 +66,12 @@ namespace Soft.Win
                 }
                 if (reporte != null)
                 {
-                    String SQL = reporte.SQL;
+                    
                     ReportDocument CryRpt = new ReportDocument();
                     CryRpt.Load(String.Format("{0}{1}", FrmMain.CarpetaReportes, reporte.Ubicacion));
                     frmProgreso.Next();
-                    // Se reemplazan los parámetros SQL.
-                    foreach (ParametroReporte Parametro in reporte.ParametrosSQL)
-                        SQL = SQL.Replace(Parametro.Nombre, Parametro.Valor);
                     // Si existe una consulta SQL se ejecuta.
-                    if (SQL.Trim().Length > 0) { CryRpt.SetDataSource(HelperNHibernate.GetDataSet(SQL)); }
+                    if (sql.Trim().Length > 0) { CryRpt.SetDataSource(HelperNHibernate.GetDataSet(sql)); }
                     // Se reemplazan los parámetros Crystal.
                     foreach (ParametroReporte Parametro in reporte.ParametrosCrystal)
                         CryRpt.SetParameterValue(Parametro.Nombre, Parametro.Valor);
