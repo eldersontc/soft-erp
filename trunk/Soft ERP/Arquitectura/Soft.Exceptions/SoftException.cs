@@ -13,7 +13,7 @@ namespace Soft.Exceptions
     {
         public static void Control(Exception ex)
         {
-            if (ex.InnerException == null)
+            //if (ex.InnerException == null)
             {
                 switch (ex.GetType().Name)
                 {
@@ -25,7 +25,7 @@ namespace Soft.Exceptions
                         break;
                 }
             }
-            else { Control(ex.InnerException); }
+            //else { Control(ex.InnerException); }
         }
 
         public static void ShowException(Exception ex) {
