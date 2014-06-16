@@ -87,6 +87,7 @@ namespace Soft.Win
                         CrExportOptions.FormatOptions = opciones;
                     }
                     CryRpt.Export();
+                    System.Diagnostics.Process.Start(CrDiskFileDestinationOptions.DiskFileName);
                 }
                 else
                     throw new Exception("Entidad no válida.");
