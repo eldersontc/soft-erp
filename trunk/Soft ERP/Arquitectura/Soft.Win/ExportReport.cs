@@ -9,6 +9,7 @@ using CReporte = Soft.Reporte.Entidades.Reporte;
 using CrystalDecisions.CrystalReports.Engine;
 using Soft.Exceptions;
 using CrystalDecisions.Shared;
+using System.Diagnostics;
 
 namespace Soft.Win
 {
@@ -86,8 +87,10 @@ namespace Soft.Win
                         CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
                         CrExportOptions.FormatOptions = opciones;
                     }
+                    // Se exporta el archivo.
                     CryRpt.Export();
-                    System.Diagnostics.Process.Start(CrDiskFileDestinationOptions.DiskFileName);
+                    // Se inicia un proceso para abrir el archivo.
+                    Process.Start(CrDiskFileDestinationOptions.DiskFileName);
                 }
                 else
                     throw new Exception("Entidad no válida.");
