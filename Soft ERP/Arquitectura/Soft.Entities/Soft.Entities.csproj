@@ -75,6 +75,7 @@
     <Compile Include="TipoCambio.cs" />
     <Compile Include="TipoDocumento.cs" />
     <Compile Include="TipoSocioNegocio.cs" />
+    <Compile Include="TypeEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings Files\EntidadSF.hbm.xml">
@@ -121,7 +122,9 @@
     <EmbeddedResource Include="Mappings Files\SocioNegocioEmpleado.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings Files\Deuda.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\Deuda.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
