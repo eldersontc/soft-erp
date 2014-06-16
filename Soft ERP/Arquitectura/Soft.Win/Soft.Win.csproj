@@ -102,6 +102,9 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExportReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ExportXML.cs">
       <SubType>Form</SubType>
     </Compile>

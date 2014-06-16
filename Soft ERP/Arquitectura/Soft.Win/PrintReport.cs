@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Soft.Entities;
 using Soft.Reporte.Entidades;
+using CReporte = Soft.Reporte.Entidades.Reporte;
 using CrystalDecisions.CrystalReports.Engine;
 using System.Windows.Forms;
 using Soft.DataAccess;
@@ -16,20 +17,19 @@ namespace Soft.Win
         {
             try
             {
-                if (base.m_ObjectFlow is Soft.Reporte.Entidades.Reporte)
+                if (base.m_ObjectFlow is CReporte)
                 {
-                    Soft.Reporte.Entidades.Reporte Reporte = (Soft.Reporte.Entidades.Reporte)base.m_ObjectFlow;
+                    CReporte Reporte = (CReporte)base.m_ObjectFlow;
+                    String SQL = Reporte.SQL;
                     ReportDocument ReportDocument = new ReportDocument();
                     ReportDocument.Load(String.Format("{0}{1}", FrmMain.CarpetaReportes, Reporte.Ubicacion));
-
-                    String SQL = Reporte.SQL;
                     foreach (ParametroReporte Parametro in Reporte.ParametrosSQL)
                     {
                         SQL = SQL.Replace(Parametro.Nombre, Parametro.Valor);
                     }
 
-                    if (SQL.Length > 0) { ReportDocument.SetDataSource(HelperNHibernate.GetDataSet(SQL)); }
-                    
+                    if (SQL.Trim().Length > 0) { ReportDocument.SetDataSource(HelperNHibernate.GetDataSet(SQL)); }
+
                     foreach (ParametroReporte Parametro in Reporte.ParametrosCrystal)
                     {
                         ReportDocument.SetParameterValue(Parametro.Nombre, Parametro.Valor);
@@ -47,7 +47,6 @@ namespace Soft.Win
                 MessageBox.Show(ex.Source);
                 MessageBox.Show(ex.InnerException.Message);
             }
-            //base.Start();
         }
     }
 }

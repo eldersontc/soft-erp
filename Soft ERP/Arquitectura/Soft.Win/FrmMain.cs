@@ -579,6 +579,8 @@ namespace Soft.Win
 
         public static string CarpetaImagenes { get { return ConfigurationManager.AppSettings["CarpetaImagenes"]; } }
 
+        public static string CarpetaExportacion { get { return ConfigurationManager.AppSettings["CarpetaExportacion"]; } }
+
         public static string ObtenerValorKey(string key) {
             return ConfigurationManager.AppSettings[key];
         }
