@@ -29,7 +29,7 @@ namespace Soft.Ventas.Entidades
         public virtual ItemSocioNegocioContacto Contacto { get; set; }
         public virtual String DireccionEntrega { get; set; }
         public virtual String DireccionFacturacion { get; set; }
-
+        public virtual String IDSolicitudCotizacion { get; set; }
         public virtual ListaCostosMaquina ListaCostosMaquina { get; set; }
         public virtual ListaPreciosExistencia ListaPreciosExistencia { get; set; }
         public virtual ListaPreciosTransporte ListaPreciosTransporte { get; set; }
