@@ -116,6 +116,7 @@
             this.ubEliminarServicio = new Infragistics.Win.Misc.UltraButton();
             this.ubNuevoServicio = new Infragistics.Win.Misc.UltraButton();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.btnTodosM2Servicios = new Infragistics.Win.Misc.UltraButton();
             this.txtCantidadProduccion = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel18 = new Infragistics.Win.Misc.UltraLabel();
             this.GruposTiras = new Infragistics.Win.Misc.UltraGroupBox();
@@ -151,6 +152,7 @@
             this.utcAcabadosyServicios = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ultraComboEditor1 = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             this.ultraGroupBox3 = new Infragistics.Win.Misc.UltraGroupBox();
             this.LabelProduccion = new Infragistics.Win.Misc.UltraLabel();
             this.ultraGroupBox2 = new Infragistics.Win.Misc.UltraGroupBox();
@@ -247,7 +249,6 @@
             this.ultraLabel22 = new Infragistics.Win.Misc.UltraLabel();
             this.uneCostoUnidad = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel23 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraComboEditor1 = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.tabItems.SuspendLayout();
@@ -276,6 +277,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.utcAcabadosyServicios)).BeginInit();
             this.utcAcabadosyServicios.SuspendLayout();
             this.ultraTabPageControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraComboEditor1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).BeginInit();
             this.ultraGroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).BeginInit();
@@ -317,7 +319,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.uneSubTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoMillar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoUnidad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraComboEditor1)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
@@ -751,6 +752,7 @@
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.Controls.Add(this.btnTodosM2Servicios);
             this.ultraTabPageControl1.Controls.Add(this.txtCantidadProduccion);
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel18);
             this.ultraTabPageControl1.Controls.Add(this.GruposTiras);
@@ -771,9 +773,18 @@
             this.ultraTabPageControl1.Controls.Add(this.txtObservacionItem);
             this.ultraTabPageControl1.Controls.Add(this.lblObservacionItem);
             this.ultraTabPageControl1.Controls.Add(this.utcAcabadosyServicios);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(716, 329);
+            // 
+            // btnTodosM2Servicios
+            // 
+            this.btnTodosM2Servicios.Location = new System.Drawing.Point(508, 11);
+            this.btnTodosM2Servicios.Name = "btnTodosM2Servicios";
+            this.btnTodosM2Servicios.Size = new System.Drawing.Size(75, 23);
+            this.btnTodosM2Servicios.TabIndex = 94;
+            this.btnTodosM2Servicios.Text = "Todos Mt.2";
+            this.btnTodosM2Servicios.Click += new System.EventHandler(this.btnTodosM2Servicios_Click);
             // 
             // txtCantidadProduccion
             // 
@@ -1272,9 +1283,16 @@
             this.ultraTabPageControl2.Controls.Add(this.ubGirarGraficoPrecorte);
             this.ultraTabPageControl2.Controls.Add(this.ubImprimirGraficoPrecorte);
             this.ultraTabPageControl2.Controls.Add(this.ultraLabel13);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(716, 329);
+            // 
+            // ultraComboEditor1
+            // 
+            this.ultraComboEditor1.Location = new System.Drawing.Point(264, 223);
+            this.ultraComboEditor1.Name = "ultraComboEditor1";
+            this.ultraComboEditor1.Size = new System.Drawing.Size(144, 21);
+            this.ultraComboEditor1.TabIndex = 120;
             // 
             // ultraGroupBox3
             // 
@@ -2376,13 +2394,6 @@
             this.ultraLabel23.TabIndex = 100;
             this.ultraLabel23.Text = "Costo Unidad";
             // 
-            // ultraComboEditor1
-            // 
-            this.ultraComboEditor1.Location = new System.Drawing.Point(264, 223);
-            this.ultraComboEditor1.Name = "ultraComboEditor1";
-            this.ultraComboEditor1.Size = new System.Drawing.Size(144, 21);
-            this.ultraComboEditor1.TabIndex = 120;
-            // 
             // FrmCotizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2425,6 +2436,7 @@
             this.utcAcabadosyServicios.ResumeLayout(false);
             this.ultraTabPageControl2.ResumeLayout(false);
             this.ultraTabPageControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraComboEditor1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).EndInit();
             this.ultraGroupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).EndInit();
@@ -2469,7 +2481,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.uneSubTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoMillar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoUnidad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraComboEditor1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2616,5 +2627,6 @@
         private Infragistics.Win.Misc.UltraLabel ultraLabel23;
         private Infragistics.Win.UltraWinEditors.UltraComboEditor comboMedida;
         private Infragistics.Win.UltraWinEditors.UltraComboEditor ultraComboEditor1;
+        private Infragistics.Win.Misc.UltraButton btnTodosM2Servicios;
     }
 }

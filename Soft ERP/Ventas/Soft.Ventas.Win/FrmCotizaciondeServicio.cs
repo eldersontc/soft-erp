@@ -74,7 +74,16 @@ namespace Soft.Ventas.Win
                 busUnidadMaquina.Text = (Item.UnidadMaquina != null) ? Item.UnidadMaquina.Nombre : "";
 
                 txtNombreMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
-                busUnidadMaterial.Text = (Item.UnidadMaterial != null) ? Item.UnidadMaterial.Unidad.Nombre : "";
+                if (Item.UnidadMaterial != null)
+                {
+                    if (Item.UnidadMaterial.Unidad != null)
+                    {
+                        busUnidadMaterial.Text = (Item.UnidadMaterial != null) ? Item.UnidadMaterial.Unidad.Nombre : "";
+                    }
+
+                }
+                else { }
+
                 txtCantidadAcabado.Value = Item.CantidadServicio;
                 txtCantidadMaquina.Value = Item.CantidadMaquina;
                 txtCantidadMaterial.Value = Item.CantidadMaterial;
@@ -230,26 +239,15 @@ namespace Soft.Ventas.Win
                 FrmSelectedEntity formulario = new FrmSelectedEntity();
                 ExistenciaUnidad unidad = (ExistenciaUnidad)formulario.GetSelectedEntity(typeof(ExistenciaUnidad), "ExistenciaUnidad", filtro);
 
-                if (unidad != null && Item.UnidadMaterial != null)
+                if (unidad != null )
                 {
                     unidad = (ExistenciaUnidad)HelperNHibernate.GetEntityByID("ExistenciaUnidad", unidad.ID);
-                    if (unidad.ID != Item.UnidadMaterial.ID)
-                    {
-                        Decimal cantidadanteriorunidadbase = Item.CantidadMaterial * Item.UnidadMaterial.FactorConversion;
-                        Decimal cantidadactual = Math.Truncate(cantidadanteriorunidadbase / unidad.FactorConversion);
-                        Item.UnidadMaterial = unidad;
-                        Item.CantidadMaterial = cantidadactual;
+         
+                      Item.UnidadMaterial = unidad;
+                        Item.CantidadMaterial =0;
                         ObtenerCostoMaterial();
-                    }
                 }
-                else {
-                    Item.UnidadMaterial = unidad;
-                    Item.CantidadMaterial = 0;
-                    ObtenerCostoMaterial();
-                }
-                
-                
-                
+                  
                 Mostrar();
             }
             catch (Exception ex)
@@ -390,7 +388,7 @@ namespace Soft.Ventas.Win
                     costo = existenciaActualizada.CostoReferencia;
                 }
 
-                Item.CostoMaterial = (Item.CantidadMaterial * costo) / Item.UnidadMaterial.FactorConversion;
+                Item.CostoMaterial = (Item.CantidadMaterial * costo) * Item.UnidadMaterial.FactorConversion;
                 SumarTotal();
             }
             catch (Exception)
@@ -490,6 +488,17 @@ namespace Soft.Ventas.Win
                     ObtenerCostoServicio();
 
                 }
+
+                if (Item.UnidadServicio.Unidad.Nombre == "MILLAR")
+                {
+
+                    Decimal cantidad = (ItemElemento.CantidadProduccion/ItemElemento.NumerodePases) / 1000 ;
+
+                    txtCantidadAcabado.Value = cantidad;
+                    ObtenerCostoServicio();
+
+                }
+
                 else {
                     Exception mensaje = new Exception("Solo se puede obtener cuando la unidad es METRO CUADRADO");
                     Soft.Exceptions.SoftException.ShowException(mensaje);

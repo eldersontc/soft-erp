@@ -1691,8 +1691,33 @@ namespace Soft.Ventas.Win
             MostrarItem(utCotizacion.ActiveNode);
         }
 
-       
+        private void btnTodosM2Servicios_Click(object sender, EventArgs e)
+        {
+            if (ActualizandoIU) { return; }
+            
 
+
+        }
+
+
+        private void ActuallizarMetrosCuadrados() {
+
+            foreach (ItemCotizacion item in Cotizacion.Items)
+            {
+                foreach (ItemCotizacionServicio itemservicio in item.Servicios)
+                {
+
+                    if (itemservicio.UnidadServicio.Unidad.Codigo.Equals("M2"))
+                    { 
+
+                    }
+
+                    
+                }
+
+            }
+        
+        }
 
 
    

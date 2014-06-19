@@ -287,7 +287,14 @@ namespace Soft.Ventas.Win
                 if (ItemSolicitudCotizacion == null) { return; }
                 UltraGridRow Row = ugServicios.DisplayLayout.Bands[0].AddNew();
                 Row.Tag = ItemSolicitudCotizacion.AddServicio();
-                AgregarServicios("%", "%", Row);
+                if (AgregarServicios("%", "%", Row)==false) {
+
+                    ItemSolicitudCotizacion.Servicios.Remove((ItemSolicitudCotizacionServicio)Row.Tag);
+                    MostrarItem(ItemSolicitudCotizacion);
+                
+                }
+
+
             }
             catch (Exception ex)
             {
@@ -323,7 +330,7 @@ namespace Soft.Ventas.Win
             }
         }
 
-        public void AgregarServicios(String Codigo, String Descripcion, UltraGridRow Row)
+        public Boolean AgregarServicios(String Codigo, String Descripcion, UltraGridRow Row)
         {
             Collection Productos = new Collection();
             FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
@@ -337,6 +344,7 @@ namespace Soft.Ventas.Win
                 Item.Servicio = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Servicio.ID);
                 Item.CantidadFinal = 1;
                 MostrarServicio(Row);
+                return true;
             }
             else if (Productos.Count > 1)
             {
@@ -354,7 +362,12 @@ namespace Soft.Ventas.Win
                     RowNuevo.Tag = ItemNuevo;
                     MostrarServicio(RowNuevo);
                 }
+                return true;
             }
+            else {
+                return false;
+            }
+            
         }
 
         private void ssFormaPago_Search(object sender, EventArgs e)
@@ -832,6 +845,23 @@ namespace Soft.Ventas.Win
             {
                 SoftException.Control(ex);
             }
+        }
+
+        private void txtCantidadItemProduccion_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.CantidadItem = Convert.ToInt32(txtCantidadItemProduccion.Value);
+                MostrarItem(ItemSolicitudCotizacion);
+
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+
         }
 
 
