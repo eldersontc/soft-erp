@@ -45,7 +45,7 @@ namespace Soft.Ventas.Win
         }
 
         public void Mostrar(){
-            busUnidadMaterial.Text = m_item.UnidadMaterial.Nombre;
+            busUnidadMaterial.Text = m_item.UnidadMaterial.Unidad.Nombre;
         }
 
         private Decimal CalcularMetro(Decimal medida){
@@ -54,7 +54,7 @@ namespace Soft.Ventas.Win
 
             foreach (ExistenciaUnidad Itemunidad in m_item.Material.Unidades)
             {
-                if (Itemunidad.Unidad.Nombre.Equals(m_item.UnidadMaterial.Nombre)) {
+                if (Itemunidad.Unidad.Nombre.Equals(m_item.UnidadMaterial.Unidad.Nombre)) {
                     eu = Itemunidad;
                     break;
                 }

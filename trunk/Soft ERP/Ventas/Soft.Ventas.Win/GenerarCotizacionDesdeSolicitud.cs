@@ -21,6 +21,10 @@ namespace Soft.Ventas.Win
                 {
                     throw new Exception(String.Format("La Solicitud de Cotización Nº : {0} no está APROBADO",SolicitudCotizacion.Numeracion));
                 }
+                if (!SolicitudCotizacion.EstadoCotizacion.Equals("PENDIENTE"))
+                {
+                    throw new Exception(String.Format("La Solicitud de Cotización Nº : {0} ya tiene una Cotizacion", SolicitudCotizacion.Numeracion));
+                }
 
                 Cotizacion Cotizacion = new Cotizacion();
                 Cotizacion.Cantidad = 1;
@@ -33,7 +37,7 @@ namespace Soft.Ventas.Win
                 Cotizacion.Vendedor = SolicitudCotizacion.Responsable;
                 Cotizacion.Observacion = SolicitudCotizacion.Observacion;
                 Cotizacion.Moneda = SolicitudCotizacion.Moneda;
-
+                Cotizacion.IDSolicitudCotizacion = SolicitudCotizacion.ID;
                 String filtro = "";
                 if (Cotizacion.Moneda != null)
                 {
@@ -89,6 +93,7 @@ namespace Soft.Ventas.Win
                         ItemCotizacionServicio ItemCotizacionServicio = ItemCotizacion.AddServicio();
                         ItemCotizacionServicio.Servicio = ItemServicio.Servicio;
                     }
+                    ItemCotizacion.Observacion = Item.Observacion;
                 }
                 base.m_ObjectFlow = Cotizacion;
                 base.m_EntidadSF = (EntidadSF)HelperNHibernate.GetEntityByID("EntidadSF", "11D3E3C0-1639-49FF-8596-149E9D24F60A");

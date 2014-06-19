@@ -416,7 +416,7 @@
             // 
             appearance14.Image = global::Soft.Ventas.Win.Properties.Resources.calculator;
             this.btnObtenerCostoElemento.Appearance = appearance14;
-            this.btnObtenerCostoElemento.Location = new System.Drawing.Point(201, 79);
+            this.btnObtenerCostoElemento.Location = new System.Drawing.Point(226, 79);
             this.btnObtenerCostoElemento.Name = "btnObtenerCostoElemento";
             this.btnObtenerCostoElemento.Size = new System.Drawing.Size(26, 23);
             this.btnObtenerCostoElemento.TabIndex = 93;
@@ -425,7 +425,7 @@
             // txtCantidadAcabado
             // 
             this.txtCantidadAcabado.Location = new System.Drawing.Point(97, 79);
-            this.txtCantidadAcabado.MaskInput = "nnnnnnnnnnnnnnnnn.nn";
+            this.txtCantidadAcabado.MaskInput = "nnnnnnnnnnn.nn";
             this.txtCantidadAcabado.MaxValue = new decimal(new int[] {
             90000000,
             0,
@@ -438,7 +438,7 @@
             0});
             this.txtCantidadAcabado.Name = "txtCantidadAcabado";
             this.txtCantidadAcabado.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
-            this.txtCantidadAcabado.Size = new System.Drawing.Size(78, 21);
+            this.txtCantidadAcabado.Size = new System.Drawing.Size(130, 21);
             this.txtCantidadAcabado.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.OnMouseEnter;
             this.txtCantidadAcabado.TabIndex = 92;
             this.txtCantidadAcabado.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
