@@ -29,6 +29,8 @@ namespace Soft.Ventas.Entidades
         public virtual String DireccionFacturacion { get; set; }
         public virtual Int32 CodigoGrupo { get; set; }
 
+        public virtual string EstadoCotizacion { get; set; }
+
         public virtual ItemSolicitudCotizacion AddItem()
         {
             ItemSolicitudCotizacion Item = new ItemSolicitudCotizacion();
