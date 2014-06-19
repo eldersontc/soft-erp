@@ -1785,7 +1785,7 @@ namespace Soft.Produccion.Win
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
         
@@ -1948,9 +1948,18 @@ namespace Soft.Produccion.Win
 
         public override void Aceptar()
         {
-            Costeo();
-            GenerarImagenes();
-            base.Aceptar();
+            try
+            {
+                Costeo();
+                GenerarImagenes();
+                base.Aceptar();
+            }
+            catch (Exception ex)
+            {
+
+                SoftException.ShowException(ex);
+            }
+            
             
         }
 
@@ -2198,6 +2207,11 @@ namespace Soft.Produccion.Win
 
 
             return resultado;
+
+        }
+
+        private void ubAceptar_Click(object sender, EventArgs e)
+        {
 
         }
 
