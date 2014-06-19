@@ -369,6 +369,7 @@
             // ubAceptar
             // 
             this.ubAceptar.Location = new System.Drawing.Point(705, 600);
+            this.ubAceptar.Click += new System.EventHandler(this.ubAceptar_Click);
             // 
             // ilMain
             // 
