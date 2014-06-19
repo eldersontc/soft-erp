@@ -23,19 +23,39 @@ namespace Soft.Ventas.Transaccional
                     try
                     {
                         Cotizacion cp = (Cotizacion)m_ObjectFlow;
+
+                        SqlCommand SqlCmd = new SqlCommand();
+                        SqlCmd.Connection = (SqlConnection)Sesion.Connection;
+
+                        SqlCmd.CommandText = "pSF_Actualizar_EstadoCotizacion_SolicitudCotizacion";
+                        SqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        Trans.Enlist(SqlCmd);
+                        SqlCmd.Parameters.Clear();
+                        SqlCmd.Parameters.AddWithValue("@IDSolicitudCotizacion", cp.IDSolicitudCotizacion);
+                        SqlCmd.ExecuteNonQuery();
+
+                        
+                        Sesion.Save(cp);
+                        Sesion.Flush();
+
                         if (cp.TipoDocumento.GeneraNumeracionAlFinal == true)
                         {
-                            SqlCommand SqlCmd = new SqlCommand();
-                            SqlCmd.Connection = (SqlConnection)Sesion.Connection;
-                            Trans.Enlist(SqlCmd);
-                            SqlCmd.CommandText = "pSF_NumeracionFinal_Cotizacion";
-                            SqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
-                            SqlCmd.Parameters.AddWithValue("@IDCp", cp.ID);
-                            SqlCmd.Parameters.AddWithValue("@IDTipoCp", cp.TipoDocumento.ID);
+                            SqlCmd.CommandText = "pSF_Generar_Numeracion";
+                            SqlCmd.Parameters.Clear();
+                            SqlCmd.Parameters.AddWithValue("@Documento", "Cotizacion");
+                            SqlCmd.Parameters.AddWithValue("@TipoDocumento", "TipoCotizacion");
+                            SqlCmd.Parameters.AddWithValue("@IDDocumento", cp.ID);
+                            SqlCmd.Parameters.AddWithValue("@IDTipoDocumento", cp.TipoDocumento.ID);
                             SqlCmd.ExecuteNonQuery();
-                            Trans.Commit();
-                            m_ResultProcess = EnumResult.SUCESS;
                         }
+
+
+
+                        
+
+
+                        Trans.Commit();
+                        m_ResultProcess = EnumResult.SUCESS;
                     }
                     catch (Exception ex)
                     {
@@ -43,9 +63,12 @@ namespace Soft.Ventas.Transaccional
                         m_ResultProcess = EnumResult.ERROR;
                         SoftException.Control(ex);
                     }
+                    finally
+                    {
+                        base.Start();
+                    }
                 }
             }
-            base.Start();
         }
     }
 }
