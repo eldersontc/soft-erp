@@ -8,6 +8,9 @@
     <property name="Nombre" type="string"/>
     <property name="Activo" type="boolean"/>
 
+    <many-to-one name="LineaProduccion" class="Soft.Produccion.Entidades.LineaProduccion" column="IDLineaProduccion" insert="true" update="true" lazy="false"/>
+
+    
     <bag name="Items" cascade="all-delete-orphan" order-by="Orden" lazy="false">
       <key column="IDPlantilla"/>
       <one-to-many class="Soft.Ventas.Entidades.ItemPlantilla"/>
