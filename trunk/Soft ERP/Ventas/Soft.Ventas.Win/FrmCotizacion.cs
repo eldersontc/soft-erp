@@ -18,6 +18,7 @@ using Soft.Reporte.Entidades;
 using Soft.Exceptions;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using Soft.Produccion.Entidades;
 
 namespace Soft.Ventas.Win
 {
@@ -119,7 +120,8 @@ namespace Soft.Ventas.Win
             busListaCostoMaquina.Text = (Cotizacion.ListaCostosMaquina != null) ? Cotizacion.ListaCostosMaquina.Nombre : "";
             busListaPrecioMaterial.Text = (Cotizacion.ListaPreciosExistencia != null) ? Cotizacion.ListaPreciosExistencia.Nombre : "";
             busListaPreciosTransporte.Text = (Cotizacion.ListaPreciosTransporte != null) ? Cotizacion.ListaPreciosTransporte.Nombre : "";
-            
+            busLineaProduccion.Text = (Cotizacion.LineaProduccion != null) ? Cotizacion.LineaProduccion.Nombre : "";
+          
 
             MostrarItems();
             ActualizandoIU = false;
@@ -1717,6 +1719,29 @@ namespace Soft.Ventas.Win
 
             }
         
+        }
+
+        private void busLineaProduccion_Search(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
+                LineaProduccion LineaProduccion = (LineaProduccion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(LineaProduccion), "Linea de Produccion");
+                if ((Cotizacion.LineaProduccion == null))
+                {
+
+                    Cotizacion.LineaProduccion = LineaProduccion;
+                }
+                Mostrar();
+            }
+            catch (Exception ex)
+            {
+
+                SoftException.Control(ex);
+            }
+
         }
 
 
