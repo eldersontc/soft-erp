@@ -111,6 +111,9 @@ namespace Soft.Produccion.Win
                 busListaCostoMaquina.Text = (OrdenProduccion.ListaCostosMaquina != null) ? OrdenProduccion.ListaCostosMaquina.Nombre : "";
                 busListaPreciosTransporte.Text = (OrdenProduccion.ListaPreciosTransporte != null) ? OrdenProduccion.ListaPreciosTransporte.Nombre : "";
 
+
+                busLineaProduccion.Text = (OrdenProduccion.LineaProduccion != null) ? OrdenProduccion.LineaProduccion.Nombre : "";
+          
                 ssDireccionEntrega.Text = OrdenProduccion.DireccionEntrega;
                 ssDireccionFactura.Text = OrdenProduccion.DireccionFacturacion;
 
@@ -2213,6 +2216,27 @@ namespace Soft.Produccion.Win
         private void ubAceptar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void busLineaProduccion_Search(object sender, EventArgs e)
+        {
+            try
+            {
+
+                FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
+                LineaProduccion LineaProduccion = (LineaProduccion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(LineaProduccion), "Linea de Produccion");
+                if ((OrdenProduccion.LineaProduccion == null))
+                {
+
+                    OrdenProduccion.LineaProduccion = LineaProduccion;
+                }
+                Mostrar();
+            }
+            catch (Exception ex)
+            {
+
+                SoftException.Control(ex);
+            }
         }
 
     }
