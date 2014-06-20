@@ -17,6 +17,7 @@ using Infragistics.Win.UltraWinTree;
 using Soft.Seguridad.Entidades;
 using Soft.Exceptions;
 using System.Xml;
+using Soft.Produccion.Entidades;
 
 namespace Soft.Ventas.Win
 {
@@ -71,6 +72,7 @@ namespace Soft.Ventas.Win
             uneCantidad.Value = SolicitudCotizacion.Cantidad;
             txtNumeracion.Text = SolicitudCotizacion.Numeracion;
             txtCodigoGrupo.Value = SolicitudCotizacion.CodigoGrupo;
+            busLineaProduccion.Text = (SolicitudCotizacion.LineaProduccion != null) ? SolicitudCotizacion.LineaProduccion.Nombre : "";
             MostrarItems();
             ActualizandoIU = false;
         }
@@ -862,6 +864,28 @@ namespace Soft.Ventas.Win
                 SoftException.Control(ex);
             }
 
+        }
+
+        private void busLineaProduccion_Search(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
+                LineaProduccion LineaProduccion = (LineaProduccion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(LineaProduccion), "Linea de Produccion");
+                if ((SolicitudCotizacion.LineaProduccion == null))
+                {
+
+                    SolicitudCotizacion.LineaProduccion = LineaProduccion;
+                }
+                Mostrar();
+            }
+            catch (Exception ex)
+            {
+             
+                SoftException.Control(ex);
+            }
         }
 
 
