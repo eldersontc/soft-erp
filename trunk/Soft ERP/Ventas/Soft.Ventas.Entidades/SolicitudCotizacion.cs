@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Soft.Entities;
 using Soft.DataAccess;
+using Soft.Produccion.Entidades;
 
 namespace Soft.Ventas.Entidades
 {
@@ -15,6 +16,7 @@ namespace Soft.Ventas.Entidades
             {
                 FechaCreacion = DateTime.Now;
                 EstadoAprobacion = "PENDIENTE";
+                EstadoCotizacion = "PENDIENTE";
             }
         }
         
@@ -28,6 +30,8 @@ namespace Soft.Ventas.Entidades
         public virtual String DireccionEntrega { get; set; }
         public virtual String DireccionFacturacion { get; set; }
         public virtual Int32 CodigoGrupo { get; set; }
+
+        public virtual LineaProduccion LineaProduccion { get; set; } 
 
         public virtual string EstadoCotizacion { get; set; }
 
