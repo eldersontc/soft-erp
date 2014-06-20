@@ -45,6 +45,10 @@ namespace Soft.Produccion.Entidades
         public virtual ListaCostosMaquina ListaCostosMaquina { get; set; }
         public virtual ListaPreciosExistencia ListaPreciosExistencia { get; set; }
         public virtual ListaPreciosTransporte ListaPreciosTransporte { get; set; }
+
+
+        public virtual LineaProduccion LineaProduccion { get; set; }
+
         public virtual Decimal Total { get; set; }
         
         public virtual void GenerarNumeracion()
