@@ -103,7 +103,7 @@ namespace Soft.Ventas.Win
                 FrmMain.RefreshView();
             }
         }
-
+        
         public override void Cerrar(FormClosingEventArgs e) {
             return;
         }
