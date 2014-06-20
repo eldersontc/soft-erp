@@ -38,6 +38,8 @@ namespace Soft.Ventas.Win
                 Cotizacion.Observacion = SolicitudCotizacion.Observacion;
                 Cotizacion.Moneda = SolicitudCotizacion.Moneda;
                 Cotizacion.IDSolicitudCotizacion = SolicitudCotizacion.ID;
+
+                Cotizacion.LineaProduccion = SolicitudCotizacion.LineaProduccion;
                 String filtro = "";
                 if (Cotizacion.Moneda != null)
                 {
