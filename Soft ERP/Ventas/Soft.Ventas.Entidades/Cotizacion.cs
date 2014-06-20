@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Soft.Entities;
 using Soft.DataAccess;
+using Soft.Produccion.Entidades;
 
 namespace Soft.Ventas.Entidades
 {
@@ -33,6 +34,8 @@ namespace Soft.Ventas.Entidades
         public virtual ListaCostosMaquina ListaCostosMaquina { get; set; }
         public virtual ListaPreciosExistencia ListaPreciosExistencia { get; set; }
         public virtual ListaPreciosTransporte ListaPreciosTransporte { get; set; }
+
+        public virtual LineaProduccion LineaProduccion { get; set; }
 
         private Decimal mTotal;
         public override Decimal Total
