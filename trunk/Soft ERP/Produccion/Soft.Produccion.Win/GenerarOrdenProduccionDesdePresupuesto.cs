@@ -41,78 +41,66 @@ namespace Soft.Produccion.Win
 
     
 
-                foreach (ItemCotizacion Item in cotizacion.Items)
+                foreach (ItemCotizacion ItemCoti in cotizacion.Items)
                 {
                     ItemOrdenProduccion ItemOrdenProduccion = Op.AddItem();
 
+                    ItemCotizacion Item = (ItemCotizacion)HelperNHibernate.GetEntityByID("ItemCotizacion", ItemCoti.ID);
+
                     ItemOrdenProduccion.Nombre = Item.Nombre;
                     ItemOrdenProduccion.Cantidad = Item.Cantidad;
-                    ItemOrdenProduccion.CantidadUnidad = Item.CantidadUnidad;
-                    ItemOrdenProduccion.CantidadElemento = Item.CantidadElemento;
-                    ItemOrdenProduccion.Operacion = Item.Operacion;
-                    ItemOrdenProduccion.Maquina = Item.Maquina;
-
-                    if (ItemOrdenProduccion.Maquina != null)
-                    {
-                        ItemOrdenProduccion.FormatoImpresionAlto = ItemOrdenProduccion.Maquina.PliegoAltoMaximo;
-                        ItemOrdenProduccion.FormatoImpresionLargo = ItemOrdenProduccion.Maquina.PliegoAnchoMaximo;
-                    }
-
-                    ItemOrdenProduccion.TipoUnidad = Item.TipoUnidad;
-                    ItemOrdenProduccion.Material = Item.Material;
-                    ItemOrdenProduccion.ImpresoRetiraColor = Item.ImpresoRetiraColor;
-                    ItemOrdenProduccion.ImpresoTiraColor = Item.ImpresoTiraColor;
-                    ItemOrdenProduccion.MedidaAbiertaAlto = Item.MedidaAbiertaAlto;
-                    ItemOrdenProduccion.MedidaAbiertaLargo = Item.MedidaAbiertaLargo;
-                    ItemOrdenProduccion.MedidaCerradaAlto = Item.MedidaCerradaAlto;
-                    ItemOrdenProduccion.MedidaCerradaLargo = Item.MedidaCerradaLargo;
                     ItemOrdenProduccion.TieneMedidaAbierta = Item.TieneMedidaAbierta;
                     ItemOrdenProduccion.TieneMedidaCerrada = Item.TieneMedidaCerrada;
                     ItemOrdenProduccion.TieneTiraRetira = Item.TieneTiraRetira;
                     ItemOrdenProduccion.TieneGraficos = Item.TieneGraficos;
-                    ItemOrdenProduccion.TieneMaquina = Item.TieneMaquina;
                     ItemOrdenProduccion.TieneMaterial = Item.TieneMaterial;
-
-                    ItemOrdenProduccion.TieneTipoUnidad = Item.TieneTipoUnidad;
-                    ItemOrdenProduccion.UnidadMedidaAbierta = Item.UnidadMedidaAbierta;
-                    ItemOrdenProduccion.CantidadUnidad = Item.CantidadUnidad;
-
-                    ItemOrdenProduccion.FormatoImpresionAlto = Item.FormatoImpresionAlto;
-                    ItemOrdenProduccion.FormatoImpresionLargo = Item.FormatoImpresionLargo;
+                    ItemOrdenProduccion.TieneMaquina = Item.TieneMaquina;
+                    ItemOrdenProduccion.MedidaAbiertaLargo = Item.MedidaAbiertaLargo;
+                    ItemOrdenProduccion.MedidaAbiertaAlto = Item.MedidaAbiertaAlto;
+                    ItemOrdenProduccion.MedidaCerradaLargo = Item.MedidaCerradaLargo;
+                    ItemOrdenProduccion.MedidaCerradaAlto = Item.MedidaCerradaAlto;
+                    ItemOrdenProduccion.ImpresoRetiraColor = Item.ImpresoRetiraColor;
+                    ItemOrdenProduccion.ImpresoTiraColor = Item.ImpresoTiraColor;
+                    ItemOrdenProduccion.TipoUnidad = Item.TipoUnidad;
+                    ItemOrdenProduccion.Observacion = Item.Observacion;
+                    ItemOrdenProduccion.Material = Item.Material;
+                    ItemOrdenProduccion.Maquina = Item.Maquina;
                     ItemOrdenProduccion.SeparacionX = Item.SeparacionX;
                     ItemOrdenProduccion.SeparacionY = Item.SeparacionY;
-                    ItemOrdenProduccion.GraficoImpresionManual = Item.GraficoImpresionManual;
-                    ItemOrdenProduccion.MetodoImpresion = Item.MetodoImpresion;
-
-
-
-
-                    if (ItemOrdenProduccion.MetodoImpresion != null) { 
-                        if (ItemOrdenProduccion.MetodoImpresion.Equals("TIRA / RETIRA"))
-                        {
-                            ItemOrdenProduccion.NumerodePases = 2;
-                        }
-                        else if (ItemOrdenProduccion.MetodoImpresion.Length > 0)
-                        {
-                            ItemOrdenProduccion.NumerodePases = 1;
-                        }
-                    }
-                    ItemOrdenProduccion.NumeroPliegos = Item.NumeroPliegos;
-                    ItemOrdenProduccion.CantidadDemasia = Item.NumeroPliegos;
-                    ItemOrdenProduccion.CantidadDemasiaMaterial = Item.CantidadDemasiaMaterial;
-                    ItemOrdenProduccion.NroPiezasImpresion = Item.NroPiezasImpresion;
+                    ItemOrdenProduccion.FormatoImpresionLargo = Item.FormatoImpresionLargo;
+                    ItemOrdenProduccion.FormatoImpresionAlto = Item.FormatoImpresionAlto;
+                    ItemOrdenProduccion.GraficoPrecorteGirado = Item.GraficoPrecorteGirado;
+                    ItemOrdenProduccion.GraficoImpresionGirado = Item.GraficoImpresionGirado;
                     ItemOrdenProduccion.NroPiezasPrecorte = Item.NroPiezasPrecorte;
-                    ItemOrdenProduccion.CantidadElemento = Item.CantidadElemento;
+                    ItemOrdenProduccion.NroPiezasImpresion = Item.NroPiezasImpresion;
+                    ItemOrdenProduccion.MetodoImpresion = Item.MetodoImpresion;
+                    ItemOrdenProduccion.NumerodePases = Item.NumerodePases;
+                    ItemOrdenProduccion.CantidadMaterial = Item.CantidadMaterial;
                     ItemOrdenProduccion.CantidadProduccion = Item.CantidadProduccion;
+                    ItemOrdenProduccion.CantidadDemasia = Item.CantidadDemasia;
+                    ItemOrdenProduccion.CantidadElemento = Item.CantidadElemento;
+                    ItemOrdenProduccion.Operacion = Item.Operacion;
+                    ItemOrdenProduccion.CantidadUnidad = Item.CantidadUnidad;
+                    ItemOrdenProduccion.CantidadDemasiaMaterial = Item.CantidadDemasiaMaterial;
+                    ItemOrdenProduccion.NumeroPliegos = Item.NumeroPliegos;
+                    ItemOrdenProduccion.GraficoImpresionManual = Item.GraficoImpresionManual;
+                    ItemOrdenProduccion.TieneTipoUnidad = Item.TieneTipoUnidad;
+                    ItemOrdenProduccion.UnidadMedidaAbierta = Item.UnidadMedidaAbierta;
+                    ItemOrdenProduccion.LabelMaterial = Item.LabelMaterial;
+                    ItemOrdenProduccion.LabelMaterialAlmancen = Item.LabelMaterialAlmancen;
+                    ItemOrdenProduccion.LabelProduccion = Item.LabelProduccion;
 
-                    ItemOrdenProduccion.CalcularProduccionItem();
-
-                    ItemOrdenProduccion.Observacion = Item.Observacion;
+              
 
                     foreach (ItemCotizacionServicio ItemServicio in Item.Servicios)
                     {
                         ItemOrdenProduccionServicio ItemOPServicio = ItemOrdenProduccion.AddServicio();
                         ItemOPServicio.Servicio = ItemServicio.Servicio;
+                        ItemOPServicio.UnidadServicio = ItemServicio.UnidadServicio;
+                        ItemOPServicio.CantidadServicio = ItemServicio.CantidadServicio;
+                        ItemOPServicio.Material = ItemServicio.Material;
+                        ItemOPServicio.UnidadMaterial = ItemServicio.UnidadMaterial;
+                        ItemOPServicio.CantidadMaterial = ItemServicio.CantidadMaterial;
                         
                     }
 
