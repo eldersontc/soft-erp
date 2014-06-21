@@ -11,6 +11,10 @@ using Soft.DataAccess;
 using Soft.Win;
 using Soft.Ventas.Entidades;
 using Soft.Inventario.Entidades;
+using Infragistics.Win.UltraWinGrid;
+using Infragistics.Win;
+
+
 
 namespace Soft.Ventas.Win
 {
@@ -26,9 +30,31 @@ namespace Soft.Ventas.Win
         public override void Init()
         {
             base.Init();
+            InitGrid();
             Mostrar();
         }
         private Boolean ActualizandoIU = false;
+
+        //Constantes
+        const String colNobre = "Nombre";
+        const String colUnidad = "Unidad";
+
+        public void InitGrid()
+        {
+            DataTable columns = new DataTable();
+            DataColumn column = new DataColumn();
+
+            column = columns.Columns.Add(colNobre);
+            column.DataType = typeof(String);
+
+            column = columns.Columns.Add(colUnidad);
+            column.DataType = typeof(String);
+
+
+            ugServicios.DataSource = columns;
+            ugServicios.DisplayLayout.Bands[0].Columns[colNobre].Width = 200;
+            MapKeys(ref ugServicios);
+        }
 
         public void Mostrar()
         {
@@ -54,9 +80,60 @@ namespace Soft.Ventas.Win
             txtResolucionMinimo.Value = Maquina.ResolucionMinimo;
             txtResolucionMaximo.Value = Maquina.ResolucionMaximo;
             txtDescripcción.Text = Maquina.Descripcion;
+
+            MostrarItems();
+
             ActualizandoIU = false;
 
         }
+
+
+
+        private void MostrarItems()
+        {
+            base.ClearAllRows(ref ugServicios);
+            foreach (ItemMaquinaServicio Item in Maquina.ItemsServicio)
+            {
+                UltraGridRow Row = ugServicios.DisplayLayout.Bands[0].AddNew();
+                Row.Tag = Item;
+                MostrarServicio(Row);
+            }
+        }
+
+
+        private void MostrarServicio(UltraGridRow Row)
+        {
+            ItemMaquinaServicio Item = (ItemMaquinaServicio)Row.Tag;
+            if (Item.Servicio != null)
+            {
+                AgregarUnidades(Row);
+                Row.Cells[colNobre].Value = Item.Servicio.Nombre;
+                Row.Cells[colUnidad].Value = Item.Unidad.Unidad.Codigo;
+            }
+        }
+
+
+        public void AgregarUnidades(UltraGridRow Row)
+        {
+            ItemMaquinaServicio Item = (ItemMaquinaServicio)Row.Tag;
+            ValueList List = new ValueList();
+            if (Item.Servicio != null)
+            {
+                Item.Unidad = Item.Servicio.UnidadBase;
+            }
+
+            foreach (ExistenciaUnidad Unidad in Item.Servicio.Unidades)
+            {
+                if (Item.Unidad == null & Unidad.EsUnidadBase)
+                {
+                    Item.Unidad = Unidad;
+                }
+                List.ValueListItems.Add(Unidad, Unidad.Unidad.Codigo);
+            }
+
+            Row.Cells[colUnidad].ValueList = List;
+        }
+
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)
         {
@@ -183,6 +260,36 @@ namespace Soft.Ventas.Win
 
         }
 
+        private void ubNuevo_Click(object sender, EventArgs e)
+        {
+            FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+
+            String Filtro = "ID NOT IN (";
+            String IDs = "";
+            foreach (ItemMaquinaServicio Item in Maquina.ItemsServicio)
+            {
+                IDs = IDs + "'" + Item.Servicio.ID + "',";
+            }
+            Filtro = (IDs.Length > 0) ? Filtro + IDs.Substring(0, IDs.Length - 1) + ") AND EsServicio = 1" : " EsServicio = 1";
+
+            Existencia Existencia = (Existencia)FrmSeleccionar.GetSelectedEntity(typeof(Existencia), "Existencia", Filtro);
+            if (Existencia != null)
+            {
+                Existencia ExistenciaCompleta = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Existencia.ID);
+                UltraGridRow Row = ugServicios.DisplayLayout.Bands[0].AddNew();
+                Row.Tag =Maquina.CrearServicio(ExistenciaCompleta);
+                Mostrar();
+            }
+        }
+
+        private void ubEliminar_Click(object sender, EventArgs e)
+        {
+            if (ugServicios.ActiveRow == null || Maquina == null) { return; }
+            Maquina.ItemsServicio.Remove((ItemMaquinaServicio)ugServicios.ActiveRow.Tag);
+            ugServicios.ActiveRow.Delete(false);
+        }
+
+  
     
      
 
