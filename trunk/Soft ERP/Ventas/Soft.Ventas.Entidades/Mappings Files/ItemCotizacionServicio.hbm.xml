@@ -21,6 +21,7 @@
 
     <property name="CostoTotalServicio" type="decimal"/>
 
+    <property name="EsAutogenerado" type="boolean"/>
 
   </class>
 
