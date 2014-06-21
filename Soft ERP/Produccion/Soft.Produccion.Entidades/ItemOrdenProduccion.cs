@@ -35,13 +35,16 @@ namespace Soft.Produccion.Entidades
                 mMaquina = value;
                 if (NewInstance) { return; }
 
-                if (mMaquina == null) {
+                if (mMaquina == null)
+                {
                     this.FormatoImpresionAlto = 0;
                     this.FormatoImpresionLargo = 0;
-                } else {
+                }
+                else
+                {
                     this.FormatoImpresionAlto = this.mMaquina.PliegoAltoMaximo;
                     this.FormatoImpresionLargo = this.mMaquina.PliegoAnchoMaximo;
-                }  
+                }
             }
         }
 
@@ -94,10 +97,10 @@ namespace Soft.Produccion.Entidades
         public virtual Boolean GraficoImpresionGirado { get; set; }
         public virtual Int32 NroPiezasPrecorte { get; set; }
         public virtual Int32 NroPiezasImpresion { get; set; }
-        
+
         public virtual String MetodoImpresion { get; set; }
 
-        
+
 
 
         public virtual Boolean TieneGraficos { get; set; }
@@ -123,6 +126,11 @@ namespace Soft.Produccion.Entidades
 
         public virtual Boolean TieneTipoUnidad { get; set; }
         public virtual String UnidadMedidaAbierta { get; set; }
+
+        public virtual String LabelMaterial { get; set; }
+        public virtual String LabelMaterialAlmancen { get; set; }
+        public virtual String LabelProduccion { get; set; }
+
 
         public virtual ItemOrdenProduccionServicio AddServicio()
         {
