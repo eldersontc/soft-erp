@@ -35,6 +35,9 @@ namespace Soft.Ventas.Entidades
         public virtual ListaPreciosExistencia ListaPreciosExistencia { get; set; }
         public virtual ListaPreciosTransporte ListaPreciosTransporte { get; set; }
 
+        
+
+
         public virtual LineaProduccion LineaProduccion { get; set; }
 
         private Decimal mTotal;

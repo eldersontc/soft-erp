@@ -10,7 +10,9 @@ namespace Soft.Ventas.Entidades
     [Serializable]
     public class Maquina : Parent {
     
-        public Maquina() { }
+        public Maquina() {
+            ItemsServicio = new List<ItemMaquinaServicio>();
+        }
         public virtual String Codigo { get; set; }
         public virtual TipoMaquina TipoMaquina { get; set; }
         public virtual Marca Marca { get; set; }
@@ -30,5 +32,25 @@ namespace Soft.Ventas.Entidades
         public virtual Int32 ResolucionMinimo { get; set; }
         public virtual Int32 ResolucionMaximo { get; set; }
         public virtual String Descripcion { get; set; }
+
+        public virtual IList<ItemMaquinaServicio> ItemsServicio { get; set; }
+
+        public virtual ItemMaquinaServicio AddItem()
+        {
+            ItemMaquinaServicio Item = new ItemMaquinaServicio();
+            ItemsServicio.Add(Item);
+            return Item;
+        }
+
+
+        public virtual ItemMaquinaServicio CrearServicio(Existencia Servicio)
+        {
+            ItemMaquinaServicio Item = new ItemMaquinaServicio();
+            Item.Servicio = Servicio;
+            Item.Unidad = Servicio.UnidadBase;
+            ItemsServicio.Add(Item);
+            return Item;
+        }
+
     }
 }

@@ -20,6 +20,13 @@ namespace Soft.Ventas.Entidades
         public virtual String Observacion { get; set; }
         public virtual Existencia Operacion { get; set; }
 
+        public virtual String LabelMaterial { get; set; }
+        public virtual String LabelMaterialAlmancen { get; set; }
+        public virtual String LabelProduccion { get; set; }
+
+        public virtual Boolean MuestraPrecioEnPresupuesto { get; set; }
+
+        
 
         private Maquina mMaquina;
         public virtual Maquina Maquina
@@ -70,23 +77,23 @@ namespace Soft.Ventas.Entidades
         public virtual Decimal CostoMaquina { get; set; }
         public virtual Decimal CostoMaterial { get; set; }
         public virtual Decimal CostoTransporte { get; set; }
-        public virtual Boolean TieneMedidaAbierta { get; set; }
-        public virtual Boolean TieneMedidaCerrada { get; set; }
-        public virtual Boolean TieneTiraRetira { get; set; }
+        public virtual bool TieneMedidaAbierta { get; set; }
+        public virtual bool TieneMedidaCerrada { get; set; }
+        public virtual bool TieneTiraRetira { get; set; }
         public virtual Int32 SeparacionX { get; set; }
         public virtual Int32 SeparacionY { get; set; }
         
         //Nuevos
         public virtual Decimal FormatoImpresionLargo { get; set; }
         public virtual Decimal FormatoImpresionAlto { get; set; }
-        public virtual Boolean GraficoPrecorteGirado { get; set; }
-        public virtual Boolean GraficoImpresionGirado { get; set; }
+        public virtual bool GraficoPrecorteGirado { get; set; }
+        public virtual bool GraficoImpresionGirado { get; set; }
         public virtual Int32 NroPiezasPrecorte { get; set; }
         public virtual Int32 NroPiezasImpresion { get; set; }
         public virtual String MetodoImpresion { get; set; }
-        public virtual Boolean TieneGraficos { get; set; }
-        public virtual Boolean TieneMaterial { get; set; }
-        public virtual Boolean TieneMaquina { get; set; }
+        public virtual bool TieneGraficos { get; set; }
+        public virtual bool TieneMaterial { get; set; }
+        public virtual bool TieneMaquina { get; set; }
 
         public virtual Int32 NumerodePases { get; set; }
         public virtual Decimal CantidadMaterial { get; set; }
