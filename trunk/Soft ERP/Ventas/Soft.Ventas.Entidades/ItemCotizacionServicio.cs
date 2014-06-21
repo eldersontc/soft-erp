@@ -26,5 +26,9 @@ namespace Soft.Ventas.Entidades
         public virtual Decimal CantidadMaterial { get; set; }
         public virtual Decimal CostoMaterial { get; set; }
         public virtual Decimal CostoTotalServicio { get; set; }
+
+        public virtual bool EsAutogenerado { get; set; }
+
+        
     }
 }
