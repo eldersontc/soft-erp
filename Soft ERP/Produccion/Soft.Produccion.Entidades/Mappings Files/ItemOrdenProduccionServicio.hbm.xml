@@ -5,7 +5,7 @@
 
     <id name="ID" column ="ID" type="string" unsaved-value="0"/>
     <many-to-one name="Servicio" class="Soft.Inventario.Entidades.Existencia" column="IDServicio" insert="true" update="true" lazy="false"/>
-    <many-to-one name="UnidadServicio" class="Soft.Inventario.Entidades.Unidad" column="IDUnidadServicio" insert="true" update="true" lazy="false"/>
+    <many-to-one name="UnidadServicio" class="Soft.Inventario.Entidades.ExistenciaUnidad" column="IDUnidadServicio" insert="true" update="true" lazy="false"/>
     <property name="CantidadServicio" type="decimal"/>
     <property name="CostoServicio" type="decimal"/>
 
@@ -15,7 +15,7 @@
     <property name="CostoMaquina" type="decimal"/>
 
     <many-to-one name="Material" class="Soft.Inventario.Entidades.Existencia" column="IDMaterial" insert="true" update="true" lazy="false"/>
-    <many-to-one name="UnidadMaterial" class="Soft.Inventario.Entidades.Unidad" column="IDUnidadMaterial" insert="true" update="true" lazy="false"/>
+    <many-to-one name="UnidadMaterial" class="Soft.Inventario.Entidades.ExistenciaUnidad" column="IDUnidadMaterial" insert="true" update="true" lazy="false"/>
     <property name="CantidadMaterial" type="decimal"/>
     <property name="CostoMaterial" type="decimal"/>
 
