@@ -56,6 +56,7 @@
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ugbPliego = new Infragistics.Win.Misc.UltraGroupBox();
@@ -91,6 +92,10 @@
             this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel4 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel5 = new Infragistics.Win.Misc.UltraLabel();
+            this.ultraTabPageControl3 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ugServicios = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.ubNuevo = new Infragistics.Win.Misc.UltraButton();
+            this.ubEliminar = new Infragistics.Win.Misc.UltraButton();
             this.uceActivo = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.lblNombre = new Infragistics.Win.Misc.UltraLabel();
             this.txtNombre = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -130,6 +135,8 @@
             this.ultraGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtResolucionMaximo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtResolucionMinimo)).BeginInit();
+            this.ultraTabPageControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ugServicios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceActivo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).BeginInit();
@@ -443,9 +450,9 @@
             this.ultraTabPageControl1.Controls.Add(this.lblCuerpos);
             this.ultraTabPageControl1.Controls.Add(this.uneGramajeMinimo);
             this.ultraTabPageControl1.Controls.Add(this.GramajeMinimo);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(479, 266);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(479, 264);
             // 
             // ugbPliego
             // 
@@ -746,7 +753,7 @@
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBox1);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(479, 266);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(479, 264);
             // 
             // ultraGroupBox1
             // 
@@ -817,6 +824,43 @@
             this.ultraLabel5.Size = new System.Drawing.Size(85, 23);
             this.ultraLabel5.TabIndex = 27;
             this.ultraLabel5.Text = "Minimo";
+            // 
+            // ultraTabPageControl3
+            // 
+            this.ultraTabPageControl3.Controls.Add(this.ugServicios);
+            this.ultraTabPageControl3.Controls.Add(this.ubNuevo);
+            this.ultraTabPageControl3.Controls.Add(this.ubEliminar);
+            this.ultraTabPageControl3.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl3.Name = "ultraTabPageControl3";
+            this.ultraTabPageControl3.Size = new System.Drawing.Size(479, 264);
+            // 
+            // ugServicios
+            // 
+            this.ugServicios.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.ugServicios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ugServicios.Location = new System.Drawing.Point(0, 0);
+            this.ugServicios.Name = "ugServicios";
+            this.ugServicios.Size = new System.Drawing.Size(479, 179);
+            this.ugServicios.TabIndex = 1;
+            this.ugServicios.Text = "ultraGrid1";
+            // 
+            // ubNuevo
+            // 
+            this.ubNuevo.Location = new System.Drawing.Point(320, 185);
+            this.ubNuevo.Name = "ubNuevo";
+            this.ubNuevo.Size = new System.Drawing.Size(75, 23);
+            this.ubNuevo.TabIndex = 13;
+            this.ubNuevo.Text = "Nuevo";
+            this.ubNuevo.Click += new System.EventHandler(this.ubNuevo_Click);
+            // 
+            // ubEliminar
+            // 
+            this.ubEliminar.Location = new System.Drawing.Point(401, 185);
+            this.ubEliminar.Name = "ubEliminar";
+            this.ubEliminar.Size = new System.Drawing.Size(75, 23);
+            this.ubEliminar.TabIndex = 14;
+            this.ubEliminar.Text = "Eliminar";
+            this.ubEliminar.Click += new System.EventHandler(this.ubEliminar_Click);
             // 
             // uceActivo
             // 
@@ -934,10 +978,11 @@
             this.ultraTabControl1.Controls.Add(this.ultraTabSharedControlsPage1);
             this.ultraTabControl1.Controls.Add(this.ultraTabPageControl1);
             this.ultraTabControl1.Controls.Add(this.ultraTabPageControl2);
+            this.ultraTabControl1.Controls.Add(this.ultraTabPageControl3);
             this.ultraTabControl1.Location = new System.Drawing.Point(16, 198);
             this.ultraTabControl1.Name = "ultraTabControl1";
             this.ultraTabControl1.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.ultraTabControl1.Size = new System.Drawing.Size(483, 292);
+            this.ultraTabControl1.Size = new System.Drawing.Size(483, 290);
             appearance21.BackColor = System.Drawing.Color.Transparent;
             this.ultraTabControl1.TabHeaderAreaAppearance = appearance21;
             this.ultraTabControl1.TabIndex = 34;
@@ -945,15 +990,18 @@
             ultraTab1.Text = ":: Impresoras ::";
             ultraTab2.TabPage = this.ultraTabPageControl2;
             ultraTab2.Text = ":: Gigantografias ::";
+            ultraTab3.TabPage = this.ultraTabPageControl3;
+            ultraTab3.Text = ":: Servicios Por Defecto ::";
             this.ultraTabControl1.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
             ultraTab1,
-            ultraTab2});
+            ultraTab2,
+            ultraTab3});
             // 
             // ultraTabSharedControlsPage1
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(479, 266);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(479, 264);
             // 
             // ultraLabel1
             // 
@@ -1011,6 +1059,8 @@
             this.ultraGroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtResolucionMaximo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtResolucionMinimo)).EndInit();
+            this.ultraTabPageControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ugServicios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceActivo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
@@ -1072,5 +1122,9 @@
         private Infragistics.Win.Misc.UltraLabel ultraLabel5;
         private Infragistics.Win.Misc.UltraLabel ultraLabel1;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtDescripcción;
+        private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl3;
+        private Infragistics.Win.UltraWinGrid.UltraGrid ugServicios;
+        private Infragistics.Win.Misc.UltraButton ubNuevo;
+        private Infragistics.Win.Misc.UltraButton ubEliminar;
     }
 }

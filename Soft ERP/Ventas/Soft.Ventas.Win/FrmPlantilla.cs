@@ -14,6 +14,7 @@ using Soft.DataAccess;
 using Infragistics.Win;
 using Infragistics.Win.UltraWinTree;
 using Soft.Exceptions;
+using Soft.Produccion.Entidades;
 
 namespace Soft.Ventas.Win
 {
@@ -64,6 +65,8 @@ namespace Soft.Ventas.Win
             txtCodigo.Text = Plantilla.Codigo;
             txtNombre.Text = Plantilla.Nombre;
             uceActivo.Checked = Plantilla.Activo;
+            busLineaProduccion.Text = (Plantilla.LineaProduccion != null) ? Plantilla.LineaProduccion.Nombre : "";
+          
             MostrarItems();
             DeshabilitarControles();
         }
@@ -424,6 +427,27 @@ namespace Soft.Ventas.Win
             }
             catch (Exception ex)
             {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void busLineaProduccion_Search(object sender, EventArgs e)
+        {
+            try
+            {
+
+                FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
+                LineaProduccion LineaProduccion = (LineaProduccion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(LineaProduccion), "Linea de Produccion");
+                if ((Plantilla.LineaProduccion == null))
+                {
+
+                    Plantilla.LineaProduccion = LineaProduccion;
+                }
+                Mostrar();
+            }
+            catch (Exception ex)
+            {
+
                 SoftException.Control(ex);
             }
         }

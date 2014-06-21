@@ -135,12 +135,23 @@ namespace Soft.Ventas.Win
 
         public void MostrarUnidades(ItemListaPreciosExistencia ItemListaPreciosExistencia)
         {
-            base.ClearAllRows(ref ugUnidades);
+            try
+            {
+                base.ClearAllRows(ref ugUnidades);
+            
+            
+            
             foreach (UnidadListaPreciosExistencia Item in ItemListaPreciosExistencia.Unidades)
             {
                 UltraGridRow Row = ugUnidades.DisplayLayout.Bands[0].AddNew();
                 Row.Tag = Item;
                 MostrarUnidad(Row);
+            }
+            }
+            catch (Exception)
+            {
+                
+                //throw;
             }
         }
 
