@@ -7,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Soft.Win;
-using Soft.Ventas.Entidades;
+using Soft.Ventas.Win;
+using Soft.Produccion.Entidades;
 using Soft.Inventario.Entidades;
 using Soft.DataAccess;
-using Soft.Produccion.Entidades;
+using Soft.Ventas.Entidades;
+
 
 namespace Soft.Produccion.Win
 {
@@ -19,7 +21,7 @@ namespace Soft.Produccion.Win
         public FrmOrdenProducciondeServicio()
         {
             InitializeComponent();
-            Item = new ItemOrdenProduccionServicio();
+            Item=new ItemOrdenProduccionServicio();
         }
 
         //public FrmCotizaciondeServicio(ItemCotizacionServicio m_Item)
@@ -66,22 +68,40 @@ namespace Soft.Produccion.Win
         }
         private Boolean ActualizandoIU = false;
         private void Mostrar() {
-            ActualizandoIU = true;
-            bussAcabado.Text = (Item.Servicio != null) ? Item.Servicio.Nombre : "";
-            busUnidadAcabado.Text = (Item.UnidadServicio != null) ? Item.UnidadServicio.Nombre : "";
-            busMaquina.Text = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
-            busUnidadMaquina.Text = (Item.UnidadMaquina != null) ? Item.UnidadMaquina.Nombre : "";
-            
-            txtNombreMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
-            busUnidadMaterial.Text = (Item.UnidadMaterial != null) ? Item.UnidadMaterial.Nombre : "";
-            txtCantidadAcabado.Value = Item.CantidadServicio;
-            txtCantidadMaquina.Value = Item.CantidadMaquina;
-            txtCantidadMaterial.Value = Item.CantidadMaterial;
-            /*txtCostoAcabado.Value = Item.CostoServicio;
-            txtCostoMaquina.Value = Item.CostoMaquina;
-            txtCostoMaterial.Value = Item.CostoMaterial;*/
+            try
+            {
+                ActualizandoIU = true;
+                bussAcabado.Text = (Item.Servicio != null) ? Item.Servicio.Nombre : "";
+                busUnidadAcabado.Text = (Item.UnidadServicio != null) ? Item.UnidadServicio.Unidad.Nombre : "";
+                busMaquina.Text = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
+                busUnidadMaquina.Text = (Item.UnidadMaquina != null) ? Item.UnidadMaquina.Nombre : "";
 
-            ActualizandoIU = false;
+                txtNombreMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
+                if (Item.UnidadMaterial != null)
+                {
+                    if (Item.UnidadMaterial.Unidad != null)
+                    {
+                        busUnidadMaterial.Text = (Item.UnidadMaterial != null) ? Item.UnidadMaterial.Unidad.Nombre : "";
+                    }
+
+                }
+                else { }
+
+                txtCantidadAcabado.Value = Item.CantidadServicio;
+                txtCantidadMaquina.Value = Item.CantidadMaquina;
+                txtCantidadMaterial.Value = Item.CantidadMaterial;
+                txtCostoAcabado.Value = Item.CostoServicio;
+                txtCostoMaquina.Value = Item.CostoMaquina;
+                txtCostoMaterial.Value = Item.CostoMaterial;
+                ActualizandoIU = false;
+            }
+            catch (Exception ex)
+            {
+                ActualizandoIU = false;
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
+
+           
         }
 
         private void bussAcabado_Search(object sender, EventArgs e)
@@ -104,21 +124,41 @@ namespace Soft.Produccion.Win
 
         private void busUnidadAcabado_Search(object sender, EventArgs e)
         {
-            if (ActualizandoIU) { return; }
-            try
-            {
-                foreach (var unidad in Item.Servicio.Unidades)
-                {
-                    ExistenciaUnidad eu = (ExistenciaUnidad)unidad;
-                    Item.UnidadServicio = eu.Unidad;
-                }
-                Mostrar();
-            }
-            catch (Exception ex)
-            {
-                Soft.Exceptions.SoftException.ShowException(ex);
-            }
+                       if (ActualizandoIU) { return; }
+                       try
+                       {
+                           String filtro = "IDExistencia='" + Item.Servicio.ID + "' and EstaListaPreciosExistencia='SI'";
+                           FrmSelectedEntity formulario = new FrmSelectedEntity();
+                           ExistenciaUnidad unidad = (ExistenciaUnidad)formulario.GetSelectedEntity(typeof(ExistenciaUnidad), "ExistenciaUnidad", filtro);
 
+                           if (unidad != null && Item.UnidadServicio != null)
+                           {
+                               unidad = (ExistenciaUnidad)HelperNHibernate.GetEntityByID("ExistenciaUnidad", unidad.ID);
+                               if (unidad.ID != Item.UnidadServicio.ID)
+                               {
+                                   Decimal cantidadanteriorunidadbase = Item.CantidadServicio * Item.UnidadServicio.FactorConversion;
+                                   Decimal cantidadactual = Math.Truncate(cantidadanteriorunidadbase / unidad.FactorConversion);
+                                   Item.UnidadServicio = unidad;
+                                   Item.CantidadServicio = cantidadactual;
+                                   ObtenerCostoServicio();
+                               }
+                           }
+                           else
+                           {
+                               unidad = (ExistenciaUnidad)HelperNHibernate.GetEntityByID("ExistenciaUnidad", unidad.ID);
+                               Item.UnidadServicio = unidad;
+                               Item.CantidadServicio = 0;
+                               ObtenerCostoServicio();
+                           }
+                       }
+
+
+                       catch (Exception ex)
+                       {
+                           Soft.Exceptions.SoftException.ShowException(ex);
+                       }
+
+                       Mostrar();
         }
 
         private void txtCantidadAcabado_ValueChanged(object sender, EventArgs e)
@@ -199,56 +239,18 @@ namespace Soft.Produccion.Win
             try
             {
                 String filtro = "IDExistencia='"+Item.Material.ID+"'";
-
-
-
                 FrmSelectedEntity formulario = new FrmSelectedEntity();
-                Unidad unidad = (Unidad)formulario.GetSelectedEntity(typeof(Unidad), "ExistenciaUnidad", filtro);
+                ExistenciaUnidad unidad = (ExistenciaUnidad)formulario.GetSelectedEntity(typeof(ExistenciaUnidad), "ExistenciaUnidad", filtro);
 
-
-                if (Item.UnidadMaterial != null)
+                if (unidad != null )
                 {
-                    if (unidad != null)
-                    {
-                        if (!Item.UnidadMaterial.Nombre.Equals(unidad.Nombre))
-                        {
-
-                            ExistenciaUnidad eu = null;
-                            foreach (ExistenciaUnidad Itemunidad in Item.Material.Unidades)
-                            {
-                                if (Itemunidad.Unidad.Nombre.Equals(Item.UnidadMaterial.Nombre))
-                                {
-                                    eu = Itemunidad;
-                                    break;
-                                }
-                            }
-
-                            ExistenciaUnidad eu2 = null;
-                            foreach (ExistenciaUnidad Itemunidad in Item.Material.Unidades)
-                            {
-                                if (Itemunidad.Unidad.Nombre.Equals(unidad.Nombre))
-                                {
-                                    eu2 = Itemunidad;
-                                    break;
-                                }
-                            }
-
-                            Item.UnidadMaterial = (Unidad)HelperNHibernate.GetEntityByID("Unidad", unidad.ID);
-
-                            if (eu.FactorConversion > eu2.FactorConversion)
-                            {
-                                Item.CantidadMaterial = Item.CantidadMaterial / eu.FactorConversion;
-                            }
-                            else
-                            {
-                                Item.CantidadMaterial = Item.CantidadMaterial * eu.FactorConversion;
-                            }
-                        }
-                    }
+                    unidad = (ExistenciaUnidad)HelperNHibernate.GetEntityByID("ExistenciaUnidad", unidad.ID);
+         
+                      Item.UnidadMaterial = unidad;
+                        Item.CantidadMaterial =0;
+                        ObtenerCostoMaterial();
                 }
-                else {
-                    Item.UnidadMaterial = (Unidad)HelperNHibernate.GetEntityByID("Unidad", unidad.ID);
-                }
+                  
                 Mostrar();
             }
             catch (Exception ex)
@@ -291,33 +293,34 @@ namespace Soft.Produccion.Win
         private void txtCostoAcabado_ValueChanged(object sender, EventArgs e)
         {
             if (ActualizandoIU) { return; }
-            //Item.CostoServicio = Convert.ToDecimal ( txtCostoAcabado.Value);
+            Item.CostoServicio = Convert.ToDecimal ( txtCostoAcabado.Value);
             SumarTotal();
         }
 
         private void txtCostoMaquina_ValueChanged(object sender, EventArgs e)
         {
             if (ActualizandoIU) { return; }
-            //Item.CostoMaquina = Convert.ToDecimal (txtCostoMaquina.Value);
+            Item.CostoMaquina = Convert.ToDecimal (txtCostoMaquina.Value);
             SumarTotal();
         }
 
         private void txtCostoMaterial_ValueChanged(object sender, EventArgs e)
         {
             if (ActualizandoIU) { return; }
-            //Item.CostoMaterial =Convert.ToDecimal ( txtCostoMaterial.Value);
+            Item.CostoMaterial =Convert.ToDecimal ( txtCostoMaterial.Value);
             SumarTotal();
         }
 
         public void SumarTotal() {
             if (ActualizandoIU) { return; }
             Item.CostoTotalServicio = Item.CostoMaterial + Item.CostoMaquina + Item.CostoServicio;
-            //txtCostoTotal.Value  = Item.CostoTotalServicio ;
+            txtCostoTotal.Value  = Item.CostoTotalServicio ;
         }
 
 
 
         private void ObtenerCostoServicio() {
+            if (ActualizandoIU) { return; }
             try
             {
                 foreach (ItemListaPreciosExistencia itemLPE  in lpe.Items)
@@ -326,25 +329,33 @@ namespace Soft.Produccion.Win
                     {
                         foreach (UnidadListaPreciosExistencia unidadLPE in itemLPE.Unidades)
                         {
-                            if (unidadLPE.Unidad.Nombre.Equals(Item.UnidadServicio.Nombre))
+                            if (unidadLPE.Unidad.Unidad.Nombre.Equals(Item.UnidadServicio.Unidad.Nombre))
                             {
 
                                 
                                 foreach (EscalaListaPreciosExistencia escala in unidadLPE.Escalas)
                                 {
+                                    Decimal cantidadBruta = Item.CantidadServicio;
+                                    Decimal cantidadNeta = Item.CantidadServicio / escala.PorCada;
+                                    Decimal cantidadRedondeada = Math.Truncate(cantidadNeta);
+                                    Item.CostoServicio = 0;
+                                    if ((cantidadNeta - cantidadRedondeada) > 0) {
+                                        cantidadRedondeada += 1;
+                                    }
+
                                     if ((escala.Desde == 0) && (escala.Hasta == 0))
                                         {
-                                            Item.CostoServicio = Item.CantidadServicio * escala.Costo;
+                                            Item.CostoServicio = cantidadRedondeada * escala.Costo;
                                             break;
                                         }
                                     else if ((escala.Desde <= Item.CantidadServicio) && (escala.Hasta >= Item.CantidadServicio))
                                         {
-                                            Item.CostoServicio = Item.CantidadServicio * escala.Costo;
+                                            Item.CostoServicio = cantidadRedondeada * escala.Costo;
                                             break;
                                         }
                                      else if ((escala.Hasta == 0))
                                         {
-                                            Item.CostoServicio = Item.CantidadServicio * escala.Costo;
+                                            Item.CostoServicio = cantidadRedondeada * escala.Costo;
                                             break;
                                         }
                                 }
@@ -354,6 +365,8 @@ namespace Soft.Produccion.Win
                         break;
                     }
                 }
+
+                SumarTotal();
 
 
             }
@@ -367,19 +380,19 @@ namespace Soft.Produccion.Win
             if (ActualizandoIU) { return; }
             try
             {
-                ExistenciaUnidad eu = null;
-                foreach (ExistenciaUnidad Itemunidad in Item.Material.Unidades)
-                {
-                    if (Itemunidad.Unidad.Nombre.Equals(Item.UnidadMaterial.Nombre))
-                    {
-                        eu = Itemunidad;
-                        break;
-                    }
-                }
-
+ 
                 Existencia existenciaActualizada = (Existencia) HelperNHibernate.GetEntityByID("Existencia", Item.Material.ID);
 
-                Item.CostoMaterial = (Item.CantidadMaterial * existenciaActualizada.CostoUltimaCompra) / eu.FactorConversion;
+                Decimal costo = 0;
+
+                if (existenciaActualizada.CostoUltimaCompra > 0) {
+                    costo = existenciaActualizada.CostoUltimaCompra;
+                }else{
+                    costo = existenciaActualizada.CostoReferencia;
+                }
+
+                Item.CostoMaterial = (Item.CantidadMaterial * costo) * Item.UnidadMaterial.FactorConversion;
+                SumarTotal();
             }
             catch (Exception)
             {
@@ -391,6 +404,7 @@ namespace Soft.Produccion.Win
 
         private void ObtenerCostoMaquina()
         {
+            if (ActualizandoIU) { return; }
             try
             {
                 foreach (ItemListaCostosMaquina itemLCM in lcm.Items)
@@ -461,18 +475,40 @@ namespace Soft.Produccion.Win
             if (ActualizandoIU) { return; }
             try
             {
-                Decimal largo = ItemElemento.MedidaAbiertaLargo;
-                Decimal alto = ItemElemento.MedidaAbiertaAlto;
+                if (Item.UnidadServicio == null) { return; }
 
-                if (ItemElemento.UnidadMedidaAbierta.Equals("CM."))
+                if (Item.UnidadServicio.Unidad.Nombre == "METRO CUADRADO")
                 {
-                    largo = largo / 100;
-                    alto = alto / 100;
+
+                    Decimal largo = ItemElemento.MedidaAbiertaLargo;
+                    Decimal alto = ItemElemento.MedidaAbiertaAlto;
+                    if (ItemElemento.UnidadMedidaAbierta.Equals("CM."))
+                    {
+                        largo = largo / 100;
+                        alto = alto / 100;
+                    }
+                    txtCantidadAcabado.Value = (ItemElemento.CantidadElemento * alto * largo);
+                    ObtenerCostoServicio();
+
                 }
 
-                txtCantidadAcabado.Value = (ItemElemento.CantidadElemento * alto * largo);
+                if (Item.UnidadServicio.Unidad.Nombre == "MILLAR")
+                {
 
-                SumarTotal();
+                    Decimal cantidad = (ItemElemento.CantidadProduccion/ItemElemento.NumerodePases) / 1000 ;
+
+                    txtCantidadAcabado.Value = cantidad;
+                    ObtenerCostoServicio();
+
+                }
+
+                else {
+                    Exception mensaje = new Exception("Solo se puede obtener cuando la unidad es METRO CUADRADO");
+                    Soft.Exceptions.SoftException.ShowException(mensaje);
+       
+                }
+
+
             }
             catch (Exception ex)
             {
@@ -500,11 +536,67 @@ namespace Soft.Produccion.Win
                     alto = alto / 100;
                 }
                 Item.CantidadMaterial = largo * alto * ItemElemento.CantidadElemento;
+                ObtenerCostoMaterial(); 
             }
             Mostrar();
         }
 
+        private void bussAcabado_Clear(object sender, EventArgs e)
+        {
+            Item.Servicio = null;
+            Item.UnidadServicio = null;
+            Item.CantidadServicio = 0;
+            Item.CostoServicio = 0;
+            SumarTotal();
+            Mostrar();
+        }
 
+        private void busUnidadAcabado_Clear(object sender, EventArgs e)
+        {
+            Item.UnidadServicio = null;
+            Item.CantidadServicio = 0;
+            Item.CostoServicio = 0;
+            SumarTotal();
+            Mostrar();
+        }
 
+        private void busMaquina_Clear(object sender, EventArgs e)
+        {
+            Item.Maquina = null;
+            Item.UnidadMaquina = null;
+            Item.CantidadMaquina = 0;
+            Item.CostoMaquina = 0;
+            SumarTotal();
+            Mostrar();
+        }
+
+        private void busUnidadMaquina_Clear(object sender, EventArgs e)
+        {
+            Item.UnidadMaquina = null;
+            Item.CantidadMaquina = 0;
+            Item.CostoMaquina = 0;
+            SumarTotal();
+            Mostrar();
+        }
+
+        private void txtNombreMaterial_Clear(object sender, EventArgs e)
+        {
+            Item.Material = null;
+            Item.UnidadMaterial = null;
+            Item.CantidadMaterial = 0;
+            Item.CostoMaterial = 0;
+            SumarTotal();
+            Mostrar();
+        }
+
+        private void busUnidadMaterial_Clear(object sender, EventArgs e)
+        {
+            Item.UnidadMaterial = null;
+            Item.CantidadMaterial = 0;
+            Item.CostoMaterial = 0;
+            SumarTotal();
+            Mostrar();
+        }
+        
     }
 }
