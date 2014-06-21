@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Ventas.Entidades.ItemMaquinaServicio, Soft.Ventas.Entidades">
+
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+   
+
+
+    <many-to-one name="Servicio" class="Soft.Inventario.Entidades.Existencia" column="IDServicio" insert="true" update="true" lazy="false"/>
+    <many-to-one name="Unidad" class="Soft.Inventario.Entidades.ExistenciaUnidad" column="IDUnidad" insert="true" update="true" lazy="false"/>
+
+
+  </class>
+
+</hibernate-mapping>

@@ -37,6 +37,12 @@
     <property name="TieneMaquina" type="boolean"/>
 
 
+    <property name="LabelMaterial" type="string"/>
+    <property name="LabelMaterialAlmancen" type="string"/>
+    <property name="LabelProduccion" type="string"/>
+
+
+
     <property name="TieneTipoUnidad" type="boolean"/>
     <property name="UnidadMedidaAbierta" type="string"/>
 
@@ -56,6 +62,13 @@
     <property name="NumeroPliegos" type="int"/>
 
     <property name="GraficoImpresionManual" type="boolean"/>
+
+
+    <property name="MuestraPrecioEnPresupuesto" type="boolean"/>
+
+
+
+    
 
     <many-to-one name="Operacion" class="Soft.Inventario.Entidades.Existencia" column="IDOperacion" insert="true" update="true" lazy="false"/>
     <many-to-one name="Maquina" class="Soft.Ventas.Entidades.Maquina" column="IDMaquina" insert="true" update="true" lazy="false"/>
