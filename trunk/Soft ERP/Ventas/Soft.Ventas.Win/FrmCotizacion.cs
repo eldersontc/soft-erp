@@ -379,7 +379,7 @@ namespace Soft.Ventas.Win
                 Cotizacion.TipoDocumento = (TipoCotizacion)HelperNHibernate.GetEntityByID("TipoCotizacion", TipoDocumento.ID);
                 Cotizacion.GenerarNumCp();
                 Cotizacion.AsignarListadeCostosDesdeTipoDocumento();
-                InsertarServiciosAutogenerados();
+                
                 try
                 {
                     FrmSelectedEntity FrmSeleccionarEmpleado = new FrmSelectedEntity();
@@ -548,16 +548,104 @@ namespace Soft.Ventas.Win
             BorrandoServiciosAutogenerados();
             foreach (ItemCotizacion item in Cotizacion.Items)
             {
+                if (item.Maquina != null)
+                {
                 foreach (ItemMaquinaServicio itemServicio in item.Maquina.ItemsServicio)
                     {
                         ItemCotizacionServicio itemc = new ItemCotizacionServicio();
                         itemc.Servicio = itemServicio.Servicio;
                         itemc.UnidadServicio = itemServicio.Unidad;
+                        if (item.MetodoImpresion == null) {
+                            itemc.CantidadServicio = 0;
+                        }
+                        if (item.MetodoImpresion.Equals("TIRA/RETIRA"))
+                        {
+                            itemc.CantidadServicio = (item.ImpresoTiraColor + item.ImpresoRetiraColor) * item.NumeroPliegos;
+                            ObtenerCostoServicio(itemc);
+                            
+                        }
+                        else {
+
+                            itemc.CantidadServicio = item.ImpresoTiraColor  * item.NumeroPliegos;
+                            ObtenerCostoServicio(itemc);
+                        }
                         itemc.EsAutogenerado = true;
                         ItemCotizacion.Servicios.Add(itemc);
+                        
                     }
+                }
+                MostrarTotalServicio(item);
             }
         }
+
+
+        private void ObtenerCostoServicio(ItemCotizacionServicio Item)
+        {
+            try
+            {
+                foreach (ItemListaPreciosExistencia itemLPE in Cotizacion.ListaPreciosExistencia.Items)
+                {
+                    if (itemLPE.Existencia.Nombre.Equals(Item.Servicio.Nombre))
+                    {
+                        foreach (UnidadListaPreciosExistencia unidadLPE in itemLPE.Unidades)
+                        {
+                            if (unidadLPE.Unidad.Unidad.Nombre.Equals(Item.UnidadServicio.Unidad.Nombre))
+                            {
+
+
+                                foreach (EscalaListaPreciosExistencia escala in unidadLPE.Escalas)
+                                {
+                                    Decimal cantidadBruta = Item.CantidadServicio;
+                                    Decimal cantidadNeta = Item.CantidadServicio / escala.PorCada;
+                                    Decimal cantidadRedondeada = Math.Truncate(cantidadNeta);
+                                    Item.CostoServicio = 0;
+                                    if ((cantidadNeta - cantidadRedondeada) > 0)
+                                    {
+                                        cantidadRedondeada += 1;
+                                    }
+
+                                    if ((escala.Desde == 0) && (escala.Hasta == 0))
+                                    {
+                                        Item.CostoServicio = cantidadRedondeada * escala.Costo;
+                                        break;
+                                    }
+                                    else if ((escala.Desde <= Item.CantidadServicio) && (escala.Hasta >= Item.CantidadServicio))
+                                    {
+                                        Item.CostoServicio = cantidadRedondeada * escala.Costo;
+                                        break;
+                                    }
+                                    else if ((escala.Hasta == 0))
+                                    {
+                                        Item.CostoServicio = cantidadRedondeada * escala.Costo;
+                                        break;
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+
+                SumarTotalServicio(Item);
+
+
+            }
+            catch (Exception)
+            {
+            }
+            Mostrar();
+        }
+
+        public void SumarTotalServicio(ItemCotizacionServicio Item)
+        {
+            Item.CostoTotalServicio = Item.CostoMaquina + Item.CostoMaterial + Item.CostoServicio;
+
+        }
+
+
+
+
 
 
         private void ssMaterial_Search(object sender, EventArgs e)
@@ -931,6 +1019,10 @@ namespace Soft.Ventas.Win
             try
             {
                 if (itemcosteado == null) { return; }
+
+
+                InsertarServiciosAutogenerados();
+
 
                 if (itemcosteado.Operacion.Codigo.Equals("IMPRVINIL") || itemcosteado.Operacion.Nombre.Equals("IMPRESION BANNER"))
                 {
