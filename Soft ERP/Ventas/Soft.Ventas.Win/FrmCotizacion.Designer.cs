@@ -212,6 +212,8 @@
             this.lblDireccionEntrega = new Infragistics.Win.Misc.UltraLabel();
             this.ssContacto = new Soft.Controls.SoftSearch();
             this.lblContacto = new Infragistics.Win.Misc.UltraLabel();
+            this.ultraTabPageControl5 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.checkMuestraPrecioEnPresupuesto = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.utcItemCotizacion = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage2 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.utCotizacion = new Infragistics.Win.UltraWinTree.UltraTree();
@@ -252,8 +254,6 @@
             this.ultraLabel23 = new Infragistics.Win.Misc.UltraLabel();
             this.busLineaProduccion = new Soft.Controls.SoftSearch();
             this.ultraLabel24 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraTabPageControl5 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.checkMuestraPrecioEnPresupuesto = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.tabItems.SuspendLayout();
@@ -307,6 +307,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtHojasMaquina)).BeginInit();
             this.ultraTabPageControl3.SuspendLayout();
             this.ultraTabPageControl4.SuspendLayout();
+            this.ultraTabPageControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkMuestraPrecioEnPresupuesto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcItemCotizacion)).BeginInit();
             this.utcItemCotizacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.utCotizacion)).BeginInit();
@@ -321,8 +323,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.uneSubTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoMillar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoUnidad)).BeginInit();
-            this.ultraTabPageControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkMuestraPrecioEnPresupuesto)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
@@ -781,7 +781,7 @@
             this.ultraTabPageControl1.Controls.Add(this.txtObservacionItem);
             this.ultraTabPageControl1.Controls.Add(this.lblObservacionItem);
             this.ultraTabPageControl1.Controls.Add(this.utcAcabadosyServicios);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(716, 329);
             // 
@@ -1992,6 +1992,22 @@
             this.lblContacto.TabIndex = 98;
             this.lblContacto.Text = "Contacto";
             // 
+            // ultraTabPageControl5
+            // 
+            this.ultraTabPageControl5.Controls.Add(this.checkMuestraPrecioEnPresupuesto);
+            this.ultraTabPageControl5.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl5.Name = "ultraTabPageControl5";
+            this.ultraTabPageControl5.Size = new System.Drawing.Size(716, 329);
+            // 
+            // checkMuestraPrecioEnPresupuesto
+            // 
+            this.checkMuestraPrecioEnPresupuesto.Location = new System.Drawing.Point(12, 14);
+            this.checkMuestraPrecioEnPresupuesto.Name = "checkMuestraPrecioEnPresupuesto";
+            this.checkMuestraPrecioEnPresupuesto.Size = new System.Drawing.Size(249, 20);
+            this.checkMuestraPrecioEnPresupuesto.TabIndex = 129;
+            this.checkMuestraPrecioEnPresupuesto.Text = "Muestra Precio En Presupuesto";
+            this.checkMuestraPrecioEnPresupuesto.CheckedChanged += new System.EventHandler(this.checkMuestraPrecioEnPresupuesto_CheckedChanged);
+            // 
             // utcItemCotizacion
             // 
             appearance10.BackColor = System.Drawing.Color.Transparent;
@@ -2417,22 +2433,6 @@
             this.ultraLabel24.TabIndex = 102;
             this.ultraLabel24.Text = "Linea de Producción";
             // 
-            // ultraTabPageControl5
-            // 
-            this.ultraTabPageControl5.Controls.Add(this.checkMuestraPrecioEnPresupuesto);
-            this.ultraTabPageControl5.Location = new System.Drawing.Point(1, 23);
-            this.ultraTabPageControl5.Name = "ultraTabPageControl5";
-            this.ultraTabPageControl5.Size = new System.Drawing.Size(716, 329);
-            // 
-            // checkMuestraPrecioEnPresupuesto
-            // 
-            this.checkMuestraPrecioEnPresupuesto.Location = new System.Drawing.Point(12, 14);
-            this.checkMuestraPrecioEnPresupuesto.Name = "checkMuestraPrecioEnPresupuesto";
-            this.checkMuestraPrecioEnPresupuesto.Size = new System.Drawing.Size(249, 20);
-            this.checkMuestraPrecioEnPresupuesto.TabIndex = 129;
-            this.checkMuestraPrecioEnPresupuesto.Text = "Muestra Precio En Presupuesto";
-            this.checkMuestraPrecioEnPresupuesto.CheckedChanged += new System.EventHandler(this.checkMuestraPrecioEnPresupuesto_CheckedChanged);
-            // 
             // FrmCotizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2503,6 +2503,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtHojasMaquina)).EndInit();
             this.ultraTabPageControl3.ResumeLayout(false);
             this.ultraTabPageControl4.ResumeLayout(false);
+            this.ultraTabPageControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.checkMuestraPrecioEnPresupuesto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.utcItemCotizacion)).EndInit();
             this.utcItemCotizacion.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.utCotizacion)).EndInit();
@@ -2517,8 +2519,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.uneSubTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoMillar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoUnidad)).EndInit();
-            this.ultraTabPageControl5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.checkMuestraPrecioEnPresupuesto)).EndInit();
             this.ResumeLayout(false);
 
         }
