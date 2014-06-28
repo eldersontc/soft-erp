@@ -20,6 +20,11 @@
 
 
 
+    <property name="MuestraPrecioItemEnPresupuesto" type="bool"/>
+
+    <property name="OcultaPrecioEnPresupuesto" type="bool"/>
+
+
 
 
     <many-to-one name="TipoDocumento" class="Soft.Ventas.Entidades.TipoCotizacion" column="IDTipoDocumento" insert="true" update="true" lazy="false"/>
@@ -34,7 +39,7 @@
     <many-to-one name="ListaPreciosTransporte" class="Soft.Ventas.Entidades.ListaPreciosTransporte" column="IDListaPreciosTransporte" insert="true" update="true" lazy="false"/>
 
     <many-to-one name="LineaProduccion" class="Soft.Produccion.Entidades.LineaProduccion" column="IDLineaProduccion" insert="true" update="true" lazy="false"/>
-
+    
 
     <bag name="Items" cascade="all-delete-orphan" order-by="Orden" lazy="false">
       <key column="IDCotizacion"/>

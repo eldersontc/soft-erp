@@ -66,9 +66,15 @@
 
     <property name="MuestraPrecioEnPresupuesto" type="boolean"/>
 
+    <property name="PaginasSobrantes" type="int"/>
 
 
-    
+    <property name="NumeroCambios" type="int"/>
+
+
+
+    <many-to-one name="MetodoImpresionOffset" class="Soft.Ventas.Entidades.MetodoImpresion" column="IDMetodoImpresion" insert="true" update="true" lazy="false"/>
+
 
     <many-to-one name="Operacion" class="Soft.Inventario.Entidades.Existencia" column="IDOperacion" insert="true" update="true" lazy="false"/>
     <many-to-one name="Maquina" class="Soft.Ventas.Entidades.Maquina" column="IDMaquina" insert="true" update="true" lazy="false"/>

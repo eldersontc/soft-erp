@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Ventas.Entidades.MetodoImpresion, Soft.Ventas.Entidades" table="MetodoImpresion">
+
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="Codigo" column="Codigo" type="string"/>
+    <property name="Nombre"  type="string"/>
+    <property name="Activo"  type="boolean"/>
+    <property name="FactorPases" type="int"/>
+    <property name="FactorCambios" type="int"/>
+
+  </class>
+
+</hibernate-mapping>
