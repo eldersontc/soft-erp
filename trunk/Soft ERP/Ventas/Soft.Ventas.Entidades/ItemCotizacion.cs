@@ -114,13 +114,136 @@ namespace Soft.Ventas.Entidades
 
         public virtual Boolean TieneTipoUnidad { get; set; }
         public virtual String UnidadMedidaAbierta { get; set; }
+
+
+        public virtual Int32 PaginasSobrantes { get; set; }
+
+        public virtual Int32 NumeroCambios { get; set; }
+
+
+        public virtual MetodoImpresion MetodoImpresionOffset { get; set; }
         
+
         public virtual ItemCotizacionServicio AddServicio()
         {
             ItemCotizacionServicio Item = new ItemCotizacionServicio();
             Servicios.Add(Item);
             return Item;
         }
+
+
+
+        public virtual ItemCotizacion Copiar()
+        {
+            ItemCotizacion ItemCopia = new ItemCotizacion();
+            ItemCopia.ImpresoTiraColor = ImpresoTiraColor;
+            ItemCopia.ImpresoRetiraColor = ImpresoRetiraColor;
+            ItemCopia.ImpresoRetiraColor = ImpresoRetiraColor;
+            ItemCopia.Cantidad = Cantidad;
+            ItemCopia.Observacion = Observacion;
+            ItemCopia.TipoUnidad = TipoUnidad;
+            ItemCopia.Nombre = Nombre;
+
+            ItemCopia.MedidaAbiertaLargo = MedidaAbiertaLargo;
+            ItemCopia.MedidaAbiertaAlto = MedidaAbiertaAlto;
+            ItemCopia.MedidaCerradaLargo = MedidaCerradaLargo;
+            ItemCopia.MedidaCerradaAlto = MedidaCerradaAlto;
+            ItemCopia.Precio = Precio;
+            ItemCopia.Costo = Costo;
+            ItemCopia.CostoMaquina = CostoMaquina;
+
+
+            ItemCopia.CostoMaterial = CostoMaterial;
+            ItemCopia.CostoTransporte = CostoTransporte;
+            ItemCopia.TieneMedidaAbierta = TieneMedidaAbierta;
+            ItemCopia.TieneMedidaCerrada = TieneMedidaCerrada;
+
+
+
+
+            ItemCopia.TieneTiraRetira = TieneTiraRetira;
+            ItemCopia.SeparacionX = SeparacionX;
+            ItemCopia.SeparacionY = SeparacionY;
+            ItemCopia.FormatoImpresionLargo = FormatoImpresionLargo;
+            ItemCopia.FormatoImpresionAlto = FormatoImpresionAlto;
+            ItemCopia.GraficoPrecorteGirado = GraficoPrecorteGirado;
+            ItemCopia.GraficoImpresionGirado = GraficoImpresionGirado;
+            ItemCopia.NroPiezasPrecorte = NroPiezasPrecorte;
+
+
+            ItemCopia.NroPiezasImpresion = NroPiezasImpresion;
+
+            ItemCopia.MetodoImpresion = MetodoImpresion;
+            ItemCopia.TieneGraficos = TieneGraficos;
+            ItemCopia.TieneMaterial = TieneMaterial;
+            ItemCopia.TieneMaquina = TieneMaquina;
+            ItemCopia.LabelMaterial = LabelMaterial;
+
+
+
+
+
+            ItemCopia.LabelMaterialAlmancen = LabelMaterialAlmancen;
+            ItemCopia.LabelProduccion = LabelProduccion;
+            ItemCopia.TieneTipoUnidad = TieneTipoUnidad;
+            ItemCopia.UnidadMedidaAbierta = UnidadMedidaAbierta;
+            ItemCopia.NumerodePases = NumerodePases;
+            ItemCopia.CantidadMaterial = CantidadMaterial;
+
+            ItemCopia.CantidadProduccion = CantidadProduccion;
+            ItemCopia.CantidadDemasia = CantidadDemasia;
+            ItemCopia.CantidadElemento = CantidadElemento;
+            ItemCopia.CostoServicio = CostoServicio;
+            ItemCopia.CantidadUnidad = CantidadUnidad;
+
+
+            ItemCopia.CantidadDemasiaMaterial = CantidadDemasiaMaterial;
+            ItemCopia.NumeroPliegos = NumeroPliegos;
+            ItemCopia.GraficoImpresionManual = GraficoImpresionManual;
+            ItemCopia.MuestraPrecioEnPresupuesto = MuestraPrecioEnPresupuesto;
+
+
+            ItemCopia.NumeroCambios = NumeroCambios;
+            ItemCopia.MetodoImpresionOffset = MetodoImpresionOffset;
+            ItemCopia.Operacion = Operacion;
+            ItemCopia.Maquina = Maquina;
+
+
+            ItemCopia.Material = Material;
+            
+
+
+
+            foreach (ItemCotizacionServicio ItemServicio in Servicios)
+            {
+                ItemCotizacionServicio ItemServicioCopia = new ItemCotizacionServicio();
+
+                ItemServicioCopia.Servicio = ItemServicio.Servicio;
+
+                ItemServicioCopia.UnidadServicio = ItemServicio.UnidadServicio;
+                ItemServicioCopia.CantidadServicio = ItemServicio.CantidadServicio;
+                ItemServicioCopia.CostoServicio = ItemServicio.CostoServicio;
+                ItemServicioCopia.Maquina = ItemServicio.Maquina;
+                ItemServicioCopia.UnidadMaquina = ItemServicio.UnidadMaquina;
+                ItemServicioCopia.CantidadMaquina = ItemServicio.CantidadMaquina;
+                ItemServicioCopia.CostoMaquina = ItemServicio.CostoMaquina;
+                ItemServicioCopia.Material = ItemServicio.Material;
+                ItemServicioCopia.UnidadMaterial = ItemServicio.UnidadMaterial;
+
+
+                ItemServicioCopia.CantidadMaterial = ItemServicio.CantidadMaterial;
+
+                ItemServicioCopia.CostoMaterial = ItemServicio.CostoMaterial;
+                ItemServicioCopia.CostoTotalServicio = ItemServicio.CostoTotalServicio;
+                ItemServicioCopia.EsAutogenerado = ItemServicio.EsAutogenerado;
+                ItemCopia.Servicios.Add(ItemServicioCopia);
+
+            }
+
+            return ItemCopia;
+        }
+
+
 
     }
 }
