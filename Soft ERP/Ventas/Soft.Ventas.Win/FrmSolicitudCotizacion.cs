@@ -102,6 +102,16 @@ namespace Soft.Ventas.Win
             GrupoMedidaAbierta.Visible = Item.TieneMedidaAbierta;
             GrupoMedidaCerrada.Visible = Item.TieneMedidaCerrada;
             GruposTiras.Visible = Item.TieneTiraRetira;
+
+            if (Item.TieneTipoUnidad )
+            {
+                GrupoMedidaAbierta.Text = "Medida de "+Item.TipoUnidad;
+            }
+            else {
+                GrupoMedidaAbierta.Text = "Medida Abierta";
+            }
+
+
             ssMaquina.Visible = Item.TieneMaquina;
             lblMaquina.Visible = Item.TieneMaquina;
             ssMaterial.Visible = Item.TieneMaterial;
@@ -886,6 +896,11 @@ namespace Soft.Ventas.Win
              
                 SoftException.Control(ex);
             }
+        }
+
+        private void ultraTabPageControl1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
 

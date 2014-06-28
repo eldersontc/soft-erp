@@ -56,10 +56,6 @@
             Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
-            Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.ValueListItem valueListItem4 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
@@ -70,7 +66,6 @@
             Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance44 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance45 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance46 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance47 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance48 = new Infragistics.Win.Appearance();
@@ -83,16 +78,16 @@
             Infragistics.Win.Appearance appearance55 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance56 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance57 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance58 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance59 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance60 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab5 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab6 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTree.Override _override1 = new Infragistics.Win.UltraWinTree.Override();
-            Infragistics.Win.Appearance appearance59 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance60 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance61 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance62 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance63 = new Infragistics.Win.Appearance();
@@ -101,6 +96,8 @@
             Infragistics.Win.Appearance appearance66 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance67 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance68 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance69 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance70 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
@@ -110,6 +107,7 @@
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance45 = new Infragistics.Win.Appearance();
             this.tabItems = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.txtCostoServicio = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel17 = new Infragistics.Win.Misc.UltraLabel();
@@ -154,11 +152,11 @@
             this.utcAcabadosyServicios = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.busMetodoImpresion = new Soft.Controls.SoftSearch();
             this.LabelMaterialAlmancen = new Infragistics.Win.Misc.UltraLabel();
             this.LabelMateriaPrima = new Infragistics.Win.Misc.UltraLabel();
             this.ultraGroupBox3 = new Infragistics.Win.Misc.UltraGroupBox();
             this.LabelProduccion = new Infragistics.Win.Misc.UltraLabel();
-            this.ubeMetodo = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             this.lblMetodo = new Infragistics.Win.Misc.UltraLabel();
             this.txtImpresionAlto = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel14 = new Infragistics.Win.Misc.UltraLabel();
@@ -181,6 +179,8 @@
             this.lblSeparacionX = new Infragistics.Win.Misc.UltraLabel();
             this.ubMostrarGraficoPrecorte = new Infragistics.Win.Misc.UltraButton();
             this.ugbImpresion = new Infragistics.Win.Misc.UltraGroupBox();
+            this.ultraLabel25 = new Infragistics.Win.Misc.UltraLabel();
+            this.txtNumeroCambios = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.checkGraficoImpresionManual = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.txtPliegos = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.labelPliegos = new Infragistics.Win.Misc.UltraLabel();
@@ -254,6 +254,11 @@
             this.ultraLabel23 = new Infragistics.Win.Misc.UltraLabel();
             this.busLineaProduccion = new Soft.Controls.SoftSearch();
             this.ultraLabel24 = new Infragistics.Win.Misc.UltraLabel();
+            this.btnBORRAR = new Infragistics.Win.Misc.UltraButton();
+            this.checkPrecioItems = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
+            this.chekOcultaPreciosTotal = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
+            this.ultraButton1 = new Infragistics.Win.Misc.UltraButton();
+            this.labelSobranPaginas = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.tabItems.SuspendLayout();
@@ -284,7 +289,6 @@
             this.ultraTabPageControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).BeginInit();
             this.ultraGroupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ubeMetodo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtImpresionAlto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtImpresionLargo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
@@ -297,6 +301,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.uneSeparacionX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ugbImpresion)).BeginInit();
             this.ugbImpresion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNumeroCambios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkGraficoImpresionManual)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPliegos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTiraje)).BeginInit();
@@ -323,10 +328,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.uneSubTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoMillar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoUnidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkPrecioItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chekOcultaPreciosTotal)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
             // 
+            this.ugbParent.Controls.Add(this.ultraButton1);
+            this.ugbParent.Controls.Add(this.chekOcultaPreciosTotal);
+            this.ugbParent.Controls.Add(this.checkPrecioItems);
+            this.ugbParent.Controls.Add(this.btnBORRAR);
             this.ugbParent.Controls.Add(this.busLineaProduccion);
             this.ugbParent.Controls.Add(this.ultraLabel24);
             this.ugbParent.Controls.Add(this.uneCostoUnidad);
@@ -408,6 +419,10 @@
             this.ugbParent.Controls.SetChildIndex(this.uneCostoUnidad, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel24, 0);
             this.ugbParent.Controls.SetChildIndex(this.busLineaProduccion, 0);
+            this.ugbParent.Controls.SetChildIndex(this.btnBORRAR, 0);
+            this.ugbParent.Controls.SetChildIndex(this.checkPrecioItems, 0);
+            this.ugbParent.Controls.SetChildIndex(this.chekOcultaPreciosTotal, 0);
+            this.ugbParent.Controls.SetChildIndex(this.ultraButton1, 0);
             // 
             // ubCancelar
             // 
@@ -781,7 +796,7 @@
             this.ultraTabPageControl1.Controls.Add(this.txtObservacionItem);
             this.ultraTabPageControl1.Controls.Add(this.lblObservacionItem);
             this.ultraTabPageControl1.Controls.Add(this.utcAcabadosyServicios);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(716, 329);
             // 
@@ -1267,10 +1282,10 @@
             // 
             // ultraTabPageControl2
             // 
+            this.ultraTabPageControl2.Controls.Add(this.busMetodoImpresion);
             this.ultraTabPageControl2.Controls.Add(this.LabelMaterialAlmancen);
             this.ultraTabPageControl2.Controls.Add(this.LabelMateriaPrima);
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBox3);
-            this.ultraTabPageControl2.Controls.Add(this.ubeMetodo);
             this.ultraTabPageControl2.Controls.Add(this.lblMetodo);
             this.ultraTabPageControl2.Controls.Add(this.txtImpresionAlto);
             this.ultraTabPageControl2.Controls.Add(this.ultraLabel14);
@@ -1291,9 +1306,18 @@
             this.ultraTabPageControl2.Controls.Add(this.ubGirarGraficoPrecorte);
             this.ultraTabPageControl2.Controls.Add(this.ubImprimirGraficoPrecorte);
             this.ultraTabPageControl2.Controls.Add(this.ultraLabel13);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(716, 329);
+            // 
+            // busMetodoImpresion
+            // 
+            this.busMetodoImpresion.BackColor = System.Drawing.Color.Transparent;
+            this.busMetodoImpresion.Location = new System.Drawing.Point(581, 231);
+            this.busMetodoImpresion.Name = "busMetodoImpresion";
+            this.busMetodoImpresion.Size = new System.Drawing.Size(126, 28);
+            this.busMetodoImpresion.TabIndex = 121;
+            this.busMetodoImpresion.Search += new System.EventHandler(this.busMetodoImpresion_Search);
             // 
             // LabelMaterialAlmancen
             // 
@@ -1340,27 +1364,6 @@
             this.LabelProduccion.Size = new System.Drawing.Size(306, 17);
             this.LabelProduccion.TabIndex = 68;
             this.LabelProduccion.Text = "Cantidad Produccion";
-            // 
-            // ubeMetodo
-            // 
-            valueListItem1.DataValue = "TIRA";
-            valueListItem1.Tag = ((short)(1));
-            valueListItem2.DataValue = "TIRA/RETIRA";
-            valueListItem2.Tag = ((short)(2));
-            valueListItem3.DataValue = "TIRA Y RETIRA";
-            valueListItem3.Tag = 1;
-            valueListItem4.DataValue = "CONTRAPINZA";
-            valueListItem4.Tag = ((short)(1));
-            this.ubeMetodo.Items.AddRange(new Infragistics.Win.ValueListItem[] {
-            valueListItem1,
-            valueListItem2,
-            valueListItem3,
-            valueListItem4});
-            this.ubeMetodo.Location = new System.Drawing.Point(579, 232);
-            this.ubeMetodo.Name = "ubeMetodo";
-            this.ubeMetodo.Size = new System.Drawing.Size(119, 21);
-            this.ubeMetodo.TabIndex = 117;
-            this.ubeMetodo.ValueChanged += new System.EventHandler(this.ubeMetodo_ValueChanged);
             // 
             // lblMetodo
             // 
@@ -1528,7 +1531,7 @@
             // 
             // txtNroPiezasImpresion
             // 
-            this.txtNroPiezasImpresion.Location = new System.Drawing.Point(634, 261);
+            this.txtNroPiezasImpresion.Location = new System.Drawing.Point(644, 261);
             this.txtNroPiezasImpresion.Name = "txtNroPiezasImpresion";
             this.txtNroPiezasImpresion.Size = new System.Drawing.Size(62, 21);
             this.txtNroPiezasImpresion.TabIndex = 98;
@@ -1539,9 +1542,9 @@
             appearance41.BackColor = System.Drawing.Color.Transparent;
             this.lblCantidadPiezas.Appearance = appearance41;
             this.lblCantidadPiezas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblCantidadPiezas.Location = new System.Drawing.Point(581, 266);
+            this.lblCantidadPiezas.Location = new System.Drawing.Point(585, 266);
             this.lblCantidadPiezas.Name = "lblCantidadPiezas";
-            this.lblCantidadPiezas.Size = new System.Drawing.Size(72, 23);
+            this.lblCantidadPiezas.Size = new System.Drawing.Size(68, 23);
             this.lblCantidadPiezas.TabIndex = 109;
             this.lblCantidadPiezas.Text = "# Piezas";
             // 
@@ -1565,7 +1568,7 @@
             // 
             // ubImprimirGraficoImpresion
             // 
-            this.ubImprimirGraficoImpresion.Location = new System.Drawing.Point(602, 293);
+            this.ubImprimirGraficoImpresion.Location = new System.Drawing.Point(607, 293);
             this.ubImprimirGraficoImpresion.Name = "ubImprimirGraficoImpresion";
             this.ubImprimirGraficoImpresion.Size = new System.Drawing.Size(96, 23);
             this.ubImprimirGraficoImpresion.TabIndex = 107;
@@ -1648,6 +1651,9 @@
             // 
             appearance44.BackColor = System.Drawing.Color.Transparent;
             this.ugbImpresion.Appearance = appearance44;
+            this.ugbImpresion.Controls.Add(this.labelSobranPaginas);
+            this.ugbImpresion.Controls.Add(this.ultraLabel25);
+            this.ugbImpresion.Controls.Add(this.txtNumeroCambios);
             this.ugbImpresion.Controls.Add(this.checkGraficoImpresionManual);
             this.ugbImpresion.Controls.Add(this.txtPliegos);
             this.ugbImpresion.Controls.Add(this.labelPliegos);
@@ -1663,6 +1669,28 @@
             this.ugbImpresion.Size = new System.Drawing.Size(320, 145);
             this.ugbImpresion.TabIndex = 101;
             this.ugbImpresion.Text = "Gráfico de Impresión";
+            // 
+            // ultraLabel25
+            // 
+            appearance46.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel25.Appearance = appearance46;
+            this.ultraLabel25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ultraLabel25.Location = new System.Drawing.Point(142, 100);
+            this.ultraLabel25.Name = "ultraLabel25";
+            this.ultraLabel25.Size = new System.Drawing.Size(76, 17);
+            this.ultraLabel25.TabIndex = 130;
+            this.ultraLabel25.Text = "# CAMBIOS";
+            // 
+            // txtNumeroCambios
+            // 
+            this.txtNumeroCambios.Location = new System.Drawing.Point(142, 118);
+            this.txtNumeroCambios.MaskInput = "nn";
+            this.txtNumeroCambios.Name = "txtNumeroCambios";
+            this.txtNumeroCambios.ReadOnly = true;
+            this.txtNumeroCambios.Size = new System.Drawing.Size(62, 21);
+            this.txtNumeroCambios.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
+            this.txtNumeroCambios.TabIndex = 129;
+            this.txtNumeroCambios.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
             // 
             // checkGraficoImpresionManual
             // 
@@ -1686,8 +1714,8 @@
             // 
             // labelPliegos
             // 
-            appearance45.BackColor = System.Drawing.Color.Transparent;
-            this.labelPliegos.Appearance = appearance45;
+            appearance47.BackColor = System.Drawing.Color.Transparent;
+            this.labelPliegos.Appearance = appearance47;
             this.labelPliegos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.labelPliegos.Location = new System.Drawing.Point(209, 52);
             this.labelPliegos.Name = "labelPliegos";
@@ -1708,8 +1736,8 @@
             // 
             // ultraLabel21
             // 
-            appearance46.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel21.Appearance = appearance46;
+            appearance48.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel21.Appearance = appearance48;
             this.ultraLabel21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.ultraLabel21.Location = new System.Drawing.Point(212, 102);
             this.ultraLabel21.Name = "ultraLabel21";
@@ -1719,8 +1747,8 @@
             // 
             // ultraLabel20
             // 
-            appearance47.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel20.Appearance = appearance47;
+            appearance49.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel20.Appearance = appearance49;
             this.ultraLabel20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.ultraLabel20.Location = new System.Drawing.Point(264, 52);
             this.ultraLabel20.Name = "ultraLabel20";
@@ -1751,8 +1779,8 @@
             // 
             // ugbPrecorte
             // 
-            appearance48.BackColor = System.Drawing.Color.Transparent;
-            this.ugbPrecorte.Appearance = appearance48;
+            appearance50.BackColor = System.Drawing.Color.Transparent;
+            this.ugbPrecorte.Appearance = appearance50;
             this.ugbPrecorte.Controls.Add(this.ultraLabel16);
             this.ugbPrecorte.Controls.Add(this.ultraLabel19);
             this.ugbPrecorte.Controls.Add(this.txtDemasia);
@@ -1768,8 +1796,8 @@
             // 
             // ultraLabel16
             // 
-            appearance49.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel16.Appearance = appearance49;
+            appearance51.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel16.Appearance = appearance51;
             this.ultraLabel16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.ultraLabel16.Location = new System.Drawing.Point(245, 100);
             this.ultraLabel16.Name = "ultraLabel16";
@@ -1779,8 +1807,8 @@
             // 
             // ultraLabel19
             // 
-            appearance50.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel19.Appearance = appearance50;
+            appearance52.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel19.Appearance = appearance52;
             this.ultraLabel19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.ultraLabel19.Location = new System.Drawing.Point(245, 52);
             this.ultraLabel19.Name = "ultraLabel19";
@@ -1840,8 +1868,8 @@
             // 
             // ultraLabel13
             // 
-            appearance51.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel13.Appearance = appearance51;
+            appearance53.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel13.Appearance = appearance53;
             this.ultraLabel13.Location = new System.Drawing.Point(378, 239);
             this.ultraLabel13.Name = "ultraLabel13";
             this.ultraLabel13.Size = new System.Drawing.Size(72, 23);
@@ -1871,8 +1899,8 @@
             // 
             // ultraLabel6
             // 
-            appearance52.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel6.Appearance = appearance52;
+            appearance54.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel6.Appearance = appearance54;
             this.ultraLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.ultraLabel6.Location = new System.Drawing.Point(17, 73);
             this.ultraLabel6.Name = "ultraLabel6";
@@ -1891,8 +1919,8 @@
             // 
             // ultraLabel5
             // 
-            appearance53.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel5.Appearance = appearance53;
+            appearance55.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel5.Appearance = appearance55;
             this.ultraLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.ultraLabel5.Location = new System.Drawing.Point(17, 48);
             this.ultraLabel5.Name = "ultraLabel5";
@@ -1911,8 +1939,8 @@
             // 
             // ultraLabel4
             // 
-            appearance54.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel4.Appearance = appearance54;
+            appearance56.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel4.Appearance = appearance56;
             this.ultraLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.ultraLabel4.Location = new System.Drawing.Point(17, 24);
             this.ultraLabel4.Name = "ultraLabel4";
@@ -1943,8 +1971,8 @@
             // 
             // lblDireccionFactura
             // 
-            appearance55.BackColor = System.Drawing.Color.Transparent;
-            this.lblDireccionFactura.Appearance = appearance55;
+            appearance57.BackColor = System.Drawing.Color.Transparent;
+            this.lblDireccionFactura.Appearance = appearance57;
             this.lblDireccionFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblDireccionFactura.Location = new System.Drawing.Point(22, 75);
             this.lblDireccionFactura.Name = "lblDireccionFactura";
@@ -1963,8 +1991,8 @@
             // 
             // lblDireccionEntrega
             // 
-            appearance56.BackColor = System.Drawing.Color.Transparent;
-            this.lblDireccionEntrega.Appearance = appearance56;
+            appearance58.BackColor = System.Drawing.Color.Transparent;
+            this.lblDireccionEntrega.Appearance = appearance58;
             this.lblDireccionEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblDireccionEntrega.Location = new System.Drawing.Point(22, 50);
             this.lblDireccionEntrega.Name = "lblDireccionEntrega";
@@ -1983,8 +2011,8 @@
             // 
             // lblContacto
             // 
-            appearance57.BackColor = System.Drawing.Color.Transparent;
-            this.lblContacto.Appearance = appearance57;
+            appearance59.BackColor = System.Drawing.Color.Transparent;
+            this.lblContacto.Appearance = appearance59;
             this.lblContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblContacto.Location = new System.Drawing.Point(22, 25);
             this.lblContacto.Name = "lblContacto";
@@ -2022,8 +2050,8 @@
             this.utcItemCotizacion.Name = "utcItemCotizacion";
             this.utcItemCotizacion.SharedControlsPage = this.ultraTabSharedControlsPage2;
             this.utcItemCotizacion.Size = new System.Drawing.Size(720, 355);
-            appearance58.BackColor = System.Drawing.Color.Transparent;
-            this.utcItemCotizacion.TabHeaderAreaAppearance = appearance58;
+            appearance60.BackColor = System.Drawing.Color.Transparent;
+            this.utcItemCotizacion.TabHeaderAreaAppearance = appearance60;
             this.utcItemCotizacion.TabIndex = 91;
             ultraTab2.TabPage = this.ultraTabPageControl1;
             ultraTab2.Text = ":: Default ::";
@@ -2036,6 +2064,7 @@
             ultraTab5.Text = ":: Logística ::";
             ultraTab6.TabPage = this.ultraTabPageControl5;
             ultraTab6.Text = ":: Presupuesto ::";
+            ultraTab6.Visible = false;
             this.utcItemCotizacion.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
             ultraTab2,
             ultraTab3,
@@ -2053,11 +2082,11 @@
             // 
             this.utCotizacion.Location = new System.Drawing.Point(15, 197);
             this.utCotizacion.Name = "utCotizacion";
-            appearance59.FontData.BoldAsString = "True";
-            appearance59.FontData.ItalicAsString = "True";
-            _override1.ActiveNodeAppearance = appearance59;
+            appearance61.FontData.BoldAsString = "True";
+            appearance61.FontData.ItalicAsString = "True";
+            _override1.ActiveNodeAppearance = appearance61;
             this.utCotizacion.Override = _override1;
-            this.utCotizacion.Size = new System.Drawing.Size(121, 355);
+            this.utCotizacion.Size = new System.Drawing.Size(121, 326);
             this.utCotizacion.TabIndex = 90;
             this.utCotizacion.AfterSelect += new Infragistics.Win.UltraWinTree.AfterNodeSelectEventHandler(this.utCotizacion_AfterSelect);
             // 
@@ -2072,8 +2101,8 @@
             // 
             // lblFormaPago
             // 
-            appearance60.BackColor = System.Drawing.Color.Transparent;
-            this.lblFormaPago.Appearance = appearance60;
+            appearance62.BackColor = System.Drawing.Color.Transparent;
+            this.lblFormaPago.Appearance = appearance62;
             this.lblFormaPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblFormaPago.Location = new System.Drawing.Point(422, 108);
             this.lblFormaPago.Name = "lblFormaPago";
@@ -2092,8 +2121,8 @@
             // 
             // lblCotizador
             // 
-            appearance61.BackColor = System.Drawing.Color.Transparent;
-            this.lblCotizador.Appearance = appearance61;
+            appearance63.BackColor = System.Drawing.Color.Transparent;
+            this.lblCotizador.Appearance = appearance63;
             this.lblCotizador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblCotizador.Location = new System.Drawing.Point(18, 108);
             this.lblCotizador.Name = "lblCotizador";
@@ -2112,8 +2141,8 @@
             // 
             // ultraLabel11
             // 
-            appearance62.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel11.Appearance = appearance62;
+            appearance64.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel11.Appearance = appearance64;
             this.ultraLabel11.Location = new System.Drawing.Point(42, 562);
             this.ultraLabel11.Name = "ultraLabel11";
             this.ultraLabel11.Size = new System.Drawing.Size(73, 23);
@@ -2131,8 +2160,8 @@
             // 
             // lblCantidad
             // 
-            appearance63.BackColor = System.Drawing.Color.Transparent;
-            this.lblCantidad.Appearance = appearance63;
+            appearance65.BackColor = System.Drawing.Color.Transparent;
+            this.lblCantidad.Appearance = appearance65;
             this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblCantidad.Location = new System.Drawing.Point(18, 169);
             this.lblCantidad.Name = "lblCantidad";
@@ -2150,8 +2179,8 @@
             // 
             // llbDescripcion
             // 
-            appearance64.BackColor = System.Drawing.Color.Transparent;
-            this.llbDescripcion.Appearance = appearance64;
+            appearance66.BackColor = System.Drawing.Color.Transparent;
+            this.llbDescripcion.Appearance = appearance66;
             this.llbDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.llbDescripcion.Location = new System.Drawing.Point(18, 79);
             this.llbDescripcion.Name = "llbDescripcion";
@@ -2171,8 +2200,8 @@
             // 
             // lblFechaCreacion
             // 
-            appearance65.BackColor = System.Drawing.Color.Transparent;
-            this.lblFechaCreacion.Appearance = appearance65;
+            appearance67.BackColor = System.Drawing.Color.Transparent;
+            this.lblFechaCreacion.Appearance = appearance67;
             this.lblFechaCreacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblFechaCreacion.Location = new System.Drawing.Point(577, 50);
             this.lblFechaCreacion.Name = "lblFechaCreacion";
@@ -2190,8 +2219,8 @@
             // 
             // lblNumeracion
             // 
-            appearance66.BackColor = System.Drawing.Color.Transparent;
-            this.lblNumeracion.Appearance = appearance66;
+            appearance68.BackColor = System.Drawing.Color.Transparent;
+            this.lblNumeracion.Appearance = appearance68;
             this.lblNumeracion.Location = new System.Drawing.Point(577, 22);
             this.lblNumeracion.Name = "lblNumeracion";
             this.lblNumeracion.Size = new System.Drawing.Size(80, 23);
@@ -2218,8 +2247,8 @@
             // 
             // lblCliente
             // 
-            appearance67.BackColor = System.Drawing.Color.Transparent;
-            this.lblCliente.Appearance = appearance67;
+            appearance69.BackColor = System.Drawing.Color.Transparent;
+            this.lblCliente.Appearance = appearance69;
             this.lblCliente.Location = new System.Drawing.Point(18, 50);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(130, 23);
@@ -2228,8 +2257,8 @@
             // 
             // lblTipoDocumento
             // 
-            appearance68.BackColor = System.Drawing.Color.Transparent;
-            this.lblTipoDocumento.Appearance = appearance68;
+            appearance70.BackColor = System.Drawing.Color.Transparent;
+            this.lblTipoDocumento.Appearance = appearance70;
             this.lblTipoDocumento.Location = new System.Drawing.Point(18, 18);
             this.lblTipoDocumento.Name = "lblTipoDocumento";
             this.lblTipoDocumento.Size = new System.Drawing.Size(130, 23);
@@ -2416,7 +2445,7 @@
             // busLineaProduccion
             // 
             this.busLineaProduccion.BackColor = System.Drawing.Color.Transparent;
-            this.busLineaProduccion.Location = new System.Drawing.Point(547, 158);
+            this.busLineaProduccion.Location = new System.Drawing.Point(506, 158);
             this.busLineaProduccion.Name = "busLineaProduccion";
             this.busLineaProduccion.Size = new System.Drawing.Size(171, 28);
             this.busLineaProduccion.TabIndex = 103;
@@ -2427,11 +2456,58 @@
             appearance1.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel24.Appearance = appearance1;
             this.ultraLabel24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel24.Location = new System.Drawing.Point(420, 162);
+            this.ultraLabel24.Location = new System.Drawing.Point(388, 162);
             this.ultraLabel24.Name = "ultraLabel24";
             this.ultraLabel24.Size = new System.Drawing.Size(130, 23);
             this.ultraLabel24.TabIndex = 102;
             this.ultraLabel24.Text = "Linea de Producción";
+            // 
+            // btnBORRAR
+            // 
+            this.btnBORRAR.Location = new System.Drawing.Point(73, 529);
+            this.btnBORRAR.Name = "btnBORRAR";
+            this.btnBORRAR.Size = new System.Drawing.Size(64, 23);
+            this.btnBORRAR.TabIndex = 104;
+            this.btnBORRAR.Text = "Eliminar";
+            this.btnBORRAR.Click += new System.EventHandler(this.btnBORRAR_Click);
+            // 
+            // checkPrecioItems
+            // 
+            this.checkPrecioItems.Location = new System.Drawing.Point(700, 158);
+            this.checkPrecioItems.Name = "checkPrecioItems";
+            this.checkPrecioItems.Size = new System.Drawing.Size(145, 20);
+            this.checkPrecioItems.TabIndex = 130;
+            this.checkPrecioItems.Text = "Muestra Precio Items";
+            this.checkPrecioItems.CheckedChanged += new System.EventHandler(this.checkPrecioItems_CheckedChanged);
+            // 
+            // chekOcultaPreciosTotal
+            // 
+            this.chekOcultaPreciosTotal.Location = new System.Drawing.Point(700, 131);
+            this.chekOcultaPreciosTotal.Name = "chekOcultaPreciosTotal";
+            this.chekOcultaPreciosTotal.Size = new System.Drawing.Size(145, 20);
+            this.chekOcultaPreciosTotal.TabIndex = 131;
+            this.chekOcultaPreciosTotal.Text = "Ocular Precio Total";
+            this.chekOcultaPreciosTotal.CheckedChanged += new System.EventHandler(this.chekOcultaPreciosTotal_CheckedChanged);
+            // 
+            // ultraButton1
+            // 
+            this.ultraButton1.Location = new System.Drawing.Point(13, 529);
+            this.ultraButton1.Name = "ultraButton1";
+            this.ultraButton1.Size = new System.Drawing.Size(60, 23);
+            this.ultraButton1.TabIndex = 132;
+            this.ultraButton1.Text = "Copiar";
+            this.ultraButton1.Click += new System.EventHandler(this.ultraButton1_Click);
+            // 
+            // labelSobranPaginas
+            // 
+            appearance45.BackColor = System.Drawing.Color.Transparent;
+            this.labelSobranPaginas.Appearance = appearance45;
+            this.labelSobranPaginas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.labelSobranPaginas.Location = new System.Drawing.Point(6, 118);
+            this.labelSobranPaginas.Name = "labelSobranPaginas";
+            this.labelSobranPaginas.Size = new System.Drawing.Size(130, 17);
+            this.labelSobranPaginas.TabIndex = 131;
+            this.labelSobranPaginas.Text = "..";
             // 
             // FrmCotizacion
             // 
@@ -2477,7 +2553,6 @@
             this.ultraTabPageControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).EndInit();
             this.ultraGroupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ubeMetodo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtImpresionAlto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtImpresionLargo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).EndInit();
@@ -2492,6 +2567,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ugbImpresion)).EndInit();
             this.ugbImpresion.ResumeLayout(false);
             this.ugbImpresion.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNumeroCambios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkGraficoImpresionManual)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPliegos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTiraje)).EndInit();
@@ -2519,6 +2595,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.uneSubTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoMillar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneCostoUnidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkPrecioItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chekOcultaPreciosTotal)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2637,7 +2715,6 @@
         private Infragistics.Win.Misc.UltraLabel ultraLabel14;
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtImpresionLargo;
         private Infragistics.Win.Misc.UltraLabel ultraLabel13;
-        private Infragistics.Win.UltraWinEditors.UltraComboEditor ubeMetodo;
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtNroPiezasPrecorte;
         private Infragistics.Win.Misc.UltraLabel ultraLabel15;
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtCostoServicio;
@@ -2669,5 +2746,13 @@
         private Infragistics.Win.Misc.UltraLabel LabelMaterialAlmancen;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl5;
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor checkMuestraPrecioEnPresupuesto;
+        private Controls.SoftSearch busMetodoImpresion;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel25;
+        private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtNumeroCambios;
+        private Infragistics.Win.Misc.UltraButton btnBORRAR;
+        private Infragistics.Win.UltraWinEditors.UltraCheckEditor checkPrecioItems;
+        private Infragistics.Win.UltraWinEditors.UltraCheckEditor chekOcultaPreciosTotal;
+        private Infragistics.Win.Misc.UltraButton ultraButton1;
+        private Infragistics.Win.Misc.UltraLabel labelSobranPaginas;
     }
 }

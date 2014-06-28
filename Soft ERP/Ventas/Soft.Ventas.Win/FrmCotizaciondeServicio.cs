@@ -110,6 +110,31 @@ namespace Soft.Ventas.Win
                 string filtro = "IDListaPreciosExistencia='"+cotizacion.ListaPreciosExistencia.ID+"'";
                 Existencia servicio = (Existencia)FrmSeleccionar.GetSelectedEntity(typeof(Existencia), "ItemListaPreciosExistencia",filtro);
                 Item.Servicio = (Existencia)HelperNHibernate.GetEntityByID("Existencia", servicio.ID);
+
+                if (Item.Servicio.Codigo.Equals("FILMACION") || Item.Servicio.Codigo.Equals("FILMACION2"))
+                {
+                
+                
+              
+
+                if (Item.Servicio.Unidades!=null) {
+                    Item.UnidadServicio = Item.Servicio.UnidadBase;
+                    if (ItemElemento.MetodoImpresion == null) {
+                        Item.CantidadServicio = 0;
+                    }
+                    if (ItemElemento.MetodoImpresion.Equals("TIRA/RETIRA"))
+                    {
+                        Item.CantidadServicio = (ItemElemento.ImpresoTiraColor + ItemElemento.ImpresoRetiraColor) * ItemElemento.NumeroPliegos;
+                    }
+                    else
+                    {
+                        Item.CantidadServicio = ItemElemento.ImpresoTiraColor * ItemElemento.NumeroPliegos;
+                    }
+
+                    ObtenerCostoServicio();
+                }
+
+                }
                 Mostrar();
             }
             catch (Exception ex)
