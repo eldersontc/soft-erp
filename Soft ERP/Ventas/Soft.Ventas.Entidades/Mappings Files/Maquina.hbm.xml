@@ -29,7 +29,15 @@
     <many-to-one name="TipoMaquina" class="Soft.Ventas.Entidades.TipoMaquina" column="IDTipoMaquina" insert="true" update="true" lazy="false"/>
     <many-to-one name="Marca" class="Soft.Inventario.Entidades.Marca" column="IDMarca" insert="true" update="true" lazy="false"/>
     <many-to-one name="Proveedor" class="Soft.Entities.SocioNegocio" column="IDProveedor" insert="true" update="true" lazy="false"/>
-    
+
+
+    <bag name="ItemsServicio" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDMaquina"/>
+      <one-to-many class="Soft.Ventas.Entidades.ItemMaquinaServicio"/>
+    </bag>
+
+
+
   </class>
 
 </hibernate-mapping>
