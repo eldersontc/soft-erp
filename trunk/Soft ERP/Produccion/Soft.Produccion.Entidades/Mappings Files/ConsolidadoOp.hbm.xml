@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Produccion.Entidades.ConsolidadoOp, Soft.Produccion.Entidades">
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="Numeracion" type="string"/>
+    <property name="FechaCreacion" type="DateTime"/>
+    <property name="EstadoAprobacion" type="string"/>
+
+    <many-to-one name="TipoDocumento" class="Soft.Produccion.Entidades.TipoDocumentoConsolidadoOp" column="IDTipoDocumento" insert="true" update="true" lazy="false"/>
+    <many-to-one name="Cliente" class="Soft.Entities.SocioNegocio" column="IDCliente" insert="true" update="true" lazy="false"/>
+
+    <many-to-one name="Responsable" class="Soft.Entities.SocioNegocio" column="IDResponsable" insert="true" update="true" lazy="false"/>
+
+    <bag name="Items" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDConsolidadoOp"/>
+      <one-to-many class="Soft.Produccion.Entidades.ItemConsolidadoOp"/>
+    </bag>
+    
+
+    
+  </class>
+</hibernate-mapping>
