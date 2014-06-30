@@ -1566,12 +1566,221 @@ namespace Soft.Produccion.Win
             }
         }
 
-       
 
 
 
 
 
+        public override void Aceptar()
+        {
+            try
+            {
+                GenerarImagenes();
+                base.Aceptar();
+            }
+            catch (Exception ex)
+            {
+
+                SoftException.ShowException(ex);
+            }
+        }
+
+
+        public void MostrarItem(ItemOrdenProduccion Item)
+        {
+            ActualizandoIU = true;
+            //ItemOrdenProduccion Item = (ItemOrdenProduccion)Node.Tag;
+            ItemOrdenProduccion = Item;
+            GrupoMedidaAbierta.Visible = Item.TieneMedidaAbierta;
+            GrupoMedidaCerrada.Visible = Item.TieneMedidaCerrada;
+            GruposTiras.Visible = Item.TieneTiraRetira;
+            ssMaquina.Text = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
+            ssMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
+            lblTipoUnidad.Text = Item.TipoUnidad;
+            txtObservacionItem.Text = Item.Observacion;
+            txtCantidadItem.Value = Item.CantidadUnidad;
+            txtCantidadProduccion.Value = Item.CantidadElemento;
+            txtMedidaAbiertoLargo.Value = Item.MedidaAbiertaLargo;
+            txtMedidaAbiertoAlto.Value = Item.MedidaAbiertaAlto;
+            txtMedidaCerradaLargo.Value = Item.MedidaCerradaLargo;
+            txtMedidaCerradaAlto.Value = Item.MedidaCerradaAlto;
+            txtImpresoTiraColor.Value = Item.ImpresoTiraColor;
+            txtImpresoRetiraColor.Value = Item.ImpresoRetiraColor;
+
+            uneSeparacionX.Value = Item.SeparacionX;
+            uneSeparacionY.Value = Item.SeparacionY;
+            txtFormatoImpresionAlto.Value = Item.FormatoImpresionAlto;
+            txtFormatoImpresionLargo.Value = Item.FormatoImpresionLargo;
+            txtNroPiezasPrecorte.Value = Item.NroPiezasPrecorte;
+            txtNroPiezasImpresion.Value = Item.NroPiezasImpresion;
+            txtImpresionAlto.Value = Item.MedidaAbiertaAlto;
+            txtImpresionLargo.Value = Item.MedidaAbiertaLargo;
+            ssMaquina.Visible = Item.TieneMaquina;
+            lblMaquina.Visible = Item.TieneMaquina;
+            ssMaterial.Visible = Item.TieneMaterial;
+            lblMaterial.Visible = Item.TieneMaterial;
+
+
+
+            comboMedida.Text = Item.UnidadMedidaAbierta;
+            lblTipoUnidad.Visible = Item.TieneTipoUnidad;
+            txtCantidadItem.Visible = Item.TieneTipoUnidad;
+            if (Item.TieneTipoUnidad == false)
+            {
+                txtCantidadItem.Value = 0;
+            }
+
+
+            txtDemasia.Value = Item.CantidadDemasia;
+            txtPases.Value = Item.NumerodePases;
+            txtHojasMaquina.Value = (Item.CantidadMaterial) * Item.NroPiezasPrecorte;
+            txtTiraje.Value = Item.CantidadProduccion;
+
+            LabelMateriaPrima.Text = "";
+            if (Item.NumeroPliegos > 0)
+            {
+                LabelMateriaPrima.Text = Item.NumeroPliegos + " pliegos de : ";
+            }
+
+            LabelMateriaPrima.Text += Math.Round(Item.CantidadMaterial, 0).ToString() + " + " + Math.Round(Item.CantidadDemasiaMaterial, 0).ToString() + " = " + Math.Round((Item.CantidadMaterial + Item.CantidadDemasiaMaterial), 0).ToString() + " Hjs/Resma";
+            Item.LabelMaterial = LabelMateriaPrima.Text;
+
+
+
+            LabelMaterialAlmancen.Text = "";
+            if (Item.NumeroPliegos > 0)
+            {
+                LabelMaterialAlmancen.Text = " Total Material : ";
+            }
+
+            LabelMaterialAlmancen.Text += " = " + Math.Round((Item.CantidadMaterial + Item.CantidadDemasiaMaterial), 0).ToString() + " Hjs/Resma";
+            Item.LabelMaterial = LabelMaterialAlmancen.Text;
+
+
+
+
+            LabelProduccion.Text = "";
+            if (Item.NumeroPliegos > 0)
+            {
+                LabelProduccion.Text = Item.NumeroPliegos + " pliegos de : ";
+            }
+            LabelProduccion.Text += Math.Round(((Item.CantidadMaterial + Item.CantidadDemasiaMaterial) * Item.NroPiezasPrecorte), 0).ToString() + " Hjs/Maquina";
+
+            Item.LabelProduccion = LabelProduccion.Text;
+            txtPliegos.Value = Item.NumeroPliegos;
+
+
+            // if (Item.MetodoImpresion != null) {
+            ubeMetodo.Text = Item.MetodoImpresion;
+            //}
+
+
+            checkGraficoImpresionManual.Checked = Item.GraficoImpresionManual;
+
+            utcItemOrdenProduccion.Tabs["Graficos"].Visible = Item.TieneGraficos;
+            txtDemasia.Value = Item.CantidadDemasia;
+
+            if (Item.TieneGraficos)
+            {
+                try
+                {
+                    upbImpresion.Visible = true;
+                    txtNroPiezasImpresion.ReadOnly = true;
+                    if (Item.GraficoImpresionManual)
+                    {
+                        upbImpresion.Visible = false;
+                        txtNroPiezasImpresion.ReadOnly = false;
+                    }
+                    else if (Item.GraficoImpresionGirado)
+                    {
+                        GenerarGraficoImpresionRotado();
+                    }
+                    else
+                    {
+                        GenerarGraficoImpresionNormal();
+                    }
+
+
+
+                    if (Item.GraficoPrecorteGirado)
+                    {
+
+                        GenerarGraficoPrecorteRotado();
+
+                    }
+                    else { GenerarGraficoPrecorteNormal(); }
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+
+
+            MostrarServicios(Item);
+            ActualizandoIU = false;
+        }
+
+        private void GenerarImagenPreCorte(ItemOrdenProduccion itemGrafico)
+        {
+            try
+            {
+                if (itemGrafico == null) { return; }
+                if (ActualizandoIU) { return; }
+                Bitmap b = new Bitmap((Image)upbPrecorte.Image);
+                String RutaGrafico = String.Format("{0}Grafico_Precorte_{1}.png", FrmMain.ObtenerValorKey("CarpetaOrdenesProduccion"), itemGrafico.ID);
+                b.Save(RutaGrafico);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+
+        private void GenerarImagenes()
+        {
+            try
+            {
+                foreach (ItemOrdenProduccion itemPROD in OrdenProduccion.Items)
+                {
+                    if (itemPROD.TieneGraficos)
+                    {
+                        //utOrdenProduccion.ActiveNode(itemPROD);
+                        MostrarItem(itemPROD);
+                        GenerarImagenPreCorte(itemPROD);
+                        GenerarImagenImpresion(itemPROD);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+
+
+        private void GenerarImagenImpresion(ItemOrdenProduccion itemGrafico)
+        {
+
+            try
+            {
+                if (itemGrafico == null) { return; }
+                if (ActualizandoIU) { return; }
+
+                Bitmap b = new Bitmap((Image)upbImpresion.Image);
+                String RutaGrafico = String.Format("{0}Grafico_Impresion_{1}.png", FrmMain.ObtenerValorKey("CarpetaOrdenesProduccion"), itemGrafico.ID);
+                b.Save(RutaGrafico);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+
+        }
 
 
 
