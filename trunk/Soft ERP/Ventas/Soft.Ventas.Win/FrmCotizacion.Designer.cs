@@ -66,6 +66,7 @@
             Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance44 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance45 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance46 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance47 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance48 = new Infragistics.Win.Appearance();
@@ -107,7 +108,6 @@
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance45 = new Infragistics.Win.Appearance();
             this.tabItems = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.txtCostoServicio = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel17 = new Infragistics.Win.Misc.UltraLabel();
@@ -179,6 +179,7 @@
             this.lblSeparacionX = new Infragistics.Win.Misc.UltraLabel();
             this.ubMostrarGraficoPrecorte = new Infragistics.Win.Misc.UltraButton();
             this.ugbImpresion = new Infragistics.Win.Misc.UltraGroupBox();
+            this.labelSobranPaginas = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel25 = new Infragistics.Win.Misc.UltraLabel();
             this.txtNumeroCambios = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.checkGraficoImpresionManual = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
@@ -258,7 +259,6 @@
             this.checkPrecioItems = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.chekOcultaPreciosTotal = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.ultraButton1 = new Infragistics.Win.Misc.UltraButton();
-            this.labelSobranPaginas = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.tabItems.SuspendLayout();
@@ -1670,6 +1670,23 @@
             this.ugbImpresion.TabIndex = 101;
             this.ugbImpresion.Text = "Gráfico de Impresión";
             // 
+            // labelSobranPaginas
+            // 
+            appearance45.BackColor = System.Drawing.Color.MistyRose;
+            appearance45.BackColor2 = System.Drawing.Color.Transparent;
+            appearance45.BackColorDisabled = System.Drawing.Color.White;
+            appearance45.BackColorDisabled2 = System.Drawing.Color.White;
+            appearance45.FontData.UnderlineAsString = "False";
+            appearance45.ForeColor = System.Drawing.Color.Red;
+            this.labelSobranPaginas.Appearance = appearance45;
+            this.labelSobranPaginas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelSobranPaginas.ImageTransparentColor = System.Drawing.Color.Firebrick;
+            this.labelSobranPaginas.Location = new System.Drawing.Point(6, 118);
+            this.labelSobranPaginas.Name = "labelSobranPaginas";
+            this.labelSobranPaginas.Size = new System.Drawing.Size(130, 17);
+            this.labelSobranPaginas.TabIndex = 131;
+            this.labelSobranPaginas.Text = "PROBANDO";
+            // 
             // ultraLabel25
             // 
             appearance46.BackColor = System.Drawing.Color.Transparent;
@@ -2497,17 +2514,6 @@
             this.ultraButton1.TabIndex = 132;
             this.ultraButton1.Text = "Copiar";
             this.ultraButton1.Click += new System.EventHandler(this.ultraButton1_Click);
-            // 
-            // labelSobranPaginas
-            // 
-            appearance45.BackColor = System.Drawing.Color.Transparent;
-            this.labelSobranPaginas.Appearance = appearance45;
-            this.labelSobranPaginas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.labelSobranPaginas.Location = new System.Drawing.Point(6, 118);
-            this.labelSobranPaginas.Name = "labelSobranPaginas";
-            this.labelSobranPaginas.Size = new System.Drawing.Size(130, 17);
-            this.labelSobranPaginas.TabIndex = 131;
-            this.labelSobranPaginas.Text = "..";
             // 
             // FrmCotizacion
             // 

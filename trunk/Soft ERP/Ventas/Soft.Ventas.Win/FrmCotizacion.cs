@@ -1241,6 +1241,7 @@ namespace Soft.Ventas.Win
                         Decimal pliegos = itemcosteado.CantidadUnidad / (itemcosteado.NroPiezasImpresion * 2);
                         Decimal entero = Math.Truncate(pliegos);
                         Decimal paginasresiduo = entero - pliegos;
+                        itemcosteado.PaginasSobrantes = 0;
                         if (paginasresiduo < 0) {
                             itemcosteado.PaginasSobrantes = Convert.ToInt32(itemcosteado.CantidadUnidad - (entero * itemcosteado.NroPiezasImpresion * 2)) ;    
                         }
@@ -1249,15 +1250,11 @@ namespace Soft.Ventas.Win
 
                         if (itemcosteado.NumeroPliegos == 0)
                         {
+
                             itemcosteado.NumeroPliegos = 1;
                         }
                     }
-
-
-
-
                     //itemcosteado.CantidadProduccion = (itemcosteado.CantidadMaterial + itemcosteado.CantidadDemasiaMaterial) * itemcosteado.NumerodePases * itemcosteado.NroPiezasPrecorte * pases;
-
                     itemcosteado.CantidadProduccion = (itemcosteado.CantidadMaterial + itemcosteado.CantidadDemasiaMaterial)  * itemcosteado.NroPiezasPrecorte * pases;
 
                 }
