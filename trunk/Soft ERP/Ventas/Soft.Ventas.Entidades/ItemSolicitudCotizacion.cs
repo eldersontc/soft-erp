@@ -47,6 +47,8 @@ namespace Soft.Ventas.Entidades
 
         public virtual Int32 CantidadUnidad { get; set; }
 
+        public virtual decimal MedidaAnchoCaja { get; set; }
+
 
         public virtual ItemSolicitudCotizacionServicio AddServicio()
         {
