@@ -71,8 +71,9 @@
 
     <property name="NumeroCambios" type="int"/>
 
+    
 
-
+    <property name="MedidaAnchoCaja" type="decimal"/>
     <many-to-one name="MetodoImpresionOffset" class="Soft.Ventas.Entidades.MetodoImpresion" column="IDMetodoImpresion" insert="true" update="true" lazy="false"/>
 
 
