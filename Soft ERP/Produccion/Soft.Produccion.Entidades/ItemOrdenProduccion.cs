@@ -23,6 +23,8 @@ namespace Soft.Produccion.Entidades
         public virtual Existencia Operacion { get; set; }
 
 
+        public virtual decimal MedidaAnchoCaja { get; set; }
+
         private Maquina mMaquina;
         public virtual Maquina Maquina
         {
