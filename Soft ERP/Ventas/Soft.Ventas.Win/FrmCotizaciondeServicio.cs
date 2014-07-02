@@ -122,14 +122,17 @@ namespace Soft.Ventas.Win
                     if (ItemElemento.MetodoImpresion == null) {
                         Item.CantidadServicio = 0;
                     }
-                    if (ItemElemento.MetodoImpresion.Equals("TIRA/RETIRA"))
+
+                    if (ItemElemento.NumeroCambios == 2)
                     {
                         Item.CantidadServicio = (ItemElemento.ImpresoTiraColor + ItemElemento.ImpresoRetiraColor) * ItemElemento.NumeroPliegos;
                     }
-                    else
-                    {
+                    else {
+
                         Item.CantidadServicio = ItemElemento.ImpresoTiraColor * ItemElemento.NumeroPliegos;
+                    
                     }
+                    
 
                     ObtenerCostoServicio();
                 }
