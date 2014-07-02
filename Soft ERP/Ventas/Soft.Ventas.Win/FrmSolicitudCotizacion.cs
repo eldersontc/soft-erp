@@ -129,6 +129,8 @@ namespace Soft.Ventas.Win
             lblTipoUnidad.Text = Item.TipoUnidad;
             txtObservacionItem.Text = Item.Observacion;
 
+            txtMedidaAnchoCaja.Value = ItemSolicitudCotizacion.MedidaAnchoCaja;
+
             if (Item.TipoUnidad != null)
             {
                 if (Item.TieneTipoUnidad) {
@@ -901,6 +903,22 @@ namespace Soft.Ventas.Win
         private void ultraTabPageControl1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+  
+
+        private void txtMedidaAnchoCaja_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (ItemSolicitudCotizacion == null) { return; }
+                ItemSolicitudCotizacion.MedidaAnchoCaja = Convert.ToDecimal( txtMedidaAnchoCaja.Value);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
 

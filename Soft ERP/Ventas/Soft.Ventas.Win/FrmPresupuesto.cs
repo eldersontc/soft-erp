@@ -227,10 +227,12 @@ namespace Soft.Ventas.Win
                     case colTotalFinal:
                         Item.TotalFinal = Convert.ToDecimal(e.Cell.Text.Replace('_', ' '));
                         e.Cell.Row.Cells[colRecargo].Value =Item.TotalFinal-Item.Total;
+                        uneTotal.Value = Presupuesto.Total;
                         break;
                     case colRecargo:
                         Item.TotalFinal = Convert.ToDecimal(e.Cell.Text.Replace('_', ' ')) + Item.Total;
                         e.Cell.Row.Cells[colTotalFinal].Value = Item.TotalFinal;
+                        uneTotal.Value = Presupuesto.Total;
                         break;
                     default:
                         break;
