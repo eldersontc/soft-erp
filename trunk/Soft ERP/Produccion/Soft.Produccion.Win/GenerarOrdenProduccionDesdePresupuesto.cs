@@ -49,6 +49,8 @@ namespace Soft.Produccion.Win
 
                     ItemOrdenProduccion.Nombre = Item.Nombre;
                     ItemOrdenProduccion.Cantidad = Item.Cantidad;
+
+                    ItemOrdenProduccion.MedidaAnchoCaja = Item.MedidaAnchoCaja;
                     ItemOrdenProduccion.TieneMedidaAbierta = Item.TieneMedidaAbierta;
                     ItemOrdenProduccion.TieneMedidaCerrada = Item.TieneMedidaCerrada;
                     ItemOrdenProduccion.TieneTiraRetira = Item.TieneTiraRetira;
