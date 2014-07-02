@@ -60,7 +60,9 @@ namespace Soft.Ventas.Win
                 foreach (ItemSolicitudCotizacion Item in SolicitudCotizacion.Items)
                 {
                     ItemCotizacion ItemCotizacion = Cotizacion.AddItem();
+
                     ItemCotizacion.Nombre = Item.Nombre;
+                    ItemCotizacion.MedidaAnchoCaja = Item.MedidaAnchoCaja;
                     ItemCotizacion.Cantidad = 1;
                     ItemCotizacion.CantidadUnidad = Item.Cantidad;
                     ItemCotizacion.CantidadElemento = Item.CantidadItem;
