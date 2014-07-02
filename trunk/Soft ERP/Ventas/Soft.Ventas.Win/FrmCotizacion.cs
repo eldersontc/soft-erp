@@ -154,9 +154,11 @@ namespace Soft.Ventas.Win
             ActualizandoIU = true;
             ItemCotizacion Item = null;
 
-
+            Node.Text = ItemCotizacion.Nombre;
             Item = (ItemCotizacion)Node.Tag;
 
+
+            txtNombre.Text = ItemCotizacion.Nombre;
             labelSobranPaginas.Text = "";
             ItemCotizacion = Item;
             GrupoMedidaAbierta.Visible = Item.TieneMedidaAbierta;
@@ -166,7 +168,7 @@ namespace Soft.Ventas.Win
             ssMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
 
 
-
+            txtMedidaAnchoCaja.Value = Item.MedidaAnchoCaja;
 
             if (Item.TieneTipoUnidad)
             {
@@ -2148,6 +2150,40 @@ namespace Soft.Ventas.Win
                 SoftException.Control(ex);
             }
         }
+
+        private void txtNombre_ValueChanged(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (ItemCotizacion == null) { return; }
+                if (ActualizandoIU) { return; }
+                ItemCotizacion.Nombre = txtNombre.Text;
+                MostrarItem(utCotizacion.ActiveNode);
+
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+
+        }
+
+        private void txtMedidaAnchoCaja_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (ItemCotizacion == null) { return; }
+                ItemCotizacion.MedidaAnchoCaja = Convert.ToDecimal(txtMedidaAnchoCaja.Value);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+  
 
     
 
