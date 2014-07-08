@@ -32,6 +32,10 @@
     <property name="TieneGraficos" type="boolean"/>
     <property name="TieneMaterial" type="boolean"/>
     <property name="TieneMaquina" type="boolean"/>
+
+
+    <property name="TieneFondo" type="boolean"/>
+
     <property name="TieneTipoUnidad" type="boolean"/>
     <property name="UnidadMedidaAbierta" type="string"/>
     <property name="NumerodePases" type="int"/>
