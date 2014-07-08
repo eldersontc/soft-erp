@@ -13,6 +13,11 @@
     <property name="EstadoAceptacion" type="string"/>
     <property name="EstadoAprobacion" type="string"/>
 
+
+
+    <property name="OrdenCompraCliente" type="string"/>
+    <property name="InstruccionesCliente" type="string"/>
+
     <property name="EstadoOrdenProduccion" type="string"/>
 
     <many-to-one name="TipoDocumento" class="Soft.Ventas.Entidades.TipoPresupuesto" column="IDTipoDocumento" insert="true" update="true" lazy="false"/>

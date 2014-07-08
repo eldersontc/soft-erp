@@ -23,6 +23,8 @@
     <property name="TieneMaterial" type="boolean"/>
     <property name="TieneMaquina" type="boolean"/>
 
+    <property name="TieneFondo" type="boolean"/>
+    
 
     <property name="TieneTipoUnidad" type="boolean"/>
     <property name="UnidadMedidaAbierta" type="string"/>
@@ -31,6 +33,10 @@
 
 
     <property name="CantidadItem" type="decimal"/>
+
+
+    <property name="MedidaAnchoCaja" type="decimal"/>
+
 
     <many-to-one name="Operacion" class="Soft.Inventario.Entidades.Existencia" column="IDOperacion" insert="true" update="true" lazy="false"/>
 
