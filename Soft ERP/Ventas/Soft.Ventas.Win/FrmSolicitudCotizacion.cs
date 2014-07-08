@@ -123,6 +123,9 @@ namespace Soft.Ventas.Win
             chkTieneTipoUnidad.Checked = Item.TieneTipoUnidad;
             comboMedida.Text = Item.UnidadMedidaAbierta;
 
+            txtMedidaAnchoCaja.Visible = Item.TieneFondo;
+            labelFondo.Visible = Item.TieneFondo;
+
             ssOperacion.Text = (Item.Operacion != null) ? Item.Operacion.Nombre : "";
             ssMaquina.Text = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
             ssMaterial.Text = (Item.Material != null) ? Item.Material.Descripcion : "";
@@ -158,6 +161,7 @@ namespace Soft.Ventas.Win
             chkTieneGraficos.Checked = Item.TieneGraficos;
             chkTieneMaquina.Checked = Item.TieneMaquina;
             chkTieneMaterial.Checked = Item.TieneMaterial;
+            CheckTieneFondo.Checked = Item.TieneFondo;
             MostrarServicios(Item);
             ActualizandoIU = false;
         }
@@ -886,7 +890,7 @@ namespace Soft.Ventas.Win
 
                 FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
                 LineaProduccion LineaProduccion = (LineaProduccion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(LineaProduccion), "Linea de Produccion");
-                if ((SolicitudCotizacion.LineaProduccion == null))
+                if ((LineaProduccion != null))
                 {
 
                     SolicitudCotizacion.LineaProduccion = LineaProduccion;
@@ -914,6 +918,21 @@ namespace Soft.Ventas.Win
 
                 if (ItemSolicitudCotizacion == null) { return; }
                 ItemSolicitudCotizacion.MedidaAnchoCaja = Convert.ToDecimal( txtMedidaAnchoCaja.Value);
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void CheckTieneFondo_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemSolicitudCotizacion == null) { return; }
+                if (ActualizandoIU) { return; }
+                ItemSolicitudCotizacion.TieneFondo = CheckTieneFondo.Checked;
+                MostrarItem(ItemSolicitudCotizacion);
             }
             catch (Exception ex)
             {

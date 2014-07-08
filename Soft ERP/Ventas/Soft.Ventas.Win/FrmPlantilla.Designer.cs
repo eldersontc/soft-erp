@@ -45,6 +45,7 @@
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.comboMedida = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             this.ugbRestriccione = new Infragistics.Win.Misc.UltraGroupBox();
+            this.CheckTieneFondo = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.chkTieneTipoUnidad = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.chkTieneMaquina = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.chkTieneMaterial = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
@@ -84,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboMedida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ugbRestriccione)).BeginInit();
             this.ugbRestriccione.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CheckTieneFondo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTieneTipoUnidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTieneMaquina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTieneMaterial)).BeginInit();
@@ -116,7 +118,7 @@
             this.ugbParent.Controls.Add(this.uceActivo);
             this.ugbParent.Controls.Add(this.lblCodigo);
             this.ugbParent.Controls.Add(this.txtCodigo);
-            this.ugbParent.Size = new System.Drawing.Size(807, 502);
+            this.ugbParent.Size = new System.Drawing.Size(807, 543);
             this.ugbParent.Controls.SetChildIndex(this.txtCodigo, 0);
             this.ugbParent.Controls.SetChildIndex(this.lblCodigo, 0);
             this.ugbParent.Controls.SetChildIndex(this.uceActivo, 0);
@@ -133,12 +135,12 @@
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(712, 471);
+            this.ubCancelar.Location = new System.Drawing.Point(712, 514);
             this.ubCancelar.TabIndex = 14;
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(631, 471);
+            this.ubAceptar.Location = new System.Drawing.Point(631, 514);
             this.ubAceptar.TabIndex = 13;
             // 
             // ilMain
@@ -409,7 +411,7 @@
             this.ultraTabPageControl1.Controls.Add(this.lblOperacion);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(564, 392);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(564, 432);
             // 
             // comboMedida
             // 
@@ -430,6 +432,7 @@
             // 
             appearance4.BackColor = System.Drawing.Color.Transparent;
             this.ugbRestriccione.Appearance = appearance4;
+            this.ugbRestriccione.Controls.Add(this.CheckTieneFondo);
             this.ugbRestriccione.Controls.Add(this.chkTieneTipoUnidad);
             this.ugbRestriccione.Controls.Add(this.chkTieneMaquina);
             this.ugbRestriccione.Controls.Add(this.chkTieneMaterial);
@@ -441,9 +444,18 @@
             this.ugbRestriccione.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
             this.ugbRestriccione.Location = new System.Drawing.Point(394, 4);
             this.ugbRestriccione.Name = "ugbRestriccione";
-            this.ugbRestriccione.Size = new System.Drawing.Size(156, 166);
+            this.ugbRestriccione.Size = new System.Drawing.Size(156, 188);
             this.ugbRestriccione.TabIndex = 83;
             this.ugbRestriccione.Text = "Restricciones";
+            // 
+            // CheckTieneFondo
+            // 
+            this.CheckTieneFondo.Location = new System.Drawing.Point(13, 162);
+            this.CheckTieneFondo.Name = "CheckTieneFondo";
+            this.CheckTieneFondo.Size = new System.Drawing.Size(136, 20);
+            this.CheckTieneFondo.TabIndex = 25;
+            this.CheckTieneFondo.Text = "Tiene Fondo";
+            this.CheckTieneFondo.CheckedChanged += new System.EventHandler(this.CheckTieneFondo_CheckedChanged);
             // 
             // chkTieneTipoUnidad
             // 
@@ -572,9 +584,9 @@
             this.ugbServicios.Controls.Add(this.ubEliminar);
             this.ugbServicios.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.ugbServicios.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopOutsideBorder;
-            this.ugbServicios.Location = new System.Drawing.Point(15, 176);
+            this.ugbServicios.Location = new System.Drawing.Point(15, 198);
             this.ugbServicios.Name = "ugbServicios";
-            this.ugbServicios.Size = new System.Drawing.Size(535, 200);
+            this.ugbServicios.Size = new System.Drawing.Size(535, 209);
             this.ugbServicios.TabIndex = 11;
             this.ugbServicios.Text = "Servicios y Acabados";
             // 
@@ -700,7 +712,7 @@
             this.utcDetalle.Location = new System.Drawing.Point(222, 50);
             this.utcDetalle.Name = "utcDetalle";
             this.utcDetalle.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.utcDetalle.Size = new System.Drawing.Size(568, 418);
+            this.utcDetalle.Size = new System.Drawing.Size(568, 458);
             appearance6.BackColor = System.Drawing.Color.Transparent;
             this.utcDetalle.TabHeaderAreaAppearance = appearance6;
             this.utcDetalle.TabIndex = 14;
@@ -713,7 +725,7 @@
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(564, 392);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(564, 432);
             // 
             // utPlantilla
             // 
@@ -729,13 +741,13 @@
             appearance2.FontData.ItalicAsString = "True";
             _override1.ActiveNodeAppearance = appearance2;
             this.utPlantilla.Override = _override1;
-            this.utPlantilla.Size = new System.Drawing.Size(200, 386);
+            this.utPlantilla.Size = new System.Drawing.Size(200, 424);
             this.utPlantilla.TabIndex = 15;
             this.utPlantilla.AfterSelect += new Infragistics.Win.UltraWinTree.AfterNodeSelectEventHandler(this.utPlantilla_AfterSelect);
             // 
             // ubNuevoItem
             // 
-            this.ubNuevoItem.Location = new System.Drawing.Point(17, 441);
+            this.ubNuevoItem.Location = new System.Drawing.Point(18, 481);
             this.ubNuevoItem.Name = "ubNuevoItem";
             this.ubNuevoItem.Size = new System.Drawing.Size(99, 23);
             this.ubNuevoItem.TabIndex = 4;
@@ -744,7 +756,7 @@
             // 
             // ubEliminarItem
             // 
-            this.ubEliminarItem.Location = new System.Drawing.Point(122, 442);
+            this.ubEliminarItem.Location = new System.Drawing.Point(123, 482);
             this.ubEliminarItem.Name = "ubEliminarItem";
             this.ubEliminarItem.Size = new System.Drawing.Size(94, 23);
             this.ubEliminarItem.TabIndex = 5;
@@ -775,7 +787,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 540);
+            this.ClientSize = new System.Drawing.Size(823, 581);
             this.Name = "FrmPlantilla";
             this.Text = "Plantilla";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
@@ -786,6 +798,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboMedida)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ugbRestriccione)).EndInit();
             this.ugbRestriccione.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CheckTieneFondo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTieneTipoUnidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTieneMaquina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTieneMaterial)).EndInit();
@@ -845,5 +858,6 @@
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkTieneTipoUnidad;
         private Controls.SoftSearch busLineaProduccion;
         private Infragistics.Win.Misc.UltraLabel ultraLabel24;
+        private Infragistics.Win.UltraWinEditors.UltraCheckEditor CheckTieneFondo;
     }
 }

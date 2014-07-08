@@ -118,7 +118,6 @@
             this.ubNuevoServicio = new Infragistics.Win.Misc.UltraButton();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.txtNombre = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.btnTodosM2Servicios = new Infragistics.Win.Misc.UltraButton();
             this.txtCantidadProduccion = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel18 = new Infragistics.Win.Misc.UltraLabel();
             this.GruposTiras = new Infragistics.Win.Misc.UltraGroupBox();
@@ -139,7 +138,7 @@
             this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
             this.GrupoMedidaAbierta = new Infragistics.Win.Misc.UltraGroupBox();
             this.txtMedidaAnchoCaja = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.ultraLabel26 = new Infragistics.Win.Misc.UltraLabel();
+            this.labelFondoCaja = new Infragistics.Win.Misc.UltraLabel();
             this.comboMedida = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             this.txtMedidaAbiertoLargo = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
@@ -782,7 +781,6 @@
             // ultraTabPageControl1
             // 
             this.ultraTabPageControl1.Controls.Add(this.txtNombre);
-            this.ultraTabPageControl1.Controls.Add(this.btnTodosM2Servicios);
             this.ultraTabPageControl1.Controls.Add(this.txtCantidadProduccion);
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel18);
             this.ultraTabPageControl1.Controls.Add(this.GruposTiras);
@@ -814,15 +812,6 @@
             this.txtNombre.Size = new System.Drawing.Size(340, 21);
             this.txtNombre.TabIndex = 95;
             this.txtNombre.ValueChanged += new System.EventHandler(this.txtNombre_ValueChanged);
-            // 
-            // btnTodosM2Servicios
-            // 
-            this.btnTodosM2Servicios.Location = new System.Drawing.Point(508, 11);
-            this.btnTodosM2Servicios.Name = "btnTodosM2Servicios";
-            this.btnTodosM2Servicios.Size = new System.Drawing.Size(75, 23);
-            this.btnTodosM2Servicios.TabIndex = 94;
-            this.btnTodosM2Servicios.Text = "Todos Mt.2";
-            this.btnTodosM2Servicios.Click += new System.EventHandler(this.btnTodosM2Servicios_Click);
             // 
             // txtCantidadProduccion
             // 
@@ -1092,7 +1081,7 @@
             appearance21.BackColor = System.Drawing.Color.Transparent;
             this.GrupoMedidaAbierta.Appearance = appearance21;
             this.GrupoMedidaAbierta.Controls.Add(this.txtMedidaAnchoCaja);
-            this.GrupoMedidaAbierta.Controls.Add(this.ultraLabel26);
+            this.GrupoMedidaAbierta.Controls.Add(this.labelFondoCaja);
             this.GrupoMedidaAbierta.Controls.Add(this.comboMedida);
             this.GrupoMedidaAbierta.Controls.Add(this.txtMedidaAbiertoLargo);
             this.GrupoMedidaAbierta.Controls.Add(this.ultraLabel1);
@@ -1108,7 +1097,7 @@
             // 
             // txtMedidaAnchoCaja
             // 
-            this.txtMedidaAnchoCaja.Location = new System.Drawing.Point(95, 77);
+            this.txtMedidaAnchoCaja.Location = new System.Drawing.Point(44, 75);
             this.txtMedidaAnchoCaja.MaskInput = "nnnn.nn";
             this.txtMedidaAnchoCaja.MaxValue = new decimal(new int[] {
             2500,
@@ -1122,22 +1111,22 @@
             0});
             this.txtMedidaAnchoCaja.Name = "txtMedidaAnchoCaja";
             this.txtMedidaAnchoCaja.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
-            this.txtMedidaAnchoCaja.Size = new System.Drawing.Size(69, 21);
+            this.txtMedidaAnchoCaja.Size = new System.Drawing.Size(72, 21);
             this.txtMedidaAnchoCaja.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
             this.txtMedidaAnchoCaja.TabIndex = 122;
             this.txtMedidaAnchoCaja.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
             this.txtMedidaAnchoCaja.ValueChanged += new System.EventHandler(this.txtMedidaAnchoCaja_ValueChanged);
             // 
-            // ultraLabel26
+            // labelFondoCaja
             // 
             appearance22.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel26.Appearance = appearance22;
-            this.ultraLabel26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel26.Location = new System.Drawing.Point(23, 78);
-            this.ultraLabel26.Name = "ultraLabel26";
-            this.ultraLabel26.Size = new System.Drawing.Size(70, 23);
-            this.ultraLabel26.TabIndex = 123;
-            this.ultraLabel26.Text = "Ancho Caja";
+            this.labelFondoCaja.Appearance = appearance22;
+            this.labelFondoCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.labelFondoCaja.Location = new System.Drawing.Point(5, 79);
+            this.labelFondoCaja.Name = "labelFondoCaja";
+            this.labelFondoCaja.Size = new System.Drawing.Size(47, 17);
+            this.labelFondoCaja.TabIndex = 123;
+            this.labelFondoCaja.Text = "Fondo";
             // 
             // comboMedida
             // 
@@ -2798,7 +2787,6 @@
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor uneCostoUnidad;
         private Infragistics.Win.Misc.UltraLabel ultraLabel23;
         private Infragistics.Win.UltraWinEditors.UltraComboEditor comboMedida;
-        private Infragistics.Win.Misc.UltraButton btnTodosM2Servicios;
         private Controls.SoftSearch busLineaProduccion;
         private Infragistics.Win.Misc.UltraLabel ultraLabel24;
         private Infragistics.Win.Misc.UltraLabel LabelMaterialAlmancen;
@@ -2814,6 +2802,6 @@
         private Infragistics.Win.Misc.UltraLabel labelSobranPaginas;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtNombre;
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtMedidaAnchoCaja;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel26;
+        private Infragistics.Win.Misc.UltraLabel labelFondoCaja;
     }
 }
