@@ -91,7 +91,7 @@ namespace Soft.Produccion.Entidades
         public virtual Boolean TieneTiraRetira { get; set; }
         public virtual Int32 SeparacionX { get; set; }
         public virtual Int32 SeparacionY { get; set; }
-
+        public virtual Boolean TieneFondo { get; set; }
         //Nuevos
         public virtual Decimal FormatoImpresionLargo { get; set; }
         public virtual Decimal FormatoImpresionAlto { get; set; }
@@ -103,7 +103,7 @@ namespace Soft.Produccion.Entidades
         public virtual String MetodoImpresion { get; set; }
 
 
-
+        public virtual Decimal MedidaFondoCaja { get; set; }
 
         public virtual Boolean TieneGraficos { get; set; }
         public virtual Boolean TieneMaterial { get; set; }
