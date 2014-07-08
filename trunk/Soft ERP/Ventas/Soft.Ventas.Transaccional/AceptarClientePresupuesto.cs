@@ -50,6 +50,10 @@ namespace Soft.Ventas.Transaccional
                             SqlCmd.ExecuteNonQuery();
                             Progreso.Next();
                         }
+
+
+                        
+
                         Trans.Commit();
                         Progreso.Close();
                         m_ResultProcess = EnumResult.SUCESS;
