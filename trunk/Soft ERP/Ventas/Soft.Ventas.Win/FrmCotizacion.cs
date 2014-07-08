@@ -214,11 +214,15 @@ namespace Soft.Ventas.Win
             uneCostoMaquina.Visible = Item.TieneMaquina;
             lblCostoMaterial.Visible = Item.TieneMaterial;
             uneCostoMaterial.Visible = Item.TieneMaterial;
-
+            txtMedidaAnchoCaja.Visible = Item.TieneFondo;
+            labelFondoCaja.Visible = Item.TieneFondo;
 
             comboMedida.Text = Item.UnidadMedidaAbierta;
             lblTipoUnidad.Visible = Item.TieneTipoUnidad;
             txtCantidadItem.Visible = Item.TieneTipoUnidad;
+
+
+
             if (Item.TieneTipoUnidad == false)
             {
                 txtCantidadItem.Value = 0;

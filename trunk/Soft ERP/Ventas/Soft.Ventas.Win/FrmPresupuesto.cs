@@ -102,6 +102,9 @@ namespace Soft.Ventas.Win
             ssCliente.Text = (Presupuesto.Cliente != null) ? Presupuesto.Cliente.Nombre : "";
             txtNumeracion.Text = Presupuesto.Numeracion;
             udtFechaCreacion.Value = Presupuesto.FechaCreacion;
+            txtOrdenCompraCliente.Text = Presupuesto.OrdenCompraCliente;
+            txtInstruccionesCliente.Text = Presupuesto.InstruccionesCliente;
+
             MostrarItems(false);
         }
 
@@ -244,6 +247,31 @@ namespace Soft.Ventas.Win
                 SoftException.Control(ex);
             }
 
+        }
+
+        private void txtOrdenCompraCliente_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Presupuesto.OrdenCompraCliente = txtOrdenCompraCliente.Text;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+            
+        }
+
+        private void txtInstruccionesCliente_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Presupuesto.InstruccionesCliente = txtInstruccionesCliente.Text;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
         }
 
     }

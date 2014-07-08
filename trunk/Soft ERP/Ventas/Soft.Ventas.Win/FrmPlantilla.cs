@@ -99,6 +99,7 @@ namespace Soft.Ventas.Win
             ssMaterial.Text = (Item.Material != null) ? Item.Material.Nombre : "";
             ssTipoUnidad.Text = (Item.TipoUnidad!= null) ? Item.TipoUnidad.Nombre : "";
             ssRelacionMedidas.Text = (Item.RelacionMedidas != null) ? Item.RelacionMedidas.Nombre : "";
+            CheckTieneFondo.Checked = Item.TieneFondo;
 
             //comboMedida.Text = "";
             comboMedida.Text=Item.UnidadMedidaAbierta;
@@ -448,6 +449,19 @@ namespace Soft.Ventas.Win
             catch (Exception ex)
             {
 
+                SoftException.Control(ex);
+            }
+        }
+
+        private void CheckTieneFondo_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemPlantilla == null) { return; }
+                ItemPlantilla.TieneFondo = CheckTieneFondo.Checked;
+            }
+            catch (Exception ex)
+            {
                 SoftException.Control(ex);
             }
         }

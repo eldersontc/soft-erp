@@ -73,7 +73,7 @@ namespace Soft.Ventas.Win
                         ItemCotizacion.FormatoImpresionAlto = ItemCotizacion.Maquina.PliegoAltoMaximo;
                         ItemCotizacion.FormatoImpresionLargo=ItemCotizacion.Maquina.PliegoAnchoMaximo;
                     }
-
+                    ItemCotizacion.TieneFondo = Item.TieneFondo;
                     ItemCotizacion.TipoUnidad = Item.TipoUnidad;
                     ItemCotizacion.Material = Item.Material;
                     ItemCotizacion.ImpresoRetiraColor = Item.ImpresoRetiraColor;

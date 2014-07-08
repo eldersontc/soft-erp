@@ -19,7 +19,7 @@ namespace Soft.Ventas.Win
                 Solicitud.Cantidad = 1;
                 Solicitud.Descripcion = Plantilla.Nombre;
                 Solicitud.TipoDocumento = (TipoSolicitudCotizacion)HelperNHibernate.GetEntityByID("TipoSolicitudCotizacion", "B8AA5B25-9180-44A6-B750-F96D1EA17147");
-                Solicitud.Observacion = String.Format("Generado desde la Plantilla - {0}", Plantilla.Codigo);
+                Solicitud.Observacion = "";
                 Solicitud.LineaProduccion = Plantilla.LineaProduccion;
                 foreach (ItemPlantilla Item in Plantilla.Items)
                 {
@@ -40,6 +40,8 @@ namespace Soft.Ventas.Win
                     ItemSolicitud.TieneMaterial = Item.TieneMaterial;
                     ItemSolicitud.TieneTipoUnidad = Item.TieneTipoUnidad;
                     ItemSolicitud.UnidadMedidaAbierta = Item.UnidadMedidaAbierta;
+                    ItemSolicitud.TieneFondo = Item.TieneFondo;
+
                     foreach (ItemPlantillaServicio ItemServicio in Item.Servicios)
                     {
                         ItemSolicitudCotizacionServicio ItemSolicitudSerivcio = ItemSolicitud.AddServicio();
