@@ -22,6 +22,11 @@
     <property name="TieneMedidaAbierta" type="boolean"/>
     <property name="TieneMedidaCerrada" type="boolean"/>
     <property name="TieneTiraRetira" type="boolean"/>
+
+
+    <property name="TieneFondo" type="boolean"/>
+
+
     <property name="SeparacionX" type="int"/>
     <property name="SeparacionY" type="int"/>
 
