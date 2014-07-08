@@ -26,6 +26,9 @@ namespace Soft.Ventas.Entidades
         public virtual Boolean TieneMaterial { get; set; }
         public virtual Boolean TieneMaquina { get; set; }
 
+        public virtual Boolean TieneFondo { get; set; }
+
+
         public virtual Boolean TieneTipoUnidad { get; set; }
         public virtual String UnidadMedidaAbierta { get; set; }
 

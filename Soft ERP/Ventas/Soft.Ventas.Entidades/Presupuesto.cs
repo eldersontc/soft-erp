@@ -35,6 +35,10 @@ namespace Soft.Ventas.Entidades
         public virtual String EstadoAprobacion { get; set; }
         public virtual String EstadoOrdenProduccion { get; set; }
 
+        public virtual String OrdenCompraCliente { get; set; }
+
+        public virtual String InstruccionesCliente { get; set; }
+
         public virtual String ObtenerFiltroCotizaciones() {
             String Filtro = "";
             foreach (ItemPresupuesto Item in Items)
