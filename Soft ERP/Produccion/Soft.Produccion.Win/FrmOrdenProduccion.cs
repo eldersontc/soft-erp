@@ -113,6 +113,7 @@ namespace Soft.Produccion.Win
             uneCantidad.Value = OrdenProduccion.Cantidad;
             txtNumeracion.Text = OrdenProduccion.Numeracion;
 
+
             udtFechaTentativaEntrega.Value = OrdenProduccion.FechaTentativaEntrega;
             cboPrioridad.Text = OrdenProduccion.Prioridad;
 
@@ -193,8 +194,11 @@ namespace Soft.Produccion.Win
             lblMaquina.Visible = Item.TieneMaquina;
             ssMaterial.Visible = Item.TieneMaterial;
             lblMaterial.Visible = Item.TieneMaterial;
-            
 
+            labelFondo.Visible = Item.TieneFondo;
+            txtFondoCaja.Visible = Item.TieneFondo;
+
+            txtFondoCaja.Value = Item.MedidaFondoCaja;
 
             comboMedida.Text = Item.UnidadMedidaAbierta;
             lblTipoUnidad.Visible = Item.TieneTipoUnidad;
@@ -1510,7 +1514,7 @@ namespace Soft.Produccion.Win
 
                 FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
                 LineaProduccion LineaProduccion = (LineaProduccion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(LineaProduccion), "Linea de Produccion");
-                if ((OrdenProduccion.LineaProduccion == null))
+                if ((LineaProduccion != null))
                 {
 
                     OrdenProduccion.LineaProduccion = LineaProduccion;
@@ -1566,11 +1570,6 @@ namespace Soft.Produccion.Win
             }
         }
 
-
-
-
-
-
         public override void Aceptar()
         {
             try
@@ -1584,7 +1583,6 @@ namespace Soft.Produccion.Win
                 SoftException.ShowException(ex);
             }
         }
-
 
         public void MostrarItem(ItemOrdenProduccion Item)
         {
@@ -1619,7 +1617,8 @@ namespace Soft.Produccion.Win
             lblMaquina.Visible = Item.TieneMaquina;
             ssMaterial.Visible = Item.TieneMaterial;
             lblMaterial.Visible = Item.TieneMaterial;
-
+            labelFondo.Visible = Item.TieneFondo;
+            txtFondoCaja.Visible = Item.TieneFondo;
 
 
             comboMedida.Text = Item.UnidadMedidaAbierta;
@@ -1780,6 +1779,22 @@ namespace Soft.Produccion.Win
                 SoftException.Control(ex);
             }
 
+        }
+
+        private void txtFondoCaja_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                if (ItemOrdenProduccion == null) { return; }
+                if (ActualizandoIU) { return; }
+                ItemOrdenProduccion.MedidaFondoCaja = Convert.ToDecimal(txtFondoCaja.Value);
+            }
+            catch (Exception ex)
+            {
+
+                SoftException.Control(ex);
+            }
         }
 
 
