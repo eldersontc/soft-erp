@@ -17,15 +17,8 @@
     <property name="TipoCambioFecha" type="decimal"/>
     <property name="TotalSoles" type="decimal"/>
     <property name="IDSolicitudCotizacion" type="string"/>
-
-
-
     <property name="MuestraPrecioItemEnPresupuesto" type="bool"/>
-
     <property name="OcultaPrecioEnPresupuesto" type="bool"/>
-
-
-
 
     <many-to-one name="TipoDocumento" class="Soft.Ventas.Entidades.TipoCotizacion" column="IDTipoDocumento" insert="true" update="true" lazy="false"/>
     <many-to-one name="Cliente" class="Soft.Entities.SocioNegocio" column="IDCliente" insert="true" update="true" lazy="false"/>
