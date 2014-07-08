@@ -26,7 +26,12 @@ namespace Soft.Ventas.Entidades
 
         public virtual Boolean MuestraPrecioEnPresupuesto { get; set; }
 
+
+        public virtual Boolean TieneFondo { get; set; }
         
+
+
+        public virtual decimal MedidaAnchoCaja { get; set; }
 
         private Maquina mMaquina;
         public virtual Maquina Maquina
