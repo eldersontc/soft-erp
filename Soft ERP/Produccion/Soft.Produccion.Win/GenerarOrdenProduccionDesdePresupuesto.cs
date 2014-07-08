@@ -38,7 +38,7 @@ namespace Soft.Produccion.Win
                 Op.Contacto = cotizacion.Contacto;
                 Op.DireccionEntrega = cotizacion.DireccionEntrega;
                 Op.DireccionFacturacion = cotizacion.DireccionFacturacion;
-
+                Op.LineaProduccion = cotizacion.LineaProduccion;
     
 
                 foreach (ItemCotizacion ItemCoti in cotizacion.Items)
@@ -92,7 +92,8 @@ namespace Soft.Produccion.Win
                     ItemOrdenProduccion.LabelMaterialAlmancen = Item.LabelMaterialAlmancen;
                     ItemOrdenProduccion.LabelProduccion = Item.LabelProduccion;
 
-              
+                    ItemOrdenProduccion.TieneFondo = Item.TieneFondo;
+                    ItemOrdenProduccion.MedidaFondoCaja = Item.MedidaAnchoCaja;
 
                     foreach (ItemCotizacionServicio ItemServicio in Item.Servicios)
                     {
