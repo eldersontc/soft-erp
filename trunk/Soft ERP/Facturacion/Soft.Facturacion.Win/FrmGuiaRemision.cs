@@ -168,7 +168,7 @@ namespace Soft.Facturacion.Win
             try
             {
                 FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-                GuiaRemision.Cliente = (SocioNegocio)FrmSeleccionar.GetSelectedEntity(typeof(SocioNegocio), "Cliente");
+                GuiaRemision.Cliente = (SocioNegocio)FrmSeleccionar.GetSelectedEntity(typeof(SocioNegocio), "Cliente de Guia");
                 if (GuiaRemision.Cliente != null)
                 {
                     ssCliente.Text = GuiaRemision.Cliente.Nombre;
