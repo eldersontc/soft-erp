@@ -24,6 +24,7 @@ namespace Soft.Facturacion.Transaccional
                         Soft.Facturacion.Entidades.Facturacion Facturacion = (Soft.Facturacion.Entidades.Facturacion)m_ObjectFlow;
                         SqlCommand SqlCmd = new SqlCommand();
                         SqlCmd.Connection = (SqlConnection)Sesion.Connection;
+
                         SqlCmd.CommandText = "pSF_Actualizar_EstadoFacturacion_OrdenProduccion";
                         SqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
                         Trans.Enlist(SqlCmd);
