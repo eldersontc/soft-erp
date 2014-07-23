@@ -41,7 +41,12 @@ namespace Soft.Produccion.Win
         const String colSolicitudCotizacion = "Sol. Cotizacion";
 
 
+        const String colEstadoEntrega = "E. Entrega";
+        const String colEstadoFacturacion = "E. Facturacion";
+
+
         const String colFecha = "Fecha";
+
 
         public void InitGrids()
         {
@@ -82,6 +87,16 @@ namespace Soft.Produccion.Win
             column.ReadOnly = true;
 
 
+            column = columns.Columns.Add(colEstadoEntrega);
+            column.DataType = typeof(String);
+            column.ReadOnly = true;
+
+            column = columns.Columns.Add(colEstadoFacturacion);
+            column.DataType = typeof(String);
+            column.ReadOnly = true;
+
+
+
             ugConsolidadosOp.DataSource = columns;
 
 
@@ -91,6 +106,9 @@ namespace Soft.Produccion.Win
             ugConsolidadosOp.DisplayLayout.Bands[0].Columns[colPresupuesto].CellActivation = Activation.ActivateOnly;
             ugConsolidadosOp.DisplayLayout.Bands[0].Columns[colCotizacion].CellActivation = Activation.ActivateOnly;
             ugConsolidadosOp.DisplayLayout.Bands[0].Columns[colSolicitudCotizacion].CellActivation = Activation.ActivateOnly;
+
+            ugConsolidadosOp.DisplayLayout.Bands[0].Columns[colEstadoEntrega].CellActivation = Activation.ActivateOnly;
+            ugConsolidadosOp.DisplayLayout.Bands[0].Columns[colEstadoFacturacion].CellActivation = Activation.ActivateOnly;
 
 
             MapKeys(ref ugConsolidadosOp);
@@ -132,6 +150,9 @@ namespace Soft.Produccion.Win
                     Row.Cells[colPresupuesto].Value = NodoItem.SelectSingleNode("@Presupuesto").Value;
                     Row.Cells[colCotizacion].Value = NodoItem.SelectSingleNode("@Cotizacion").Value;
                     Row.Cells[colSolicitudCotizacion].Value = NodoItem.SelectSingleNode("@SolicitudCotizacion").Value;
+
+                    Row.Cells[colEstadoEntrega].Value = NodoItem.SelectSingleNode("@EstadoEntrega").Value;
+                    Row.Cells[colEstadoFacturacion].Value = NodoItem.SelectSingleNode("@EstadoFacturacion").Value;
 
                 }
             }
@@ -192,7 +213,7 @@ namespace Soft.Produccion.Win
                 FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
                 String Filtro = ConsolidadoOp.ObtenerFiltroOPs();
                 Filtro = (Filtro.Length > 0) ? String.Format(" ID NOT IN ({0}) AND IDCliente = '{1}'", Filtro, ConsolidadoOp.Cliente.ID) : String.Format(" IDCliente = '{0}'", ConsolidadoOp.Cliente.ID);
-                OrdenesProduccion = FrmSeleccionar.GetSelectedsEntities(typeof(OrdenProduccion), "Selección de Ordenes de Produccion", Filtro);
+                OrdenesProduccion = FrmSeleccionar.GetSelectedsEntities(typeof(OrdenProduccion), "Selección de Ordenes de Produccion Consolidado", Filtro);
                 foreach (OrdenProduccion Item in OrdenesProduccion)
                 {
                     ConsolidadoOp.AddItem(Item);
