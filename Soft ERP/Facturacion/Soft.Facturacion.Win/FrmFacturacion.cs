@@ -16,6 +16,7 @@ using System.Xml;
 using Soft.DataAccess;
 using Infragistics.Win.UltraWinGrid;
 using Infragistics.Win;
+using Soft.Ventas.Entidades;
 
 namespace Soft.Facturacion.Win
 {
@@ -180,7 +181,7 @@ namespace Soft.Facturacion.Win
             try
             {
                 FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
-                Facturacion.Cliente = (SocioNegocio)FrmSeleccionar.GetSelectedEntity(typeof(SocioNegocio), "Cliente");
+                Facturacion.Cliente = (SocioNegocio)FrmSeleccionar.GetSelectedEntity(typeof(SocioNegocio), "Cliente de Factura");
                 if (Facturacion.Cliente != null)
                 {
                     ssCliente.Text = Facturacion.Cliente.Nombre;
@@ -255,7 +256,9 @@ namespace Soft.Facturacion.Win
                     Item.Descripcion = ItemOP.Descripcion;
                     Item.CantidadOP = (ItemOP.Cantidad - ItemOP.CantidadFacturada);
                     Item.Cantidad = Item.CantidadOP;
-                    Item.Precio = (ItemOP.Total / ItemOP.Cantidad);
+
+                    ItemPresupuesto itemPresupuesto = (ItemPresupuesto)HelperNHibernate.GetEntityByID("ItemPresupuesto", ItemOP.IDItemPresupuesto);
+                    Item.Precio = (itemPresupuesto.TotalFinal / ItemOP.Cantidad);
                 }
                 MostrarItems();
                 MostrarTotales();
