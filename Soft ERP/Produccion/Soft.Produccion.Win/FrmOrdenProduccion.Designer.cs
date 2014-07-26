@@ -37,6 +37,7 @@
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
@@ -105,7 +106,6 @@
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             this.tabItems = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.btnModificar = new Infragistics.Win.Misc.UltraButton();
             this.ugServicios = new Infragistics.Win.UltraWinGrid.UltraGrid();
@@ -125,6 +125,8 @@
             this.txtMedidaCerradaAlto = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
             this.GrupoMedidaAbierta = new Infragistics.Win.Misc.UltraGroupBox();
+            this.txtFondoCaja = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.labelFondo = new Infragistics.Win.Misc.UltraLabel();
             this.comboMedida = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             this.txtMedidaAbiertoLargo = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
@@ -232,8 +234,6 @@
             this.ultraLabel28 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel8 = new Infragistics.Win.Misc.UltraLabel();
             this.ssCotizador = new Soft.Controls.SoftSearch();
-            this.txtFondoCaja = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.labelFondo = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.tabItems.SuspendLayout();
@@ -250,6 +250,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMedidaCerradaAlto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrupoMedidaAbierta)).BeginInit();
             this.GrupoMedidaAbierta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFondoCaja)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboMedida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMedidaAbiertoLargo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMedidaAbiertoAlto)).BeginInit();
@@ -295,7 +296,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCotizacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPrioridad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udtFechaTentativaEntrega)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFondoCaja)).BeginInit();
             this.SuspendLayout();
             // 
             // ugbParent
@@ -883,6 +883,39 @@
             this.GrupoMedidaAbierta.Size = new System.Drawing.Size(182, 103);
             this.GrupoMedidaAbierta.TabIndex = 81;
             this.GrupoMedidaAbierta.Text = "Medida Abierta";
+            // 
+            // txtFondoCaja
+            // 
+            this.txtFondoCaja.Location = new System.Drawing.Point(44, 76);
+            this.txtFondoCaja.MaskInput = "nnnn.nn";
+            this.txtFondoCaja.MaxValue = new decimal(new int[] {
+            2500,
+            0,
+            0,
+            0});
+            this.txtFondoCaja.MinValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtFondoCaja.Name = "txtFondoCaja";
+            this.txtFondoCaja.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
+            this.txtFondoCaja.Size = new System.Drawing.Size(73, 21);
+            this.txtFondoCaja.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
+            this.txtFondoCaja.TabIndex = 122;
+            this.txtFondoCaja.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
+            this.txtFondoCaja.ValueChanged += new System.EventHandler(this.txtFondoCaja_ValueChanged);
+            // 
+            // labelFondo
+            // 
+            appearance17.BackColor = System.Drawing.Color.Transparent;
+            this.labelFondo.Appearance = appearance17;
+            this.labelFondo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.labelFondo.Location = new System.Drawing.Point(5, 79);
+            this.labelFondo.Name = "labelFondo";
+            this.labelFondo.Size = new System.Drawing.Size(40, 17);
+            this.labelFondo.TabIndex = 123;
+            this.labelFondo.Text = "Fondo";
             // 
             // comboMedida
             // 
@@ -1932,9 +1965,10 @@
             // udtFechaCreacion
             // 
             this.udtFechaCreacion.DateTime = new System.DateTime(2013, 11, 21, 0, 0, 0, 0);
-            this.udtFechaCreacion.Location = new System.Drawing.Point(700, 48);
+            this.udtFechaCreacion.Location = new System.Drawing.Point(685, 48);
+            this.udtFechaCreacion.MaskInput = "{LOC}mm/dd/yyyy hh:mm:ss tt";
             this.udtFechaCreacion.Name = "udtFechaCreacion";
-            this.udtFechaCreacion.Size = new System.Drawing.Size(119, 21);
+            this.udtFechaCreacion.Size = new System.Drawing.Size(177, 21);
             this.udtFechaCreacion.TabIndex = 79;
             this.udtFechaCreacion.Value = new System.DateTime(2013, 11, 21, 0, 0, 0, 0);
             this.udtFechaCreacion.ValueChanged += new System.EventHandler(this.udtFechaCreacion_ValueChanged);
@@ -1944,7 +1978,7 @@
             appearance59.BackColor = System.Drawing.Color.Transparent;
             this.lblFechaCreacion.Appearance = appearance59;
             this.lblFechaCreacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblFechaCreacion.Location = new System.Drawing.Point(577, 50);
+            this.lblFechaCreacion.Location = new System.Drawing.Point(563, 50);
             this.lblFechaCreacion.Name = "lblFechaCreacion";
             this.lblFechaCreacion.Size = new System.Drawing.Size(117, 23);
             this.lblFechaCreacion.TabIndex = 78;
@@ -1952,7 +1986,7 @@
             // 
             // txtNumeracion
             // 
-            this.txtNumeracion.Location = new System.Drawing.Point(700, 18);
+            this.txtNumeracion.Location = new System.Drawing.Point(685, 18);
             this.txtNumeracion.Name = "txtNumeracion";
             this.txtNumeracion.Size = new System.Drawing.Size(119, 21);
             this.txtNumeracion.TabIndex = 73;
@@ -2111,9 +2145,10 @@
             // udtFechaTentativaEntrega
             // 
             this.udtFechaTentativaEntrega.DateTime = new System.DateTime(2013, 11, 21, 0, 0, 0, 0);
-            this.udtFechaTentativaEntrega.Location = new System.Drawing.Point(736, 182);
+            this.udtFechaTentativaEntrega.Location = new System.Drawing.Point(685, 182);
+            this.udtFechaTentativaEntrega.MaskInput = "{LOC}mm/dd/yyyy hh:mm:ss tt";
             this.udtFechaTentativaEntrega.Name = "udtFechaTentativaEntrega";
-            this.udtFechaTentativaEntrega.Size = new System.Drawing.Size(119, 21);
+            this.udtFechaTentativaEntrega.Size = new System.Drawing.Size(170, 21);
             this.udtFechaTentativaEntrega.TabIndex = 107;
             this.udtFechaTentativaEntrega.Value = new System.DateTime(2013, 11, 21, 0, 0, 0, 0);
             this.udtFechaTentativaEntrega.ValueChanged += new System.EventHandler(this.udtFechaTentativaEntrega_ValueChanged);
@@ -2123,7 +2158,7 @@
             appearance5.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel28.Appearance = appearance5;
             this.ultraLabel28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel28.Location = new System.Drawing.Point(586, 186);
+            this.ultraLabel28.Location = new System.Drawing.Point(544, 186);
             this.ultraLabel28.Name = "ultraLabel28";
             this.ultraLabel28.Size = new System.Drawing.Size(149, 23);
             this.ultraLabel28.TabIndex = 106;
@@ -2148,39 +2183,6 @@
             this.ssCotizador.Size = new System.Drawing.Size(250, 28);
             this.ssCotizador.TabIndex = 120;
             this.ssCotizador.Search += new System.EventHandler(this.ssCotizador_Search);
-            // 
-            // txtFondoCaja
-            // 
-            this.txtFondoCaja.Location = new System.Drawing.Point(44, 76);
-            this.txtFondoCaja.MaskInput = "nnnn.nn";
-            this.txtFondoCaja.MaxValue = new decimal(new int[] {
-            2500,
-            0,
-            0,
-            0});
-            this.txtFondoCaja.MinValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.txtFondoCaja.Name = "txtFondoCaja";
-            this.txtFondoCaja.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
-            this.txtFondoCaja.Size = new System.Drawing.Size(73, 21);
-            this.txtFondoCaja.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
-            this.txtFondoCaja.TabIndex = 122;
-            this.txtFondoCaja.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
-            this.txtFondoCaja.ValueChanged += new System.EventHandler(this.txtFondoCaja_ValueChanged);
-            // 
-            // labelFondo
-            // 
-            appearance17.BackColor = System.Drawing.Color.Transparent;
-            this.labelFondo.Appearance = appearance17;
-            this.labelFondo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.labelFondo.Location = new System.Drawing.Point(5, 79);
-            this.labelFondo.Name = "labelFondo";
-            this.labelFondo.Size = new System.Drawing.Size(40, 17);
-            this.labelFondo.TabIndex = 123;
-            this.labelFondo.Text = "Fondo";
             // 
             // FrmOrdenProduccion
             // 
@@ -2210,6 +2212,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GrupoMedidaAbierta)).EndInit();
             this.GrupoMedidaAbierta.ResumeLayout(false);
             this.GrupoMedidaAbierta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFondoCaja)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboMedida)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMedidaAbiertoLargo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMedidaAbiertoAlto)).EndInit();
@@ -2259,7 +2262,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCotizacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPrioridad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udtFechaTentativaEntrega)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFondoCaja)).EndInit();
             this.ResumeLayout(false);
 
         }
