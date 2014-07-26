@@ -6,7 +6,7 @@
     <id name="ID" column ="ID" type="string" unsaved-value="0"/>
     <property name="IDItemPresupuesto" type="string"/>
     <property name="Numeracion" type="string"/>
-    <property name="FechaCreacion" type="date"/>
+    <property name="FechaCreacion" type="DateTime"/>
     <property name="Cantidad" type="decimal"/>
     <property name="CantidadFacturada" type="decimal"/>
     <property name="Total" type="decimal"/>
@@ -18,7 +18,7 @@
     <property name="Descripcion" type="string"/>
     <property name="DireccionEntrega" type="string"/>
     <property name="DireccionFacturacion" type="string"/>
-    <property name="FechaTentativaEntrega" type="date"/>
+    <property name="FechaTentativaEntrega" type="DateTime"/>
     <property name="Prioridad" type="string"/>
     <property name="EstadoAprobacion" type="string"/>
     <property name="EstadoFacturacion" type="string"/>
