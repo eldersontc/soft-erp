@@ -9,6 +9,7 @@ using Soft.Inventario.Entidades;
 using System.Data.SqlClient;
 using Soft.Entities;
 using Soft.Exceptions;
+using Soft.Seguridad.Entidades;
 
 namespace Soft.Inventario.Transaccional
 {
@@ -22,6 +23,8 @@ namespace Soft.Inventario.Transaccional
                 {
                     try
                     {
+                        Auditoria Auditoria = Auditoria.ConstruirAuditoria(base.m_ObjectFlow, "Creación");
+
                         SalidaInventario SalidaInventario = (SalidaInventario)m_ObjectFlow;
                         SqlCommand SqlCmd = new SqlCommand();
                         SqlCmd.Connection = (SqlConnection)Sesion.Connection;
@@ -33,6 +36,7 @@ namespace Soft.Inventario.Transaccional
                         foreach (ItemSalidaInventario Item in SalidaInventario.Items)
                         {
                             SqlCmd.CommandText = "pSF_ActualizarStocks";
+                            SqlCmd.Parameters.Clear();
                             SqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
                             SqlCmd.Parameters.AddWithValue("@IDAlmacen", SalidaInventario.Almacen.ID);
                             SqlCmd.Parameters.AddWithValue("@IDProducto", Item.Producto.ID);
@@ -51,6 +55,7 @@ namespace Soft.Inventario.Transaccional
                             SqlCmd.Parameters.AddWithValue("@IDTipoDocumento", SalidaInventario.TipoDocumento.ID);
                             SqlCmd.ExecuteNonQuery();
                         }
+                        Sesion.Save(Auditoria);
                         Trans.Commit();
                         m_ResultProcess = EnumResult.SUCESS;
                     }
