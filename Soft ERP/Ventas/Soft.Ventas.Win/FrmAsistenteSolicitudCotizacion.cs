@@ -71,12 +71,11 @@ namespace Soft.Ventas.Win
                 Solicitud.Cliente = InfoAsistente.Cliente;
                 Solicitud.TipoDocumento = (TipoDocumento)HelperNHibernate.GetEntityByID("TipoSolicitudCotizacion", InfoAsistente.TipoDocumento.ID);
                 Solicitud.Moneda = InfoAsistente.Moneda;
-                Solicitud.FechaCreacion = InfoAsistente.FechaCreacion;
+                //Solicitud.FechaCreacion = InfoAsistente.FechaCreacion;
                 Solicitud.CodigoGrupo = InfoAsistente.CodigoGrupo;
                 Solicitud.Contacto = InfoAsistente.Contacto;
                 Solicitud.ModalidadCredito = InfoAsistente.ModalidadCredito;
                 Solicitud.Responsable = InfoAsistente.Responsable;
-                Solicitud.GenerarNumCp();
                 IniciarSolicitud(Solicitud);
             }
             catch (Exception ex)
@@ -92,12 +91,12 @@ namespace Soft.Ventas.Win
             FrmSolicitud.m_EntidadSF = (EntidadSF)HelperNHibernate.GetEntityByID("EntidadSF", "1DEDB5BA-376B-41CE-9923-29B6CF61B9E6");
             FrmSolicitud.Start();
             if(FrmSolicitud.m_ResultProcess == EnumResult.SUCESS ){
-                CreateEntity Crear = new CreateEntity();
-                Crear.m_ObjectFlow = FrmSolicitud.m_ObjectFlow;
-                Crear.Start();
-                CrearSolicitudCotizacion numeracion = new CrearSolicitudCotizacion();
-                numeracion.m_ObjectFlow = FrmSolicitud.m_ObjectFlow;
-                numeracion.Start();
+            //    CreateEntity Crear = new CreateEntity();
+            //    Crear.m_ObjectFlow = FrmSolicitud.m_ObjectFlow;
+            //    Crear.Start();
+                CrearSolicitudCotizacion cp = new CrearSolicitudCotizacion();
+                cp.m_ObjectFlow = FrmSolicitud.m_ObjectFlow;
+                cp.Start();
                 
 
                 FrmMain.RefreshView();
