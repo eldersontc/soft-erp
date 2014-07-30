@@ -14,10 +14,11 @@ using Microsoft.VisualBasic;
 using Soft.DataAccess;
 using Infragistics.Win;
 using Soft.Seguridad.Entidades;
+using Soft.Produccion.Entidades;
 
 namespace Soft.Inventario.Win
 {
-    public partial class FrmSalidaInventario : FrmParent 
+    public partial class FrmSalidaInventario : FrmParent
     {
         public FrmSalidaInventario()
         {
@@ -98,14 +99,15 @@ namespace Soft.Inventario.Win
             txtNumeracion.Text = SalidaInventario.Numeracion;
             udtFechaCreacion.Value = SalidaInventario.FechaCreacion;
             txtObservacion.Text = SalidaInventario.Observacion;
-            txtOrdenProduccion.Text = SalidaInventario.OrdenProduccion;
+            busOrdenProduccion.Text = (SalidaInventario.OrdenProduccion != null) ? SalidaInventario.OrdenProduccion.Numeracion + " | " + SalidaInventario.OrdenProduccion.Descripcion : "";
 
             MostrarItems();
             MostrarCostos();
             ActualizandoIU = false;
         }
 
-        public void MostrarCostos() {
+        public void MostrarCostos()
+        {
             if (SalidaInventario.Moneda != null)
             {
                 LabelSubTotal.Text = "Sub Total " + SalidaInventario.Moneda.Simbolo;
@@ -132,10 +134,11 @@ namespace Soft.Inventario.Win
         public void MostrarItem(UltraGridRow Row)
         {
             ItemSalidaInventario Item = (ItemSalidaInventario)Row.Tag;
-            if (Item.Producto != null) {
+            if (Item.Producto != null)
+            {
                 Row.Cells[colCodigo].Activation = Activation.NoEdit;
                 Row.Cells[colNombre].Activation = Activation.NoEdit;
-                Row.Cells[colCodigo].Value =Item.Producto.Codigo;
+                Row.Cells[colCodigo].Value = Item.Producto.Codigo;
                 Row.Cells[colNombre].Value = Item.Producto.Nombre;
                 Row.Cells[colUnidad].Value = Item.Unidad.Nombre;
             }
@@ -245,7 +248,7 @@ namespace Soft.Inventario.Win
             if (ugProductos.ActiveRow == null) { return; }
             SalidaInventario.Items.Remove((ItemSalidaInventario)ugProductos.ActiveRow.Tag);
             ugProductos.ActiveRow.Delete(false);
-            MostrarCostos(); 
+            MostrarCostos();
         }
 
         private void txtObservacion_TextChanged(object sender, EventArgs e)
@@ -255,8 +258,8 @@ namespace Soft.Inventario.Win
 
         private void ugProductos_CellChange(object sender, CellEventArgs e)
         {
-            try 
-	        {
+            try
+            {
                 ItemSalidaInventario Item = (ItemSalidaInventario)e.Cell.Row.Tag;
                 switch (e.Cell.Column.Key)
                 {
@@ -271,7 +274,7 @@ namespace Soft.Inventario.Win
                         MostrarCostos();
                         break;
                     case colCantidad:
-                        Item.Cantidad = Convert.ToDecimal(e.Cell.Text.Replace('_',' '));
+                        Item.Cantidad = Convert.ToDecimal(e.Cell.Text.Replace('_', ' '));
                         MostrarCostos();
                         break;
                     case colObservacion:
@@ -282,17 +285,13 @@ namespace Soft.Inventario.Win
                 }
                 MostrarItem(e.Cell.Row);
                 MostrarCostos();
-	        }   
-	        catch (Exception ex)
-	        {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
-	        }
+            }
         }
 
-        private void txtOrdenProduccion_TextChanged(object sender, EventArgs e)
-        {
-            SalidaInventario.OrdenProduccion = txtOrdenProduccion.Text;
-        }
 
         private void ssMoneda_Search(object sender, EventArgs e)
         {
@@ -321,6 +320,39 @@ namespace Soft.Inventario.Win
                 Soft.Exceptions.SoftException.ShowException(ex);
             }
             Mostrar();
+        }
+
+        private void busOrdenProduccion_Search(object sender, EventArgs e)
+        {
+            try
+            {
+                FrmSelectedEntity FrmSeleccionarMoneda = new FrmSelectedEntity();
+                OrdenProduccion op = (OrdenProduccion)FrmSeleccionarMoneda.GetSelectedEntity(typeof(OrdenProduccion), "Selección de Ordenes de Producción");
+                if (op != null)
+                {
+                    SalidaInventario.OrdenProduccion = op;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
+            Mostrar();
+        }
+
+        private void busOrdenProduccion_Clear(object sender, EventArgs e)
+        {
+            try
+            {
+                SalidaInventario.OrdenProduccion = null;
+            }
+            catch (Exception ex)
+            {
+                Soft.Exceptions.SoftException.ShowException(ex);
+            }
+            Mostrar();
+
         }
 
     }
