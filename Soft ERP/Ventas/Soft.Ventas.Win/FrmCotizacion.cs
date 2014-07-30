@@ -415,10 +415,7 @@ namespace Soft.Ventas.Win
             if ((Cotizacion.TipoDocumento == null) || (Cotizacion.TipoDocumento.Codigo != TipoDocumento.Codigo))
             {
                 Cotizacion.TipoDocumento = (TipoCotizacion)HelperNHibernate.GetEntityByID("TipoCotizacion", TipoDocumento.ID);
-                Cotizacion.GenerarNumCp();
                 Cotizacion.AsignarListadeCostosDesdeTipoDocumento();
-
-
                 foreach (ItemCotizacion ItemCotizacion in Cotizacion.Items)
                 {
                     CalcularProduccionItem(ItemCotizacion);
