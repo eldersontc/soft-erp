@@ -7,6 +7,7 @@ using NHibernate;
 using Soft.Ventas.Entidades;
 using System.Data.SqlClient;
 using Soft.Exceptions;
+using Soft.Seguridad.Entidades;
 
 namespace Soft.Ventas.Transaccional
 {
@@ -21,6 +22,7 @@ namespace Soft.Ventas.Transaccional
                 {
                     try
                     {
+                        Auditoria Auditoria = Auditoria.ConstruirAuditoria(base.m_ObjectFlow, "Modificación");
                         SolicitudCotizacion cp = (SolicitudCotizacion)m_ObjectFlow;
 
                         SolicitudCotizacion cpactual = (SolicitudCotizacion)HelperNHibernate.GetEntityByID("SolicitudCotizacion", cp.ID);
@@ -28,6 +30,7 @@ namespace Soft.Ventas.Transaccional
                         if (cpactual.EstadoAprobacion.Equals("PENDIENTE"))
                         {
                             Sesion.Update(cp);
+                            Sesion.Save(Auditoria);
                             Trans.Commit();
                             m_ResultProcess = EnumResult.SUCESS;
                         }
