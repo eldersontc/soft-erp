@@ -90,7 +90,21 @@
       <key column="IDItemCotizacion"/>
       <one-to-many class="Soft.Ventas.Entidades.ItemCotizacionServicio"/>
     </bag>
+
+
+
+    <bag name="RequerimientosMaterial" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDItemCotizacion"/>
+      <one-to-many class="Soft.Ventas.Entidades.RequerimientoMaterialItemCotizacion"/>
+    </bag>
+
+
+    <bag name="RequerimientosServicio" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDItemCotizacion"/>
+      <one-to-many class="Soft.Ventas.Entidades.RequerimientoServicioItemCotizacion"/>
+    </bag>
     
+
   </class>
 
 </hibernate-mapping>
