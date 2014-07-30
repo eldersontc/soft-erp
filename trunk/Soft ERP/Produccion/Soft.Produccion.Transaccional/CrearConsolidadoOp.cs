@@ -12,6 +12,7 @@ using Soft.Exceptions;
 using Soft.Win;
 using Soft.Produccion.Entidades;
 using System.Xml;
+using Soft.Seguridad.Entidades;
 
 namespace Soft.Produccion.Transaccional
 {
@@ -25,6 +26,7 @@ namespace Soft.Produccion.Transaccional
                 {
                     try
                     {
+                        Auditoria Auditoria = Auditoria.ConstruirAuditoria(base.m_ObjectFlow, "Creación");
                         ConsolidadoOp ConsolidadoOp = (ConsolidadoOp)m_ObjectFlow;
 
                         SqlCommand SqlCmd = new SqlCommand();
@@ -51,7 +53,7 @@ namespace Soft.Produccion.Transaccional
                             SqlCmd.ExecuteNonQuery();
                         }
 
-
+                        Sesion.Save(Auditoria);
                         Trans.Commit();
                         m_ResultProcess = EnumResult.SUCESS;
                     }
