@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Soft.Entities;
 using Soft.DataAccess;
+using Soft.Produccion.Entidades;
 
 namespace Soft.Inventario.Entidades
 {
@@ -12,7 +13,7 @@ namespace Soft.Inventario.Entidades
     {
         public SalidaInventario() { }
 
-        public virtual String OrdenProduccion { get; set; }
+        public virtual OrdenProduccion OrdenProduccion { get; set; }
         public virtual SocioNegocio Proveedor { get; set; }
         public virtual Almacen Almacen { get; set; }
         public virtual Moneda Moneda { get; set; }
