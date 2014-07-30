@@ -11,7 +11,7 @@ using Soft.Entities;
 using Soft.Exceptions;
 using Soft.Win;
 using Soft.Produccion.Entidades;
-
+using Soft.Seguridad.Entidades;
 
 namespace Soft.Produccion.Transaccional
 {
@@ -33,7 +33,7 @@ namespace Soft.Produccion.Transaccional
                         Progreso.Start(Cps.Count, "Aprobando Cotizaciones ...");
                         foreach (ConsolidadoOp Cp in Cps)
                         {
-
+                            Auditoria Auditoria = Auditoria.ConstruirAuditoria(Cp, "Aprobacion");
                             ConsolidadoOp ConsolidadoOp = (ConsolidadoOp)HelperNHibernate.GetEntityByID("ConsolidadoOp", Cp.ID);
 
 
@@ -49,6 +49,7 @@ namespace Soft.Produccion.Transaccional
                             SqlCmd.Parameters.AddWithValue("@ID", ConsolidadoOp.ID);
                             SqlCmd.Parameters.AddWithValue("@EstadoAprobacion", "APROBADO");
                             SqlCmd.ExecuteNonQuery();
+                            Sesion.Save(Auditoria);
                             Progreso.Next();
                         }
                         Trans.Commit();

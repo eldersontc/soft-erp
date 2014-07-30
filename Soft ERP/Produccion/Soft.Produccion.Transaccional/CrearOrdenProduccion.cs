@@ -8,6 +8,7 @@ using NHibernate;
 using Soft.Produccion.Entidades;
 using System.Xml;
 using System.Data.SqlClient;
+using Soft.Seguridad.Entidades;
 
 namespace Soft.Produccion.Transaccional
 {
@@ -21,6 +22,8 @@ namespace Soft.Produccion.Transaccional
                 {
                     try
                     {
+                        Auditoria Auditoria = Auditoria.ConstruirAuditoria(base.m_ObjectFlow, "Creación");
+                   
                         OrdenProduccion OrdenProduccion = (OrdenProduccion)m_ObjectFlow;
                         SqlCommand SqlCmd = new SqlCommand();
                         SqlCmd.Connection = (SqlConnection)Sesion.Connection;
@@ -44,6 +47,7 @@ namespace Soft.Produccion.Transaccional
                             SqlCmd.Parameters.AddWithValue("@IDTipoDocumento", OrdenProduccion.TipoDocumento.ID);
                             SqlCmd.ExecuteNonQuery();
                         }
+                        Sesion.Save(Auditoria);
                         Trans.Commit();
                         m_ResultProcess = EnumResult.SUCESS;
                     }

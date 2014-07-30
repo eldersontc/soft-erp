@@ -11,6 +11,7 @@ using Soft.Entities;
 using Soft.Exceptions;
 using Soft.Win;
 using Soft.Produccion.Entidades;
+using Soft.Seguridad.Entidades;
 
 
 
@@ -34,6 +35,7 @@ namespace Soft.Produccion.Transaccional
                         Progreso.Start(Cps.Count, "Aprobando Cotizaciones ...");
                         foreach (OrdenProduccion Cp in Cps)
                         {
+                            Auditoria Auditoria = Auditoria.ConstruirAuditoria(Cp, "Aprobacion");
                             if (Cp.EstadoAprobacion.Equals("APROBADO"))
                             {
                                 throw new Exception(String.Format("La cotización número {0} ya se encuentra APROBADA.", Cp.Numeracion));
@@ -46,6 +48,7 @@ namespace Soft.Produccion.Transaccional
                             SqlCmd.Parameters.AddWithValue("@ID", Cp.ID);
                             SqlCmd.Parameters.AddWithValue("@EstadoAprobacion", "APROBADO");
                             SqlCmd.ExecuteNonQuery();
+                            Sesion.Save(Auditoria);
                             Progreso.Next();
                         }
                         Trans.Commit();
