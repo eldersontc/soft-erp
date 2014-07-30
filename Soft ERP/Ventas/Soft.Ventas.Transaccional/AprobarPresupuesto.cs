@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using Soft.Entities;
 using Soft.Exceptions;
 using Soft.Win;
+using Soft.Seguridad.Entidades;
 
 namespace Soft.Ventas.Transaccional
 {
@@ -30,6 +31,7 @@ namespace Soft.Ventas.Transaccional
                         Progreso.Start(Presupuestos.Count, "Aprobando Presupuestos ...");
                         foreach (Presupuesto Presupuesto in Presupuestos)
                         {
+                            Auditoria Auditoria = Auditoria.ConstruirAuditoria(Presupuesto, "Aprobar");
                             if (Presupuesto.EstadoAprobacion.Equals("APROBADO"))
                             {
                                 throw new Exception(String.Format("El presupuesto número {0} ya se encuentra APROBADO.", Presupuesto.Numeracion));
@@ -42,6 +44,7 @@ namespace Soft.Ventas.Transaccional
                             SqlCmd.Parameters.AddWithValue("@ID", Presupuesto.ID);
                             SqlCmd.Parameters.AddWithValue("@EstadoAprobacion", "APROBADO");
                             SqlCmd.ExecuteNonQuery();
+                            Sesion.Save(Auditoria);
                             Progreso.Next();
                         }
                         Trans.Commit();

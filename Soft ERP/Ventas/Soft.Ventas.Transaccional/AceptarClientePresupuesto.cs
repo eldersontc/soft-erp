@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using Soft.Entities;
 using Soft.Exceptions;
 using Soft.Win;
+using Soft.Seguridad.Entidades;
 
 namespace Soft.Ventas.Transaccional
 {
@@ -30,7 +31,8 @@ namespace Soft.Ventas.Transaccional
                         Progreso.Start(Presupuestos.Count, "Aprobando Presupuestos ...");
                         foreach (Presupuesto Presupuesto in Presupuestos)
                         {
-
+                            Auditoria Auditoria = Auditoria.ConstruirAuditoria(Presupuesto, "Acepto Cliente");
+                          
                             if (Presupuesto.EstadoAceptacion == null)
                             {
 
@@ -48,6 +50,7 @@ namespace Soft.Ventas.Transaccional
                             SqlCmd.Parameters.AddWithValue("@ID", Presupuesto.ID);
                             SqlCmd.Parameters.AddWithValue("@EstadoAceptacion", "ACEPTADO");
                             SqlCmd.ExecuteNonQuery();
+                            Sesion.Save(Auditoria);
                             Progreso.Next();
                         }
 
