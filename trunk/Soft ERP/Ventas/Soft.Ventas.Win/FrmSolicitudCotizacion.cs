@@ -210,7 +210,7 @@ namespace Soft.Ventas.Win
                 if ((SolicitudCotizacion.TipoDocumento == null) || (SolicitudCotizacion.TipoDocumento.Codigo != TipoDocumento.Codigo))
                 {
                     SolicitudCotizacion.TipoDocumento = (TipoSolicitudCotizacion)HelperNHibernate.GetEntityByID("TipoSolicitudCotizacion", TipoDocumento.ID);
-                    SolicitudCotizacion.GenerarNumCp();
+                    
                     SolicitudCotizacion.Responsable = ObtenerResponsable();
                     ssResponsable.Text = (SolicitudCotizacion.Responsable != null) ? SolicitudCotizacion.Responsable.Nombre : "";
                     ssTipoDocumento.Text = (SolicitudCotizacion.TipoDocumento != null) ? SolicitudCotizacion.TipoDocumento.Nombre : "";

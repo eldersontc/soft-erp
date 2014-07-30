@@ -186,7 +186,6 @@ namespace Soft.Ventas.Win
                 {
                     Presupuesto.TipoDocumento = (TipoPresupuesto)HelperNHibernate.GetEntityByID("TipoPresupuesto", TipoDocumento.ID);
                     ssTipoPresupuesto.Text = (Presupuesto.TipoDocumento != null) ? Presupuesto.TipoDocumento.Descripcion : "";
-                    Presupuesto.GenerarNumCp();
                     txtNumeracion.Text = Presupuesto.Numeracion;
                 }
             }
