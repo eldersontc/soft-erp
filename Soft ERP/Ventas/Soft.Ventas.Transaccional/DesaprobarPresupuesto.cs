@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using Soft.Entities;
 using Soft.Exceptions;
 using Soft.Win;
+using Soft.Seguridad.Entidades;
 
 namespace Soft.Ventas.Transaccional
 {
@@ -29,6 +30,7 @@ namespace Soft.Ventas.Transaccional
                         Progreso.Start(Presupuestos.Count, "Desaprobando Presupuestos ...");
                         foreach (Presupuesto Presupuesto in Presupuestos)
                         {
+                            Auditoria Auditoria = Auditoria.ConstruirAuditoria(Presupuesto, "Desaprobar");
                             if (Presupuesto.EstadoAprobacion.Equals("PENDIENTE"))
                             {
                                 throw new Exception(String.Format("El presupuesto número {0} ya se encuentra PENDIENTE.", Presupuesto.Numeracion));
@@ -45,6 +47,7 @@ namespace Soft.Ventas.Transaccional
                             SqlCmd.Parameters.AddWithValue("@ID", Presupuesto.ID);
                             SqlCmd.Parameters.AddWithValue("@EstadoAprobacion", "PENDIENTE");
                             SqlCmd.ExecuteNonQuery();
+                            Sesion.Save(Auditoria);
                             Progreso.Next();
                         }
                         Trans.Commit();

@@ -8,6 +8,7 @@ using NHibernate;
 using Soft.Ventas.Entidades;
 using System.Xml;
 using System.Data.SqlClient;
+using Soft.Seguridad.Entidades;
 
 namespace Soft.Ventas.Transaccional
 {
@@ -21,8 +22,8 @@ namespace Soft.Ventas.Transaccional
                 {
                     try
                     {
+                        Auditoria Auditoria = Auditoria.ConstruirAuditoria(base.m_ObjectFlow, "Creación");
                         Presupuesto Presupuesto = (Presupuesto)m_ObjectFlow;
-                        
                         SqlCommand SqlCmd = new SqlCommand();
                         SqlCmd.Connection = (SqlConnection)Sesion.Connection;
                         Trans.Enlist(SqlCmd);
@@ -37,7 +38,24 @@ namespace Soft.Ventas.Transaccional
                             Presupuesto.EstadoAprobacion = "MODIFICADO";
                         }
 
-                        Sesion.Save(Presupuesto);                        
+                        Sesion.Save(Presupuesto);
+                        Sesion.Flush();
+
+                        // Actualizamos la Numeración de la Factura
+                        if (Presupuesto.TipoDocumento.GeneraNumeracionAlFinal)
+                        {
+                            SqlCmd.CommandText = "pSF_Generar_Numeracion";
+                            SqlCmd.Parameters.Clear();
+                            SqlCmd.Parameters.AddWithValue("@Documento", "Presupuesto");
+                            SqlCmd.Parameters.AddWithValue("@TipoDocumento", "TipoPresupuesto");
+                            SqlCmd.Parameters.AddWithValue("@IDDocumento", Presupuesto.ID);
+                            SqlCmd.Parameters.AddWithValue("@IDTipoDocumento", Presupuesto.TipoDocumento.ID);
+                            SqlCmd.ExecuteNonQuery();
+                        }
+
+                        
+                        Sesion.Save(Auditoria);
+                        
                         Trans.Commit();
                         m_ResultProcess = EnumResult.SUCESS;
                     }
