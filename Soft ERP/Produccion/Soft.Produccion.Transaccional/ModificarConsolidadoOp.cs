@@ -12,6 +12,7 @@ using Soft.Exceptions;
 using Soft.Win;
 using Soft.Produccion.Entidades;
 using System.Xml;
+using Soft.Seguridad.Entidades;
 
 
 namespace Soft.Produccion.Transaccional
@@ -26,6 +27,7 @@ namespace Soft.Produccion.Transaccional
                 {
                     try
                     {
+                        Auditoria Auditoria = Auditoria.ConstruirAuditoria(base.m_ObjectFlow, "Modificar");
                         ConsolidadoOp ConsolidadoOp = (ConsolidadoOp)m_ObjectFlow;
 
                         if (!ConsolidadoOp.EstadoAprobacion.Equals("PENDIENTE")) {
@@ -44,6 +46,7 @@ namespace Soft.Produccion.Transaccional
 
 
                         Sesion.Update(ConsolidadoOp);
+                        Sesion.Save(Auditoria);
                         Trans.Commit();
                         m_ResultProcess = EnumResult.SUCESS;
                     }
