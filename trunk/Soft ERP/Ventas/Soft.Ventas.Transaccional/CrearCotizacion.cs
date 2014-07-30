@@ -8,6 +8,8 @@ using NHibernate;
 using Soft.Ventas.Entidades;
 using System.Xml;
 using System.Data.SqlClient;
+using Soft.Seguridad.Entidades;
+using Soft.Inventario.Entidades;
 
 namespace Soft.Ventas.Transaccional
 {
@@ -22,6 +24,7 @@ namespace Soft.Ventas.Transaccional
                 {
                     try
                     {
+                        Auditoria Auditoria = Auditoria.ConstruirAuditoria(base.m_ObjectFlow, "Creación");
                         Cotizacion cp = (Cotizacion)m_ObjectFlow;
 
                         SqlCommand SqlCmd = new SqlCommand();
@@ -34,7 +37,39 @@ namespace Soft.Ventas.Transaccional
                         SqlCmd.Parameters.AddWithValue("@IDSolicitudCotizacion", cp.IDSolicitudCotizacion);
                         SqlCmd.ExecuteNonQuery();
 
-                        
+
+                        foreach (ItemCotizacion item in cp.Items)
+                        {
+                            item.RequerimientosServicio.Clear();
+                            item.RequerimientosMaterial.Clear();
+                            foreach (ItemCotizacionServicio itemSer in item.Servicios)
+                            {
+
+                                if (itemSer.Material != null)
+                                {
+                                    RequerimientoMaterialItemCotizacion reqmaterial = new RequerimientoMaterialItemCotizacion();
+                                    reqmaterial.Material = itemSer.Material;
+                                    reqmaterial.Unidad = itemSer.UnidadMaterial;
+                                    reqmaterial.Cantidad = itemSer.CantidadMaterial;
+                                    reqmaterial.Costo = itemSer.CostoMaterial;
+
+                                    item.RequerimientosMaterial.Add(reqmaterial);
+                                }
+                                if (itemSer.Servicio != null)
+                                {
+                                    RequerimientoServicioItemCotizacion reqservicio = new RequerimientoServicioItemCotizacion();
+                                    reqservicio.Servicio = itemSer.Servicio;
+                                    reqservicio.Unidad = itemSer.UnidadServicio;
+                                    reqservicio.Cantidad = itemSer.CantidadServicio;
+                                    reqservicio.Costo = itemSer.CostoServicio;
+
+                                    item.RequerimientosServicio.Add(reqservicio);
+                                }
+                              
+
+                            }
+                        }
+
                         Sesion.Save(cp);
                         Sesion.Flush();
 
@@ -51,9 +86,9 @@ namespace Soft.Ventas.Transaccional
 
 
 
-                        
 
 
+                        Sesion.Save(Auditoria);
                         Trans.Commit();
                         m_ResultProcess = EnumResult.SUCESS;
                     }

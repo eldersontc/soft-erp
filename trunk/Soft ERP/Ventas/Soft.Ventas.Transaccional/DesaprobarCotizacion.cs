@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using Soft.Entities;
 using Soft.Exceptions;
 using Soft.Win;
+using Soft.Seguridad.Entidades;
 
 namespace Soft.Ventas.Transaccional
 {
@@ -29,6 +30,7 @@ namespace Soft.Ventas.Transaccional
                         Progreso.Start(Cotizaciones.Count, "Desaprobando Cotizaciones ...");
                         foreach (Cotizacion Cotizacion in Cotizaciones)
                         {
+                            Auditoria Auditoria = Auditoria.ConstruirAuditoria(Cotizacion, "Desaprobar");
                             if (Cotizacion.EstadoAprobacion.Equals("DESAPROBADO"))
                             {
                                 throw new Exception(String.Format("La cotización número {0} ya se encuentra DESAPROBADA.", Cotizacion.Numeracion));
@@ -41,6 +43,7 @@ namespace Soft.Ventas.Transaccional
                             SqlCmd.Parameters.AddWithValue("@ID", Cotizacion.ID);
                             SqlCmd.Parameters.AddWithValue("@EstadoAprobacion", "DESAPROBADO");
                             SqlCmd.ExecuteNonQuery();
+                            Sesion.Save(Auditoria);
                             Progreso.Next();
                         }
                         Trans.Commit();

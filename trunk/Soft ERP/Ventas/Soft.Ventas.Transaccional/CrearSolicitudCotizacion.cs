@@ -8,6 +8,7 @@ using NHibernate;
 using Soft.Ventas.Entidades;
 using System.Xml;
 using System.Data.SqlClient;
+using Soft.Seguridad.Entidades;
 
 
 namespace Soft.Ventas.Transaccional
@@ -24,7 +25,12 @@ namespace Soft.Ventas.Transaccional
                 {
                     try
                     {
+                        Auditoria Auditoria = Auditoria.ConstruirAuditoria(base.m_ObjectFlow, "Creación");
                         SolicitudCotizacion cp = (SolicitudCotizacion)m_ObjectFlow;
+
+                        Sesion.Save(cp);
+                        Sesion.Flush();
+
                         if (cp.TipoDocumento.GeneraNumeracionAlFinal)
                         {
                             SqlCommand SqlCmd = new SqlCommand();
@@ -41,6 +47,9 @@ namespace Soft.Ventas.Transaccional
                                 SqlCmd.ExecuteNonQuery();
                             }
                         }
+                        Sesion.Save(Auditoria);
+                        Trans.Commit();
+                        m_ResultProcess = EnumResult.SUCESS;
                     }
 
                     catch (Exception ex)

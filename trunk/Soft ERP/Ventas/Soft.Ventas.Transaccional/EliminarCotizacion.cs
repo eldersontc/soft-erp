@@ -28,7 +28,7 @@ namespace Soft.Ventas.Transaccional
                         Trans.Enlist(SqlCmd);
                         SqlCmd.CommandText = "pSF_EliminarCotizacion";
                         SqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        SqlCmd.Parameters.AddWithValue("@IDPresupuesto", Cotizacion.IDSolicitudCotizacion);
+                        SqlCmd.Parameters.AddWithValue("@IDSolicitudCotizacion", Cotizacion.IDSolicitudCotizacion);
                         SqlCmd.ExecuteNonQuery();
                         Sesion.Delete(Cotizacion);
                         Trans.Commit();
@@ -38,7 +38,7 @@ namespace Soft.Ventas.Transaccional
                     {
                         Trans.Rollback();
                         m_ResultProcess = EnumResult.ERROR;
-                        SoftException.Control(ex);
+                        SoftException.Control(ex.InnerException);
                     }
                 }
             }
