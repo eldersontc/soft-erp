@@ -9,6 +9,7 @@ using Soft.Inventario.Entidades;
 using System.Data.SqlClient;
 using Soft.Entities;
 using Soft.Exceptions;
+using Soft.Seguridad.Entidades;
 
 namespace Soft.Inventario.Transaccional
 {
@@ -22,6 +23,7 @@ namespace Soft.Inventario.Transaccional
                 {
                     try
                     {
+                        Auditoria Auditoria = Auditoria.ConstruirAuditoria(base.m_ObjectFlow, "Creación");
                         EntradaInventario EntradaInventario = (EntradaInventario)m_ObjectFlow;
                         SqlCommand SqlCmd = new SqlCommand();
                         SqlCmd.Connection = (SqlConnection)Sesion.Connection;
@@ -52,6 +54,7 @@ namespace Soft.Inventario.Transaccional
                             SqlCmd.Parameters.AddWithValue("@IDTipoDocumento", EntradaInventario.TipoDocumento.ID);
                             SqlCmd.ExecuteNonQuery();
                         }
+                        Sesion.Save(Auditoria);
                         Trans.Commit();
                         m_ResultProcess = EnumResult.SUCESS;
                     }
