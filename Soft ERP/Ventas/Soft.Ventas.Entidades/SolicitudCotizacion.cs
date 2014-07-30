@@ -42,20 +42,7 @@ namespace Soft.Ventas.Entidades
             return Item;
         }
 
-        public virtual void GenerarNumCp()
-        {
-            String Result = "";
-            if (NewInstance)
-            {
-                Result = TipoDocumento.GenerarNumerodeDocumento();
-                Numeracion = Result;
-            }
-            if (!Result.Equals(""))
-            {
-                String SQL = "UPDATE TipoSolicitudCotizacion SET NumeracionActual = " + (TipoDocumento.NumeracionActual + 1) + " WHERE ID ='" + TipoDocumento.ID + "'";
-                HelperNHibernate.GetDataSet(SQL);
-            }
-        }
+ 
 
     }
 }

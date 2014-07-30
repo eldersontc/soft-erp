@@ -12,9 +12,18 @@ namespace Soft.Ventas.Entidades
     {
         public ItemCotizacion() {
             Servicios = new List<ItemCotizacionServicio>();
+
+            RequerimientosMaterial = new List<RequerimientoMaterialItemCotizacion>();
+            RequerimientosServicio = new List<RequerimientoServicioItemCotizacion>();
+
+
         }
 
         public virtual IList<ItemCotizacionServicio> Servicios { get; set; }
+        public virtual IList<RequerimientoMaterialItemCotizacion> RequerimientosMaterial { get; set; }
+        public virtual IList<RequerimientoServicioItemCotizacion> RequerimientosServicio { get; set; }
+
+
         public virtual Int32 ImpresoTiraColor { get; set; }
         public virtual Int32 ImpresoRetiraColor { get; set; }
         public virtual String Observacion { get; set; }
