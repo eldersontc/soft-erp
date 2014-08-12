@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true">
+
+  <class name="Soft.Entities.Alerta, Soft.Entities" table="Alerta">
+    <id name="ID" column ="ID" type="string" unsaved-value="0"/>
+    <property name="IDUsuario" column="IDUsuario"/>
+    <property name="IDEntidad" column="IDEntidad"/>
+    <property name="Entidad" column="Entidad"/>
+    <property name="Identificador" column="Identificador"/>
+    <property name="Estado" column="Estado"/>
+    <property name="Tipo" column="Tipo"/>
+    <property name="Fecha" column="Fecha"/>
+  </class>
+
+</hibernate-mapping>
