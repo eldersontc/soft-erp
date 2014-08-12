@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alerta.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="AtributoSF.cs" />
     <Compile Include="Banco.cs" />
@@ -123,6 +124,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings Files\Deuda.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings Files\Alerta.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
