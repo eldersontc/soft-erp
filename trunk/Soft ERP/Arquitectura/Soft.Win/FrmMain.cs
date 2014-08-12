@@ -22,6 +22,7 @@ using System.IO;
 using CrystalDecisions.CrystalReports.Engine;
 using Soft.Exceptions;
 using System.Configuration;
+using Infragistics.Win.Misc;
 
 namespace Soft.Win
 {
@@ -30,6 +31,7 @@ namespace Soft.Win
 
         private static Contenedor m_Contenedor;
         private static IList<ItemContenedorAccion> m_Acciones;
+        private static IList<Alerta> m_Alertas;
         private static ItemContenedor m_ItemContenedor;
         private static Accion m_AccionActual;
         private static Usuario m_Usuario;
@@ -40,6 +42,7 @@ namespace Soft.Win
         public FrmMain()
         {
             InitializeComponent();
+            
         }
 
         public static Usuario Usuario { get { return m_Usuario; } }
@@ -50,7 +53,46 @@ namespace Soft.Win
             PersonalizarControles();
             ConstruirContenedores();
             ConstruirTab();
+            IniciarAlertas();
             Show();
+        }
+
+        public void IniciarAlertas() 
+        {
+            try
+            {
+                ItemContenedor itemContenedor = m_Contenedor.Items.Where(i => i.Nombre.Equals("Alertas")).First();
+                itemContenedor.Filtro = string.Format(" WHERE IDUsuario = '{0}'", Usuario.ID);
+            }
+            catch (Exception)
+            {
+                SoftException.Control(new Exception("El Panel de Alerta no existe."));
+            }
+
+            m_Alertas = HelperNHibernate.GetObjects<Alerta>(new List<object[]>() { new object[] { TypeEnum.CEnumCondition.LIKE, "IDUsuario", Usuario.ID } });
+            IList<object> lista = 
+                HelperNHibernate.GetNObjects(string.Format(
+                                             @" SELECT 
+                                                    COUNT(Entidad + '(S) PENDIENTE(S) POR ' + Estado), Entidad + '(S) PENDIENTE(S) POR ' + Estado 
+                                                FROM 
+                                                    Alerta
+                                                WHERE 
+                                                    IDUsuario = '{0}' 
+                                                GROUP BY 
+            
+                                        Entidad + '(S) PENDIENTE(S) POR ' + Estado", Usuario.ID));
+
+            UltraDesktopAlert alert = new UltraDesktopAlert();
+            alert.MultipleWindowDisplayStyle = MultipleWindowDisplayStyle.Tiled;
+            alert.DesktopAlertLinkClicked += OnDesktopAlertLinkClicked;
+
+            foreach (object[] item in lista)
+            {
+                UltraDesktopAlertShowWindowInfo info;
+                info = new UltraDesktopAlertShowWindowInfo("ALERTA!", string.Format("TIENES {0} {1}", item[0], item[1]));
+                alert.Show(info);
+            }
+            utAlert.Start();
         }
 
         public void PersonalizarControles()
@@ -727,6 +769,82 @@ namespace Soft.Win
             catch (Exception ex)
             {
                 SoftException.Control(ex, SystemIcons.Warning.ToBitmap());
+            }
+        }
+
+        private string ObtenerFiltroSQLAlertas(IList<Alerta> alertas) 
+        {
+            string filtro = string.Empty;
+            if (alertas.Count > 0)
+            {
+                filtro = "AND ID IN (";
+                foreach (var item in alertas)
+                {
+                    filtro += string.Format("'{0}',", item.ID);
+                }
+                filtro += ")";
+                filtro = filtro.Replace(",)", ")");
+            }
+            return filtro;
+        }
+
+        private bool EsNuevaAlerta(string ID) 
+        {
+            foreach (var item in m_Alertas)
+                if (item.ID == ID)
+                    return false;
+            return true;
+        }
+
+        public IList<Alerta> ObtenerAlertasNuevas(IList<Alerta> alertas) 
+        {
+            IList<Alerta> alertasNuevas = new List<Alerta>();
+            foreach (var item in alertas)
+                if (EsNuevaAlerta(item.ID))
+                    alertasNuevas.Add(item);
+            return alertasNuevas;
+        }
+
+        private void utAlert_Tick(object sender, EventArgs e)
+        {
+            IList<Alerta> alertas = HelperNHibernate.GetObjects<Alerta>(new List<object[]>() { new object[] { TypeEnum.CEnumCondition.LIKE, "IDUsuario", Usuario.ID } });
+            IList<Alerta> alertasNuevas = ObtenerAlertasNuevas(alertas);
+            if (alertasNuevas.Count > 0) 
+            {
+                IList<object> lista =
+                HelperNHibernate.GetNObjects(string.Format(
+                                                @"  SELECT 
+                                                        COUNT(Entidad + '(S) PENDIENTE(S) POR ' + Estado), Entidad + '(S) PENDIENTE(S) POR ' + Estado 
+                                                    FROM 
+                                                        Alerta
+                                                    WHERE 
+                                                        IDUsuario = '{0}' {1}
+                                                    GROUP BY 
+                                                        Entidad + '(S) PENDIENTE(S) POR ' + Estado ", Usuario.ID, ObtenerFiltroSQLAlertas(alertasNuevas)));
+                //.
+                UltraDesktopAlert alert = new UltraDesktopAlert();
+                alert.MultipleWindowDisplayStyle = MultipleWindowDisplayStyle.Tiled;
+                alert.DesktopAlertLinkClicked += OnDesktopAlertLinkClicked;
+                foreach (object[] item in lista)
+                {
+                    UltraDesktopAlertShowWindowInfo info;
+                    info = new UltraDesktopAlertShowWindowInfo("ALERTA!", string.Format("TIENES {0} {1}", item[0], item[1]));
+                    alert.Show(info);
+                }
+            }
+            m_Alertas = alertas;
+        }
+
+        private void OnDesktopAlertLinkClicked(object sender, DesktopAlertLinkClickedEventArgs e)
+        {
+            try
+            {
+                m_ItemContenedor = m_Contenedor.Items.Where(i => i.Nombre.Equals("Alertas")).First();
+                m_ActiveForm = new FrmDetails(m_Main, m_ItemContenedor);
+            }
+            catch (Exception)
+            {
+                SoftException.Control(new Exception("El Panel de Alerta no existe."));
             }
         }
 

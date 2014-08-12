@@ -44,6 +44,7 @@
             this.uebMain = new Infragistics.Win.UltraWinExplorerBar.UltraExplorerBar();
             this.usbMain = new Infragistics.Win.UltraWinStatusBar.UltraStatusBar();
             this.ilMain = new System.Windows.Forms.ImageList(this.components);
+            this.utAlert = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.utbmMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.utmmMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uebMain)).BeginInit();
@@ -404,6 +405,11 @@
             this.ilMain.Images.SetKeyName(245, "zoom_in.png");
             this.ilMain.Images.SetKeyName(246, "zoom_out.png");
             // 
+            // utAlert
+            // 
+            this.utAlert.Interval = 60000;
+            this.utAlert.Tick += new System.EventHandler(this.utAlert_Tick);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -440,5 +446,6 @@
         private Infragistics.Win.UltraWinExplorerBar.UltraExplorerBar uebMain;
         private Infragistics.Win.UltraWinStatusBar.UltraStatusBar usbMain;
         private System.Windows.Forms.ImageList ilMain;
+        private System.Windows.Forms.Timer utAlert;
     }
 }
