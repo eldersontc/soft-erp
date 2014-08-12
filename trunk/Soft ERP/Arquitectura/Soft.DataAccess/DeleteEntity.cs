@@ -17,26 +17,24 @@ namespace Soft.DataAccess
     {
         public override void Start()
         {
-            using (ISession Sesion = m_SessionFactory.OpenSession())
+            try
             {
-                using (ITransaction Trans = Sesion.BeginTransaction())
-                {
-                    try
-                    {
-                        Sesion.Delete(base.m_ObjectFlow);
-                        Trans.Commit();
-                        base.m_ResultProcess = EnumResult.SUCESS;
-                    }
-                    catch (Exception ex)
-                    {
-                        Trans.Rollback();
-                        base.m_ResultProcess = EnumResult.ERROR;
-                        SoftException.Control(ex);
-                    }
-                }
+                this.IniciarTransaccion();
+                this.Eliminar(base.m_ObjectFlow);
+                this.FinalizarTransaccion();
+                this.m_ResultProcess = EnumResult.SUCESS;
+            }
+            catch (Exception ex)
+            {
+                this.FinalizarTransaccion(true);
+                this.m_ResultProcess = EnumResult.ERROR;
+                SoftException.Control(ex);
+            }
+            finally
+            {
+                this.CerrarSesion();
             }
             base.Start();
         }
-
     }
 }

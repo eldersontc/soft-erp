@@ -15,7 +15,7 @@ using System.Data.OleDb;
 
 namespace Soft.DataAccess
 {
-    public class HelperNHibernate: ControllerApp 
+    public class HelperNHibernate : ControllerApp 
     {
 
         public static Parent GetEntityByID(String Class,String ID) {
