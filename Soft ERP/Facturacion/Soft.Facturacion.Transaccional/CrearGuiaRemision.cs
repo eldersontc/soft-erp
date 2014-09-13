@@ -26,11 +26,11 @@ namespace Soft.Facturacion.Transaccional
                         SqlCmd.CommandText = "pSF_Actualizar_EstadoGuiaRemision_OrdenProduccion";
                         SqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
                         Trans.Enlist(SqlCmd);
-                        foreach (ItemGuiaRemision ItemFacturacion in GuiaRemision.Items)
+                        foreach (ItemGuiaRemision ItemGuiaRemision in GuiaRemision.Items)
                         {
                             SqlCmd.Parameters.Clear();
-                            SqlCmd.Parameters.AddWithValue("@IDOP", ItemFacturacion.IDOrdenProduccion);
-                            SqlCmd.Parameters.AddWithValue("@EstadoEntrega", "TOTAL");
+                            SqlCmd.Parameters.AddWithValue("@IDOP", ItemGuiaRemision.IDOrdenProduccion);
+                            SqlCmd.Parameters.AddWithValue("@Cantidad", ItemGuiaRemision.Cantidad);
                             SqlCmd.ExecuteNonQuery();
                         }
                         // Creamos la Factura
