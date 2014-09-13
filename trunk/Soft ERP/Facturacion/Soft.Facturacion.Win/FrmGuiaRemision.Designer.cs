@@ -406,6 +406,8 @@
             this.ugOrdenesProduccion.Size = new System.Drawing.Size(658, 187);
             this.ugOrdenesProduccion.TabIndex = 9;
             this.ugOrdenesProduccion.Text = "ultraGrid1";
+            this.ugOrdenesProduccion.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.ugOrdenesProduccion_InitializeLayout);
+            this.ugOrdenesProduccion.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ugOrdenesProduccion_CellChange);
             // 
             // ubQuitarOP
             // 
