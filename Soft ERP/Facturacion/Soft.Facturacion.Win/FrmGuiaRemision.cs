@@ -236,9 +236,16 @@ namespace Soft.Facturacion.Win
                 String Filtro = GuiaRemision.ObtenerFiltroOps();
                 Filtro = (Filtro.Length > 0) ? String.Format(" ID NOT IN ({0}) AND IDCliente = '{1}' AND EstadoEntrega = 'PENDIENTE'", Filtro, GuiaRemision.Cliente.ID) : String.Format(" IDCliente = '{0}' AND EstadoEntrega = 'PENDIENTE'", GuiaRemision.Cliente.ID);
                 Ops = FrmSeleccionar.GetSelectedsEntities(typeof(OrdenProduccion), "Selección de Ordenes de Producción", Filtro);
-                foreach (OrdenProduccion Item in Ops)
+                foreach (OrdenProduccion ItemOP in Ops)
                 {
-                    GuiaRemision.AddItem(Item.ID);
+
+                    ItemGuiaRemision Item = GuiaRemision.AddItem();
+                    Item.IDOrdenProduccion = ItemOP.ID;
+                    Item.NroOP = ItemOP.Numeracion;
+                    Item.Descripcion = ItemOP.Descripcion;
+                    Item.CantidadOP = (ItemOP.Cantidad - ItemOP.CantidadEntregada);
+                    Item.Cantidad = Item.CantidadOP;
+
                 }
                 MostrarItems();
             }
@@ -428,14 +435,50 @@ namespace Soft.Facturacion.Win
             txtDireccion.Text = null;
         }
 
+        private void ugOrdenesProduccion_InitializeLayout(object sender, InitializeLayoutEventArgs e)
+        {
+
+        }
+
+        private void ugOrdenesProduccion_CellChange(object sender, CellEventArgs e)
+        {
+            try
+            {
+                ItemGuiaRemision Item = (ItemGuiaRemision)e.Cell.Row.Tag;
+                switch (e.Cell.Column.Key)
+                {
+                    case colCantidad:
+                        decimal Cantidad = Convert.ToDecimal(e.Cell.Text.Replace('_', ' '));
+                        if (Cantidad > Item.CantidadOP)
+                            throw new Exception("La cantidad no puede ser mayor a : " + Item.CantidadOP);
+                        else
+                            Item.Cantidad = Cantidad;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+            finally
+            {
+                MostrarItem(e.Cell.Row);
+              
+            }
+        }
 
 
 
 
-
-
-
-
-
+        public void MostrarItem(UltraGridRow Row)
+        {
+            ItemGuiaRemision Item = (ItemGuiaRemision)Row.Tag;
+            Row.Cells[colNroOP].Value = Item.NroOP;
+            Row.Cells[colDescripcion].Value = Item.Descripcion;
+            Row.Cells[colObservacion].Value = Item.Observacion;
+            Row.Cells[colCantidad].Value = Item.Cantidad;
+        }
     }
 }
