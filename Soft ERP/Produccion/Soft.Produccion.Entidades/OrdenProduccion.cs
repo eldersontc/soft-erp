@@ -24,6 +24,8 @@ namespace Soft.Produccion.Entidades
                 this.FechaTentativaEntrega = DateTime.Now;
                 this.EstadoAprobacion="PENDIENTE";
                 this.EstadoFacturacion = "PENDIENTE";
+                this.EstadoEntrega = "PENDIENTE";
+                this.EstadoProduccion = "PENDIENTE";
             }
 
         }
@@ -34,6 +36,7 @@ namespace Soft.Produccion.Entidades
         public virtual SocioNegocio Cotizador { get; set; }
         public virtual Decimal Cantidad { get; set; }
         public virtual Decimal CantidadFacturada { get; set; }
+        public virtual Decimal CantidadEntregada { get; set; }
         public virtual String Descripcion { get; set; }
         public virtual ItemSocioNegocioContacto Contacto { get; set; }
         public virtual String DireccionEntrega { get; set; }
@@ -42,6 +45,9 @@ namespace Soft.Produccion.Entidades
         public virtual String Prioridad { get; set; }
         public virtual String EstadoAprobacion { get; set; }
         public virtual String EstadoFacturacion { get; set; }
+        public virtual String EstadoProduccion { get; set; }
+        public virtual string EstadoEntrega { get; set; }
+
         public virtual ListaCostosMaquina ListaCostosMaquina { get; set; }
         public virtual ListaPreciosExistencia ListaPreciosExistencia { get; set; }
         public virtual ListaPreciosTransporte ListaPreciosTransporte { get; set; }
