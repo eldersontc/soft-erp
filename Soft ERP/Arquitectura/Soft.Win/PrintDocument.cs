@@ -7,6 +7,7 @@ using Soft.Entities;
 using Soft.Reporte.Entidades;
 using CrystalDecisions.CrystalReports.Engine;
 using System.Windows.Forms;
+using EReporte = Soft.Reporte.Entidades.Reporte;
 
 namespace Soft.Win
 {
@@ -16,28 +17,34 @@ namespace Soft.Win
         {
             try
             {
-                if (base.m_ObjectFlow is DocumentoGenerico)
+                object documento = (object)base.m_ObjectFlow;
+                if (!(documento.GetType().GetProperty("TipoDocumento") == null))
                 {
-                    DocumentoGenerico Documento = (DocumentoGenerico)base.m_ObjectFlow;
-                    Soft.Reporte.Entidades.Reporte Reporte = Documento.TipoDocumento.Reporte;
-                    String SQL = Reporte.SQL;
-                    foreach (ParametroReporte Parametro in Reporte.ParametrosSQL)
+                    TipoDocumento tipoDocumento = (TipoDocumento)documento.GetType().GetProperty("TipoDocumento").GetValue(documento, null);
+                    EReporte reporte = tipoDocumento.Reporte;
+                    String sql = reporte.SQL;
+
+                    foreach (ParametroReporte parametro in reporte.ParametrosSQL)
                     {
-                        SQL = SQL.Replace(Parametro.Nombre, Documento.ValueByProperty(Parametro.Propiedad).ToString());
+                        sql = sql.Replace(parametro.Nombre, documento.GetType().GetProperty(parametro.Propiedad).GetValue(documento, null).ToString());//.ValueByProperty(parametro.Propiedad).ToString());
                     }
-                    ReportDocument Document = new ReportDocument();
-                    Document.Load(String.Format("{0}{1}", FrmMain.CarpetaReportes, Reporte.Ubicacion));
-                    Document.SetDataSource(HelperNHibernate.GetDataSet(SQL));
-                    foreach (ParametroReporte Parametro in Reporte.ParametrosCrystal)
+
+                    ReportDocument reportDocument = new ReportDocument();
+                    reportDocument.Load(String.Format("{0}{1}", FrmMain.CarpetaReportes, reporte.Ubicacion));
+                    reportDocument.SetDataSource(HelperNHibernate.GetDataSet(sql));
+
+                    foreach (ParametroReporte parametro in reporte.ParametrosCrystal)
                     {
-                        Document.SetParameterValue(Parametro.Nombre,Parametro.Valor);
+                        reportDocument.SetParameterValue(parametro.Nombre, parametro.Valor);
                     }
-                    FrmMain.MostrarReporte(Reporte.Nombre,Document);
+
+                    FrmMain.MostrarReporte(reporte.Nombre, reportDocument);
                 }
                 else
                 {
                     throw new Exception("No se ha seleccionado ningún Documento ...");
                 }
+
                 base.m_ResultProcess = EnumResult.SUCESS;
             }
             catch (Exception ex)
