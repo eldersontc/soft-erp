@@ -108,28 +108,45 @@ namespace Soft.Facturacion.Win
 
         public void MostrarItems()
         {
-            if (GuiaRemision.Items.Count == 0)
-            {
-                GuiaRemision.Total = 0;
-                return;
-            }
+
+
+
             base.ClearAllRows(ref ugOrdenesProduccion);
-            String Filtro = String.Format(" IDOP IN ({0})", GuiaRemision.ObtenerFiltroOps());
-            XmlDocument XML = HelperNHibernate.ExecuteView("vSF_OrdenProduccionxID", Filtro);
-            if (XML.HasChildNodes)
+            foreach (ItemGuiaRemision Item in GuiaRemision.Items)
             {
-                foreach (XmlNode NodoItem in XML.DocumentElement.ChildNodes)
-                {
-                    ItemGuiaRemision Item = GuiaRemision.ObtenerItem(NodoItem.SelectSingleNode("@IDOP").Value);
-                    Item.Total = Convert.ToDecimal(NodoItem.SelectSingleNode("@Total").Value);
-                    UltraGridRow Row = ugOrdenesProduccion.DisplayLayout.Bands[0].AddNew();
-                    Row.Tag = Item;
-                    Row.Cells[colNroOP].Value = NodoItem.SelectSingleNode("@Numeracion").Value;
-                    Row.Cells[colDescripcion].Value = NodoItem.SelectSingleNode("@Descripcion").Value;
-                    Row.Cells[colCantidad].Value = NodoItem.SelectSingleNode("@Cantidad").Value;
-                    Row.Cells[colObservacion].Value = NodoItem.SelectSingleNode("@Observacion").Value;
-                }
+                UltraGridRow Row = ugOrdenesProduccion.DisplayLayout.Bands[0].AddNew();
+                Row.Tag = Item;
+                MostrarItem(Row);
             }
+
+
+
+            //if (GuiaRemision.Items.Count == 0)
+            //{
+            //    GuiaRemision.Total = 0;
+            //    return;
+            //}
+
+
+
+
+            //base.ClearAllRows(ref ugOrdenesProduccion);
+            //String Filtro = String.Format(" IDOP IN ({0})", GuiaRemision.ObtenerFiltroOps());
+            //XmlDocument XML = HelperNHibernate.ExecuteView("vSF_OrdenProduccionxID", Filtro);
+            //if (XML.HasChildNodes)
+            //{
+            //    foreach (XmlNode NodoItem in XML.DocumentElement.ChildNodes)
+            //    {
+            //        ItemGuiaRemision Item = GuiaRemision.ObtenerItem(NodoItem.SelectSingleNode("@IDOP").Value);
+            //        Item.Total = Convert.ToDecimal(NodoItem.SelectSingleNode("@Total").Value);
+            //        UltraGridRow Row = ugOrdenesProduccion.DisplayLayout.Bands[0].AddNew();
+            //        Row.Tag = Item;
+            //        Row.Cells[colNroOP].Value = NodoItem.SelectSingleNode("@Numeracion").Value;
+            //        Row.Cells[colDescripcion].Value = NodoItem.SelectSingleNode("@Descripcion").Value;
+            //        Row.Cells[colCantidad].Value = NodoItem.SelectSingleNode("@Cantidad").Value;
+            //        Row.Cells[colObservacion].Value = NodoItem.SelectSingleNode("@Observacion").Value;
+            //    }
+            //}
         }
 
         private void ssTipoDocumento_Search(object sender, EventArgs e)
@@ -234,8 +251,8 @@ namespace Soft.Facturacion.Win
                 Collection Ops = new Collection();
                 FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
                 String Filtro = GuiaRemision.ObtenerFiltroOps();
-                Filtro = (Filtro.Length > 0) ? String.Format(" ID NOT IN ({0}) AND IDCliente = '{1}' AND EstadoEntrega = 'PENDIENTE'", Filtro, GuiaRemision.Cliente.ID) : String.Format(" IDCliente = '{0}' AND EstadoEntrega = 'PENDIENTE'", GuiaRemision.Cliente.ID);
-                Ops = FrmSeleccionar.GetSelectedsEntities(typeof(OrdenProduccion), "Selección de Ordenes de Producción", Filtro);
+                Filtro = (Filtro.Length > 0) ? String.Format(" ID NOT IN ({0}) AND IDCliente = '{1}' ", Filtro, GuiaRemision.Cliente.ID) : String.Format(" IDCliente = '{0}' ", GuiaRemision.Cliente.ID);
+                Ops = FrmSeleccionar.GetSelectedsEntities(typeof(OrdenProduccion), "Seleccion Ordendes Guias de Remision", Filtro);
                 foreach (OrdenProduccion ItemOP in Ops)
                 {
 
