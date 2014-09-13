@@ -22,7 +22,12 @@
     <property name="Prioridad" type="string"/>
     <property name="EstadoAprobacion" type="string"/>
     <property name="EstadoFacturacion" type="string"/>
-    
+    <property name="EstadoProduccion" type="string"/>
+
+
+    <property name="EstadoEntrega" type="string"/>
+    <property name="CantidadEntregada" type="decimal"/>
+
     <many-to-one name="TipoDocumento" class="Soft.Produccion.Entidades.TipoOrdenProduccion" column="IDTipoDocumento" insert="true" update="true" lazy="false"/>
     <many-to-one name="Cliente" class="Soft.Entities.SocioNegocio" column="IDCliente" insert="true" update="true" lazy="false"/>
     <many-to-one name="Cotizador" class="Soft.Entities.SocioNegocio" column="IDCotizador" insert="true" update="true" lazy="false"/>
