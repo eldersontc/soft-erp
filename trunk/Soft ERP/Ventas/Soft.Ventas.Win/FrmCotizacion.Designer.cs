@@ -801,7 +801,7 @@
             this.ultraTabPageControl1.Controls.Add(this.txtObservacionItem);
             this.ultraTabPageControl1.Controls.Add(this.lblObservacionItem);
             this.ultraTabPageControl1.Controls.Add(this.utcAcabadosyServicios);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(716, 329);
             // 
@@ -1345,16 +1345,16 @@
             this.ultraTabPageControl2.Controls.Add(this.ubGirarGraficoPrecorte);
             this.ultraTabPageControl2.Controls.Add(this.ubImprimirGraficoPrecorte);
             this.ultraTabPageControl2.Controls.Add(this.ultraLabel13);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(716, 329);
             // 
             // busMetodoImpresion
             // 
             this.busMetodoImpresion.BackColor = System.Drawing.Color.Transparent;
-            this.busMetodoImpresion.Location = new System.Drawing.Point(581, 231);
+            this.busMetodoImpresion.Location = new System.Drawing.Point(579, 231);
             this.busMetodoImpresion.Name = "busMetodoImpresion";
-            this.busMetodoImpresion.Size = new System.Drawing.Size(126, 28);
+            this.busMetodoImpresion.Size = new System.Drawing.Size(128, 28);
             this.busMetodoImpresion.TabIndex = 121;
             this.busMetodoImpresion.Search += new System.EventHandler(this.busMetodoImpresion_Search);
             // 
@@ -1416,8 +1416,8 @@
             // 
             // txtImpresionAlto
             // 
-            this.txtImpresionAlto.Location = new System.Drawing.Point(520, 232);
-            this.txtImpresionAlto.MaskInput = "nnn";
+            this.txtImpresionAlto.Location = new System.Drawing.Point(512, 232);
+            this.txtImpresionAlto.MaskInput = "nnnn.nn";
             this.txtImpresionAlto.MaxValue = new decimal(new int[] {
             2500,
             0,
@@ -1429,8 +1429,9 @@
             0,
             0});
             this.txtImpresionAlto.Name = "txtImpresionAlto";
+            this.txtImpresionAlto.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
             this.txtImpresionAlto.ReadOnly = true;
-            this.txtImpresionAlto.Size = new System.Drawing.Size(53, 21);
+            this.txtImpresionAlto.Size = new System.Drawing.Size(61, 21);
             this.txtImpresionAlto.TabIndex = 114;
             this.txtImpresionAlto.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
             // 
@@ -1446,8 +1447,8 @@
             // 
             // txtImpresionLargo
             // 
-            this.txtImpresionLargo.Location = new System.Drawing.Point(422, 234);
-            this.txtImpresionLargo.MaskInput = "nnn";
+            this.txtImpresionLargo.Location = new System.Drawing.Point(408, 234);
+            this.txtImpresionLargo.MaskInput = "nnnn.nn";
             this.txtImpresionLargo.MaxValue = new decimal(new int[] {
             2500,
             0,
@@ -1459,8 +1460,9 @@
             0,
             0});
             this.txtImpresionLargo.Name = "txtImpresionLargo";
+            this.txtImpresionLargo.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
             this.txtImpresionLargo.ReadOnly = true;
-            this.txtImpresionLargo.Size = new System.Drawing.Size(53, 21);
+            this.txtImpresionLargo.Size = new System.Drawing.Size(67, 21);
             this.txtImpresionLargo.TabIndex = 112;
             this.txtImpresionLargo.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
             // 

@@ -1311,14 +1311,14 @@ namespace Soft.Ventas.Win
                 AltoGrafico = AltoPictureBox;
             }
 
-            Int32 LargoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo) * 10;
-            Int32 AltoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaAlto) * 10;
+            Int32 LargoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo * 100);
+            Int32 AltoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaAlto * 100);
 
 
-            LargoPictureBox = LargoPictureBox * 10;
-            LargoGrafico = LargoGrafico * 10;
-            AltoPictureBox = AltoPictureBox * 10;
-            AltoGrafico = AltoGrafico * 10;
+            LargoPictureBox = LargoPictureBox * 100;
+            LargoGrafico = LargoGrafico * 100;
+            AltoPictureBox = AltoPictureBox * 100;
+            AltoGrafico = AltoGrafico * 100;
 
 
             upbImpresion.Width = LargoPictureBox;
@@ -1362,34 +1362,34 @@ namespace Soft.Ventas.Win
 
             if (ItemCotizacion.MetodoImpresion.Equals("TIRA Y RETIRA"))
             {
-                Font Font = new System.Drawing.Font("Arial Narrow", 80, FontStyle.Bold);
+                Font Font = new System.Drawing.Font("Arial Narrow", 800, FontStyle.Bold);
                 Brush Brush = new SolidBrush(System.Drawing.Color.Red);
-                Pen Pen = new Pen(System.Drawing.Color.Red, 4);
+                Pen Pen = new Pen(System.Drawing.Color.Red, 40);
 
                 g.DrawImage((Image)upbImpresion.Image, LargoGrafico, 0);
                 g.DrawLine(Pen, LargoGrafico, 0, LargoGrafico, AltoGrafico);
-                g.DrawString("T", Font, Brush, (LargoGrafico / 2) - 10, (AltoGrafico / 2) - 10);
-                g.DrawString("R", Font, Brush, ((LargoGrafico / 2) * 3) - 10, (AltoGrafico / 2) - 10);
+                g.DrawString("T", Font, Brush, (LargoGrafico / 2) - 100, (AltoGrafico / 2) - 100);
+                g.DrawString("R", Font, Brush, ((LargoGrafico / 2) * 3) - 100, (AltoGrafico / 2) - 100);
 
                 CantidadPiezas = CantidadPiezas * 2;
             }
             else if (ItemCotizacion.MetodoImpresion.Equals("CONTRAPINZA"))
             {
-                Font Font = new System.Drawing.Font("Arial Narrow", 80, FontStyle.Regular);
+                Font Font = new System.Drawing.Font("Arial Narrow", 800, FontStyle.Regular);
                 Brush Brush = new SolidBrush(System.Drawing.Color.Red);
-                Pen Pen = new Pen(System.Drawing.Color.Red, 4);
+                Pen Pen = new Pen(System.Drawing.Color.Red, 40);
 
                 g.DrawImage((Image)upbImpresion.Image, 0, AltoGrafico);
                 g.DrawLine(Pen, 0, AltoGrafico, LargoGrafico, AltoGrafico);
-                g.DrawString("R", Font, Brush, (LargoGrafico / 2) - 10, (AltoGrafico / 2) - 10);
-                g.DrawString("T", Font, Brush, (LargoGrafico / 2) - 10, ((AltoGrafico / 2) * 3) - 10);
+                g.DrawString("R", Font, Brush, (LargoGrafico / 2) - 100, (AltoGrafico / 2) - 100);
+                g.DrawString("T", Font, Brush, (LargoGrafico / 2) - 100, ((AltoGrafico / 2) * 3) - 100);
                 CantidadPiezas = CantidadPiezas * 2;
             }
 
             g.DrawRectangle(MyPen, new Rectangle(0, 0, upbImpresion.Width - 1, upbImpresion.Height - 1));
 
-            upbImpresion.Width = upbImpresion.Width / 6;
-            upbImpresion.Height = upbImpresion.Height / 6;
+            upbImpresion.Width = upbImpresion.Width / 70;
+            upbImpresion.Height = upbImpresion.Height / 70;
 
 
 
@@ -1431,21 +1431,21 @@ namespace Soft.Ventas.Win
                 AltoGrafico = AltoPictureBox;
             }
 
-            Int32 LargoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo);
-            Int32 AltoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaAlto);
+            Int32 LargoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaLargo*100);
+            Int32 AltoPieza = Convert.ToInt32(ItemCotizacion.MedidaAbiertaAlto*100);
 
 
 
 
             //ELEVAMOS 10 VECES MAS
-            LargoPieza = LargoPieza * 10;
-            AltoPieza = AltoPieza * 10;
+            //LargoPieza = LargoPieza * 10;
+            //AltoPieza = AltoPieza * 10;
 
 
-            LargoPictureBox = LargoPictureBox * 10;
-            LargoGrafico = LargoGrafico * 10;
-            AltoPictureBox = AltoPictureBox * 10;
-            AltoGrafico = AltoGrafico * 10;
+            LargoPictureBox = LargoPictureBox * 100;
+            LargoGrafico = LargoGrafico * 100;
+            AltoPictureBox = AltoPictureBox * 100;
+            AltoGrafico = AltoGrafico * 100;
 
             upbImpresion.Width = LargoPictureBox;
             upbImpresion.Height = AltoPictureBox;
@@ -1475,35 +1475,35 @@ namespace Soft.Ventas.Win
 
             if (ItemCotizacion.MetodoImpresion.Equals("TIRA Y RETIRA"))
             {
-                Font Font = new System.Drawing.Font("Arial Narrow", 80, FontStyle.Regular);
+                Font Font = new System.Drawing.Font("Arial Narrow", 800, FontStyle.Regular);
                 Brush Brush = new SolidBrush(System.Drawing.Color.Red);
-                Pen Pen = new Pen(System.Drawing.Color.Red, 3);
+                Pen Pen = new Pen(System.Drawing.Color.Red, 30);
 
                 g.DrawImage((Image)upbImpresion.Image, LargoGrafico, 0);
                 g.DrawLine(Pen, LargoGrafico, 0, LargoGrafico, AltoGrafico);
-                g.DrawString("T", Font, Brush, (LargoGrafico / 2) - 10, (AltoGrafico / 2) - 10);
-                g.DrawString("R", Font, Brush, ((LargoGrafico / 2) * 3) - 10, (AltoGrafico / 2) - 10);
+                g.DrawString("T", Font, Brush, (LargoGrafico / 2) - 100, (AltoGrafico / 2) - 100);
+                g.DrawString("R", Font, Brush, ((LargoGrafico / 2) * 3) - 100, (AltoGrafico / 2) - 100);
 
                 CantidadPiezas = CantidadPiezas * 2;
             }
             else if (ItemCotizacion.MetodoImpresion.Equals("CONTRAPINZA"))
             {
-                Font Font = new System.Drawing.Font("Arial Narrow", 80, FontStyle.Regular);
+                Font Font = new System.Drawing.Font("Arial Narrow", 800, FontStyle.Regular);
                 Brush Brush = new SolidBrush(System.Drawing.Color.Red);
-                Pen Pen = new Pen(System.Drawing.Color.Red, 3);
+                Pen Pen = new Pen(System.Drawing.Color.Red, 30);
 
                 g.DrawImage((Image)upbImpresion.Image, 0, AltoGrafico);
                 g.DrawLine(Pen, 0, AltoGrafico, LargoGrafico, AltoGrafico);
-                g.DrawString("T", Font, Brush, (LargoGrafico / 2) - 10, (AltoGrafico / 2) - 10);
-                g.DrawString("R", Font, Brush, (LargoGrafico / 2) - 10, ((AltoGrafico / 2) * 3) - 10);
+                g.DrawString("T", Font, Brush, (LargoGrafico / 2) - 100, (AltoGrafico / 2) - 100);
+                g.DrawString("R", Font, Brush, (LargoGrafico / 2) - 100, ((AltoGrafico / 2) * 3) - 100);
 
                 CantidadPiezas = CantidadPiezas * 2;
             }
 
             g.DrawRectangle(MyPen, new Rectangle(0, 0, upbImpresion.Width - 1, upbImpresion.Height - 1));
 
-            upbImpresion.Width = upbImpresion.Width / 6;
-            upbImpresion.Height = upbImpresion.Height / 6;
+            upbImpresion.Width = upbImpresion.Width / 70;
+            upbImpresion.Height = upbImpresion.Height / 70;
 
 
             ItemCotizacion.NroPiezasImpresion = CantidadPiezas;
