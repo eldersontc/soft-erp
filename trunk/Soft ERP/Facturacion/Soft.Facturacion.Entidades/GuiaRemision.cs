@@ -43,6 +43,7 @@ namespace Soft.Facturacion.Entidades
         public virtual string Direccion { get; set; }
 
         public virtual Boolean EditarDireccionEntrega { get; set; }
+        public virtual bool Anulado { get; set; }
 
         public virtual void AddItem(string IDOP, Decimal Cantidad) {
             ItemGuiaRemision Item = new ItemGuiaRemision();

@@ -11,6 +11,7 @@
     <property name="Impuesto"/>
     <property name="Total"/>
     <property name="EstadoEntrega"/>
+    <property name="Anulado"/>
     
     <many-to-one name="TipoDocumento" class="Soft.Facturacion.Entidades.TipoFacturacion" column="IDTipoFacturacion" lazy="false"/>
     <many-to-one name="Cliente" class="Soft.Entities.SocioNegocio" column="IDCliente" lazy="false"/>

@@ -139,6 +139,7 @@ namespace Soft.Facturacion.Win
             ubAgregarOP.Enabled = false;
             ubQuitarOP.Enabled = false;
             txtObservacion.Enabled = false;
+            ugOrdenesProduccion.Enabled = false;
         }
 
         #endregion
