@@ -29,6 +29,7 @@ namespace Soft.Facturacion.Entidades
         public virtual decimal Total { get; set; }
 
         public virtual string EstadoEntrega { get; set; }
+        public virtual bool Anulado { get; set; }
 
         public virtual IList<ItemFacturacion> Items { get; set; }
 

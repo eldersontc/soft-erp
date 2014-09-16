@@ -12,6 +12,7 @@
     <property name="Direccion" type="string"/>
 
     <property name="EditarDireccionEntrega" type="boolean"/>
+    <property name="Anulado" type="boolean"/>
 
     <many-to-one name="Departamento" class="Soft.Entities.Departamento" column="IDDepartamento" lazy="false" not-null="true" unique="true" insert="true" update="true"/>
     <many-to-one name="Provincia" class="Soft.Entities.Provincia" column="IDProvincia" lazy="false" not-null="true" unique="true" insert="true" update="true"/>

@@ -103,8 +103,17 @@ namespace Soft.Facturacion.Win
             ubAgregarOP.Enabled = false;
             ubQuitarOP.Enabled = false;
             txtObservacion.Enabled = false;
+            ugOrdenesProduccion.Enabled = false;
+            if (GuiaRemision.Anulado) 
+            {
+                ssChofer.Enabled = false;
+                txtLicenciaConducir.Enabled = false;
+                txtNumerPlaca.Enabled = false;
+                ssContacto.Enabled = false;
+                txtContacto.Enabled = false;
+                ugbDestino.Enabled = false;
+            }
         }
-
 
         public void MostrarItems()
         {

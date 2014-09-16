@@ -52,7 +52,7 @@
             this.txtContacto = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ssContacto = new Soft.Controls.SoftSearch();
             this.ultraLabel9 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
+            this.ugbDestino = new Infragistics.Win.Misc.UltraGroupBox();
             this.ultraLabel8 = new Infragistics.Win.Misc.UltraLabel();
             this.ssDireccion = new Soft.Controls.SoftSearch();
             this.txtDireccion = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -82,8 +82,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ugOrdenesProduccion)).BeginInit();
             this.ultraTabPageControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtContacto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
-            this.ultraGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ugbDestino)).BeginInit();
+            this.ugbDestino.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDireccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumerPlaca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLicenciaConducir)).BeginInit();
@@ -390,7 +390,7 @@
             this.tabItems.Controls.Add(this.ugOrdenesProduccion);
             this.tabItems.Controls.Add(this.ubQuitarOP);
             this.tabItems.Controls.Add(this.ubAgregarOP);
-            this.tabItems.Location = new System.Drawing.Point(1, 23);
+            this.tabItems.Location = new System.Drawing.Point(-10000, -10000);
             this.tabItems.Name = "tabItems";
             this.tabItems.Size = new System.Drawing.Size(658, 224);
             // 
@@ -434,14 +434,14 @@
             this.ultraTabPageControl1.Controls.Add(this.txtContacto);
             this.ultraTabPageControl1.Controls.Add(this.ssContacto);
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel9);
-            this.ultraTabPageControl1.Controls.Add(this.ultraGroupBox1);
+            this.ultraTabPageControl1.Controls.Add(this.ugbDestino);
             this.ultraTabPageControl1.Controls.Add(this.txtNumerPlaca);
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel5);
             this.ultraTabPageControl1.Controls.Add(this.txtLicenciaConducir);
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel2);
             this.ultraTabPageControl1.Controls.Add(this.ssChofer);
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel1);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(658, 224);
             // 
@@ -473,16 +473,16 @@
             this.ultraLabel9.TabIndex = 94;
             this.ultraLabel9.Text = "Contacto";
             // 
-            // ultraGroupBox1
+            // ugbDestino
             // 
-            this.ultraGroupBox1.Controls.Add(this.ultraLabel8);
-            this.ultraGroupBox1.Controls.Add(this.ssDireccion);
-            this.ultraGroupBox1.Controls.Add(this.txtDireccion);
-            this.ultraGroupBox1.Location = new System.Drawing.Point(391, 20);
-            this.ultraGroupBox1.Name = "ultraGroupBox1";
-            this.ultraGroupBox1.Size = new System.Drawing.Size(264, 189);
-            this.ultraGroupBox1.TabIndex = 92;
-            this.ultraGroupBox1.Text = "Destino";
+            this.ugbDestino.Controls.Add(this.ultraLabel8);
+            this.ugbDestino.Controls.Add(this.ssDireccion);
+            this.ugbDestino.Controls.Add(this.txtDireccion);
+            this.ugbDestino.Location = new System.Drawing.Point(391, 20);
+            this.ugbDestino.Name = "ugbDestino";
+            this.ugbDestino.Size = new System.Drawing.Size(264, 189);
+            this.ugbDestino.TabIndex = 92;
+            this.ugbDestino.Text = "Destino";
             // 
             // ultraLabel8
             // 
@@ -728,9 +728,9 @@
             this.ultraTabPageControl1.ResumeLayout(false);
             this.ultraTabPageControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtContacto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).EndInit();
-            this.ultraGroupBox1.ResumeLayout(false);
-            this.ultraGroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ugbDestino)).EndInit();
+            this.ugbDestino.ResumeLayout(false);
+            this.ugbDestino.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDireccion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumerPlaca)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLicenciaConducir)).EndInit();
@@ -770,7 +770,7 @@
         private Infragistics.Win.Misc.UltraLabel ultraLabel5;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtLicenciaConducir;
         private Infragistics.Win.Misc.UltraLabel ultraLabel2;
-        private Infragistics.Win.Misc.UltraGroupBox ultraGroupBox1;
+        private Infragistics.Win.Misc.UltraGroupBox ugbDestino;
         private Infragistics.Win.Misc.UltraLabel ultraLabel8;
         private Controls.SoftSearch ssDireccion;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtDireccion;
