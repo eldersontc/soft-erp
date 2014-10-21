@@ -37,14 +37,14 @@ namespace Soft.Facturacion.Transaccional
                         Sesion.Save(GuiaRemision);
                         Sesion.Flush();
                         // Actualizamos la Numeración de la Factura
-                        if (GuiaRemision.TipoEntrega.GeneraNumeracionAlFinal)
+                        if (GuiaRemision.TipoDocumento.GeneraNumeracionAlFinal)
                         {
                             SqlCmd.CommandText = "pSF_Generar_Numeracion";
                             SqlCmd.Parameters.Clear();
                             SqlCmd.Parameters.AddWithValue("@Documento", "GuiaRemision");
                             SqlCmd.Parameters.AddWithValue("@TipoDocumento", "TipoEntrega");
                             SqlCmd.Parameters.AddWithValue("@IDDocumento", GuiaRemision.ID);
-                            SqlCmd.Parameters.AddWithValue("@IDTipoDocumento", GuiaRemision.TipoEntrega.ID);
+                            SqlCmd.Parameters.AddWithValue("@IDTipoDocumento", GuiaRemision.TipoDocumento.ID);
                             SqlCmd.ExecuteNonQuery();
                         }
                         Trans.Commit();
