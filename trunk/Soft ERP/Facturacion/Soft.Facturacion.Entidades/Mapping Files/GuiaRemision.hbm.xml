@@ -14,6 +14,7 @@
     <property name="EditarDireccionEntrega" type="boolean"/>
     <property name="Anulado" type="boolean"/>
 
+
     <many-to-one name="Departamento" class="Soft.Entities.Departamento" column="IDDepartamento" lazy="false" not-null="true" unique="true" insert="true" update="true"/>
     <many-to-one name="Provincia" class="Soft.Entities.Provincia" column="IDProvincia" lazy="false" not-null="true" unique="true" insert="true" update="true"/>
     <many-to-one name="Distrito" class="Soft.Entities.Distrito" column="IDDistrito" lazy="false" not-null="true" unique="true" insert="true" update="true"/>
@@ -24,7 +25,10 @@
 
     <many-to-one name="Contacto" class="Soft.Entities.ItemSocioNegocioContacto" column="IDContacto" insert="true" update="true" lazy="false"/>
 
-    <many-to-one name="TipoEntrega" class="Soft.Facturacion.Entidades.TipoEntrega" column="IDTipoEntrega" insert="true" update="true" lazy="false"/>
+    <many-to-one name="MotivoTraslado" class="Soft.Facturacion.Entidades.MotivoTraslado" column="IDMotivoTraslado" insert="true" update="true" lazy="false"/>
+
+
+    <many-to-one name="TipoDocumento" class="Soft.Facturacion.Entidades.TipoEntrega" column="IDTipoEntrega" insert="true" update="true" lazy="false"/>
     <many-to-one name="Cliente" class="Soft.Entities.SocioNegocio" column="IDCliente" insert="true" update="true" lazy="false"/>
     <many-to-one name="Responsable" class="Soft.Entities.SocioNegocio" column="IDResponsable" insert="true" update="true" lazy="false"/>
     <bag name="Items" cascade="all-delete-orphan" order-by="Orden" lazy="false">
