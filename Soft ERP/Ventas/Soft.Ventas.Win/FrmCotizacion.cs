@@ -1272,13 +1272,37 @@ namespace Soft.Ventas.Win
 
         private void ubRecalcular_Click(object sender, EventArgs e)
         {
-            Costeo();
-            Mostrar();
-            MostrarItem(utCotizacion.ActiveNode);
+            try
+            {
+                if (Cotizacion.ListaCostosMaquina == null) {
+                    throw new Exception("Seleecione una lista de costos de Maquina");
+                }
+
+                if (Cotizacion.ListaPreciosExistencia == null)
+                {
+                    throw new Exception("Seleecione una lista de costos de Materiales y existencias");
+                }
+
+                if (Cotizacion.ListaPreciosTransporte == null)
+                {
+                    throw new Exception("Seleecione una lista de transportes");
+                }
+
+
+                Costeo();
+                Mostrar();
+                MostrarItem(utCotizacion.ActiveNode);
+            }
+            catch (Exception ex)
+            {
+                SoftException.ShowException(ex);
+            }
+
         }
 
         public void GenerarGraficoImpresionNormal()
         {
+            
             if (ItemCotizacion.MedidaAbiertaLargo == 0) { MessageBox.Show("No se ha asignado el largo de la medida abierta", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return; }
             if (ItemCotizacion.MedidaAbiertaAlto == 0) { MessageBox.Show("No se ha asignado el alto de la medida abierta", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return; }
             if (ItemCotizacion.Material == null) { MessageBox.Show("No se ha asignado ningún material.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return; }
@@ -1349,7 +1373,7 @@ namespace Soft.Ventas.Win
                     g.DrawRectangle(MyPen, new Rectangle(x - LargoPieza, y - AltoPieza, LargoPieza, AltoPieza));
                     CantidadPiezas += 1;
                     //y += ItemCotizacion.SeparacionY / 10;
-                    y += ItemCotizacion.SeparacionY;
+                    y += ItemCotizacion.SeparacionY*10;
                 }
                 //x += ItemCotizacion.SeparacionX / 10;
                 if (MargenFin == false)
@@ -1357,7 +1381,7 @@ namespace Soft.Ventas.Win
                     //x += 10;
                     MargenFin = true;
                 }
-                x += ItemCotizacion.SeparacionX;
+                x += ItemCotizacion.SeparacionX*10;
             }
 
             if (ItemCotizacion.MetodoImpresion.Equals("TIRA Y RETIRA"))
@@ -1790,15 +1814,19 @@ namespace Soft.Ventas.Win
         {
             try
             {
+                if (ItemCotizacion.MetodoImpresion == null) {
+                    throw new Exception("Seleccione un tipo de metodo de impresion primero");
+                }
+                if (ItemCotizacion.NroPiezasPrecorte == 0)
+                {
+                    throw new Exception("No papel de precorte");
+                }
                 if (ItemCotizacion == null) { return; }
-
                 if (ItemCotizacion.GraficoImpresionManual == false)
                 {
                     ItemCotizacion.GraficoImpresionGirado = false;
                     GenerarGraficoImpresionNormal();
                 }
-
-
                 CalcularProduccionItem(ItemCotizacion);
                 MostrarItem(utCotizacion.ActiveNode);
             }
@@ -2029,7 +2057,7 @@ namespace Soft.Ventas.Win
 
                 FrmSelectedEntity FrmSeleccionarTipoDocumento = new FrmSelectedEntity();
                 LineaProduccion LineaProduccion = (LineaProduccion)FrmSeleccionarTipoDocumento.GetSelectedEntity(typeof(LineaProduccion), "Linea de Produccion");
-                if ((Cotizacion.LineaProduccion == null))
+                if ((LineaProduccion != null))
                 {
 
                     Cotizacion.LineaProduccion = LineaProduccion;
@@ -2182,6 +2210,96 @@ namespace Soft.Ventas.Win
             {
                 SoftException.Control(ex);
             }
+        }
+
+        private void busLineaProduccion_Clear(object sender, EventArgs e)
+        {
+            try
+            {
+                Cotizacion.LineaProduccion = null;
+                Mostrar();
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+
+
+
+        }
+
+        private void labelSobranPaginas_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemCotizacion == null) { return; }
+                ItemCotizacion item = Cotizacion.AddItem();
+                //CALCULAMOS LOS PLIEGOS SOBRANTES
+                if (ItemCotizacion.PaginasSobrantes > 0)
+                {
+
+
+
+                    item.Activo = true;
+
+
+                    item.TieneFondo = ItemCotizacion.TieneFondo;
+
+                    item.TieneGraficos = ItemCotizacion.TieneGraficos;
+                    item.TieneMaquina = ItemCotizacion.TieneMaquina;
+                    item.TieneMaterial = ItemCotizacion.TieneMaterial;
+
+                    item.TieneMedidaAbierta = ItemCotizacion.TieneMedidaAbierta;
+                    item.TieneMedidaCerrada = ItemCotizacion.TieneMedidaCerrada;
+                    item.TieneTipoUnidad = ItemCotizacion.TieneTipoUnidad;
+                    item.TieneTiraRetira = ItemCotizacion.TieneTiraRetira;
+
+
+
+                    item.Nombre = "1 pliego de " + ItemCotizacion.PaginasSobrantes+ "paginas sobrantes";
+                    item.Cantidad = ItemCotizacion.Cantidad;
+                    item.CantidadUnidad = ItemCotizacion.PaginasSobrantes;
+                    item.PaginasSobrantes = 0;
+
+                    item.TipoUnidad = ItemCotizacion.TipoUnidad;
+                    item.MedidaAbiertaAlto = ItemCotizacion.MedidaAbiertaAlto;
+                    item.MedidaAbiertaLargo = ItemCotizacion.MedidaAbiertaLargo;
+                    item.MedidaCerradaAlto = ItemCotizacion.MedidaCerradaAlto;
+                    item.MedidaCerradaLargo = ItemCotizacion.MedidaCerradaLargo;
+                    item.UnidadMedidaAbierta = ItemCotizacion.UnidadMedidaAbierta;
+                    
+                    item.ImpresoTiraColor = ItemCotizacion.ImpresoTiraColor;
+                    item.ImpresoRetiraColor = ItemCotizacion.ImpresoRetiraColor;
+                    item.TipoUnidad = ItemCotizacion.TipoUnidad;
+                    item.CantidadElemento = ItemCotizacion.CantidadElemento;
+                    item.Operacion = ItemCotizacion.Operacion;
+                    item.Maquina = ItemCotizacion.Maquina;
+                    item.Material = ItemCotizacion.Material;
+                    item.FormatoImpresionLargo = ItemCotizacion.FormatoImpresionLargo;
+                    item.FormatoImpresionAlto = ItemCotizacion.FormatoImpresionAlto;
+
+
+                    item.MetodoImpresion = ItemCotizacion.MetodoImpresion;
+                    item.MetodoImpresionOffset = ItemCotizacion.MetodoImpresionOffset;
+
+
+                    ItemCotizacion.PaginasSobrantes = 0;
+                    ItemCotizacion.CantidadUnidad -= ItemCotizacion.PaginasSobrantes;
+
+                    Mostrar();
+
+
+
+                    
+                }
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+
+
         }
 
   

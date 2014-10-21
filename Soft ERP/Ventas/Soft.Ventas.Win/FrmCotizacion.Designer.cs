@@ -42,8 +42,8 @@
             Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
-            Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.ValueListItem valueListItem6 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
@@ -1130,13 +1130,13 @@
             // 
             // comboMedida
             // 
-            valueListItem5.DataValue = "CM.";
-            valueListItem5.Tag = 1;
-            valueListItem6.DataValue = "MT.";
-            valueListItem6.Tag = 100;
+            valueListItem1.DataValue = "CM.";
+            valueListItem1.Tag = 1;
+            valueListItem2.DataValue = "MT.";
+            valueListItem2.Tag = 100;
             this.comboMedida.Items.AddRange(new Infragistics.Win.ValueListItem[] {
-            valueListItem5,
-            valueListItem6});
+            valueListItem1,
+            valueListItem2});
             this.comboMedida.Location = new System.Drawing.Point(123, 28);
             this.comboMedida.Name = "comboMedida";
             this.comboMedida.Size = new System.Drawing.Size(52, 21);
@@ -1722,11 +1722,12 @@
             this.labelSobranPaginas.Appearance = appearance46;
             this.labelSobranPaginas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.labelSobranPaginas.ImageTransparentColor = System.Drawing.Color.Firebrick;
-            this.labelSobranPaginas.Location = new System.Drawing.Point(6, 118);
+            this.labelSobranPaginas.Location = new System.Drawing.Point(6, 119);
             this.labelSobranPaginas.Name = "labelSobranPaginas";
             this.labelSobranPaginas.Size = new System.Drawing.Size(130, 17);
             this.labelSobranPaginas.TabIndex = 131;
             this.labelSobranPaginas.Text = "PROBANDO";
+            this.labelSobranPaginas.DoubleClick += new System.EventHandler(this.labelSobranPaginas_DoubleClick);
             // 
             // ultraLabel25
             // 
@@ -2508,6 +2509,7 @@
             this.busLineaProduccion.Size = new System.Drawing.Size(171, 28);
             this.busLineaProduccion.TabIndex = 103;
             this.busLineaProduccion.Search += new System.EventHandler(this.busLineaProduccion_Search);
+            this.busLineaProduccion.Clear += new System.EventHandler(this.busLineaProduccion_Clear);
             // 
             // ultraLabel24
             // 
