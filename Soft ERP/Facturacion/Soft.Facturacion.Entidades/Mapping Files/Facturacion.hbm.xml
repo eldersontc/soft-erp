@@ -5,7 +5,7 @@
 
     <id name="ID" column ="ID" unsaved-value="0"/>
     <property name="Numeracion"/>
-    <property name="FechaCreacion"/>
+    <property name="FechaCreacion" type="DateTime"/>
     <property name="Observacion"/>
     <property name="SubTotal"/>
     <property name="Impuesto"/>
