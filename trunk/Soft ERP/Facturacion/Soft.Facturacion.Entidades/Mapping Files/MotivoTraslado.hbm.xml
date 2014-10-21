@@ -6,6 +6,7 @@
     <property name="Codigo"/>
     <property name="Nombre"/>
     <property name="Numero"/>
+    <property name="Activo"/>
   </class>
 
 </hibernate-mapping>
