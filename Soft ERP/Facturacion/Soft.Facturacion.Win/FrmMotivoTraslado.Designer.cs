@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMotivoTraslado));
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.CheckActivo = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.txtNombre = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.Nombre = new Infragistics.Win.Misc.UltraLabel();
@@ -330,13 +330,12 @@
             // 
             this.CheckActivo.BackColor = System.Drawing.Color.Transparent;
             this.CheckActivo.BackColorInternal = System.Drawing.Color.Transparent;
-            this.CheckActivo.Checked = true;
-            this.CheckActivo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CheckActivo.Location = new System.Drawing.Point(333, 16);
             this.CheckActivo.Name = "CheckActivo";
             this.CheckActivo.Size = new System.Drawing.Size(75, 20);
             this.CheckActivo.TabIndex = 58;
             this.CheckActivo.Text = "Activo";
+            this.CheckActivo.CheckedChanged += new System.EventHandler(this.CheckActivo_CheckedChanged);
             // 
             // txtNombre
             // 
@@ -344,11 +343,12 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(302, 21);
             this.txtNombre.TabIndex = 57;
+            this.txtNombre.ValueChanged += new System.EventHandler(this.txtNombre_ValueChanged);
             // 
             // Nombre
             // 
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            this.Nombre.Appearance = appearance5;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.Nombre.Appearance = appearance2;
             this.Nombre.Location = new System.Drawing.Point(11, 46);
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(100, 23);
@@ -361,11 +361,12 @@
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(122, 21);
             this.txtCodigo.TabIndex = 55;
+            this.txtCodigo.ValueChanged += new System.EventHandler(this.txtCodigo_ValueChanged);
             // 
             // Codigo
             // 
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            this.Codigo.Appearance = appearance6;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.Codigo.Appearance = appearance3;
             this.Codigo.Location = new System.Drawing.Point(11, 19);
             this.Codigo.Name = "Codigo";
             this.Codigo.Size = new System.Drawing.Size(100, 23);
@@ -374,8 +375,8 @@
             // 
             // ultraLabel1
             // 
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel1.Appearance = appearance4;
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel1.Appearance = appearance1;
             this.ultraLabel1.Location = new System.Drawing.Point(11, 85);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(100, 23);
@@ -388,6 +389,7 @@
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(100, 21);
             this.txtNumero.TabIndex = 60;
+            this.txtNumero.ValueChanged += new System.EventHandler(this.txtNumero_ValueChanged);
             // 
             // FrmMotivoTraslado
             // 
