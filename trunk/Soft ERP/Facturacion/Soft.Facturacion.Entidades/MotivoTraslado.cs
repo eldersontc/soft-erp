@@ -9,12 +9,15 @@ namespace Soft.Facturacion.Entidades
     public class MotivoTraslado: Parent
     {
         public MotivoTraslado(){
+            if (NewInstance) {
+                Activo = true;
+            }
+
         }
 
 
-        public virtual String Numero{get;set;}
-
-        
+        public virtual String Codigo { get; set; }
+        public virtual Int32 Numero { get; set; }
 
     }
 }
