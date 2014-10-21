@@ -6,21 +6,26 @@ using Soft.Entities;
 
 namespace Soft.Facturacion.Entidades
 {
-    public class GuiaRemision : Parent
+    public class GuiaRemision : DocumentoGenerico
     {
         public GuiaRemision()
         {
             FechaCreacion = DateTime.Now;
-            Items = new List<ItemGuiaRemision>(); 
+            Items = new List<ItemGuiaRemision>();
         }
 
-        public virtual TipoEntrega TipoEntrega { get; set; }
-        public virtual string Numeracion { get; set; }
+        //public virtual TipoEntrega TipoDocumento { get; set; }
+
+        public virtual TipoEntrega TipoEntrega { get { return (TipoEntrega)TipoDocumento; } }
+
+        //public virtual TipoFacturacion TipoEntrega { get { return (TipoFacturacion)TipoDocumento; } }
+
+        //public virtual string Numeracion { get; set; }
         public virtual SocioNegocio Cliente { get; set; }
         public virtual SocioNegocio Responsable { get; set; }
         public virtual Moneda Moneda { get; set; }
-        public virtual DateTime FechaCreacion { get; set; }
-        public virtual string Observacion { get; set; }
+        //public virtual DateTime FechaCreacion { get; set; }
+        //public virtual string Observacion { get; set; }
         public virtual decimal SubTotal { get; set; }
         public virtual decimal Impuesto { get; set; }
         public virtual decimal Total { get; set; }
@@ -36,6 +41,7 @@ namespace Soft.Facturacion.Entidades
 
         public virtual SocioNegocio Chofer { get; set; }
 
+        public virtual MotivoTraslado MotivoTraslado { get; set; }
 
         public virtual Departamento Departamento { get; set; }
         public virtual Provincia Provincia { get; set; }
@@ -43,9 +49,11 @@ namespace Soft.Facturacion.Entidades
         public virtual string Direccion { get; set; }
 
         public virtual Boolean EditarDireccionEntrega { get; set; }
+
         public virtual bool Anulado { get; set; }
 
-        public virtual void AddItem(string IDOP, Decimal Cantidad) {
+        public virtual void AddItem(string IDOP, Decimal Cantidad)
+        {
             ItemGuiaRemision Item = new ItemGuiaRemision();
             Item.IDOrdenProduccion = IDOP;
             Item.Cantidad = Cantidad;
@@ -76,6 +84,6 @@ namespace Soft.Facturacion.Entidades
             return Filtro;
         }
 
-        
+
     }
 }
