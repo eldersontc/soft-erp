@@ -22,7 +22,6 @@ namespace Soft.Facturacion.Entidades
         public virtual SocioNegocio Cliente { get; set; }
         public virtual SocioNegocio Responsable { get; set; }
         public virtual Moneda Moneda { get; set; }
-        //public virtual DateTime FechaCreacion { get; set; }
         //public virtual string Observacion { get; set; }
         public virtual decimal SubTotal { get; set; }
         public virtual decimal Impuesto { get; set; }
