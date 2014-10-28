@@ -18,5 +18,11 @@ namespace Soft.Facturacion.Entidades
         public virtual string Descripcion { get; set; }
         public virtual string Observacion { get; set; }
 
+
+        public virtual Int32 CantidadFacturada { get; set; }
+
+        public virtual string EstadoFacturacion { get; set; }
+
+
     }
 }
