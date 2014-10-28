@@ -13,6 +13,10 @@
     <property name="NroOP"  type="string"/>
     
     <property name="Observacion" type="string"/>
-    
+
+    <property name="CantidadFacturada" type="int" insert="true" update="false"/>
+    <property name="EstadoFacturacion" type="string" insert="true" update="false"/>
+
+
   </class>
 </hibernate-mapping>
