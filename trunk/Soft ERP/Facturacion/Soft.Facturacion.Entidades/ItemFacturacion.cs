@@ -11,7 +11,13 @@ namespace Soft.Facturacion.Entidades
         public ItemFacturacion() { }
 
         public virtual string IDOrdenProduccion { get; set; }
+        public virtual string IDItemGuiaRemision { get; set; }
+        public virtual bool TieneGuia { get; set; }
         public virtual string NroOP { get; set; }
+
+        public virtual string NroGuiaRemision { get; set; }
+
+        
         public virtual string Descripcion { get; set; }
         public virtual string Observacion{ get; set; }
         public virtual decimal Cantidad { get; set; }
