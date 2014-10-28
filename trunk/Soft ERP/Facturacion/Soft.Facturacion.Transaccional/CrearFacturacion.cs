@@ -35,6 +35,20 @@ namespace Soft.Facturacion.Transaccional
                             SqlCmd.Parameters.AddWithValue("@Cantidad", ItemFacturacion.Cantidad);
                             SqlCmd.ExecuteNonQuery();
                         }
+
+
+                        foreach (ItemFacturacion ItemFacturacion in Facturacion.Items)
+                        {
+                            if (ItemFacturacion.TieneGuia)
+                            {
+                                SqlCmd.CommandText = "pSF_Actualizar_EstadoFacturacion_ItemGuiaRemision";
+                                SqlCmd.Parameters.Clear();
+                                SqlCmd.Parameters.AddWithValue("@IDItemGuiaRemision", ItemFacturacion.IDItemGuiaRemision);
+                                SqlCmd.Parameters.AddWithValue("@Cantidad", ItemFacturacion.Cantidad);
+                                SqlCmd.ExecuteNonQuery();
+                            }
+                        }
+
                         // Creamos la Factura
                         Sesion.Save(Facturacion);
                         Sesion.Flush();
