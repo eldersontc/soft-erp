@@ -6,11 +6,20 @@
     <id name="ID" unsaved-value="0"/>
     <property name="IDOrdenProduccion"/>
     <property name="NroOP"/>
+
+    <property name="NroGuiaRemision"/>
+
+    
     <property name="Descripcion"/>
     <property name="Observacion"/>
     <property name="Total"/>
     <property name="Cantidad"/>
     <property name="Precio"/>
+
+    <property name="IDItemGuiaRemision"/>
+
+    <property name="TieneGuia"/>
+
 
   </class>
 </hibernate-mapping>
