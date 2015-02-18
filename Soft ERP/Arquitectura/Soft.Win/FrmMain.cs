@@ -53,10 +53,10 @@ namespace Soft.Win
             PersonalizarControles();
             ConstruirContenedores();
             ConstruirTab();
-            IniciarAlertas();
+            //IniciarAlertas();
             Show();
         }
-
+        /*
         public void IniciarAlertas() 
         {
             try
@@ -94,7 +94,7 @@ namespace Soft.Win
             }
             utAlert.Start();
         }
-
+        */
         public void PersonalizarControles()
         {
             Infragistics.Shared.ResourceCustomizer rc = Infragistics.Win.UltraWinExplorerBar.Resources.Customizer;
@@ -771,7 +771,7 @@ namespace Soft.Win
                 SoftException.Control(ex, SystemIcons.Warning.ToBitmap());
             }
         }
-
+        /*
         private string ObtenerFiltroSQLAlertas(IList<Alerta> alertas) 
         {
             string filtro = string.Empty;
@@ -847,6 +847,6 @@ namespace Soft.Win
                 SoftException.Control(new Exception("El Panel de Alerta no existe."));
             }
         }
-
+        */
     }
 }
