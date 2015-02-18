@@ -49,7 +49,7 @@ namespace Soft.Win
 
         public void CargarSyn(String Skyn)
         {
-            if (Skyn.Equals(""))
+            if (string.IsNullOrEmpty(Skyn))
             {
                 Infragistics.Win.AppStyling.StyleManager.Load("Styles/SOFTSMART_SILVER.isl");
             }

@@ -14,6 +14,7 @@ using Infragistics.Win.UltraWinDataSource;
 using Soft.DataAccess;
 using Soft.Configuracion.Entidades;
 using Soft.Exceptions;
+using System.IO;
 
 namespace Soft.Win
 {
@@ -42,7 +43,11 @@ namespace Soft.Win
             String ConsultaSQL = String.Empty;
             String Ordenamiento = String.Empty;
             Text = String.Format(":: {0} ::", ItemContenedor.Nombre);
-            ugDetails.DisplayLayout.Appearance.ImageBackground = Image.FromFile(String.Format("{0}{1}", FrmMain.CarpetaImagenes, FrmMain.Usuario.Imagen));
+            if (!string.IsNullOrEmpty(FrmMain.Usuario.Imagen))
+            {
+                if(File.Exists(String.Format("{0}{1}", FrmMain.CarpetaImagenes, FrmMain.Usuario.Imagen)))
+                    ugDetails.DisplayLayout.Appearance.ImageBackground = Image.FromFile(String.Format("{0}{1}", FrmMain.CarpetaImagenes, FrmMain.Usuario.Imagen));
+            }
             ugDetails.DataSource = null;
             Soft.Configuracion.Entidades.Panel Panel = (Soft.Configuracion.Entidades.Panel)HelperNHibernate.GetEntityByField("Panel", "Nombre", ItemContenedor.Panel.Nombre);
             foreach (ColumnaPanel  Columna in Panel.Columnas)

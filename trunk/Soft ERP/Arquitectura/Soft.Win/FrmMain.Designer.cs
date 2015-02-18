@@ -408,7 +408,7 @@
             // utAlert
             // 
             this.utAlert.Interval = 60000;
-            this.utAlert.Tick += new System.EventHandler(this.utAlert_Tick);
+            //this.utAlert.Tick += new System.EventHandler(this.utAlert_Tick);
             // 
             // FrmMain
             // 
