@@ -30,7 +30,9 @@ namespace Soft.Exceptions
 
         public static void ShowException(Exception ex) {
             FrmMessageError FrmError = new FrmMessageError();
-            FrmError.ShowError(ex.Message, ex.Source, SystemIcons.Warning.ToBitmap());
+            Exception exFinal = ex;
+            while (exFinal.InnerException != null) { exFinal = ex.InnerException; }
+            FrmError.ShowError(exFinal.Message, exFinal.Source, SystemIcons.Warning.ToBitmap());
         }
 
         public static void ShowSqlException(SqlException ex) {
