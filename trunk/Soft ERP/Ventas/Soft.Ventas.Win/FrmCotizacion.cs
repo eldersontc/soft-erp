@@ -172,11 +172,11 @@ namespace Soft.Ventas.Win
 
             if (Item.TieneTipoUnidad)
             {
-                GrupoMedidaAbierta.Text = "Medida de " + Item.TipoUnidad;
+                GrupoMedidaAbierta.Text = "MEDIDA DE " + Item.TipoUnidad;
             }
             else
             {
-                GrupoMedidaAbierta.Text = "Medida Abierta";
+                GrupoMedidaAbierta.Text = "MEDIDA ABIERTA";
             }
 
 
