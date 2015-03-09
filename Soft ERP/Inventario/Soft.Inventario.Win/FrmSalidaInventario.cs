@@ -360,6 +360,7 @@ namespace Soft.Inventario.Win
                 OrdenProduccion op = (OrdenProduccion)FrmSeleccionar.GetSelectedEntity(typeof(OrdenProduccion), "Selección de Ordenes de Producción", All: true);
                 if (op != null)
                 {
+                    SalidaInventario.Items.Clear();
                     SalidaInventario.OrdenProduccion = op;
                     CrearItems(SalidaInventario.OrdenProduccion);
                 }
