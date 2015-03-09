@@ -210,9 +210,9 @@ namespace Soft.Ventas.Win
             ssMaterial.Visible = Item.TieneMaterial;
             lblMaterial.Visible = Item.TieneMaterial;
             txtCostoServicio.Value = Item.CostoServicio;
-            lblCostoMaquina.Visible = Item.TieneMaquina;
+            //lblCostoMaquina.Visible = Item.TieneMaquina;
             uneCostoMaquina.Visible = Item.TieneMaquina;
-            lblCostoMaterial.Visible = Item.TieneMaterial;
+            //lblCostoMaterial.Visible = Item.TieneMaterial;
             uneCostoMaterial.Visible = Item.TieneMaterial;
             txtMedidaAnchoCaja.Visible = Item.TieneFondo;
             labelFondoCaja.Visible = Item.TieneFondo;
@@ -318,8 +318,8 @@ namespace Soft.Ventas.Win
             if(Item.PaginasSobrantes >0){
                 labelSobranPaginas.Text = "Sobran " + Item.PaginasSobrantes + " paginas";
             }
-               
 
+            uceIncluirEnPresupuesto.Checked = Item.IncluirEnPrespuesto;
 
             MostrarServicios(Item);
             ActualizandoIU = false;
@@ -2302,14 +2302,17 @@ namespace Soft.Ventas.Win
 
         }
 
-  
-
-    
-
-
-
-
-
-
+        private void uceIncluirEnPresupuesto_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ItemCotizacion == null) { return; }
+                ItemCotizacion.IncluirEnPrespuesto = uceIncluirEnPresupuesto.Checked;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
     }
 }

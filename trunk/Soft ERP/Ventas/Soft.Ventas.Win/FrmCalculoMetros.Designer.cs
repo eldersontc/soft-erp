@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCalculoMetros));
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.txtTotal = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.busUnidadMaterial = new Soft.Controls.SoftSearch();
@@ -52,31 +52,31 @@
             // 
             this.ugbParent.Controls.Add(this.txtTotal);
             this.ugbParent.Controls.Add(this.ultraLabel1);
-            this.ugbParent.Controls.Add(this.busUnidadMaterial);
-            this.ugbParent.Controls.Add(this.ultraLabel8);
             this.ugbParent.Controls.Add(this.txtVertical);
             this.ugbParent.Controls.Add(this.txtHorizontal);
             this.ugbParent.Controls.Add(this.checkVertical);
             this.ugbParent.Controls.Add(this.checkHorizontal);
-            this.ugbParent.Size = new System.Drawing.Size(239, 170);
+            this.ugbParent.Controls.Add(this.busUnidadMaterial);
+            this.ugbParent.Controls.Add(this.ultraLabel8);
+            this.ugbParent.Size = new System.Drawing.Size(253, 144);
+            this.ugbParent.Controls.SetChildIndex(this.ultraLabel8, 0);
+            this.ugbParent.Controls.SetChildIndex(this.busUnidadMaterial, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.checkHorizontal, 0);
             this.ugbParent.Controls.SetChildIndex(this.checkVertical, 0);
             this.ugbParent.Controls.SetChildIndex(this.txtHorizontal, 0);
             this.ugbParent.Controls.SetChildIndex(this.txtVertical, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ultraLabel8, 0);
-            this.ugbParent.Controls.SetChildIndex(this.busUnidadMaterial, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel1, 0);
             this.ugbParent.Controls.SetChildIndex(this.txtTotal, 0);
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(157, 133);
+            this.ubCancelar.Location = new System.Drawing.Point(169, 110);
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(76, 133);
+            this.ubAceptar.Location = new System.Drawing.Point(88, 110);
             // 
             // ilMain
             // 
@@ -331,7 +331,7 @@
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(122, 104);
+            this.txtTotal.Location = new System.Drawing.Point(153, 83);
             this.txtTotal.MaskInput = "nnnnnn.nn";
             this.txtTotal.MaxValue = new decimal(new int[] {
             90000000,
@@ -352,10 +352,10 @@
             // 
             // ultraLabel1
             // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel1.Appearance = appearance3;
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel1.Appearance = appearance1;
             this.ultraLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel1.Location = new System.Drawing.Point(76, 104);
+            this.ultraLabel1.Location = new System.Drawing.Point(102, 87);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(49, 23);
             this.ultraLabel1.TabIndex = 109;
@@ -364,26 +364,26 @@
             // busUnidadMaterial
             // 
             this.busUnidadMaterial.BackColor = System.Drawing.Color.Transparent;
-            this.busUnidadMaterial.Location = new System.Drawing.Point(6, 22);
+            this.busUnidadMaterial.Location = new System.Drawing.Point(83, 6);
             this.busUnidadMaterial.Name = "busUnidadMaterial";
-            this.busUnidadMaterial.Size = new System.Drawing.Size(219, 28);
+            this.busUnidadMaterial.Size = new System.Drawing.Size(161, 28);
             this.busUnidadMaterial.TabIndex = 108;
             this.busUnidadMaterial.Search += new System.EventHandler(this.busUnidadMaterial_Search);
             // 
             // ultraLabel8
             // 
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel8.Appearance = appearance4;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel8.Appearance = appearance2;
             this.ultraLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel8.Location = new System.Drawing.Point(6, 6);
+            this.ultraLabel8.Location = new System.Drawing.Point(16, 11);
             this.ultraLabel8.Name = "ultraLabel8";
             this.ultraLabel8.Size = new System.Drawing.Size(86, 23);
             this.ultraLabel8.TabIndex = 107;
-            this.ultraLabel8.Text = "Unidad";
+            this.ultraLabel8.Text = "UNIDAD";
             // 
             // txtVertical
             // 
-            this.txtVertical.Location = new System.Drawing.Point(122, 77);
+            this.txtVertical.Location = new System.Drawing.Point(153, 56);
             this.txtVertical.MaskInput = "nnnnnn.nn";
             this.txtVertical.MaxValue = new decimal(new int[] {
             90000000,
@@ -404,7 +404,7 @@
             // 
             // txtHorizontal
             // 
-            this.txtHorizontal.Location = new System.Drawing.Point(122, 51);
+            this.txtHorizontal.Location = new System.Drawing.Point(153, 30);
             this.txtHorizontal.MaskInput = "nnnnnn.nn";
             this.txtHorizontal.MaxValue = new decimal(new int[] {
             90000000,
@@ -425,29 +425,29 @@
             // 
             // checkVertical
             // 
-            this.checkVertical.Location = new System.Drawing.Point(5, 78);
+            this.checkVertical.Location = new System.Drawing.Point(16, 57);
             this.checkVertical.Name = "checkVertical";
             this.checkVertical.Size = new System.Drawing.Size(120, 20);
             this.checkVertical.TabIndex = 104;
-            this.checkVertical.Text = "Vertical";
+            this.checkVertical.Text = "VERTICAL";
             this.checkVertical.CheckedChanged += new System.EventHandler(this.checkVertical_CheckedChanged);
             // 
             // checkHorizontal
             // 
-            this.checkHorizontal.Location = new System.Drawing.Point(5, 52);
+            this.checkHorizontal.Location = new System.Drawing.Point(16, 31);
             this.checkHorizontal.Name = "checkHorizontal";
             this.checkHorizontal.Size = new System.Drawing.Size(120, 20);
             this.checkHorizontal.TabIndex = 103;
-            this.checkHorizontal.Text = "Horizontal";
+            this.checkHorizontal.Text = "HORIZONTAL";
             this.checkHorizontal.CheckedChanged += new System.EventHandler(this.checkHorizontal_CheckedChanged);
             // 
             // FrmCalculoMetros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(255, 208);
+            this.ClientSize = new System.Drawing.Size(269, 182);
             this.Name = "FrmCalculoMetros";
-            this.Text = "FrmCalculoMetros";
+            this.Text = "CÁLCULO METROS";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
             this.ugbParent.ResumeLayout(false);
             this.ugbParent.PerformLayout();

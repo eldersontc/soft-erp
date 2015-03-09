@@ -76,6 +76,8 @@
 
     <property name="NumeroCambios" type="int"/>
 
+    <property name="IncluirEnPrespuesto" type="boolean"/>
+
     
 
     <property name="MedidaAnchoCaja" type="decimal"/>
