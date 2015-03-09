@@ -322,17 +322,47 @@ namespace Soft.Inventario.Win
             Mostrar();
         }
 
+        private void CrearItems(OrdenProduccion ordenProduccion) 
+        {
+            dynamic itemPresupuesto =  HelperNHibernate.GetEntityByID("ItemPresupuesto", ordenProduccion.IDItemPresupuesto);
+            dynamic cotizacion = HelperNHibernate.GetEntityByID("Cotizacion", itemPresupuesto.IDCotizacion);
+            foreach (dynamic itemCotizacion in cotizacion.Items)
+            {
+                if (itemCotizacion.Material != null) 
+                {
+                    ItemSalidaInventario item = SalidaInventario.AddItem();
+                    item.Producto = itemCotizacion.Material;
+                    item.Unidad = item.Producto.UnidadBase.Unidad;
+                    item.Cantidad = itemCotizacion.CantidadMaterial;
+                    item.Precio = itemCotizacion.CostoMaterial / itemCotizacion.CantidadMaterial;
+                    item.Factor = item.Producto.UnidadBase.FactorConversion;
+                }
+                foreach (dynamic itemServicio in itemCotizacion.Servicios)
+                {
+                    if (itemServicio.Material != null) 
+                    {
+                        ItemSalidaInventario item = SalidaInventario.AddItem();
+                        item.Producto = itemServicio.Material;
+                        item.Unidad = itemServicio.UnidadMaterial.Unidad;
+                        item.Cantidad = itemServicio.CantidadMaterial;
+                        item.Precio = itemServicio.CostoMaterial / itemServicio.CantidadMaterial;
+                        item.Factor = item.Producto.UnidadBase.FactorConversion;
+                    }
+                }
+            }
+        }
+
         private void busOrdenProduccion_Search(object sender, EventArgs e)
         {
             try
             {
-                FrmSelectedEntity FrmSeleccionarMoneda = new FrmSelectedEntity();
-                OrdenProduccion op = (OrdenProduccion)FrmSeleccionarMoneda.GetSelectedEntity(typeof(OrdenProduccion), "Selección de Ordenes de Producción");
+                FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+                OrdenProduccion op = (OrdenProduccion)FrmSeleccionar.GetSelectedEntity(typeof(OrdenProduccion), "Selección de Ordenes de Producción", All: true);
                 if (op != null)
                 {
                     SalidaInventario.OrdenProduccion = op;
+                    CrearItems(SalidaInventario.OrdenProduccion);
                 }
-
             }
             catch (Exception ex)
             {
@@ -354,6 +384,5 @@ namespace Soft.Inventario.Win
             Mostrar();
 
         }
-
     }
 }
