@@ -16,8 +16,10 @@ namespace Soft.Ventas.Entidades
             RequerimientosMaterial = new List<RequerimientoMaterialItemCotizacion>();
             RequerimientosServicio = new List<RequerimientoServicioItemCotizacion>();
 
-
+            IncluirEnPrespuesto = true;
         }
+
+        public virtual bool IncluirEnPrespuesto { get; set; }
 
         public virtual IList<ItemCotizacionServicio> Servicios { get; set; }
         public virtual IList<RequerimientoMaterialItemCotizacion> RequerimientosMaterial { get; set; }
