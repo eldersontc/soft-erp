@@ -63,6 +63,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Compilacion\Soft.Inventario.Entidades.dll</HintPath>
     </Reference>
+    <Reference Include="Soft.Produccion.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Soft.Produccion.Entidades.dll</HintPath>
+    </Reference>
     <Reference Include="Soft.Reporte.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Compilacion\Soft.Reporte.Entidades.dll</HintPath>
@@ -138,6 +142,12 @@
     <Compile Include="FrmMaquina.Designer.cs">
       <DependentUpon>FrmMaquina.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMetodoImpresion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMetodoImpresion.Designer.cs">
+      <DependentUpon>FrmMetodoImpresion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmModalidadCredito.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +165,12 @@
     </Compile>
     <Compile Include="FrmPresupuesto.Designer.cs">
       <DependentUpon>FrmPresupuesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPresupuestoAceptacionCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPresupuestoAceptacionCliente.Designer.cs">
+      <DependentUpon>FrmPresupuestoAceptacionCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmRelacionMedidas.cs">
       <SubType>Form</SubType>
@@ -236,6 +252,9 @@
     <EmbeddedResource Include="FrmMaquina.resx">
       <DependentUpon>FrmMaquina.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmMetodoImpresion.resx">
+      <DependentUpon>FrmMetodoImpresion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmModalidadCredito.resx">
       <DependentUpon>FrmModalidadCredito.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPresupuesto.resx">
       <DependentUpon>FrmPresupuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPresupuestoAceptacionCliente.resx">
+      <DependentUpon>FrmPresupuestoAceptacionCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRelacionMedidas.resx">
       <DependentUpon>FrmRelacionMedidas.cs</DependentUpon>
@@ -284,6 +306,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\green_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pages.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sterling_pound_currency_sign.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
