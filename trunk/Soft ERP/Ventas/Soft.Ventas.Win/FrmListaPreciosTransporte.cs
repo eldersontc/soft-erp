@@ -11,6 +11,7 @@ using Soft.Ventas.Entidades;
 using Infragistics.Win.UltraWinGrid;
 using Soft.Entities;
 using Soft.Inventario.Entidades;
+using Infragistics.Win;
 
 namespace Soft.Ventas.Win
 {
@@ -24,7 +25,7 @@ namespace Soft.Ventas.Win
         //Constantes
         const String colOrigen = "Origen";
         const String colDestino = "Destino";
-        const String colUnidad = "Unidad";
+        const String colTipoVehiculo = "Tipo Vehículo";
         const String colDesde = "Desde";
         const String colHasta = "Hasta";
         const String colDescripcion = "Descripción";
@@ -53,13 +54,22 @@ namespace Soft.Ventas.Win
             column = columns.Columns.Add(colDestino);
             column.DataType = typeof(String);
 
-            column = columns.Columns.Add(colUnidad);
+            column = columns.Columns.Add(colTipoVehiculo);
             column.DataType = typeof(String);
 
             ugDistritos.DataSource = columns;
             ugDistritos.DisplayLayout.Bands[0].Columns[colOrigen].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.EditButton;
             ugDistritos.DisplayLayout.Bands[0].Columns[colDestino].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.EditButton;
-            ugDistritos.DisplayLayout.Bands[0].Columns[colUnidad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.EditButton;
+            
+            ValueList List = new ValueList();
+            List.ValueListItems.Add("AUTOMÓVIL", "AUTOMÓVIL");
+            List.ValueListItems.Add("MOTOCICLETA", "MOTOCICLETA");
+            List.ValueListItems.Add("CAMIÓN PEQUEÑO", "CAMIÓN PEQUEÑO");
+            List.ValueListItems.Add("CAMIÓN MEDIANO", "CAMIÓN MEDIANO");
+            List.ValueListItems.Add("CAMIÓN GRANDE", "CAMIÓN GRANDE");
+
+            ugDistritos.DisplayLayout.Bands[0].Columns[colTipoVehiculo].ValueList = List;
+            ugDistritos.DisplayLayout.Bands[0].Columns[colTipoVehiculo].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
             MapKeys(ref ugDistritos);
 
             //Escalas
@@ -111,7 +121,7 @@ namespace Soft.Ventas.Win
             ItemListaPreciosTransporte Item = (ItemListaPreciosTransporte)Row.Tag;
             Row.Cells[colOrigen].Value = (Item.Origen != null) ? Item.Origen.Nombre : "";
             Row.Cells[colDestino].Value = (Item.Destino != null) ? Item.Destino.Nombre : "";
-            Row.Cells[colUnidad].Value = (Item.Unidad != null) ? Item.Unidad.Nombre : "";
+            Row.Cells[colTipoVehiculo].Value = Item.TipoVehiculo;
             MostrarEscalas(Item);
         }
 
@@ -217,12 +227,6 @@ namespace Soft.Ventas.Win
                     FrmSelectedEntity FrmSeleccionarDestino = new FrmSelectedEntity();
                     Item.Destino = (Distrito)FrmSeleccionarDestino.GetSelectedEntity(typeof(Distrito), "Distrito");
                     break;
-                case colUnidad:
-                    FrmSelectedEntity FrmSeleccionarUnidad = new FrmSelectedEntity();
-                    Item.Unidad = (Unidad)FrmSeleccionarUnidad.GetSelectedEntity(typeof(Unidad), "Unidad");
-                    break;
-                default:
-                    break;
             }
             MostrarItem(e.Cell.Row);
         }
@@ -237,6 +241,21 @@ namespace Soft.Ventas.Win
         private void ugDistritos_ClickCell(object sender, ClickCellEventArgs e)
         {
            MostrarItem(e.Cell.Row);
+        }
+
+        private void ugDistritos_CellChange(object sender, CellEventArgs e)
+        {
+            ItemListaPreciosTransporte Item = (ItemListaPreciosTransporte)e.Cell.Row.Tag;
+            switch (e.Cell.Column.Key)
+            {
+                case colTipoVehiculo:
+                    Item.TipoVehiculo = e.Cell.Text;
+                    MostrarItem(e.Cell.Row);
+                    break;
+                default:
+                    break;
+            }
+            
         }
 
     }
