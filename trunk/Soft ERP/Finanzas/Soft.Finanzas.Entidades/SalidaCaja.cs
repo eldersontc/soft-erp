@@ -21,6 +21,8 @@ namespace Soft.Finanzas.Entidades
         public virtual decimal SubTotal { get; set; }
         public virtual decimal Impuesto { get; set; }
         public virtual decimal Total { get; set; }
+        public virtual string IDListaPreciosTransporte { get; set; }
+        public virtual string NombreListaPreciosTransporte { get; set; }
 
         public virtual TipoCaja TipoCaja { get { return (TipoCaja)TipoDocumento;} }
 

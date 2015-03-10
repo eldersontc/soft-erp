@@ -11,6 +11,14 @@
     <property name="Total"/>
     <property name="Observacion"/>
 
+    <many-to-one name="Departamento" class="Soft.Entities.Departamento" column="IDDepartamento" lazy="false"/>
+    <many-to-one name="Provincia" class="Soft.Entities.Provincia" column="IDProvincia" lazy="false"/>
+    <many-to-one name="DistritoOrigen" class="Soft.Entities.Distrito" column="IDDistritoOrigen" lazy="false"/>
+    <many-to-one name="DistritoDestino" class="Soft.Entities.Distrito" column="IDDistritoDestino" lazy="false"/>
+    <property name="Direccion"/>
+    <property name="TipoVehiculo"/>
+    <property name="EsTipoTransporte"/>
+
   </class>
 
 </hibernate-mapping>
