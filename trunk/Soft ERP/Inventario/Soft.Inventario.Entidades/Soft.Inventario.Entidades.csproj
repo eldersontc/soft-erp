@@ -39,6 +39,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Compilacion\Soft.Entities.dll</HintPath>
     </Reference>
+    <Reference Include="Soft.Produccion.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Soft.Produccion.Entidades.dll</HintPath>
+    </Reference>
     <Reference Include="Soft.Ventas.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Compilacion\Soft.Ventas.Entidades.dll</HintPath>
@@ -98,7 +102,9 @@
     <EmbeddedResource Include="Mappings Files\TipoDocumentoInventario.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings Files\EntradaInventario.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\EntradaInventario.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings Files\ItemEntradaInventario.hbm.xml" />
