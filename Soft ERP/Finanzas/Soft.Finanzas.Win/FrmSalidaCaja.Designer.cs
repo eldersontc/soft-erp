@@ -29,23 +29,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSalidaCaja));
-            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.tabItems = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ubNuevoItemTransporte = new Infragistics.Win.Misc.UltraButton();
             this.ugItems = new Infragistics.Win.UltraWinGrid.UltraGrid();
@@ -471,8 +471,8 @@
             // 
             // lblNumeracion
             // 
-            appearance29.BackColor = System.Drawing.Color.Transparent;
-            this.lblNumeracion.Appearance = appearance29;
+            appearance15.BackColor = System.Drawing.Color.Transparent;
+            this.lblNumeracion.Appearance = appearance15;
             this.lblNumeracion.Location = new System.Drawing.Point(376, 20);
             this.lblNumeracion.Name = "lblNumeracion";
             this.lblNumeracion.Size = new System.Drawing.Size(130, 23);
@@ -490,8 +490,8 @@
             // 
             // lblTipoDocumento
             // 
-            appearance28.BackColor = System.Drawing.Color.Transparent;
-            this.lblTipoDocumento.Appearance = appearance28;
+            appearance14.BackColor = System.Drawing.Color.Transparent;
+            this.lblTipoDocumento.Appearance = appearance14;
             this.lblTipoDocumento.Location = new System.Drawing.Point(20, 21);
             this.lblTipoDocumento.Name = "lblTipoDocumento";
             this.lblTipoDocumento.Size = new System.Drawing.Size(130, 23);
@@ -501,7 +501,7 @@
             // ssMoneda
             // 
             this.ssMoneda.BackColor = System.Drawing.Color.Transparent;
-            this.ssMoneda.Location = new System.Drawing.Point(485, 40);
+            this.ssMoneda.Location = new System.Drawing.Point(485, 42);
             this.ssMoneda.Name = "ssMoneda";
             this.ssMoneda.Size = new System.Drawing.Size(106, 28);
             this.ssMoneda.TabIndex = 67;
@@ -509,10 +509,10 @@
             // 
             // lblMoneda
             // 
-            appearance26.BackColor = System.Drawing.Color.Transparent;
-            this.lblMoneda.Appearance = appearance26;
+            appearance12.BackColor = System.Drawing.Color.Transparent;
+            this.lblMoneda.Appearance = appearance12;
             this.lblMoneda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblMoneda.Location = new System.Drawing.Point(376, 46);
+            this.lblMoneda.Location = new System.Drawing.Point(376, 48);
             this.lblMoneda.Name = "lblMoneda";
             this.lblMoneda.Size = new System.Drawing.Size(130, 23);
             this.lblMoneda.TabIndex = 66;
@@ -528,8 +528,8 @@
             // 
             // lblFechaCreacion
             // 
-            appearance30.BackColor = System.Drawing.Color.Transparent;
-            this.lblFechaCreacion.Appearance = appearance30;
+            appearance16.BackColor = System.Drawing.Color.Transparent;
+            this.lblFechaCreacion.Appearance = appearance16;
             this.lblFechaCreacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblFechaCreacion.Location = new System.Drawing.Point(530, 21);
             this.lblFechaCreacion.Name = "lblFechaCreacion";
@@ -566,8 +566,8 @@
             // 
             // lblResponsable
             // 
-            appearance24.BackColor = System.Drawing.Color.Transparent;
-            this.lblResponsable.Appearance = appearance24;
+            appearance10.BackColor = System.Drawing.Color.Transparent;
+            this.lblResponsable.Appearance = appearance10;
             this.lblResponsable.Location = new System.Drawing.Point(20, 89);
             this.lblResponsable.Name = "lblResponsable";
             this.lblResponsable.Size = new System.Drawing.Size(130, 23);
@@ -576,8 +576,8 @@
             // 
             // lblCaja
             // 
-            appearance25.BackColor = System.Drawing.Color.Transparent;
-            this.lblCaja.Appearance = appearance25;
+            appearance11.BackColor = System.Drawing.Color.Transparent;
+            this.lblCaja.Appearance = appearance11;
             this.lblCaja.Location = new System.Drawing.Point(20, 66);
             this.lblCaja.Name = "lblCaja";
             this.lblCaja.Size = new System.Drawing.Size(130, 23);
@@ -586,8 +586,8 @@
             // 
             // lblSocioNegocio
             // 
-            appearance27.BackColor = System.Drawing.Color.Transparent;
-            this.lblSocioNegocio.Appearance = appearance27;
+            appearance13.BackColor = System.Drawing.Color.Transparent;
+            this.lblSocioNegocio.Appearance = appearance13;
             this.lblSocioNegocio.Location = new System.Drawing.Point(20, 42);
             this.lblSocioNegocio.Name = "lblSocioNegocio";
             this.lblSocioNegocio.Size = new System.Drawing.Size(130, 23);
@@ -605,8 +605,8 @@
             // 
             // lblObservacion
             // 
-            appearance19.BackColor = System.Drawing.Color.Transparent;
-            this.lblObservacion.Appearance = appearance19;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.lblObservacion.Appearance = appearance3;
             this.lblObservacion.Location = new System.Drawing.Point(21, 389);
             this.lblObservacion.Name = "lblObservacion";
             this.lblObservacion.Size = new System.Drawing.Size(130, 23);
@@ -615,8 +615,8 @@
             // 
             // ugbCosto
             // 
-            appearance20.BackColor = System.Drawing.Color.Transparent;
-            this.ugbCosto.Appearance = appearance20;
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.ugbCosto.Appearance = appearance4;
             this.ugbCosto.Controls.Add(this.uneTotal);
             this.ugbCosto.Controls.Add(this.uneImpuesto);
             this.ugbCosto.Controls.Add(this.uneSubTotal);
@@ -660,8 +660,8 @@
             // 
             // lblTotal
             // 
-            appearance21.BackColor = System.Drawing.Color.Transparent;
-            this.lblTotal.Appearance = appearance21;
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotal.Appearance = appearance5;
             this.lblTotal.Location = new System.Drawing.Point(13, 82);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(101, 23);
@@ -670,8 +670,8 @@
             // 
             // lblImpuesto
             // 
-            appearance22.BackColor = System.Drawing.Color.Transparent;
-            this.lblImpuesto.Appearance = appearance22;
+            appearance6.BackColor = System.Drawing.Color.Transparent;
+            this.lblImpuesto.Appearance = appearance6;
             this.lblImpuesto.Location = new System.Drawing.Point(13, 58);
             this.lblImpuesto.Name = "lblImpuesto";
             this.lblImpuesto.Size = new System.Drawing.Size(101, 23);
@@ -680,8 +680,8 @@
             // 
             // lblSubTotal
             // 
-            appearance23.BackColor = System.Drawing.Color.Transparent;
-            this.lblSubTotal.Appearance = appearance23;
+            appearance7.BackColor = System.Drawing.Color.Transparent;
+            this.lblSubTotal.Appearance = appearance7;
             this.lblSubTotal.Location = new System.Drawing.Point(13, 35);
             this.lblSubTotal.Name = "lblSubTotal";
             this.lblSubTotal.Size = new System.Drawing.Size(101, 23);
@@ -714,10 +714,10 @@
             // 
             // lblSaldoActual
             // 
-            appearance18.BackColor = System.Drawing.Color.Transparent;
-            this.lblSaldoActual.Appearance = appearance18;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.lblSaldoActual.Appearance = appearance2;
             this.lblSaldoActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblSaldoActual.Location = new System.Drawing.Point(376, 71);
+            this.lblSaldoActual.Location = new System.Drawing.Point(376, 73);
             this.lblSaldoActual.Name = "lblSaldoActual";
             this.lblSaldoActual.Size = new System.Drawing.Size(130, 23);
             this.lblSaldoActual.TabIndex = 72;
@@ -726,7 +726,7 @@
             // uneSaldoActual
             // 
             this.uneSaldoActual.Enabled = false;
-            this.uneSaldoActual.Location = new System.Drawing.Point(485, 62);
+            this.uneSaldoActual.Location = new System.Drawing.Point(485, 64);
             this.uneSaldoActual.Name = "uneSaldoActual";
             this.uneSaldoActual.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
             this.uneSaldoActual.Size = new System.Drawing.Size(100, 21);
@@ -734,10 +734,10 @@
             // 
             // ultraLabel1
             // 
-            appearance17.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel1.Appearance = appearance17;
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel1.Appearance = appearance1;
             this.ultraLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel1.Location = new System.Drawing.Point(376, 89);
+            this.ultraLabel1.Location = new System.Drawing.Point(376, 91);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(130, 23);
             this.ultraLabel1.TabIndex = 73;
@@ -746,7 +746,7 @@
             // ssLPTransporte
             // 
             this.ssLPTransporte.BackColor = System.Drawing.Color.Transparent;
-            this.ssLPTransporte.Location = new System.Drawing.Point(485, 84);
+            this.ssLPTransporte.Location = new System.Drawing.Point(485, 86);
             this.ssLPTransporte.Name = "ssLPTransporte";
             this.ssLPTransporte.Size = new System.Drawing.Size(215, 28);
             this.ssLPTransporte.TabIndex = 74;

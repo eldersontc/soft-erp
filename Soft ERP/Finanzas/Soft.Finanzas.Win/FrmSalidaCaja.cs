@@ -27,6 +27,7 @@ namespace Soft.Finanzas.Win
         #region "Propiedades"
 
         const String colCodigo = "Código";
+        const String colOP = "OP";
         const String colDescripcion = "Descripción";
         const String colCantidad = "Cantidad";
         const String colPrecio = "Precio";
@@ -53,6 +54,9 @@ namespace Soft.Finanzas.Win
             column = columns.Columns.Add(colCodigo);
             column.DataType = typeof(string);
 
+            column = columns.Columns.Add(colOP);
+            column.DataType = typeof(string);
+
             column = columns.Columns.Add(colDescripcion);
             column.DataType = typeof(string);
 
@@ -69,6 +73,8 @@ namespace Soft.Finanzas.Win
             column.DataType = typeof(String);
 
             ugItems.DataSource = columns;
+            ugItems.DisplayLayout.Bands[0].Columns[colOP].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Button;
+            ugItems.DisplayLayout.Bands[0].Columns[colOP].ButtonDisplayStyle = Infragistics.Win.UltraWinGrid.ButtonDisplayStyle.Always;
             ugItems.DisplayLayout.Bands[0].Columns[colDescripcion].Width = 250;
             ugItems.DisplayLayout.Bands[0].Columns[colDescripcion].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.EditButton;
             ugItems.DisplayLayout.Bands[0].Columns[colCantidad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
@@ -88,6 +94,7 @@ namespace Soft.Finanzas.Win
                 ssTipoDocumento.Text = SalidaCaja.TipoDocumento.Descripcion;
                 txtNumeracion.Enabled = (SalidaCaja.TipoDocumento.NumeracionAutomatica) ? false : true;
                 lblSocioNegocio.Text = SalidaCaja.TipoDocumento.TipoSocioDeNegocio;
+                ssSocioNegocio.Enabled = (lblSocioNegocio.Text.Equals("Ninguno")) ? false : true;
             }
             if (SalidaCaja.Caja != null) {
                 ssCaja.Text = SalidaCaja.Caja.Nombre;
@@ -121,6 +128,7 @@ namespace Soft.Finanzas.Win
             ItemSalidaCaja Item = (ItemSalidaCaja)Row.Tag;
 
             Row.Cells[colCodigo].Value = Item.Codigo;
+            Row.Cells[colOP].Value = Item.NumeracionOrdenProduccion;
             Row.Cells[colDescripcion].Value = Item.Descripcion;
             Row.Cells[colPrecio].Value = Item.Precio;
             Row.Cells[colCantidad].Value = Item.Cantidad;
@@ -146,6 +154,7 @@ namespace Soft.Finanzas.Win
             txtNumeracion.Enabled = false;
             udtFechaCreacion.Enabled = false;
             ubNuevoItem.Enabled = false;
+            ubNuevoItemTransporte.Enabled = false;
             ubEliminarItem.Enabled = false;
             txtObservacion.Enabled = false;
         }
@@ -388,17 +397,21 @@ namespace Soft.Finanzas.Win
         private void ugItems_ClickCellButton(object sender, CellEventArgs e)
         {
             ItemSalidaCaja Item = (ItemSalidaCaja)e.Cell.Row.Tag;
-            if (Item.EsTipoTransporte) 
+            if (e.Cell.Column.Key == colOP) 
             {
-                switch (e.Cell.Column.Key)
-                {
-                    case colDescripcion:
-                        FrmSeleccionarDireccion FrmSeleccionar = new FrmSeleccionarDireccion();
-                        FrmSeleccionar.ObtenerItemSalidaCaja(ref Item);
-                        CalcularPrecio(Item);
-                        Mostrar();
-                        break;
-                }
+                FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+                dynamic OrdenProduccion = FrmSeleccionar.GetSelectedEntity("Soft.Produccion.Entidades", "OrdenProduccion", "Orden de Producción");
+                Item.IDOrdenProduccion = OrdenProduccion.ID;
+                Item.NumeracionOrdenProduccion = OrdenProduccion.Numeracion;
+                MostrarItem(e.Cell.Row);
+            }
+            if (Item.EsTipoTransporte && e.Cell.Column.Key == colDescripcion) 
+            {
+                FrmSeleccionarDireccion FrmSeleccionar = new FrmSeleccionarDireccion();
+                FrmSeleccionar.ObtenerItemSalidaCaja(ref Item);
+                CalcularPrecio(Item);
+                MostrarItem(e.Cell.Row);
+                MostrarTotales();
             }
         }
 
