@@ -384,6 +384,7 @@
             this.ugDistritos.Size = new System.Drawing.Size(445, 151);
             this.ugDistritos.TabIndex = 0;
             this.ugDistritos.Text = "ultraGrid1";
+            this.ugDistritos.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ugDistritos_CellChange);
             this.ugDistritos.ClickCellButton += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ugDistritos_ClickCellButton);
             this.ugDistritos.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.ugDistritos_AfterSelectChange);
             this.ugDistritos.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.ugDistritos_ClickCell);

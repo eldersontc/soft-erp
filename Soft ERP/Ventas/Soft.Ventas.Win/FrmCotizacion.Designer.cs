@@ -33,6 +33,7 @@
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
@@ -116,7 +117,6 @@
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance62 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             this.tabItems = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.txtCostoServicio = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.btnModificar = new Infragistics.Win.Misc.UltraButton();
@@ -125,6 +125,7 @@
             this.ubNuevoServicio = new Infragistics.Win.Misc.UltraButton();
             this.ultraLabel17 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ultraLabel28 = new Infragistics.Win.Misc.UltraLabel();
             this.uneCostoMaquina = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.GruposTiras = new Infragistics.Win.Misc.UltraGroupBox();
             this.txtImpresoRetiraColor = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
@@ -272,7 +273,6 @@
             this.ultraButton1 = new Infragistics.Win.Misc.UltraButton();
             this.ultraGroupBox2 = new Infragistics.Win.Misc.UltraGroupBox();
             this.ultraGroupBox4 = new Infragistics.Win.Misc.UltraGroupBox();
-            this.ultraLabel28 = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             this.tabItems.SuspendLayout();
@@ -815,6 +815,17 @@
             this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(860, 271);
+            // 
+            // ultraLabel28
+            // 
+            appearance6.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel28.Appearance = appearance6;
+            this.ultraLabel28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ultraLabel28.Location = new System.Drawing.Point(257, 190);
+            this.ultraLabel28.Name = "ultraLabel28";
+            this.ultraLabel28.Size = new System.Drawing.Size(47, 15);
+            this.ultraLabel28.TabIndex = 99;
+            this.ultraLabel28.Text = "TOTAL";
             // 
             // uneCostoMaquina
             // 
@@ -2624,17 +2635,6 @@
             this.ultraGroupBox4.Size = new System.Drawing.Size(1005, 334);
             this.ultraGroupBox4.TabIndex = 83;
             this.ultraGroupBox4.Text = "ITEMS";
-            // 
-            // ultraLabel28
-            // 
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel28.Appearance = appearance6;
-            this.ultraLabel28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel28.Location = new System.Drawing.Point(257, 190);
-            this.ultraLabel28.Name = "ultraLabel28";
-            this.ultraLabel28.Size = new System.Drawing.Size(47, 15);
-            this.ultraLabel28.TabIndex = 99;
-            this.ultraLabel28.Text = "TOTAL";
             // 
             // FrmCotizacion
             // 
