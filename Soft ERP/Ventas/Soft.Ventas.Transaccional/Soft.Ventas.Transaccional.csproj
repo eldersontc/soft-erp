@@ -47,6 +47,14 @@
     <Reference Include="Soft.Exceptions">
       <HintPath>..\..\Compilacion\Soft.Exceptions.dll</HintPath>
     </Reference>
+    <Reference Include="Soft.Inventario.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Soft.Inventario.Entidades.dll</HintPath>
+    </Reference>
+    <Reference Include="Soft.Seguridad.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Soft.Seguridad.Entidades.dll</HintPath>
+    </Reference>
     <Reference Include="Soft.Win, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <ExecutableExtension>.exe</ExecutableExtension>
@@ -86,6 +94,9 @@
     <Compile Include="CrearPresupuestoNumeracionFinal.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CrearRendicionCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CrearSolicitudCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +115,7 @@
     <Compile Include="EliminarPresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="EliminarRendicionCotizacion.cs" />
     <Compile Include="EnviarClientePresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>
