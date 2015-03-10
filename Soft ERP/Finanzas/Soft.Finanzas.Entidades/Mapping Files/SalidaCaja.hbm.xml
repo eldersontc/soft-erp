@@ -11,6 +11,9 @@
     <property name="Impuesto"/>
     <property name="Total"/>
 
+    <property name="IDListaPreciosTransporte"/>
+    <property name="NombreListaPreciosTransporte"/>
+    
     <many-to-one name="TipoDocumento" class="Soft.Finanzas.Entidades.TipoCaja" column="IDTipoDocumento" lazy="false"/>
     <many-to-one name="SocioNegocio" class="Soft.Entities.SocioNegocio" column="IDSocioNegocio" lazy="false"/>
     <many-to-one name="Responsable" class="Soft.Entities.SocioNegocio" column="IDResponsable" lazy="false"/>
