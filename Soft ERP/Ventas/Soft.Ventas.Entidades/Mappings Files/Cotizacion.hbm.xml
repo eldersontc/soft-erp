@@ -19,6 +19,7 @@
     <property name="IDSolicitudCotizacion" type="string"/>
     <property name="MuestraPrecioItemEnPresupuesto" type="bool"/>
     <property name="OcultaPrecioEnPresupuesto" type="bool"/>
+    <property name="EstadoRendicion"/>
 
     <many-to-one name="TipoDocumento" class="Soft.Ventas.Entidades.TipoCotizacion" column="IDTipoDocumento" insert="true" update="true" lazy="false"/>
     <many-to-one name="Cliente" class="Soft.Entities.SocioNegocio" column="IDCliente" insert="true" update="true" lazy="false"/>

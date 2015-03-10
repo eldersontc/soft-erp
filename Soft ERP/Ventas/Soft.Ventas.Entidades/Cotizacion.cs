@@ -17,6 +17,7 @@ namespace Soft.Ventas.Entidades
             {
                 FechaCreacion = DateTime.Now;
                 EstadoAprobacion = "PENDIENTE";
+                EstadoRendicion = "PENDIENTE";
             }
         }
 
@@ -34,6 +35,7 @@ namespace Soft.Ventas.Entidades
         public virtual ListaCostosMaquina ListaCostosMaquina { get; set; }
         public virtual ListaPreciosExistencia ListaPreciosExistencia { get; set; }
         public virtual ListaPreciosTransporte ListaPreciosTransporte { get; set; }
+        public virtual string EstadoRendicion { get; set; }
 
 
 

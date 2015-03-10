@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Ventas.Entidades.RendicionCotizacion, Soft.Ventas.Entidades">
+
+    <id name="ID" unsaved-value="0"/>
+    <property name="FechaCreacion"/>
+    <property name="IDCotizacion"/>
+    <property name="NumeroCotizacion"/>
+    <property name="TotalCotizacion"/>
+    <property name="TotalReal"/>
+    
+    <bag name="Items" cascade="all-delete-orphan" order-by="Orden" lazy="false">
+      <key column="IDRendicionCotizacion"/>
+      <one-to-many class="Soft.Ventas.Entidades.ItemRendicionCotizacion"/>
+    </bag>
+
+  </class>
+</hibernate-mapping>

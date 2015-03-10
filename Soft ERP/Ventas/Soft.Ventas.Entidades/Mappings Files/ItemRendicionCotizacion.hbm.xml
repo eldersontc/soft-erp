@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" >
+
+  <class name="Soft.Ventas.Entidades.ItemRendicionCotizacion, Soft.Ventas.Entidades">
+
+    <id name="ID" unsaved-value="0"/>
+    <property name="Codigo"/>
+    <property name="Descripcion"/>
+    <property name="Unidad"/>
+    <property name="CantidadCotizacion"/>
+    <property name="PrecioCotizacion"/>
+    <property name="TotalCotizacion"/>
+    <property name="CantidadReal"/>
+    <property name="PrecioReal"/>
+    <property name="TotalReal"/>
+
+  </class>
+
+</hibernate-mapping>
