@@ -7,7 +7,7 @@
 
     <many-to-one name="Origen" class="Soft.Entities.Distrito" column="IDOrigen" insert="true" update="true" lazy="false"/>
     <many-to-one name="Destino" class="Soft.Entities.Distrito" column="IDDestino" insert="true" update="true" lazy="false"/>
-    <many-to-one name="Unidad" class="Soft.Inventario.Entidades.Unidad" column="IDUnidad" insert="true" update="true" lazy="false"/>
+    <property name="TipoVehiculo"/>    
 
     <bag name="Escalas" cascade="all-delete-orphan" order-by="Orden" lazy="false">
       <key column="IDItemListaPreciosTransporte"/>

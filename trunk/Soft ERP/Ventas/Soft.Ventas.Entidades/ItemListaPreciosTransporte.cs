@@ -16,7 +16,7 @@ namespace Soft.Ventas.Entidades
 
         public virtual Distrito Origen { get; set; }
         public virtual Distrito Destino { get; set; }
-        public virtual Unidad Unidad { get; set; }
+        public virtual string TipoVehiculo { get; set; }
         public virtual IList<EscalaListaPreciosTransporte> Escalas { get; set; }
 
         public virtual EscalaListaPreciosTransporte AddEscala()
