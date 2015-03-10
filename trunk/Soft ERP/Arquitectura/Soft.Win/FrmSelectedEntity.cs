@@ -66,6 +66,55 @@ namespace Soft.Win
             }
         }
 
+        public Parent GetSelectedEntity(String Assembly,String Class, String NamePanel, String Filter = "", bool All = false)
+        {
+            try
+            {
+                Parent SelectedEntity = null;
+                ConfigureColumns(NamePanel, Filter);
+                if (ugEntity.Rows.Count == 1)
+                {
+                    if (All)
+                    {
+                        SelectedEntity = HelperNHibernate.GetEntityByID(Class, Convert.ToString(ugEntity.Rows[0].Cells["ID"].Value));
+                    }
+                    else
+                    {
+                        Type Type_;
+                        Assembly Assembly_;
+                        Assembly_ = System.Reflection.Assembly.Load(Assembly);
+                        Type_ = Assembly_.GetType(String.Format("{0}.{1}", Assembly, Class));
+                        SelectedEntity = AsignValuesToParent(Type_, ugEntity.Rows[0]);
+                    }
+                    return SelectedEntity;
+                }
+                else
+                {
+                    ShowDialog();
+                }
+                if (mAceptar & ugEntity.ActiveRow != null && !ugEntity.ActiveRow.IsFilterRow)
+                {
+                    if (All)
+                    {
+                        SelectedEntity = HelperNHibernate.GetEntityByID(Class, Convert.ToString(ugEntity.ActiveRow.Cells["ID"].Value));
+                    }
+                    else
+                    {
+                        Type Type_;
+                        Assembly Assembly_;
+                        Assembly_ = System.Reflection.Assembly.Load(Assembly);
+                        Type_ = Assembly_.GetType(String.Format("{0}.{1}", Assembly, Class));
+                        SelectedEntity = AsignValuesToParent(Type_, ugEntity.ActiveRow);
+                    }
+                }
+                return SelectedEntity;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public Collection GetSelectedsEntities(Type Type, String NamePanel, String Filter = "")
         {
             try
