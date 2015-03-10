@@ -22,6 +22,8 @@ namespace Soft.Finanzas.Entidades
         public virtual Distrito DistritoDestino { get; set; }
         public virtual string Direccion { get; set; }
         public virtual string TipoVehiculo { get; set; }
+        public virtual string IDOrdenProduccion { get; set; }
+        public virtual string NumeracionOrdenProduccion { get; set; }
 
         private decimal Total_;
         public virtual decimal Total { 

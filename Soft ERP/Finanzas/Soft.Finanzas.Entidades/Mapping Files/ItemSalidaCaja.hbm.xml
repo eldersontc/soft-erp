@@ -10,6 +10,8 @@
     <property name="Precio"/>
     <property name="Total"/>
     <property name="Observacion"/>
+    <property name="IDOrdenProduccion"/>
+    <property name="NumeracionOrdenProduccion"/>
 
     <many-to-one name="Departamento" class="Soft.Entities.Departamento" column="IDDepartamento" lazy="false"/>
     <many-to-one name="Provincia" class="Soft.Entities.Provincia" column="IDProvincia" lazy="false"/>
