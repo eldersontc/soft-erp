@@ -178,6 +178,12 @@
     <Compile Include="FrmRelacionMedidas.Designer.cs">
       <DependentUpon>FrmRelacionMedidas.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmRendicionCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRendicionCotizacion.Designer.cs">
+      <DependentUpon>FrmRendicionCotizacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSolicitudCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,6 +215,9 @@
       <DependentUpon>FrmTipoUnidad.cs</DependentUpon>
     </Compile>
     <Compile Include="GenerarCotizacionDesdeSolicitud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerarRendicionCotizacionDesdeCotizacion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GenerarSolicitudDesdePlantilla.cs">
@@ -269,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRelacionMedidas.resx">
       <DependentUpon>FrmRelacionMedidas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRendicionCotizacion.resx">
+      <DependentUpon>FrmRendicionCotizacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSolicitudCotizacion.resx">
       <DependentUpon>FrmSolicitudCotizacion.cs</DependentUpon>
