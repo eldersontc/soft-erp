@@ -90,6 +90,12 @@
     <Compile Include="FrmSalidaCaja.Designer.cs">
       <DependentUpon>FrmSalidaCaja.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSeleccionarDireccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSeleccionarDireccion.Designer.cs">
+      <DependentUpon>FrmSeleccionarDireccion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTipoCaja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSalidaCaja.resx">
       <DependentUpon>FrmSalidaCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSeleccionarDireccion.resx">
+      <DependentUpon>FrmSeleccionarDireccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTipoCaja.resx">
       <DependentUpon>FrmTipoCaja.cs</DependentUpon>

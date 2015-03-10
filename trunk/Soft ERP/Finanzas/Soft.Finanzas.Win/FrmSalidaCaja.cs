@@ -12,6 +12,8 @@ using Soft.Finanzas.Entidades;
 using Soft.Exceptions;
 using Infragistics.Win.UltraWinGrid;
 using Infragistics.Win;
+using System.Xml;
+using Soft.DataAccess;
 
 namespace Soft.Finanzas.Win
 {
@@ -68,6 +70,7 @@ namespace Soft.Finanzas.Win
 
             ugItems.DataSource = columns;
             ugItems.DisplayLayout.Bands[0].Columns[colDescripcion].Width = 250;
+            ugItems.DisplayLayout.Bands[0].Columns[colDescripcion].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.EditButton;
             ugItems.DisplayLayout.Bands[0].Columns[colCantidad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
             ugItems.DisplayLayout.Bands[0].Columns[colCantidad].CellAppearance.TextHAlign = HAlign.Right;
             ugItems.DisplayLayout.Bands[0].Columns[colPrecio].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
@@ -96,6 +99,7 @@ namespace Soft.Finanzas.Win
             txtNumeracion.Text = SalidaCaja.Numeracion;
             udtFechaCreacion.Value = SalidaCaja.FechaCreacion;
             txtObservacion.Text = SalidaCaja.Observacion;
+            ssLPTransporte.Text = SalidaCaja.NombreListaPreciosTransporte;
             MostrarItems();
             MostrarTotales();
             if (!SalidaCaja.NewInstance) { DeshabilitarControles(); }
@@ -264,7 +268,9 @@ namespace Soft.Finanzas.Win
             try
             {
                 UltraGridRow RowNuevo = ugItems.DisplayLayout.Bands[0].AddNew();
-                RowNuevo.Tag = SalidaCaja.AddItem();
+                ItemSalidaCaja item = SalidaCaja.AddItem();
+                item.Cantidad = 1;
+                RowNuevo.Tag = item;
             }
             catch (Exception ex)
             {
@@ -333,7 +339,88 @@ namespace Soft.Finanzas.Win
             }
         }
 
-        #endregion
+        private void CalcularPrecio(ItemSalidaCaja itemSalidaCaja) 
+        {
+            if (itemSalidaCaja.DistritoOrigen != null && itemSalidaCaja.DistritoDestino != null) 
+            {
+                String Filtro = String.Format(@" IDListaPrecios ='{0}' AND IDDistritoOrigen = '{1}' AND IDDistritoDestino = '{2}' AND TipoVehiculo = '{3}'",
+                SalidaCaja.IDListaPreciosTransporte, itemSalidaCaja.DistritoOrigen.ID, itemSalidaCaja.DistritoDestino.ID, itemSalidaCaja.TipoVehiculo);
 
+                XmlDocument XML = HelperNHibernate.ExecuteView("vSF_Escalas_LP_Transporte", Filtro);
+                if (XML.HasChildNodes)
+                {
+                    if (XML.DocumentElement.ChildNodes.Count > 0)
+                    {
+                        XmlNode NodoItem = XML.DocumentElement.ChildNodes[0];
+                        itemSalidaCaja.Precio = Convert.ToDecimal(NodoItem.SelectSingleNode("@Precio").Value);
+                    }
+                }
+            }
+        }
+
+        private void ubNuevoItemTransporte_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(SalidaCaja.IDListaPreciosTransporte))
+                {
+                    throw new Exception("Debe de seleccionar una lista de precios de transporte...");
+                }
+                else 
+                {
+                    FrmSeleccionarDireccion FrmSeleccionar = new FrmSeleccionarDireccion();
+                    ItemSalidaCaja itemSalidaCaja = SalidaCaja.AddItem();
+                    itemSalidaCaja.Cantidad = 1;
+                    itemSalidaCaja.EsTipoTransporte = true;
+                    FrmSeleccionar.ObtenerItemSalidaCaja(ref itemSalidaCaja);
+                    CalcularPrecio(itemSalidaCaja);
+                    UltraGridRow RowNuevo = ugItems.DisplayLayout.Bands[0].AddNew();
+                    RowNuevo.Tag = itemSalidaCaja;
+                    Mostrar();
+                }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ugItems_ClickCellButton(object sender, CellEventArgs e)
+        {
+            ItemSalidaCaja Item = (ItemSalidaCaja)e.Cell.Row.Tag;
+            if (Item.EsTipoTransporte) 
+            {
+                switch (e.Cell.Column.Key)
+                {
+                    case colDescripcion:
+                        FrmSeleccionarDireccion FrmSeleccionar = new FrmSeleccionarDireccion();
+                        FrmSeleccionar.ObtenerItemSalidaCaja(ref Item);
+                        CalcularPrecio(Item);
+                        Mostrar();
+                        break;
+                }
+            }
+        }
+
+        private void ssLPTransporte_Search(object sender, EventArgs e)
+        {
+            try
+            {
+                FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+                dynamic ListaPreciosTransporte = FrmSeleccionar.GetSelectedEntity("Soft.Ventas.Entidades", "ListaPreciosTransporte", "Lista Precios Transporte");
+                if (ListaPreciosTransporte != null)
+                {
+                    SalidaCaja.IDListaPreciosTransporte = ListaPreciosTransporte.ID;
+                    SalidaCaja.NombreListaPreciosTransporte = ListaPreciosTransporte.Nombre;
+                    ssLPTransporte.Text = ListaPreciosTransporte.Nombre;
+                }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        #endregion
     }
 }
