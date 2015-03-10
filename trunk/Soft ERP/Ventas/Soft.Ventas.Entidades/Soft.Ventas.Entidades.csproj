@@ -43,6 +43,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Compilacion\Soft.Inventario.Entidades.dll</HintPath>
     </Reference>
+    <Reference Include="Soft.Produccion.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Compilacion\Soft.Produccion.Entidades.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
@@ -63,20 +67,26 @@
     <Compile Include="ItemListaCostosMaquina.cs" />
     <Compile Include="ItemListaPreciosExistencia.cs" />
     <Compile Include="ItemListaPreciosTransporte.cs" />
+    <Compile Include="ItemMaquinaServicio.cs" />
     <Compile Include="ItemPlantilla.cs" />
     <Compile Include="ItemPlantillaServicio.cs" />
     <Compile Include="ItemPresupuesto.cs" />
+    <Compile Include="ItemRendicionCotizacion.cs" />
     <Compile Include="ItemSolicitudCotizacion.cs" />
     <Compile Include="ItemSolicitudCotizacionServicio.cs" />
     <Compile Include="ListaCostosMaquina.cs" />
     <Compile Include="ListaPreciosExistencia.cs" />
     <Compile Include="ListaPreciosTransporte.cs" />
     <Compile Include="Maquina.cs" />
+    <Compile Include="MetodoImpresion.cs" />
     <Compile Include="ModalidadCredito.cs" />
     <Compile Include="Plantilla.cs" />
     <Compile Include="Presupuesto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RelacionMedidas.cs" />
+    <Compile Include="RendicionCotizacion.cs" />
+    <Compile Include="RequerimientoMaterialItemCotizacion.cs" />
+    <Compile Include="RequerimientoServicioItemCotizacion.cs" />
     <Compile Include="SolicitudCotizacion.cs" />
     <Compile Include="TipoCotizacion.cs" />
     <Compile Include="TipoMaquina.cs" />
@@ -136,7 +146,9 @@
     <EmbeddedResource Include="Mappings Files\TipoCotizacion.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings Files\ItemCotizacion.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\ItemCotizacion.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings Files\ItemCotizacionServicio.hbm.xml" />
@@ -157,6 +169,22 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings Files\ItemPresupuesto.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings Files\ItemMaquinaServicio.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\MetodoImpresion.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\RequerimientoMaterialItemCotizacion.hbm.xml" />
+    <EmbeddedResource Include="Mappings Files\RequerimientoServicioItemCotizacion.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings Files\RendicionCotizacion.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings Files\ItemRendicionCotizacion.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
