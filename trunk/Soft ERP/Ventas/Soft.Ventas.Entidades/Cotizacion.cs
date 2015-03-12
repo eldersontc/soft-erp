@@ -53,13 +53,11 @@ namespace Soft.Ventas.Entidades
         {
             get
             {
-
-               
-                    Decimal PorcentajeUtilidad = base.Total * (this.PorcentajeUtilidad / 100);
-                    mTotal = base.Total + PorcentajeUtilidad;
-                    return mTotal;
-
-                
+                Decimal PorcentajeUtilidad = Math.Round(base.Total * (this.PorcentajeUtilidad / 100), 2);
+                Decimal Total = base.Total + PorcentajeUtilidad;
+                Decimal PrecioUnitario = Math.Round(Total / Cantidad, 2);
+                mTotal = PrecioUnitario * Cantidad;
+                return mTotal;
             }
             set
             {
