@@ -115,7 +115,9 @@
     <Compile Include="EliminarPresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EliminarRendicionCotizacion.cs" />
+    <Compile Include="EliminarRendicionCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="EnviarClientePresupuesto.cs">
       <SubType>Form</SubType>
     </Compile>

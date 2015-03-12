@@ -19,6 +19,7 @@ using Soft.Exceptions;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using Soft.Produccion.Entidades;
+using Infragistics.Win;
 
 namespace Soft.Ventas.Win
 {
@@ -38,17 +39,10 @@ namespace Soft.Ventas.Win
             Mostrar();
         }
 
-        const String colServicio = "Servicio";
-        const String colServicioCosto = "Costo Servicio";
-
-        const String colMaterial = "Material";
-        const String colMaterialCosto = "Costo Material";
-
-
-        const String colMaquina = "Máquina";
-        const String colMaquinaCosto = "Costo Maquina";
-
-
+        const string colTipoAMM = "Tipo";
+        const string colDescripcionAMM = "Descripción";
+        const string colCostoAMM = "Costo";
+        
         private Boolean ActualizandoIU = false;
 
         public void InitGrids()
@@ -56,38 +50,25 @@ namespace Soft.Ventas.Win
             DataTable columns = new DataTable();
             DataColumn column = new DataColumn();
 
-            column = columns.Columns.Add(colServicio);
-            column.DataType = typeof(String);
+            column = columns.Columns.Add(colTipoAMM);
+            column.DataType = typeof(string);
 
+            column = columns.Columns.Add(colDescripcionAMM);
+            column.DataType = typeof(string);
 
-            column = columns.Columns.Add(colServicioCosto);
-            column.DataType = typeof(Decimal);
-
-            column = columns.Columns.Add(colMaterial);
-            column.DataType = typeof(String);
-
-
-            column = columns.Columns.Add(colMaterialCosto);
-            column.DataType = typeof(Decimal);
-
-
-            column = columns.Columns.Add(colMaquina);
-            column.DataType = typeof(String);
-
-            column = columns.Columns.Add(colMaquinaCosto);
-            column.DataType = typeof(Decimal);
-
+            column = columns.Columns.Add(colCostoAMM);
+            column.DataType = typeof(decimal);
 
             ugServicios.DataSource = columns;
-            ugServicios.DisplayLayout.Bands[0].Columns[colServicio].Width = 100;
-            ugServicios.DisplayLayout.Bands[0].Columns[colServicioCosto].Width = 50;
 
-            ugServicios.DisplayLayout.Bands[0].Columns[colMaterial].Width = 100;
-            ugServicios.DisplayLayout.Bands[0].Columns[colMaterialCosto].Width = 50;
-
-            ugServicios.DisplayLayout.Bands[0].Columns[colMaquina].Width = 100;
-            ugServicios.DisplayLayout.Bands[0].Columns[colMaquinaCosto].Width = 50;
-
+            ugServicios.DisplayLayout.Bands[0].Columns[colTipoAMM].Width = 50;
+            ugServicios.DisplayLayout.Bands[0].Columns[colTipoAMM].CellActivation = Activation.NoEdit;
+            ugServicios.DisplayLayout.Bands[0].Columns[colDescripcionAMM].Width = 150;
+            ugServicios.DisplayLayout.Bands[0].Columns[colDescripcionAMM].CellActivation = Activation.NoEdit;
+            ugServicios.DisplayLayout.Bands[0].Columns[colCostoAMM].Width = 70;
+            ugServicios.DisplayLayout.Bands[0].Columns[colCostoAMM].CellActivation = Activation.NoEdit;
+            ugServicios.DisplayLayout.Bands[0].Columns[colCostoAMM].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
+            ugServicios.DisplayLayout.Bands[0].Columns[colCostoAMM].CellAppearance.TextHAlign = HAlign.Right;
 
             MapKeys(ref ugServicios);
         }
@@ -321,43 +302,55 @@ namespace Soft.Ventas.Win
 
             uceIncluirEnPresupuesto.Checked = Item.IncluirEnPrespuesto;
 
-            MostrarServicios(Item);
+            MostrarAMMS(Item);
             ActualizandoIU = false;
         }
 
-        public void MostrarServicios(ItemCotizacion ItemCotizacion)
+        public void MostrarAMMS(ItemCotizacion ItemCotizacion)
         {
             base.ClearAllRows(ref ugServicios);
             foreach (ItemCotizacionServicio Item in ItemCotizacion.Servicios)
             {
                 UltraGridRow Row = ugServicios.DisplayLayout.Bands[0].AddNew();
                 Row.Tag = Item;
-                MostrarServicio(Row);
+                MostrarAAM(Row);
             }
-
-            MostrarTotalServicio(ItemCotizacion);
+            MostrarTotalAMM(ItemCotizacion);
         }
 
-        public void MostrarServicio(UltraGridRow Row)
+        private void MostrarAAM(UltraGridRow Row) 
         {
             ItemCotizacionServicio Item = (ItemCotizacionServicio)Row.Tag;
-            Row.Cells[colServicio].Activation = (Item.Servicio != null) ? Activation.NoEdit : Activation.AllowEdit;
-            Row.Cells[colServicio].Value = (Item.Servicio != null) ? Item.Servicio.Nombre : "";
+            if (Item.Servicio != null)
+            {
+                Row.Cells[colTipoAMM].Value = "ACA";
+                Row.Cells[colDescripcionAMM].Value = Item.Servicio.Descripcion;
+                Row.Cells[colCostoAMM].Value = Item.CostoServicio;
+            }
+            if (Item.Maquina != null)
+            {
+                Row.Cells[colTipoAMM].Value = "MAQ";
+                Row.Cells[colDescripcionAMM].Value = Item.Maquina.Descripcion;
+                Row.Cells[colCostoAMM].Value = Item.CostoMaquina;
+            }
+            if (Item.Material != null)
+            {
+                Row.Cells[colTipoAMM].Value = "MAT";
+                Row.Cells[colDescripcionAMM].Value = Item.Material.Descripcion;
+                Row.Cells[colCostoAMM].Value = Item.CostoMaterial;
+            }
+        }
 
-            Row.Cells[colServicioCosto].Activation = (Item.Servicio != null) ? Activation.NoEdit : Activation.AllowEdit;
-            Row.Cells[colServicioCosto].Value = (Item.Servicio != null) ? Item.CostoServicio : 0;
+        private void MostrarTotalAMM(ItemCotizacion itemSe)
+        {
 
-            Row.Cells[colMaterial].Activation = (Item.Material != null) ? Activation.NoEdit : Activation.AllowEdit;
-            Row.Cells[colMaterial].Value = (Item.Material != null) ? Item.Material.Nombre : "";
-
-            Row.Cells[colMaterialCosto].Activation = (Item.Material != null) ? Activation.NoEdit : Activation.AllowEdit;
-            Row.Cells[colMaterialCosto].Value = (Item.Material != null) ? Item.CostoMaterial : 0;
-
-            Row.Cells[colMaquina].Activation = (Item.Maquina != null) ? Activation.NoEdit : Activation.AllowEdit;
-            Row.Cells[colMaquina].Value = (Item.Maquina != null) ? Item.Maquina.Nombre : "";
-
-            Row.Cells[colMaquinaCosto].Activation = (Item.Maquina != null) ? Activation.NoEdit : Activation.AllowEdit;
-            Row.Cells[colMaquinaCosto].Value = (Item.Maquina != null) ? Item.CostoMaquina : 0;
+            Decimal total = 0;
+            foreach (ItemCotizacionServicio itemServicio in itemSe.Servicios)
+            {
+                total += itemServicio.CostoTotalServicio;
+            }
+            itemSe.CostoServicio = total;
+            txtCostoServicio.Value = itemSe.CostoServicio;
         }
 
         public void DeshabilitarControles()
@@ -388,13 +381,13 @@ namespace Soft.Ventas.Win
                 Existencia Servicio = (Existencia)Productos[1];
                 Item.Servicio = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Servicio.ID);
                 //Item.CantidadFinal = 1;
-                MostrarServicio(Row);
+                MostrarAAM(Row);
             }
             else if (Productos.Count > 1)
             {
                 Existencia Producto = (Existencia)Productos[1];
                 Item.Servicio = (Existencia)HelperNHibernate.GetEntityByID("Existencia", Producto.ID);
-                MostrarServicio(Row);
+                MostrarAAM(Row);
                 for (int i = 2; i <= Productos.Count; i++)
                 {
                     UltraGridRow RowNuevo = ugServicios.DisplayLayout.Bands[0].AddNew();
@@ -402,7 +395,7 @@ namespace Soft.Ventas.Win
                     Existencia ProductoNuevo = (Existencia)Productos[i];
                     ItemNuevo.Servicio = (Existencia)HelperNHibernate.GetEntityByID("Existencia", ProductoNuevo.ID);
                     RowNuevo.Tag = ItemNuevo;
-                    MostrarServicio(RowNuevo);
+                    MostrarAAM(RowNuevo);
                 }
             }
         }
@@ -570,61 +563,6 @@ namespace Soft.Ventas.Win
             ssMaquina.Text = (ItemCotizacion.Maquina != null) ? ItemCotizacion.Maquina.Nombre : "";
         }
 
-
-
-        //public void BorrandoServiciosAutogenerados()
-        //{
-
-        //    List<String> listanegra=new List<String>();
-        //    foreach (ItemCotizacion item in Cotizacion.Items)
-        //    {
-        //        foreach (ItemCotizacionServicio itemser in item.Servicios)
-        //        {
-        //            if (itemser.EsAutogenerado) {
-        //                 listanegra.Add(itemser.ID);
-        //            }   
-        //        }
-
-        //    }          
-
-        //}
-
-        //public void InsertarServiciosAutogenerados()
-        //{
-        //    BorrandoServiciosAutogenerados();
-        //    foreach (ItemCotizacion item in Cotizacion.Items)
-        //    {
-        //        if (item.Maquina != null)
-        //        {
-        //        foreach (ItemMaquinaServicio itemServicio in item.Maquina.ItemsServicio)
-        //            {
-        //                ItemCotizacionServicio itemc = new ItemCotizacionServicio();
-        //                itemc.Servicio = itemServicio.Servicio;
-        //                itemc.UnidadServicio = itemServicio.Unidad;
-        //                if (item.MetodoImpresion == null) {
-        //                    itemc.CantidadServicio = 0;
-        //                }
-        //                if (item.MetodoImpresion.Equals("TIRA/RETIRA"))
-        //                {
-        //                    itemc.CantidadServicio = (item.ImpresoTiraColor + item.ImpresoRetiraColor) * item.NumeroPliegos;
-        //                    ObtenerCostoServicio(itemc);
-
-        //                }
-        //                else {
-
-        //                    itemc.CantidadServicio = item.ImpresoTiraColor  * item.NumeroPliegos;
-        //                    ObtenerCostoServicio(itemc);
-        //                }
-        //                itemc.EsAutogenerado = true;
-        //                ItemCotizacion.Servicios.Add(itemc);
-
-        //            }
-        //        }
-        //        MostrarTotalServicio(item);
-        //    }
-        //}
-
-
         private void ObtenerCostoServicio(ItemCotizacionServicio Item)
         {
             try
@@ -689,11 +627,6 @@ namespace Soft.Ventas.Win
 
         }
 
-
-
-
-
-
         private void ssMaterial_Search(object sender, EventArgs e)
         {
             if (ItemCotizacion == null) { return; }
@@ -727,58 +660,41 @@ namespace Soft.Ventas.Win
             {
                 UltraGridRow Row = ugServicios.DisplayLayout.Bands[0].AddNew();
                 Row.Tag = item;
-                Row.Cells[colServicio].Activate();
+                Row.Cells[colTipoAMM].Activate();
                 ugServicios.PerformAction(Infragistics.Win.UltraWinGrid.UltraGridAction.EnterEditMode);
                 ItemCotizacion.Servicios.Add(item);
-                MostrarTotalServicio(ItemCotizacion);
-                MostrarServicio(Row);
+                MostrarTotalAMM(ItemCotizacion);
+                MostrarAAM(Row);
             }
-
         }
-
-
-        private void MostrarTotalServicio(ItemCotizacion itemSe)
-        {
-
-            Decimal total = 0;
-            foreach (ItemCotizacionServicio itemServicio in itemSe.Servicios)
-            {
-                total += itemServicio.CostoTotalServicio;
-            }
-            itemSe.CostoServicio = total;
-            txtCostoServicio.Value = itemSe.CostoServicio;
-        }
-
 
         private void ubEliminarServicio_Click(object sender, EventArgs e)
         {
             if (ugServicios.ActiveRow == null) { return; }
             ItemCotizacion.Servicios.Remove((ItemCotizacionServicio)ugServicios.ActiveRow.Tag);
             ugServicios.ActiveRow.Delete(false);
-            MostrarTotalServicio(ItemCotizacion);
+            MostrarTotalAMM(ItemCotizacion);
 
         }
 
         public void ugServicios_CellKeyEnter(UltraGridCell Cell)
         {
-            try
-            {
-                if (Cell == null || ItemCotizacion == null) { return; }
-                ItemCotizacionServicio Item = (ItemCotizacionServicio)Cell.Row.Tag;
-                switch (Cell.Column.Key)
-                {
-                    case colServicio:
-                        if (Cell.Text.Equals("")) { break; }
-                        AgregarServicios("%", Cell.Text, Cell.Row);
-                        break;
-                    default:
-                        break;
-                }
-            }
-            catch (Exception)
-            {
-                //MessageBox.Show(ex.Message);
-            }
+            //try
+            //{
+            //    if (Cell == null || ItemCotizacion == null) { return; }
+            //    ItemCotizacionServicio Item = (ItemCotizacionServicio)Cell.Row.Tag;
+            //    switch (Cell.Column.Key)
+            //    {
+            //        case colServicio:
+            //            if (Cell.Text.Equals("")) { break; }
+            //            AgregarServicios("%", Cell.Text, Cell.Row);
+            //            break;
+            //        default:
+            //            break;
+            //    }
+            //}
+            //catch (Exception)
+            //{ }
         }
 
         private void txtObservacion_TextChanged(object sender, EventArgs e)
@@ -1876,7 +1792,7 @@ namespace Soft.Ventas.Win
         private void btnModificar_Click(object sender, EventArgs e)
         {
             ModificarServicio();
-            MostrarTotalServicio(ItemCotizacion);
+            MostrarTotalAMM(ItemCotizacion);
         }
 
         private void ModificarServicio()
@@ -1889,8 +1805,8 @@ namespace Soft.Ventas.Win
                 if (item != null)
                 {
                     ugServicios.ActiveRow.Tag = item;
-                    ugServicios.ActiveRow.Cells[colServicio].Activate();
-                    MostrarServicio(ugServicios.ActiveRow);
+                    ugServicios.ActiveRow.Cells[colTipoAMM].Activate();
+                    MostrarAAM(ugServicios.ActiveRow);
                 }
             }
             else
@@ -1904,8 +1820,6 @@ namespace Soft.Ventas.Win
         {
             ModificarServicio();
         }
-
-
 
         private void txtFormatoImpresionLargo_ValueChanged(object sender, EventArgs e)
         {
@@ -1946,8 +1860,6 @@ namespace Soft.Ventas.Win
             }
         }
 
-
-
         private void ssMaquina_Clear(object sender, EventArgs e)
         {
             try
@@ -1961,7 +1873,6 @@ namespace Soft.Ventas.Win
             }
 
         }
-
 
         private void ssMaterial_Clear(object sender, EventArgs e)
         {
@@ -2026,7 +1937,6 @@ namespace Soft.Ventas.Win
 
 
         }
-
 
         private void ActuallizarMetrosCuadrados()
         {
