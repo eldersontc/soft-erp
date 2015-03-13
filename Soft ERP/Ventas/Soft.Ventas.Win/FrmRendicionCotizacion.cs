@@ -46,30 +46,39 @@ namespace Soft.Ventas.Win
             DataColumn column = new DataColumn();
 
             column = columns.Columns.Add(colCodigo);
+            column.Caption = "CÓDIGO";
             column.DataType = typeof(String);
 
             column = columns.Columns.Add(colDescripcion);
+            column.Caption = "DESCRIPCIÓN";
             column.DataType = typeof(String);
 
             column = columns.Columns.Add(colUnidad);
+            column.Caption = "UNIDAD";
             column.DataType = typeof(String);
 
             column = columns.Columns.Add(colCantidadCotizacion);
+            column.Caption = "CANTIDAD";
             column.DataType = typeof(decimal);
 
             column = columns.Columns.Add(colPrecioCotizacion);
+            column.Caption = "PRECIO";
             column.DataType = typeof(decimal);
 
             column = columns.Columns.Add(colTotalCotizacion);
+            column.Caption = "TOTAL";
             column.DataType = typeof(decimal);
 
             column = columns.Columns.Add(colCantidadReal);
+            column.Caption = "CANTIDAD";
             column.DataType = typeof(decimal);
 
             column = columns.Columns.Add(colPrecioReal);
+            column.Caption = "PRECIO";
             column.DataType = typeof(decimal);
 
             column = columns.Columns.Add(colTotalReal);
+            column.Caption = "TOTAL";
             column.DataType = typeof(decimal);
 
             ugItems.DataSource = columns;
@@ -88,13 +97,41 @@ namespace Soft.Ventas.Win
 
             ugItems.DisplayLayout.Bands[0].Columns[colCantidadReal].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
             ugItems.DisplayLayout.Bands[0].Columns[colCantidadReal].CellAppearance.TextHAlign = HAlign.Right;
+            ugItems.DisplayLayout.Bands[0].Columns[colCantidadReal].CellAppearance.BackColor = Color.LemonChiffon;
+            ugItems.DisplayLayout.Bands[0].Columns[colCantidadReal].Header.Appearance.ForeColor = Color.Blue;
 
             ugItems.DisplayLayout.Bands[0].Columns[colPrecioReal].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
             ugItems.DisplayLayout.Bands[0].Columns[colPrecioReal].CellAppearance.TextHAlign = HAlign.Right;
+            ugItems.DisplayLayout.Bands[0].Columns[colPrecioReal].CellAppearance.BackColor = Color.LemonChiffon;
+            ugItems.DisplayLayout.Bands[0].Columns[colPrecioReal].Header.Appearance.ForeColor = Color.Blue;
 
             ugItems.DisplayLayout.Bands[0].Columns[colTotalReal].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
             ugItems.DisplayLayout.Bands[0].Columns[colTotalReal].CellAppearance.TextHAlign = HAlign.Right;
+            ugItems.DisplayLayout.Bands[0].Columns[colTotalReal].CellAppearance.BackColor = Color.LemonChiffon;
             ugItems.DisplayLayout.Bands[0].Columns[colTotalReal].CellActivation = Activation.NoEdit;
+            ugItems.DisplayLayout.Bands[0].Columns[colTotalReal].Header.Appearance.ForeColor = Color.Blue;
+
+            UltraGridGroup grupoAM = new UltraGridGroup("ACABADO / MÁQUINA",1);
+            UltraGridGroup grupoCotizacion = new UltraGridGroup("COTIZACIÓN",2);
+            UltraGridGroup grupoReal = new UltraGridGroup("REAL",3);
+            grupoReal.Header.Appearance.ForeColor = Color.Blue;
+            grupoReal.Header.Appearance.FontData.Bold = DefaultableBoolean.True;
+
+            ugItems.DisplayLayout.Bands[0].Groups.Add(grupoAM);
+            ugItems.DisplayLayout.Bands[0].Groups.Add(grupoCotizacion);
+            ugItems.DisplayLayout.Bands[0].Groups.Add(grupoReal);
+                
+            grupoAM.Columns.Add(ugItems.DisplayLayout.Bands[0].Columns[colCodigo]);
+            grupoAM.Columns.Add(ugItems.DisplayLayout.Bands[0].Columns[colDescripcion]);
+            grupoAM.Columns.Add(ugItems.DisplayLayout.Bands[0].Columns[colUnidad]);
+
+            grupoCotizacion.Columns.Add(ugItems.DisplayLayout.Bands[0].Columns[colCantidadCotizacion]);
+            grupoCotizacion.Columns.Add(ugItems.DisplayLayout.Bands[0].Columns[colPrecioCotizacion]);
+            grupoCotizacion.Columns.Add(ugItems.DisplayLayout.Bands[0].Columns[colTotalCotizacion]);
+
+            grupoReal.Columns.Add(ugItems.DisplayLayout.Bands[0].Columns[colCantidadReal]);
+            grupoReal.Columns.Add(ugItems.DisplayLayout.Bands[0].Columns[colPrecioReal]);
+            grupoReal.Columns.Add(ugItems.DisplayLayout.Bands[0].Columns[colTotalReal]);
 
             MapKeys(ref ugItems);
         }

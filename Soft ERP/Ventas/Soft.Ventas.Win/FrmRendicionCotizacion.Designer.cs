@@ -67,7 +67,7 @@ namespace Soft.Ventas.Win
             this.ugbParent.Controls.Add(this.udteFechaCreacion);
             this.ugbParent.Controls.Add(this.ultraLabel2);
             this.ugbParent.Controls.Add(this.ultraLabel1);
-            this.ugbParent.Size = new System.Drawing.Size(759, 346);
+            this.ugbParent.Size = new System.Drawing.Size(1032, 516);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel1, 0);
@@ -82,11 +82,13 @@ namespace Soft.Ventas.Win
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(668, 304);
+            this.ubCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ubCancelar.Location = new System.Drawing.Point(940, 479);
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(587, 304);
+            this.ubAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ubAceptar.Location = new System.Drawing.Point(859, 479);
             // 
             // ilMain
             // 
@@ -379,6 +381,9 @@ namespace Soft.Ventas.Win
             // 
             // ugbItems
             // 
+            this.ugbItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance3.BackColor = System.Drawing.Color.Transparent;
             this.ugbItems.Appearance = appearance3;
             this.ugbItems.Controls.Add(this.ugItems);
@@ -386,25 +391,28 @@ namespace Soft.Ventas.Win
             this.ugbItems.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
             this.ugbItems.Location = new System.Drawing.Point(16, 47);
             this.ugbItems.Name = "ugbItems";
-            this.ugbItems.Size = new System.Drawing.Size(727, 210);
+            this.ugbItems.Size = new System.Drawing.Size(999, 396);
             this.ugbItems.TabIndex = 12;
             this.ugbItems.Text = "ITEMS";
             // 
             // ugItems
             // 
             this.ugItems.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            this.ugItems.Location = new System.Drawing.Point(6, 28);
+            this.ugItems.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
+            this.ugItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ugItems.Location = new System.Drawing.Point(3, 25);
             this.ugItems.Name = "ugItems";
-            this.ugItems.Size = new System.Drawing.Size(715, 175);
+            this.ugItems.Size = new System.Drawing.Size(993, 368);
             this.ugItems.TabIndex = 0;
             this.ugItems.Text = "ultraGrid1";
             this.ugItems.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ugItems_CellChange);
             // 
             // ultraLabel3
             // 
+            this.ultraLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             appearance2.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel3.Appearance = appearance2;
-            this.ultraLabel3.Location = new System.Drawing.Point(326, 267);
+            this.ultraLabel3.Location = new System.Drawing.Point(598, 453);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(122, 23);
             this.ultraLabel3.TabIndex = 13;
@@ -412,9 +420,10 @@ namespace Soft.Ventas.Win
             // 
             // ultraLabel4
             // 
+            this.ultraLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             appearance1.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel4.Appearance = appearance1;
-            this.ultraLabel4.Location = new System.Drawing.Point(551, 267);
+            this.ultraLabel4.Location = new System.Drawing.Point(823, 453);
             this.ultraLabel4.Name = "ultraLabel4";
             this.ultraLabel4.Size = new System.Drawing.Size(80, 23);
             this.ultraLabel4.TabIndex = 14;
@@ -422,7 +431,8 @@ namespace Soft.Ventas.Win
             // 
             // uneTotalReal
             // 
-            this.uneTotalReal.Location = new System.Drawing.Point(643, 263);
+            this.uneTotalReal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.uneTotalReal.Location = new System.Drawing.Point(915, 449);
             this.uneTotalReal.Name = "uneTotalReal";
             this.uneTotalReal.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
             this.uneTotalReal.ReadOnly = true;
@@ -431,7 +441,8 @@ namespace Soft.Ventas.Win
             // 
             // uneTotalCotizacion
             // 
-            this.uneTotalCotizacion.Location = new System.Drawing.Point(445, 263);
+            this.uneTotalCotizacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.uneTotalCotizacion.Location = new System.Drawing.Point(717, 449);
             this.uneTotalCotizacion.Name = "uneTotalCotizacion";
             this.uneTotalCotizacion.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
             this.uneTotalCotizacion.ReadOnly = true;
@@ -442,7 +453,7 @@ namespace Soft.Ventas.Win
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(775, 384);
+            this.ClientSize = new System.Drawing.Size(1048, 554);
             this.Name = "FrmRendicionCotizacion";
             this.Text = "RENDICIÓN DE COTIZACIÓN";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
