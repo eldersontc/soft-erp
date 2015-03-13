@@ -47,7 +47,7 @@ namespace Soft.Ventas.Win
                     }
                     foreach (ItemCotizacionServicio ItemServicio in ItemCotizacion.Servicios)
                     {
-                        if (ItemServicio.Servicio != null) 
+                        if (ItemServicio.Servicio != null && ItemServicio.UnidadServicio != null) 
                         {
                             ItemRendicionCotizacion ItemRendicion = new ItemRendicionCotizacion();
                             ItemRendicion.Codigo = ItemServicio.Servicio.Codigo;
@@ -61,7 +61,7 @@ namespace Soft.Ventas.Win
                             ItemRendicion.TotalReal = ItemServicio.CostoServicio;
                             Rendicion.Items.Add(ItemRendicion);
                         }
-                        if (ItemServicio.Maquina != null) 
+                        if (ItemServicio.Maquina != null && ItemServicio.UnidadMaquina != null) 
                         {
                             ItemRendicionCotizacion ItemRendicion = new ItemRendicionCotizacion();
                             ItemRendicion.Codigo = ItemServicio.Maquina.Codigo;
