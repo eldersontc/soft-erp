@@ -27,7 +27,7 @@ namespace Soft.Finanzas.Win
         #region "Propiedades"
 
         const String colCodigo = "Código";
-        const String colOP = "OP";
+        const String colOT_OP = "OT_OP";
         const String colDescripcion = "Descripción";
         const String colCantidad = "Cantidad";
         const String colPrecio = "Precio";
@@ -35,6 +35,8 @@ namespace Soft.Finanzas.Win
         const String colObservacion = "Observación";
 
         public SalidaCaja SalidaCaja { get { return (SalidaCaja)base.m_ObjectFlow; } }
+
+        private bool ActualizacionUI { get; set; }
 
         #endregion
 
@@ -54,7 +56,8 @@ namespace Soft.Finanzas.Win
             column = columns.Columns.Add(colCodigo);
             column.DataType = typeof(string);
 
-            column = columns.Columns.Add(colOP);
+            column = columns.Columns.Add(colOT_OP);
+            column.Caption = string.Empty;
             column.DataType = typeof(string);
 
             column = columns.Columns.Add(colDescripcion);
@@ -73,9 +76,25 @@ namespace Soft.Finanzas.Win
             column.DataType = typeof(String);
 
             ugItems.DataSource = columns;
-            ugItems.DisplayLayout.Bands[0].Columns[colOP].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Button;
-            ugItems.DisplayLayout.Bands[0].Columns[colOP].ButtonDisplayStyle = Infragistics.Win.UltraWinGrid.ButtonDisplayStyle.Always;
-            ugItems.DisplayLayout.Bands[0].Columns[colDescripcion].Width = 250;
+
+            switch (SalidaCaja.RelacionItem)
+	        {
+                case "NO":
+                    ugItems.DisplayLayout.Bands[0].Columns[colOT_OP].Hidden = true;
+                    break;
+                case "OT":
+                    ugItems.DisplayLayout.Bands[0].Columns[colOT_OP].Header.Caption = "OT";
+                    break;
+                case "OP":
+                    ugItems.DisplayLayout.Bands[0].Columns[colOT_OP].Header.Caption = "OP";
+                    break;
+		        default:
+                    break;
+	        }
+
+            ugItems.DisplayLayout.Bands[0].Columns[colOT_OP].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Button;
+            ugItems.DisplayLayout.Bands[0].Columns[colOT_OP].ButtonDisplayStyle = Infragistics.Win.UltraWinGrid.ButtonDisplayStyle.Always;
+            ugItems.DisplayLayout.Bands[0].Columns[colDescripcion].Width = 400;
             ugItems.DisplayLayout.Bands[0].Columns[colDescripcion].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.EditButton;
             ugItems.DisplayLayout.Bands[0].Columns[colCantidad].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DoubleNonNegative;
             ugItems.DisplayLayout.Bands[0].Columns[colCantidad].CellAppearance.TextHAlign = HAlign.Right;
@@ -89,12 +108,28 @@ namespace Soft.Finanzas.Win
 
         public void Mostrar()
         {
+            ActualizacionUI = true;
+            switch (SalidaCaja.RelacionItem)
+            {
+                case "NO":
+                    rbNO.Checked = true;
+                    break;
+                case "OT":
+                    rbOT.Checked = true;
+                    break;
+                case "OP":
+                    rbOP.Checked = true;
+                    break;
+                default:
+                    break;
+            }
+            
             if (SalidaCaja.TipoDocumento != null)
             {
                 ssTipoDocumento.Text = SalidaCaja.TipoDocumento.Descripcion;
                 txtNumeracion.Enabled = (SalidaCaja.TipoDocumento.NumeracionAutomatica) ? false : true;
-                lblSocioNegocio.Text = SalidaCaja.TipoDocumento.TipoSocioDeNegocio;
-                ssSocioNegocio.Enabled = (lblSocioNegocio.Text.Equals("Ninguno")) ? false : true;
+                lblSocioNegocio.Text = SalidaCaja.TipoDocumento.TipoSocioDeNegocio.ToUpper();
+                ssSocioNegocio.Enabled = (lblSocioNegocio.Text.Equals("NINGUNO")) ? false : true;
             }
             if (SalidaCaja.Caja != null) {
                 ssCaja.Text = SalidaCaja.Caja.Nombre;
@@ -110,6 +145,7 @@ namespace Soft.Finanzas.Win
             MostrarItems();
             MostrarTotales();
             if (!SalidaCaja.NewInstance) { DeshabilitarControles(); }
+            ActualizacionUI = false;
         }
 
         public void MostrarItems()
@@ -128,7 +164,14 @@ namespace Soft.Finanzas.Win
             ItemSalidaCaja Item = (ItemSalidaCaja)Row.Tag;
 
             Row.Cells[colCodigo].Value = Item.Codigo;
-            Row.Cells[colOP].Value = Item.NumeracionOrdenProduccion;
+            if (SalidaCaja.RelacionItem == "OT") 
+            {
+                Row.Cells[colOT_OP].Value = Item.NumeracionOrdenProduccion;
+            }
+            if (SalidaCaja.RelacionItem == "OP")
+            {
+                Row.Cells[colOT_OP].Value = Item.NumeracionConsolidadoOrdenProduccion;
+            }
             Row.Cells[colDescripcion].Value = Item.Descripcion;
             Row.Cells[colPrecio].Value = Item.Precio;
             Row.Cells[colCantidad].Value = Item.Cantidad;
@@ -157,6 +200,7 @@ namespace Soft.Finanzas.Win
             ubNuevoItemTransporte.Enabled = false;
             ubEliminarItem.Enabled = false;
             txtObservacion.Enabled = false;
+            ugbRelacion.Enabled = false;
         }
 
         #endregion
@@ -397,12 +441,20 @@ namespace Soft.Finanzas.Win
         private void ugItems_ClickCellButton(object sender, CellEventArgs e)
         {
             ItemSalidaCaja Item = (ItemSalidaCaja)e.Cell.Row.Tag;
-            if (e.Cell.Column.Key == colOP) 
+            if (e.Cell.Column.Header.Caption == "OT") 
             {
                 FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
                 dynamic OrdenProduccion = FrmSeleccionar.GetSelectedEntity("Soft.Produccion.Entidades", "OrdenProduccion", "Orden de Producción");
                 Item.IDOrdenProduccion = OrdenProduccion.ID;
                 Item.NumeracionOrdenProduccion = OrdenProduccion.Numeracion;
+                MostrarItem(e.Cell.Row);
+            }
+            if (e.Cell.Column.Header.Caption == "OP")
+            {
+                FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+                dynamic CosolidadoOP = FrmSeleccionar.GetSelectedEntity("Soft.Produccion.Entidades", "ConsolidadoOp", "Consolidado de Ordenes de Producción");
+                Item.IDConsolidadoOrdenProduccion = CosolidadoOP.ID;
+                Item.NumeracionConsolidadoOrdenProduccion = CosolidadoOP.Numeracion;
                 MostrarItem(e.Cell.Row);
             }
             if (Item.EsTipoTransporte && e.Cell.Column.Key == colDescripcion) 
@@ -426,6 +478,83 @@ namespace Soft.Finanzas.Win
                     SalidaCaja.IDListaPreciosTransporte = ListaPreciosTransporte.ID;
                     SalidaCaja.NombreListaPreciosTransporte = ListaPreciosTransporte.Nombre;
                     ssLPTransporte.Text = ListaPreciosTransporte.Nombre;
+                }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ssLPTransporte_Clear(object sender, EventArgs e)
+        {
+            try
+            {
+                SalidaCaja.IDListaPreciosTransporte = null;
+                SalidaCaja.NombreListaPreciosTransporte = null;
+                ssLPTransporte.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void rbOT_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ActualizacionUI) { return; }
+                SalidaCaja.RelacionItem = "OT";
+                ugItems.DisplayLayout.Bands[0].Columns[colOT_OP].Hidden = false;
+                ugItems.DisplayLayout.Bands[0].Columns[colOT_OP].Header.Caption = "OT";
+                foreach (ItemSalidaCaja item in SalidaCaja.Items)
+                {
+                    item.IDConsolidadoOrdenProduccion = null;
+                    item.NumeracionConsolidadoOrdenProduccion = null;
+                }
+                MostrarItems();
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void rbOP_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ActualizacionUI) { return; }
+                SalidaCaja.RelacionItem = "OP";
+                ugItems.DisplayLayout.Bands[0].Columns[colOT_OP].Hidden = false;
+                ugItems.DisplayLayout.Bands[0].Columns[colOT_OP].Header.Caption = "OP";
+                foreach (ItemSalidaCaja item in SalidaCaja.Items)
+                {
+                    item.IDOrdenProduccion = null;
+                    item.NumeracionOrdenProduccion = null;
+                }
+                MostrarItems();
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void rbNO_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ActualizacionUI) { return; }
+                SalidaCaja.RelacionItem = "NO";
+                ugItems.DisplayLayout.Bands[0].Columns[colOT_OP].Hidden = true;
+                foreach (ItemSalidaCaja item in SalidaCaja.Items)
+                {
+                    item.IDOrdenProduccion = null;
+                    item.NumeracionOrdenProduccion = null;
+                    item.IDConsolidadoOrdenProduccion = null;
+                    item.NumeracionConsolidadoOrdenProduccion = null;
                 }
             }
             catch (Exception ex)

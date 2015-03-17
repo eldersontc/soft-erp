@@ -9,6 +9,7 @@ namespace Soft.Finanzas.Entidades
     public class SalidaCaja : DocumentoGenerico
     {
         public SalidaCaja() {
+            RelacionItem = "NO";
             FechaCreacion = DateTime.Now;
             Items = new List<ItemSalidaCaja>();
         }
@@ -23,6 +24,7 @@ namespace Soft.Finanzas.Entidades
         public virtual decimal Total { get; set; }
         public virtual string IDListaPreciosTransporte { get; set; }
         public virtual string NombreListaPreciosTransporte { get; set; }
+        public virtual string RelacionItem { get; set; }
 
         public virtual TipoCaja TipoCaja { get { return (TipoCaja)TipoDocumento;} }
 
