@@ -24,6 +24,8 @@ namespace Soft.Finanzas.Entidades
         public virtual string TipoVehiculo { get; set; }
         public virtual string IDOrdenProduccion { get; set; }
         public virtual string NumeracionOrdenProduccion { get; set; }
+        public virtual string IDConsolidadoOrdenProduccion { get; set; }
+        public virtual string NumeracionConsolidadoOrdenProduccion { get; set; }
 
         private decimal Total_;
         public virtual decimal Total { 

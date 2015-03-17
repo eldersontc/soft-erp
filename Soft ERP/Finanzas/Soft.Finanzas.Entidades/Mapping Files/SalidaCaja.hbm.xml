@@ -13,6 +13,7 @@
 
     <property name="IDListaPreciosTransporte"/>
     <property name="NombreListaPreciosTransporte"/>
+    <property name="RelacionItem"/>
     
     <many-to-one name="TipoDocumento" class="Soft.Finanzas.Entidades.TipoCaja" column="IDTipoDocumento" lazy="false"/>
     <many-to-one name="SocioNegocio" class="Soft.Entities.SocioNegocio" column="IDSocioNegocio" lazy="false"/>

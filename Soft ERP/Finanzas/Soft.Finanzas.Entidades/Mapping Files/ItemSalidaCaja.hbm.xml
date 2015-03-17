@@ -12,6 +12,8 @@
     <property name="Observacion"/>
     <property name="IDOrdenProduccion"/>
     <property name="NumeracionOrdenProduccion"/>
+    <property name="IDConsolidadoOrdenProduccion"/>
+    <property name="NumeracionConsolidadoOrdenProduccion"/>
 
     <many-to-one name="Departamento" class="Soft.Entities.Departamento" column="IDDepartamento" lazy="false"/>
     <many-to-one name="Provincia" class="Soft.Entities.Provincia" column="IDProvincia" lazy="false"/>
