@@ -16,9 +16,11 @@ namespace Soft.Finanzas.Entidades
         public virtual decimal Cantidad { get; set; }
         public virtual decimal Precio { get; set; }
         public virtual bool EsTipoTransporte { get; set; }
-        public virtual Departamento Departamento { get; set; }
-        public virtual Provincia Provincia { get; set; }
+        public virtual Departamento DepartamentoOrigen { get; set; }
+        public virtual Provincia ProvinciaOrigen { get; set; }
         public virtual Distrito DistritoOrigen { get; set; }
+        public virtual Departamento DepartamentoDestino { get; set; }
+        public virtual Provincia ProvinciaDestino { get; set; }
         public virtual Distrito DistritoDestino { get; set; }
         public virtual string Direccion { get; set; }
         public virtual string TipoVehiculo { get; set; }

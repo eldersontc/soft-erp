@@ -30,17 +30,19 @@ namespace Soft.Finanzas.Win
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSeleccionarDireccion));
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance41 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance44 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance45 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance46 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem4 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.Appearance appearance47 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance48 = new Infragistics.Win.Appearance();
             this.txtDireccion = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
@@ -53,49 +55,48 @@ namespace Soft.Finanzas.Win
             this.ultraLabel4 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel5 = new Infragistics.Win.Misc.UltraLabel();
             this.uceTipoVehiculo = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
+            this.ugbOrigen = new Infragistics.Win.Misc.UltraGroupBox();
+            this.ugbDestino = new Infragistics.Win.Misc.UltraGroupBox();
+            this.ultraLabel6 = new Infragistics.Win.Misc.UltraLabel();
+            this.ultraLabel9 = new Infragistics.Win.Misc.UltraLabel();
+            this.busProvinciaDestino = new Soft.Controls.SoftSearch();
+            this.busDepartamentoDestino = new Soft.Controls.SoftSearch();
+            this.ubCopiarDepartamento = new Infragistics.Win.Misc.UltraButton();
+            this.ubCopiarProvincia = new Infragistics.Win.Misc.UltraButton();
+            this.ubCopiarDistrito = new Infragistics.Win.Misc.UltraButton();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDireccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceTipoVehiculo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ugbOrigen)).BeginInit();
+            this.ugbOrigen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ugbDestino)).BeginInit();
+            this.ugbDestino.SuspendLayout();
             this.SuspendLayout();
             // 
             // ugbParent
             // 
-            this.ugbParent.Controls.Add(this.uceTipoVehiculo);
-            this.ugbParent.Controls.Add(this.ultraLabel5);
-            this.ugbParent.Controls.Add(this.txtDireccion);
-            this.ugbParent.Controls.Add(this.ultraLabel3);
-            this.ugbParent.Controls.Add(this.ultraLabel1);
-            this.ugbParent.Controls.Add(this.lblRelacion);
-            this.ugbParent.Controls.Add(this.ultraLabel2);
-            this.ugbParent.Controls.Add(this.busDistritoDestino);
-            this.ugbParent.Controls.Add(this.busDistrito);
-            this.ugbParent.Controls.Add(this.ultraLabel4);
-            this.ugbParent.Controls.Add(this.busProvincia);
-            this.ugbParent.Controls.Add(this.busDepartamento);
-            this.ugbParent.Size = new System.Drawing.Size(383, 208);
-            this.ugbParent.Controls.SetChildIndex(this.busDepartamento, 0);
-            this.ugbParent.Controls.SetChildIndex(this.busProvincia, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ultraLabel4, 0);
-            this.ugbParent.Controls.SetChildIndex(this.busDistrito, 0);
-            this.ugbParent.Controls.SetChildIndex(this.busDistritoDestino, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ultraLabel2, 0);
-            this.ugbParent.Controls.SetChildIndex(this.lblRelacion, 0);
+            this.ugbParent.Controls.Add(this.ubCopiarDistrito);
+            this.ugbParent.Controls.Add(this.ubCopiarProvincia);
+            this.ugbParent.Controls.Add(this.ubCopiarDepartamento);
+            this.ugbParent.Controls.Add(this.ugbDestino);
+            this.ugbParent.Controls.Add(this.ugbOrigen);
+            this.ugbParent.Size = new System.Drawing.Size(835, 189);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ultraLabel1, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ultraLabel3, 0);
-            this.ugbParent.Controls.SetChildIndex(this.txtDireccion, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ultraLabel5, 0);
-            this.ugbParent.Controls.SetChildIndex(this.uceTipoVehiculo, 0);
+            this.ugbParent.Controls.SetChildIndex(this.ugbOrigen, 0);
+            this.ugbParent.Controls.SetChildIndex(this.ugbDestino, 0);
+            this.ugbParent.Controls.SetChildIndex(this.ubCopiarDepartamento, 0);
+            this.ugbParent.Controls.SetChildIndex(this.ubCopiarProvincia, 0);
+            this.ugbParent.Controls.SetChildIndex(this.ubCopiarDistrito, 0);
             // 
             // ubCancelar
             // 
-            this.ubCancelar.Location = new System.Drawing.Point(295, 176);
+            this.ubCancelar.Location = new System.Drawing.Point(746, 153);
             // 
             // ubAceptar
             // 
-            this.ubAceptar.Location = new System.Drawing.Point(214, 176);
+            this.ubAceptar.Location = new System.Drawing.Point(665, 153);
             // 
             // ilMain
             // 
@@ -350,7 +351,7 @@ namespace Soft.Finanzas.Win
             // 
             // txtDireccion
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(123, 99);
+            this.txtDireccion.Location = new System.Drawing.Point(131, 87);
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Scrollbars = System.Windows.Forms.ScrollBars.Both;
@@ -360,9 +361,9 @@ namespace Soft.Finanzas.Win
             // 
             // ultraLabel3
             // 
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel3.Appearance = appearance2;
-            this.ultraLabel3.Location = new System.Drawing.Point(10, 102);
+            appearance41.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel3.Appearance = appearance41;
+            this.ultraLabel3.Location = new System.Drawing.Point(18, 90);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(85, 21);
             this.ultraLabel3.TabIndex = 30;
@@ -370,9 +371,9 @@ namespace Soft.Finanzas.Win
             // 
             // ultraLabel2
             // 
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel2.Appearance = appearance5;
-            this.ultraLabel2.Location = new System.Drawing.Point(10, 58);
+            appearance42.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel2.Appearance = appearance42;
+            this.ultraLabel2.Location = new System.Drawing.Point(18, 68);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(107, 21);
             this.ultraLabel2.TabIndex = 29;
@@ -380,9 +381,9 @@ namespace Soft.Finanzas.Win
             // 
             // ultraLabel1
             // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel1.Appearance = appearance3;
-            this.ultraLabel1.Location = new System.Drawing.Point(10, 37);
+            appearance43.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel1.Appearance = appearance43;
+            this.ultraLabel1.Location = new System.Drawing.Point(18, 47);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(85, 21);
             this.ultraLabel1.TabIndex = 28;
@@ -390,9 +391,9 @@ namespace Soft.Finanzas.Win
             // 
             // lblRelacion
             // 
-            appearance4.BackColor = System.Drawing.Color.Transparent;
-            this.lblRelacion.Appearance = appearance4;
-            this.lblRelacion.Location = new System.Drawing.Point(10, 14);
+            appearance44.BackColor = System.Drawing.Color.Transparent;
+            this.lblRelacion.Appearance = appearance44;
+            this.lblRelacion.Location = new System.Drawing.Point(18, 24);
             this.lblRelacion.Name = "lblRelacion";
             this.lblRelacion.Size = new System.Drawing.Size(107, 21);
             this.lblRelacion.TabIndex = 27;
@@ -401,7 +402,7 @@ namespace Soft.Finanzas.Win
             // busDistrito
             // 
             this.busDistrito.BackColor = System.Drawing.Color.Transparent;
-            this.busDistrito.Location = new System.Drawing.Point(123, 54);
+            this.busDistrito.Location = new System.Drawing.Point(131, 64);
             this.busDistrito.Name = "busDistrito";
             this.busDistrito.Size = new System.Drawing.Size(247, 27);
             this.busDistrito.TabIndex = 26;
@@ -410,7 +411,7 @@ namespace Soft.Finanzas.Win
             // busProvincia
             // 
             this.busProvincia.BackColor = System.Drawing.Color.Transparent;
-            this.busProvincia.Location = new System.Drawing.Point(123, 32);
+            this.busProvincia.Location = new System.Drawing.Point(131, 42);
             this.busProvincia.Name = "busProvincia";
             this.busProvincia.Size = new System.Drawing.Size(247, 30);
             this.busProvincia.TabIndex = 25;
@@ -419,7 +420,7 @@ namespace Soft.Finanzas.Win
             // busDepartamento
             // 
             this.busDepartamento.BackColor = System.Drawing.Color.Transparent;
-            this.busDepartamento.Location = new System.Drawing.Point(123, 10);
+            this.busDepartamento.Location = new System.Drawing.Point(131, 20);
             this.busDepartamento.Name = "busDepartamento";
             this.busDepartamento.Size = new System.Drawing.Size(247, 30);
             this.busDepartamento.TabIndex = 24;
@@ -428,7 +429,7 @@ namespace Soft.Finanzas.Win
             // busDistritoDestino
             // 
             this.busDistritoDestino.BackColor = System.Drawing.Color.Transparent;
-            this.busDistritoDestino.Location = new System.Drawing.Point(123, 76);
+            this.busDistritoDestino.Location = new System.Drawing.Point(131, 64);
             this.busDistritoDestino.Name = "busDistritoDestino";
             this.busDistritoDestino.Size = new System.Drawing.Size(247, 27);
             this.busDistritoDestino.TabIndex = 27;
@@ -436,9 +437,9 @@ namespace Soft.Finanzas.Win
             // 
             // ultraLabel4
             // 
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel4.Appearance = appearance6;
-            this.ultraLabel4.Location = new System.Drawing.Point(10, 80);
+            appearance45.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel4.Appearance = appearance45;
+            this.ultraLabel4.Location = new System.Drawing.Point(18, 68);
             this.ultraLabel4.Name = "ultraLabel4";
             this.ultraLabel4.Size = new System.Drawing.Size(116, 21);
             this.ultraLabel4.TabIndex = 33;
@@ -446,9 +447,9 @@ namespace Soft.Finanzas.Win
             // 
             // ultraLabel5
             // 
-            appearance1.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel5.Appearance = appearance1;
-            this.ultraLabel5.Location = new System.Drawing.Point(10, 147);
+            appearance46.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel5.Appearance = appearance46;
+            this.ultraLabel5.Location = new System.Drawing.Point(18, 90);
             this.ultraLabel5.Name = "ultraLabel5";
             this.ultraLabel5.Size = new System.Drawing.Size(97, 21);
             this.ultraLabel5.TabIndex = 34;
@@ -467,24 +468,128 @@ namespace Soft.Finanzas.Win
             valueListItem3,
             valueListItem4,
             valueListItem5});
-            this.uceTipoVehiculo.Location = new System.Drawing.Point(123, 143);
+            this.uceTipoVehiculo.Location = new System.Drawing.Point(131, 86);
             this.uceTipoVehiculo.Name = "uceTipoVehiculo";
             this.uceTipoVehiculo.Size = new System.Drawing.Size(144, 21);
             this.uceTipoVehiculo.TabIndex = 35;
             this.uceTipoVehiculo.ValueChanged += new System.EventHandler(this.uceTipoVehiculo_ValueChanged);
             // 
+            // ugbOrigen
+            // 
+            this.ugbOrigen.Controls.Add(this.uceTipoVehiculo);
+            this.ugbOrigen.Controls.Add(this.lblRelacion);
+            this.ugbOrigen.Controls.Add(this.busDistrito);
+            this.ugbOrigen.Controls.Add(this.ultraLabel2);
+            this.ugbOrigen.Controls.Add(this.ultraLabel1);
+            this.ugbOrigen.Controls.Add(this.busProvincia);
+            this.ugbOrigen.Controls.Add(this.ultraLabel5);
+            this.ugbOrigen.Controls.Add(this.busDepartamento);
+            this.ugbOrigen.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
+            this.ugbOrigen.Location = new System.Drawing.Point(6, 6);
+            this.ugbOrigen.Name = "ugbOrigen";
+            this.ugbOrigen.Size = new System.Drawing.Size(388, 123);
+            this.ugbOrigen.TabIndex = 36;
+            this.ugbOrigen.Text = "ORIGEN";
+            // 
+            // ugbDestino
+            // 
+            this.ugbDestino.Controls.Add(this.txtDireccion);
+            this.ugbDestino.Controls.Add(this.busDistritoDestino);
+            this.ugbDestino.Controls.Add(this.ultraLabel6);
+            this.ugbDestino.Controls.Add(this.ultraLabel4);
+            this.ugbDestino.Controls.Add(this.ultraLabel9);
+            this.ugbDestino.Controls.Add(this.busProvinciaDestino);
+            this.ugbDestino.Controls.Add(this.busDepartamentoDestino);
+            this.ugbDestino.Controls.Add(this.ultraLabel3);
+            this.ugbDestino.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
+            this.ugbDestino.Location = new System.Drawing.Point(433, 6);
+            this.ugbDestino.Name = "ugbDestino";
+            this.ugbDestino.Size = new System.Drawing.Size(388, 141);
+            this.ugbDestino.TabIndex = 37;
+            this.ugbDestino.Text = "DESTINO";
+            // 
+            // ultraLabel6
+            // 
+            appearance47.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel6.Appearance = appearance47;
+            this.ultraLabel6.Location = new System.Drawing.Point(18, 24);
+            this.ultraLabel6.Name = "ultraLabel6";
+            this.ultraLabel6.Size = new System.Drawing.Size(107, 21);
+            this.ultraLabel6.TabIndex = 27;
+            this.ultraLabel6.Text = "DEPARTAMENTO";
+            // 
+            // ultraLabel9
+            // 
+            appearance48.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel9.Appearance = appearance48;
+            this.ultraLabel9.Location = new System.Drawing.Point(18, 47);
+            this.ultraLabel9.Name = "ultraLabel9";
+            this.ultraLabel9.Size = new System.Drawing.Size(85, 21);
+            this.ultraLabel9.TabIndex = 28;
+            this.ultraLabel9.Text = "PROVINCIA";
+            // 
+            // busProvinciaDestino
+            // 
+            this.busProvinciaDestino.BackColor = System.Drawing.Color.Transparent;
+            this.busProvinciaDestino.Location = new System.Drawing.Point(131, 42);
+            this.busProvinciaDestino.Name = "busProvinciaDestino";
+            this.busProvinciaDestino.Size = new System.Drawing.Size(247, 30);
+            this.busProvinciaDestino.TabIndex = 25;
+            this.busProvinciaDestino.Search += new System.EventHandler(this.busProvinciaDestino_Search);
+            // 
+            // busDepartamentoDestino
+            // 
+            this.busDepartamentoDestino.BackColor = System.Drawing.Color.Transparent;
+            this.busDepartamentoDestino.Location = new System.Drawing.Point(131, 20);
+            this.busDepartamentoDestino.Name = "busDepartamentoDestino";
+            this.busDepartamentoDestino.Size = new System.Drawing.Size(247, 30);
+            this.busDepartamentoDestino.TabIndex = 24;
+            this.busDepartamentoDestino.Search += new System.EventHandler(this.busDepartamentoDestino_Search);
+            // 
+            // ubCopiarDepartamento
+            // 
+            this.ubCopiarDepartamento.Location = new System.Drawing.Point(395, 25);
+            this.ubCopiarDepartamento.Name = "ubCopiarDepartamento";
+            this.ubCopiarDepartamento.Size = new System.Drawing.Size(37, 23);
+            this.ubCopiarDepartamento.TabIndex = 38;
+            this.ubCopiarDepartamento.Text = ">>";
+            this.ubCopiarDepartamento.Click += new System.EventHandler(this.ubCopiarDepartamento_Click);
+            // 
+            // ubCopiarProvincia
+            // 
+            this.ubCopiarProvincia.Location = new System.Drawing.Point(395, 47);
+            this.ubCopiarProvincia.Name = "ubCopiarProvincia";
+            this.ubCopiarProvincia.Size = new System.Drawing.Size(37, 23);
+            this.ubCopiarProvincia.TabIndex = 39;
+            this.ubCopiarProvincia.Text = ">>";
+            this.ubCopiarProvincia.Click += new System.EventHandler(this.ubCopiarProvincia_Click);
+            // 
+            // ubCopiarDistrito
+            // 
+            this.ubCopiarDistrito.Location = new System.Drawing.Point(395, 69);
+            this.ubCopiarDistrito.Name = "ubCopiarDistrito";
+            this.ubCopiarDistrito.Size = new System.Drawing.Size(37, 23);
+            this.ubCopiarDistrito.TabIndex = 40;
+            this.ubCopiarDistrito.Text = ">>";
+            this.ubCopiarDistrito.Click += new System.EventHandler(this.ubCopiarDistrito_Click);
+            // 
             // FrmSeleccionarDireccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(399, 246);
+            this.ClientSize = new System.Drawing.Size(851, 227);
             this.Name = "FrmSeleccionarDireccion";
             this.Text = "SELECCIONAR DIRECCIÓN";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
             this.ugbParent.ResumeLayout(false);
-            this.ugbParent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDireccion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uceTipoVehiculo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ugbOrigen)).EndInit();
+            this.ugbOrigen.ResumeLayout(false);
+            this.ugbOrigen.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ugbDestino)).EndInit();
+            this.ugbDestino.ResumeLayout(false);
+            this.ugbDestino.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -503,5 +608,14 @@ namespace Soft.Finanzas.Win
         private Controls.SoftSearch busDistritoDestino;
         private Infragistics.Win.UltraWinEditors.UltraComboEditor uceTipoVehiculo;
         private Infragistics.Win.Misc.UltraLabel ultraLabel5;
+        private Infragistics.Win.Misc.UltraGroupBox ugbOrigen;
+        private Infragistics.Win.Misc.UltraGroupBox ugbDestino;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel6;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel9;
+        private Controls.SoftSearch busProvinciaDestino;
+        private Controls.SoftSearch busDepartamentoDestino;
+        private Infragistics.Win.Misc.UltraButton ubCopiarDepartamento;
+        private Infragistics.Win.Misc.UltraButton ubCopiarDistrito;
+        private Infragistics.Win.Misc.UltraButton ubCopiarProvincia;
     }
 }
