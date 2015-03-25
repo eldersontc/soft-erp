@@ -100,11 +100,12 @@ namespace Soft.Ventas.Win
         {
             ssTipoPresupuesto.Text = (Presupuesto.TipoDocumento != null) ? Presupuesto.TipoDocumento.Descripcion : "";
             ssCliente.Text = (Presupuesto.Cliente != null) ? Presupuesto.Cliente.Nombre : "";
+            ssMoneda.Text = (Presupuesto.Moneda != null) ? Presupuesto.Moneda.Simbolo : "";
             txtNumeracion.Text = Presupuesto.Numeracion;
             udtFechaCreacion.Value = Presupuesto.FechaCreacion;
             txtOrdenCompraCliente.Text = Presupuesto.OrdenCompraCliente;
             txtInstruccionesCliente.Text = Presupuesto.InstruccionesCliente;
-
+            lblTotal.Text = string.Format("TOTAL ({0})", (Presupuesto.Moneda == null) ? string.Empty : Presupuesto.Moneda.Simbolo);
             MostrarItems(false);
         }
 
@@ -156,10 +157,12 @@ namespace Soft.Ventas.Win
 
         private void ubAgregar_Click(object sender, EventArgs e)
         {
+            if (Presupuesto.Cliente == null) throw new Exception("Debe de seleccionar un cliente");
+            if (Presupuesto.Moneda == null) throw new Exception("Debe de seleccionar una moneda");
             Collection Cotizaciones = new Collection();
             FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
             String Filtro = Presupuesto.ObtenerFiltroCotizaciones();
-            Filtro = (Filtro.Length > 0) ? String.Format(" ID NOT IN ({0}) AND IDCliente = '{1}'", Filtro, Presupuesto.Cliente.ID) : String.Format(" IDCliente = '{0}'", Presupuesto.Cliente.ID);
+            Filtro = (Filtro.Length > 0) ? String.Format(" ID NOT IN ({0}) AND IDCliente = '{1}' AND IDMoneda = '{2}'", Filtro, Presupuesto.Cliente.ID, Presupuesto.Moneda.ID) : String.Format(" IDCliente = '{0}' AND IDMoneda = '{1}'", Presupuesto.Cliente.ID, Presupuesto.Moneda.ID);
             Cotizaciones = FrmSeleccionar.GetSelectedsEntities(typeof(Cotizacion), "Selección de Cotizaciones", Filtro);
             foreach (Cotizacion Item in Cotizaciones)
             {
@@ -266,6 +269,21 @@ namespace Soft.Ventas.Win
             try
             {
                 Presupuesto.InstruccionesCliente = txtInstruccionesCliente.Text;
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ssMoneda_Search(object sender, EventArgs e)
+        {
+            try
+            {
+                FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+                Presupuesto.Moneda = (Moneda)FrmSeleccionar.GetSelectedEntity(typeof(Moneda), "Moneda");
+                ssMoneda.Text = (Presupuesto.Moneda != null) ? Presupuesto.Moneda.Simbolo : "";
+                lblTotal.Text = string.Format("TOTAL ({0})", (Presupuesto.Moneda == null) ? string.Empty : Presupuesto.Moneda.Simbolo);
             }
             catch (Exception ex)
             {

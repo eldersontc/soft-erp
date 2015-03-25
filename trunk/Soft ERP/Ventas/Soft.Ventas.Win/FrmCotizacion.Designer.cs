@@ -255,16 +255,16 @@
             this.uneTotal = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.uneImpuesto = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.uneSubTotal = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.ultraLabel10 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraLabel9 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraLabel8 = new Infragistics.Win.Misc.UltraLabel();
+            this.lblTotal = new Infragistics.Win.Misc.UltraLabel();
+            this.lblImpuesto = new Infragistics.Win.Misc.UltraLabel();
+            this.lblSubTotal = new Infragistics.Win.Misc.UltraLabel();
             this.ubRecalcular = new Infragistics.Win.Misc.UltraButton();
             this.ssMoneda = new Soft.Controls.SoftSearch();
             this.lblMoneda = new Infragistics.Win.Misc.UltraLabel();
             this.uneCostoMillar = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.ultraLabel22 = new Infragistics.Win.Misc.UltraLabel();
+            this.lblCostoMillar = new Infragistics.Win.Misc.UltraLabel();
             this.uneCostoUnidad = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.ultraLabel23 = new Infragistics.Win.Misc.UltraLabel();
+            this.lblCostoUnidad = new Infragistics.Win.Misc.UltraLabel();
             this.busLineaProduccion = new Soft.Controls.SoftSearch();
             this.ultraLabel24 = new Infragistics.Win.Misc.UltraLabel();
             this.btnBORRAR = new Infragistics.Win.Misc.UltraButton();
@@ -362,17 +362,17 @@
             this.ugbParent.Controls.Add(this.busLineaProduccion);
             this.ugbParent.Controls.Add(this.ultraLabel24);
             this.ugbParent.Controls.Add(this.uneCostoUnidad);
-            this.ugbParent.Controls.Add(this.ultraLabel23);
+            this.ugbParent.Controls.Add(this.lblCostoUnidad);
             this.ugbParent.Controls.Add(this.uneCostoMillar);
-            this.ugbParent.Controls.Add(this.ultraLabel22);
+            this.ugbParent.Controls.Add(this.lblCostoMillar);
             this.ugbParent.Controls.Add(this.uneTotal);
             this.ugbParent.Controls.Add(this.ubRecalcular);
             this.ugbParent.Controls.Add(this.uneImpuesto);
             this.ugbParent.Controls.Add(this.uneSubTotal);
-            this.ugbParent.Controls.Add(this.ultraLabel10);
+            this.ugbParent.Controls.Add(this.lblTotal);
             this.ugbParent.Controls.Add(this.unePorcentajeUtilidad);
-            this.ugbParent.Controls.Add(this.ultraLabel9);
-            this.ugbParent.Controls.Add(this.ultraLabel8);
+            this.ugbParent.Controls.Add(this.lblImpuesto);
+            this.ugbParent.Controls.Add(this.lblSubTotal);
             this.ugbParent.Controls.Add(this.txtObservacion);
             this.ugbParent.Controls.Add(this.ultraLabel11);
             this.ugbParent.Controls.Add(this.uneCantidad);
@@ -420,17 +420,17 @@
             this.ugbParent.Controls.SetChildIndex(this.uneCantidad, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel11, 0);
             this.ugbParent.Controls.SetChildIndex(this.txtObservacion, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ultraLabel8, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ultraLabel9, 0);
+            this.ugbParent.Controls.SetChildIndex(this.lblSubTotal, 0);
+            this.ugbParent.Controls.SetChildIndex(this.lblImpuesto, 0);
             this.ugbParent.Controls.SetChildIndex(this.unePorcentajeUtilidad, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ultraLabel10, 0);
+            this.ugbParent.Controls.SetChildIndex(this.lblTotal, 0);
             this.ugbParent.Controls.SetChildIndex(this.uneSubTotal, 0);
             this.ugbParent.Controls.SetChildIndex(this.uneImpuesto, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubRecalcular, 0);
             this.ugbParent.Controls.SetChildIndex(this.uneTotal, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ultraLabel22, 0);
+            this.ugbParent.Controls.SetChildIndex(this.lblCostoMillar, 0);
             this.ugbParent.Controls.SetChildIndex(this.uneCostoMillar, 0);
-            this.ugbParent.Controls.SetChildIndex(this.ultraLabel23, 0);
+            this.ugbParent.Controls.SetChildIndex(this.lblCostoUnidad, 0);
             this.ugbParent.Controls.SetChildIndex(this.uneCostoUnidad, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel24, 0);
             this.ugbParent.Controls.SetChildIndex(this.busLineaProduccion, 0);
@@ -714,7 +714,7 @@
             // 
             // txtCostoServicio
             // 
-            this.txtCostoServicio.Location = new System.Drawing.Point(176, 209);
+            this.txtCostoServicio.Location = new System.Drawing.Point(191, 209);
             this.txtCostoServicio.MaskInput = "nnnnnnnn.nn";
             this.txtCostoServicio.MaxValue = new decimal(new int[] {
             2050327040,
@@ -729,7 +729,7 @@
             this.txtCostoServicio.Name = "txtCostoServicio";
             this.txtCostoServicio.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Decimal;
             this.txtCostoServicio.ReadOnly = true;
-            this.txtCostoServicio.Size = new System.Drawing.Size(121, 21);
+            this.txtCostoServicio.Size = new System.Drawing.Size(106, 21);
             this.txtCostoServicio.SpinButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Always;
             this.txtCostoServicio.TabIndex = 85;
             this.txtCostoServicio.TabNavigation = Infragistics.Win.UltraWinMaskedEdit.MaskedEditTabNavigation.NextControl;
@@ -788,11 +788,11 @@
             appearance28.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel17.Appearance = appearance28;
             this.ultraLabel17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel17.Location = new System.Drawing.Point(128, 213);
+            this.ultraLabel17.Location = new System.Drawing.Point(125, 213);
             this.ultraLabel17.Name = "ultraLabel17";
-            this.ultraLabel17.Size = new System.Drawing.Size(64, 20);
+            this.ultraLabel17.Size = new System.Drawing.Size(75, 20);
             this.ultraLabel17.TabIndex = 86;
-            this.ultraLabel17.Text = "TOTAL";
+            this.ultraLabel17.Text = "TOTAL (S/.)";
             // 
             // ultraTabPageControl1
             // 
@@ -821,11 +821,11 @@
             appearance6.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel28.Appearance = appearance6;
             this.ultraLabel28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ultraLabel28.Location = new System.Drawing.Point(257, 190);
+            this.ultraLabel28.Location = new System.Drawing.Point(218, 190);
             this.ultraLabel28.Name = "ultraLabel28";
-            this.ultraLabel28.Size = new System.Drawing.Size(47, 15);
+            this.ultraLabel28.Size = new System.Drawing.Size(86, 17);
             this.ultraLabel28.TabIndex = 99;
-            this.ultraLabel28.Text = "TOTAL";
+            this.ultraLabel28.Text = "TOTAL (S/.)";
             // 
             // uneCostoMaquina
             // 
@@ -1347,7 +1347,7 @@
             this.ultraTabPageControl2.Controls.Add(this.ugbPrecorte);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(860, 271);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(919, 271);
             // 
             // ugbImpresion
             // 
@@ -1951,7 +1951,7 @@
             this.ultraTabPageControl3.Controls.Add(this.ultraGroupBox5);
             this.ultraTabPageControl3.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl3.Name = "ultraTabPageControl3";
-            this.ultraTabPageControl3.Size = new System.Drawing.Size(860, 271);
+            this.ultraTabPageControl3.Size = new System.Drawing.Size(919, 271);
             // 
             // ultraGroupBox9
             // 
@@ -2444,35 +2444,38 @@
             this.uneSubTotal.Size = new System.Drawing.Size(156, 21);
             this.uneSubTotal.TabIndex = 56;
             // 
-            // ultraLabel10
+            // lblTotal
             // 
             appearance67.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel10.Appearance = appearance67;
-            this.ultraLabel10.Location = new System.Drawing.Point(841, 529);
-            this.ultraLabel10.Name = "ultraLabel10";
-            this.ultraLabel10.Size = new System.Drawing.Size(67, 23);
-            this.ultraLabel10.TabIndex = 55;
-            this.ultraLabel10.Text = "TOTAL";
+            appearance67.TextHAlignAsString = "Right";
+            this.lblTotal.Appearance = appearance67;
+            this.lblTotal.Location = new System.Drawing.Point(781, 529);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(115, 23);
+            this.lblTotal.TabIndex = 55;
+            this.lblTotal.Text = "TOTAL";
             // 
-            // ultraLabel9
+            // lblImpuesto
             // 
             appearance68.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel9.Appearance = appearance68;
-            this.ultraLabel9.Location = new System.Drawing.Point(833, 507);
-            this.ultraLabel9.Name = "ultraLabel9";
-            this.ultraLabel9.Size = new System.Drawing.Size(75, 23);
-            this.ultraLabel9.TabIndex = 54;
-            this.ultraLabel9.Text = "IMPUESTO";
+            appearance68.TextHAlignAsString = "Right";
+            this.lblImpuesto.Appearance = appearance68;
+            this.lblImpuesto.Location = new System.Drawing.Point(781, 507);
+            this.lblImpuesto.Name = "lblImpuesto";
+            this.lblImpuesto.Size = new System.Drawing.Size(115, 23);
+            this.lblImpuesto.TabIndex = 54;
+            this.lblImpuesto.Text = "IMPUESTO";
             // 
-            // ultraLabel8
+            // lblSubTotal
             // 
             appearance69.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel8.Appearance = appearance69;
-            this.ultraLabel8.Location = new System.Drawing.Point(831, 485);
-            this.ultraLabel8.Name = "ultraLabel8";
-            this.ultraLabel8.Size = new System.Drawing.Size(74, 23);
-            this.ultraLabel8.TabIndex = 53;
-            this.ultraLabel8.Text = "SUBTOTAL";
+            appearance69.TextHAlignAsString = "Right";
+            this.lblSubTotal.Appearance = appearance69;
+            this.lblSubTotal.Location = new System.Drawing.Point(781, 485);
+            this.lblSubTotal.Name = "lblSubTotal";
+            this.lblSubTotal.Size = new System.Drawing.Size(115, 23);
+            this.lblSubTotal.TabIndex = 53;
+            this.lblSubTotal.Text = "SUBTOTAL";
             // 
             // ubRecalcular
             // 
@@ -2515,15 +2518,15 @@
             this.uneCostoMillar.Size = new System.Drawing.Size(88, 21);
             this.uneCostoMillar.TabIndex = 99;
             // 
-            // ultraLabel22
+            // lblCostoMillar
             // 
             appearance65.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel22.Appearance = appearance65;
-            this.ultraLabel22.Location = new System.Drawing.Point(136, 544);
-            this.ultraLabel22.Name = "ultraLabel22";
-            this.ultraLabel22.Size = new System.Drawing.Size(92, 21);
-            this.ultraLabel22.TabIndex = 98;
-            this.ultraLabel22.Text = "COSTO MILLAR";
+            this.lblCostoMillar.Appearance = appearance65;
+            this.lblCostoMillar.Location = new System.Drawing.Point(136, 544);
+            this.lblCostoMillar.Name = "lblCostoMillar";
+            this.lblCostoMillar.Size = new System.Drawing.Size(92, 31);
+            this.lblCostoMillar.TabIndex = 98;
+            this.lblCostoMillar.Text = "COSTO MILLAR";
             // 
             // uneCostoUnidad
             // 
@@ -2534,15 +2537,15 @@
             this.uneCostoUnidad.Size = new System.Drawing.Size(103, 21);
             this.uneCostoUnidad.TabIndex = 101;
             // 
-            // ultraLabel23
+            // lblCostoUnidad
             // 
             appearance64.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel23.Appearance = appearance64;
-            this.ultraLabel23.Location = new System.Drawing.Point(330, 544);
-            this.ultraLabel23.Name = "ultraLabel23";
-            this.ultraLabel23.Size = new System.Drawing.Size(105, 21);
-            this.ultraLabel23.TabIndex = 100;
-            this.ultraLabel23.Text = "COSTO UNIDAD";
+            this.lblCostoUnidad.Appearance = appearance64;
+            this.lblCostoUnidad.Location = new System.Drawing.Point(330, 544);
+            this.lblCostoUnidad.Name = "lblCostoUnidad";
+            this.lblCostoUnidad.Size = new System.Drawing.Size(105, 34);
+            this.lblCostoUnidad.TabIndex = 100;
+            this.lblCostoUnidad.Text = "COSTO UNIDAD";
             // 
             // busLineaProduccion
             // 
@@ -2796,9 +2799,9 @@
         private Infragistics.Win.Misc.UltraButton ubRecalcular;
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor uneImpuesto;
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor uneSubTotal;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel10;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel9;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel8;
+        private Infragistics.Win.Misc.UltraLabel lblTotal;
+        private Infragistics.Win.Misc.UltraLabel lblImpuesto;
+        private Infragistics.Win.Misc.UltraLabel lblSubTotal;
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor uneCosto;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl2;
         private Infragistics.Win.UltraWinEditors.UltraPictureBox upbPrecorte;
@@ -2857,10 +2860,10 @@
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor txtPliegos;
         private Infragistics.Win.Misc.UltraLabel labelPliegos;
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor uneCostoMillar;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel22;
+        private Infragistics.Win.Misc.UltraLabel lblCostoMillar;
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor checkGraficoImpresionManual;
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor uneCostoUnidad;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel23;
+        private Infragistics.Win.Misc.UltraLabel lblCostoUnidad;
         private Infragistics.Win.UltraWinEditors.UltraComboEditor comboMedida;
         private Controls.SoftSearch busLineaProduccion;
         private Infragistics.Win.Misc.UltraLabel ultraLabel24;

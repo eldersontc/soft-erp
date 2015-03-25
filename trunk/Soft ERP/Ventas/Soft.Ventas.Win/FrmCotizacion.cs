@@ -20,6 +20,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using Soft.Produccion.Entidades;
 using Infragistics.Win;
+using System.Xml;
 
 namespace Soft.Ventas.Win
 {
@@ -94,9 +95,18 @@ namespace Soft.Ventas.Win
             uneCantidad.Value = Cotizacion.Cantidad;
             txtNumeracion.Text = Cotizacion.Numeracion;
             unePorcentajeUtilidad.Value = Cotizacion.PorcentajeUtilidad;
+
+            lblSubTotal.Text = string.Format("SUBTOTAL ({0})", (Cotizacion.Moneda == null) ? string.Empty : Cotizacion.Moneda.Simbolo);
+            lblImpuesto.Text = string.Format("IMPUESTO ({0})", (Cotizacion.Moneda == null) ? string.Empty : Cotizacion.Moneda.Simbolo);
+            lblTotal.Text = string.Format("TOTAL ({0})", (Cotizacion.Moneda == null) ? string.Empty : Cotizacion.Moneda.Simbolo);
+
             uneSubTotal.Value = Cotizacion.SubTotal;
             uneImpuesto.Value = Cotizacion.Impuesto;
             uneTotal.Value = Cotizacion.Total;
+
+            lblCostoMillar.Text = string.Format("COSTO MILLAR ({0})", (Cotizacion.Moneda == null) ? string.Empty : Cotizacion.Moneda.Simbolo);
+            lblCostoUnidad.Text = string.Format("COSTO UNIDAD ({0})", (Cotizacion.Moneda == null) ? string.Empty : Cotizacion.Moneda.Simbolo);
+
             uneCostoUnidad.Value = Cotizacion.Total / Cotizacion.Cantidad;
             uneCostoMillar.Value = (Cotizacion.Total / Cotizacion.Cantidad) * 1000;
 
@@ -1570,10 +1580,16 @@ namespace Soft.Ventas.Win
                 {
                     if (Cotizacion.Moneda.Simbolo.Equals("US $"))
                     {
-                        filtro = "IDMoneda='" + Cotizacion.Moneda.ID + "' and Fecha='" + Cotizacion.FechaCreacion.Date + "'";
-                        FrmSelectedEntity FrmSelectedMoneda = new FrmSelectedEntity();
-                        TipoCambio tc = (TipoCambio)FrmSelectedMoneda.GetSelectedEntity(typeof(TipoCambio), "Tipo de Cambio", filtro);
-                        Cotizacion.TipoCambioFecha = tc.TipoCambioVenta;
+                        filtro = "IDMoneda='" + Cotizacion.Moneda.ID + "' and Fecha='" + Cotizacion.FechaCreacion.ToShortDateString() + "'";
+                        XmlDocument XML = HelperNHibernate.ExecuteSQL("SELECT TipoCambioVenta FROM vSF_TipoCambio", filtro);
+                        if (XML.HasChildNodes && XML.DocumentElement.ChildNodes.Count > 0)
+                        {
+                            Cotizacion.TipoCambioFecha = Convert.ToDecimal(XML.DocumentElement.ChildNodes[0].SelectSingleNode("@TipoCambioVenta").Value);
+                        }
+                        else 
+                        {
+                            throw new Exception("No hay tipo de cambio registrado a la fecha : " + Cotizacion.FechaCreacion.ToShortDateString());
+                        }
                     }
                     else
                     {

@@ -7,6 +7,7 @@ using Soft.Ventas.Entidades;
 using Soft.Entities;
 using Soft.Win;
 using Soft.Exceptions;
+using System.Xml;
 
 namespace Soft.Ventas.Win
 {
@@ -37,18 +38,21 @@ namespace Soft.Ventas.Win
                 Cotizacion.Vendedor = SolicitudCotizacion.Responsable;
                 Cotizacion.Observacion = SolicitudCotizacion.Observacion;
                 Cotizacion.Moneda = SolicitudCotizacion.Moneda;
-                Cotizacion.IDSolicitudCotizacion = SolicitudCotizacion.ID;
 
-                Cotizacion.LineaProduccion = SolicitudCotizacion.LineaProduccion;
-                String filtro = "";
                 if (Cotizacion.Moneda != null)
                 {
                     if (Cotizacion.Moneda.Simbolo.Equals("US $"))
                     {
-                        filtro = "IDMoneda='" + Cotizacion.Moneda.ID + "' and Fecha='" + Cotizacion.FechaCreacion.Date + "'";
-                        FrmSelectedEntity FrmSelectedMoneda = new FrmSelectedEntity();
-                        TipoCambio tc = (TipoCambio)FrmSelectedMoneda.GetSelectedEntity(typeof(TipoCambio), "Tipo de Cambio", filtro);
-                        Cotizacion.TipoCambioFecha = tc.TipoCambioVenta;
+                        String filtro = "IDMoneda='" + Cotizacion.Moneda.ID + "' and Fecha='" + Cotizacion.FechaCreacion.ToShortDateString() + "'";
+                        XmlDocument XML = HelperNHibernate.ExecuteSQL("SELECT TipoCambioVenta FROM vSF_TipoCambio", filtro);
+                        if (XML.HasChildNodes && XML.DocumentElement.ChildNodes.Count > 0)
+                        {
+                            Cotizacion.TipoCambioFecha = Convert.ToDecimal(XML.DocumentElement.ChildNodes[0].SelectSingleNode("@TipoCambioVenta").Value);
+                        }
+                        else
+                        {
+                            throw new Exception("No hay tipo de cambio registrado a la fecha : " + Cotizacion.FechaCreacion.ToShortDateString());
+                        }
                     }
                     else
                     {
@@ -56,7 +60,9 @@ namespace Soft.Ventas.Win
                     }
                 }
 
-
+                Cotizacion.IDSolicitudCotizacion = SolicitudCotizacion.ID;
+                Cotizacion.LineaProduccion = SolicitudCotizacion.LineaProduccion;
+                
                 foreach (ItemSolicitudCotizacion Item in SolicitudCotizacion.Items)
                 {
                     ItemCotizacion ItemCotizacion = Cotizacion.AddItem();

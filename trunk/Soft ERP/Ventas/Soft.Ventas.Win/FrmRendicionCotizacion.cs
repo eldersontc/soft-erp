@@ -11,6 +11,7 @@ using Soft.Ventas.Entidades;
 using Infragistics.Win.UltraWinGrid;
 using Soft.Exceptions;
 using Infragistics.Win;
+using Soft.Inventario.Entidades;
 
 namespace Soft.Ventas.Win
 {
@@ -214,6 +215,39 @@ namespace Soft.Ventas.Win
             {
                 SoftException.Control(ex);
             }
+        }
+
+        private void ubNuevo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FrmSelectedEntity FrmSeleccionar = new FrmSelectedEntity();
+                Existencia servicio = (Existencia)FrmSeleccionar.GetSelectedEntity(typeof(Existencia), "Selección de Servicios");
+                if (servicio != null) 
+                {
+                    ItemRendicionCotizacion item = new ItemRendicionCotizacion();
+                    item.Codigo = servicio.Codigo;
+                    item.Descripcion = servicio.Nombre;
+                    item.CantidadCotizacion = 0;
+                    item.PrecioCotizacion = 0;
+                    item.TotalCotizacion = 0;
+                    item.CantidadReal = 0;
+                    item.PrecioReal = 0;
+                    item.TotalReal = 0;
+                    RendicionCotizacion.Items.Add(item);
+                    MostrarItems();
+                    MostrarTotales();
+                }
+            }
+            catch (Exception ex)
+            {
+                SoftException.Control(ex);
+            }
+        }
+
+        private void ubEliminar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
