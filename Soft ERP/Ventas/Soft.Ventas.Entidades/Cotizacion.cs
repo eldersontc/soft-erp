@@ -18,6 +18,7 @@ namespace Soft.Ventas.Entidades
                 FechaCreacion = DateTime.Now;
                 EstadoAprobacion = "PENDIENTE";
                 EstadoRendicion = "PENDIENTE";
+                TipoCambioFecha = 1;
             }
         }
 
@@ -65,6 +66,24 @@ namespace Soft.Ventas.Entidades
             }
         }
 
+        private decimal mSubTotal;
+        public override decimal SubTotal
+        {
+            get
+            {
+                Decimal SubTotal = 0;
+                foreach (ItemDocumento Item in Items)
+                {
+                    SubTotal += Item.Total;
+                }
+                mSubTotal = Math.Round(SubTotal / TipoCambioFecha, 2);
+                return mSubTotal;
+            }
+            set
+            {
+                mSubTotal = value;
+            }
+        }
 
         public virtual void AsignarListadeCostosDesdeTipoDocumento()
         {

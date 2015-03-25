@@ -45,6 +45,8 @@ namespace Soft.Ventas.Win
             this.ultraLabel4 = new Infragistics.Win.Misc.UltraLabel();
             this.uneTotalReal = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.uneTotalCotizacion = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.ubNuevo = new Infragistics.Win.Misc.UltraButton();
+            this.ubEliminar = new Infragistics.Win.Misc.UltraButton();
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).BeginInit();
             this.ugbParent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.udteFechaCreacion)).BeginInit();
@@ -67,7 +69,7 @@ namespace Soft.Ventas.Win
             this.ugbParent.Controls.Add(this.udteFechaCreacion);
             this.ugbParent.Controls.Add(this.ultraLabel2);
             this.ugbParent.Controls.Add(this.ultraLabel1);
-            this.ugbParent.Size = new System.Drawing.Size(1032, 516);
+            this.ugbParent.Size = new System.Drawing.Size(1038, 544);
             this.ugbParent.Controls.SetChildIndex(this.ubAceptar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ubCancelar, 0);
             this.ugbParent.Controls.SetChildIndex(this.ultraLabel1, 0);
@@ -83,12 +85,12 @@ namespace Soft.Ventas.Win
             // ubCancelar
             // 
             this.ubCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ubCancelar.Location = new System.Drawing.Point(940, 479);
+            this.ubCancelar.Location = new System.Drawing.Point(940, 506);
             // 
             // ubAceptar
             // 
             this.ubAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ubAceptar.Location = new System.Drawing.Point(859, 479);
+            this.ubAceptar.Location = new System.Drawing.Point(859, 506);
             // 
             // ilMain
             // 
@@ -386,12 +388,14 @@ namespace Soft.Ventas.Win
             | System.Windows.Forms.AnchorStyles.Right)));
             appearance3.BackColor = System.Drawing.Color.Transparent;
             this.ugbItems.Appearance = appearance3;
+            this.ugbItems.Controls.Add(this.ubEliminar);
+            this.ugbItems.Controls.Add(this.ubNuevo);
             this.ugbItems.Controls.Add(this.ugItems);
             this.ugbItems.HeaderBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded3;
             this.ugbItems.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
             this.ugbItems.Location = new System.Drawing.Point(16, 47);
             this.ugbItems.Name = "ugbItems";
-            this.ugbItems.Size = new System.Drawing.Size(999, 396);
+            this.ugbItems.Size = new System.Drawing.Size(999, 426);
             this.ugbItems.TabIndex = 12;
             this.ugbItems.Text = "ITEMS";
             // 
@@ -399,10 +403,10 @@ namespace Soft.Ventas.Win
             // 
             this.ugItems.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
             this.ugItems.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
-            this.ugItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ugItems.Dock = System.Windows.Forms.DockStyle.Top;
             this.ugItems.Location = new System.Drawing.Point(3, 25);
             this.ugItems.Name = "ugItems";
-            this.ugItems.Size = new System.Drawing.Size(993, 368);
+            this.ugItems.Size = new System.Drawing.Size(993, 366);
             this.ugItems.TabIndex = 0;
             this.ugItems.Text = "ultraGrid1";
             this.ugItems.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ugItems_CellChange);
@@ -412,7 +416,7 @@ namespace Soft.Ventas.Win
             this.ultraLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             appearance2.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel3.Appearance = appearance2;
-            this.ultraLabel3.Location = new System.Drawing.Point(598, 453);
+            this.ultraLabel3.Location = new System.Drawing.Point(598, 483);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(122, 23);
             this.ultraLabel3.TabIndex = 13;
@@ -423,7 +427,7 @@ namespace Soft.Ventas.Win
             this.ultraLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             appearance1.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel4.Appearance = appearance1;
-            this.ultraLabel4.Location = new System.Drawing.Point(823, 453);
+            this.ultraLabel4.Location = new System.Drawing.Point(823, 483);
             this.ultraLabel4.Name = "ultraLabel4";
             this.ultraLabel4.Size = new System.Drawing.Size(80, 23);
             this.ultraLabel4.TabIndex = 14;
@@ -432,7 +436,7 @@ namespace Soft.Ventas.Win
             // uneTotalReal
             // 
             this.uneTotalReal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.uneTotalReal.Location = new System.Drawing.Point(915, 449);
+            this.uneTotalReal.Location = new System.Drawing.Point(915, 479);
             this.uneTotalReal.Name = "uneTotalReal";
             this.uneTotalReal.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
             this.uneTotalReal.ReadOnly = true;
@@ -442,18 +446,36 @@ namespace Soft.Ventas.Win
             // uneTotalCotizacion
             // 
             this.uneTotalCotizacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.uneTotalCotizacion.Location = new System.Drawing.Point(717, 449);
+            this.uneTotalCotizacion.Location = new System.Drawing.Point(717, 479);
             this.uneTotalCotizacion.Name = "uneTotalCotizacion";
             this.uneTotalCotizacion.NumericType = Infragistics.Win.UltraWinEditors.NumericType.Double;
             this.uneTotalCotizacion.ReadOnly = true;
             this.uneTotalCotizacion.Size = new System.Drawing.Size(100, 21);
             this.uneTotalCotizacion.TabIndex = 16;
             // 
+            // ubNuevo
+            // 
+            this.ubNuevo.Location = new System.Drawing.Point(837, 397);
+            this.ubNuevo.Name = "ubNuevo";
+            this.ubNuevo.Size = new System.Drawing.Size(75, 23);
+            this.ubNuevo.TabIndex = 1;
+            this.ubNuevo.Text = "NUEVO";
+            this.ubNuevo.Click += new System.EventHandler(this.ubNuevo_Click);
+            // 
+            // ubEliminar
+            // 
+            this.ubEliminar.Location = new System.Drawing.Point(918, 397);
+            this.ubEliminar.Name = "ubEliminar";
+            this.ubEliminar.Size = new System.Drawing.Size(75, 23);
+            this.ubEliminar.TabIndex = 2;
+            this.ubEliminar.Text = "ELIMINAR";
+            this.ubEliminar.Click += new System.EventHandler(this.ubEliminar_Click);
+            // 
             // FrmRendicionCotizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1048, 554);
+            this.ClientSize = new System.Drawing.Size(1054, 582);
             this.Name = "FrmRendicionCotizacion";
             this.Text = "RENDICIÓN DE COTIZACIÓN";
             ((System.ComponentModel.ISupportInitialize)(this.ugbParent)).EndInit();
@@ -482,5 +504,7 @@ namespace Soft.Ventas.Win
         private Infragistics.Win.UltraWinEditors.UltraNumericEditor uneTotalReal;
         private Infragistics.Win.Misc.UltraLabel ultraLabel4;
         private Infragistics.Win.Misc.UltraLabel ultraLabel3;
+        private Infragistics.Win.Misc.UltraButton ubEliminar;
+        private Infragistics.Win.Misc.UltraButton ubNuevo;
     }
 }
