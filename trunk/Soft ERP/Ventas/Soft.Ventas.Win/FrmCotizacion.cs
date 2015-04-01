@@ -211,6 +211,7 @@ namespace Soft.Ventas.Win
             comboMedida.Text = Item.UnidadMedidaAbierta;
             lblTipoUnidad.Visible = Item.TieneTipoUnidad;
             txtCantidadItem.Visible = Item.TieneTipoUnidad;
+            checkMuestraPrecioEnPresupuesto.Checked = Item.MuestraPrecioEnPresupuesto;
 
 
 
