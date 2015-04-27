@@ -17,6 +17,7 @@ namespace Soft.Ventas.Entidades
             RequerimientosServicio = new List<RequerimientoServicioItemCotizacion>();
 
             IncluirEnPrespuesto = true;
+            MuestraPrecioEnPresupuesto = true;
         }
 
         public virtual bool IncluirEnPrespuesto { get; set; }

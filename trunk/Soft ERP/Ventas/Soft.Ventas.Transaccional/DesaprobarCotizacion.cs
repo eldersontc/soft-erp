@@ -31,17 +31,18 @@ namespace Soft.Ventas.Transaccional
                         foreach (Cotizacion Cotizacion in Cotizaciones)
                         {
                             Auditoria Auditoria = Auditoria.ConstruirAuditoria(Cotizacion, "Desaprobar");
-                            if (Cotizacion.EstadoAprobacion.Equals("DESAPROBADO"))
+                            if (Cotizacion.EstadoAprobacion.Equals("PENDIENTE"))
                             {
-                                throw new Exception(String.Format("La cotización número {0} ya se encuentra DESAPROBADA.", Cotizacion.Numeracion));
+                                throw new Exception(String.Format("La cotización número {0} aún no ha sido APROBADA.", Cotizacion.Numeracion));
                             }
+
                             SqlCommand SqlCmd = new SqlCommand();
                             SqlCmd.Connection = (SqlConnection)Sesion.Connection;
                             Trans.Enlist(SqlCmd);
                             SqlCmd.CommandText = "pSF_Aprobar_Desaprobar_Cotizacion";
                             SqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
                             SqlCmd.Parameters.AddWithValue("@ID", Cotizacion.ID);
-                            SqlCmd.Parameters.AddWithValue("@EstadoAprobacion", "DESAPROBADO");
+                            SqlCmd.Parameters.AddWithValue("@EstadoAprobacion", "PENDIENTE");
                             SqlCmd.ExecuteNonQuery();
                             Sesion.Save(Auditoria);
                             Progreso.Next();
