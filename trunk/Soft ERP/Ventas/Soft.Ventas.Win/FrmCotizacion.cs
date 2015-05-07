@@ -776,7 +776,7 @@ namespace Soft.Ventas.Win
             }
             itemCotizacion2.CostoServicio = totalservicio;
             itemCotizacion2.Cantidad = 1;
-            itemCotizacion2.Costo = itemCotizacion2.CostoMaquina + itemCotizacion2.CostoMaterial + itemCotizacion2.CostoServicio;
+            itemCotizacion2.Costo = Math.Round((itemCotizacion2.CostoMaquina + itemCotizacion2.CostoMaterial + itemCotizacion2.CostoServicio) / itemCotizacion2.CantidadElemento, 2) * itemCotizacion2.CantidadElemento;
             itemCotizacion2.Precio = itemCotizacion2.Costo;
         }
 
@@ -1082,7 +1082,7 @@ namespace Soft.Ventas.Win
                 {
                     Decimal largo = itemcosteado.MedidaAbiertaLargo;
                     Decimal alto = itemcosteado.MedidaAbiertaAlto;
-
+                    
                     if (itemcosteado.UnidadMedidaAbierta.Equals("CM."))
                     {
                         largo = largo / 100;
